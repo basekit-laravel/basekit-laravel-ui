@@ -1,0 +1,638 @@
+/* =============================================================================
+  Select Component
+  ============================================================================= */
+
+/* =============================================================================
+  Design Tokens
+  ============================================================================= */
+:root {
+  /* Base */
+  --select-color: var(--color-slate-900);
+  --select-placeholder-color: var(--color-slate-400);
+  --select-border-color: var(--color-slate-300);
+  --select-border-radius: var(--radius-md, 0.375rem);
+  --select-bg: var(--surface-base);
+  --select-font-family: inherit;
+  --select-line-height: 1.5;
+  --select-transition:
+    border-color var(--transition-fast) ease-in-out,
+    box-shadow var(--transition-fast) ease-in-out;
+
+  /* Interaction States */
+  --select-hover-border-color: var(--color-slate-400);
+  --select-focus-border-color: var(--color-primary-500);
+  --select-focus-ring-color: var(--color-primary-100);
+  --select-focus-ring-width: 2px;
+
+  /* Disabled State */
+  --select-disabled-bg: var(--color-slate-50);
+  --select-disabled-color: var(--color-slate-500);
+  --select-disabled-border-color: var(--color-slate-200);
+
+  /* Variants */
+  --select-primary-border-color: var(--color-primary-500);
+  --select-primary-ring-color: var(--color-primary-100);
+  --select-secondary-border-color: var(--color-slate-300);
+  --select-secondary-ring-color: var(--color-slate-100);
+  --select-error-border-color: var(--color-danger-500);
+  --select-error-ring-color: var(--color-danger-100);
+  --select-error-color: var(--color-danger-700);
+  --select-success-border-color: var(--color-success-500);
+  --select-success-ring-color: var(--color-success-100);
+  --select-warning-border-color: var(--color-warning-500);
+  --select-warning-ring-color: var(--color-warning-100);
+  --select-danger-border-color: var(--color-danger-500);
+  --select-danger-ring-color: var(--color-danger-100);
+  --select-info-border-color: var(--color-info-500);
+  --select-info-ring-color: var(--color-info-100);
+  --select-ghost-border-color: transparent;
+  --select-ghost-ring-color: var(--color-slate-100);
+  --select-ghost-bg: transparent;
+
+  /* Sizes */
+  --select-py-sm: 0.375rem;
+  --select-px-sm: 0.75rem;
+  --select-fs-sm: 0.875rem;
+  --select-py-md: 0.5rem;
+  --select-px-md: 0.875rem;
+  --select-fs-md: 0.9375rem;
+  --select-py-lg: 0.75rem;
+  --select-px-lg: 1rem;
+  --select-fs-lg: 1rem;
+
+  /* Dropdown Menu */
+  --select-menu-bg: var(--surface-base);
+  --select-menu-border: var(--color-slate-200);
+  --select-menu-shadow: var(--shadow-lg);
+  --select-option-hover: var(--color-slate-50);
+}
+
+/**
+ * =============================================================================
+ * Base Structure
+ * =============================================================================
+ */
+
+/* Root wrapper */
+.bk-select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.bk-select__error-message {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  color: var(--select-error-border-color);
+}
+
+.bk-select__hint {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  color: var(--color-slate-500);
+}
+
+/* Error state on parent changes label color */
+.bk-select:has(.bk-select__container--error) .bk-select__label {
+  color: var(--select-error-color);
+}
+
+/**
+ * =============================================================================
+ * Labels
+ * =============================================================================
+ */
+
+.bk-select__label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-slate-700);
+  line-height: 1.25rem;
+}
+
+.bk-select__label-row {
+  display: flex;
+  align-items: center;
+}
+
+.bk-select__corner-hint {
+  margin-inline-start: auto;
+  font-size: 0.75rem;
+  color: var(--color-slate-500);
+}
+
+/* Inline label styles */
+.bk-select__label--inset,
+.bk-select__label--overlap {
+  position: absolute;
+  inset-inline-start: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--color-slate-500);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.bk-select__label--inset {
+  top: 0.35rem;
+}
+
+.bk-select__label--overlap {
+  top: -0.5rem;
+  background-color: var(--select-bg);
+  padding: 0 0.5rem;
+  display: inline-block;
+  border-radius: 0.25rem;
+  z-index: 3;
+}
+
+/**
+ * =============================================================================
+ * Container & Control
+ * =============================================================================
+ */
+
+.bk-select__container {
+  position: relative;
+  width: 100%;
+  border-radius: var(--select-border-radius);
+  transition: box-shadow var(--transition-fast) ease-in-out;
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--select-focus-ring-color);
+    z-index: 5;
+  }
+}
+
+.bk-select__control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  border-radius: var(--select-border-radius);
+  border: 1px solid var(--select-border-color);
+  background-color: var(--select-bg);
+  color: var(--select-color);
+  transition: var(--select-transition);
+  appearance: none;
+  padding-inline-end: 2.5rem;
+  cursor: pointer;
+  line-height: 1.5;
+  text-align: left;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+
+  &:focus {
+    outline: none;
+    border-color: var(--select-focus-border-color);
+    box-shadow: none;
+  }
+
+  &:disabled {
+    background-color: var(--color-slate-50);
+    color: var(--color-slate-500);
+    cursor: not-allowed;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: var(--select-hover-border-color);
+  }
+}
+
+/**
+ * =============================================================================
+ * Icons & Indicators
+ * =============================================================================
+ */
+
+.bk-select__icon {
+  position: absolute;
+  inset-inline-start: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--color-slate-400);
+  pointer-events: none;
+}
+
+.bk-select__chevron {
+  position: absolute;
+  inset-inline-end: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--color-slate-400);
+  pointer-events: none;
+  transition:
+    transform var(--transition-fast),
+    color var(--transition-normal) ease;
+}
+
+.bk-select__chevron--open {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.bk-select__display {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/**
+ * =============================================================================
+ * Dropdown Menu
+ * =============================================================================
+ */
+
+.bk-select__menu {
+  position: absolute;
+  inset-inline: 0;
+  margin-block-start: 0.5rem;
+  background-color: var(--select-menu-bg);
+  border: 1px solid var(--select-menu-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--select-menu-shadow);
+  max-height: 16rem;
+  overflow-y: auto;
+  padding: 0.25rem;
+  z-index: 120;
+}
+
+.bk-select__container--open {
+  z-index: 110;
+}
+
+.bk-select__option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: var(--color-slate-700);
+
+  &:hover {
+    background-color: var(--select-option-hover);
+  }
+}
+
+.bk-select__option--selected {
+  background-color: var(--color-slate-100);
+  color: var(--color-slate-900);
+}
+
+.bk-select__error-icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  inset-inline-end: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--select-error-border-color);
+  pointer-events: none;
+  z-index: 2;
+
+  svg {
+    display: block;
+    image-rendering: crisp-edges;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+/**
+ * =============================================================================
+ * Control Modifiers
+ * =============================================================================
+ */
+
+/* With icon padding adjustments */
+.bk-select__control--with-icon {
+  padding-inline-start: 2.5rem;
+}
+
+/* Inline label padding adjustments */
+.bk-select__control--label-inset {
+  padding-top: 1.25rem;
+}
+
+.bk-select__control--label-overlap {
+  padding-top: 0.75rem;
+}
+
+/**
+ * =============================================================================
+ * Size Modifiers
+ * =============================================================================
+ */
+
+.bk-select__control--sm {
+  padding-block: var(--select-py-sm);
+  padding-inline: var(--select-px-sm);
+  padding-inline-end: 2.25rem;
+  font-size: var(--select-fs-sm);
+}
+
+.bk-select__control--md {
+  padding-block: var(--select-py-md);
+  padding-inline: var(--select-px-md);
+  padding-inline-end: 2.5rem;
+  font-size: var(--select-fs-md);
+}
+
+.bk-select__control--lg {
+  padding-block: var(--select-py-lg);
+  padding-inline: var(--select-px-lg);
+  padding-inline-end: 2.75rem;
+  font-size: var(--select-fs-lg);
+}
+
+/* Icon padding by size */
+.bk-select__control--with-icon.bk-select__control--sm {
+  padding-inline-start: 2.25rem;
+}
+
+.bk-select__control--with-icon.bk-select__control--md {
+  padding-inline-start: 2.5rem;
+}
+
+.bk-select__control--with-icon.bk-select__control--lg {
+  padding-inline-start: 2.75rem;
+}
+
+/* Error icon sizing */
+.bk-select__container--sm .bk-select__error-icon {
+  width: 2rem;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.bk-select__container--md .bk-select__error-icon {
+  width: 2.25rem;
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+.bk-select__container--lg .bk-select__error-icon {
+  width: 2.75rem;
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+/* Error icon control padding adjustment */
+.bk-select__container--sm .bk-select__control--has-error-icon {
+  padding-inline-end: 2rem;
+}
+
+.bk-select__container--md .bk-select__control--has-error-icon {
+  padding-inline-end: 2.25rem;
+}
+
+.bk-select__container--lg .bk-select__control--has-error-icon {
+  padding-inline-end: 2.75rem;
+}
+
+/* Label padding by size + label variant */
+.bk-select__container--sm .bk-select__control--label-inset {
+  padding-top: 1rem;
+}
+
+.bk-select__container--sm .bk-select__control--label-overlap {
+  padding-top: 0.75rem;
+}
+
+.bk-select__container--md .bk-select__control--label-inset {
+  padding-top: 1.25rem;
+}
+
+.bk-select__container--md .bk-select__control--label-overlap {
+  padding-top: 1rem;
+}
+
+.bk-select__container--lg .bk-select__control--label-inset {
+  padding-top: 1.5rem;
+}
+
+.bk-select__container--lg .bk-select__control--label-overlap {
+  padding-top: 1.25rem;
+}
+
+/**
+ * =============================================================================
+ * Variant Modifiers
+ * =============================================================================
+ */
+
+/* Error variant */
+.bk-select__control--error,
+.bk-select__control[aria-invalid="true"] {
+  border-color: var(--select-error-border-color);
+  color: var(--select-error-color);
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.bk-select__container--error {
+  .bk-select__control {
+    border-color: var(--select-error-border-color);
+  }
+
+  .bk-select__label--inset,
+  .bk-select__label--overlap {
+    color: var(--select-error-color);
+  }
+
+  .bk-select__chevron,
+  .bk-select__icon {
+    color: var(--select-error-color);
+    inset-inline-end: 0.625rem;
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--select-error-ring-color);
+  }
+}
+
+/* Primary variant */
+.bk-select__control--primary {
+  border-color: var(--select-primary-border-color);
+}
+
+.bk-select__container--primary {
+  .bk-select__control {
+    border-color: var(--select-primary-border-color);
+  }
+
+  .bk-select__chevron,
+  .bk-select__icon {
+    color: var(--select-primary-border-color);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--select-primary-ring-color);
+  }
+}
+
+/* Secondary variant */
+.bk-select__control--secondary {
+  border-color: var(--select-secondary-border-color);
+}
+
+.bk-select__container--secondary {
+  .bk-select__control {
+    border-color: var(--select-secondary-border-color);
+  }
+
+  .bk-select__chevron,
+  .bk-select__icon {
+    color: var(--select-secondary-border-color);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--select-secondary-ring-color);
+  }
+}
+
+/* Success variant */
+.bk-select__control--success {
+  border-color: var(--select-success-border-color);
+}
+
+.bk-select__container--success {
+  .bk-select__control {
+    border-color: var(--select-success-border-color);
+  }
+
+  .bk-select__chevron,
+  .bk-select__icon {
+    color: var(--select-success-border-color);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--select-success-ring-color);
+  }
+}
+
+/* Warning variant */
+.bk-select__control--warning {
+  border-color: var(--select-warning-border-color);
+}
+
+.bk-select__container--warning {
+  .bk-select__control {
+    border-color: var(--select-warning-border-color);
+  }
+
+  .bk-select__chevron,
+  .bk-select__icon {
+    color: var(--select-warning-border-color);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--select-warning-ring-color);
+  }
+}
+
+/* Danger variant */
+.bk-select__control--danger {
+  border-color: var(--select-danger-border-color);
+}
+
+.bk-select__container--danger {
+  .bk-select__control {
+    border-color: var(--select-danger-border-color);
+  }
+
+  .bk-select__chevron {
+    color: var(--select-danger-border-color);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--select-danger-ring-color);
+  }
+}
+
+/* Info variant */
+.bk-select__control--info {
+  border-color: var(--select-info-border-color);
+}
+
+.bk-select__container--info {
+  .bk-select__control {
+    border-color: var(--select-info-border-color);
+  }
+
+  .bk-select__chevron,
+  .bk-select__icon {
+    color: var(--select-info-border-color);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--select-info-ring-color);
+  }
+}
+
+/* Ghost variant */
+.bk-select__control--ghost {
+  background-color: var(--select-ghost-bg);
+  border-color: var(--select-ghost-border-color);
+  box-shadow: none;
+}
+
+.bk-select__container--ghost:focus-within {
+  box-shadow: 0 0 0 2px var(--select-ghost-ring-color);
+}
+
+/**
+ * =============================================================================
+ * Style Modifiers
+ * =============================================================================
+ */
+
+/* Underline variant */
+.bk-select__container--underline {
+  border-radius: 0;
+}
+
+.bk-select__control--underline {
+  background-color: var(--color-slate-50);
+  border-width: 0 0 1px 0;
+  border-radius: 0;
+  border-style: solid;
+  border-color: var(--select-border-color);
+  box-shadow: none;
+
+  &:focus {
+    border-bottom-color: var(--select-focus-border-color);
+    box-shadow: none;
+  }
+}
+
+/* Pill variant */
+.bk-select__container--pill {
+  border-radius: 9999px;
+}
+
+.bk-select__control--pill {
+  border-radius: 9999px;
+}

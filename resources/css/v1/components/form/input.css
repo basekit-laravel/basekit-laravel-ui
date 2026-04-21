@@ -1,0 +1,1011 @@
+/* =============================================================================
+  Input Component
+  ============================================================================= */
+
+/* =============================================================================
+  Design Tokens
+  ============================================================================= */
+:root {
+  /* Input - Base */
+  --input-color: var(--color-slate-900);
+  --input-placeholder-color: var(--color-slate-400);
+  --input-border-color: var(--color-slate-300);
+  --input-border-radius: var(--radius-md, 0.375rem);
+  --input-font-family: inherit;
+  --input-line-height: 1.5;
+  --input-transition:
+    border-color var(--transition-fast) ease-in-out,
+    box-shadow var(--transition-fast) ease-in-out;
+
+  /* Input - Interaction States */
+  --input-hover-border-color: var(--color-slate-400);
+  --input-focus-border-color: var(--color-primary-500);
+  --input-focus-ring-color: var(--color-primary-100);
+  --input-focus-ring-width: 2px;
+  --input-focus-shadow: 0 0 0 var(--input-focus-ring-width)
+    var(--input-focus-ring-color);
+
+  /* Input - Disabled State */
+  --input-disabled-bg: var(--color-slate-50);
+  --input-disabled-color: var(--color-slate-500);
+  --input-disabled-border-color: var(--color-slate-200);
+
+  /* Input - Variants */
+  --input-primary-border-color: var(--color-primary-500);
+  --input-primary-ring-color: var(--color-primary-100);
+
+  --input-secondary-border-color: var(--color-slate-300);
+  --input-secondary-ring-color: var(--color-slate-100);
+
+  --input-error-border-color: var(--color-danger-500);
+  --input-error-ring-color: var(--color-danger-100);
+  --input-error-color: var(--color-danger-700);
+
+  --input-success-border-color: var(--color-success-500);
+  --input-success-ring-color: var(--color-success-100);
+
+  --input-warning-border-color: var(--color-warning-500);
+  --input-warning-ring-color: var(--color-warning-100);
+
+  --input-info-border-color: var(--color-info-500);
+  --input-info-ring-color: var(--color-info-100);
+
+  --input-ghost-border-color: transparent;
+  --input-ghost-ring-color: var(--color-slate-100);
+  --input-ghost-bg: transparent;
+
+  /* Input - Sizes */
+  --input-py-sm: 0.375rem;
+  --input-px-sm: 0.75rem;
+  --input-fs-sm: 0.875rem;
+
+  --input-py-md: 0.5rem;
+  --input-px-md: 0.875rem;
+  --input-fs-md: 0.9375rem;
+
+  --input-py-lg: 0.75rem;
+  --input-px-lg: 1rem;
+  --input-fs-lg: 1rem;
+  /* Default input background used by labels and inputs when not overridden */
+  --input-bg: var(--surface-base);
+}
+
+/**
+ * =============================================================================
+ * Base Structure
+ * =============================================================================
+ */
+.bk-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+
+  .bk-input__label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-slate-700);
+    line-height: 1.25rem;
+  }
+
+  .bk-input__label-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &:has(.bk-input__container--pill.bk-input__container--sm) .bk-input__label {
+    padding-inline-start: var(--input-px-sm);
+  }
+
+  &:has(.bk-input__container--pill.bk-input__container--md) .bk-input__label {
+    padding-inline-start: var(--input-px-md);
+  }
+
+  &:has(.bk-input__container--pill.bk-input__container--lg) .bk-input__label {
+    padding-inline-start: var(--input-px-lg);
+  }
+
+  &:has(
+      .bk-input__container--pill.bk-input__container--sm:has(
+          .bk-input__control--with-icon
+        )
+    )
+    .bk-input__label {
+    padding-inline-start: 2rem;
+  }
+
+  &:has(
+      .bk-input__container--pill.bk-input__container--md:has(
+          .bk-input__control--with-icon
+        )
+    )
+    .bk-input__label {
+    padding-inline-start: 2.25rem;
+  }
+
+  &:has(
+      .bk-input__container--pill.bk-input__container--lg:has(
+          .bk-input__control--with-icon
+        )
+    )
+    .bk-input__label {
+    padding-inline-start: 2.75rem;
+  }
+}
+
+.bk-input__corner-hint {
+  margin-inline-start: auto;
+  font-size: 0.75rem;
+  color: var(--color-slate-500);
+}
+
+/**
+ * =============================================================================
+ * Container
+ * =============================================================================
+ */
+.bk-input__container {
+  display: flex;
+  position: relative;
+  width: 100%;
+  border-radius: var(--input-border-radius);
+  transition: box-shadow var(--transition-fast) ease-in-out;
+
+  &:focus-within {
+    box-shadow: 0 0 0 var(--input-focus-ring-width)
+      var(--input-focus-ring-color);
+    z-index: 5;
+  }
+}
+
+/**
+ * =============================================================================
+ * Control
+ * =============================================================================
+ */
+.bk-input__control {
+  display: block;
+  width: 100%;
+  appearance: none;
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border-color);
+  border-radius: var(--input-border-radius);
+  color: var(--input-color);
+  font-family: var(--input-font-family);
+  line-height: var(--input-line-height);
+  transition: var(--input-transition);
+
+  &::placeholder {
+    color: var(--input-placeholder-color);
+    opacity: 1;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--input-focus-border-color);
+    box-shadow: none;
+    z-index: 10;
+  }
+
+  &:disabled {
+    background-color: var(--input-disabled-bg);
+    color: var(--input-disabled-color);
+    border-color: var(--input-disabled-border-color);
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  &[readonly] {
+    background-color: var(--input-disabled-bg);
+    border-color: var(--input-border-color);
+    cursor: default;
+  }
+}
+
+/**
+ * =============================================================================
+ * State Modifiers
+ * =============================================================================
+ */
+.bk-input__container {
+  &:hover {
+    .bk-input__control:not(:disabled):not([readonly]) {
+      border-color: var(--input-hover-border-color);
+    }
+
+    &:has(.bk-input__control:not(:disabled):not([readonly])) {
+      .bk-input__prefix,
+      .bk-input__suffix {
+        border-color: var(--input-hover-border-color);
+      }
+    }
+  }
+}
+
+.bk-input__container:has(:disabled) {
+  .bk-input__prefix,
+  .bk-input__suffix {
+    background-color: var(--input-disabled-bg);
+    color: var(--input-disabled-color);
+    border-color: var(--input-disabled-border-color);
+    cursor: not-allowed;
+  }
+
+  &:focus-within {
+    box-shadow: none;
+  }
+
+  .bk-input__number-btn {
+    background-color: var(--input-disabled-bg);
+    color: var(--input-disabled-color);
+    border-color: var(--input-disabled-border-color);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+/**
+ * =============================================================================
+ * Variant Modifiers
+ * =============================================================================
+ */
+.bk-input__control--error,
+.bk-input__control[aria-invalid="true"] {
+  border-color: var(--input-error-border-color);
+  color: var(--input-error-color);
+
+  &:focus {
+    border-color: var(--input-error-border-color);
+    box-shadow: none;
+  }
+}
+
+.bk-input__container--error {
+  .bk-input__control {
+    border-color: var(--input-error-border-color);
+    color: var(--input-error-color);
+
+    &:focus {
+      border-color: var(--input-error-border-color);
+      box-shadow: none;
+    }
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 var(--input-focus-ring-width)
+      var(--input-error-ring-color);
+  }
+
+  .bk-input__prefix,
+  .bk-input__suffix {
+    border-color: var(--input-error-border-color);
+  }
+
+  .bk-input__label--inset,
+  .bk-input__label--overlap {
+    color: var(--input-error-color);
+  }
+
+  &:focus-within {
+    .bk-input__icon {
+      color: var(--input-error-border-color);
+    }
+  }
+}
+
+.bk-input:has(.bk-input__container--error) .bk-input__label {
+  color: var(--input-error-color);
+}
+
+.bk-input__control--primary {
+  border-color: var(--input-primary-border-color);
+
+  &:focus {
+    border-color: var(--input-primary-border-color);
+    box-shadow: none;
+  }
+}
+
+.bk-input__container--primary {
+  .bk-input__prefix,
+  .bk-input__suffix {
+    border-color: var(--input-primary-border-color);
+  }
+
+  .bk-input__number-btn {
+    border-color: var(--input-primary-border-color);
+    color: var(--input-primary-border-color);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 var(--input-focus-ring-width)
+      var(--input-primary-ring-color);
+    .bk-input__icon {
+      color: var(--input-primary-border-color);
+    }
+  }
+}
+
+.bk-input__control--secondary {
+  border-color: var(--input-secondary-border-color);
+
+  &:focus {
+    border-color: var(--input-secondary-border-color);
+    box-shadow: none;
+  }
+}
+
+.bk-input__container--secondary {
+  .bk-input__prefix,
+  .bk-input__suffix {
+    border-color: var(--input-secondary-border-color);
+  }
+
+  .bk-input__number-btn {
+    border-color: var(--input-secondary-border-color);
+    color: var(--input-secondary-border-color);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 var(--input-focus-ring-width)
+      var(--input-secondary-ring-color);
+    .bk-input__icon {
+      color: var(--input-secondary-border-color);
+    }
+  }
+}
+
+.bk-input__control--success {
+  border-color: var(--input-success-border-color);
+
+  &:focus {
+    border-color: var(--input-success-border-color);
+    box-shadow: none;
+  }
+}
+
+.bk-input__container--success {
+  .bk-input__prefix,
+  .bk-input__suffix {
+    border-color: var(--input-success-border-color);
+  }
+
+  .bk-input__number-btn {
+    border-color: var(--input-success-border-color);
+    color: var(--input-success-border-color);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 var(--input-focus-ring-width)
+      var(--input-success-ring-color);
+    .bk-input__icon {
+      color: var(--input-success-border-color);
+    }
+  }
+}
+
+.bk-input__control--warning {
+  border-color: var(--input-warning-border-color);
+
+  &:focus {
+    border-color: var(--input-warning-border-color);
+    box-shadow: none;
+  }
+}
+
+.bk-input__container--warning {
+  .bk-input__prefix,
+  .bk-input__suffix {
+    border-color: var(--input-warning-border-color);
+  }
+
+  .bk-input__number-btn {
+    border-color: var(--input-warning-border-color);
+    color: var(--input-warning-border-color);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 var(--input-focus-ring-width)
+      var(--input-warning-ring-color);
+    .bk-input__icon {
+      color: var(--input-warning-border-color);
+    }
+  }
+}
+
+.bk-input__control--info {
+  border-color: var(--input-info-border-color);
+
+  &:focus {
+    border-color: var(--input-info-border-color);
+    box-shadow: none;
+  }
+}
+
+.bk-input__container--info {
+  .bk-input__prefix,
+  .bk-input__suffix {
+    border-color: var(--input-info-border-color);
+  }
+
+  .bk-input__number-btn {
+    border-color: var(--input-info-border-color);
+    color: var(--input-info-border-color);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 var(--input-focus-ring-width) var(--input-info-ring-color);
+    .bk-input__icon {
+      color: var(--input-info-border-color);
+    }
+  }
+}
+
+.bk-input__control--ghost {
+  background-color: var(--input-ghost-bg);
+  border-color: var(--input-ghost-border-color);
+  box-shadow: none;
+
+  &:focus {
+    border-color: var(--input-ghost-border-color);
+    box-shadow: none;
+  }
+}
+
+.bk-input__container--ghost {
+  .bk-input__prefix,
+  .bk-input__suffix {
+    border-color: var(--input-ghost-border-color);
+    background-color: var(--input-ghost-bg);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 var(--input-focus-ring-width)
+      var(--input-ghost-ring-color);
+  }
+}
+
+/**
+ * =============================================================================
+ * Size Modifiers
+ * =============================================================================
+ */
+.bk-input__control--sm {
+  padding: var(--input-py-sm) var(--input-px-sm);
+  font-size: var(--input-fs-sm);
+}
+
+.bk-input__control--md {
+  padding: var(--input-py-md) var(--input-px-md);
+  font-size: var(--input-fs-md);
+}
+
+.bk-input__control--lg {
+  padding: var(--input-py-lg) var(--input-px-lg);
+  font-size: var(--input-fs-lg);
+}
+
+/**
+ * =============================================================================
+ * Labels
+ * =============================================================================
+ */
+.bk-input__label--inset,
+.bk-input__label--overlap {
+  position: absolute;
+  inset-inline-start: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--color-slate-500);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.bk-input__label--inset {
+  top: 0.35rem;
+}
+
+.bk-input__label--overlap {
+  top: -0.5rem;
+  background-color: var(--input-bg);
+  padding: 0 0.5rem;
+  display: inline-block;
+  border-radius: 0.25rem;
+  z-index: 3;
+}
+
+.bk-input__control--label-inset {
+  padding-top: 1.25rem;
+}
+
+.bk-input__control--label-overlap {
+  padding-top: 0.75rem;
+}
+
+/**
+ * =============================================================================
+ * Container Size Modifiers
+ * =============================================================================
+ */
+.bk-input__container--sm {
+  .bk-input__control--label-inset {
+    padding-top: 1rem;
+  }
+
+  .bk-input__control--label-overlap {
+    padding-top: 0.75rem;
+  }
+
+  .bk-input__icon {
+    width: 2rem;
+    --input-icon-size: 0.875rem;
+  }
+
+  .bk-input__control--with-icon {
+    padding-inline-start: 2rem;
+  }
+
+  &:has(.bk-input__control--with-icon) {
+    .bk-input__label--inset,
+    .bk-input__label--overlap {
+      inset-inline-start: 2rem;
+    }
+  }
+
+  .bk-input__error-icon {
+    width: 2rem;
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+  }
+
+  .bk-input__error-icon .bk-input__control--has-error-icon {
+    padding-inline-end: 2rem;
+  }
+
+  .bk-input__error-icon--with-toggle {
+    inset-inline-end: 2rem;
+  }
+
+  .bk-input__control--has-password-toggle.bk-input__control--has-error-icon {
+    padding-inline-end: 4rem;
+  }
+
+  .bk-input__password-toggle {
+    width: 2rem;
+  }
+
+  .bk-input__control--has-password-toggle {
+    padding-right: 2rem;
+  }
+
+  .bk-input__password-toggle svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  .bk-input__number-btn {
+    width: 2rem;
+  }
+
+  .bk-input__number-btn svg {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
+}
+
+.bk-input__container--md {
+  .bk-input__control--label-inset {
+    padding-top: 1.25rem;
+  }
+
+  .bk-input__control--label-overlap {
+    padding-top: 1rem;
+  }
+  .bk-input__icon {
+    width: 2.25rem;
+    --input-icon-size: 1.125rem;
+  }
+
+  .bk-input__control--with-icon {
+    padding-inline-start: 2.25rem;
+  }
+
+  &:has(.bk-input__control--with-icon) {
+    .bk-input__label--inset,
+    .bk-input__label--overlap {
+      inset-inline-start: 2.25rem;
+    }
+  }
+
+  .bk-input__error-icon {
+    width: 2.25rem;
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+
+  .bk-input__error-icon .bk-input__control--has-error-icon {
+    padding-inline-end: 2.25rem;
+  }
+
+  .bk-input__error-icon--with-toggle {
+    inset-inline-end: 2.5rem;
+  }
+
+  .bk-input__control--has-password-toggle.bk-input__control--has-error-icon {
+    padding-inline-end: 4.75rem;
+  }
+
+  .bk-input__password-toggle {
+    width: 2.5rem;
+  }
+
+  .bk-input__control--has-password-toggle {
+    padding-right: 2.5rem;
+  }
+
+  .bk-input__password-toggle svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .bk-input__number-btn {
+    width: 2.5rem;
+  }
+
+  .bk-input__number-btn svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.bk-input__container--lg {
+  .bk-input__control--label-inset {
+    padding-top: 1.5rem;
+  }
+
+  .bk-input__control--label-overlap {
+    padding-top: 1.25rem;
+  }
+
+  .bk-input__icon {
+    width: 2.75rem;
+    --input-icon-size: 1.25rem;
+  }
+
+  .bk-input__control--with-icon {
+    padding-inline-start: 2.75rem;
+  }
+
+  &:has(.bk-input__control--with-icon) {
+    .bk-input__label--inset,
+    .bk-input__label--overlap {
+      inset-inline-start: 2.75rem;
+    }
+  }
+
+  .bk-input__error-icon {
+    width: 2.75rem;
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  .bk-input__control--has-error-icon {
+    padding-inline-end: 2.75rem;
+  }
+
+  .bk-input__error-icon--with-toggle {
+    inset-inline-end: 3rem;
+  }
+
+  .bk-input__control--has-password-toggle.bk-input__control--has-error-icon {
+    padding-inline-end: 5.75rem;
+  }
+
+  .bk-input__password-toggle {
+    width: 3rem;
+  }
+
+  .bk-input__control--has-password-toggle {
+    padding-right: 3rem;
+  }
+
+  .bk-input__password-toggle svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .bk-input__number-btn {
+    width: 3rem;
+  }
+
+  .bk-input__number-btn svg {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+}
+
+/**
+ * =============================================================================
+ * Messages
+ * =============================================================================
+ */
+.bk-input__hint,
+.bk-input__error-message {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+}
+
+.bk-input__hint {
+  color: var(--color-slate-500);
+}
+
+.bk-input__error-message {
+  color: var(--input-error-border-color);
+}
+
+/**
+ * =============================================================================
+ * Icons
+ * =============================================================================
+ */
+.bk-input__icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  inset-inline-start: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 20;
+  color: var(--color-slate-400);
+  transition: color var(--transition-fast) ease-in-out;
+}
+
+.bk-input__icon svg {
+  width: var(--input-icon-size, 1.125rem);
+  height: var(--input-icon-size, 1.125rem);
+}
+
+.bk-input__container:focus-within .bk-input__icon {
+  color: var(--input-focus-border-color);
+}
+
+.bk-input__container--error:focus-within .bk-input__icon {
+  color: var(--input-error-border-color);
+}
+
+.bk-input__container--success:focus-within .bk-input__icon {
+  color: var(--input-success-border-color);
+}
+
+.bk-input__container--warning:focus-within .bk-input__icon {
+  color: var(--input-warning-border-color);
+}
+
+.bk-input__error-icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  inset-inline-end: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--input-error-border-color);
+  pointer-events: none;
+  z-index: 20;
+}
+
+.bk-input__error-icon svg {
+  display: block;
+  image-rendering: crisp-edges;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/**
+ * =============================================================================
+ * Addons (Prefix/Suffix)
+ * =============================================================================
+ */
+.bk-input__prefix,
+.bk-input__suffix {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  background-color: var(--color-slate-50);
+  border: 1px solid var(--input-border-color);
+  color: var(--color-slate-500);
+  font-size: 0.875rem;
+  padding: 0 0.75rem;
+  transition:
+    border-color var(--transition-fast) ease-in-out,
+    background-color var(--transition-fast) ease-in-out;
+}
+
+.bk-input__container--underline {
+  --input-bg: var(--color-slate-50);
+  border-radius: 0;
+}
+
+.bk-input__container--underline .bk-input__prefix,
+.bk-input__container--underline .bk-input__suffix {
+  background-color: var(--input-bg);
+  border-width: 0 0 1px 0;
+  border-radius: 0;
+}
+
+.bk-input__control--underline {
+  background-color: var(--input-bg);
+  border-width: 0 0 1px 0;
+  border-radius: 0;
+
+  &:focus {
+    border-bottom-color: var(--input-focus-border-color);
+  }
+}
+
+.bk-input__prefix {
+  border-right: 0;
+  border-top-left-radius: var(--input-border-radius);
+  border-bottom-left-radius: var(--input-border-radius);
+}
+
+.bk-input__suffix {
+  border-left: 0;
+  border-top-right-radius: var(--input-border-radius);
+  border-bottom-right-radius: var(--input-border-radius);
+}
+
+.bk-input__prefix ~ .bk-input__control,
+.bk-input__container:has(.bk-input__number-btn--decrement) .bk-input__control {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.bk-input__container:has(.bk-input__suffix) .bk-input__control,
+.bk-input__container:has(.bk-input__number-btn--increment) .bk-input__control {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.bk-input__container:focus-within .bk-input__prefix,
+.bk-input__container:focus-within .bk-input__suffix {
+  border-color: var(--input-focus-border-color);
+}
+
+.bk-input__container.bk-input__container--pill {
+  --input-border-radius: 9999px;
+}
+
+/**
+ * =============================================================================
+ * Password Toggle
+ * =============================================================================
+ */
+.bk-input__password-toggle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  z-index: 20;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--color-slate-400);
+  transition: color var(--transition-fast) ease-in-out;
+
+  &:hover {
+    color: var(--color-slate-600);
+  }
+
+  svg {
+    width: 1.125rem;
+    height: 1.125rem;
+    pointer-events: none;
+  }
+}
+
+.bk-input__container:focus-within .bk-input__password-toggle {
+  color: var(--input-focus-border-color);
+}
+
+/**
+ * =============================================================================
+ * Number Input
+ * =============================================================================
+ */
+.bk-input__number::-webkit-outer-spin-button,
+.bk-input__number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.bk-input__number {
+  -moz-appearance: textfield;
+  text-align: center;
+}
+
+.bk-input__number-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background-color: var(--color-slate-50);
+  border: 1px solid var(--input-border-color);
+  color: var(--color-slate-500);
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background-color var(--transition-fast) ease-in-out,
+    border-color var(--transition-fast) ease-in-out,
+    color var(--transition-fast) ease-in-out;
+
+  &:hover {
+    background-color: var(--color-slate-100);
+    color: var(--color-slate-700);
+  }
+
+  &:active {
+    background-color: var(--color-slate-200);
+  }
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+  }
+}
+
+.bk-input__number-btn--decrement {
+  border-right: 0;
+  border-top-left-radius: var(--input-border-radius);
+  border-bottom-left-radius: var(--input-border-radius);
+}
+
+.bk-input__number-btn--increment {
+  border-left: 0;
+  border-top-right-radius: var(--input-border-radius);
+  border-bottom-right-radius: var(--input-border-radius);
+
+  & ~ .bk-input__number {
+    border-radius: 0;
+  }
+}
+
+.bk-input__container {
+  &:focus-within {
+    .bk-input__number-btn {
+      border-color: var(--input-focus-border-color);
+      color: var(--input-focus-border-color);
+    }
+
+    .bk-input__number {
+      border-color: var(--input-focus-border-color);
+    }
+  }
+}
+
+.bk-input__container--error {
+  &:focus-within {
+    .bk-input__number-btn {
+      border-color: var(--input-error-border-color);
+    }
+
+    .bk-input__number {
+      border-color: var(--input-error-border-color);
+    }
+  }
+}

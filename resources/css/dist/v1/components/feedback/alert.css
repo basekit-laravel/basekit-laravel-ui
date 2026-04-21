@@ -1,0 +1,145 @@
+/* =============================================================================
+   Alert Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  /* Alert - Base */
+  --alert-radius: var(--radius-md);
+
+  /* Alert - Variants */
+  --alert-bg-primary: var(--color-primary-50);
+  --alert-text-primary: var(--color-primary-700);
+  --alert-border-primary: var(--color-primary-200);
+
+  --alert-bg-info: var(--color-info-50);
+  --alert-text-info: var(--color-info-700);
+  --alert-border-info: var(--color-info-200);
+
+  --alert-bg-secondary: var(--color-slate-50);
+  --alert-text-secondary: var(--color-slate-700);
+  --alert-border-secondary: var(--color-slate-200);
+
+  --alert-bg-success: var(--color-success-50);
+  --alert-text-success: var(--color-success-700);
+  --alert-border-success: var(--color-success-200);
+
+  --alert-bg-warning: var(--color-warning-50);
+  --alert-text-warning: var(--color-warning-800);
+  --alert-border-warning: var(--color-warning-200);
+
+  --alert-bg-danger: var(--color-danger-50);
+  --alert-text-danger: var(--color-danger-700);
+  --alert-border-danger: var(--color-danger-200);
+
+  --alert-bg-ghost: transparent;
+  --alert-text-ghost: var(--color-slate-700);
+  --alert-border-ghost: transparent;
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-alert {
+  padding: 1rem;
+  border-radius: var(--alert-radius);
+  border: 1px solid transparent;
+  display: flex;
+  gap: 0.75rem;
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+/* =============================================================================
+   Elements
+   ============================================================================= */
+
+.bk-alert__icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.125rem;
+}
+
+.bk-alert__content {
+  flex: 1;
+}
+
+.bk-alert__title {
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: 0.25rem;
+}
+
+.bk-alert__actions {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.bk-alert__dismiss {
+  flex-shrink: 0;
+  color: currentColor;
+  opacity: 0.6;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.bk-alert__dismiss:hover {
+    opacity: 1;
+  }
+
+/* =============================================================================
+   Variant Modifiers
+   ============================================================================= */
+
+.bk-alert--primary {
+  background-color: var(--alert-bg-primary);
+  color: var(--alert-text-primary);
+  border-color: var(--alert-border-primary);
+}
+
+.bk-alert--info {
+  background-color: var(--alert-bg-info);
+  color: var(--alert-text-info);
+  border-color: var(--alert-border-info);
+}
+
+.bk-alert--secondary {
+  background-color: var(--alert-bg-secondary);
+  color: var(--alert-text-secondary);
+  border-color: var(--alert-border-secondary);
+}
+
+.bk-alert--success {
+  background-color: var(--alert-bg-success);
+  color: var(--alert-text-success);
+  border-color: var(--alert-border-success);
+}
+
+.bk-alert--warning {
+  background-color: var(--alert-bg-warning);
+  color: var(--alert-text-warning);
+  border-color: var(--alert-border-warning);
+}
+
+.bk-alert--danger,
+.bk-alert--error {
+  background-color: var(--alert-bg-danger);
+  color: var(--alert-text-danger);
+  border-color: var(--alert-border-danger);
+}
+
+.bk-alert--ghost {
+  background-color: transparent;
+  background-color: var(--alert-bg-ghost);
+  color: var(--alert-text-ghost);
+  border-color: transparent;
+  border-color: var(--alert-border-ghost);
+}

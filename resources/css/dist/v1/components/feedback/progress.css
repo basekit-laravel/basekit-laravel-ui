@@ -1,0 +1,134 @@
+/* =============================================================================
+   Progress Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  /* Progress - Base */
+  --progress-bg: var(--color-slate-200);
+  --progress-radius: var(--radius-full);
+  --progress-label-color: var(--color-slate-700);
+  --progress-indeterminate-duration: 1.2s;
+
+  /* Progress - Sizes */
+  --progress-height-sm: 0.375rem;
+  --progress-height-md: 0.5rem;
+  --progress-height-lg: 0.75rem;
+
+  /* Progress - Variant Colors */
+  --progress-bar-primary: var(--color-primary-600);
+  --progress-bar-secondary: var(--color-slate-600);
+  --progress-bar-success: var(--color-success-600);
+  --progress-bar-warning: var(--color-warning-600);
+  --progress-bar-danger: var(--color-danger-600);
+  --progress-bar-info: var(--color-info-600);
+  --progress-bar-ghost: var(--color-slate-400);
+  --progress-bar-white: white;
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-progress {
+  width: 100%;
+}
+
+.bk-progress__label-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: var(--font-size-sm);
+  color: var(--progress-label-color);
+}
+
+.bk-progress__track {
+  width: 100%;
+  background-color: var(--progress-bg);
+  border-radius: var(--progress-radius);
+  overflow: hidden;
+}
+
+.bk-progress__fill {
+  height: 100%;
+  border-radius: var(--progress-radius);
+  transition: width var(--transition-normal);
+}
+
+.bk-progress__fill--indeterminate {
+  width: 40%;
+  transition: none;
+  animation: bk-progress-indeterminate 1.2s
+    ease-in-out infinite;
+  animation: bk-progress-indeterminate var(--progress-indeterminate-duration)
+    ease-in-out infinite;
+}
+
+@keyframes bk-progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+/* =============================================================================
+   Size Modifiers
+   ============================================================================= */
+
+.bk-progress__track--sm {
+  height: 0.375rem;
+  height: var(--progress-height-sm);
+}
+
+.bk-progress__track--md {
+  height: 0.5rem;
+  height: var(--progress-height-md);
+}
+
+.bk-progress__track--lg {
+  height: 0.75rem;
+  height: var(--progress-height-lg);
+}
+
+/* =============================================================================
+   Variant Modifiers
+   ============================================================================= */
+
+.bk-progress__track--primary .bk-progress__fill {
+    background-color: var(--progress-bar-primary);
+  }
+
+.bk-progress__track--secondary .bk-progress__fill {
+    background-color: var(--progress-bar-secondary);
+  }
+
+.bk-progress__track--success .bk-progress__fill {
+    background-color: var(--progress-bar-success);
+  }
+
+.bk-progress__track--warning .bk-progress__fill {
+    background-color: var(--progress-bar-warning);
+  }
+
+.bk-progress__track--danger .bk-progress__fill {
+    background-color: var(--progress-bar-danger);
+  }
+
+.bk-progress__track--info .bk-progress__fill {
+    background-color: var(--progress-bar-info);
+  }
+
+.bk-progress__track--ghost .bk-progress__fill {
+    background-color: var(--progress-bar-ghost);
+  }
+
+.bk-progress__track--white .bk-progress__fill {
+    background-color: white;
+    background-color: var(--progress-bar-white);
+  }

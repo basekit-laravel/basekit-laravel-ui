@@ -1,0 +1,82 @@
+/* =============================================================================
+   Grid Component
+   ============================================================================= */
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-grid {
+  display: grid;
+  width: 100%;
+}
+
+/* =============================================================================
+   Gap Modifiers
+   ============================================================================= */
+
+.bk-grid--gap-xs {
+  gap: 0.25rem;
+}
+
+.bk-grid--gap-sm {
+  gap: var(--spacing-xs);
+}
+
+.bk-grid--gap-md {
+  gap: var(--spacing-md);
+}
+
+.bk-grid--gap-lg {
+  gap: var(--spacing-lg);
+}
+
+.bk-grid--gap-xl {
+  gap: var(--spacing-xl);
+}
+
+/* =============================================================================
+   Column Modifiers
+   ============================================================================= */
+
+.bk-grid--cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.bk-grid--cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.bk-grid--cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.bk-grid--cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.bk-grid--cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.bk-grid--cols-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.bk-grid--cols-12 {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+/* =============================================================================
+   Responsive Modifier
+   ============================================================================= */
+
+.bk-grid--responsive {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+@media (--bk-md) {
+  .bk-grid--responsive {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}

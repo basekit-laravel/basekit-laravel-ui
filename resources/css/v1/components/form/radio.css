@@ -1,0 +1,287 @@
+/* =============================================================================
+  Radio Component
+  ============================================================================= */
+
+/* =============================================================================
+  Design Tokens
+  ============================================================================= */
+:root {
+  --radio-transition:
+    background-color var(--transition-normal),
+    border-color var(--transition-normal), box-shadow var(--transition-normal);
+
+  /* Radio - Base */
+  --radio-border: var(--color-slate-300);
+  --radio-bg: var(--surface-base);
+  --radio-text: var(--color-primary-600);
+  --radio-checked-bg: var(--color-primary-600);
+  --radio-checked-border: var(--color-primary-600);
+  --radio-focus-ring: var(--color-primary-100);
+
+  /* Radio - Sizes */
+  --radio-size-sm: 1rem;
+  --radio-size-md: 1.125rem;
+  --radio-size-lg: 1.25rem;
+
+  /* Radio - Variants */
+  --radio-primary-checked-bg: var(--color-primary-600);
+  --radio-primary-checked-border: var(--color-primary-600);
+  --radio-primary-focus-ring: var(--color-primary-100);
+
+  --radio-secondary-checked-bg: var(--color-slate-600);
+  --radio-secondary-checked-border: var(--color-slate-600);
+  --radio-secondary-focus-ring: var(--color-slate-200);
+
+  --radio-success-checked-bg: var(--color-success-600);
+  --radio-success-checked-border: var(--color-success-600);
+  --radio-success-focus-ring: var(--color-success-100);
+
+  --radio-warning-checked-bg: var(--color-warning-600);
+  --radio-warning-checked-border: var(--color-warning-600);
+  --radio-warning-focus-ring: var(--color-warning-100);
+
+  --radio-danger-checked-bg: var(--color-danger-600);
+  --radio-danger-checked-border: var(--color-danger-600);
+  --radio-danger-focus-ring: var(--color-danger-100);
+
+  --radio-info-checked-bg: var(--color-info-600);
+  --radio-info-checked-border: var(--color-info-600);
+  --radio-info-focus-ring: var(--color-info-100);
+
+  --radio-ghost-bg: transparent;
+  --radio-ghost-border: var(--color-slate-300);
+  --radio-ghost-checked-bg: var(--color-slate-700);
+  --radio-ghost-checked-border: var(--color-slate-700);
+  --radio-ghost-focus-ring: var(--color-slate-200);
+
+  /* Radio - Error State */
+  --radio-error-border: var(--color-danger-500);
+  --radio-error-ring: var(--color-danger-100);
+  --radio-error-checked-bg: var(--color-danger-600);
+  --radio-error-checked-border: var(--color-danger-600);
+}
+
+/**
+ * =============================================================================
+ * Base Structure
+ * =============================================================================
+ */
+.bk-radio {
+  margin-bottom: 0.5rem;
+}
+
+.bk-radio__container {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+
+  &:focus-within .bk-radio__control {
+    box-shadow: 0 0 0 2px var(--radio-focus-ring);
+    border-color: var(--radio-checked-border);
+  }
+}
+
+.bk-radio__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-slate-700);
+  line-height: 1.25rem;
+  margin-top: 1px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.bk-radio__error-message {
+  margin-top: 0.25rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-danger-600);
+  margin-inline-start: calc(var(--radio-size-md) + 0.75rem);
+}
+
+.bk-radio__hint {
+  margin-top: 0.25rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-slate-500);
+  margin-inline-start: calc(var(--radio-size-md) + 0.75rem);
+}
+
+/**
+ * =============================================================================
+ * Control
+ * =============================================================================
+ */
+.bk-radio__control {
+  appearance: none;
+  background-color: var(--radio-bg);
+  margin: 0;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid var(--radio-border);
+  transition: var(--radio-transition);
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  print-color-adjust: exact;
+
+  &:checked {
+    background-color: var(--radio-checked-bg);
+    border-color: var(--radio-checked-border);
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--radio-focus-ring);
+    border-color: var(--radio-checked-border);
+  }
+
+  &:disabled {
+    background-color: var(--color-slate-100);
+    border-color: var(--color-slate-200);
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+/**
+ * =============================================================================
+ * State Modifiers
+ * =============================================================================
+ */
+.bk-radio__container--error {
+  .bk-radio__control {
+    border-color: var(--radio-error-border);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--radio-error-ring);
+  }
+}
+
+.bk-radio__control--error,
+.bk-radio__control[aria-invalid="true"] {
+  border-color: var(--radio-error-border);
+
+  &:focus {
+    box-shadow: 0 0 0 4px var(--radio-error-ring);
+  }
+
+  &:checked {
+    background-color: var(--radio-error-checked-bg);
+    border-color: var(--radio-error-checked-border);
+  }
+}
+
+.bk-radio:has(
+    .bk-radio__control--error,
+    .bk-radio__control[aria-invalid="true"]
+  )
+  .bk-radio__label {
+  color: var(--color-danger-700);
+}
+
+/**
+ * =============================================================================
+ * Variant Modifiers
+ * =============================================================================
+ */
+.bk-radio__control--primary {
+  --radio-checked-bg: var(--radio-primary-checked-bg);
+  --radio-checked-border: var(--radio-primary-checked-border);
+  --radio-focus-ring: var(--radio-primary-focus-ring);
+}
+
+.bk-radio__control--secondary {
+  --radio-checked-bg: var(--radio-secondary-checked-bg);
+  --radio-checked-border: var(--radio-secondary-checked-border);
+  --radio-focus-ring: var(--radio-secondary-focus-ring);
+}
+
+.bk-radio__control--success {
+  --radio-checked-bg: var(--radio-success-checked-bg);
+  --radio-checked-border: var(--radio-success-checked-border);
+  --radio-focus-ring: var(--radio-success-focus-ring);
+}
+
+.bk-radio__control--warning {
+  --radio-checked-bg: var(--radio-warning-checked-bg);
+  --radio-checked-border: var(--radio-warning-checked-border);
+  --radio-focus-ring: var(--radio-warning-focus-ring);
+}
+
+.bk-radio__control--danger {
+  --radio-checked-bg: var(--radio-danger-checked-bg);
+  --radio-checked-border: var(--radio-danger-checked-border);
+  --radio-focus-ring: var(--radio-danger-focus-ring);
+}
+
+.bk-radio__control--info {
+  --radio-checked-bg: var(--radio-info-checked-bg);
+  --radio-checked-border: var(--radio-info-checked-border);
+  --radio-focus-ring: var(--radio-info-focus-ring);
+}
+
+.bk-radio__control--ghost {
+  --radio-bg: var(--radio-ghost-bg);
+  --radio-border: var(--radio-ghost-border);
+  --radio-checked-bg: var(--radio-ghost-checked-bg);
+  --radio-checked-border: var(--radio-ghost-checked-border);
+  --radio-focus-ring: var(--radio-ghost-focus-ring);
+}
+
+/**
+ * =============================================================================
+ * Size Modifiers
+ * =============================================================================
+ */
+.bk-radio__container--sm {
+  .bk-radio__control {
+    width: var(--radio-size-sm);
+    height: var(--radio-size-sm);
+  }
+
+  .bk-radio__error-message,
+  .bk-radio__hint {
+    margin-inline-start: calc(var(--radio-size-sm) + 0.75rem);
+  }
+}
+
+.bk-radio__container--md {
+  .bk-radio__control {
+    width: var(--radio-size-md);
+    height: var(--radio-size-md);
+  }
+
+  .bk-radio__error-message,
+  .bk-radio__hint {
+    margin-inline-start: calc(var(--radio-size-md) + 0.75rem);
+  }
+}
+
+.bk-radio__container--lg {
+  .bk-radio__control {
+    width: var(--radio-size-lg);
+    height: var(--radio-size-lg);
+  }
+
+  .bk-radio__error-message,
+  .bk-radio__hint {
+    margin-inline-start: calc(var(--radio-size-lg) + 0.75rem);
+  }
+}
+
+.bk-radio__control--sm {
+  width: var(--radio-size-sm);
+  height: var(--radio-size-sm);
+}
+
+.bk-radio__control--md {
+  width: var(--radio-size-md);
+  height: var(--radio-size-md);
+}
+
+.bk-radio__control--lg {
+  width: var(--radio-size-lg);
+  height: var(--radio-size-lg);
+}

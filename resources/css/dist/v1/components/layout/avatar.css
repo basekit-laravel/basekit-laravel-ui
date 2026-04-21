@@ -1,0 +1,172 @@
+/* =============================================================================
+   Avatar Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --avatar-bg: var(--color-slate-200);
+  --avatar-text: var(--color-slate-600);
+  --avatar-ring: 2px solid white;
+
+  --avatar-size-sm: 2rem;
+  --avatar-size-md: 2.5rem;
+  --avatar-size-lg: 3rem;
+  --avatar-size-xl: 3.5rem;
+
+  --avatar-font-sm: var(--font-size-xs);
+  --avatar-font-md: var(--font-size-sm);
+  --avatar-font-lg: var(--font-size-sm);
+  --avatar-font-xl: var(--font-size-md);
+
+  --avatar-status-size: 0.625rem;
+  --avatar-status-border: 1px solid white;
+  --avatar-status-offset: 0;
+
+  --avatar-status-online: var(--color-success-500);
+  --avatar-status-away: var(--color-warning-500);
+  --avatar-status-busy: var(--color-danger-500);
+  --avatar-status-offline: var(--color-slate-400);
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+:where(.bk-avatar) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: relative;
+  overflow: visible;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  border-radius: var(--avatar-radius, 9999px);
+  background-color: var(--avatar-bg);
+  color: var(--avatar-text);
+}
+
+.bk-avatar__content {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =============================================================================
+   Elements
+   ============================================================================= */
+
+.bk-avatar__image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  display: block;
+}
+
+.bk-avatar__fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+}
+
+.bk-avatar__icon {
+  width: 1.25em;
+  height: 1.25em;
+}
+
+.bk-avatar__status {
+  position: absolute;
+  right: 0;
+  right: var(--avatar-status-offset);
+  bottom: 0;
+  bottom: var(--avatar-status-offset);
+  width: 0.625rem;
+  width: var(--avatar-status-size);
+  height: 0.625rem;
+  height: var(--avatar-status-size);
+  border-radius: 9999px;
+  border: 1px solid white;
+  border: var(--avatar-status-border);
+  background-color: var(--avatar-status-online);
+  transform: translate(12%, 12%);
+}
+
+.bk-avatar__status--online {
+  background-color: var(--avatar-status-online);
+}
+
+.bk-avatar__status--away {
+  background-color: var(--avatar-status-away);
+}
+
+.bk-avatar__status--busy {
+  background-color: var(--avatar-status-busy);
+}
+
+.bk-avatar__status--offline {
+  background-color: var(--avatar-status-offline);
+}
+
+/* =============================================================================
+   Shape Modifiers
+   ============================================================================= */
+
+.bk-avatar--round {
+  --avatar-radius: 9999px;
+}
+
+.bk-avatar--soft {
+  --avatar-radius: var(--radius-lg);
+}
+
+.bk-avatar--square {
+  --avatar-radius: 0;
+}
+
+/* =============================================================================
+   Size Modifiers
+   ============================================================================= */
+
+.bk-avatar--sm {
+  width: 2rem;
+  width: var(--avatar-size-sm);
+  height: 2rem;
+  height: var(--avatar-size-sm);
+  font-size: var(--avatar-font-sm);
+}
+
+.bk-avatar--md {
+  width: 2.5rem;
+  width: var(--avatar-size-md);
+  height: 2.5rem;
+  height: var(--avatar-size-md);
+  font-size: var(--avatar-font-md);
+}
+
+.bk-avatar--lg {
+  width: 3rem;
+  width: var(--avatar-size-lg);
+  height: 3rem;
+  height: var(--avatar-size-lg);
+  font-size: var(--avatar-font-lg);
+}
+
+.bk-avatar--xl {
+  width: 3.5rem;
+  width: var(--avatar-size-xl);
+  height: 3.5rem;
+  height: var(--avatar-size-xl);
+  font-size: var(--avatar-font-xl);
+}

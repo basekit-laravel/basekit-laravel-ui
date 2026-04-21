@@ -1,0 +1,80 @@
+/* =============================================================================
+   Link Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --link-primary-color: var(--color-primary-600);
+  --link-secondary-color: var(--color-slate-700);
+  --link-success-color: var(--color-success-600);
+  --link-warning-color: var(--color-warning-600);
+  --link-danger-color: var(--color-danger-600);
+  --link-info-color: var(--color-info-600);
+  --link-ghost-color: var(--color-slate-500);
+  --link-muted-color: var(--color-slate-600);
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  text-decoration: underline;
+  transition: opacity var(--transition-fast);
+}
+
+.bk-link:hover {
+    opacity: 0.8;
+  }
+
+.bk-link[class*="bg-"] {
+  text-decoration: none;
+}
+
+.bk-link__icon,
+.bk-link__external-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* =============================================================================
+   Variant Modifiers
+   ============================================================================= */
+
+:where(.bk-link--primary):not([class*="text-"]) {
+  color: var(--link-primary-color);
+}
+
+:where(.bk-link--secondary):not([class*="text-"]) {
+  color: var(--link-secondary-color);
+}
+
+:where(.bk-link--success):not([class*="text-"]) {
+  color: var(--link-success-color);
+}
+
+:where(.bk-link--warning):not([class*="text-"]) {
+  color: var(--link-warning-color);
+}
+
+:where(.bk-link--muted):not([class*="text-"]) {
+  color: var(--link-muted-color);
+}
+
+:where(.bk-link--danger):not([class*="text-"]) {
+  color: var(--link-danger-color);
+}
+
+:where(.bk-link--info):not([class*="text-"]) {
+  color: var(--link-info-color);
+}
+
+:where(.bk-link--ghost):not([class*="text-"]) {
+  color: var(--link-ghost-color);
+}

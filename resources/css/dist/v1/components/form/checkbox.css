@@ -1,0 +1,281 @@
+/* =============================================================================
+  Checkbox Component
+  ============================================================================= */
+
+/* =============================================================================
+  Design Tokens
+  ============================================================================= */
+
+:root {
+  /* Checkbox - Base */
+  --checkbox-color: var(--color-slate-900);
+  --checkbox-border-color: var(--color-slate-300);
+  --checkbox-border-radius: var(--radius-sm);
+  --checkbox-transition:
+    background-color var(--transition-normal),
+    border-color var(--transition-normal), box-shadow var(--transition-normal);
+
+  /* Checkbox - Sizes */
+  --checkbox-size-sm: 1rem;
+  --checkbox-size-md: 1.125rem;
+  --checkbox-size-lg: 1.25rem;
+
+  /* Checkbox - States */
+  --checkbox-hover-border-color: var(--color-slate-400);
+  --checkbox-focus-border-color: var(--color-primary-500);
+  --checkbox-focus-ring-color: var(--color-primary-100);
+  --checkbox-focus-ring-width: 2px;
+
+  --checkbox-disabled-bg: var(--color-slate-100);
+  --checkbox-disabled-border-color: var(--color-slate-200);
+  --checkbox-disabled-color: var(--color-slate-500);
+
+  --checkbox-error-border-color: var(--color-danger-500);
+  --checkbox-error-ring-color: var(--color-danger-100);
+  --checkbox-error-color: var(--color-danger-700);
+
+  /* Checkbox - Variants */
+  --checkbox-primary-checked-bg: var(--color-primary-600);
+  --checkbox-primary-checked-border: var(--color-primary-600);
+  --checkbox-primary-focus-ring: var(--color-primary-100);
+
+  --checkbox-secondary-checked-bg: var(--color-slate-600);
+  --checkbox-secondary-checked-border: var(--color-slate-600);
+  --checkbox-secondary-focus-ring: var(--color-slate-200);
+
+  --checkbox-success-checked-bg: var(--color-success-600);
+  --checkbox-success-checked-border: var(--color-success-600);
+  --checkbox-success-focus-ring: var(--color-success-100);
+
+  --checkbox-warning-checked-bg: var(--color-warning-600);
+  --checkbox-warning-checked-border: var(--color-warning-600);
+  --checkbox-warning-focus-ring: var(--color-warning-100);
+
+  --checkbox-danger-checked-bg: var(--color-danger-600);
+  --checkbox-danger-checked-border: var(--color-danger-600);
+  --checkbox-danger-focus-ring: var(--color-danger-100);
+
+  --checkbox-info-checked-bg: var(--color-info-600);
+  --checkbox-info-checked-border: var(--color-info-600);
+  --checkbox-info-focus-ring: var(--color-info-100);
+
+  --checkbox-ghost-bg: transparent;
+  --checkbox-ghost-border: var(--color-slate-300);
+  --checkbox-ghost-checked-bg: var(--color-slate-700);
+  --checkbox-ghost-checked-border: var(--color-slate-700);
+  --checkbox-ghost-focus-ring: var(--color-slate-200);
+}
+
+/**
+ * =============================================================================
+ * Base Structure
+ * =============================================================================
+ */
+
+.bk-checkbox {
+  margin-bottom: 0.5rem;
+}
+
+.bk-checkbox__container {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.bk-checkbox__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-slate-700);
+  line-height: 1.25rem;
+  margin-top: 1px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.bk-checkbox__error-message {
+  margin-top: 0.25rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-danger-600);
+}
+
+.bk-checkbox__hint {
+  margin-top: 0.25rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-slate-500);
+}
+
+/**
+ * =============================================================================
+ * Control
+ * =============================================================================
+ */
+
+.bk-checkbox__control {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: var(--checkbox-bg);
+  margin: 0;
+  flex-shrink: 0;
+  border-radius: var(--checkbox-border-radius);
+  border: 1px solid var(--checkbox-border-color);
+  transition: var(--checkbox-transition);
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+}
+
+.bk-checkbox__control:checked {
+    background-color: var(--checkbox-checked-bg);
+    border-color: var(--checkbox-checked-border);
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  }
+
+.bk-checkbox__control:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px
+      var(--checkbox-focus-ring-color);
+    box-shadow: 0 0 0 var(--checkbox-focus-ring-width)
+      var(--checkbox-focus-ring-color);
+    border-color: var(--checkbox-focus-border-color);
+  }
+
+.bk-checkbox__control:disabled {
+    background-color: var(--checkbox-disabled-bg);
+    border-color: var(--checkbox-disabled-border-color);
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+.bk-checkbox__control:checked:disabled {
+    background-color: var(--color-slate-400);
+    border-color: var(--color-slate-400);
+    opacity: 1;
+  }
+
+/**
+ * =============================================================================
+ * State Modifiers
+ * =============================================================================
+ */
+
+.bk-checkbox__container--error .bk-checkbox__control {
+    border-color: var(--checkbox-error-border-color);
+  }
+
+.bk-checkbox__container--error .bk-checkbox__control:checked {
+      background-color: var(--color-danger-600);
+      border-color: var(--color-danger-600);
+    }
+
+.bk-checkbox__container--error:focus-within .bk-checkbox__control {
+    box-shadow: 0 0 0 2px
+      var(--checkbox-error-ring-color);
+    box-shadow: 0 0 0 var(--checkbox-focus-ring-width)
+      var(--checkbox-error-ring-color);
+    border-color: var(--checkbox-error-border-color);
+  }
+
+.bk-checkbox:has(.bk-checkbox__container--error) .bk-checkbox__label {
+  color: var(--checkbox-error-color);
+}
+
+/**
+ * =============================================================================
+ * Variant Modifiers
+ * =============================================================================
+ */
+
+.bk-checkbox__control--primary {
+  --checkbox-checked-bg: var(--checkbox-primary-checked-bg);
+  --checkbox-checked-border: var(--checkbox-primary-checked-border);
+  --checkbox-focus-ring-color: var(--checkbox-primary-focus-ring);
+}
+
+.bk-checkbox__control--secondary {
+  --checkbox-checked-bg: var(--checkbox-secondary-checked-bg);
+  --checkbox-checked-border: var(--checkbox-secondary-checked-border);
+  --checkbox-focus-ring-color: var(--checkbox-secondary-focus-ring);
+}
+
+.bk-checkbox__control--success {
+  --checkbox-checked-bg: var(--checkbox-success-checked-bg);
+  --checkbox-checked-border: var(--checkbox-success-checked-border);
+  --checkbox-focus-ring-color: var(--checkbox-success-focus-ring);
+}
+
+.bk-checkbox__control--warning {
+  --checkbox-checked-bg: var(--checkbox-warning-checked-bg);
+  --checkbox-checked-border: var(--checkbox-warning-checked-border);
+  --checkbox-focus-ring-color: var(--checkbox-warning-focus-ring);
+}
+
+.bk-checkbox__control--danger {
+  --checkbox-checked-bg: var(--checkbox-danger-checked-bg);
+  --checkbox-checked-border: var(--checkbox-danger-checked-border);
+  --checkbox-focus-ring-color: var(--checkbox-danger-focus-ring);
+}
+
+.bk-checkbox__control--info {
+  --checkbox-checked-bg: var(--checkbox-info-checked-bg);
+  --checkbox-checked-border: var(--checkbox-info-checked-border);
+  --checkbox-focus-ring-color: var(--checkbox-info-focus-ring);
+}
+
+.bk-checkbox__control--ghost {
+  --checkbox-bg: var(--checkbox-ghost-bg);
+  --checkbox-border-color: var(--checkbox-ghost-border);
+  --checkbox-checked-bg: var(--checkbox-ghost-checked-bg);
+  --checkbox-checked-border: var(--checkbox-ghost-checked-border);
+  --checkbox-focus-ring-color: var(--checkbox-ghost-focus-ring);
+}
+
+/**
+ * =============================================================================
+ * Size Modifiers
+ * =============================================================================
+ */
+
+.bk-checkbox__control--sm {
+  width: 1rem;
+  width: var(--checkbox-size-sm);
+  height: 1rem;
+  height: var(--checkbox-size-sm);
+}
+
+.bk-checkbox__control--sm ~ .bk-checkbox__error-message,
+  .bk-checkbox__control--sm ~ .bk-checkbox__hint {
+    margin-left: calc(1rem + 0.75rem);
+    margin-left: calc(var(--checkbox-size-sm) + 0.75rem);
+  }
+
+.bk-checkbox__control--md {
+  width: 1.125rem;
+  width: var(--checkbox-size-md);
+  height: 1.125rem;
+  height: var(--checkbox-size-md);
+}
+
+.bk-checkbox__control--md ~ .bk-checkbox__error-message,
+  .bk-checkbox__control--md ~ .bk-checkbox__hint {
+    margin-left: calc(1.125rem + 0.75rem);
+    margin-left: calc(var(--checkbox-size-md) + 0.75rem);
+  }
+
+.bk-checkbox__control--lg {
+  width: 1.25rem;
+  width: var(--checkbox-size-lg);
+  height: 1.25rem;
+  height: var(--checkbox-size-lg);
+}
+
+.bk-checkbox__control--lg ~ .bk-checkbox__error-message,
+  .bk-checkbox__control--lg ~ .bk-checkbox__hint {
+    margin-left: calc(1.25rem + 0.75rem);
+    margin-left: calc(var(--checkbox-size-lg) + 0.75rem);
+  }

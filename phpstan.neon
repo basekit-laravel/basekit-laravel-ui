@@ -1,0 +1,8 @@
+parameters:
+  level: 8
+  paths:
+    - src
+  excludePaths:
+    - vendor
+    - node_modules
+  reportUnmatchedIgnoredErrors: false

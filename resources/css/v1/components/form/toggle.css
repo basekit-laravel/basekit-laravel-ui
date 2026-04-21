@@ -1,0 +1,257 @@
+/* =============================================================================
+  Toggle Component
+  ============================================================================= */
+
+/* =============================================================================
+  Design Tokens
+  ============================================================================= */
+:root {
+  /* Sizes */
+  --toggle-width-sm: 2.25rem;
+  --toggle-height-sm: 1.25rem;
+  --toggle-width-md: 2.75rem;
+  --toggle-height-md: 1.5rem;
+  --toggle-width-lg: 3.25rem;
+  --toggle-height-lg: 1.75rem;
+
+  --toggle-thumb-size-sm: 1rem;
+  --toggle-thumb-size-md: 1.25rem;
+  --toggle-thumb-size-lg: 1.5rem;
+
+  /* Colors */
+  --toggle-bg-off: var(--color-slate-200);
+  --toggle-bg-on: var(--color-primary-600);
+  --toggle-thumb-bg: var(--surface-base);
+  --toggle-thumb-border-off: var(--color-slate-300);
+
+  /* Variants */
+  --toggle-primary-bg-on: var(--color-primary-600);
+  --toggle-primary-focus-ring: var(--color-primary-100);
+
+  --toggle-secondary-bg-on: var(--color-slate-600);
+  --toggle-secondary-focus-ring: var(--color-slate-200);
+
+  --toggle-success-bg-on: var(--color-success-600);
+  --toggle-success-focus-ring: var(--color-success-100);
+
+  --toggle-warning-bg-on: var(--color-warning-600);
+  --toggle-warning-focus-ring: var(--color-warning-100);
+
+  --toggle-danger-bg-on: var(--color-danger-600);
+  --toggle-danger-focus-ring: var(--color-danger-100);
+
+  --toggle-info-bg-on: var(--color-info-600);
+  --toggle-info-focus-ring: var(--color-info-100);
+
+  --toggle-ghost-bg-on: var(--color-slate-700);
+  --toggle-ghost-focus-ring: var(--color-slate-200);
+
+  /* Error */
+  --toggle-error-bg-on: var(--color-danger-600);
+  --toggle-error-focus-ring: var(--color-danger-100);
+
+  /* Interaction */
+  --toggle-transition: var(--transition-normal) cubic-bezier(0.4, 0, 0.2, 1);
+  --toggle-focus-ring: var(--color-primary-100);
+}
+
+/**
+ * =============================================================================
+ * Base Structure
+ * =============================================================================
+ */
+.bk-toggle {
+  width: 100%;
+
+  &:has(.bk-toggle__button--error) .bk-toggle__label {
+    color: var(--color-danger-700);
+  }
+}
+
+.bk-toggle__container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bk-toggle__label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-slate-700);
+  user-select: none;
+}
+
+.bk-toggle__error-message {
+  margin-top: 0.375rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-danger-600);
+}
+
+.bk-toggle__hint {
+  color: var(--color-slate-500);
+}
+
+/**
+ * =============================================================================
+ * Toggle Button & Slider
+ * =============================================================================
+ */
+.bk-toggle__button {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background-color: var(--toggle-bg-off);
+  cursor: pointer;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--toggle-focus-ring);
+  }
+}
+
+.bk-toggle__input:focus-visible + .bk-toggle__button {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--toggle-focus-ring);
+}
+
+.bk-toggle__slider {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  background-color: var(--toggle-thumb-bg);
+  border-radius: 50%;
+  transition: transform var(--toggle-transition);
+  pointer-events: none;
+}
+
+/**
+ * =============================================================================
+ * Size Modifiers
+ * =============================================================================
+ */
+.bk-toggle__button--sm {
+  width: var(--toggle-width-sm);
+  height: var(--toggle-height-sm);
+  color: var(--color-slate-700);
+  --toggle-thumb-translate: 1.25rem;
+
+  .bk-toggle__slider {
+    width: var(--toggle-thumb-size-sm);
+    height: var(--toggle-thumb-size-sm);
+  }
+}
+
+.bk-toggle__button--md {
+  width: var(--toggle-width-md);
+  height: var(--toggle-height-md);
+  --toggle-thumb-translate: 1.5rem;
+
+  .bk-toggle__slider {
+    width: var(--toggle-thumb-size-md);
+    height: var(--toggle-thumb-size-md);
+  }
+}
+
+.bk-toggle__button--lg {
+  width: var(--toggle-width-lg);
+  height: var(--toggle-height-lg);
+  --toggle-thumb-translate: 1.75rem;
+
+  .bk-toggle__slider {
+    width: var(--toggle-thumb-size-lg);
+    height: var(--toggle-thumb-size-lg);
+  }
+}
+
+/**
+ * =============================================================================
+ * State Modifiers
+ * =============================================================================
+ */
+.bk-toggle__button--on {
+  background-color: var(--toggle-bg-on);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+
+  .bk-toggle__slider {
+    transform: translate(var(--toggle-thumb-translate, 0), -50%);
+    box-shadow: inset 0 0 0 1.5px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.bk-toggle__button--off .bk-toggle__slider {
+  box-shadow: inset 0 0 0 1px var(--toggle-thumb-border-off);
+}
+
+.bk-toggle__input:checked + .bk-toggle__button {
+  background-color: var(--toggle-bg-on);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+
+  .bk-toggle__slider {
+    transform: translate(var(--toggle-thumb-translate, 0), -50%);
+    box-shadow: inset 0 0 0 1.5px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.bk-toggle__input:not(:checked) + .bk-toggle__button .bk-toggle__slider {
+  box-shadow: inset 0 0 0 1px var(--toggle-thumb-border-off);
+}
+
+.bk-toggle__input:disabled + .bk-toggle__button {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.bk-toggle__input:disabled ~ .bk-toggle__label {
+  color: var(--color-slate-400);
+  cursor: not-allowed;
+}
+
+.bk-toggle__button--error.bk-toggle__button--on {
+  background-color: var(--toggle-error-bg-on);
+  --toggle-bg-on: var(--toggle-error-bg-on);
+  --toggle-focus-ring: var(--toggle-error-focus-ring);
+}
+
+/**
+ * =============================================================================
+ * Variant Modifiers
+ * =============================================================================
+ */
+.bk-toggle__button--primary {
+  --toggle-bg-on: var(--toggle-primary-bg-on);
+  --toggle-focus-ring: var(--toggle-primary-focus-ring);
+}
+
+.bk-toggle__button--secondary {
+  --toggle-bg-on: var(--toggle-secondary-bg-on);
+  --toggle-focus-ring: var(--toggle-secondary-focus-ring);
+}
+
+.bk-toggle__button--success {
+  --toggle-bg-on: var(--toggle-success-bg-on);
+  --toggle-focus-ring: var(--toggle-success-focus-ring);
+}
+
+.bk-toggle__button--warning {
+  --toggle-bg-on: var(--toggle-warning-bg-on);
+  --toggle-focus-ring: var(--toggle-warning-focus-ring);
+}
+
+.bk-toggle__button--danger {
+  --toggle-bg-on: var(--toggle-danger-bg-on);
+  --toggle-focus-ring: var(--toggle-danger-focus-ring);
+}
+
+.bk-toggle__button--info {
+  --toggle-bg-on: var(--toggle-info-bg-on);
+  --toggle-focus-ring: var(--toggle-info-focus-ring);
+}
+
+.bk-toggle__button--ghost {
+  --toggle-bg-on: var(--toggle-ghost-bg-on);
+  --toggle-focus-ring: var(--toggle-ghost-focus-ring);
+}

@@ -1,0 +1,24 @@
+{
+  "name": "basekit-laravel-ui-docs",
+  "version": "1.0.0",
+  "description": "Documentation for Basekit Laravel UI",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "css:postprocess": "postcss --config postcss.config.cjs --output public/vendor/basekit-laravel/v1/basekit-ui.css public/vendor/basekit-laravel/v1/basekit-ui.raw.css",
+    "css:dist": "postcss --config postcss.config.cjs \"resources/css/v1/**/*.css\" --base resources/css/v1 --dir resources/css/dist/v1 && node ./tools/minify-dist.js",
+    "build:dist": "./vendor/bin/testbench basekit:ui:build"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^6.1.2",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^14.1.0",
+    "postcss-nesting": "^12.1.5",
+    "postcss-preset-env": "^9.5.2",
+    "tailwindcss": "^4.0.0",
+    "vitepress": "^1.0.0"
+  }
+}

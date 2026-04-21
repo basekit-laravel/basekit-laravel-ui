@@ -1,0 +1,79 @@
+{
+  "name": "basekit-laravel/basekit-laravel-ui",
+  "description": "A modular Laravel UI component library with reusable Blade components, Tailwind 4 theming, and a built-in style guide.",
+  "type": "library",
+  "keywords": [
+    "laravel",
+    "blade",
+    "components",
+    "ui",
+    "tailwind",
+    "heroicons"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Gergotar",
+      "email": "info@gergotar.com"
+    }
+  ],
+  "require": {
+    "php": "^8.3",
+    "illuminate/support": "^12.0|^13.0",
+    "illuminate/view": "^12.0|^13.0",
+    "blade-ui-kit/blade-heroicons": "^2.0",
+    "gehrisandro/tailwind-merge-laravel": "^1.4"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^11.1",
+    "pestphp/pest": "^4.6",
+    "pestphp/pest-plugin-laravel": "^4.1",
+    "laravel/pint": "^1.29",
+    "phpstan/phpstan": "^2.1",
+    "phpstan/extension-installer": "^1.3",
+    "phpstan/phpstan-strict-rules": "^2.0",
+    "larastan/larastan": "^3.9",
+    "rector/rector": "^2.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "BasekitLaravel\\BasekitLaravelUi\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "BasekitLaravel\\BasekitLaravelUi\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "BasekitLaravel\\BasekitLaravelUi\\BasekitServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "styleguide": "./vendor/bin/testbench basekit:ui:styleguide",
+    "test": "pest",
+    "test:coverage": "pest --coverage",
+    "lint": "pint",
+    "lint:check": "pint --test",
+    "analyze": "phpstan analyse",
+    "analyze:baseline": "phpstan analyse --generate-baseline",
+    "rector": "rector process src",
+    "rector:check": "rector process src --dry-run",
+    "quality": [
+      "@lint:check",
+      "@analyze",
+      "@test"
+    ]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "config": {
+    "allow-plugins": {
+      "phpstan/extension-installer": true,
+      "pestphp/pest-plugin": true
+    }
+  }
+}

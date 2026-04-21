@@ -1,0 +1,1433 @@
+/* =============================================================================
+	Display Components
+	============================================================================= */
+
+/* =============================================================================
+	Layout & Data Display Media Queries
+	============================================================================= */
+
+@custom-media --bk-sm (min-width: 640px);
+
+@custom-media --bk-md (min-width: 768px);
+
+@custom-media --bk-lg (min-width: 1024px);
+
+@custom-media --bk-xl (min-width: 1280px);
+
+@custom-media --bk-2xl (min-width: 1536px);
+
+/* =============================================================================
+   Card Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --card-bg: var(--surface-base);
+  --card-border: var(--color-slate-200);
+  --card-radius: var(--radius-xl);
+  --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --card-header-padding: 1.25rem 1.5rem;
+  --card-body-padding: 1.5rem;
+  --card-footer-padding: 1rem 1.5rem;
+  --card-footer-bg: var(--color-slate-50);
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--card-radius);
+  background-color: var(--card-bg);
+}
+
+/* =============================================================================
+   Elements
+   ============================================================================= */
+
+.bk-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  padding: var(--card-header-padding);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.bk-card__header-content {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-slate-900);
+}
+
+.bk-card__body {
+  flex: 1;
+}
+
+.bk-card__body--padded {
+  padding: 1.5rem;
+  padding: var(--card-body-padding);
+}
+
+.bk-card__footer {
+  padding: 1rem 1.5rem;
+  padding: var(--card-footer-padding);
+  border-top: 1px solid var(--card-border);
+  background-color: var(--card-footer-bg);
+}
+
+/* =============================================================================
+   Variant Modifiers
+   ============================================================================= */
+
+.bk-card--default {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  box-shadow: var(--card-shadow);
+}
+
+.bk-card--bordered {
+  border: 1px solid var(--card-border);
+  box-shadow: none;
+}
+
+/* =============================================================================
+   Avatar Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --avatar-bg: var(--color-slate-200);
+  --avatar-text: var(--color-slate-600);
+  --avatar-ring: 2px solid white;
+
+  --avatar-size-sm: 2rem;
+  --avatar-size-md: 2.5rem;
+  --avatar-size-lg: 3rem;
+  --avatar-size-xl: 3.5rem;
+
+  --avatar-font-sm: var(--font-size-xs);
+  --avatar-font-md: var(--font-size-sm);
+  --avatar-font-lg: var(--font-size-sm);
+  --avatar-font-xl: var(--font-size-md);
+
+  --avatar-status-size: 0.625rem;
+  --avatar-status-border: 1px solid white;
+  --avatar-status-offset: 0;
+
+  --avatar-status-online: var(--color-success-500);
+  --avatar-status-away: var(--color-warning-500);
+  --avatar-status-busy: var(--color-danger-500);
+  --avatar-status-offline: var(--color-slate-400);
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+:where(.bk-avatar) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: relative;
+  overflow: visible;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  border-radius: var(--avatar-radius, 9999px);
+  background-color: var(--avatar-bg);
+  color: var(--avatar-text);
+}
+
+.bk-avatar__content {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =============================================================================
+   Elements
+   ============================================================================= */
+
+.bk-avatar__image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+
+.bk-avatar__fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+}
+
+.bk-avatar__icon {
+  width: 1.25em;
+  height: 1.25em;
+}
+
+.bk-avatar__status {
+  position: absolute;
+  right: 0;
+  right: var(--avatar-status-offset);
+  bottom: 0;
+  bottom: var(--avatar-status-offset);
+  width: 0.625rem;
+  width: var(--avatar-status-size);
+  height: 0.625rem;
+  height: var(--avatar-status-size);
+  border-radius: 9999px;
+  border: 1px solid white;
+  border: var(--avatar-status-border);
+  background-color: var(--avatar-status-online);
+  transform: translate(12%, 12%);
+}
+
+.bk-avatar__status--online {
+  background-color: var(--avatar-status-online);
+}
+
+.bk-avatar__status--away {
+  background-color: var(--avatar-status-away);
+}
+
+.bk-avatar__status--busy {
+  background-color: var(--avatar-status-busy);
+}
+
+.bk-avatar__status--offline {
+  background-color: var(--avatar-status-offline);
+}
+
+/* =============================================================================
+   Shape Modifiers
+   ============================================================================= */
+
+.bk-avatar--round {
+  --avatar-radius: 9999px;
+}
+
+.bk-avatar--soft {
+  --avatar-radius: var(--radius-lg);
+}
+
+.bk-avatar--square {
+  --avatar-radius: 0;
+}
+
+/* =============================================================================
+   Size Modifiers
+   ============================================================================= */
+
+.bk-avatar--sm {
+  width: 2rem;
+  width: var(--avatar-size-sm);
+  height: 2rem;
+  height: var(--avatar-size-sm);
+  font-size: var(--avatar-font-sm);
+}
+
+.bk-avatar--md {
+  width: 2.5rem;
+  width: var(--avatar-size-md);
+  height: 2.5rem;
+  height: var(--avatar-size-md);
+  font-size: var(--avatar-font-md);
+}
+
+.bk-avatar--lg {
+  width: 3rem;
+  width: var(--avatar-size-lg);
+  height: 3rem;
+  height: var(--avatar-size-lg);
+  font-size: var(--avatar-font-lg);
+}
+
+.bk-avatar--xl {
+  width: 3.5rem;
+  width: var(--avatar-size-xl);
+  height: 3.5rem;
+  height: var(--avatar-size-xl);
+  font-size: var(--avatar-font-xl);
+}
+
+/* =============================================================================
+   Badge Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --badge-radius: 9999px;
+  --badge-font-weight: var(--font-weight-medium);
+  --badge-font-size-sm: var(--font-size-xs);
+  --badge-font-size-md: var(--font-size-xs);
+  --badge-font-size-lg: var(--font-size-sm);
+
+  --badge-bg-secondary: var(--color-slate-100);
+  --badge-text-secondary: var(--color-slate-700);
+  --badge-border-secondary: var(--color-slate-200);
+
+  --badge-bg-primary: var(--color-primary-50);
+  --badge-text-primary: var(--color-primary-700);
+  --badge-border-primary: var(--color-primary-200);
+
+  --badge-bg-info: var(--color-info-50);
+  --badge-text-info: var(--color-info-700);
+  --badge-border-info: var(--color-info-200);
+
+  --badge-bg-success: var(--color-success-50);
+  --badge-text-success: var(--color-success-700);
+  --badge-border-success: var(--color-success-200);
+
+  --badge-bg-warning: var(--color-warning-50);
+  --badge-text-warning: var(--color-warning-800);
+  --badge-border-warning: var(--color-warning-200);
+
+  --badge-bg-danger: var(--color-danger-50);
+  --badge-text-danger: var(--color-danger-700);
+  --badge-border-danger: var(--color-danger-200);
+
+  --badge-bg-ghost: transparent;
+  --badge-text-ghost: var(--color-slate-700);
+  --badge-border-ghost: transparent;
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  line-height: 1;
+  white-space: nowrap;
+  border: 1px solid var(--badge-border-secondary);
+  border-radius: 9999px;
+  border-radius: var(--badge-radius);
+  background-color: var(--badge-bg-secondary);
+  color: var(--badge-text-secondary);
+  font-weight: var(--badge-font-weight);
+}
+
+/* =============================================================================
+   Elements
+   ============================================================================= */
+
+.bk-badge__dot {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background-color: currentColor;
+  opacity: 0.75;
+}
+
+.bk-badge__icon svg {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+/* =============================================================================
+   Size Modifiers
+   ============================================================================= */
+
+.bk-badge--sm {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-size: var(--badge-font-size-sm);
+}
+
+.bk-badge--md {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  font-size: var(--badge-font-size-md);
+}
+
+.bk-badge--lg {
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  font-size: var(--badge-font-size-lg);
+}
+
+/* =============================================================================
+   Variant Modifiers
+   ============================================================================= */
+
+.bk-badge--primary {
+  background-color: var(--badge-bg-primary);
+  color: var(--badge-text-primary);
+  border-color: var(--badge-border-primary);
+}
+
+.bk-badge--secondary {
+  background-color: var(--badge-bg-secondary);
+  color: var(--badge-text-secondary);
+  border-color: var(--badge-border-secondary);
+}
+
+.bk-badge--info {
+  background-color: var(--badge-bg-info);
+  color: var(--badge-text-info);
+  border-color: var(--badge-border-info);
+}
+
+.bk-badge--success {
+  background-color: var(--badge-bg-success);
+  color: var(--badge-text-success);
+  border-color: var(--badge-border-success);
+}
+
+.bk-badge--warning {
+  background-color: var(--badge-bg-warning);
+  color: var(--badge-text-warning);
+  border-color: var(--badge-border-warning);
+}
+
+.bk-badge--danger {
+  background-color: var(--badge-bg-danger);
+  color: var(--badge-text-danger);
+  border-color: var(--badge-border-danger);
+}
+
+.bk-badge--ghost {
+  background-color: transparent;
+  background-color: var(--badge-bg-ghost);
+  color: var(--badge-text-ghost);
+  border-color: transparent;
+  border-color: var(--badge-border-ghost);
+}
+
+/* =============================================================================
+   Table Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --table-bg: var(--surface-base);
+  --table-border: var(--color-slate-200);
+  --table-header-bg: var(--color-slate-50);
+  --table-header-text: var(--color-slate-700);
+  --table-row-hover-bg: var(--color-slate-50);
+  --table-stripe-bg: var(--color-slate-50);
+  --table-stack-radius: var(--radius-md);
+  --table-stack-detail-bg: var(--color-slate-50);
+  --table-menu-bg: var(--table-bg);
+  --table-menu-border: var(--table-border);
+  --table-menu-item-hover-bg: var(--table-row-hover-bg);
+  --table-menu-shadow: 0 10px 20px rgb(15 23 42 / 0.08);
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-table__responsive {
+  width: 100%;
+}
+
+.bk-table__container {
+  width: 100%;
+}
+
+.bk-table__responsive--query {
+  container-type: inline-size;
+  container-name: table-responsive;
+}
+
+.bk-table__responsive--stacked {
+  container-type: inline-size;
+  container-name: table-stacked;
+}
+
+.bk-table__wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--table-border);
+  border-radius: var(--radius-lg);
+}
+
+.bk-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: var(--font-size-sm);
+  text-align: left;
+}
+
+.bk-table__header {
+  background-color: var(--table-header-bg);
+}
+
+.bk-table__header th {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-weight: var(--font-weight-medium);
+    color: var(--table-header-text);
+    border-bottom: 1px solid var(--table-border);
+    text-align: left;
+  }
+
+.bk-table__body td {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: var(--color-slate-900);
+    border-bottom: 1px solid var(--table-border);
+  }
+
+.bk-table__body tr:last-child td {
+    border-bottom: none;
+  }
+
+.bk-table__footer {
+  background-color: var(--table-header-bg);
+}
+
+.bk-table__footer td {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-weight: var(--font-weight-medium);
+    border-top: 1px solid var(--table-border);
+  }
+
+/* =============================================================================
+   Size Modifiers
+   ============================================================================= */
+
+.bk-table--sm th,
+  .bk-table--md th,
+  .bk-table--lg th,
+  .bk-table--sm td,
+  .bk-table--md td,
+  .bk-table--lg td {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+.bk-table--md th,
+  .bk-table--md td {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+.bk-table--lg th,
+  .bk-table--lg td {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+/* =============================================================================
+   Table Style Modifiers
+   ============================================================================= */
+
+.bk-table--bordered th,
+  .bk-table--bordered td {
+    border-right: 1px solid var(--table-border);
+    border-left: 1px solid var(--table-border);
+  }
+
+.bk-table--bordered th:first-child,
+  .bk-table--bordered td:first-child {
+    border-left: none;
+  }
+
+.bk-table--bordered th:last-child,
+  .bk-table--bordered td:last-child {
+    border-right: none;
+  }
+
+.bk-table--striped tbody tr:nth-child(even) {
+    background-color: var(--table-stripe-bg);
+  }
+
+.bk-table--hoverable tbody tr:hover {
+    background-color: var(--table-row-hover-bg);
+  }
+
+/* =============================================================================
+   Controls & Column Menu
+   ============================================================================= */
+
+.bk-table__controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 0.75rem;
+}
+
+.bk-table__menu {
+  position: relative;
+}
+
+.bk-table__menu-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-slate-700);
+}
+
+.bk-table__menu-trigger:hover {
+    color: var(--color-slate-900);
+  }
+
+.bk-table__menu-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.bk-table__menu-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  z-index: 20;
+  min-width: 10rem;
+  padding: 0.5rem;
+  background-color: var(--table-menu-bg);
+  border: 1px solid var(--table-menu-border);
+  border-radius: var(--table-stack-radius);
+  box-shadow: 0 10px 20px rgb(15 23 42 / 0.08);
+  box-shadow: var(--table-menu-shadow);
+}
+
+.bk-table__menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.5rem;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--color-slate-700);
+}
+
+.bk-table__menu-item:hover {
+    background-color: var(--table-menu-item-hover-bg);
+  }
+
+.bk-table__menu-checkbox {
+  width: 0.875rem;
+  height: 0.875rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-slate-300);
+}
+
+/* =============================================================================
+   Cell Visibility & Alignment Utilities
+   ============================================================================= */
+
+.bk-table__cell--hidden {
+  display: none;
+}
+
+.bk-table__cell--shown {
+  display: table-cell;
+}
+
+.bk-table__cell--align-right {
+  text-align: right;
+}
+
+.bk-table__cell--align-center {
+  text-align: center;
+}
+
+.bk-table__header th.bk-table__cell--align-right {
+  text-align: right;
+}
+
+.bk-table__header th.bk-table__cell--align-center {
+  text-align: center;
+}
+
+/* Viewport fallback for browsers that do not support container queries.
+   Keep these aligned with layout/media.css custom breakpoints. */
+
+@supports not (container-type: inline-size) {
+  @media (min-width: 640px) {
+    .bk-table__cell--sm {
+      display: table-cell;
+    }
+  }
+  @media (--bk-sm) {
+    .bk-table__cell--sm {
+      display: table-cell;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .bk-table__controls {
+      display: none;
+    }
+
+    .bk-table__cell--md {
+      display: table-cell;
+    }
+
+    .bk-table__header--stacked {
+      display: table-header-group;
+    }
+
+    .bk-table--stacked .bk-table__header-expand,
+    .bk-table--stacked .bk-table__expand-cell,
+    .bk-table--stacked .bk-table__stack-detail-row {
+      display: none;
+    }
+
+    .bk-table__cell--detail-only,
+    .bk-table--stacked td.bk-table__cell--detail-only {
+      display: table-cell;
+    }
+
+    .bk-table--stacked td {
+      display: table-cell;
+    }
+  }
+
+  @media (--bk-md) {
+    .bk-table__controls {
+      display: none;
+    }
+
+    .bk-table__cell--md {
+      display: table-cell;
+    }
+
+    .bk-table__header--stacked {
+      display: table-header-group;
+    }
+
+    .bk-table--stacked .bk-table__header-expand,
+    .bk-table--stacked .bk-table__expand-cell,
+    .bk-table--stacked .bk-table__stack-detail-row {
+      display: none;
+    }
+
+    .bk-table__cell--detail-only,
+    .bk-table--stacked td.bk-table__cell--detail-only {
+      display: table-cell;
+    }
+
+    .bk-table--stacked td {
+      display: table-cell;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .bk-table__cell--lg {
+      display: table-cell;
+    }
+  }
+
+  @media (--bk-lg) {
+    .bk-table__cell--lg {
+      display: table-cell;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .bk-table__cell--xl {
+      display: table-cell;
+    }
+  }
+
+  @media (--bk-xl) {
+    .bk-table__cell--xl {
+      display: table-cell;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .bk-table__cell--2xl {
+      display: table-cell;
+    }
+  }
+
+  @media (--bk-2xl) {
+    .bk-table__cell--2xl {
+      display: table-cell;
+    }
+  }
+}
+
+@container table-responsive (min-width: 640px) {
+  .bk-table__cell--sm {
+    display: table-cell;
+  }
+}
+
+@container table-responsive (min-width: 768px) {
+  .bk-table__controls {
+    display: none;
+  }
+
+  .bk-table__cell--md {
+    display: table-cell;
+  }
+}
+
+@container table-responsive (min-width: 1024px) {
+  .bk-table__cell--lg {
+    display: table-cell;
+  }
+}
+
+@container table-responsive (min-width: 1280px) {
+  .bk-table__cell--xl {
+    display: table-cell;
+  }
+}
+
+@container table-responsive (min-width: 1536px) {
+  .bk-table__cell--2xl {
+    display: table-cell;
+  }
+}
+
+/* =============================================================================
+   Empty State
+   ============================================================================= */
+
+.bk-table__empty {
+  padding: 1.5rem;
+  text-align: center;
+  color: var(--color-slate-500);
+}
+
+/* =============================================================================
+   Stacked Mode
+   ============================================================================= */
+
+.bk-table--stacked {
+  border-collapse: collapse;
+}
+
+.bk-table--stacked td {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-align: left;
+    border: none;
+  }
+
+.bk-table--stacked.bk-table--sm td {
+    padding: 0.25rem 0.75rem;
+  }
+
+.bk-table--stacked.bk-table--lg td {
+    padding: 0.75rem 1.25rem;
+  }
+
+.bk-table--stacked.bk-table--striped .bk-table__stack-row {
+      background-color: var(--table-bg);
+    }
+
+/* Use `of` selector so that interleaved detail-rows don't throw off the
+       even/odd count — stack-rows and detail-rows share the same tbody, making
+       plain nth-child(even) always target the wrong elements. */
+
+.bk-table--stacked.bk-table--striped .bk-table__stack-row:nth-child(even of .bk-table__stack-row) {
+      background-color: var(--table-stripe-bg);
+    }
+
+.bk-table--stacked.bk-table--hoverable .bk-table__stack-row:hover {
+      background-color: var(--table-row-hover-bg);
+    }
+
+.bk-table--stacked.bk-table--bordered {
+    /* Mobile stacked: no extra styling — card rows already have an outer border */
+  }
+
+.bk-table__header--stacked {
+  display: none;
+}
+
+.bk-table__stack-row {
+  display: block;
+  border: 1px solid var(--table-border);
+  border-radius: 0;
+  overflow: hidden;
+  background-color: var(--table-bg);
+}
+
+.bk-table__stack-row:first-child {
+    border-top-left-radius: var(--table-stack-radius);
+    border-top-right-radius: var(--table-stack-radius);
+  }
+
+.bk-table__stack-row:last-child {
+    border-bottom-left-radius: var(--table-stack-radius);
+    border-bottom-right-radius: var(--table-stack-radius);
+  }
+
+.bk-table__stack-row + .bk-table__stack-row {
+    border-top: none;
+  }
+
+.bk-table__expand-cell {
+  display: none;
+  padding: 0.5rem 0.75rem;
+  text-align: center;
+  vertical-align: middle;
+  border: none;
+  width: 1%;
+  white-space: nowrap;
+}
+
+/* Ensure expand cell is hidden in stacked mode by default */
+
+.bk-table--stacked .bk-table__expand-cell {
+  display: none;
+}
+
+.bk-table__stack-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--color-slate-400);
+  transition: all var(--transition-fast) ease;
+}
+
+.bk-table__stack-expand-btn:hover {
+    background-color: var(--color-slate-100);
+    color: var(--color-slate-700);
+  }
+
+.bk-table__stack-expand-btn[aria-expanded="true"] {
+    color: var(--color-slate-600);
+    background-color: var(--color-slate-100);
+  }
+
+.bk-table__stack-expand-btn[aria-expanded="true"] .bk-table__expand-icon {
+      transform: rotate(180deg);
+    }
+
+.bk-table__expand-icon {
+  width: 1rem;
+  height: 1rem;
+  transition: transform var(--transition-normal) ease;
+}
+
+.bk-table__stack-detail-row {
+  display: none;
+  background-color: var(--table-stack-detail-bg);
+}
+
+/* Ensure detail row is hidden in stacked mode by default */
+
+.bk-table--stacked .bk-table__stack-detail-row {
+  display: none;
+}
+
+.bk-table__stack-detail-cell {
+  padding: 0.75rem 1rem;
+  border: none;
+}
+
+.bk-table__stack-detail-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.25rem;
+}
+
+.bk-table__stack-detail-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 0.25rem 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-slate-700);
+}
+
+.bk-table__stack-detail-label {
+  flex-shrink: 0;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-slate-600);
+}
+
+.bk-table__stack-detail-value {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.bk-table__header-expand {
+  display: none;
+  padding: 0.75rem 1rem;
+  width: 1%;
+  white-space: nowrap;
+}
+
+/* Ensure header expand is hidden in stacked mode by default */
+
+.bk-table--stacked .bk-table__header-expand {
+  display: none;
+}
+
+/* Hide detail-only columns on small containers, show on large */
+
+.bk-table__cell--detail-only {
+  display: none;
+}
+
+.bk-table--stacked td.bk-table__cell--detail-only {
+  display: none;
+}
+
+/* Container query: show expand cells and details ONLY on small containers in stacked mode */
+
+@container table-stacked (max-width: 767px) {
+  .bk-table--stacked .bk-table__expand-cell {
+    display: table-cell;
+  }
+
+  .bk-table--stacked .bk-table__header-expand {
+    display: table-cell;
+  }
+
+  .bk-table--stacked .bk-table__stack-detail-row {
+    display: table-row;
+  }
+}
+
+@container table-stacked (min-width: 768px) {
+  .bk-table__header--stacked {
+    display: table-header-group;
+  }
+
+  .bk-table--stacked .bk-table__header-expand {
+    display: none;
+  }
+
+  /* Show detail columns on desktop */
+  .bk-table__cell--detail-only {
+    display: table-cell;
+  }
+
+  .bk-table--stacked td.bk-table__cell--detail-only {
+    display: table-cell;
+  }
+
+  .bk-table__stack-row {
+    display: table-row;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+  }
+
+    .bk-table__stack-row:first-child,
+    .bk-table__stack-row:last-child {
+      border-radius: 0;
+    }
+
+    .bk-table__stack-row + .bk-table__stack-row {
+      border-top: none;
+    }
+    .bk-table--stacked td {
+      display: table-cell;
+      padding: 1rem;
+      border: none;
+      border-bottom: 1px solid var(--table-border);
+      text-align: left;
+    }
+
+      .bk-table--stacked td:first-child {
+        padding: 1rem;
+        border-top: none;
+      }
+
+      .bk-table--stacked td:last-child {
+        padding: 1rem;
+        border-bottom: 1px solid var(--table-border);
+      }
+
+    .bk-table--stacked.bk-table--sm td,
+    .bk-table--stacked.bk-table--sm td:first-child,
+    .bk-table--stacked.bk-table--sm td:last-child {
+      padding: 0.5rem 0.75rem;
+    }
+
+    .bk-table--stacked.bk-table--lg td,
+    .bk-table--stacked.bk-table--lg td:first-child,
+    .bk-table--stacked.bk-table--lg td:last-child {
+      padding: 1rem 1.25rem;
+    }
+
+    /* Bordered: add column separators on desktop, matching the regular bordered table */
+      .bk-table--stacked.bk-table--bordered th,
+      .bk-table--stacked.bk-table--bordered td {
+        border-right: 1px solid var(--table-border);
+        border-left: 1px solid var(--table-border);
+      }
+
+      .bk-table--stacked.bk-table--bordered th:first-child,
+      .bk-table--stacked.bk-table--bordered td:first-child {
+        border-left: none;
+      }
+
+      .bk-table--stacked.bk-table--bordered th:last-child,
+      .bk-table--stacked.bk-table--bordered td:last-child {
+        border-right: none;
+      }
+
+  .bk-table--stacked .bk-table__expand-cell {
+    display: none;
+  }
+
+  .bk-table--stacked .bk-table__stack-detail-row {
+    display: none;
+  }
+
+  .bk-table__stack-detail-item {
+    flex-direction: row;
+  }
+
+  .bk-table__stack-detail-value {
+    text-align: left;
+  }
+}
+
+/* =============================================================================
+   List Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --list-item-padding: 0.75rem 1rem;
+  --list-divided-border: var(--color-slate-200);
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-list {
+  list-style-position: inside;
+}
+
+/* =============================================================================
+   Type Modifiers
+   ============================================================================= */
+
+.bk-list--unordered {
+  list-style-type: disc;
+}
+
+.bk-list--ordered {
+  list-style-type: decimal;
+}
+
+/* =============================================================================
+   Marker Modifiers
+   ============================================================================= */
+
+.bk-list--marker-disc {
+  list-style-type: disc;
+}
+
+.bk-list--marker-circle {
+  list-style-type: circle;
+}
+
+.bk-list--marker-square {
+  list-style-type: square;
+}
+
+.bk-list--marker-decimal {
+  list-style-type: decimal;
+}
+
+.bk-list--marker-none {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* =============================================================================
+   Layout Modifiers
+   ============================================================================= */
+
+.bk-list--divided li {
+    padding: 0.75rem 1rem;
+    padding: var(--list-item-padding);
+    border-bottom: 1px solid var(--list-divided-border);
+  }
+
+.bk-list--divided li:last-child {
+      border-bottom: none;
+    }
+
+.bk-list--bordered {
+  border: 1px solid var(--list-divided-border);
+  border-radius: var(--radius-md);
+}
+
+.bk-list--bordered li {
+    padding: 0.75rem 1rem;
+    padding: var(--list-item-padding);
+    border-bottom: 1px solid var(--list-divided-border);
+  }
+
+.bk-list--bordered li:last-child {
+      border-bottom: none;
+    }
+
+/* =============================================================================
+   Description List Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --dl-term-color: var(--color-slate-700);
+  --dl-description-color: var(--color-slate-900);
+  --dl-border: var(--color-slate-200);
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-description-list dt {
+    font-weight: var(--font-weight-semibold);
+    color: var(--dl-term-color);
+    margin-bottom: 0.25rem;
+  }
+
+.bk-description-list dt:first-child {
+      margin-top: 0;
+    }
+
+.bk-description-list dd {
+    color: var(--dl-description-color);
+    margin-left: 0;
+  }
+
+/* =============================================================================
+   Gap Modifiers
+   ============================================================================= */
+
+.bk-description-list--gap-sm dt {
+    margin-top: 0.5rem;
+  }
+
+.bk-description-list--gap-md dt {
+    margin-top: 1rem;
+  }
+
+.bk-description-list--gap-lg dt {
+    margin-top: 1.5rem;
+  }
+
+/* =============================================================================
+   Layout Modifiers
+   ============================================================================= */
+
+.bk-description-list--horizontal {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 1rem;
+  gap: 1rem;
+  align-items: start;
+}
+
+.bk-description-list--horizontal dt {
+    grid-column: 1;
+    margin-top: 0;
+  }
+
+.bk-description-list--horizontal dd {
+    grid-column: 2;
+    margin-top: 0;
+  }
+
+/* Horizontal gap overrides */
+
+.bk-description-list--horizontal.bk-description-list--gap-sm {
+  gap: 0.5rem;
+}
+
+.bk-description-list--horizontal.bk-description-list--gap-md {
+  gap: 1rem;
+}
+
+.bk-description-list--horizontal.bk-description-list--gap-lg {
+  gap: 1.5rem;
+}
+
+.bk-description-list--striped dt,
+  .bk-description-list--striped dd {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+.bk-description-list--striped dt {
+    background-color: var(--color-slate-50);
+  }
+
+/* =============================================================================
+   Stat Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --stat-bg: var(--surface-base);
+  --stat-label-color: var(--color-slate-600);
+  --stat-value-color: var(--color-slate-900);
+  --stat-icon-size: 2.5rem;
+  --stat-icon-bg: var(--color-primary-100);
+  --stat-icon-color: var(--color-primary-600);
+
+  --stat-change-up-color: var(--color-success-600);
+  --stat-change-down-color: var(--color-danger-600);
+  --stat-change-neutral-color: var(--color-slate-600);
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-stat {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  background-color: var(--stat-bg);
+}
+
+/* =============================================================================
+   Elements
+   ============================================================================= */
+
+.bk-stat__icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  width: var(--stat-icon-size);
+  height: 2.5rem;
+  height: var(--stat-icon-size);
+  border-radius: var(--radius-lg);
+  background-color: var(--stat-icon-bg);
+  color: var(--stat-icon-color);
+}
+
+.bk-stat__icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+.bk-stat__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.bk-stat__label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--stat-label-color);
+}
+
+.bk-stat__value {
+  display: block;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+  color: var(--stat-value-color);
+}
+
+.bk-stat__change {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.bk-stat__change-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* =============================================================================
+   Change State Modifiers
+   ============================================================================= */
+
+.bk-stat__change--up {
+  color: var(--stat-change-up-color);
+}
+
+.bk-stat__change--down {
+  color: var(--stat-change-down-color);
+}
+
+.bk-stat__change--neutral {
+  color: var(--stat-change-neutral-color);
+}

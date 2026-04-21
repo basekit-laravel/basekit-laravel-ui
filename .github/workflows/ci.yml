@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+          coverage: none
+          tools: composer:v2
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Check code style
+        run: composer lint:check
+
+      - name: Run static analysis
+        run: composer analyze
+
+      - name: Run test suite
+        run: php vendor/bin/pest --no-coverage
+
+      - name: Build component CSS
+        run: ./vendor/bin/testbench basekit:ui:build
+
+      - name: Generate styleguide snapshot
+        run: ./vendor/bin/testbench basekit:ui:styleguide
+
+      - name: Verify CSS-doc token sync
+        run: bash tools/verify-doc-token-sync.sh

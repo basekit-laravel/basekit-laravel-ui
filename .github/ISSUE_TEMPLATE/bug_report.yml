@@ -1,0 +1,148 @@
+name: Bug Report
+description: Report a bug or unexpected behavior
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out the form below.
+
+  - type: input
+    id: package-version
+    attributes:
+      label: Package Version
+      description: Which version of basekit-laravel-ui are you using?
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: laravel-version
+    attributes:
+      label: Laravel Version
+      description: Which version of Laravel are you using?
+      placeholder: "12.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: php-version
+    attributes:
+      label: PHP Version
+      description: Which version of PHP are you using?
+      placeholder: "8.2"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Affected Component
+      description: Which component is experiencing the issue?
+      options:
+        - Button
+        - Input
+        - Textarea
+        - Checkbox
+        - Radio
+        - Select
+        - Multi-Select
+        - Toggle
+        - Alert
+        - Toast
+        - Tooltip
+        - Progress
+        - Spinner
+        - Skeleton
+        - Empty State
+        - Breadcrumb
+        - Pagination
+        - Tabs
+        - Dropdown Menu
+        - Link
+        - Container
+        - Divider
+        - Stack
+        - Grid
+        - Card
+        - Badge
+        - Avatar
+        - Table
+        - List
+        - Description List
+        - Stat
+        - Modal
+        - Accordion
+        - Build Command
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of the bug
+      placeholder: What happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Provide detailed steps to reproduce the issue
+      placeholder: |
+        1. Install package
+        2. Use component with props...
+        3. Observe error...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: config
+    attributes:
+      label: Configuration
+      description: Relevant parts of your config/basekit-laravel-ui.php (if applicable)
+      render: php
+      placeholder: |
+        'components' => [
+            'button' => [
+                'enabled' => true,
+                'variants' => ['primary', 'secondary'],
+            ],
+        ],
+
+  - type: textarea
+    id: code
+    attributes:
+      label: Code Sample
+      description: Minimal code sample that reproduces the issue
+      render: blade
+      placeholder: |
+        <x-basekit::button variant="primary">
+            Click Me
+        </x-basekit::button>
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other context, screenshots, or error messages

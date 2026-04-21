@@ -1,0 +1,750 @@
+/* =============================================================================
+  Multi Select Component
+  ============================================================================= */
+
+/* =============================================================================
+  Design Tokens
+  ============================================================================= */
+
+:root {
+  /* Base */
+  --multiselect-color: var(--color-slate-900);
+  --multiselect-placeholder-color: var(--color-slate-400);
+  --multiselect-border-color: var(--color-slate-300);
+  --multiselect-border-radius: var(--radius-md, 0.375rem);
+  --multiselect-bg: #ffffff;
+  --multiselect-font-family: inherit;
+  --multiselect-line-height: 1.5;
+  --multiselect-transition:
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+  /* Interaction States */
+  --multiselect-hover-border-color: var(--color-slate-400);
+  --multiselect-focus-border-color: var(--color-primary-500);
+  --multiselect-focus-ring-color: var(--color-primary-100);
+  --multiselect-focus-ring-width: 2px;
+
+  /* Disabled State */
+  --multiselect-disabled-bg: var(--color-slate-50);
+  --multiselect-disabled-color: var(--color-slate-500);
+  --multiselect-disabled-border-color: var(--color-slate-200);
+
+  /* Variants */
+  --multiselect-primary-border-color: var(--color-primary-500);
+  --multiselect-primary-ring-color: var(--color-primary-100);
+  --multiselect-secondary-border-color: var(--color-slate-300);
+  --multiselect-secondary-ring-color: var(--color-slate-100);
+  --multiselect-error-border-color: var(--color-danger-500);
+  --multiselect-error-ring-color: var(--color-danger-100);
+  --multiselect-error-color: var(--color-danger-700);
+  --multiselect-success-border-color: var(--color-success-500);
+  --multiselect-success-ring-color: var(--color-success-100);
+  --multiselect-warning-border-color: var(--color-warning-500);
+  --multiselect-warning-ring-color: var(--color-warning-100);
+  --multiselect-info-border-color: var(--color-info-500);
+  --multiselect-info-ring-color: var(--color-info-100);
+  --multiselect-ghost-border-color: transparent;
+  --multiselect-ghost-ring-color: var(--color-slate-100);
+  --multiselect-ghost-bg: transparent;
+
+  /* Sizes */
+  --multiselect-py-sm: 0.375rem;
+  --multiselect-px-sm: 0.75rem;
+  --multiselect-fs-sm: 0.875rem;
+  --multiselect-py-md: 0.5rem;
+  --multiselect-px-md: 0.875rem;
+  --multiselect-fs-md: 0.9375rem;
+  --multiselect-py-lg: 0.75rem;
+  --multiselect-px-lg: 1rem;
+  --multiselect-fs-lg: 1rem;
+
+  /* Chip */
+  --multiselect-chip-bg: var(--color-slate-100);
+  --multiselect-chip-text: var(--color-slate-700);
+  --multiselect-chip-border: var(--color-slate-200);
+
+  /* Menu */
+  --multiselect-menu-bg: white;
+  --multiselect-menu-border: var(--color-slate-200);
+  --multiselect-menu-shadow: var(--shadow-lg);
+  --multiselect-option-hover: var(--color-slate-50);
+}
+
+/**
+ * =============================================================================
+ * Base Structure
+ * =============================================================================
+ */
+
+.bk-multiselect {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.bk-multiselect__error-message {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  color: var(--multiselect-error-border-color);
+}
+
+.bk-multiselect__hint {
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  color: var(--color-slate-500);
+}
+
+/* Error state on parent changes label color */
+
+.bk-multiselect:has(.bk-multiselect__container--error) .bk-multiselect__label {
+  color: var(--multiselect-error-color);
+}
+
+/**
+ * =============================================================================
+ * Labels
+ * =============================================================================
+ */
+
+.bk-multiselect__label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-slate-700);
+  line-height: 1.25rem;
+}
+
+.bk-multiselect__label-row {
+  display: flex;
+  align-items: center;
+}
+
+.bk-multiselect__corner-hint {
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--color-slate-500);
+}
+
+/* Inline label styles */
+
+.bk-multiselect__label--inset,
+.bk-multiselect__label--overlap {
+  position: absolute;
+  left: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--color-slate-500);
+  pointer-events: none;
+}
+
+.bk-multiselect__label--inset {
+  top: 0.35rem;
+  z-index: 1;
+}
+
+.bk-multiselect__label--overlap {
+  top: -0.5rem;
+  background-color: #ffffff;
+  background-color: var(--multiselect-bg);
+  padding: 0 0.5rem;
+  display: inline-block;
+  border-radius: 0.25rem;
+  z-index: 20;
+}
+
+/**
+ * =============================================================================
+ * Container & Control
+ * =============================================================================
+ */
+
+.bk-multiselect__container {
+  position: relative;
+  width: 100%;
+  border-radius: 0.375rem;
+  border-radius: var(--multiselect-border-radius);
+  transition: box-shadow 0.15s ease-in-out;
+  background-color: #ffffff;
+  background-color: var(--multiselect-bg);
+}
+
+.bk-multiselect__container:focus-within {
+    box-shadow: 0 0 0 2px var(--multiselect-focus-ring-color);
+    z-index: 5;
+  }
+
+.bk-multiselect__control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  border-radius: 0.375rem;
+  border-radius: var(--multiselect-border-radius);
+  border: 1px solid var(--multiselect-border-color);
+  background-color: #ffffff;
+  background-color: var(--multiselect-bg);
+  color: var(--multiselect-color);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: var(--multiselect-transition);
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  padding-right: 2.5rem;
+  cursor: pointer;
+  line-height: 1.5;
+  text-align: left;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+}
+
+.bk-multiselect__control:focus {
+    outline: none;
+    border-color: var(--multiselect-focus-border-color);
+    box-shadow: none;
+  }
+
+.bk-multiselect__control:disabled {
+    background-color: var(--color-slate-50);
+    color: var(--color-slate-500);
+    cursor: not-allowed;
+  }
+
+.bk-multiselect__control:hover:not(:disabled) {
+    border-color: var(--multiselect-hover-border-color);
+  }
+
+.bk-multiselect__value {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.bk-multiselect__placeholder {
+  color: var(--color-slate-400);
+}
+
+/**
+ * =============================================================================
+ * Chips (Selected Items)
+ * =============================================================================
+ */
+
+.bk-multiselect__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--multiselect-chip-bg);
+  color: var(--multiselect-chip-text);
+  border: 1px solid var(--multiselect-chip-border);
+  font-size: 0.75rem;
+}
+
+.bk-multiselect__chip-remove {
+  border: none;
+  background: transparent;
+  color: var(--color-slate-500);
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.bk-multiselect__chip-remove:hover {
+    color: var(--color-slate-700);
+  }
+
+/**
+ * =============================================================================
+ * Icons & Indicators
+ * =============================================================================
+ */
+
+.bk-multiselect__icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--color-slate-400);
+  pointer-events: none;
+}
+
+.bk-multiselect__chevron {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--color-slate-400);
+  pointer-events: none;
+  transition:
+    transform var(--transition-fast), color 0.2s ease;
+}
+
+.bk-multiselect__chevron--open {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.bk-multiselect__error-icon {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--multiselect-error-border-color);
+  pointer-events: none;
+  z-index: 15;
+}
+
+.bk-multiselect__error-icon svg {
+    display: block;
+    image-rendering: crisp-edges;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 1rem;
+    height: 1rem;
+  }
+
+/**
+ * =============================================================================
+ * Dropdown Menu
+ * =============================================================================
+ */
+
+.bk-multiselect__menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 0.5rem;
+  background-color: white;
+  background-color: var(--multiselect-menu-bg);
+  border: 1px solid var(--multiselect-menu-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--multiselect-menu-shadow);
+  max-height: 16rem;
+  overflow-y: auto;
+  padding: 0.25rem;
+  z-index: 50;
+}
+
+.bk-multiselect__option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: var(--color-slate-700);
+}
+
+.bk-multiselect__option:hover {
+    background-color: var(--multiselect-option-hover);
+  }
+
+.bk-multiselect__option--selected {
+  background-color: var(--color-slate-100);
+  color: var(--color-slate-900);
+}
+
+.bk-multiselect__option-check {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-slate-300);
+  background-color: white;
+  flex-shrink: 0;
+}
+
+.bk-multiselect__option--selected .bk-multiselect__option-check {
+  background-color: var(--color-primary-600);
+  border-color: var(--color-primary-600);
+  box-shadow: inset 0 0 0 2px white;
+}
+
+/**
+ * =============================================================================
+ * Control Modifiers
+ * =============================================================================
+ */
+
+.bk-multiselect__control--with-icon {
+  padding-left: 2.5rem;
+}
+
+.bk-multiselect__control--label-inset {
+  padding-top: 1.25rem;
+}
+
+.bk-multiselect__control--label-overlap {
+  padding-top: 0.75rem;
+}
+
+/* Icon label positioning adjustment */
+
+.bk-multiselect__container--with-icon .bk-multiselect__label--inset,
+  .bk-multiselect__container--with-icon .bk-multiselect__label--overlap {
+    left: 2.5rem;
+  }
+
+/**
+ * =============================================================================
+ * Size Variants
+ * =============================================================================
+ */
+
+.bk-multiselect__control--sm {
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+  padding-top: var(--multiselect-py-sm);
+  padding-bottom: var(--multiselect-py-sm);
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  padding-left: var(--multiselect-px-sm);
+  padding-right: var(--multiselect-px-sm);
+  padding-right: 2.25rem;
+  font-size: 0.875rem;
+  font-size: var(--multiselect-fs-sm);
+}
+
+.bk-multiselect__control--md {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-top: var(--multiselect-py-md);
+  padding-bottom: var(--multiselect-py-md);
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
+  padding-left: var(--multiselect-px-md);
+  padding-right: var(--multiselect-px-md);
+  padding-right: 2.5rem;
+  font-size: 0.9375rem;
+  font-size: var(--multiselect-fs-md);
+}
+
+.bk-multiselect__control--lg {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-top: var(--multiselect-py-lg);
+  padding-bottom: var(--multiselect-py-lg);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-left: var(--multiselect-px-lg);
+  padding-right: var(--multiselect-px-lg);
+  padding-right: 2.75rem;
+  font-size: 1rem;
+  font-size: var(--multiselect-fs-lg);
+}
+
+/* Icon padding by size */
+
+.bk-multiselect__control--with-icon.bk-multiselect__control--sm {
+  padding-left: 2.25rem;
+}
+
+.bk-multiselect__control--with-icon.bk-multiselect__control--md {
+  padding-left: 2.5rem;
+}
+
+.bk-multiselect__control--with-icon.bk-multiselect__control--lg {
+  padding-left: 2.75rem;
+}
+
+/* Error icon sizing */
+
+.bk-multiselect__container--sm .bk-multiselect__error-icon {
+  width: 2rem;
+}
+
+.bk-multiselect__container--sm .bk-multiselect__error-icon svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+.bk-multiselect__container--md .bk-multiselect__error-icon {
+  width: 2.25rem;
+}
+
+.bk-multiselect__container--md .bk-multiselect__error-icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+.bk-multiselect__container--lg .bk-multiselect__error-icon {
+  width: 2.75rem;
+}
+
+.bk-multiselect__container--lg .bk-multiselect__error-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+/* Error icon control padding adjustment */
+
+.bk-multiselect__container--sm .bk-multiselect__control--has-error-icon {
+  padding-right: 2rem;
+}
+
+.bk-multiselect__container--md .bk-multiselect__control--has-error-icon {
+  padding-right: 2.25rem;
+}
+
+.bk-multiselect__container--lg .bk-multiselect__control--has-error-icon {
+  padding-right: 2.75rem;
+}
+
+/* Label padding by size + label variant */
+
+.bk-multiselect__container--sm .bk-multiselect__control--label-inset {
+    padding-top: 1rem;
+  }
+
+.bk-multiselect__container--sm .bk-multiselect__control--label-overlap {
+    padding-top: 0.75rem;
+  }
+
+.bk-multiselect__container--sm.bk-multiselect__container--with-icon .bk-multiselect__label--inset,
+    .bk-multiselect__container--sm.bk-multiselect__container--with-icon .bk-multiselect__label--overlap {
+      left: 2.25rem;
+    }
+
+.bk-multiselect__container--md .bk-multiselect__control--label-inset {
+    padding-top: 1.25rem;
+  }
+
+.bk-multiselect__container--md .bk-multiselect__control--label-overlap {
+    padding-top: 1rem;
+  }
+
+.bk-multiselect__container--md.bk-multiselect__container--with-icon .bk-multiselect__label--inset,
+    .bk-multiselect__container--md.bk-multiselect__container--with-icon .bk-multiselect__label--overlap {
+      left: 2.5rem;
+    }
+
+.bk-multiselect__container--lg .bk-multiselect__control--label-inset {
+    padding-top: 1.5rem;
+  }
+
+.bk-multiselect__container--lg .bk-multiselect__control--label-overlap {
+    padding-top: 1.25rem;
+  }
+
+.bk-multiselect__container--lg.bk-multiselect__container--with-icon .bk-multiselect__label--inset,
+    .bk-multiselect__container--lg.bk-multiselect__container--with-icon .bk-multiselect__label--overlap {
+      left: 2.75rem;
+    }
+
+/**
+ * =============================================================================
+ * Color Variants
+ * =============================================================================
+ */
+
+/* Error variant */
+
+.bk-multiselect__control--error,
+.bk-multiselect__control[aria-invalid="true"] {
+  border-color: var(--multiselect-error-border-color);
+  color: var(--multiselect-error-color);
+}
+
+:is(.bk-multiselect__control--error,.bk-multiselect__control[aria-invalid="true"]) .bk-multiselect__placeholder {
+    color: var(--multiselect-error-color);
+  }
+
+:is(.bk-multiselect__control--error,.bk-multiselect__control[aria-invalid="true"]):focus {
+    box-shadow: none;
+  }
+
+.bk-multiselect__container--error .bk-multiselect__control {
+    border-color: var(--multiselect-error-border-color);
+  }
+
+.bk-multiselect__container--error .bk-multiselect__label--inset,
+  .bk-multiselect__container--error .bk-multiselect__label--overlap {
+    color: var(--multiselect-error-color);
+  }
+
+.bk-multiselect__container--error .bk-multiselect__chevron,
+  .bk-multiselect__container--error .bk-multiselect__icon {
+    color: var(--multiselect-error-color);
+  }
+
+.bk-multiselect__container--error .bk-multiselect__chevron {
+    right: 0.625rem;
+  }
+
+.bk-multiselect__container--error:focus-within {
+    box-shadow: 0 0 0 2px var(--multiselect-error-ring-color);
+  }
+
+/* Primary variant */
+
+.bk-multiselect__control--primary {
+  border-color: var(--multiselect-primary-border-color);
+}
+
+.bk-multiselect__container--primary .bk-multiselect__control {
+    border-color: var(--multiselect-primary-border-color);
+  }
+
+.bk-multiselect__container--primary .bk-multiselect__chevron,
+  .bk-multiselect__container--primary .bk-multiselect__icon {
+    color: var(--multiselect-primary-border-color);
+  }
+
+.bk-multiselect__container--primary:focus-within {
+    box-shadow: 0 0 0 2px var(--multiselect-primary-ring-color);
+  }
+
+/* Secondary variant */
+
+.bk-multiselect__control--secondary {
+  border-color: var(--multiselect-secondary-border-color);
+}
+
+.bk-multiselect__container--secondary .bk-multiselect__control {
+    border-color: var(--multiselect-secondary-border-color);
+  }
+
+.bk-multiselect__container--secondary .bk-multiselect__chevron,
+  .bk-multiselect__container--secondary .bk-multiselect__icon {
+    color: var(--multiselect-secondary-border-color);
+  }
+
+.bk-multiselect__container--secondary:focus-within {
+    box-shadow: 0 0 0 2px var(--multiselect-secondary-ring-color);
+  }
+
+/* Success variant */
+
+.bk-multiselect__control--success {
+  border-color: var(--multiselect-success-border-color);
+}
+
+.bk-multiselect__container--success .bk-multiselect__control {
+    border-color: var(--multiselect-success-border-color);
+  }
+
+.bk-multiselect__container--success .bk-multiselect__chevron,
+  .bk-multiselect__container--success .bk-multiselect__icon {
+    color: var(--multiselect-success-border-color);
+  }
+
+.bk-multiselect__container--success:focus-within {
+    box-shadow: 0 0 0 2px var(--multiselect-success-ring-color);
+  }
+
+/* Warning variant */
+
+.bk-multiselect__control--warning {
+  border-color: var(--multiselect-warning-border-color);
+}
+
+.bk-multiselect__container--warning .bk-multiselect__control {
+    border-color: var(--multiselect-warning-border-color);
+  }
+
+.bk-multiselect__container--warning .bk-multiselect__chevron,
+  .bk-multiselect__container--warning .bk-multiselect__icon {
+    color: var(--multiselect-warning-border-color);
+  }
+
+.bk-multiselect__container--warning:focus-within {
+    box-shadow: 0 0 0 2px var(--multiselect-warning-ring-color);
+  }
+
+/* Danger variant */
+
+.bk-multiselect__control--danger {
+  border-color: var(--multiselect-danger-border-color);
+}
+
+.bk-multiselect__container--danger .bk-multiselect__control {
+    border-color: var(--multiselect-danger-border-color);
+  }
+
+.bk-multiselect__container--danger .bk-multiselect__chevron {
+    color: var(--multiselect-danger-border-color);
+  }
+
+.bk-multiselect__container--danger:focus-within {
+    box-shadow: 0 0 0 2px var(--multiselect-danger-ring-color);
+  }
+
+/* Info variant */
+
+.bk-multiselect__control--info {
+  border-color: var(--multiselect-info-border-color);
+}
+
+.bk-multiselect__container--info .bk-multiselect__control {
+    border-color: var(--multiselect-info-border-color);
+  }
+
+.bk-multiselect__container--info .bk-multiselect__chevron,
+  .bk-multiselect__container--info .bk-multiselect__icon {
+    color: var(--multiselect-info-border-color);
+  }
+
+.bk-multiselect__container--info:focus-within {
+    box-shadow: 0 0 0 2px var(--multiselect-info-ring-color);
+  }
+
+/* Ghost variant */
+
+.bk-multiselect__control--ghost {
+  background-color: transparent;
+  background-color: var(--multiselect-ghost-bg);
+  border-color: transparent;
+  border-color: var(--multiselect-ghost-border-color);
+  box-shadow: none;
+}
+
+.bk-multiselect__container--ghost:focus-within {
+  box-shadow: 0 0 0 2px var(--multiselect-ghost-ring-color);
+}
+
+/**
+ * =============================================================================
+ * Style Variants
+ * =============================================================================
+ */
+
+/* Underline variant */
+
+.bk-multiselect__container--underline {
+  border-radius: 0;
+}
+
+.bk-multiselect__control--underline {
+  background-color: var(--color-slate-50);
+  border-width: 0 0 1px 0;
+  border-radius: 0;
+  border-style: solid;
+  border-color: var(--multiselect-border-color);
+  box-shadow: none;
+}
+
+.bk-multiselect__control--underline:focus {
+    border-bottom-color: var(--multiselect-focus-border-color);
+    box-shadow: none;
+  }
+
+/* Pill variant */
+
+.bk-multiselect__container--pill {
+  border-radius: 9999px;
+}
+
+.bk-multiselect__control--pill {
+  border-radius: 9999px;
+}

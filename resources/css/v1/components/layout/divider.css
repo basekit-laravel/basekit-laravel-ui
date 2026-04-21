@@ -1,0 +1,92 @@
+/* =============================================================================
+   Divider Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --divider-color: var(--color-slate-200);
+  --divider-color-light: var(--color-slate-100);
+  --divider-color-default: var(--color-slate-200);
+  --divider-color-dark: var(--color-slate-400);
+  --divider-label-bg: var(--surface-base);
+  --divider-label-color: var(--color-slate-500);
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-divider {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.bk-divider-tone--light {
+  --divider-color: var(--divider-color-light);
+}
+
+.bk-divider-tone--default {
+  --divider-color: var(--divider-color-default);
+}
+
+.bk-divider-tone--dark {
+  --divider-color: var(--divider-color-dark);
+}
+
+.bk-divider__label {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding-inline: 0.75rem;
+  background-color: var(--divider-label-bg);
+  font-size: var(--font-size-sm);
+  color: var(--divider-label-color);
+  white-space: nowrap;
+}
+
+/* =============================================================================
+   Orientation Modifiers
+   ============================================================================= */
+
+.bk-divider--horizontal {
+  width: 100%;
+  height: 1px;
+}
+
+.bk-divider--vertical {
+  width: 1px;
+  height: 100%;
+
+  &.bk-divider--dashed {
+    border-top: none;
+    border-left: 1px dashed var(--divider-color);
+  }
+
+  &.bk-divider--dotted {
+    border-top: none;
+    border-left: 1px dotted var(--divider-color);
+  }
+}
+
+/* =============================================================================
+   Style Modifiers
+   ============================================================================= */
+
+.bk-divider--solid {
+  background-color: var(--divider-color);
+}
+
+.bk-divider--dashed {
+  border-top: 1px dashed var(--divider-color);
+  background: none;
+}
+
+.bk-divider--dotted {
+  border-top: 1px dotted var(--divider-color);
+  background: none;
+}

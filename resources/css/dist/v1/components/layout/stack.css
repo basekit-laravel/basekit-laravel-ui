@@ -1,0 +1,108 @@
+/* =============================================================================
+   Stack Component
+   ============================================================================= */
+
+/* =============================================================================
+  Design Tokens
+  ============================================================================= */
+
+:root {
+  --stack-gap-xs: 0.25rem;
+  --stack-gap-sm: 0.5rem;
+  --stack-gap-md: 1rem;
+  --stack-gap-lg: 1.5rem;
+  --stack-gap-xl: 2rem;
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-stack {
+  display: flex;
+}
+
+/* =============================================================================
+   Direction Modifiers
+   ============================================================================= */
+
+.bk-stack--vertical {
+  flex-direction: column;
+}
+
+.bk-stack--horizontal {
+  flex-direction: row;
+}
+
+/* =============================================================================
+   Spacing Modifiers
+   ============================================================================= */
+
+.bk-stack--spacing-xs {
+  gap: 0.25rem;
+  gap: var(--stack-gap-xs);
+}
+
+.bk-stack--spacing-sm {
+  gap: 0.5rem;
+  gap: var(--stack-gap-sm);
+}
+
+.bk-stack--spacing-md {
+  gap: 1rem;
+  gap: var(--stack-gap-md);
+}
+
+.bk-stack--spacing-lg {
+  gap: 1.5rem;
+  gap: var(--stack-gap-lg);
+}
+
+.bk-stack--spacing-xl {
+  gap: 2rem;
+  gap: var(--stack-gap-xl);
+}
+
+/* =============================================================================
+   Alignment Modifiers
+   ============================================================================= */
+
+.bk-stack--align-start {
+  align-items: flex-start;
+}
+
+.bk-stack--align-center {
+  align-items: center;
+}
+
+.bk-stack--align-end {
+  align-items: flex-end;
+}
+
+.bk-stack--align-stretch {
+  align-items: stretch;
+}
+
+/* =============================================================================
+   Justify Modifiers
+   ============================================================================= */
+
+.bk-stack--justify-start {
+  justify-content: flex-start;
+}
+
+.bk-stack--justify-center {
+  justify-content: center;
+}
+
+.bk-stack--justify-end {
+  justify-content: flex-end;
+}
+
+.bk-stack--justify-between {
+  justify-content: space-between;
+}
+
+.bk-stack--justify-around {
+  justify-content: space-around;
+}

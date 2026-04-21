@@ -1,0 +1,670 @@
+/* =============================================================================
+   Navigation Components
+   ============================================================================= */
+
+/* =============================================================================
+   Breadcrumb Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --breadcrumb-separator-color: var(--color-slate-400);
+  --breadcrumb-link-color: var(--color-primary-600);
+  --breadcrumb-current-color: var(--color-slate-700);
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-breadcrumb {
+  font-size: var(--font-size-sm);
+}
+
+.bk-breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bk-breadcrumb__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bk-breadcrumb__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--breadcrumb-link-color);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.bk-breadcrumb__link:hover {
+    text-decoration: underline;
+  }
+
+.bk-breadcrumb__current {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  color: var(--breadcrumb-current-color);
+  font-weight: var(--font-weight-medium);
+}
+
+.bk-breadcrumb__icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--breadcrumb-current-color);
+  flex-shrink: 0;
+}
+
+.bk-breadcrumb__separator {
+  width: 1rem;
+  height: 1rem;
+  color: var(--breadcrumb-separator-color);
+  flex-shrink: 0;
+}
+
+/* =============================================================================
+   Size Modifiers
+   ============================================================================= */
+
+.bk-breadcrumb--sm {
+  font-size: var(--font-size-xs);
+}
+
+.bk-breadcrumb--sm .bk-breadcrumb__list,
+  .bk-breadcrumb--sm .bk-breadcrumb__item {
+    gap: 0.375rem;
+  }
+
+.bk-breadcrumb--sm .bk-breadcrumb__icon,
+  .bk-breadcrumb--sm .bk-breadcrumb__separator {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+.bk-breadcrumb--md {
+  font-size: var(--font-size-sm);
+}
+
+.bk-breadcrumb--lg {
+  font-size: var(--font-size-base);
+}
+
+.bk-breadcrumb--lg .bk-breadcrumb__list,
+  .bk-breadcrumb--lg .bk-breadcrumb__item {
+    gap: 0.625rem;
+  }
+
+.bk-breadcrumb--lg .bk-breadcrumb__link,
+  .bk-breadcrumb--lg .bk-breadcrumb__current {
+    gap: 0.5rem;
+  }
+
+.bk-breadcrumb--lg .bk-breadcrumb__icon,
+  .bk-breadcrumb--lg .bk-breadcrumb__separator {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+/* =============================================================================
+   Pagination Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --pagination-bg: var(--surface-base);
+  --pagination-border: var(--color-slate-300);
+  --pagination-text: var(--color-slate-700);
+  --pagination-hover-bg: var(--color-slate-50);
+  --pagination-active-bg: var(--color-primary-600);
+  --pagination-active-text: white;
+  --pagination-disabled-text: var(--color-slate-400);
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-pagination {
+  font-size: var(--font-size-sm);
+}
+
+.bk-pagination__container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bk-pagination__previous,
+.bk-pagination__next {
+  flex-shrink: 0;
+}
+
+.bk-pagination__pages {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.bk-pagination__link,
+.bk-pagination__number {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--pagination-border);
+  background-color: var(--pagination-bg);
+  color: var(--pagination-text);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.bk-pagination__link:hover, .bk-pagination__number:hover {
+    background-color: var(--pagination-hover-bg);
+  }
+
+.bk-pagination__number--active {
+  background-color: var(--pagination-active-bg);
+  color: white;
+  color: var(--pagination-active-text);
+  border-color: var(--pagination-active-bg);
+}
+
+.bk-pagination__number--active:hover {
+    background-color: var(--color-primary-700);
+  }
+
+.bk-pagination__link--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.bk-pagination__ellipsis {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  color: var(--pagination-disabled-text);
+}
+
+.bk-pagination__meta {
+  margin-top: 0.5rem;
+  padding-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.bk-pagination__info {
+  font-size: var(--font-size-sm);
+  color: var(--color-slate-600);
+}
+
+.bk-pagination__per-page {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bk-pagination__per-page-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-slate-700);
+}
+
+.bk-pagination__per-page-select {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--pagination-border);
+  background-color: var(--pagination-bg);
+  color: var(--pagination-text);
+  padding: 0.375rem 0.5rem;
+}
+
+/* =============================================================================
+   Tabs Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --tabs-border: var(--color-slate-200);
+  --tabs-active-border: var(--color-primary-600);
+  --tabs-text: var(--color-slate-600);
+  --tabs-active-text: var(--color-primary-600);
+  --tabs-hover-text: var(--color-slate-900);
+  --tabs-pills-radius: var(--radius-lg);
+  --tabs-pills-active-bg: var(--color-primary-100);
+  --tabs-boxed-bg: var(--color-slate-100);
+  --tabs-boxed-radius: var(--radius-lg);
+  --tabs-boxed-tab-radius: var(--radius-md);
+  --tabs-boxed-active-bg: var(--surface-base);
+  --tabs-boxed-active-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-tabs {
+  width: 100%;
+}
+
+.bk-tabs__list {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.bk-tabs__list .bk-tabs__tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    background: transparent;
+    border: none;
+  }
+
+.bk-tabs__list .bk-tabs__tab-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+.bk-tabs__list .bk-tabs__tab--inactive {
+    color: var(--tabs-text);
+  }
+
+.bk-tabs__list .bk-tabs__tab--inactive:hover {
+      color: var(--tabs-hover-text);
+    }
+
+.bk-tabs__list .bk-tabs__tab--active {
+    color: var(--tabs-active-text);
+  }
+
+/* =============================================================================
+   Variant Modifiers
+   ============================================================================= */
+
+.bk-tabs__list--underline {
+  border-bottom: 2px solid var(--tabs-border);
+}
+
+.bk-tabs__list--underline .bk-tabs__tab {
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+  }
+
+.bk-tabs__list--underline .bk-tabs__tab--active {
+    border-bottom-color: var(--tabs-active-border);
+  }
+
+.bk-tabs__list--pills .bk-tabs__tab {
+    border-radius: var(--tabs-pills-radius);
+  }
+
+.bk-tabs__list--pills .bk-tabs__tab--active {
+    background-color: var(--tabs-pills-active-bg);
+  }
+
+.bk-tabs__list--boxed {
+  background-color: var(--tabs-boxed-bg);
+  border-radius: var(--tabs-boxed-radius);
+  padding: 0.25rem;
+}
+
+.bk-tabs__list--boxed .bk-tabs__tab {
+    border-radius: var(--tabs-boxed-tab-radius);
+  }
+
+.bk-tabs__list--boxed .bk-tabs__tab--active {
+    background-color: var(--tabs-boxed-active-bg);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: var(--tabs-boxed-active-shadow);
+  }
+
+/* =============================================================================
+   Dropdown Menu Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --dropdown-bg: var(--surface-base);
+  --dropdown-trigger-bg: var(--surface-base);
+  --dropdown-trigger-text: var(--color-slate-700);
+  --dropdown-trigger-hover-bg: var(--color-slate-50);
+  --dropdown-trigger-hover-border: var(--color-slate-300);
+  --dropdown-trigger-focus-ring: var(--color-primary-100);
+  --dropdown-border: var(--color-slate-200);
+  --dropdown-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --dropdown-trigger-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --dropdown-item-hover-bg: var(--color-slate-50);
+  --dropdown-item-text: var(--color-slate-700);
+  --dropdown-item-icon: var(--color-slate-500);
+  --dropdown-item-radius: var(--radius-sm);
+  --dropdown-radius: var(--radius-md);
+  --dropdown-submenu-offset: 0.5rem;
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.bk-dropdown .bk-dropdown__trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
+    border-radius: var(--dropdown-radius);
+    border: 1px solid var(--dropdown-border);
+    background-color: var(--dropdown-trigger-bg);
+    color: var(--dropdown-trigger-text);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.25;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    box-shadow: var(--dropdown-trigger-shadow);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+.bk-dropdown .bk-dropdown__trigger:hover {
+      background-color: var(--dropdown-trigger-hover-bg);
+      border-color: var(--dropdown-trigger-hover-border);
+    }
+
+.bk-dropdown .bk-dropdown__trigger:focus {
+      outline: none;
+    }
+
+.bk-dropdown .bk-dropdown__trigger:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px var(--dropdown-trigger-focus-ring);
+    }
+
+.bk-dropdown .bk-dropdown__trigger-icon {
+    width: 1rem;
+    height: 1rem;
+    color: var(--dropdown-item-icon);
+    transition: transform var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+.bk-dropdown .bk-dropdown__menu[role="menu"] {
+    padding: 0.25rem;
+  }
+
+.bk-dropdown .bk-dropdown__menu[role="menu"] .bk-dropdown__separator {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+
+.bk-dropdown .bk-dropdown__menu[role="menu"] .bk-dropdown__item {
+    border-radius: var(--dropdown-item-radius);
+  }
+
+.bk-dropdown .bk-dropdown__submenu-panel[role="menu"] {
+    padding: 0.25rem;
+  }
+
+.bk-dropdown .bk-dropdown__submenu-panel[role="menu"] .bk-dropdown__separator {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+
+.bk-dropdown .bk-dropdown__submenu-panel[role="menu"] .bk-dropdown__item {
+    border-radius: var(--dropdown-item-radius);
+  }
+
+.bk-dropdown .bk-dropdown__menu {
+    position: absolute;
+    z-index: 50;
+    min-width: 12rem;
+    margin-top: 0.5rem;
+    background-color: var(--dropdown-bg);
+    border: 1px solid var(--dropdown-border);
+    border-radius: var(--dropdown-radius);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--dropdown-shadow);
+    overflow: visible;
+  }
+
+.bk-dropdown__submenu {
+  position: relative;
+}
+
+.bk-dropdown__submenu-panel {
+  position: absolute;
+  z-index: 60;
+  top: -0.25rem;
+  min-width: 12rem;
+  background-color: var(--dropdown-bg);
+  border: 1px solid var(--dropdown-border);
+  border-radius: var(--dropdown-radius);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--dropdown-shadow);
+  overflow: visible;
+}
+
+.bk-dropdown__submenu-panel--right {
+  left: calc(100% + 0.5rem);
+  left: calc(100% + var(--dropdown-submenu-offset));
+}
+
+.bk-dropdown__submenu-panel--left {
+  right: calc(100% + 0.5rem);
+  right: calc(100% + var(--dropdown-submenu-offset));
+}
+
+/* =============================================================================
+   Position Modifiers
+   ============================================================================= */
+
+.bk-dropdown__menu--bottom-left {
+  top: 100%;
+  left: 0;
+}
+
+.bk-dropdown__menu--bottom-right {
+  top: 100%;
+  right: 0;
+}
+
+.bk-dropdown__menu--top-left {
+  bottom: 100%;
+  left: 0;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.bk-dropdown__menu--top-right {
+  bottom: 100%;
+  right: 0;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* =============================================================================
+   Menu Elements
+   ============================================================================= */
+
+.bk-dropdown__separator {
+  height: 1px;
+  background-color: var(--dropdown-border);
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.bk-dropdown__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: var(--font-size-sm);
+  color: var(--dropdown-item-text);
+  text-decoration: none;
+  transition: background-color var(--transition-fast);
+  cursor: pointer;
+}
+
+.bk-dropdown__item:hover {
+    background-color: var(--dropdown-item-hover-bg);
+  }
+
+.bk-dropdown__item-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.bk-dropdown__item--submenu-trigger {
+  width: 100%;
+  justify-content: space-between;
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
+
+.bk-dropdown__submenu-toggle-icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--dropdown-item-icon);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.bk-dropdown__item-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--dropdown-item-icon);
+}
+
+.bk-dropdown__item--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* =============================================================================
+   Link Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --link-primary-color: var(--color-primary-600);
+  --link-secondary-color: var(--color-slate-700);
+  --link-success-color: var(--color-success-600);
+  --link-warning-color: var(--color-warning-600);
+  --link-danger-color: var(--color-danger-600);
+  --link-info-color: var(--color-info-600);
+  --link-ghost-color: var(--color-slate-500);
+  --link-muted-color: var(--color-slate-600);
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  text-decoration: underline;
+  transition: opacity var(--transition-fast);
+}
+
+.bk-link:hover {
+    opacity: 0.8;
+  }
+
+.bk-link[class*="bg-"] {
+  text-decoration: none;
+}
+
+.bk-link__icon,
+.bk-link__external-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* =============================================================================
+   Variant Modifiers
+   ============================================================================= */
+
+:where(.bk-link--primary):not([class*="text-"]) {
+  color: var(--link-primary-color);
+}
+
+:where(.bk-link--secondary):not([class*="text-"]) {
+  color: var(--link-secondary-color);
+}
+
+:where(.bk-link--success):not([class*="text-"]) {
+  color: var(--link-success-color);
+}
+
+:where(.bk-link--warning):not([class*="text-"]) {
+  color: var(--link-warning-color);
+}
+
+:where(.bk-link--muted):not([class*="text-"]) {
+  color: var(--link-muted-color);
+}
+
+:where(.bk-link--danger):not([class*="text-"]) {
+  color: var(--link-danger-color);
+}
+
+:where(.bk-link--info):not([class*="text-"]) {
+  color: var(--link-info-color);
+}
+
+:where(.bk-link--ghost):not([class*="text-"]) {
+  color: var(--link-ghost-color);
+}

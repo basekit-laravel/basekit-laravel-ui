@@ -1,0 +1,71 @@
+name: Documentation Issue
+description: Report missing, incorrect, or unclear documentation
+title: "[Docs]: "
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve our documentation!
+
+  - type: dropdown
+    id: section
+    attributes:
+      label: Documentation Section
+      description: Which section of the docs needs improvement?
+      options:
+        - Installation
+        - Getting Started
+        - Component Quick Reference
+        - Theming
+        - Performance
+        - Contributing
+        - Styleguide
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Issue Type
+      description: What kind of documentation issue is this?
+      options:
+        - Missing Information
+        - Incorrect Information
+        - Unclear Explanation
+        - Broken Link
+        - Code Example Issue
+        - Typo/Grammar
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Page URL
+      description: Link to the documentation page (if applicable)
+      placeholder: https://basekit.github.io/basekit-laravel-ui/...
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Issue Description
+      description: Describe the documentation problem
+      placeholder: The documentation for X is unclear because...
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested Improvement
+      description: How should the documentation be improved?
+      placeholder: It should explain...
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Any other context or screenshots

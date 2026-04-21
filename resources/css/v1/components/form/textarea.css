@@ -1,0 +1,477 @@
+/* =============================================================================
+  Textarea Component
+  ============================================================================= */
+
+/* =============================================================================
+  Design Tokens
+  ============================================================================= */
+:root {
+  --textarea-radius: var(--radius-md);
+  --textarea-transition:
+    border-color var(--transition-normal) ease,
+    box-shadow var(--transition-normal) ease;
+
+  /* Sizes */
+  --textarea-padding-y-sm: 0.375rem;
+  --textarea-padding-x-sm: 0.75rem;
+  --textarea-font-size-sm: var(--font-size-sm);
+
+  --textarea-padding-y-md: 0.625rem;
+  --textarea-padding-x-md: 0.875rem;
+  --textarea-font-size-md: var(--font-size-md);
+
+  --textarea-padding-y-lg: 0.75rem;
+  --textarea-padding-x-lg: 1rem;
+  --textarea-font-size-lg: var(--font-size-lg);
+
+  /* Colors */
+  --textarea-bg: var(--surface-base);
+  --textarea-border: var(--color-slate-300);
+  --textarea-text: var(--color-slate-900);
+  --textarea-placeholder: var(--color-slate-400);
+
+  --textarea-focus-border: var(--color-primary-500);
+  --textarea-focus-ring: var(--color-primary-100);
+
+  --textarea-primary-border: var(--color-primary-500);
+  --textarea-primary-ring: var(--color-primary-100);
+
+  --textarea-secondary-border: var(--color-slate-300);
+  --textarea-secondary-ring: var(--color-slate-100);
+
+  --textarea-error-border: var(--color-danger-500);
+  --textarea-error-ring: var(--color-danger-100);
+
+  --textarea-success-border: var(--color-success-500);
+  --textarea-success-ring: var(--color-success-100);
+
+  --textarea-warning-border: var(--color-warning-500);
+  --textarea-warning-ring: var(--color-warning-100);
+
+  --textarea-danger-border: var(--color-danger-500);
+  --textarea-danger-ring: var(--color-danger-100);
+
+  --textarea-info-border: var(--color-info-500);
+  --textarea-info-ring: var(--color-info-100);
+
+  --textarea-ghost-border: transparent;
+  --textarea-ghost-ring: var(--color-slate-100);
+  --textarea-ghost-bg: transparent;
+}
+
+/**
+ * =============================================================================
+ * Base Structure
+ * =============================================================================
+ */
+.bk-textarea {
+  margin-bottom: 1rem;
+  width: 100%;
+
+  .bk-textarea__label {
+    display: block;
+    margin-bottom: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-slate-700);
+    line-height: 1.25rem;
+  }
+
+  .bk-textarea__label-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.bk-textarea__corner-hint {
+  margin-inline-start: auto;
+  font-size: 0.75rem;
+  color: var(--color-slate-500);
+}
+
+.bk-textarea__label--inset,
+.bk-textarea__label--overlap {
+  position: absolute;
+  inset-inline-start: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--color-slate-500);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.bk-textarea__label--inset {
+  top: 0.35rem;
+}
+
+.bk-textarea__label--overlap {
+  top: -0.5rem;
+  background-color: var(--textarea-bg);
+  padding: 0 0.5rem;
+  display: inline-block;
+  border-radius: 0.25rem;
+  z-index: 3;
+}
+
+.bk-textarea:has(.bk-textarea__container--error) .bk-textarea__label {
+  color: var(--color-danger-700);
+}
+
+/**
+ * =============================================================================
+ * Container & Control
+ * =============================================================================
+ */
+.bk-textarea__container {
+  display: flex;
+  position: relative;
+  width: 100%;
+  border-radius: var(--textarea-radius);
+  transition: box-shadow var(--transition-fast) ease-in-out;
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--textarea-focus-ring);
+    z-index: 5;
+  }
+
+  &:has(:disabled) .bk-textarea__control {
+    background-color: var(--color-slate-50);
+    color: var(--color-slate-500);
+    border-color: var(--color-slate-200);
+    cursor: not-allowed;
+  }
+}
+
+.bk-textarea__control {
+  display: block;
+  width: 100%;
+  border-radius: var(--textarea-radius);
+  border: 1px solid var(--textarea-border);
+  background-color: var(--textarea-bg);
+  color: var(--textarea-text);
+  transition: var(--textarea-transition);
+  font-family: inherit;
+  line-height: 1.5;
+  resize: vertical;
+
+  &:focus {
+    outline: none;
+    border-color: var(--textarea-focus-border);
+    box-shadow: 0 0 0 2px var(--textarea-focus-ring);
+  }
+
+  &::placeholder {
+    color: var(--textarea-placeholder);
+  }
+
+  &:disabled {
+    background-color: var(--color-slate-50);
+    color: var(--color-slate-500);
+    cursor: not-allowed;
+  }
+
+  &.bk-textarea__control--underline {
+    background-color: var(--textarea-bg);
+    border-width: 0 0 1px 0;
+    border-radius: 0;
+    border-style: solid;
+    border-color: var(--textarea-border);
+
+    &:focus {
+      border-bottom-color: var(--textarea-focus-border);
+      box-shadow: none;
+    }
+  }
+}
+
+/**
+ * =============================================================================
+ * Control Modifiers
+ * =============================================================================
+ */
+.bk-textarea__control--label-inset {
+  padding-top: 1.25rem;
+}
+
+.bk-textarea__control--label-overlap {
+  padding-top: 0.75rem;
+}
+
+.bk-textarea__container--underline {
+  --textarea-bg: var(--color-slate-50);
+  border-radius: 0;
+}
+
+/**
+ * =============================================================================
+ * Size Modifiers
+ * =============================================================================
+ */
+.bk-textarea__control--sm {
+  padding-block: var(--textarea-padding-y-sm);
+  padding-inline: var(--textarea-padding-x-sm);
+  font-size: var(--textarea-font-size-sm);
+}
+
+.bk-textarea__control--md {
+  padding-block: var(--textarea-padding-y-md);
+  padding-inline: var(--textarea-padding-x-md);
+  font-size: var(--textarea-font-size-md);
+}
+
+.bk-textarea__control--lg {
+  padding-block: var(--textarea-padding-y-lg);
+  padding-inline: var(--textarea-padding-x-lg);
+  font-size: var(--textarea-font-size-lg);
+}
+
+.bk-textarea__container--sm {
+  .bk-textarea__control {
+    padding-block: var(--textarea-padding-y-sm);
+    padding-inline: var(--textarea-padding-x-sm);
+    font-size: var(--textarea-font-size-sm);
+  }
+
+  .bk-textarea__control--label-inset {
+    padding-top: 1rem;
+  }
+
+  .bk-textarea__control--label-overlap {
+    padding-top: 0.75rem;
+  }
+}
+
+.bk-textarea__container--md {
+  .bk-textarea__control {
+    padding-block: var(--textarea-padding-y-md);
+    padding-inline: var(--textarea-padding-x-md);
+    font-size: var(--textarea-font-size-md);
+  }
+
+  .bk-textarea__control--label-inset {
+    padding-top: 1.25rem;
+  }
+
+  .bk-textarea__control--label-overlap {
+    padding-top: 1rem;
+  }
+}
+
+.bk-textarea__container--lg {
+  .bk-textarea__control {
+    padding-block: var(--textarea-padding-y-lg);
+    padding-inline: var(--textarea-padding-x-lg);
+    font-size: var(--textarea-font-size-lg);
+  }
+
+  .bk-textarea__control--label-inset {
+    padding-top: 1.5rem;
+  }
+
+  .bk-textarea__control--label-overlap {
+    padding-top: 1.25rem;
+  }
+}
+
+/**
+ * =============================================================================
+ * Color Variants
+ * =============================================================================
+ */
+.bk-textarea__control--primary {
+  border-color: var(--textarea-primary-border);
+
+  &:focus {
+    border-color: var(--textarea-primary-border);
+    box-shadow: none;
+  }
+}
+
+.bk-textarea__container--primary {
+  .bk-textarea__control {
+    border-color: var(--textarea-primary-border);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--textarea-primary-ring);
+  }
+}
+
+.bk-textarea__control--secondary {
+  border-color: var(--textarea-secondary-border);
+
+  &:focus {
+    border-color: var(--textarea-secondary-border);
+    box-shadow: none;
+  }
+}
+
+.bk-textarea__container--secondary {
+  .bk-textarea__control {
+    border-color: var(--textarea-secondary-border);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--textarea-secondary-ring);
+  }
+}
+
+.bk-textarea__control--error,
+.bk-textarea__control[aria-invalid="true"] {
+  border-color: var(--textarea-error-border);
+
+  &:focus {
+    box-shadow: 0 0 0 4px var(--textarea-error-ring);
+  }
+}
+
+.bk-textarea__container--error {
+  .bk-textarea__control {
+    border-color: var(--textarea-error-border);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--textarea-error-ring);
+  }
+
+  .bk-textarea__label--inset,
+  .bk-textarea__label--overlap {
+    color: var(--color-danger-700);
+  }
+}
+
+.bk-textarea__control--success {
+  border-color: var(--textarea-success-border);
+}
+
+.bk-textarea__container--success {
+  .bk-textarea__control {
+    border-color: var(--textarea-success-border);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--textarea-success-ring);
+  }
+}
+
+.bk-textarea__control--warning {
+  border-color: var(--textarea-warning-border);
+}
+
+.bk-textarea__container--warning {
+  .bk-textarea__control {
+    border-color: var(--textarea-warning-border);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--textarea-warning-ring);
+  }
+}
+
+.bk-textarea__control--danger {
+  border-color: var(--textarea-danger-border);
+}
+
+.bk-textarea__container--danger {
+  .bk-textarea__control {
+    border-color: var(--textarea-danger-border);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--textarea-danger-ring);
+  }
+}
+
+.bk-textarea__control--info {
+  border-color: var(--textarea-info-border);
+}
+
+.bk-textarea__container--info {
+  .bk-textarea__control {
+    border-color: var(--textarea-info-border);
+  }
+
+  &:focus-within {
+    box-shadow: 0 0 0 2px var(--textarea-info-ring);
+  }
+}
+
+.bk-textarea__control--ghost {
+  background-color: var(--textarea-ghost-bg);
+  border-color: var(--textarea-ghost-border);
+  box-shadow: none;
+}
+
+.bk-textarea__container--ghost:focus-within {
+  box-shadow: 0 0 0 2px var(--textarea-ghost-ring);
+}
+
+/**
+ * =============================================================================
+ * Error Icon
+ * =============================================================================
+ */
+.bk-textarea__error-icon {
+  position: absolute;
+  inset-inline-end: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  color: var(--textarea-error-border, var(--color-danger-500));
+  pointer-events: none;
+  z-index: 2;
+}
+
+.bk-textarea__error-icon svg {
+  display: block;
+  image-rendering: crisp-edges;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.bk-textarea__container--sm .bk-textarea__error-icon {
+  width: 2rem;
+  padding-top: var(--textarea-padding-y-sm);
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.bk-textarea__container--md .bk-textarea__error-icon {
+  width: 2.25rem;
+  padding-top: var(--textarea-padding-y-md);
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+.bk-textarea__container--lg .bk-textarea__error-icon {
+  width: 2.75rem;
+  padding-top: var(--textarea-padding-y-lg);
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+/**
+ * =============================================================================
+ * Messages
+ * =============================================================================
+ */
+.bk-textarea__error-message {
+  margin-top: 0.375rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-danger-600);
+}
+
+.bk-textarea__hint {
+  margin-top: 0.375rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-slate-500);
+}

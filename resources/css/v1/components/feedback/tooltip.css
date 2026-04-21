@@ -1,0 +1,72 @@
+/* =============================================================================
+   Tooltip Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --tooltip-bg: var(--color-slate-900);
+  --tooltip-text: white;
+  --tooltip-radius: var(--radius-md);
+  --tooltip-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.bk-tooltip__trigger {
+  display: inline-block;
+}
+
+.bk-tooltip__content {
+  position: absolute;
+  z-index: 50;
+  padding-block: 0.5rem;
+  padding-inline: 0.75rem;
+  background-color: var(--tooltip-bg);
+  color: var(--tooltip-text);
+  font-size: var(--font-size-sm);
+  border-radius: var(--tooltip-radius);
+  box-shadow: var(--tooltip-shadow);
+  white-space: nowrap;
+}
+
+/* =============================================================================
+   Position Modifiers
+   ============================================================================= */
+
+.bk-tooltip__content--top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-block-end: 0.5rem;
+}
+
+.bk-tooltip__content--bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-block-start: 0.5rem;
+}
+
+.bk-tooltip__content--left {
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-inline-end: 0.5rem;
+}
+
+.bk-tooltip__content--right {
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-inline-start: 0.5rem;
+}

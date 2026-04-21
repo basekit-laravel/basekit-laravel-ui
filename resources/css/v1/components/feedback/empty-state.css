@@ -1,0 +1,209 @@
+/* =============================================================================
+   Empty State Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  /* Empty State - Base */
+  --empty-state-icon-color: var(--color-slate-400);
+  --empty-state-title-color: var(--color-slate-900);
+  --empty-state-description-color: var(--color-slate-600);
+
+  --empty-state-padding-y: var(--empty-state-md-padding-y);
+  --empty-state-padding-x: var(--empty-state-md-padding-x);
+  --empty-state-icon-gap: var(--empty-state-md-icon-gap);
+  --empty-state-title-gap: var(--empty-state-md-title-gap);
+  --empty-state-actions-gap: var(--empty-state-md-actions-gap);
+  --empty-state-icon-size: var(--empty-state-md-icon-size);
+  --empty-state-title-size: var(--empty-state-md-title-size);
+  --empty-state-description-size: var(--empty-state-md-description-size);
+
+  /* Empty State - Sizes */
+  --empty-state-sm-padding-y: 2rem;
+  --empty-state-sm-padding-x: 1rem;
+  --empty-state-sm-icon-size: 2.5rem;
+  --empty-state-sm-title-size: var(--font-size-md);
+  --empty-state-sm-description-size: var(--font-size-sm);
+  --empty-state-sm-icon-gap: 0.75rem;
+  --empty-state-sm-title-gap: 0.375rem;
+  --empty-state-sm-actions-gap: 1rem;
+
+  --empty-state-md-padding-y: 3rem;
+  --empty-state-md-padding-x: 1.5rem;
+  --empty-state-md-icon-size: 3rem;
+  --empty-state-md-title-size: var(--font-size-lg);
+  --empty-state-md-description-size: var(--font-size-md);
+  --empty-state-md-icon-gap: 1rem;
+  --empty-state-md-title-gap: 0.5rem;
+  --empty-state-md-actions-gap: 1.5rem;
+
+  --empty-state-lg-padding-y: 4rem;
+  --empty-state-lg-padding-x: 2rem;
+  --empty-state-lg-icon-size: 4rem;
+  --empty-state-lg-title-size: var(--font-size-xl);
+  --empty-state-lg-description-size: var(--font-size-lg);
+  --empty-state-lg-icon-gap: 1.25rem;
+  --empty-state-lg-title-gap: 0.75rem;
+  --empty-state-lg-actions-gap: 2rem;
+
+  /* Empty State - Variants */
+  --empty-state-primary-icon-color: var(--color-primary-600);
+  --empty-state-primary-title-color: var(--color-primary-900);
+  --empty-state-primary-description-color: var(--color-primary-700);
+
+  --empty-state-secondary-icon-color: var(--color-slate-600);
+  --empty-state-secondary-title-color: var(--color-slate-900);
+  --empty-state-secondary-description-color: var(--color-slate-600);
+
+  --empty-state-success-icon-color: var(--color-success-600);
+  --empty-state-success-title-color: var(--color-success-900);
+  --empty-state-success-description-color: var(--color-success-700);
+
+  --empty-state-warning-icon-color: var(--color-warning-600);
+  --empty-state-warning-title-color: var(--color-warning-900);
+  --empty-state-warning-description-color: var(--color-warning-700);
+
+  --empty-state-danger-icon-color: var(--color-danger-600);
+  --empty-state-danger-title-color: var(--color-danger-900);
+  --empty-state-danger-description-color: var(--color-danger-700);
+
+  --empty-state-info-icon-color: var(--color-info-600);
+  --empty-state-info-title-color: var(--color-info-900);
+  --empty-state-info-description-color: var(--color-info-700);
+
+  --empty-state-ghost-icon-color: var(--color-slate-400);
+  --empty-state-ghost-title-color: var(--color-slate-500);
+  --empty-state-ghost-description-color: var(--color-slate-400);
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-block: var(--empty-state-padding-y);
+  padding-inline: var(--empty-state-padding-x);
+}
+
+/* =============================================================================
+   Elements
+   ============================================================================= */
+
+.bk-empty-state__icon {
+  width: var(--empty-state-icon-size);
+  height: var(--empty-state-icon-size);
+  color: var(--empty-state-icon-color);
+  margin-bottom: var(--empty-state-icon-gap);
+}
+
+.bk-empty-state__title {
+  font-size: var(--empty-state-title-size);
+  font-weight: var(--font-weight-semibold);
+  color: var(--empty-state-title-color);
+  margin-bottom: var(--empty-state-title-gap);
+}
+
+.bk-empty-state__description {
+  font-size: var(--empty-state-description-size);
+  color: var(--empty-state-description-color);
+  max-width: 28rem;
+  margin-bottom: var(--empty-state-actions-gap);
+}
+
+.bk-empty-state__actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* =============================================================================
+   Size Modifiers
+   ============================================================================= */
+
+.bk-empty-state--sm {
+  --empty-state-padding-y: var(--empty-state-sm-padding-y);
+  --empty-state-padding-x: var(--empty-state-sm-padding-x);
+  --empty-state-icon-size: var(--empty-state-sm-icon-size);
+  --empty-state-title-size: var(--empty-state-sm-title-size);
+  --empty-state-description-size: var(--empty-state-sm-description-size);
+  --empty-state-icon-gap: var(--empty-state-sm-icon-gap);
+  --empty-state-title-gap: var(--empty-state-sm-title-gap);
+  --empty-state-actions-gap: var(--empty-state-sm-actions-gap);
+}
+
+.bk-empty-state--md {
+  --empty-state-padding-y: var(--empty-state-md-padding-y);
+  --empty-state-padding-x: var(--empty-state-md-padding-x);
+  --empty-state-icon-size: var(--empty-state-md-icon-size);
+  --empty-state-title-size: var(--empty-state-md-title-size);
+  --empty-state-description-size: var(--empty-state-md-description-size);
+  --empty-state-icon-gap: var(--empty-state-md-icon-gap);
+  --empty-state-title-gap: var(--empty-state-md-title-gap);
+  --empty-state-actions-gap: var(--empty-state-md-actions-gap);
+}
+
+.bk-empty-state--lg {
+  --empty-state-padding-y: var(--empty-state-lg-padding-y);
+  --empty-state-padding-x: var(--empty-state-lg-padding-x);
+  --empty-state-icon-size: var(--empty-state-lg-icon-size);
+  --empty-state-title-size: var(--empty-state-lg-title-size);
+  --empty-state-description-size: var(--empty-state-lg-description-size);
+  --empty-state-icon-gap: var(--empty-state-lg-icon-gap);
+  --empty-state-title-gap: var(--empty-state-lg-title-gap);
+  --empty-state-actions-gap: var(--empty-state-lg-actions-gap);
+}
+
+/* =============================================================================
+   Variant Modifiers
+   ============================================================================= */
+
+.bk-empty-state--primary {
+  --empty-state-icon-color: var(--empty-state-primary-icon-color);
+  --empty-state-title-color: var(--empty-state-primary-title-color);
+  --empty-state-description-color: var(--empty-state-primary-description-color);
+}
+
+.bk-empty-state--secondary {
+  --empty-state-icon-color: var(--empty-state-secondary-icon-color);
+  --empty-state-title-color: var(--empty-state-secondary-title-color);
+  --empty-state-description-color: var(
+    --empty-state-secondary-description-color
+  );
+}
+
+.bk-empty-state--success {
+  --empty-state-icon-color: var(--empty-state-success-icon-color);
+  --empty-state-title-color: var(--empty-state-success-title-color);
+  --empty-state-description-color: var(--empty-state-success-description-color);
+}
+
+.bk-empty-state--warning {
+  --empty-state-icon-color: var(--empty-state-warning-icon-color);
+  --empty-state-title-color: var(--empty-state-warning-title-color);
+  --empty-state-description-color: var(--empty-state-warning-description-color);
+}
+
+.bk-empty-state--danger {
+  --empty-state-icon-color: var(--empty-state-danger-icon-color);
+  --empty-state-title-color: var(--empty-state-danger-title-color);
+  --empty-state-description-color: var(--empty-state-danger-description-color);
+}
+
+.bk-empty-state--info {
+  --empty-state-icon-color: var(--empty-state-info-icon-color);
+  --empty-state-title-color: var(--empty-state-info-title-color);
+  --empty-state-description-color: var(--empty-state-info-description-color);
+}
+
+.bk-empty-state--ghost {
+  --empty-state-icon-color: var(--empty-state-ghost-icon-color);
+  --empty-state-title-color: var(--empty-state-ghost-title-color);
+  --empty-state-description-color: var(--empty-state-ghost-description-color);
+}

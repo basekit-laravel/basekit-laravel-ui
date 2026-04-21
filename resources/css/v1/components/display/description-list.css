@@ -1,0 +1,102 @@
+/* =============================================================================
+   Description List Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --dl-term-color: var(--color-slate-700);
+  --dl-description-color: var(--color-slate-900);
+  --dl-border: var(--color-slate-200);
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-description-list {
+  dt {
+    font-weight: var(--font-weight-semibold);
+    color: var(--dl-term-color);
+    margin-bottom: 0.25rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  dd {
+    color: var(--dl-description-color);
+    margin-inline-start: 0;
+  }
+}
+
+/* =============================================================================
+   Gap Modifiers
+   ============================================================================= */
+
+.bk-description-list--gap-sm {
+  dt {
+    margin-top: 0.5rem;
+  }
+}
+
+.bk-description-list--gap-md {
+  dt {
+    margin-top: 1rem;
+  }
+}
+
+.bk-description-list--gap-lg {
+  dt {
+    margin-top: 1.5rem;
+  }
+}
+
+/* =============================================================================
+   Layout Modifiers
+   ============================================================================= */
+
+.bk-description-list--horizontal {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: start;
+
+  dt {
+    grid-column: 1;
+    margin-top: 0;
+  }
+
+  dd {
+    grid-column: 2;
+    margin-top: 0;
+  }
+}
+
+/* Horizontal gap overrides */
+.bk-description-list--horizontal.bk-description-list--gap-sm {
+  gap: 0.5rem;
+}
+
+.bk-description-list--horizontal.bk-description-list--gap-md {
+  gap: 1rem;
+}
+
+.bk-description-list--horizontal.bk-description-list--gap-lg {
+  gap: 1.5rem;
+}
+
+.bk-description-list--striped {
+  dt,
+  dd {
+    padding-block: 0.75rem;
+    padding-inline: 1rem;
+  }
+
+  dt {
+    background-color: var(--color-slate-50);
+  }
+}

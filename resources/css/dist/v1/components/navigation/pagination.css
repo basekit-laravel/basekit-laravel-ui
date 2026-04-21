@@ -1,0 +1,121 @@
+/* =============================================================================
+   Pagination Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --pagination-bg: var(--surface-base);
+  --pagination-border: var(--color-slate-300);
+  --pagination-text: var(--color-slate-700);
+  --pagination-hover-bg: var(--color-slate-50);
+  --pagination-active-bg: var(--color-primary-600);
+  --pagination-active-text: white;
+  --pagination-disabled-text: var(--color-slate-400);
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-pagination {
+  font-size: var(--font-size-sm);
+}
+
+.bk-pagination__container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bk-pagination__previous,
+.bk-pagination__next {
+  flex-shrink: 0;
+}
+
+.bk-pagination__pages {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.bk-pagination__link,
+.bk-pagination__number {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--pagination-border);
+  background-color: var(--pagination-bg);
+  color: var(--pagination-text);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.bk-pagination__link:hover, .bk-pagination__number:hover {
+    background-color: var(--pagination-hover-bg);
+  }
+
+.bk-pagination__number--active {
+  background-color: var(--pagination-active-bg);
+  color: white;
+  color: var(--pagination-active-text);
+  border-color: var(--pagination-active-bg);
+}
+
+.bk-pagination__number--active:hover {
+    background-color: var(--color-primary-700);
+  }
+
+.bk-pagination__link--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.bk-pagination__ellipsis {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  color: var(--pagination-disabled-text);
+}
+
+.bk-pagination__meta {
+  margin-top: 0.5rem;
+  padding-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.bk-pagination__info {
+  font-size: var(--font-size-sm);
+  color: var(--color-slate-600);
+}
+
+.bk-pagination__per-page {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bk-pagination__per-page-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-slate-700);
+}
+
+.bk-pagination__per-page-select {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--pagination-border);
+  background-color: var(--pagination-bg);
+  color: var(--pagination-text);
+  padding: 0.375rem 0.5rem;
+}

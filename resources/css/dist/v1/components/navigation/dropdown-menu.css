@@ -1,0 +1,237 @@
+/* =============================================================================
+   Dropdown Menu Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  --dropdown-bg: var(--surface-base);
+  --dropdown-trigger-bg: var(--surface-base);
+  --dropdown-trigger-text: var(--color-slate-700);
+  --dropdown-trigger-hover-bg: var(--color-slate-50);
+  --dropdown-trigger-hover-border: var(--color-slate-300);
+  --dropdown-trigger-focus-ring: var(--color-primary-100);
+  --dropdown-border: var(--color-slate-200);
+  --dropdown-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --dropdown-trigger-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --dropdown-item-hover-bg: var(--color-slate-50);
+  --dropdown-item-text: var(--color-slate-700);
+  --dropdown-item-icon: var(--color-slate-500);
+  --dropdown-item-radius: var(--radius-sm);
+  --dropdown-radius: var(--radius-md);
+  --dropdown-submenu-offset: 0.5rem;
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.bk-dropdown .bk-dropdown__trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+    padding-left: 0.875rem;
+    padding-right: 0.875rem;
+    border-radius: var(--dropdown-radius);
+    border: 1px solid var(--dropdown-border);
+    background-color: var(--dropdown-trigger-bg);
+    color: var(--dropdown-trigger-text);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.25;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    box-shadow: var(--dropdown-trigger-shadow);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+  }
+
+.bk-dropdown .bk-dropdown__trigger:hover {
+      background-color: var(--dropdown-trigger-hover-bg);
+      border-color: var(--dropdown-trigger-hover-border);
+    }
+
+.bk-dropdown .bk-dropdown__trigger:focus {
+      outline: none;
+    }
+
+.bk-dropdown .bk-dropdown__trigger:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 4px var(--dropdown-trigger-focus-ring);
+    }
+
+.bk-dropdown .bk-dropdown__trigger-icon {
+    width: 1rem;
+    height: 1rem;
+    color: var(--dropdown-item-icon);
+    transition: transform var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+.bk-dropdown .bk-dropdown__menu[role="menu"] {
+    padding: 0.25rem;
+  }
+
+.bk-dropdown .bk-dropdown__menu[role="menu"] .bk-dropdown__separator {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+
+.bk-dropdown .bk-dropdown__menu[role="menu"] .bk-dropdown__item {
+    border-radius: var(--dropdown-item-radius);
+  }
+
+.bk-dropdown .bk-dropdown__submenu-panel[role="menu"] {
+    padding: 0.25rem;
+  }
+
+.bk-dropdown .bk-dropdown__submenu-panel[role="menu"] .bk-dropdown__separator {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
+
+.bk-dropdown .bk-dropdown__submenu-panel[role="menu"] .bk-dropdown__item {
+    border-radius: var(--dropdown-item-radius);
+  }
+
+.bk-dropdown .bk-dropdown__menu {
+    position: absolute;
+    z-index: 50;
+    min-width: 12rem;
+    margin-top: 0.5rem;
+    background-color: var(--dropdown-bg);
+    border: 1px solid var(--dropdown-border);
+    border-radius: var(--dropdown-radius);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--dropdown-shadow);
+    overflow: visible;
+  }
+
+.bk-dropdown__submenu {
+  position: relative;
+}
+
+.bk-dropdown__submenu-panel {
+  position: absolute;
+  z-index: 60;
+  top: -0.25rem;
+  min-width: 12rem;
+  background-color: var(--dropdown-bg);
+  border: 1px solid var(--dropdown-border);
+  border-radius: var(--dropdown-radius);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--dropdown-shadow);
+  overflow: visible;
+}
+
+.bk-dropdown__submenu-panel--right {
+  left: calc(100% + 0.5rem);
+  left: calc(100% + var(--dropdown-submenu-offset));
+}
+
+.bk-dropdown__submenu-panel--left {
+  right: calc(100% + 0.5rem);
+  right: calc(100% + var(--dropdown-submenu-offset));
+}
+
+/* =============================================================================
+   Position Modifiers
+   ============================================================================= */
+
+.bk-dropdown__menu--bottom-left {
+  top: 100%;
+  left: 0;
+}
+
+.bk-dropdown__menu--bottom-right {
+  top: 100%;
+  right: 0;
+}
+
+.bk-dropdown__menu--top-left {
+  bottom: 100%;
+  left: 0;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.bk-dropdown__menu--top-right {
+  bottom: 100%;
+  right: 0;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* =============================================================================
+   Menu Elements
+   ============================================================================= */
+
+.bk-dropdown__separator {
+  height: 1px;
+  background-color: var(--dropdown-border);
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.bk-dropdown__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: var(--font-size-sm);
+  color: var(--dropdown-item-text);
+  text-decoration: none;
+  transition: background-color var(--transition-fast);
+  cursor: pointer;
+}
+
+.bk-dropdown__item:hover {
+    background-color: var(--dropdown-item-hover-bg);
+  }
+
+.bk-dropdown__item-content {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.bk-dropdown__item--submenu-trigger {
+  width: 100%;
+  justify-content: space-between;
+  border: 0;
+  background: transparent;
+  text-align: left;
+}
+
+.bk-dropdown__submenu-toggle-icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--dropdown-item-icon);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.bk-dropdown__item-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--dropdown-item-icon);
+}
+
+.bk-dropdown__item--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}

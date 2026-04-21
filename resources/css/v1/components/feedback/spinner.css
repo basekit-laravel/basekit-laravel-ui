@@ -1,0 +1,130 @@
+/* =============================================================================
+   Spinner Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  /* Spinner - Sizes */
+  --spinner-size-xs: 1rem;
+  --spinner-size-sm: 1.25rem;
+  --spinner-size-md: 1.5rem;
+  --spinner-size-lg: 2rem;
+  --spinner-size-xl: 2.5rem;
+
+  /* Spinner - Variant Colors */
+  --spinner-color-primary: var(--color-primary-600);
+  --spinner-color-slate: var(--color-slate-600);
+  --spinner-color-success: var(--color-success-600);
+  --spinner-color-warning: var(--color-warning-600);
+  --spinner-color-danger: var(--color-danger-600);
+  --spinner-color-info: var(--color-info-600);
+  --spinner-color-ghost: var(--color-slate-400);
+  --spinner-color-white: white;
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-spinner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  line-height: 1;
+}
+
+.bk-spinner__icon {
+  display: block;
+  flex-shrink: 0;
+  animation: spin 1s linear infinite;
+}
+
+.bk-spinner__track {
+  opacity: 0.25;
+}
+
+.bk-spinner__path {
+  opacity: 0.75;
+}
+
+/* =============================================================================
+   Size Modifiers
+   ============================================================================= */
+
+.bk-spinner__icon--xs {
+  width: var(--spinner-size-xs);
+  height: var(--spinner-size-xs);
+}
+
+.bk-spinner__icon--sm {
+  width: var(--spinner-size-sm);
+  height: var(--spinner-size-sm);
+}
+
+.bk-spinner__icon--md {
+  width: var(--spinner-size-md);
+  height: var(--spinner-size-md);
+}
+
+.bk-spinner__icon--lg {
+  width: var(--spinner-size-lg);
+  height: var(--spinner-size-lg);
+}
+
+.bk-spinner__icon--xl {
+  width: var(--spinner-size-xl);
+  height: var(--spinner-size-xl);
+}
+
+/* =============================================================================
+   Variant Modifiers
+   ============================================================================= */
+
+.bk-spinner__icon--primary {
+  color: var(--spinner-color-primary);
+}
+
+.bk-spinner__icon--secondary {
+  color: var(--spinner-color-slate);
+}
+
+.bk-spinner__icon--success {
+  color: var(--spinner-color-success);
+}
+
+.bk-spinner__icon--warning {
+  color: var(--spinner-color-warning);
+}
+
+.bk-spinner__icon--danger {
+  color: var(--spinner-color-danger);
+}
+
+.bk-spinner__icon--info {
+  color: var(--spinner-color-info);
+}
+
+.bk-spinner__icon--ghost {
+  color: var(--spinner-color-ghost);
+}
+
+.bk-spinner__icon--white {
+  color: var(--spinner-color-white);
+}
+
+/* =============================================================================
+   Animations
+   ============================================================================= */
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,180 @@
+/* =============================================================================
+   Toast Component
+   ============================================================================= */
+
+/* =============================================================================
+   Design Tokens
+   ============================================================================= */
+
+:root {
+  /* Toast - Base */
+  --toast-radius: var(--radius-md);
+  --toast-shadow:
+    0 4px 12px -2px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+
+  /* Toast - Variants */
+  --toast-bg-primary: var(--color-primary-50);
+  --toast-text-primary: var(--color-primary-900);
+  --toast-border-primary: var(--color-primary-500);
+
+  --toast-bg-info: var(--color-info-50);
+  --toast-text-info: var(--color-info-900);
+  --toast-border-info: var(--color-info-500);
+
+  --toast-bg-secondary: var(--color-slate-50);
+  --toast-text-secondary: var(--color-slate-900);
+  --toast-border-secondary: var(--color-slate-400);
+
+  --toast-bg-success: var(--color-success-50);
+  --toast-text-success: var(--color-success-900);
+  --toast-border-success: var(--color-success-500);
+
+  --toast-bg-warning: var(--color-warning-50);
+  --toast-text-warning: var(--color-warning-900);
+  --toast-border-warning: var(--color-warning-500);
+
+  --toast-bg-danger: var(--color-danger-50);
+  --toast-text-danger: var(--color-danger-900);
+  --toast-border-danger: var(--color-danger-500);
+
+  --toast-bg-ghost: transparent;
+  --toast-text-ghost: var(--color-slate-700);
+  --toast-border-ghost: transparent;
+}
+
+/* =============================================================================
+   Base Structure
+   ============================================================================= */
+
+.bk-toast {
+  max-width: 20rem;
+  padding: 0.75rem;
+  border-radius: var(--toast-radius);
+  border-left: 3px solid;
+  box-shadow: var(--toast-shadow);
+  backdrop-filter: blur(8px);
+}
+
+/* =============================================================================
+   Elements
+   ============================================================================= */
+
+.bk-toast__content {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+
+.bk-toast__icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.125rem;
+}
+
+.bk-toast__message {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 0.625rem;
+  align-items: center;
+}
+
+.bk-toast__title {
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  line-height: 1.25rem;
+  margin-bottom: 0.125rem;
+  grid-column: 1;
+}
+
+.bk-toast__description {
+  font-size: var(--font-size-xs);
+  line-height: 1.25rem;
+  opacity: 0.9;
+  grid-column: 1;
+}
+
+.bk-toast__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  margin-top: 0;
+}
+
+.bk-toast__message:has(.bk-toast__actions > :nth-child(2)) .bk-toast__actions {
+  grid-column: 1;
+  grid-row: auto;
+  margin-top: 0.5rem;
+}
+
+.bk-toast__dismiss {
+  flex-shrink: 0;
+  padding: 0.125rem;
+  margin: -0.125rem -0.125rem -0.125rem 0;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast);
+  cursor: pointer;
+  opacity: 0.6;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.08);
+    opacity: 1;
+  }
+
+  & svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+/* =============================================================================
+   Variant Modifiers
+   ============================================================================= */
+
+.bk-toast--info {
+  background-color: var(--toast-bg-info);
+  border-color: var(--toast-border-info);
+  color: var(--toast-text-info);
+}
+
+.bk-toast--primary {
+  background-color: var(--toast-bg-primary);
+  border-color: var(--toast-border-primary);
+  color: var(--toast-text-primary);
+}
+
+.bk-toast--secondary {
+  background-color: var(--toast-bg-secondary);
+  border-color: var(--toast-border-secondary);
+  color: var(--toast-text-secondary);
+}
+
+.bk-toast--success {
+  background-color: var(--toast-bg-success);
+  border-color: var(--toast-border-success);
+  color: var(--toast-text-success);
+}
+
+.bk-toast--warning {
+  background-color: var(--toast-bg-warning);
+  border-color: var(--toast-border-warning);
+  color: var(--toast-text-warning);
+}
+
+.bk-toast--danger,
+.bk-toast--error {
+  background-color: var(--toast-bg-danger);
+  border-color: var(--toast-border-danger);
+  color: var(--toast-text-danger);
+}
+
+.bk-toast--ghost {
+  background-color: var(--toast-bg-ghost);
+  border-color: var(--toast-border-ghost);
+  color: var(--toast-text-ghost);
+}
