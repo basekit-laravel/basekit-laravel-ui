@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+    paths-ignore:
+      - CHANGELOG.md
   workflow_dispatch:
 
 permissions:
@@ -18,6 +20,7 @@ concurrency:
 jobs:
   build:
     name: Build docs
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, 'release-please--branches--') }}
     runs-on: ubuntu-latest
 
     steps:

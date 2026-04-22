@@ -46,7 +46,7 @@ body:
     attributes:
       label: Page URL
       description: Link to the documentation page (if applicable)
-      placeholder: https://basekit.github.io/basekit-laravel-ui/...
+      placeholder: https://basekit-laravel.github.io/basekit-laravel-ui/...
 
   - type: textarea
     id: description

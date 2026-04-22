@@ -2,15 +2,20 @@ name: CI
 
 on:
   pull_request:
+    paths-ignore:
+      - CHANGELOG.md
   push:
     branches:
       - master
+    paths-ignore:
+      - CHANGELOG.md
 
 permissions:
   contents: read
 
 jobs:
   quality:
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, 'release-please--branches--') }}
     runs-on: ubuntu-latest
 
     steps:
