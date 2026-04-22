@@ -11,23 +11,34 @@ Open on a tab: <a href="../styleguide.html" target="_blank">Styleguide</a>
   title="Basekit Laravel UI Styleguide"
 ></iframe>
 
-<script>
-(function () {
-  function sendHash() {
-    var frame = document.getElementById('styleguide-frame');
-    if (!frame) return;
-    var hash = window.location.hash;
-    if (hash) {
-      frame.contentWindow.postMessage(hash, '*');
+<script setup>
+import { onBeforeUnmount, onMounted } from 'vue'
+
+onMounted(() => {
+  const sendHash = () => {
+    const frame = document.getElementById('styleguide-frame')
+    if (!frame) return
+
+    const hash = window.location.hash
+    if (hash && frame.contentWindow) {
+      frame.contentWindow.postMessage(hash, '*')
     }
   }
-  // Send once the iframe is loaded
-  var frame = document.getElementById('styleguide-frame');
+
+  const frame = document.getElementById('styleguide-frame')
   if (frame) {
-    frame.addEventListener('load', sendHash);
+    frame.addEventListener('load', sendHash)
   }
-  window.addEventListener('hashchange', sendHash);
-})();
+
+  window.addEventListener('hashchange', sendHash)
+
+  onBeforeUnmount(() => {
+    if (frame) {
+      frame.removeEventListener('load', sendHash)
+    }
+    window.removeEventListener('hashchange', sendHash)
+  })
+})
 </script>
 
 ## Sections
