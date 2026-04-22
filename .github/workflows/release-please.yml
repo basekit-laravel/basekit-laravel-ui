@@ -20,3 +20,23 @@ jobs:
         with:
           release-type: php
           target-branch: ${{ github.ref_name }}
+
+      - name: Merge master into develop
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure git
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Merge master into develop and push
+        if: ${{ steps.release.outputs.release_created }}
+        run: |
+          git merge origin/master --no-edit
+          git push origin develop
