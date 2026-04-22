@@ -221,7 +221,7 @@ The package includes **33 production-ready components** organized into 6 categor
 
 ## Documentation
 
-Full documentation available at: [https://basekit.github.io/basekit-laravel-ui](https://basekit.github.io/basekit-laravel-ui)
+Full documentation available at: [https://basekit-laravel.github.io/basekit-laravel-ui](https://basekit-laravel.github.io/basekit-laravel-ui)
 
 See also:
 
