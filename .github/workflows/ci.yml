@@ -67,5 +67,8 @@ jobs:
       - name: Generate styleguide snapshot
         run: ./vendor/bin/testbench basekit:ui:styleguide
 
+      - name: Generate advanced demo snapshot
+        run: composer advanced-demo
+
       - name: Verify CSS-doc token sync
         run: bash tools/verify-doc-token-sync.sh

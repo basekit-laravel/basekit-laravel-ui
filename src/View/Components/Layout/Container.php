@@ -69,11 +69,12 @@ class Container extends Component
     private function maxWidthClass(): string
     {
         return match ($this->size) {
-            'sm' => 'max-w-sm',
-            'md' => 'max-w-md',
-            'xl' => 'max-w-xl',
+            'sm' => 'max-w-xl',
+            'md' => 'max-w-2xl',
+            'lg' => 'max-w-4xl',
+            'xl' => 'max-w-7xl',
             'full' => 'max-w-none',
-            default => 'max-w-lg',
+            default => 'max-w-4xl',
         };
     }
 

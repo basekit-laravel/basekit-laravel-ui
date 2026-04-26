@@ -12,23 +12,31 @@ use Illuminate\Support\Facades\File;
  * without a running Laravel app — perfect for committing to docs/public/ and serving
  * via the VitePress docs site.
  */
+
 class BasekitStyleguideCommand extends Command
 {
     protected $signature = 'basekit:ui:styleguide
-                            {--output= : Output file path (default: <package>/docs/public/styleguide.html)}';
+                            {--output= : Output file path (default: <package>/docs/public/styleguide.html)}
+                            {--view= : Blade view to render (default: basekit::styleguide.index)}
+                            {--title= : HTML <title> (default: Basekit Laravel UI — Styleguide)}';
 
-    protected $description = 'Generate a self-contained HTML styleguide snapshot for the docs site';
+    protected $description = 'Generate a self-contained HTML snapshot for the docs site (styleguide or custom demo)';
 
     public function handle(): int
     {
-        $this->info('🎨 Generating styleguide...');
-
+        $view = $this->option('view') ?: 'basekit::styleguide.index';
+        $title = $this->option('title') ?: 'Basekit Laravel UI — Styleguide';
         $outputPath = $this->resolveOutputPath();
 
+        $this->info('🎨 Generating snapshot...');
+        $this->info("View: {$view}");
+        $this->info("Title: {$title}");
+        $this->info("Output: {$outputPath}");
+
         try {
-            $body = $this->renderBody();
+            $body = $this->renderBody($view);
             $css  = $this->loadCss();
-            $html = $this->buildHtml($body, $css);
+            $html = $this->buildHtml($body, $css, $title);
 
             $outputDir = dirname($outputPath);
             if (! File::isDirectory($outputDir)) {
@@ -38,11 +46,10 @@ class BasekitStyleguideCommand extends Command
             File::put($outputPath, $html);
 
             $size = $this->formatBytes(File::size($outputPath));
-            $this->info("✅ Styleguide saved: {$outputPath}");
+            $this->info("✅ Snapshot saved: {$outputPath}");
             $this->info("📊 Size: {$size}");
         } catch (\Throwable $e) {
-            $this->error('Styleguide generation failed: '.$e->getMessage());
-
+            $this->error('Snapshot generation failed: ' . $e->getMessage());
             return self::FAILURE;
         }
 
@@ -53,9 +60,9 @@ class BasekitStyleguideCommand extends Command
     // Rendering
     // =========================================================================
 
-    protected function renderBody(): string
+    protected function renderBody(string $view): string
     {
-        return view('basekit::styleguide.index')->render();
+        return view($view)->render();
     }
 
     protected function loadCss(): string
@@ -77,7 +84,7 @@ class BasekitStyleguideCommand extends Command
         return '';
     }
 
-    protected function buildHtml(string $body, string $css): string
+    protected function buildHtml(string $body, string $css, string $title): string
     {
         $escapedCss = htmlspecialchars_decode(htmlspecialchars($css, ENT_NOQUOTES));
 
@@ -87,7 +94,7 @@ class BasekitStyleguideCommand extends Command
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Basekit Laravel UI — Styleguide</title>
+    <title>{$title}</title>
     <!-- Alpine.js for interactive components -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
     <!-- Tailwind CSS v4 browser runtime for utility classes -->
@@ -155,12 +162,12 @@ HTML;
     protected function formatBytes(int $bytes): string
     {
         if ($bytes >= 1_048_576) {
-            return round($bytes / 1_048_576, 2).' MB';
+            return round($bytes / 1_048_576, 2) . ' MB';
         }
         if ($bytes >= 1_024) {
-            return round($bytes / 1_024, 2).' KB';
+            return round($bytes / 1_024, 2) . ' KB';
         }
 
-        return $bytes.' B';
+        return $bytes . ' B';
     }
 }

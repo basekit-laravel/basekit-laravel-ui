@@ -1,17 +1,28 @@
+<p align="center">
+    <img src="public/basekit-ui-examples.png" alt="Basekit Laravel UI Examples" style="max-width: 100%; border-radius: 0.75rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+</p>
+
 # Basekit Laravel UI
 
-A modular Laravel 12 UI component library with reusable Blade components, Tailwind 4 CSS theming, and component-aware CSS builds for optimal performance.
+A modular Laravel UI component library built with **Blade components**, **Tailwind 4 CSS**, and **Alpine.js** for rich, interactive interfaces.  
+Create rich, production‑ready UIs faster with 33 pre‑built components, configurable theming, and a built‑in style guide.
 
-## Features
+Explore all components in the [style guide](https://basekit-laravel.github.io/basekit-laravel-ui/styleguide.html) and read the full docs at [basekit‑laravel.github.io/basekit‑laravel‑ui](https://basekit-laravel.github.io/basekit-laravel-ui).
 
-- 🎨 **Tailwind 4 CSS-based theming** - Runtime customization via CSS variables
-- 🔧 **Highly configurable** - Enable/disable components, customize variants and sizes
-- 🌲 **Component-aware CSS build** - Include CSS only for enabled components
-- 🎯 **Type-safe components** - PHP classes with IDE autocomplete
-- ✨ **Heroicons integration** - Beautiful icons out of the box
-- 📦 **Publishable views** - Customize component templates directly
+---
 
-## Installation
+## 🌟 Features
+
+- 🎨 **Tailwind 4 CSS‑based theming** – Runtime customization via CSS variables.
+- ✨ **Heroicons integration** – Beautiful icons out of the box.
+- 🔧 **Component toggle & defaults** – Enable/disable components and set default variants and sizes.
+- 🌲 **Component‑aware CSS build** – Include CSS only for enabled components.
+- 🎯 **Type‑safe components** – PHP classes with IDE autocomplete.
+- 📦 **Publishable views** – Customize component templates directly.
+
+---
+
+## 📦 Installation
 
 ### Basic Setup
 
@@ -41,7 +52,7 @@ Or with Livewire, use `@livewireScripts` which includes Alpine.js automatically:
 @livewireScripts
 ```
 
-See the [installation guide](/docs/guide/installation.md#alpine-js-required-for-interactive-components) for more details.
+See the [installation guide](https://basekit-laravel.github.io/basekit-laravel-ui/guide/installation.html) for more details.
 
 ### Advanced Setup
 
@@ -69,39 +80,133 @@ For development, use watch mode:
 php artisan basekit:ui:build --watch
 ```
 
-## Quick Start
+---
+
+## 🧩 Available Components
+
+The package includes **33 components** organized into 6 categories.
+
+### Form Components (8)
+
+- [Button](https://basekit-laravel.github.io/basekit-laravel-ui/components/button.html)
+- [Input](https://basekit-laravel.github.io/basekit-laravel-ui/components/input.html)
+- [Textarea](https://basekit-laravel.github.io/basekit-laravel-ui/components/textarea.html)
+- [Checkbox](https://basekit-laravel.github.io/basekit-laravel-ui/components/checkbox.html)
+- [Radio](https://basekit-laravel.github.io/basekit-laravel-ui/components/radio.html)
+- [Select](https://basekit-laravel.github.io/basekit-laravel-ui/components/select.html)
+- [Multi‑Select](https://basekit-laravel.github.io/basekit-laravel-ui/components/multi-select.html)
+- [Toggle](https://basekit-laravel.github.io/basekit-laravel-ui/components/toggle.html)
+
+### Feedback Components (7)
+
+- [Alert](https://basekit-laravel.github.io/basekit-laravel-ui/components/alert.html)
+- [Toast](https://basekit-laravel.github.io/basekit-laravel-ui/components/toast.html)
+- [Tooltip](https://basekit-laravel.github.io/basekit-laravel-ui/components/tooltip.html)
+- [Progress](https://basekit-laravel.github.io/basekit-laravel-ui/components/progress.html)
+- [Spinner](https://basekit-laravel.github.io/basekit-laravel-ui/components/spinner.html)
+- [Skeleton](https://basekit-laravel.github.io/basekit-laravel-ui/components/skeleton.html)
+- [Empty State](https://basekit-laravel.github.io/basekit-laravel-ui/components/empty-state.html)
+
+### Navigation Components (5)
+
+- [Breadcrumb](https://basekit-laravel.github.io/basekit-laravel-ui/components/breadcrumb.html)
+- [Pagination](https://basekit-laravel.github.io/basekit-laravel-ui/components/pagination.html)
+- [Tabs](https://basekit-laravel.github.io/basekit-laravel-ui/components/tabs.html)
+- [Dropdown Menu](https://basekit-laravel.github.io/basekit-laravel-ui/components/dropdown-menu.html)
+- [Link](https://basekit-laravel.github.io/basekit-laravel-ui/components/link.html)
+
+### Layout Components (4)
+
+- [Stack](https://basekit-laravel.github.io/basekit-laravel-ui/components/stack.html)
+- [Grid](https://basekit-laravel.github.io/basekit-laravel-ui/components/grid.html)
+- [Container](https://basekit-laravel.github.io/basekit-laravel-ui/components/container.html)
+- [Divider](https://basekit-laravel.github.io/basekit-laravel-ui/components/divider.html)
+
+### Display Components (7)
+
+- [Table](https://basekit-laravel.github.io/basekit-laravel-ui/components/table.html)
+- [List](https://basekit-laravel.github.io/basekit-laravel-ui/components/list.html)
+- [Description List](https://basekit-laravel.github.io/basekit-laravel-ui/components/description-list.html)
+- [Stat](https://basekit-laravel.github.io/basekit-laravel-ui/components/stat.html)
+- [Card](https://basekit-laravel.github.io/basekit-laravel-ui/components/card.html)
+- [Badge](https://basekit-laravel.github.io/basekit-laravel-ui/components/badge.html)
+- [Avatar](https://basekit-laravel.github.io/basekit-laravel-ui/components/avatar.html)
+
+### Dialog & Overlay (2)
+
+- [Modal](https://basekit-laravel.github.io/basekit-laravel-ui/components/modal.html)
+- [Accordion](https://basekit-laravel.github.io/basekit-laravel-ui/components/accordion.html)
+
+---
+
+## 🧾 Example Form
 
 ```blade
-<x-basekit-ui::button variant="primary" icon="check">
-    Save Changes
-</x-basekit-ui::button>
+<x-basekit-ui::container>
+    <x-basekit-ui::card>
+        <x-slot:header>
+            <h2 class="text-xl font-bold">Create Account</h2>
+        </x-slot>
 
-<x-basekit-ui::input
-    label="Email"
-    placeholder="Enter your email"
-    icon="envelope"
-/>
+        <form method="POST" action="/register">
+            @csrf
 
-<x-basekit-ui::card>
-    <x-slot:header>
-        <h3>Card Title</h3>
-    </x-slot>
+            <x-basekit-ui::stack spacing="lg">
+                <x-basekit-ui::input
+                    name="name"
+                    label="Name"
+                    icon="user"
+                    :error="$errors->first('name')"
+                />
 
-    Card content goes here...
+                <x-basekit-ui::input
+                    name="email"
+                    type="email"
+                    label="Email"
+                    icon="envelope"
+                    :error="$errors->first('email')"
+                />
 
-    <x-slot:footer>
-        <x-basekit-ui::button>Action</x-basekit-ui::button>
-    </x-slot>
-</x-basekit-ui::card>
+                <x-basekit-ui::input
+                    name="password"
+                    type="password"
+                    label="Password"
+                    hint="Must be at least 8 characters"
+                    icon="lock-closed"
+                    :error="$errors->first('password')"
+                />
+
+                <x-basekit-ui::checkbox
+                    name="terms"
+                    label="I agree to the terms and conditions"
+                />
+            </x-basekit-ui::stack>
+
+            <x-slot:footer>
+                <div class="flex justify-between items-center">
+                    <x-basekit-ui::link href="/login">
+                        Already have an account?
+                    </x-basekit-ui::link>
+
+                    <x-basekit-ui::button
+                        type="submit"
+                        variant="primary"
+                        icon="arrow-right"
+                    >
+                        Create Account
+                    </x-basekit-ui::button>
+                </div>
+            </x-slot>
+        </form>
+    </x-basekit-ui::card>
+</x-basekit-ui::container>
 ```
 
-## Styling Conventions
+Browse all available components in the [style guide](https://basekit-laravel.github.io/basekit-laravel-ui/styleguide.html) and read the full docs at [basekit-laravel.github.io/basekit-laravel-ui](https://basekit-laravel.github.io/basekit-laravel-ui).
 
-- Component CSS uses BEM with the `bk-` prefix (blocks, elements, and modifiers).
-- Tailwind utilities are for component usage in Blade markup (layout, spacing, overrides).
-- When combining classes, Tailwind Merge handles conflicts for the `class` attribute.
+---
 
-## Configuration
+## ⚙️ Configuration
 
 Edit `config/basekit-laravel-ui.php` to customize components:
 
@@ -140,7 +245,9 @@ For development, use watch mode:
 php artisan basekit:ui:build --watch
 ```
 
-## Customization
+---
+
+## 🎨 Customization
 
 ### CSS Variables
 
@@ -154,6 +261,8 @@ Override theme variables in your CSS:
 }
 ```
 
+See the full list of available variables in the [Complete CSS variable reference](https://basekit-laravel.github.io/basekit-laravel-ui/guide/theming.html#complete-css-variable-reference) in the documentation.
+
 ### Publishing Views
 
 Publish component views for full customization:
@@ -164,71 +273,17 @@ php artisan vendor:publish --tag=basekit-views
 
 Published views are copied to `resources/views/vendor/basekit/` and automatically override package components.
 
-## Available Components
+---
 
-The package includes **33 production-ready components** organized into 6 categories:
+## 📐 Styling Conventions
 
-### Form Components (8)
+- Component CSS uses **BEM** with the `bk-` prefix (blocks, elements, and modifiers).
+- Tailwind utilities are for **component usage** in Blade markup (layout, spacing, overrides).
+- When combining classes, **Tailwind Merge** handles conflicts for the `class` attribute.
 
-- [Button](docs/components/button.md)
-- [Input](docs/components/input.md)
-- [Textarea](docs/components/textarea.md)
-- [Checkbox](docs/components/checkbox.md)
-- [Radio](docs/components/radio.md)
-- [Select](docs/components/select.md)
-- [Multi-Select](docs/components/multi-select.md)
-- [Toggle](docs/components/toggle.md)
+---
 
-### Feedback Components (7)
-
-- [Alert](docs/components/alert.md)
-- [Toast](docs/components/toast.md)
-- [Tooltip](docs/components/tooltip.md)
-- [Progress](docs/components/progress.md)
-- [Spinner](docs/components/spinner.md)
-- [Skeleton](docs/components/skeleton.md)
-- [Empty State](docs/components/empty-state.md)
-
-### Navigation Components (5)
-
-- [Breadcrumb](docs/components/breadcrumb.md)
-- [Pagination](docs/components/pagination.md)
-- [Tabs](docs/components/tabs.md)
-- [Dropdown Menu](docs/components/dropdown-menu.md)
-- [Link](docs/components/link.md)
-
-### Layout Components (4)
-
-- [Stack](docs/components/stack.md)
-- [Grid](docs/components/grid.md)
-- [Container](docs/components/container.md)
-- [Divider](docs/components/divider.md)
-
-### Display Components (7)
-
-- [Table](docs/components/table.md)
-- [List](docs/components/list.md)
-- [Description List](docs/components/description-list.md)
-- [Stat](docs/components/stat.md)
-- [Card](docs/components/card.md)
-- [Badge](docs/components/badge.md)
-- [Avatar](docs/components/avatar.md)
-
-### Dialog & Overlay (2)
-
-- [Modal](docs/components/modal.md)
-- [Accordion](docs/components/accordion.md)
-
-## Documentation
-
-Full documentation available at: [https://basekit-laravel.github.io/basekit-laravel-ui](https://basekit-laravel.github.io/basekit-laravel-ui)
-
-See also:
-
-- [IMPLEMENTATION.md](IMPLEMENTATION.md) — Architecture and development guide
-- [STRUCTURE.md](STRUCTURE.md) — Component organization and relationships
-
-## CI Quality Checks
+## 🧪 CI Quality Checks
 
 The CI workflow validates production readiness on pushes and pull requests by running:
 
@@ -239,18 +294,36 @@ The CI workflow validates production readiness on pushes and pull requests by ru
 
 You can run these locally before opening a pull request.
 
-## Performance
+---
 
-Component-based builds can significantly reduce bundle size:
+## ⚡ Performance
+
+Component‑based builds can significantly reduce bundle size:
 
 - Full bundle (all components): ~200KB
 - Minimal config (3 components): ~55KB
 - **Reduction: 73%**
 
-## Migration
+---
+
+## 🔄 Migration
 
 See [CHANGELOG.md](CHANGELOG.md) for version changes and migration guides.
 
-## License
+---
 
-The MIT License (MIT). Please see [License File](LICENSE) for more information.
+## 📚 Documentation
+
+Full documentation available at:  
+[https://basekit-laravel.github.io/basekit-laravel-ui](https://basekit-laravel.github.io/basekit-laravel-ui)
+
+See also:
+
+- [IMPLEMENTATION.md](IMPLEMENTATION.md) — Architecture and development guide
+- [STRUCTURE.md](STRUCTURE.md) — Component organization and relationships
+
+---
+
+## 📄 License
+
+The MIT License (MIT). Please see the [LICENSE](LICENSE) file for more information.

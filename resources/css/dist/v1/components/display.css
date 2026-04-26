@@ -42,7 +42,7 @@
 .bk-card {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: visible;
   border-radius: var(--card-radius);
   background-color: var(--card-bg);
 }
@@ -50,6 +50,13 @@
 /* =============================================================================
    Elements
    ============================================================================= */
+
+.bk-cardheader,
+.bk-cardbody,
+.bk-cardfooter {
+  position: relative;
+  z-index: 1;
+}
 
 .bk-card__header {
   display: flex;

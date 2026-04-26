@@ -54,6 +54,7 @@
   },
   "scripts": {
     "styleguide": "./vendor/bin/testbench basekit:ui:styleguide",
+    "advanced-demo": "./vendor/bin/testbench basekit:ui:styleguide --view=basekit::styleguide.advanced-demo --title=\"Basekit UI — Advanced Demo\" --output=docs/public/advanced-demo.html",
     "test": "pest",
     "test:coverage": "pest --coverage",
     "lint": "pint",

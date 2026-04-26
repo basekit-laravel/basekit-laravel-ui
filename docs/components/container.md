@@ -17,10 +17,10 @@ A responsive container component for page layouts.
 
 ## Props
 
-| Prop         | Type      | Default | Description                                      |
-| ------------ | --------- | ------- | ------------------------------------------------ |
-| `size`       | `string`  | `'lg'`  | Container max-width (`sm`,`md`,`lg`,`xl`,`full`) |
-| `isCentered` | `boolean` | `true`  | Add `mx-auto` centering                          |
+| Prop         | Type      | Default | Description                                          |
+| ------------ | --------- | ------- | ---------------------------------------------------- |
+| `size`       | `string`  | `'lg'`  | Container max-width (`sm`, `md`, `lg`, `xl`, `full`) |
+| `isCentered` | `boolean` | `true`  | Add `mx-auto` centering                              |
 
 ## Sizes
 
@@ -28,19 +28,19 @@ Supported sizes: `sm`,`md`,`lg`,`xl`,`full`.
 
 The `size` prop maps to a Tailwind max-width class:
 
-| Size   | CSS class    | Max width     |
-| ------ | ------------ | ------------- |
-| `sm`   | `max-w-sm`   | 24rem (384px) |
-| `md`   | `max-w-md`   | 28rem (448px) |
-| `lg`   | `max-w-lg`   | 32rem (512px) |
-| `xl`   | `max-w-xl`   | 36rem (576px) |
-| `full` | `max-w-none` | No limit      |
+| Size   | CSS class    | Max width      |
+| ------ | ------------ | -------------- |
+| `sm`   | `max-w-xl`   | 36rem (576px)  |
+| `md`   | `max-w-2xl`  | 42rem (672px)  |
+| `lg`   | `max-w-4xl`  | 56rem (896px)  |
+| `xl`   | `max-w-7xl`  | 80rem (1280px) |
+| `full` | `max-w-none` | No limit       |
 
 ```blade
-<x-basekit-ui::container size="sm">Small container (384px)</x-basekit-ui::container>
-<x-basekit-ui::container size="md">Medium container (448px)</x-basekit-ui::container>
-<x-basekit-ui::container size="lg">Large container (512px)</x-basekit-ui::container>
-<x-basekit-ui::container size="xl">Wide container (576px)</x-basekit-ui::container>
+<x-basekit-ui::container size="sm">Small container (576px)</x-basekit-ui::container>
+<x-basekit-ui::container size="md">Medium container (672px)</x-basekit-ui::container>
+<x-basekit-ui::container size="lg">Large container (896px)</x-basekit-ui::container>
+<x-basekit-ui::container size="xl">Wide container (1280px)</x-basekit-ui::container>
 <x-basekit-ui::container size="full">Full-width container</x-basekit-ui::container>
 ```
 
