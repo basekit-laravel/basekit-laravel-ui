@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\File;
  * without a running Laravel app — perfect for committing to docs/public/ and serving
  * via the VitePress docs site.
  */
-
 class BasekitStyleguideCommand extends Command
 {
     protected $signature = 'basekit:ui:styleguide
@@ -24,8 +23,8 @@ class BasekitStyleguideCommand extends Command
 
     public function handle(): int
     {
-        $view = $this->option('view') ?: 'basekit::styleguide.index';
-        $title = $this->option('title') ?: 'Basekit Laravel UI — Styleguide';
+        $view = $this->option('view') ?? 'basekit::styleguide.index';
+        $title = $this->option('title') ?? 'Basekit Laravel UI — Styleguide';
         $outputPath = $this->resolveOutputPath();
 
         $this->info('🎨 Generating snapshot...');
@@ -50,6 +49,7 @@ class BasekitStyleguideCommand extends Command
             $this->info("📊 Size: {$size}");
         } catch (\Throwable $e) {
             $this->error('Snapshot generation failed: ' . $e->getMessage());
+
             return self::FAILURE;
         }
 
@@ -62,6 +62,7 @@ class BasekitStyleguideCommand extends Command
 
     protected function renderBody(string $view): string
     {
+        /** @var view-string $view */
         return view($view)->render();
     }
 
