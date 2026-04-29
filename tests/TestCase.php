@@ -24,4 +24,11 @@ abstract class TestCase extends Orchestra
             BasekitServiceProvider::class,
         ];
     }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        // Always use array cache for tests to avoid DB cache errors
+        config(['cache.default' => 'array']);
+    }
 }
