@@ -4,6 +4,8 @@
 
 # Basekit Laravel UI
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/basekit-laravel/basekit-laravel-ui.svg?style=flat-square)](https://packagist.org/packages/basekit-laravel/basekit-laravel-ui)
+
 A modular Laravel UI component library built with **Blade components**, **Tailwind 4 CSS**, and **Alpine.js** for rich, interactive interfaces.  
 Create rich, production‑ready UIs faster with 33 pre‑built components, configurable theming, and a built‑in style guide.
 
