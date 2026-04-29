@@ -5,6 +5,13 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.2.0...v1.2.1) (2026-04-29)
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump phpstan/phpstan from 2.1.51 to 2.1.54 ([#7](https://github.com/basekit-laravel/basekit-laravel-ui/issues/7)) ([16755e5](https://github.com/basekit-laravel/basekit-laravel-ui/commit/16755e50d59d8d39bdd64eefc39165c1c7471ca4))
+
 ## [1.2.0](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.1.0...v1.2.0) (2026-04-29)
 
 
