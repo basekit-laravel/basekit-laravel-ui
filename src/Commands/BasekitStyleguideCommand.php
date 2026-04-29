@@ -48,7 +48,7 @@ class BasekitStyleguideCommand extends Command
             $this->info("✅ Snapshot saved: {$outputPath}");
             $this->info("📊 Size: {$size}");
         } catch (\Throwable $e) {
-            $this->error('Snapshot generation failed: ' . $e->getMessage());
+            $this->error('Snapshot generation failed: '.$e->getMessage());
 
             return self::FAILURE;
         }
@@ -163,12 +163,12 @@ HTML;
     protected function formatBytes(int $bytes): string
     {
         if ($bytes >= 1_048_576) {
-            return round($bytes / 1_048_576, 2) . ' MB';
+            return round($bytes / 1_048_576, 2).' MB';
         }
         if ($bytes >= 1_024) {
-            return round($bytes / 1_024, 2) . ' KB';
+            return round($bytes / 1_024, 2).' KB';
         }
 
-        return $bytes . ' B';
+        return $bytes.' B';
     }
 }
