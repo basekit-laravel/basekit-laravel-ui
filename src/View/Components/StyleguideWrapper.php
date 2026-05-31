@@ -13,7 +13,6 @@ class StyleguideWrapper extends Component
      * Create a new component instance.
      *
      * @param  array<string, mixed>  $sections
-     * @return void
      */
     public function __construct(public array $sections = []) {}
 

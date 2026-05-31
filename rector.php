@@ -2,17 +2,33 @@
 
 declare(strict_types=1);
 
+use Rector\CodeQuality\Rector\Class_\InlineConstructorDefaultToPropertyRector;
 use Rector\Config\RectorConfig;
 use Rector\Set\ValueObject\LevelSetList;
+use Rector\Set\ValueObject\SetList;
 
-return RectorConfig::configure()
-    ->withPaths([
+return static function (RectorConfig $rectorConfig): void {
+    $rectorConfig->paths([
         __DIR__.'/src',
-    ])
-    ->withSkip([
+    ]);
+
+    $rectorConfig->skip([
         __DIR__.'/vendor',
         __DIR__.'/node_modules',
-    ])
-    ->withSets([
-        LevelSetList::UP_TO_PHP_81,
     ]);
+
+    // Define what rule sets will be applied
+    $rectorConfig->sets([
+        LevelSetList::UP_TO_PHP_83,
+        SetList::CODE_QUALITY,
+        SetList::DEAD_CODE,
+        SetList::EARLY_RETURN,
+        SetList::TYPE_DECLARATION,
+    ]);
+
+    // Include additional rules
+    $rectorConfig->rule(InlineConstructorDefaultToPropertyRector::class);
+
+    $rectorConfig->importNames();
+    $rectorConfig->importShortClasses(false);
+};

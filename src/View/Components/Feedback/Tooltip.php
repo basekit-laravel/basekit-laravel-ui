@@ -36,7 +36,7 @@ class Tooltip extends Component
     /**
      * Alpine x-data expression used by the tooltip wrapper.
      */
-    public string $xDataExpression;
+    public string $xDataExpression = '{ show: false, showTimeout: null, hideTimeout: null }';
 
     /**
      * Alpine mouseenter/focusin handler expression.
@@ -65,8 +65,6 @@ class Tooltip extends Component
         $this->position = $position ?? config('basekit-laravel-ui.components.tooltip.default_position', 'top');
         $this->showDelay = max(0, $showDelay);
         $this->hideDelay = max(0, $hideDelay);
-
-        $this->xDataExpression = '{ show: false, showTimeout: null, hideTimeout: null }';
         $this->showHandlerExpression =
             'clearTimeout(hideTimeout); clearTimeout(showTimeout); '
             .($this->showDelay > 0
