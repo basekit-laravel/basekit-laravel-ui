@@ -9,12 +9,12 @@ use Rector\Set\ValueObject\SetList;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
-        __DIR__ . '/src',
+        __DIR__.'/src',
     ]);
 
     $rectorConfig->skip([
-        __DIR__ . '/vendor',
-        __DIR__ . '/node_modules',
+        __DIR__.'/vendor',
+        __DIR__.'/node_modules',
     ]);
 
     // Define what rule sets will be applied
