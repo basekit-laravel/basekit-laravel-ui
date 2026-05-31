@@ -105,6 +105,13 @@
   box-shadow: none;
 }
 
+.bk-card--default .bk-card__footer,
+.bk-card--bordered .bk-card__footer {
+  border-bottom: 1px solid var(--card-border);
+  border-bottom-left-radius: var(--card-radius);
+  border-bottom-right-radius: var(--card-radius);
+}
+
 /* =============================================================================
    Avatar Component
    ============================================================================= */
