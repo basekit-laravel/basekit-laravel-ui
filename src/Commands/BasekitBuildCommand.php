@@ -148,7 +148,7 @@ class BasekitBuildCommand extends Command
         }
 
         // 2. Per-component CSS (full file for each enabled component).
-        foreach ($enabled as $name => $config) {
+        foreach (array_keys($enabled) as $name) {
             $componentCss = $this->loadComponentCss($name, $distRoot, $sourceRoot);
             if ($componentCss !== '') {
                 $parts[] = $componentCss;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace BasekitLaravel\BasekitLaravelUi;
 
 use Illuminate\Support\Facades\Blade;
@@ -47,6 +49,7 @@ class BasekitServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      */
+    #[\Override]
     public function register(): void
     {
         $this->mergeConfigFrom(

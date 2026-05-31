@@ -323,8 +323,10 @@ class Table extends Component
                 ],
                 $column,
             );
-
-            if ($column['key'] === null || $column['key'] === '') {
+            if ($column['key'] === null) {
+                continue;
+            }
+            if ($column['key'] === '') {
                 continue;
             }
 

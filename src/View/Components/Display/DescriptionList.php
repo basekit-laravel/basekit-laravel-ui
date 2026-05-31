@@ -137,8 +137,10 @@ class DescriptionList extends Component
             if (is_array($item)) {
                 $term = $item['term'] ?? $item['label'] ?? ($item[0] ?? null);
                 $description = $item['description'] ?? $item['value'] ?? ($item[1] ?? null);
-
-                if ((! is_scalar($term) && $term !== null) || (! is_scalar($description) && $description !== null)) {
+                if (! is_scalar($term) && $term !== null) {
+                    continue;
+                }
+                if (! is_scalar($description) && $description !== null) {
                     continue;
                 }
 
