@@ -52,17 +52,17 @@ class Progress extends Component
     /**
      * Alpine expression for aria-valuenow when dynamic value is enabled.
      */
-    public ?string $dynamicNowExpression;
+    public ?string $dynamicNowExpression = null;
 
     /**
      * Alpine expression for inline width style when dynamic value is enabled.
      */
-    public ?string $dynamicWidthExpression;
+    public ?string $dynamicWidthExpression = null;
 
     /**
      * Alpine expression for percentage text when dynamic value is enabled.
      */
-    public ?string $dynamicPercentageExpression;
+    public ?string $dynamicPercentageExpression = null;
 
     /**
      * Create a new component instance.
@@ -103,9 +103,6 @@ class Progress extends Component
         $this->value = max(0, min($value, $this->max));
 
         $this->hasDynamicValue = filled($this->dynamicValue);
-        $this->dynamicNowExpression = null;
-        $this->dynamicWidthExpression = null;
-        $this->dynamicPercentageExpression = null;
 
         if ($this->hasDynamicValue) {
             $clampedValueExpression = "Math.max(0, Math.min({$this->dynamicValue}, {$this->max}))";

@@ -115,9 +115,13 @@ class Tabs extends Component
      */
     public function hasIcon(array $item): bool
     {
-        return $this->hasCustomIconSvg($item)
-            || $this->hasCustomIconComponent($item)
-            || (isset($item['icon']) && is_string($item['icon']) && $item['icon'] !== '');
+        if ($this->hasCustomIconSvg($item)) {
+            return true;
+        }
+        if ($this->hasCustomIconComponent($item)) {
+            return true;
+        }
+        return isset($item['icon']) && is_string($item['icon']) && $item['icon'] !== '';
     }
 
     /**

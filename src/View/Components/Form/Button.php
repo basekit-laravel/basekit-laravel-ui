@@ -110,9 +110,7 @@ class Button extends Component
      */
     private function resolveOrientation(string $orientation): Orientation
     {
-        $resolved = ComponentPropResolver::resolveDefaultEnum(Orientation::class, $orientation);
-
-        return $resolved;
+        return ComponentPropResolver::resolveDefaultEnum(Orientation::class, $orientation);
     }
 
     /**
