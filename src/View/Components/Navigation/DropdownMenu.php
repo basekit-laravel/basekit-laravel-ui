@@ -142,6 +142,7 @@ class DropdownMenu extends Component
         if ($this->hasCustomIconComponent($item)) {
             return true;
         }
+
         return isset($item['icon']) && is_string($item['icon']) && $item['icon'] !== '';
     }
 
