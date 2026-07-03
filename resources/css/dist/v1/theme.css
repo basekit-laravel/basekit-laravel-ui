@@ -1254,6 +1254,36 @@
 
 /**
  * =============================================================================
+ * Radius Modifiers
+ * =============================================================================
+ */
+
+.bk-button--rounded-none {
+  --button-radius: 0;
+}
+
+.bk-button--rounded-sm {
+  --button-radius: var(--radius-sm);
+}
+
+.bk-button--rounded-lg {
+  --button-radius: var(--radius-lg);
+}
+
+.bk-button--rounded-xl {
+  --button-radius: var(--radius-xl);
+}
+
+.bk-button--rounded-2xl {
+  --button-radius: var(--radius-2xl);
+}
+
+.bk-button--rounded-full {
+  --button-radius: 9999px;
+}
+
+/**
+ * =============================================================================
  * Icon
  * =============================================================================
  */

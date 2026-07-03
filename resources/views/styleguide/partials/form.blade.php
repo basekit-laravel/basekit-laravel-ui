@@ -79,6 +79,20 @@
                     </x-basekit-ui::button>
                 </div>
             </div>
+
+            <!-- Rounded -->
+            <div class="space-y-2">
+                <p class="text-sm text-slate-500 font-medium">Rounded</p>
+                <div class="flex flex-wrap items-center gap-3">
+                    <x-basekit-ui::button rounded="none">None</x-basekit-ui::button>
+                    <x-basekit-ui::button rounded="sm">Sm</x-basekit-ui::button>
+                    <x-basekit-ui::button rounded="md">Md</x-basekit-ui::button>
+                    <x-basekit-ui::button rounded="lg">Lg</x-basekit-ui::button>
+                    <x-basekit-ui::button rounded="xl">Xl</x-basekit-ui::button>
+                    <x-basekit-ui::button rounded="2xl">2xl</x-basekit-ui::button>
+                    <x-basekit-ui::button rounded="full">Full</x-basekit-ui::button>
+                </div>
+            </div>
         </div>
     </x-basekit-ui::styleguide.section-toggle>
 

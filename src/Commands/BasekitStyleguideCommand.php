@@ -74,15 +74,46 @@ class BasekitStyleguideCommand extends Command
             "{$packageRoot}/resources/css/v1/theme.css",
         ];
 
+        $themePath = null;
         foreach ($candidates as $path) {
             if (File::exists($path)) {
-                return File::get($path);
+                $themePath = $path;
+                break;
             }
         }
 
-        $this->warn('⚠️  theme.css not found — styleguide will render without package styles.');
+        if ($themePath === null) {
+            $this->warn('⚠️  theme.css not found — styleguide will render without package styles.');
 
-        return '';
+            return '';
+        }
+
+        return $this->resolveImports($themePath);
+    }
+
+    /**
+     * Read a CSS file and resolve its @import statements recursively,
+     * replacing them with the actual content of the imported files.
+     */
+    protected function resolveImports(string $cssPath): string
+    {
+        $css    = File::get($cssPath);
+        $baseDir = dirname($cssPath);
+
+        // Resolve @import "./path/to/file.css";
+        return (string) preg_replace_callback(
+            '/@import\s+["\'](\.\/[^"\']+)["\']\s*;/m',
+            function (array $matches) use ($baseDir): string {
+                $importPath = realpath($baseDir.'/'.$matches[1]);
+                if ($importPath === false || ! File::exists($importPath)) {
+                    return "/* @import {$matches[1]} not found */";
+                }
+
+                // Recursively resolve nested imports
+                return $this->resolveImports($importPath);
+            },
+            $css
+        );
     }
 
     protected function buildHtml(string $body, string $css, string $title): string

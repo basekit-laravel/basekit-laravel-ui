@@ -56,7 +56,11 @@ class Button extends Component
         /**
          * Icon name for Heroicons.
          */
-        public ?string $icon = null
+        public ?string $icon = null,
+        /**
+         * The button border-radius variant.
+         */
+        public ?string $rounded = null
     ) {
         $this->iconOrientation = $this->resolveOrientation($iconOrientation);
         $this->variant = $this->resolveVariant($variant);
@@ -84,6 +88,10 @@ class Button extends Component
 
         if ($this->isFullWidth) {
             $classes[] = 'bk-button--full-width';
+        }
+
+        if ($this->rounded !== null) {
+            $classes[] = "bk-button--rounded-{$this->rounded}";
         }
 
         return implode(' ', $classes);

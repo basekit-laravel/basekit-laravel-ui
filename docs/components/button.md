@@ -25,6 +25,7 @@ A versatile button component with multiple variants, sizes, and icon support.
 | `icon`             | `string` | `null`      | Heroicon name                                                                            |
 | `icon-orientation` | `string` | `'left'`    | Icon position: `left` or `right`                                                         |
 | `type`             | `string` | `'button'`  | Button type attribute                                                                    |
+| `rounded`          | `string` | `'md'`      | Border-radius variant (`none`,`sm`,`md`,`lg`,`xl`,`2xl`,`full`)                          |
 
 ## Slots
 
@@ -91,6 +92,21 @@ Pass any Heroicon name via the `icon` prop:
     Processing...
 </x-basekit-ui::button>
 ```
+
+## Rounded
+
+Override the default border-radius using the `rounded` prop:
+
+```blade
+<x-basekit-ui::button rounded="full">Pill Shape</x-basekit-ui::button>
+<x-basekit-ui::button rounded="none">Sharp</x-basekit-ui::button>
+<x-basekit-ui::button rounded="sm">Small Radius</x-basekit-ui::button>
+<x-basekit-ui::button rounded="lg">Large Radius</x-basekit-ui::button>
+<x-basekit-ui::button rounded="xl">Extra Large</x-basekit-ui::button>
+<x-basekit-ui::button rounded="2xl">2X Large</x-basekit-ui::button>
+```
+
+Accepts: `none`, `sm`, `md`, `lg`, `xl`, `2xl`, `full`. Defaults to `md`.
 
 ## Full Width
 
