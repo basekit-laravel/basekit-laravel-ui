@@ -5,6 +5,13 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.2.4...v1.3.0) (2026-07-03)
+
+
+### Features
+
+* add rounded prop to Button component ([97f376d](https://github.com/basekit-laravel/basekit-laravel-ui/commit/97f376d98df3a8591a5ce48ca5ba7dbe942c4832))
+
 ## [1.2.4](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.2.3...v1.2.4) (2026-07-03)
 
 
