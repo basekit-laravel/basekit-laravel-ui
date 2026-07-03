@@ -5,6 +5,16 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.4](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.2.3...v1.2.4) (2026-07-03)
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump laravel/pint from 1.29.1 to 1.29.3 ([#20](https://github.com/basekit-laravel/basekit-laravel-ui/issues/20)) ([b1bc13d](https://github.com/basekit-laravel/basekit-laravel-ui/commit/b1bc13d5be00402cfcb650f3d14ecc0d911ef8c8))
+* **deps-dev:** bump pestphp/pest from 4.7.0 to 4.7.4 ([#23](https://github.com/basekit-laravel/basekit-laravel-ui/issues/23)) ([8987aaa](https://github.com/basekit-laravel/basekit-laravel-ui/commit/8987aaaafce3b53818eccd70a0387f7c86dc8916))
+* **deps-dev:** bump phpstan/phpstan from 2.2.2 to 2.2.4 ([#22](https://github.com/basekit-laravel/basekit-laravel-ui/issues/22)) ([14b4031](https://github.com/basekit-laravel/basekit-laravel-ui/commit/14b4031eb057a06aa7418cef2eb8f428b033e15c))
+* **deps-dev:** bump rector/rector from 2.4.5 to 2.5.2 ([#21](https://github.com/basekit-laravel/basekit-laravel-ui/issues/21)) ([18f1d22](https://github.com/basekit-laravel/basekit-laravel-ui/commit/18f1d22423f4f7ba96251f1b3aad447fc22a0687))
+
 ## [1.2.3](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.2.2...v1.2.3) (2026-05-29)
 
 ### Bug Fixes
