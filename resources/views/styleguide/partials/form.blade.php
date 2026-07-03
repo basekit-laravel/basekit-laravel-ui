@@ -93,6 +93,19 @@
                     <x-basekit-ui::button rounded="full">Full</x-basekit-ui::button>
                 </div>
             </div>
+
+            <!-- Link Button -->
+            <div class="space-y-2">
+                <p class="text-sm text-slate-500 font-medium">As Link</p>
+                <div class="flex flex-wrap items-center gap-3">
+                    <x-basekit-ui::button href="https://github.com/basekit-laravel/basekit-laravel-ui" variant="primary" icon="arrow-top-right-on-square">
+                        Link Button
+                    </x-basekit-ui::button>
+                    <x-basekit-ui::button variant="secondary" as="a" icon="arrow-top-right-on-square">
+                        No Href
+                    </x-basekit-ui::button>
+                </div>
+            </div>
         </div>
     </x-basekit-ui::styleguide.section-toggle>
 

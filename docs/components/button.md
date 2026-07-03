@@ -24,7 +24,9 @@ A versatile button component with multiple variants, sizes, and icon support.
 | `is-loading`       | `bool`   | `false`     | Show loading spinner and disable the button                                              |
 | `icon`             | `string` | `null`      | Heroicon name                                                                            |
 | `icon-orientation` | `string` | `'left'`    | Icon position: `left` or `right`                                                         |
-| `type`             | `string` | `'button'`  | Button type attribute                                                                    |
+| `type`             | `string` | `'button'`  | Button type attribute (only applies when `as` is `'button'`)                             |
+| `as`               | `string` | `'button'`  | HTML tag to render (`button`, `a`)                                                       |
+| `href`             | `string` | `null`      | URL for `<a>` tag. When set, auto-switches `as` to `'a'`                                 |
 | `rounded`          | `string` | `'md'`      | Border-radius variant (`none`,`sm`,`md`,`lg`,`xl`,`2xl`,`full`)                          |
 
 ## Slots
@@ -90,6 +92,33 @@ Pass any Heroicon name via the `icon` prop:
 ```blade
 <x-basekit-ui::button :is-loading="true" variant="primary">
     Processing...
+</x-basekit-ui::button>
+```
+
+## As Link
+
+Render the button as an `<a>` tag by passing an `href`:
+
+```blade
+<x-basekit-ui::button href="/dashboard" variant="primary">
+    Dashboard
+</x-basekit-ui::button>
+```
+
+Or use the `as` prop explicitly:
+
+```blade
+<x-basekit-ui::button as="a" href="https://example.com" icon="arrow-top-right-on-square">
+    External Link
+</x-basekit-ui::button>
+```
+
+When rendered as a link, the `type` and `disabled` attributes are omitted, and `href` is applied instead. All visual styling (variants, sizes, icons, rounded) works identically.
+
+```blade
+{{-- Link button with icon and specific size --}}
+<x-basekit-ui::button href="/settings" variant="secondary" size="sm" icon="cog-6-tooth">
+    Settings
 </x-basekit-ui::button>
 ```
 

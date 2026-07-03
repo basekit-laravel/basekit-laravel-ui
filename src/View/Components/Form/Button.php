@@ -39,7 +39,15 @@ class Button extends Component
      */
     public function __construct(
         /**
-         * The button HTML type attribute.
+         * The HTML tag to render ('button' or 'a').
+         */
+        public string $as = 'button',
+        /**
+         * URL for <a> tag. When set, renders as <a> instead of <button>.
+         */
+        public ?string $href = null,
+        /**
+         * The button HTML type attribute (only applies when $as is 'button').
          */
         public string $type = 'button',
         string $iconOrientation = Orientation::Left->value,
@@ -62,6 +70,9 @@ class Button extends Component
          */
         public ?string $rounded = null
     ) {
+        if ($this->href !== null) {
+            $this->as = 'a';
+        }
         $this->iconOrientation = $this->resolveOrientation($iconOrientation);
         $this->variant = $this->resolveVariant($variant);
         $this->size = $this->resolveSize($size);

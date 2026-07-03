@@ -7,7 +7,9 @@
     - isLoading: boolean (default: false)
     - icon: string (Heroicon name, e.g., 'check')
     - iconOrientation: 'left', 'right' (default: 'left')
-    - type: 'button', 'submit', 'reset' (default: 'button')
+    - type: 'button', 'submit', 'reset' (default: 'button') — only applies when as='button'
+    - as: 'button', 'a' (default: 'button')
+    - href: string — URL for <a> tag. When set, auto-switches as to 'a'
 
     Slots:
     - default: Button content
@@ -16,8 +18,13 @@
     - icon: Custom icon SVG (overrides icon prop)
 --}}
 
-<button type="{{ $type }}" {{ $attributes->twMerge($classes()) }}
-    @if ($isLoading) disabled @endif>
+<{{ $as }} {{ $attributes->twMerge($classes()) }}
+    @if ($as === 'button')
+        type="{{ $type }}"
+        @if ($isLoading) disabled @endif
+    @elseif ($as === 'a' && $href)
+        href="{{ $href }}"
+    @endif>
     {{-- Prefix Slot --}}
     @isset($prefix)
         <span class="bk-button__prefix">{{ $prefix }}</span>
@@ -40,4 +47,4 @@
     @isset($suffix)
         <span class="bk-button__suffix">{{ $suffix }}</span>
     @endisset
-</button>
+</{{ $as }}>
