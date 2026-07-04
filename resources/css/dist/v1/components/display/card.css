@@ -87,6 +87,12 @@
   box-shadow: none;
 }
 
+.bk-card--transparent {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
 .bk-card--default .bk-card__footer,
 .bk-card--bordered .bk-card__footer {
   border-bottom: 1px solid var(--card-border);

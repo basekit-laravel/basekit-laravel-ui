@@ -231,7 +231,7 @@ return [
 
         'card' => [
             'enabled' => true,
-            'variants' => ['default', 'bordered'],
+            'variants' => ['default', 'bordered', 'transparent'],
             'default_variant' => 'default',
         ],
 
