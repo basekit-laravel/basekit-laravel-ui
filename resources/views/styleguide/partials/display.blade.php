@@ -69,6 +69,15 @@
                     </div>
                 </x-basekit-ui::card>
             </div>
+            <div>
+                <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Transparent Variant</p>
+                <div class="rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 p-4">
+                    <x-basekit-ui::card variant="transparent">
+                        <x-slot:header class="font-semibold text-white">Transparent Card</x-slot:header>
+                        <p class="text-indigo-100">Card with transparent background — inherits the parent background.</p>
+                    </x-basekit-ui::card>
+                </div>
+            </div>
         </div>
     </x-basekit-ui::styleguide.section-toggle>
 

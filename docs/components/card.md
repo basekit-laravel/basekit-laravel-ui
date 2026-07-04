@@ -16,10 +16,10 @@ A versatile card container component for grouping related content.
 
 ## Props
 
-| Prop       | Type      | Default     | Description                                |
-| ---------- | --------- | ----------- | ------------------------------------------ |
-| `variant`  | `string`  | `'default'` | Card style variant (`default`, `bordered`) |
-| `isPadded` | `boolean` | `true`      | Apply default body padding                 |
+| Prop       | Type      | Default     | Description                                            |
+| ---------- | --------- | ----------- | ------------------------------------------------------ |
+| `variant`  | `string`  | `'default'` | Card style variant (`default`, `bordered`, `transparent`) |
+| `isPadded` | `boolean` | `true`      | Apply default body padding                             |
 
 ## Slots
 
@@ -70,11 +70,12 @@ A versatile card container component for grouping related content.
 
 ## Variants
 
-Supported variants: `default`, `bordered`.
+Supported variants: `default`, `bordered`, `transparent`.
 
 ```blade
 <x-basekit-ui::card variant="default">Default card</x-basekit-ui::card>
 <x-basekit-ui::card variant="bordered">Bordered card</x-basekit-ui::card>
+<x-basekit-ui::card variant="transparent">Transparent card</x-basekit-ui::card>
 ```
 
 ## Rich Content Card Example
@@ -154,7 +155,7 @@ Configure in `config/basekit-laravel-ui.php`:
 ```php
 'card' => [
     'enabled' => true,
-    'variants' => ['default', 'bordered'],
+    'variants' => ['default', 'bordered', 'transparent'],
     'default_variant' => 'default',
 ],
 ```
