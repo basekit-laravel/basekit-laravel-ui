@@ -206,7 +206,7 @@ Override the component's default variant colors using the `color` shortcut prop 
 
 The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-200`, `emerald-700`) or any **raw CSS color value** (hex, rgb, hsl, named colors).
 
-> **Note**: When using Tailwind color names, the component automatically computes hover states (darkening the shade by 100) and selects a contrasting text color (white on shades ≥500, dark on shades ≤400).
+> **Note**: When using Tailwind color names, the component automatically computes hover states (darkening the shade by 100), selects a contrasting text color (white on shades ≥500, dark on shades ≤400), and derives matching **active background** and **focus-visible ring** colors. The same applies to hex values — hover gets darkened by 85%, active by 65%, and the focus ring uses a translucent 20% opacity variant.
 
 ### With Tailwind Colors
 

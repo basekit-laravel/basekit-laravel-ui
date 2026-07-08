@@ -193,9 +193,9 @@ Override or extend styles with the `class` attribute:
 
 ## Custom Colors
 
-Override the component's default border colors using the `color` shortcut prop or granular `border` and `hover-border` props.
+Override the component's default border and focus ring colors using the `color` shortcut prop or granular `border` and `hover-border` props.
 
-The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-200`, `emerald-700`) or any **raw CSS color value** (hex, rgb, hsl, named colors).
+The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-200`, `emerald-700`) or any **raw CSS color value** (hex, rgb, hsl, named colors). When using `color`, the focus-within ring automatically matches the chosen color.
 
 ### With Tailwind Colors
 

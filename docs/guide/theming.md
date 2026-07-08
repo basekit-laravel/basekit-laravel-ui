@@ -372,7 +372,7 @@ Override variables for specific component instances:
 
 All color-using components expose dedicated props as a higher-level alternative to inline CSS variables:
 
-- **`color`** — Quick shortcut that auto-sets background, text, border, and hover states simultaneously.
+- **`color`** — Quick shortcut that auto-sets background, text, border, hover, focus, and active states simultaneously.
 - **`background`** / **`text`** / **`border`** — Granular control over individual surfaces.
 - **`hover-background`** / **`hover-text`** / **`hover-border`** — Hover state overrides.
 
@@ -380,8 +380,9 @@ The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-
 
 When you pass a Tailwind color name, the component automatically:
 - Darkens the shade by 100 for hover states (e.g., `indigo-500` → `indigo-600`)
+- Darkens the shade by 200 for active and border states (e.g., `indigo-500` → `indigo-700`)
 - Picks a contrasting text color (white on shades ≥500, dark on shades ≤400)
-- Derives a border color (shade + 200)
+- Derives a focus ring from the text shade (light on dark backgrounds, translucent on hex values)
 
 **Light-background components** (badge, alert) use a lighter expansion:
 - Background: shade-50
