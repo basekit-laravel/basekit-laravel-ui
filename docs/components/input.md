@@ -34,6 +34,8 @@ A flexible text input component with configurable variants, sizes, inline labels
 | `label-style`        | `string` | `'default'`   | Label placement: `default`, `inset`, `overlap`                              |
 | `control-style`      | `string` | `'default'`   | Control style: `default`, `pill`, `underline`                               |
 | `is-toggle-password` | `bool`   | `false`       | Show password visibility toggle for password inputs                         |
+| `border`             | `string` | `null`        | Custom border color. |
+| `hover-border`       | `string` | `null`        | Custom hover border color. |
 
 Standard HTML input attributes such as `name`, `min`, `max`, `step`, `disabled`, and `readonly` pass through to the underlying `<input>` element.
 
@@ -186,6 +188,43 @@ Override or extend styles with the `class` attribute:
     name="custom-email"
     label="Email"
     class="mt-2"
+/>
+```
+
+## Custom Colors
+
+Override the component's default border colors using the `color` shortcut prop or granular `border` and `hover-border` props.
+
+The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-200`, `emerald-700`) or any **raw CSS color value** (hex, rgb, hsl, named colors).
+
+### With Tailwind Colors
+
+```blade
+<x-basekit-ui::input
+    name="email"
+    label="Email"
+    color="indigo-500"
+/>
+```
+
+### With Raw CSS Colors
+
+```blade
+<x-basekit-ui::input
+    name="email"
+    label="Email"
+    border="#C7D2FE"
+/>
+```
+
+### Granular Control
+
+```blade
+<x-basekit-ui::input
+    name="email"
+    label="Email"
+    border="indigo-500"
+    hover-border="indigo-600"
 />
 ```
 

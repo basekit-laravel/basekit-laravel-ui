@@ -8,6 +8,7 @@ use BasekitLaravel\BasekitLaravelUi\Enums\ControlStyle;
 use BasekitLaravel\BasekitLaravelUi\Enums\LabelStyle;
 use BasekitLaravel\BasekitLaravelUi\Enums\Size;
 use BasekitLaravel\BasekitLaravelUi\Enums\Variant;
+use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentColorResolver;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentPropResolver;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
@@ -94,7 +95,19 @@ class MultiSelect extends Component
         /**
          * Optional corner hint text.
          */
-        public ?string $cornerHint = null
+        public ?string $cornerHint = null,
+        /**
+         * Quick color shortcut. Sets border + hover-border.
+         */
+        public ?string $color = null,
+        /**
+         * Custom border color.
+         */
+        public ?string $border = null,
+        /**
+         * Custom hover border color.
+         */
+        public ?string $hoverBorder = null,
     ) {
         $this->labelStyle = $this->resolveLabelStyle($labelStyle);
         $this->controlStyle = $this->resolveControlStyle($controlStyle);
@@ -191,6 +204,24 @@ class MultiSelect extends Component
     public function hasCornerHint(): bool
     {
         return $this->cornerHint !== null && $this->cornerHint !== '';
+    }
+
+    /**
+     * Get the inline color style string based on color props.
+     */
+    public function colorStyle(): ?string
+    {
+        return ComponentColorResolver::resolve(
+            'multi-select',
+            $this->variant->value,
+            $this->color,
+            null,
+            null,
+            $this->border,
+            null,
+            null,
+            $this->hoverBorder,
+        );
     }
 
     /**

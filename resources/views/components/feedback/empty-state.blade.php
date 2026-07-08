@@ -12,7 +12,7 @@
     - actions: Action buttons or links
 --}}
 
-<div {{ $attributes->twMerge($classes()) }}>
+<div @if ($colorStyle()) style="{{ $colorStyle() }}" @endif {{ $attributes->twMerge($classes()) }}>
     {{-- Icon --}}
     <div class="bk-empty-state__icon">
         @if (isset($icon) && !is_string($icon))

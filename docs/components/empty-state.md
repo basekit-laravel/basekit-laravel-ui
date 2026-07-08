@@ -24,6 +24,8 @@ A component for displaying empty or no-data states with optional icon, title, de
 | `title`       | `string` | `null`        | Title text                                                                               |
 | `description` | `string` | `null`        | Description text                                                                         |
 | `icon`        | `string` | `'inbox'`     | Heroicon name                                                                            |
+| `color`       | `string` | `null`        | Quick color shortcut. Sets icon, title, and description colors simultaneously. |
+| `text`        | `string` | `null`        | Custom icon color. |
 
 ## Slots
 
@@ -226,6 +228,44 @@ Override or extend styles with the `class` attribute:
     title="No data"
     description="Try adding your first item"
     class="mt-4"
+/>
+```
+
+## Custom Colors
+
+Override the component's default variant colors using the `color` shortcut prop or the granular `text` prop.
+
+The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-200`, `emerald-700`) or any **raw CSS color value** (hex, rgb, hsl, named colors).
+
+> **Note**: The `color` prop sets the icon color and also derives darker shades for the title (+300) and description (+100) text. Raw CSS values are darkened proportionally — no contrast-based logic is applied.
+
+### With Tailwind Colors
+
+```blade
+<x-basekit-ui::empty-state
+    color="indigo-500"
+    title="No results found"
+    description="Try adjusting your search criteria"
+/>
+```
+
+### With Raw CSS Colors
+
+```blade
+<x-basekit-ui::empty-state
+    color="#6366F1"
+    title="No results found"
+    description="Try adjusting your search criteria"
+/>
+```
+
+### Granular Control
+
+```blade
+<x-basekit-ui::empty-state
+    text="indigo-500"
+    title="No results found"
+    description="Try adjusting your search criteria"
 />
 ```
 

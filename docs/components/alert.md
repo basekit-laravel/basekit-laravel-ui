@@ -22,6 +22,10 @@ Alert banner component for displaying status and feedback messages. Interactive 
 | `is-dismissible` | `boolean`      | `false`                 | Show dismiss button                                                                     |
 | `title`          | `string\|null` | `null`                  | Optional alert title                                                                    |
 | `icon`           | `string\|null` | `null`                  | Heroicon name override                                                                  |
+| `color`          | `string\|null` | `null`                  | Quick color shortcut. Sets background, text, and border simultaneously. |
+| `background`     | `string\|null` | `null`                  | Custom background color. |
+| `text`           | `string\|null` | `null`                  | Custom text color. |
+| `border`         | `string\|null` | `null`                  | Custom border color. |
 
 ## Slots
 
@@ -141,6 +145,43 @@ Override or extend styles with the `class` attribute:
 ```blade
 <x-basekit-ui::alert variant="info" class="mt-2">
     Custom spacing applied.
+</x-basekit-ui::alert>
+```
+
+## Custom Colors
+
+Override the component's default variant colors using the `color` shortcut prop or granular `background`, `text`, and `border` props.
+
+The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-200`, `emerald-700`) or any **raw CSS color value** (hex, rgb, hsl, named colors).
+
+> **Note**: Alert is a light-background component. When using Tailwind color names, the component automatically uses a light tint background (shade-50), strong text (shade-700), and a medium border (shade-200) — matching the built-in variant style.
+
+### With Tailwind Colors
+
+```blade
+<x-basekit-ui::alert color="indigo-500" title="Heads up">
+    This is an informational message.
+</x-basekit-ui::alert>
+```
+
+### With Raw CSS Colors
+
+```blade
+<x-basekit-ui::alert background="#EEF2FF" text="#4338CA" border="#C7D2FE">
+    Custom colored alert.
+</x-basekit-ui::alert>
+```
+
+### Granular Control
+
+```blade
+<x-basekit-ui::alert
+    background="indigo-500"
+    text="white"
+    border="indigo-300"
+    title="Heads up"
+>
+    This is an informational message.
 </x-basekit-ui::alert>
 ```
 

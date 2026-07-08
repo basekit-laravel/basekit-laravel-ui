@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BasekitLaravel\BasekitLaravelUi\View\Components\Feedback;
 
+use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentColorResolver;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentPropResolver;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -58,7 +59,23 @@ class Toast extends Component
          *
          * @var string|null Heroicon name (defaults based on variant if not provided)
          */
-        public ?string $icon = null
+        public ?string $icon = null,
+        /**
+         * Quick color shortcut. Sets background + text + border.
+         */
+        public ?string $color = null,
+        /**
+         * Custom background color.
+         */
+        public ?string $background = null,
+        /**
+         * Custom text color.
+         */
+        public ?string $text = null,
+        /**
+         * Custom border color.
+         */
+        public ?string $border = null,
     ) {
         $this->variant = $this->resolveVariant($variant);
     }
@@ -77,6 +94,21 @@ class Toast extends Component
     public function classes(): string
     {
         return "bk-toast bk-toast--{$this->variant}";
+    }
+
+    /**
+     * Get the inline color style string based on color props.
+     */
+    public function colorStyle(): ?string
+    {
+        return ComponentColorResolver::resolve(
+            'toast',
+            $this->variant,
+            $this->color,
+            $this->background,
+            $this->text,
+            $this->border,
+        );
     }
 
     /**

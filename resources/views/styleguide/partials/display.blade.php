@@ -92,6 +92,14 @@
                 </div>
             </div>
             <div>
+                <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Custom Colors</p>
+                <div class="flex flex-wrap gap-2">
+                    <x-basekit-ui::badge color="indigo-500">Indigo</x-basekit-ui::badge>
+                    <x-basekit-ui::badge color="pink-500">Pink</x-basekit-ui::badge>
+                    <x-basekit-ui::badge color="emerald-500">Emerald</x-basekit-ui::badge>
+                </div>
+            </div>
+            <div>
                 <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">Sizes</p>
                 <div class="flex flex-wrap items-center gap-2">
                     @foreach (['sm', 'md', 'lg'] as $size)
@@ -117,6 +125,7 @@
                     @endforeach
                 </div>
             </div>
+
         </div>
     </x-basekit-ui::styleguide.section-toggle>
 

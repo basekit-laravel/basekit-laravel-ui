@@ -20,6 +20,10 @@ A small badge component for labels, counts, and status indicators.
 | `size`    | `string`  | `'md'`        | Badge size (`sm`,`md`,`lg`)                                                             |
 | `icon`    | `string`  | `null`        | Heroicon name                                                                           |
 | `isDot`   | `boolean` | `false`       | Show dot indicator                                                                      |
+| `color`   | `string`  | `null`        | Quick color shortcut. Sets background, text, and border simultaneously. |
+| `background` | `string` | `null`     | Custom background color. |
+| `text`    | `string`  | `null`        | Custom text color. |
+| `border`  | `string`  | `null`        | Custom border color. |
 
 ## Slots
 
@@ -96,6 +100,32 @@ Override default classes using Tailwind Merge:
 <x-basekit-ui::badge variant="primary" class="uppercase tracking-wide">
     Custom Styled Badge
 </x-basekit-ui::badge>
+```
+
+## Custom Colors
+
+Override the component's default variant colors using the `color` shortcut prop or granular `background`, `text`, and `border` props.
+
+The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-200`, `emerald-700`) or any **raw CSS color value** (hex, rgb, hsl, named colors).
+
+> **Note**: Badge is a light-background component. When using Tailwind color names, the component automatically uses a light tint background (shade-50), strong text (shade-700), and a medium border (shade-200) — matching the built-in variant style.
+
+### With Tailwind Colors
+
+```blade
+<x-basekit-ui::badge color="indigo-500">New</x-basekit-ui::badge>
+```
+
+### With Raw CSS Colors
+
+```blade
+<x-basekit-ui::badge background="#EEF2FF" text="#4338CA" border="#C7D2FE">New</x-basekit-ui::badge>
+```
+
+### Granular Control
+
+```blade
+<x-basekit-ui::badge background="indigo-500" text="white" border="indigo-300">New</x-basekit-ui::badge>
 ```
 
 ## CSS Variables

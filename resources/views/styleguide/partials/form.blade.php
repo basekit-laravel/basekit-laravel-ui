@@ -39,6 +39,16 @@
                 </div>
             </div>
 
+            <!-- Custom Colors -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
+                <div class="flex flex-wrap items-center gap-3">
+                    <x-basekit-ui::button color="indigo-500">Indigo</x-basekit-ui::button>
+                    <x-basekit-ui::button color="pink-500">Pink</x-basekit-ui::button>
+                    <x-basekit-ui::button color="emerald-500">Emerald</x-basekit-ui::button>
+                </div>
+            </div>
+
             <!-- Sizes -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Sizes</h4>
@@ -98,7 +108,8 @@
             <div class="space-y-2">
                 <p class="text-sm text-slate-500 font-medium">As Link</p>
                 <div class="flex flex-wrap items-center gap-3">
-                    <x-basekit-ui::button href="https://github.com/basekit-laravel/basekit-laravel-ui" variant="primary" icon="arrow-top-right-on-square">
+                    <x-basekit-ui::button href="https://github.com/basekit-laravel/basekit-laravel-ui" variant="primary"
+                        icon="arrow-top-right-on-square">
                         Link Button
                     </x-basekit-ui::button>
                     <x-basekit-ui::button variant="secondary" as="a" icon="arrow-top-right-on-square">
@@ -124,7 +135,20 @@
                     <x-basekit-ui::input label="Warning" name="variant_warning" value="Check this value"
                         variant="warning" />
                     <x-basekit-ui::input label="Info" name="variant_info" placeholder="Info variant" variant="info" />
-                    <x-basekit-ui::input label="Ghost" name="variant_ghost" placeholder="Ghost variant" variant="ghost" />
+                    <x-basekit-ui::input label="Ghost" name="variant_ghost" placeholder="Ghost variant"
+                        variant="ghost" />
+                </div>
+            </div>
+
+            <!-- Custom Colors -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
+                <div class="flex flex-wrap items-center gap-3">
+                    <x-basekit-ui::input color="indigo-500" label="Custom" name="inp_color_indigo"
+                        placeholder="Indigo" />
+                    <x-basekit-ui::input color="pink-500" label="Custom" name="inp_color_pink" placeholder="Pink" />
+                    <x-basekit-ui::input color="emerald-500" label="Custom" name="inp_color_emerald"
+                        placeholder="Emerald" />
                 </div>
             </div>
 
@@ -132,10 +156,12 @@
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Sizes</h4>
                 <div class="grid md:grid-cols-3 gap-6">
-                    <x-basekit-ui::input label="Small Input" name="size_sm" size="sm" placeholder="Small size" />
+                    <x-basekit-ui::input label="Small Input" name="size_sm" size="sm"
+                        placeholder="Small size" />
                     <x-basekit-ui::input label="Medium Input (Default)" name="size_md" size="md"
                         placeholder="Medium size" />
-                    <x-basekit-ui::input label="Large Input" name="size_lg" size="lg" placeholder="Large size" />
+                    <x-basekit-ui::input label="Large Input" name="size_lg" size="lg"
+                        placeholder="Large size" />
                 </div>
             </div>
 
@@ -145,8 +171,10 @@
                 <div class="grid md:grid-cols-3 gap-6">
                     <x-basekit-ui::input label="Default State" name="state_default" placeholder="Enter text..."
                         hint="Helper text goes here" />
-                    <x-basekit-ui::input label="Disabled Input" name="state_disabled" value="Disabled value" disabled />
-                    <x-basekit-ui::input label="Readonly Input" name="state_readonly" value="Readonly value" readonly />
+                    <x-basekit-ui::input label="Disabled Input" name="state_disabled" value="Disabled value"
+                        disabled />
+                    <x-basekit-ui::input label="Readonly Input" name="state_readonly" value="Readonly value"
+                        readonly />
                     <x-basekit-ui::input label="Error State" name="state_error" value=""
                         error="This field is required" />
                 </div>
@@ -158,7 +186,8 @@
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="space-y-2">
                         <p class="text-xs font-semibold text-slate-700">Corner Hint</p>
-                        <x-basekit-ui::input label="Amount" name="corner_hint" placeholder="0.00" corner-hint="USD" />
+                        <x-basekit-ui::input label="Amount" name="corner_hint" placeholder="0.00"
+                            corner-hint="USD" />
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold text-slate-700">Underline Input</p>
@@ -267,6 +296,19 @@
                 </div>
             </div>
 
+            <!-- Custom Colors -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
+                <div class="flex flex-wrap items-center gap-3">
+                    <x-basekit-ui::select color="indigo-500" label="Custom" name="sel_color_indigo"
+                        placeholder="Indigo" :options="['a' => 'A', 'b' => 'B']" />
+                    <x-basekit-ui::select color="pink-500" label="Custom" name="sel_color_pink" placeholder="Pink"
+                        :options="['a' => 'A', 'b' => 'B']" />
+                    <x-basekit-ui::select color="emerald-500" label="Custom" name="sel_color_emerald"
+                        placeholder="Emerald" :options="['a' => 'A', 'b' => 'B']" />
+                </div>
+            </div>
+
             <!-- Select Sizes -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Sizes</h4>
@@ -286,8 +328,8 @@
                 <div class="grid md:grid-cols-3 gap-6">
                     <x-basekit-ui::select label="Default State" name="select_default" placeholder="Select an option"
                         :options="['design' => 'Design', 'dev' => 'Development', 'marketing' => 'Marketing']" hint="Helper text goes here" />
-                    <x-basekit-ui::select label="Disabled State" name="select_disabled" placeholder="Select an option"
-                        :options="['design' => 'Design', 'dev' => 'Development', 'marketing' => 'Marketing']" disabled />
+                    <x-basekit-ui::select label="Disabled State" name="select_disabled"
+                        placeholder="Select an option" :options="['design' => 'Design', 'dev' => 'Development', 'marketing' => 'Marketing']" disabled />
                     <x-basekit-ui::select label="Error State" name="select_error" placeholder="Select an option"
                         :options="['design' => 'Design', 'dev' => 'Development', 'marketing' => 'Marketing']" error="This field is required" />
                 </div>
@@ -305,8 +347,8 @@
 
                     <div class="space-y-2">
                         <p class="text-xs font-semibold text-slate-700">Underline</p>
-                        <x-basekit-ui::select label="Underline Select" name="select_underline" control-style="underline"
-                            placeholder="Select an option" :options="['basic' => 'Basic', 'pro' => 'Pro', 'team' => 'Team']" />
+                        <x-basekit-ui::select label="Underline Select" name="select_underline"
+                            control-style="underline" placeholder="Select an option" :options="['basic' => 'Basic', 'pro' => 'Pro', 'team' => 'Team']" />
                     </div>
 
                     <div class="space-y-2">
@@ -359,6 +401,19 @@
                         placeholder="Select options" :options="['design' => 'Design', 'dev' => 'Development', 'marketing' => 'Marketing']" />
                     <x-basekit-ui::multi-select label="Ghost" name="multiselect_variant_ghost" variant="ghost"
                         placeholder="Select options" :options="['design' => 'Design', 'dev' => 'Development', 'marketing' => 'Marketing']" />
+                </div>
+            </div>
+
+            <!-- Custom Colors -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
+                <div class="flex flex-wrap items-center gap-3">
+                    <x-basekit-ui::multi-select color="indigo-500" label="Custom" name="msel_color_indigo"
+                        placeholder="Indigo" :options="['a' => 'A', 'b' => 'B']" />
+                    <x-basekit-ui::multi-select color="pink-500" label="Custom" name="msel_color_pink"
+                        placeholder="Pink" :options="['a' => 'A', 'b' => 'B']" />
+                    <x-basekit-ui::multi-select color="emerald-500" label="Custom" name="msel_color_emerald"
+                        placeholder="Emerald" :options="['a' => 'A', 'b' => 'B']" />
                 </div>
             </div>
 
@@ -446,8 +501,8 @@
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Variants</h4>
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <x-basekit-ui::textarea label="Primary" name="ta_variant_primary" variant="primary" rows="3"
-                        placeholder="Primary variant" />
+                    <x-basekit-ui::textarea label="Primary" name="ta_variant_primary" variant="primary"
+                        rows="3" placeholder="Primary variant" />
                     <x-basekit-ui::textarea label="Secondary" name="ta_variant_secondary" variant="secondary"
                         rows="3" placeholder="Secondary variant" />
                     <x-basekit-ui::textarea label="Success" name="ta_variant_success" value="Valid input"
@@ -458,6 +513,19 @@
                         placeholder="Info variant" />
                     <x-basekit-ui::textarea label="Ghost" name="ta_variant_ghost" variant="ghost" rows="3"
                         placeholder="Ghost variant" />
+                </div>
+            </div>
+
+            <!-- Custom Colors -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <x-basekit-ui::textarea color="indigo-500" label="Custom" name="ta_color_indigo"
+                        placeholder="Indigo" rows="2" />
+                    <x-basekit-ui::textarea color="pink-500" label="Custom" name="ta_color_pink" placeholder="Pink"
+                        rows="2" />
+                    <x-basekit-ui::textarea color="emerald-500" label="Custom" name="ta_color_emerald"
+                        placeholder="Emerald" rows="2" />
                 </div>
             </div>
 
@@ -507,14 +575,14 @@
 
                     <div class="space-y-2">
                         <p class="text-xs font-semibold text-slate-700">Inset Label</p>
-                        <x-basekit-ui::textarea label="Company bio" name="ta_inset" rows="4" label-style="inset"
-                            placeholder="Tell us about your company..." />
+                        <x-basekit-ui::textarea label="Company bio" name="ta_inset" rows="4"
+                            label-style="inset" placeholder="Tell us about your company..." />
                     </div>
 
                     <div class="space-y-2">
                         <p class="text-xs font-semibold text-slate-700">Overlap Label</p>
-                        <x-basekit-ui::textarea label="Bio" name="ta_overlap" rows="4" label-style="overlap"
-                            placeholder="Tell us about yourself..." />
+                        <x-basekit-ui::textarea label="Bio" name="ta_overlap" rows="4"
+                            label-style="overlap" placeholder="Tell us about yourself..." />
                     </div>
                 </div>
             </div>
@@ -539,6 +607,17 @@
                 </div>
             </div>
 
+            <!-- Custom Colors -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
+                <div class="flex flex-wrap items-center gap-3">
+                    <x-basekit-ui::checkbox color="indigo-500" name="ckx_color_indigo" label="Indigo" is-checked />
+                    <x-basekit-ui::checkbox color="pink-500" name="ckx_color_pink" label="Pink" is-checked />
+                    <x-basekit-ui::checkbox color="emerald-500" name="ckx_color_emerald" label="Emerald"
+                        is-checked />
+                </div>
+            </div>
+
             <!-- Checkbox Sizes -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Sizes</h4>
@@ -556,11 +635,13 @@
                     <x-basekit-ui::checkbox name="ckx_unchecked" label="Unchecked" />
                     <x-basekit-ui::checkbox name="ckx_checked" label="Checked" is-checked />
                     <x-basekit-ui::checkbox name="ckx_disabled" label="Disabled" disabled />
-                    <x-basekit-ui::checkbox name="ckx_disabled_checked" label="Disabled & Checked" is-checked disabled />
+                    <x-basekit-ui::checkbox name="ckx_disabled_checked" label="Disabled & Checked" is-checked
+                        disabled />
                     <x-basekit-ui::checkbox name="ckx_error" label="With Error" error="This is required" />
                     <x-basekit-ui::checkbox name="ckx_hint" label="With Hint" hint="This is a helpful hint" />
                 </div>
             </div>
+
         </div>
     </x-basekit-ui::styleguide.section-toggle>
 
@@ -583,6 +664,17 @@
                 </div>
             </div>
 
+            <!-- Custom Colors -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
+                <div class="flex flex-wrap items-center gap-3">
+                    <x-basekit-ui::radio color="indigo-500" name="radio_color" value="indigo" label="Indigo"
+                        is-checked />
+                    <x-basekit-ui::radio color="pink-500" name="radio_color" value="pink" label="Pink" />
+                    <x-basekit-ui::radio color="emerald-500" name="radio_color" value="emerald" label="Emerald" />
+                </div>
+            </div>
+
             <!-- Radio Sizes -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Sizes</h4>
@@ -600,14 +692,15 @@
                     <x-basekit-ui::radio name="radio_group" value="unchecked" label="Unchecked" />
                     <x-basekit-ui::radio name="radio_group" value="checked" label="Checked" is-checked />
                     <x-basekit-ui::radio name="radio_group" value="disabled" label="Disabled" disabled />
-                    <x-basekit-ui::radio name="radio_group_disabled" value="checked_disabled" label="Disabled & Checked"
-                        is-checked disabled />
+                    <x-basekit-ui::radio name="radio_group_disabled" value="checked_disabled"
+                        label="Disabled & Checked" is-checked disabled />
                     <x-basekit-ui::radio name="radio_group" value="error" label="With Error"
                         error="Please select an option" />
                     <x-basekit-ui::radio name="radio_group" value="hint" label="With Hint"
                         hint="Select the option that applies" />
                 </div>
             </div>
+
         </div>
     </x-basekit-ui::styleguide.section-toggle>
 
@@ -625,6 +718,17 @@
                     <x-basekit-ui::toggle name="toggle_danger" label="Danger" variant="danger" is-checked />
                     <x-basekit-ui::toggle name="toggle_info" label="Info" variant="info" is-checked />
                     <x-basekit-ui::toggle name="toggle_ghost" label="Ghost" variant="ghost" is-checked />
+                </div>
+            </div>
+
+            <!-- Custom Colors -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
+                <div class="flex flex-wrap items-center gap-3">
+                    <x-basekit-ui::toggle color="indigo-500" name="toggle_color_indigo" label="Indigo" is-checked />
+                    <x-basekit-ui::toggle color="pink-500" name="toggle_color_pink" label="Pink" is-checked />
+                    <x-basekit-ui::toggle color="emerald-500" name="toggle_color_emerald" label="Emerald"
+                        is-checked />
                 </div>
             </div>
 
@@ -647,9 +751,11 @@
                     <x-basekit-ui::toggle name="toggle_disabled" label="Disabled" disabled />
                     <x-basekit-ui::toggle name="toggle_disabled_on" label="Disabled & On" is-checked disabled />
                     <x-basekit-ui::toggle name="toggle_error" label="With Error" error="This setting is required" />
-                    <x-basekit-ui::toggle name="toggle_hint" label="With Hint" hint="Enable to activate this feature" />
+                    <x-basekit-ui::toggle name="toggle_hint" label="With Hint"
+                        hint="Enable to activate this feature" />
                 </div>
             </div>
+
         </div>
     </x-basekit-ui::styleguide.section-toggle>
 

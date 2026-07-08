@@ -52,6 +52,16 @@
                 </div>
             </div>
 
+            <!-- Custom Colors -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
+                <div class="space-y-3 max-w-xl">
+                    <x-basekit-ui::alert color="indigo-500" title="Custom" :is-dismissible="true">Indigo content here.</x-basekit-ui::alert>
+                    <x-basekit-ui::alert color="pink-500" title="Custom" :is-dismissible="true">Pink content here.</x-basekit-ui::alert>
+                    <x-basekit-ui::alert color="emerald-500" title="Custom" :is-dismissible="true">Emerald content here.</x-basekit-ui::alert>
+                </div>
+            </div>
+
             <!-- Custom Icon -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Custom Icon</h4>
@@ -103,6 +113,7 @@
                     </x-basekit-ui::alert>
                 </div>
             </div>
+
         </div>
     </x-basekit-ui::styleguide.section-toggle>
 
@@ -164,6 +175,16 @@
                 </div>
             </div>
 
+            <!-- Custom Colors -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <x-basekit-ui::empty-state color="indigo-500" size="sm" title="Indigo" description="Indigo themed empty state" />
+                    <x-basekit-ui::empty-state color="pink-500" size="sm" title="Pink" description="Pink themed empty state" />
+                    <x-basekit-ui::empty-state color="emerald-500" size="sm" title="Emerald" description="Emerald themed empty state" />
+                </div>
+            </div>
+
             <!-- Custom Icon -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Custom Icon</h4>
@@ -210,6 +231,7 @@
                         description="Roomier layout for full pages." icon="inbox" />
                 </div>
             </div>
+
         </div>
     </x-basekit-ui::styleguide.section-toggle>
 
@@ -282,6 +304,16 @@
                 </div>
             </div>
 
+            <!-- Custom Colors -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
+                <div class="flex flex-wrap items-center gap-3">
+                    <x-basekit-ui::spinner color="indigo-500" />
+                    <x-basekit-ui::spinner color="pink-500" />
+                    <x-basekit-ui::spinner color="emerald-500" />
+                </div>
+            </div>
+
             <!-- With Label -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">With Label</h4>
@@ -290,6 +322,7 @@
                     <x-basekit-ui::spinner size="sm" variant="secondary">Syncing changes...</x-basekit-ui::spinner>
                 </div>
             </div>
+
         </div>
     </x-basekit-ui::styleguide.section-toggle>
 
@@ -314,6 +347,16 @@
                 </div>
             </div>
 
+            <!-- Custom Colors -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
+                <div class="space-y-3 max-w-sm">
+                    <x-basekit-ui::progress color="indigo-500" value="60" label="Indigo" :is-show-percentage="true" />
+                    <x-basekit-ui::progress color="pink-500" value="60" label="Pink" :is-show-percentage="true" />
+                    <x-basekit-ui::progress color="emerald-500" value="60" label="Emerald" :is-show-percentage="true" />
+                </div>
+            </div>
+
             <!-- Sizes -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Sizes</h4>
@@ -326,6 +369,7 @@
                         :is-show-percentage="true" />
                 </div>
             </div>
+
         </div>
     </x-basekit-ui::styleguide.section-toggle>
 
@@ -496,6 +540,16 @@
                 </div>
             </div>
 
+            <!-- Custom Colors -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
+                <div class="space-y-2.5 max-w-sm">
+                    <x-basekit-ui::toast color="indigo-500" title="Indigo" message="Indigo colored toast" :duration="0" />
+                    <x-basekit-ui::toast color="pink-500" title="Pink" message="Pink colored toast" :duration="0" />
+                    <x-basekit-ui::toast color="emerald-500" title="Emerald" message="Emerald colored toast" :duration="0" />
+                </div>
+            </div>
+
             <!-- Custom Icon -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Custom Icon</h4>
@@ -554,6 +608,7 @@
                     </x-basekit-ui::toast>
                 </div>
             </div>
+
         </div>
     </x-basekit-ui::styleguide.section-toggle>
 </div>

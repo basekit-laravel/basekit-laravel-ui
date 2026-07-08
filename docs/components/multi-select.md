@@ -40,6 +40,8 @@ This component requires Alpine.js to be loaded in your layout for interactive be
 | `corner-hint`   | `string` | `null`             | Top-right label row hint                                                    |
 | `label-style`   | `string` | `'default'`        | Label placement: `default`, `inset`, `overlap`                              |
 | `control-style` | `string` | `'default'`        | Control style: `default`, `pill`, `underline`                               |
+| `border`        | `string` | `null`             | Custom border color. |
+| `hover-border`  | `string` | `null`             | Custom hover border color. |
 
 Pass `name="tags"` or `name="tags[]"`; the component normalizes hidden inputs to array submission format automatically.
 
@@ -215,6 +217,46 @@ $options =[
     label="Tags"
     :options="$options"
     class="mt-2"
+/>
+```
+
+## Custom Colors
+
+Override the component's default border colors using the `color` shortcut prop or granular `border` and `hover-border` props.
+
+The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-200`, `emerald-700`) or any **raw CSS color value** (hex, rgb, hsl, named colors).
+
+### With Tailwind Colors
+
+```blade
+<x-basekit-ui::multi-select
+    name="tags"
+    label="Tags"
+    color="indigo-500"
+    :options="['laravel' => 'Laravel', 'vue' => 'Vue.js']"
+/>
+```
+
+### With Raw CSS Colors
+
+```blade
+<x-basekit-ui::multi-select
+    name="tags"
+    label="Tags"
+    border="#C7D2FE"
+    :options="['laravel' => 'Laravel', 'vue' => 'Vue.js']"
+/>
+```
+
+### Granular Control
+
+```blade
+<x-basekit-ui::multi-select
+    name="tags"
+    label="Tags"
+    border="indigo-500"
+    hover-border="indigo-600"
+    :options="['laravel' => 'Laravel', 'vue' => 'Vue.js']"
 />
 ```
 

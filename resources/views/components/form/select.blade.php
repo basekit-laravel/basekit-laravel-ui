@@ -57,7 +57,7 @@
     }
 @endphp
 
-<div class="bk-select" x-data="{
+<div class="bk-select" @if ($colorStyle()) style="{{ $colorStyle() }}" @endif x-data="{
     open: false,
     disabled: @js($isDisabledAttribute()),
     _blurTimer: null,

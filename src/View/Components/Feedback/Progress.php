@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BasekitLaravel\BasekitLaravelUi\View\Components\Feedback;
 
+use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentColorResolver;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentPropResolver;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -96,6 +97,14 @@ class Progress extends Component
          * @var string|null Optional label displayed above progress bar
          */
         public ?string $label = null,
+        /**
+         * Quick color shortcut. Sets the progress bar fill background.
+         */
+        public ?string $color = null,
+        /**
+         * Custom progress bar fill background.
+         */
+        public ?string $background = null,
     ) {
         $this->variant = $this->resolveVariant($variant);
         $this->size = $this->resolveSize($size);
@@ -126,6 +135,19 @@ class Progress extends Component
     public function classes(): string
     {
         return "bk-progress__track bk-progress__track--{$this->variant} bk-progress__track--{$this->size}";
+    }
+
+    /**
+     * Get the inline color style string based on color props.
+     */
+    public function colorStyle(): ?string
+    {
+        return ComponentColorResolver::resolve(
+            'progress',
+            $this->variant,
+            $this->color,
+            $this->background,
+        );
     }
 
     /**

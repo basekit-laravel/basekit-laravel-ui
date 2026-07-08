@@ -1121,6 +1121,8 @@
 .bk-button--primary:hover:not(:disabled) {
     background-color: #6366f1;
     background-color: var(--button-hover-bg-primary);
+    color: white;
+    color: var(--button-hover-text-primary, var(--button-text-primary));
   }
 
 .bk-button--primary:active:not(:disabled) {
@@ -1142,7 +1144,9 @@
     background-color: #f8fafc;
     background-color: var(--button-hover-bg-secondary);
     border-color: #94a3b8;
-    border-color: var(--color-slate-400);
+    border-color: var(--button-hover-border-secondary, var(--color-slate-400));
+    color: #334155;
+    color: var(--button-hover-text-secondary, var(--button-text-secondary));
   }
 
 .bk-button--secondary:active:not(:disabled) {
@@ -1161,6 +1165,8 @@
 .bk-button--success:hover:not(:disabled) {
     background-color: #22c55e;
     background-color: var(--button-hover-bg-success);
+    color: white;
+    color: var(--button-hover-text-success, var(--button-text-success));
   }
 
 .bk-button--success:active:not(:disabled) {
@@ -1179,6 +1185,8 @@
 .bk-button--danger:hover:not(:disabled) {
     background-color: #ef4444;
     background-color: var(--button-hover-bg-danger);
+    color: white;
+    color: var(--button-hover-text-danger, var(--button-text-danger));
   }
 
 .bk-button--danger:active:not(:disabled) {
@@ -1197,6 +1205,8 @@
 .bk-button--warning:hover:not(:disabled) {
     background-color: #f59e0b;
     background-color: var(--button-hover-bg-warning);
+    color: white;
+    color: var(--button-hover-text-warning, var(--button-text-warning));
   }
 
 .bk-button--warning:active:not(:disabled) {
@@ -1215,6 +1225,8 @@
 .bk-button--info:hover:not(:disabled) {
     background-color: #3b82f6;
     background-color: var(--button-hover-bg-info);
+    color: white;
+    color: var(--button-hover-text-info, var(--button-text-info));
   }
 
 .bk-button--info:active:not(:disabled) {
@@ -1234,6 +1246,8 @@
 .bk-button--ghost:hover:not(:disabled) {
     background-color: #f1f5f9;
     background-color: var(--button-hover-bg-ghost);
+    color: #475569;
+    color: var(--button-hover-text-ghost, var(--button-text-ghost));
     box-shadow: none;
   }
 
@@ -3045,7 +3059,6 @@
 
   /* Checkbox - States */
   --checkbox-hover-border-color: var(--color-slate-400);
-  --checkbox-focus-border-color: var(--color-primary-500);
   --checkbox-focus-ring-color: var(--color-primary-100);
   --checkbox-focus-ring-width: 2px;
 
@@ -3175,8 +3188,7 @@
       #e0e7ff;
     box-shadow: 0 0 0 var(--checkbox-focus-ring-width)
       var(--checkbox-focus-ring-color);
-    border-color: #6366f1;
-    border-color: var(--checkbox-focus-border-color);
+    border-color: var(--checkbox-checked-border);
   }
 
 .bk-checkbox__control:disabled {

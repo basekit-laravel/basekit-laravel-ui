@@ -28,6 +28,13 @@ A versatile button component with multiple variants, sizes, and icon support.
 | `as`               | `string` | `'button'`  | HTML tag to render (`button`, `a`)                                                       |
 | `href`             | `string` | `null`      | URL for `<a>` tag. When set, auto-switches `as` to `'a'`                                 |
 | `rounded`          | `string` | `'md'`      | Border-radius variant (`none`,`sm`,`md`,`lg`,`xl`,`2xl`,`full`)                          |
+| `color`            | `string` | `null`      | Quick color shortcut. Sets background, text, border, and hover states simultaneously. Accepts Tailwind color names (e.g. `indigo-500`) or raw CSS colors (hex, rgb, hsl). |
+| `background`       | `string` | `null`      | Custom background color. |
+| `text`             | `string` | `null`      | Custom text color. |
+| `border`           | `string` | `null`      | Custom border color. |
+| `hover-background` | `string` | `null`      | Custom hover background color. |
+| `hover-text`       | `string` | `null`      | Custom hover text color. |
+| `hover-border`     | `string` | `null`      | Custom hover border color. |
 
 ## Slots
 
@@ -190,6 +197,43 @@ Override default classes using Tailwind Merge:
 ```blade
 <x-basekit-ui::button variant="primary" class="mt-4 shadow-lg">
     Custom Styling
+</x-basekit-ui::button>
+```
+
+## Custom Colors
+
+Override the component's default variant colors using the `color` shortcut prop or granular `background`, `text`, `border`, `hover-background`, `hover-text`, and `hover-border` props.
+
+The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-200`, `emerald-700`) or any **raw CSS color value** (hex, rgb, hsl, named colors).
+
+> **Note**: When using Tailwind color names, the component automatically computes hover states (darkening the shade by 100) and selects a contrasting text color (white on shades ≥500, dark on shades ≤400).
+
+### With Tailwind Colors
+
+```blade
+<x-basekit-ui::button color="indigo-500">
+    Click Me
+</x-basekit-ui::button>
+```
+
+### With Raw CSS Colors
+
+```blade
+<x-basekit-ui::button background="#4F46E5" text="#ffffff">
+    Click Me
+</x-basekit-ui::button>
+```
+
+### Granular Control
+
+```blade
+<x-basekit-ui::button
+    background="indigo-500"
+    text="white"
+    border="indigo-300"
+    hover-background="indigo-600"
+>
+    Click Me
 </x-basekit-ui::button>
 ```
 

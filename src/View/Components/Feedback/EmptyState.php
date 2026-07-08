@@ -6,6 +6,7 @@ namespace BasekitLaravel\BasekitLaravelUi\View\Components\Feedback;
 
 use BasekitLaravel\BasekitLaravelUi\Enums\Size;
 use BasekitLaravel\BasekitLaravelUi\Enums\Variant;
+use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentColorResolver;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentPropResolver;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -58,7 +59,23 @@ class EmptyState extends Component
          * @var string|null Optional description text
          */
         public ?string $description = null,
-        ?string $icon = null
+        ?string $icon = null,
+        /**
+         * Quick color shortcut. Sets background + text + border.
+         */
+        public ?string $color = null,
+        /**
+         * Custom background color.
+         */
+        public ?string $background = null,
+        /**
+         * Custom text color.
+         */
+        public ?string $text = null,
+        /**
+         * Custom border color.
+         */
+        public ?string $border = null,
     ) {
         $this->variant = $this->resolveVariant($variant);
         $this->size = $this->resolveSize($size);
@@ -79,6 +96,21 @@ class EmptyState extends Component
     public function classes(): string
     {
         return "bk-empty-state bk-empty-state--{$this->variant} bk-empty-state--{$this->size}";
+    }
+
+    /**
+     * Get the inline color style string based on color props.
+     */
+    public function colorStyle(): ?string
+    {
+        return ComponentColorResolver::resolve(
+            'empty-state',
+            $this->variant,
+            $this->color,
+            $this->background,
+            $this->text,
+            $this->border,
+        );
     }
 
     /**

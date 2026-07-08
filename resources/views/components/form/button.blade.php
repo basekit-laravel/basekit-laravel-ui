@@ -19,6 +19,7 @@
 --}}
 
 <{{ $as }} {{ $attributes->twMerge($classes()) }}
+    @if ($colorStyle()) style="{{ $colorStyle() }}" @endif
     @if ($as === 'button')
         type="{{ $type }}"
         @if ($isLoading) disabled @endif

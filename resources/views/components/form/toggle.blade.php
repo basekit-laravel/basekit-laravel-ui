@@ -28,7 +28,7 @@
             @if ($hasError()) aria-invalid="true" aria-describedby="{{ $inputId() }}-error" @endif>
 
         {{-- Toggle Switch --}}
-        <label class="{{ $classes() }}" for="{{ $inputId() }}">
+        <label class="{{ $classes() }}" for="{{ $inputId() }}" @if ($colorStyle()) style="{{ $colorStyle() }}" @endif>
             <span class="bk-toggle__slider"></span>
         </label>
 

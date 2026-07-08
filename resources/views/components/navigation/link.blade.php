@@ -11,7 +11,7 @@
     - iconSlot: Optional custom icon markup
 --}}
 
-<a href="{{ $href ?? '#' }}" {{ $attributes->twMerge($classes()) }}
+<a href="{{ $href ?? '#' }}" @if ($colorStyle()) style="{{ $colorStyle() }}" @endif {{ $attributes->twMerge($classes()) }}
     @if ($isExternal) target="_blank"
         rel="noopener noreferrer" @endif>
 

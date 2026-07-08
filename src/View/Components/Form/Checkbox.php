@@ -6,6 +6,7 @@ namespace BasekitLaravel\BasekitLaravelUi\View\Components\Form;
 
 use BasekitLaravel\BasekitLaravelUi\Enums\Size;
 use BasekitLaravel\BasekitLaravelUi\Enums\Variant;
+use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentColorResolver;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentPropResolver;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -60,6 +61,18 @@ class Checkbox extends Component
          * The checkbox value.
          */
         public ?string $value = null,
+        /**
+         * Quick color shortcut. Sets checked background + border.
+         */
+        public ?string $color = null,
+        /**
+         * Custom checked background color.
+         */
+        public ?string $background = null,
+        /**
+         * Custom checked border color.
+         */
+        public ?string $border = null,
     ) {
         $this->variant = $this->resolveVariant($variant);
         $this->size = $this->resolveSize($size);
@@ -114,6 +127,21 @@ class Checkbox extends Component
         }
 
         return $this->resolvedInputId = 'bk-checkbox-'.Str::uuid();
+    }
+
+    /**
+     * Get the inline color style string based on color props.
+     */
+    public function colorStyle(): ?string
+    {
+        return ComponentColorResolver::resolve(
+            'checkbox',
+            $this->variant->value,
+            $this->color,
+            $this->background,
+            null,
+            $this->border,
+        );
     }
 
     /**

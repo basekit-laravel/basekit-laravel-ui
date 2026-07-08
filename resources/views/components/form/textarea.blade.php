@@ -26,7 +26,7 @@
     $hasAnyError = $hasError() || $hasCustomError;
 @endphp
 
-<div class="bk-textarea">
+<div class="bk-textarea" @if ($colorStyle()) style="{{ $colorStyle() }}" @endif>
     {{-- Label / Corner Hint --}}
     @include('basekit::components.form.partials.textarea.textarea-label-row', [
         'shouldShowTopLabel' => $shouldShowTopLabel(),

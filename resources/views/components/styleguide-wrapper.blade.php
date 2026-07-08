@@ -1,5 +1,42 @@
+{{-- Define CSS custom properties for the Tailwind color names used in Custom Colors examples --}}
+@once
+    <style>
+        :root {
+            --color-indigo-50: #eef2ff;
+            --color-indigo-100: #e0e7ff;
+            --color-indigo-200: #c7d2fe;
+            --color-indigo-300: #a5b4fc;
+            --color-indigo-400: #818cf8;
+            --color-indigo-500: #6366f1;
+            --color-indigo-600: #4f46e5;
+            --color-indigo-700: #4338ca;
+            --color-indigo-800: #3730a3;
+            --color-indigo-900: #312e81;
+            --color-pink-50: #fdf2f8;
+            --color-pink-100: #fce7f3;
+            --color-pink-200: #fbcfe8;
+            --color-pink-300: #f9a8d4;
+            --color-pink-400: #f472b6;
+            --color-pink-500: #ec4899;
+            --color-pink-600: #db2777;
+            --color-pink-700: #be185d;
+            --color-pink-800: #9d174d;
+            --color-pink-900: #831843;
+            --color-emerald-50: #ecfdf5;
+            --color-emerald-100: #d1fae5;
+            --color-emerald-200: #a7f3d0;
+            --color-emerald-300: #6ee7b7;
+            --color-emerald-400: #34d399;
+            --color-emerald-500: #10b981;
+            --color-emerald-600: #059669;
+            --color-emerald-700: #047857;
+            --color-emerald-800: #065f46;
+            --color-emerald-900: #064e3b;
+        }
+    </style>
+@endonce
+
 <div>
-    {{-- This wrapper does not include any CSS. It assumes the user's app CSS is loaded globally. --}}
     <div class="max-w-7xl mx-auto space-y-12">
         <!-- Header -->
         <header class="border-b border-slate-200 pb-8">

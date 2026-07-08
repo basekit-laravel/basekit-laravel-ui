@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BasekitLaravel\BasekitLaravelUi\View\Components\Feedback;
 
 use BasekitLaravel\BasekitLaravelUi\Enums\Variant;
+use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentColorResolver;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentPropResolver;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -37,7 +38,23 @@ class Alert extends Component
         /**
          * Optional icon name.
          */
-        public ?string $icon = null
+        public ?string $icon = null,
+        /**
+         * Quick color shortcut. Sets background + text + border.
+         */
+        public ?string $color = null,
+        /**
+         * Custom background color.
+         */
+        public ?string $background = null,
+        /**
+         * Custom text color.
+         */
+        public ?string $text = null,
+        /**
+         * Custom border color.
+         */
+        public ?string $border = null,
     ) {
         $this->variant = $this->resolveVariant($variant);
     }
@@ -83,6 +100,21 @@ class Alert extends Component
         };
 
         return ComponentPropResolver::heroiconComponent($icon) ?? '';
+    }
+
+    /**
+     * Get the inline color style string based on color props.
+     */
+    public function colorStyle(): ?string
+    {
+        return ComponentColorResolver::resolve(
+            'alert',
+            $this->variant->value,
+            $this->color,
+            $this->background,
+            $this->text,
+            $this->border,
+        );
     }
 
     /**

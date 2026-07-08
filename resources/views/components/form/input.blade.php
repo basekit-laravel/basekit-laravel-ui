@@ -33,7 +33,7 @@
     $hasAnyError = $hasError() || $hasCustomError;
 @endphp
 
-<div class="bk-input" {!! $xDataAttribute() ?? '' !!}>
+<div class="bk-input" @if ($colorStyle()) style="{{ $colorStyle() }}" @endif {!! $xDataAttribute() ?? '' !!}>
     {{-- Label / Corner Hint --}}
     @include('basekit::components.form.partials.input.input-label-row', [
         'shouldShowTopLabel' => $shouldShowTopLabel(),

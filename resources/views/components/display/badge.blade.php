@@ -1,7 +1,7 @@
 {{-- Badge Component --}}
 
 {{-- Badge Container --}}
-<span {{ $attributes->twMerge($classes()) }}>
+<span @if ($colorStyle()) style="{{ $colorStyle() }}" @endif {{ $attributes->twMerge($classes()) }}>
     {{-- Dot Indicator --}}
     @if ($isDot)
         <span class="bk-badge__dot"></span>

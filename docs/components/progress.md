@@ -23,7 +23,9 @@ A progress bar component for showing completion status with optional label and p
 | `isShowPercentage` | `boolean` | `false`     | Display computed percentage value next to label                                                         |
 | `dynamicValue`     | `string`  | `null`      | Alpine.js expression for dynamic value (use as `dynamic-value="progress"`)                              |
 | `indeterminate`    | `boolean` | `false`     | Show animated indeterminate state for unknown-duration tasks                                            |
-| `label`            | `string`  | `null`      | Optional label text                                                                                     |
+| `label`            | `string`  | `null`       | Optional label text                                                                             |
+| `color`            | `string`  | `null`       | Quick color shortcut. Sets the progress bar fill background. |
+| `background`       | `string`  | `null`       | Custom progress bar fill background. |
 
 ## Slots
 
@@ -186,6 +188,30 @@ Override or extend styles with the `class` attribute:
     variant="success"
     class="mt-2"
 />
+```
+
+## Custom Colors
+
+Override the component's default variant colors using the `color` shortcut prop or the `background` prop.
+
+The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-200`, `emerald-700`) or any **raw CSS color value** (hex, rgb, hsl, named colors).
+
+### With Tailwind Colors
+
+```blade
+<x-basekit-ui::progress color="indigo-500" value="60" />
+```
+
+### With Raw CSS Colors
+
+```blade
+<x-basekit-ui::progress background="#4F46E5" value="60" />
+```
+
+### Granular Control
+
+```blade
+<x-basekit-ui::progress background="indigo-500" value="60" />
 ```
 
 ## CSS Variables

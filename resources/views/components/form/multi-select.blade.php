@@ -29,7 +29,7 @@
     $hasAnyError = $hasError() || $hasCustomError;
 @endphp
 
-<div class="bk-multiselect" x-data="{
+<div class="bk-multiselect" @if ($colorStyle()) style="{{ $colorStyle() }}" @endif x-data="{
     open: false,
     disabled: @js($isDisabled()),
     options: @js($optionsList()),

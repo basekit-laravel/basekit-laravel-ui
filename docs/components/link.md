@@ -38,6 +38,9 @@ You can also use other Livewire link attributes the same way:
 | `variant`    | `string`  | `'secondary'` | Link style variant (`primary`,`secondary`,`success`,`warning`,`danger`,`info`,`ghost`,`muted`) |
 | `isExternal` | `boolean` | `false`       | Open in new tab                                                                                |
 | `icon`       | `string`  | `null`        | Heroicon name                                                                                  |
+| `color`      | `string`  | `null`        | Quick color shortcut. Sets text and hover text simultaneously. |
+| `text`       | `string`  | `null`        | Custom text color. |
+| `hover-text` | `string`  | `null`        | Custom hover text color. |
 
 ## Slots
 
@@ -178,6 +181,32 @@ Override or extend styles with the `class` attribute:
 <x-basekit-ui::link href="/docs" variant="primary" class="font-semibold">
     Documentation
 </x-basekit-ui::link>
+```
+
+## Custom Colors
+
+Override the component's default variant colors using the `color` shortcut prop or granular `text` and `hover-text` props.
+
+The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-200`, `emerald-700`) or any **raw CSS color value** (hex, rgb, hsl, named colors).
+
+> **Note**: When using Tailwind color names, the component automatically computes a darker hover shade (lightening by 100).
+
+### With Tailwind Colors
+
+```blade
+<x-basekit-ui::link href="#" color="indigo-500">Link Text</x-basekit-ui::link>
+```
+
+### With Raw CSS Colors
+
+```blade
+<x-basekit-ui::link href="#" text="#4F46E5">Link Text</x-basekit-ui::link>
+```
+
+### Granular Control
+
+```blade
+<x-basekit-ui::link href="#" text="indigo-500" hover-text="indigo-600">Link Text</x-basekit-ui::link>
 ```
 
 ## CSS Variables

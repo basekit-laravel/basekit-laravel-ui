@@ -26,6 +26,10 @@ This component requires Alpine.js to be loaded in your layout for toast notifica
 | `title`          | `string` | `null`   | Toast title text                              |
 | `message`        | `string` | `null`   | Toast body text (alternative to default slot) |
 | `icon`           | `string` | `null`   | Heroicon name (defaults to variant icon)      |
+| `color`          | `string` | `null`   | Quick color shortcut. Sets background, text, and border simultaneously. |
+| `background`     | `string` | `null`   | Custom background color. |
+| `text`           | `string` | `null`   | Custom text color. |
+| `border`         | `string` | `null`   | Custom border color. |
 
 ## Slots
 
@@ -118,6 +122,38 @@ Override or extend styles with the `class` attribute:
     variant="success"
     message="Profile updated"
     class="mt-2"
+/>
+```
+
+## Custom Colors
+
+Override the component's default variant colors using the `color` shortcut prop or granular `background`, `text`, and `border` props.
+
+The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-200`, `emerald-700`) or any **raw CSS color value** (hex, rgb, hsl, named colors).
+
+> **Note**: When using Tailwind color names, the component automatically selects a contrasting text color (white on shades ≥500, dark on shades ≤400) and computes a lighter border shade.
+
+### With Tailwind Colors
+
+```blade
+<x-basekit-ui::toast color="indigo-500" title="Update available" message="Version 2.0 is ready." />
+```
+
+### With Raw CSS Colors
+
+```blade
+<x-basekit-ui::toast background="#EEF2FF" text="#4338CA" border="#C7D2FE" title="Update available" message="Version 2.0 is ready." />
+```
+
+### Granular Control
+
+```blade
+<x-basekit-ui::toast
+    background="indigo-500"
+    text="white"
+    border="indigo-300"
+    title="Update available"
+    message="Version 2.0 is ready."
 />
 ```
 

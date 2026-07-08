@@ -22,7 +22,6 @@
 
   /* Checkbox - States */
   --checkbox-hover-border-color: var(--color-slate-400);
-  --checkbox-focus-border-color: var(--color-primary-500);
   --checkbox-focus-ring-color: var(--color-primary-100);
   --checkbox-focus-ring-width: 2px;
 
@@ -142,7 +141,7 @@
       var(--checkbox-focus-ring-color);
     box-shadow: 0 0 0 var(--checkbox-focus-ring-width)
       var(--checkbox-focus-ring-color);
-    border-color: var(--checkbox-focus-border-color);
+    border-color: var(--checkbox-checked-border);
   }
 
 .bk-checkbox__control:disabled {

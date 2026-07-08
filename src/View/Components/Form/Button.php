@@ -7,6 +7,7 @@ namespace BasekitLaravel\BasekitLaravelUi\View\Components\Form;
 use BasekitLaravel\BasekitLaravelUi\Enums\Orientation;
 use BasekitLaravel\BasekitLaravelUi\Enums\Size;
 use BasekitLaravel\BasekitLaravelUi\Enums\Variant;
+use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentColorResolver;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentPropResolver;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -68,7 +69,35 @@ class Button extends Component
         /**
          * The button border-radius variant.
          */
-        public ?string $rounded = null
+        public ?string $rounded = null,
+        /**
+         * Quick color shortcut. Sets background + text + auto-darkens for hover.
+         */
+        public ?string $color = null,
+        /**
+         * Custom background color.
+         */
+        public ?string $background = null,
+        /**
+         * Custom text color.
+         */
+        public ?string $text = null,
+        /**
+         * Custom border color.
+         */
+        public ?string $border = null,
+        /**
+         * Custom hover background color.
+         */
+        public ?string $hoverBackground = null,
+        /**
+         * Custom hover text color.
+         */
+        public ?string $hoverText = null,
+        /**
+         * Custom hover border color.
+         */
+        public ?string $hoverBorder = null,
     ) {
         if ($this->href !== null) {
             $this->as = 'a';
@@ -106,6 +135,24 @@ class Button extends Component
         }
 
         return implode(' ', $classes);
+    }
+
+    /**
+     * Get the inline color style string based on color props.
+     */
+    public function colorStyle(): ?string
+    {
+        return ComponentColorResolver::resolve(
+            'button',
+            $this->variant->value,
+            $this->color,
+            $this->background,
+            $this->text,
+            $this->border,
+            $this->hoverBackground,
+            $this->hoverText,
+            $this->hoverBorder,
+        );
     }
 
     /**

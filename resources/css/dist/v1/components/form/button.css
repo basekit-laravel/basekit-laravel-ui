@@ -202,6 +202,8 @@
 
 .bk-button--primary:hover:not(:disabled) {
     background-color: var(--button-hover-bg-primary);
+    color: white;
+    color: var(--button-hover-text-primary, var(--button-text-primary));
   }
 
 .bk-button--primary:active:not(:disabled) {
@@ -218,7 +220,8 @@
 
 .bk-button--secondary:hover:not(:disabled) {
     background-color: var(--button-hover-bg-secondary);
-    border-color: var(--color-slate-400);
+    border-color: var(--button-hover-border-secondary, var(--color-slate-400));
+    color: var(--button-hover-text-secondary, var(--button-text-secondary));
   }
 
 .bk-button--secondary:active:not(:disabled) {
@@ -234,6 +237,8 @@
 
 .bk-button--success:hover:not(:disabled) {
     background-color: var(--button-hover-bg-success);
+    color: white;
+    color: var(--button-hover-text-success, var(--button-text-success));
   }
 
 .bk-button--success:active:not(:disabled) {
@@ -249,6 +254,8 @@
 
 .bk-button--danger:hover:not(:disabled) {
     background-color: var(--button-hover-bg-danger);
+    color: white;
+    color: var(--button-hover-text-danger, var(--button-text-danger));
   }
 
 .bk-button--danger:active:not(:disabled) {
@@ -264,6 +271,8 @@
 
 .bk-button--warning:hover:not(:disabled) {
     background-color: var(--button-hover-bg-warning);
+    color: white;
+    color: var(--button-hover-text-warning, var(--button-text-warning));
   }
 
 .bk-button--warning:active:not(:disabled) {
@@ -279,6 +288,8 @@
 
 .bk-button--info:hover:not(:disabled) {
     background-color: var(--button-hover-bg-info);
+    color: white;
+    color: var(--button-hover-text-info, var(--button-text-info));
   }
 
 .bk-button--info:active:not(:disabled) {
@@ -295,6 +306,7 @@
 
 .bk-button--ghost:hover:not(:disabled) {
     background-color: var(--button-hover-bg-ghost);
+    color: var(--button-hover-text-ghost, var(--button-text-ghost));
     box-shadow: none;
   }
 

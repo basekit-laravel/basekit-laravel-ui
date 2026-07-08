@@ -19,6 +19,8 @@ A loading spinner component for indicating loading states.
 | `size`    | `string` | `'md'`      | Spinner size (`xs`,`sm`,`md`,`lg`,`xl`)                                                           |
 | `variant` | `string` | `'primary'` | Spinner color variant (`primary`,`secondary`,`success`,`warning`,`danger`,`info`,`ghost`,`white`) |
 | `label`   | `string` | `null`      | Accessible label text                                                                             |
+| `color`   | `string` | `null`      | Quick color shortcut. Sets the spinner stroke color. |
+| `text`    | `string` | `null`      | Custom spinner stroke color. |
 
 ## Variants
 
@@ -137,6 +139,30 @@ Override or extend styles with the `class` attribute:
     variant="info"
     class="mt-1"
 />
+```
+
+## Custom Colors
+
+Override the component's default stroke color using the `color` shortcut prop or the `text` prop.
+
+The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-200`, `emerald-700`) or any **raw CSS color value** (hex, rgb, hsl, named colors).
+
+### With Tailwind Colors
+
+```blade
+<x-basekit-ui::spinner color="indigo-500" />
+```
+
+### With Raw CSS Colors
+
+```blade
+<x-basekit-ui::spinner text="#4F46E5" />
+```
+
+### Granular Control
+
+```blade
+<x-basekit-ui::spinner text="indigo-500" />
 ```
 
 ## CSS Variables

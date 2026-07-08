@@ -20,6 +20,7 @@
         {{-- Checkbox Input --}}
         <input type="checkbox" id="{{ $inputId() }}"
             {{ $attributes->except(['label', 'error', 'hint', 'id'])->twMerge($classes()) }}
+            @if ($colorStyle()) style="{{ $colorStyle() }}" @endif
             @if ($value !== null) value="{{ $value }}" @endif
             @if ($isChecked) checked @endif
             @if ($hasError()) aria-invalid="true" aria-describedby="{{ $inputId() }}-error" @endif>

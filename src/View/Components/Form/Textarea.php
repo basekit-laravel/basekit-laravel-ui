@@ -7,6 +7,7 @@ namespace BasekitLaravel\BasekitLaravelUi\View\Components\Form;
 use BasekitLaravel\BasekitLaravelUi\Enums\LabelStyle;
 use BasekitLaravel\BasekitLaravelUi\Enums\Size;
 use BasekitLaravel\BasekitLaravelUi\Enums\Variant;
+use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentColorResolver;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentPropResolver;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -60,7 +61,15 @@ class Textarea extends Component
         public int $rows = 4,
         string|LabelStyle $labelStyle = 'default',
         public bool $isUnderline = false,
-        public ?string $cornerHint = null
+        public ?string $cornerHint = null,
+        /**
+         * Quick color shortcut. Sets border color.
+         */
+        public ?string $color = null,
+        /**
+         * Custom border color.
+         */
+        public ?string $border = null,
     ) {
         $this->labelStyle = $this->resolveLabelStyle($labelStyle);
         $this->variant = $this->resolveVariant($variant);
@@ -156,6 +165,21 @@ class Textarea extends Component
     public function render(): View
     {
         return view('basekit::components.form.textarea');
+    }
+
+    /**
+     * Get the inline color style string based on color props.
+     */
+    public function colorStyle(): ?string
+    {
+        return ComponentColorResolver::resolve(
+            'textarea',
+            $this->variant->value,
+            $this->color,
+            null,
+            null,
+            $this->border,
+        );
     }
 
     /**

@@ -40,6 +40,8 @@ A select component with support for generated options, custom option markup, ico
 | `empty-label`   | `string` | `null`        | Label text for the empty option when `allow-empty` is enabled               |
 | `label-style`   | `string` | `'default'`   | Label placement: `default`, `inset`, `overlap`                              |
 | `control-style` | `string` | `'default'`   | Control style: `default`, `pill`, `underline`                               |
+| `border`        | `string` | `null`        | Custom border color. |
+| `hover-border`  | `string` | `null`        | Custom hover border color. |
 
 Standard select attributes such as `name`, `multiple`, and `disabled` can also be passed through.
 
@@ -253,6 +255,46 @@ Override or extend styles with the `class` attribute:
         'chore' => 'Chore',
     ]"
     class="mt-2"
+/>
+```
+
+## Custom Colors
+
+Override the component's default border colors using the `color` shortcut prop or granular `border` and `hover-border` props.
+
+The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-200`, `emerald-700`) or any **raw CSS color value** (hex, rgb, hsl, named colors).
+
+### With Tailwind Colors
+
+```blade
+<x-basekit-ui::select
+    name="country"
+    label="Country"
+    color="indigo-500"
+    :options="['us' => 'US', 'ca' => 'Canada']"
+/>
+```
+
+### With Raw CSS Colors
+
+```blade
+<x-basekit-ui::select
+    name="country"
+    label="Country"
+    border="#C7D2FE"
+    :options="['us' => 'US', 'ca' => 'Canada']"
+/>
+```
+
+### Granular Control
+
+```blade
+<x-basekit-ui::select
+    name="country"
+    label="Country"
+    border="indigo-500"
+    hover-border="indigo-600"
+    :options="['us' => 'US', 'ca' => 'Canada']"
 />
 ```
 

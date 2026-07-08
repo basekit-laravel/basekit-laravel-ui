@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BasekitLaravel\BasekitLaravelUi\View\Components\Feedback;
 
+use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentColorResolver;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentPropResolver;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -41,7 +42,15 @@ class Spinner extends Component
          *
          * @var string|null Screen reader accessible label
          */
-        public ?string $label = null
+        public ?string $label = null,
+        /**
+         * Quick color shortcut. Sets the spinner stroke color.
+         */
+        public ?string $color = null,
+        /**
+         * Custom spinner stroke color.
+         */
+        public ?string $text = null,
     ) {
         $this->size = $this->resolveSize($size);
         $this->variant = $this->resolveVariant($variant);
@@ -53,6 +62,20 @@ class Spinner extends Component
     public function render(): View
     {
         return view('basekit::components.feedback.spinner');
+    }
+
+    /**
+     * Get the inline color style string based on color props.
+     */
+    public function colorStyle(): ?string
+    {
+        return ComponentColorResolver::resolve(
+            'spinner',
+            $this->variant,
+            $this->color,
+            null,
+            $this->text,
+        );
     }
 
     /**

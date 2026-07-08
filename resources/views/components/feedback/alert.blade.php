@@ -13,7 +13,7 @@
     - icon: Optional custom icon markup
 --}}
 
-<div {{ $attributes->twMerge($classes()) }} role="alert" x-data="{ show: true }" x-show="show" x-transition>
+<div {{ $attributes->twMerge($classes()) }}{!! $colorStyle() ? ' style="' . $colorStyle() . '"' : '' !!} role="alert" x-data="{ show: true }" x-show="show" x-transition>
     <div class="bk-alert__icon">
         @if (isset($icon) && !is_string($icon))
             {{ $icon }}

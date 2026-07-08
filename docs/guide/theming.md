@@ -368,6 +368,54 @@ Override variables for specific component instances:
 </x-basekit-ui::button>
 ```
 
+### Custom Colors via Props
+
+All color-using components expose dedicated props as a higher-level alternative to inline CSS variables:
+
+- **`color`** — Quick shortcut that auto-sets background, text, border, and hover states simultaneously.
+- **`background`** / **`text`** / **`border`** — Granular control over individual surfaces.
+- **`hover-background`** / **`hover-text`** / **`hover-border`** — Hover state overrides.
+
+The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-200`) or any **raw CSS value** (hex, `#4F46E5`; rgb, `rgb(79,70,229)`; hsl, `hsl(245,58%,59%)`; named colors).
+
+When you pass a Tailwind color name, the component automatically:
+- Darkens the shade by 100 for hover states (e.g., `indigo-500` → `indigo-600`)
+- Picks a contrasting text color (white on shades ≥500, dark on shades ≤400)
+- Derives a border color (shade + 200)
+
+**Light-background components** (badge, alert) use a lighter expansion:
+- Background: shade-50
+- Text: shade-700
+- Border: shade-200
+
+This matches their built-in variant appearance (light tint, strong text).
+
+Raw CSS values passthrough literally — no auto-hover or auto-contrast is applied.
+
+```blade
+{{-- Quick shortcut --}}
+<x-basekit-ui::button color="indigo-500">Indigo Button</x-basekit-ui::button>
+
+{{-- Granular overrides --}}
+<x-basekit-ui::alert
+    background="#FEE2E2"
+    text="#991B1B"
+    border="#FECACA"
+>
+    Custom Red Alert
+</x-basekit-ui::alert>
+
+{{-- Hover overrides --}}
+<x-basekit-ui::button
+    color="emerald-500"
+    hover-background="emerald-400"
+>
+    Lightened Hover
+</x-basekit-ui::button>
+```
+
+**Supported components**: Button, Input, Textarea, Select, MultiSelect, Checkbox, Radio, Toggle, Alert, Toast, Spinner, Progress, Badge, Link, EmptyState — each exports only the props relevant to its visual model (e.g., Input exposes only `border` and `hover-border`; Spinner exposes only `color` and `text`).
+
 ## Example: Complete Custom Theme
 
 ```css

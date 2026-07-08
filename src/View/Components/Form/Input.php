@@ -8,6 +8,7 @@ use BasekitLaravel\BasekitLaravelUi\Enums\ControlStyle;
 use BasekitLaravel\BasekitLaravelUi\Enums\InputVariant;
 use BasekitLaravel\BasekitLaravelUi\Enums\LabelStyle;
 use BasekitLaravel\BasekitLaravelUi\Enums\Size;
+use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentColorResolver;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentPropResolver;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -104,7 +105,19 @@ class Input extends Component
         /**
          * Optional corner hint text.
          */
-        public ?string $cornerHint = null
+        public ?string $cornerHint = null,
+        /**
+         * Quick color shortcut. Sets border + hover-border.
+         */
+        public ?string $color = null,
+        /**
+         * Custom border color.
+         */
+        public ?string $border = null,
+        /**
+         * Custom hover border color.
+         */
+        public ?string $hoverBorder = null,
     ) {
         $this->isTogglePassword = $this->type === 'password' && $isTogglePassword;
         $this->labelStyle = $this->resolveLabelStyle($labelStyle);
@@ -221,6 +234,24 @@ class Input extends Component
     public function iconComponent(): ?string
     {
         return ComponentPropResolver::heroiconComponent($this->icon);
+    }
+
+    /**
+     * Get the inline color style string based on color props.
+     */
+    public function colorStyle(): ?string
+    {
+        return ComponentColorResolver::resolve(
+            'input',
+            $this->variant->value,
+            $this->color,
+            null,
+            null,
+            $this->border,
+            null,
+            null,
+            $this->hoverBorder,
+        );
     }
 
     /**

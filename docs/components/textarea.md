@@ -31,6 +31,7 @@ A multi-line text input component with configurable variants, sizes, label place
 | `corner-hint`  | `string` | `null`        | Top-right label row hint                                                    |
 | `label-style`  | `string` | `'default'`   | Label placement: `default`, `inset`, `overlap`                              |
 | `is-underline` | `bool`   | `false`       | Use underline-only styling                                                  |
+| `border`       | `string` | `null`        | Custom border color. |
 
 Standard textarea attributes such as `name`, `maxlength`, `disabled`, and `readonly` pass through to the underlying `<textarea>` element.
 
@@ -102,6 +103,42 @@ Override or extend styles with the `class` attribute:
     name="custom-description"
     label="Description"
     class="mt-2"
+/>
+```
+
+## Custom Colors
+
+Override the component's default border color using the `color` shortcut prop or the `border` prop.
+
+The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-200`, `emerald-700`) or any **raw CSS color value** (hex, rgb, hsl, named colors).
+
+### With Tailwind Colors
+
+```blade
+<x-basekit-ui::textarea
+    name="description"
+    label="Description"
+    color="indigo-500"
+/>
+```
+
+### With Raw CSS Colors
+
+```blade
+<x-basekit-ui::textarea
+    name="description"
+    label="Description"
+    border="#C7D2FE"
+/>
+```
+
+### Granular Control
+
+```blade
+<x-basekit-ui::textarea
+    name="description"
+    label="Description"
+    border="indigo-500"
 />
 ```
 

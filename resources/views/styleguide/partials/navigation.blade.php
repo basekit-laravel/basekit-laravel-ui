@@ -325,6 +325,16 @@
                 </div>
             </div>
 
+            <!-- Custom Colors -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
+                <div class="flex flex-wrap items-center gap-3">
+                    <x-basekit-ui::link color="indigo-500" href="#">Indigo</x-basekit-ui::link>
+                    <x-basekit-ui::link color="pink-500" href="#">Pink</x-basekit-ui::link>
+                    <x-basekit-ui::link color="emerald-500" href="#">Emerald</x-basekit-ui::link>
+                </div>
+            </div>
+
             <!-- Icon & External -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Icon & External</h4>
@@ -344,6 +354,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </x-basekit-ui::styleguide.section-toggle>
 

@@ -18,7 +18,7 @@
 --}}
 
 {{-- Toast Container --}}
-<div class="{{ $classes() }}" x-data="{ show: true }" x-show="show"
+<div class="{{ $classes() }}" @if ($colorStyle()) style="{{ $colorStyle() }}" @endif x-data="{ show: true }" x-show="show"
     x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform translate-y-2"
     x-transition:enter-end="opacity-100 transform translate-y-0" x-transition:leave="transition ease-in duration-200"
     x-transition:leave-start="opacity-100 transform translate-y-0"

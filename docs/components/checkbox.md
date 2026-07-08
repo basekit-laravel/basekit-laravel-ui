@@ -27,6 +27,9 @@ A checkbox component with configurable variants, sizes, label content, and valid
 | `label`      | `string` | `null`      | Label text                                                                            |
 | `error`      | `string` | `null`      | Error message shown below the control                                                 |
 | `hint`       | `string` | `null`      | Helper text shown below the control                                                   |
+| `color`      | `string` | `null`      | Quick color shortcut. Sets checked background and border simultaneously. |
+| `background` | `string` | `null`      | Custom checked background color. |
+| `border`     | `string` | `null`      | Custom checked border color. |
 
 Standard checkbox attributes such as `name`, `id`, and `disabled` pass through to the underlying `<input>` element.
 
@@ -97,6 +100,48 @@ Override or extend styles with the `class` attribute:
     name="custom-terms"
     label="I agree"
     class="mt-2"
+/>
+```
+
+## Custom Colors
+
+Override the component's default checked colors using the `color` shortcut prop or granular `background` and `border` props.
+
+The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-200`, `emerald-700`) or any **raw CSS color value** (hex, rgb, hsl, named colors).
+
+> **Note**: When using Tailwind color names, the component automatically computes a contrasting text color for the checkmark (white on shades ≥500, dark on shades ≤400).
+
+### With Tailwind Colors
+
+```blade
+<x-basekit-ui::checkbox
+    name="terms"
+    :is-checked="true"
+    color="indigo-500"
+    label="I accept the terms"
+/>
+```
+
+### With Raw CSS Colors
+
+```blade
+<x-basekit-ui::checkbox
+    name="terms"
+    :is-checked="true"
+    background="#4F46E5"
+    label="I accept the terms"
+/>
+```
+
+### Granular Control
+
+```blade
+<x-basekit-ui::checkbox
+    name="terms"
+    :is-checked="true"
+    background="indigo-500"
+    border="indigo-300"
+    label="I accept the terms"
 />
 ```
 

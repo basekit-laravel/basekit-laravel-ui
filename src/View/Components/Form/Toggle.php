@@ -6,6 +6,7 @@ namespace BasekitLaravel\BasekitLaravelUi\View\Components\Form;
 
 use BasekitLaravel\BasekitLaravelUi\Enums\Size;
 use BasekitLaravel\BasekitLaravelUi\Enums\Variant;
+use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentColorResolver;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentPropResolver;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
@@ -59,7 +60,15 @@ class Toggle extends Component
         /**
          * Whether the toggle is checked.
          */
-        public bool $isChecked = false
+        public bool $isChecked = false,
+        /**
+         * Quick color shortcut. Sets the ON background color.
+         */
+        public ?string $color = null,
+        /**
+         * Custom ON background color.
+         */
+        public ?string $background = null,
     ) {
         $this->variant = $this->resolveVariant($variant);
         $this->size = $this->resolveSize($size);
@@ -117,6 +126,19 @@ class Toggle extends Component
         }
 
         return $this->resolvedInputId = 'bk-toggle-'.Str::uuid();
+    }
+
+    /**
+     * Get the inline color style string based on color props.
+     */
+    public function colorStyle(): ?string
+    {
+        return ComponentColorResolver::resolve(
+            'toggle',
+            $this->variant->value,
+            $this->color,
+            $this->background,
+        );
     }
 
     /**

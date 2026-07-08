@@ -23,6 +23,8 @@ A switch-style boolean control with configurable variants, sizes, labels, and va
 | `label`      | `string` | `null`      | Label text                                                                            |
 | `error`      | `string` | `null`      | Error message shown below the control                                                 |
 | `hint`       | `string` | `null`      | Helper text shown below the control                                                   |
+| `color`      | `string` | `null`      | Quick color shortcut. Sets the ON background color. |
+| `background` | `string` | `null`      | Custom ON background color. |
 
 Standard checkbox attributes such as `name`, `id`, and `disabled` pass through to the underlying hidden checkbox input.
 
@@ -94,6 +96,45 @@ Override or extend styles with the `class` attribute:
     name="custom-notifications"
     label="Enable notifications"
     class="mt-2"
+/>
+```
+
+## Custom Colors
+
+Override the component's default ON state background using the `color` shortcut prop or the `background` prop.
+
+The `color` prop accepts **Tailwind v4 color names** (e.g., `indigo-500`, `pink-200`, `emerald-700`) or any **raw CSS color value** (hex, rgb, hsl, named colors).
+
+### With Tailwind Colors
+
+```blade
+<x-basekit-ui::toggle
+    name="notifications"
+    :is-checked="true"
+    color="indigo-500"
+    label="Enable notifications"
+/>
+```
+
+### With Raw CSS Colors
+
+```blade
+<x-basekit-ui::toggle
+    name="notifications"
+    :is-checked="true"
+    background="#4F46E5"
+    label="Enable notifications"
+/>
+```
+
+### Granular Control
+
+```blade
+<x-basekit-ui::toggle
+    name="notifications"
+    :is-checked="true"
+    background="indigo-500"
+    label="Enable notifications"
 />
 ```
 
