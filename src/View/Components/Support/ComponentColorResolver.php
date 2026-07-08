@@ -15,21 +15,27 @@ class ComponentColorResolver
             'hover-background' => '--button-hover-bg-{variant}',
             'hover-text' => '--button-hover-text-{variant}',
             'hover-border' => '--button-hover-border-{variant}',
+            'active-background' => '--button-active-bg-{variant}',
+            'focus-ring' => '--button-focus-ring-{variant}',
         ],
         'input' => [
             'border' => '--input-{variant}-border-color',
             'hover-border' => '--input-hover-border-color',
+            'focus-ring' => '--input-{variant}-ring-color',
         ],
         'textarea' => [
             'border' => '--textarea-{variant}-border',
+            'focus-ring' => '--textarea-{variant}-ring',
         ],
         'select' => [
             'border' => '--select-{variant}-border-color',
             'hover-border' => '--select-hover-border-color',
+            'focus-ring' => '--select-{variant}-ring-color',
         ],
         'multi-select' => [
             'border' => '--multiselect-{variant}-border-color',
             'hover-border' => '--multiselect-hover-border-color',
+            'focus-ring' => '--multiselect-{variant}-ring-color',
         ],
         'checkbox' => [
             'background' => '--checkbox-{variant}-checked-bg',
@@ -101,18 +107,22 @@ class ComponentColorResolver
         ?string $hoverText = null,
         ?string $hoverBorder = null,
         ?string $focusRing = null,
+        ?string $activeBackground = null,
     ): ?string {
-        if ($color !== null && $color !== '' && ($background === null && $text === null && $border === null && $hoverBackground === null && $hoverText === null && $hoverBorder === null && $focusRing === null)) {
+        if ($color !== null && $color !== '' && ($background === null && $text === null && $border === null && $hoverBackground === null && $hoverText === null && $hoverBorder === null && $focusRing === null && $activeBackground === null)) {
             $schema = self::$schemas[$component] ?? [];
             if (isset($schema['background'])) {
                 $expansion = in_array($component, self::$lightBackgroundComponents, true)
                     ? self::expandColorLight($color)
                     : self::expandColor($color);
-                [$bg, $txt, $hoverBg, $bdr, $focus] = $expansion;
+                [$bg, $txt, $hoverBg, $bdr, $focus, $active] = $expansion;
                 $background = $bg;
                 $text = $txt;
                 $hoverBackground = $hoverBg;
                 $border = $bdr;
+                if (isset($schema['active-background'])) {
+                    $activeBackground = $active;
+                }
                 if (isset($schema['focus-ring'])) {
                     $focusRing = $focus;
                 }
@@ -130,7 +140,7 @@ class ComponentColorResolver
                     }
                 }
                 if (isset($schema['focus-ring'])) {
-                    $focusRing = self::resolveColorValue($color);
+                    $focusRing = self::expandColor($color)[4];
                 }
             }
         }
@@ -157,6 +167,9 @@ class ComponentColorResolver
         }
         if ($focusRing !== null && $focusRing !== '') {
             $resolved['focus-ring'] = $focusRing;
+        }
+        if ($activeBackground !== null && $activeBackground !== '') {
+            $resolved['active-background'] = $activeBackground;
         }
 
         // Derive title and description colors from $color for empty-state
@@ -232,7 +245,7 @@ class ComponentColorResolver
     }
 
     /**
-     * @return array{string, string, string, string, string}
+     * @return array{string, string, string, string, string, string}
      */
     public static function expandColorLight(string $color): array
     {
@@ -247,6 +260,7 @@ class ComponentColorResolver
                 'var(--color-'.$baseName.'-100)',
                 'var(--color-'.$baseName.'-200)',
                 'var(--color-'.$baseName.'-100)',
+                'var(--color-'.$baseName.'-200)',
             ];
         }
 
@@ -265,14 +279,15 @@ class ComponentColorResolver
                 sprintf('rgba(%d, %d, %d, 0.12)', $r, $g, $b),
                 sprintf('rgba(%d, %d, %d, 0.25)', $r, $g, $b),
                 sprintf('rgba(%d, %d, %d, 0.15)', $r, $g, $b),
+                sprintf('rgba(%d, %d, %d, 0.35)', $r, $g, $b),
             ];
         }
 
-        return [$color, $color, $color, $color, $color];
+        return [$color, $color, $color, $color, $color, $color];
     }
 
     /**
-     * @return array{string, string, string, string, string}
+     * @return array{string, string, string, string, string, string}
      */
     public static function expandColor(string $color): array
     {
@@ -285,6 +300,7 @@ class ComponentColorResolver
             $textShade = self::textShadeForTailwind($shade);
             $hoverShade = min($shade + 100, 950);
             $borderShade = min($shade + 200, 950);
+            $activeShade = min($shade + 200, 950);
 
             return [
                 'var(--color-'.$baseName.'-'.$shade.')',
@@ -292,19 +308,21 @@ class ComponentColorResolver
                 'var(--color-'.$baseName.'-'.$hoverShade.')',
                 'var(--color-'.$baseName.'-'.$borderShade.')',
                 'var(--color-'.$baseName.'-'.$textShade.')',
+                'var(--color-'.$baseName.'-'.$activeShade.')',
             ];
         }
 
         if (preg_match('/^#[0-9a-fA-F]{3,8}$/', $color) === 1) {
             $hover = self::darkenHex($color, 0.85);
             $border = self::darkenHex($color, 0.75);
+            $active = self::darkenHex($color, 0.65);
             $text = self::contrastTextForHex($color);
             $focusRing = self::focusRingForHex($color);
 
-            return [$color, $text, $hover, $border, $focusRing];
+            return [$color, $text, $hover, $border, $focusRing, $active];
         }
 
-        return [$color, $color, $color, $color, $color];
+        return [$color, $color, $color, $color, $color, $color];
     }
 
     private static function textShadeForTailwind(int $shade): int
