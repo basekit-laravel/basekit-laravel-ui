@@ -5,6 +5,13 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.4.1...v1.5.0) (2026-07-08)
+
+
+### Features
+
+* customizable colors for components ([6cdf4fe](https://github.com/basekit-laravel/basekit-laravel-ui/commit/6cdf4feb04787e11716bf854e3420c9521cdab5f))
+
 ## [1.4.0](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.3.0...v1.4.0) (2026-07-03)
 
 
