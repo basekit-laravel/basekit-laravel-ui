@@ -113,3 +113,10 @@
     height: 1.125rem;
   }
 }
+
+/* Dark mode overrides */
+.dark {
+  --breadcrumb-separator-color: var(--color-slate-500);
+  --breadcrumb-link-color: var(--color-primary-400);
+  --breadcrumb-current-color: var(--color-slate-200);
+}

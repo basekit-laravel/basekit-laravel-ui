@@ -13,7 +13,10 @@
   --pagination-hover-bg: var(--color-slate-50);
   --pagination-active-bg: var(--color-primary-600);
   --pagination-active-text: white;
+  --pagination-active-hover-bg: var(--color-primary-700);
   --pagination-disabled-text: var(--color-slate-400);
+  --pagination-info-color: var(--color-slate-600);
+  --pagination-label-color: var(--color-slate-700);
 }
 
 /* =============================================================================
@@ -65,7 +68,7 @@
   border-color: var(--pagination-active-bg);
 
   &:hover {
-    background-color: var(--color-primary-700);
+    background-color: var(--pagination-active-hover-bg);
   }
 }
 
@@ -93,7 +96,7 @@
 
 .bk-pagination__info {
   font-size: var(--font-size-sm);
-  color: var(--color-slate-600);
+  color: var(--pagination-info-color);
 }
 
 .bk-pagination__per-page {
@@ -104,7 +107,7 @@
 
 .bk-pagination__per-page-label {
   font-size: var(--font-size-sm);
-  color: var(--color-slate-700);
+  color: var(--pagination-label-color);
 }
 
 .bk-pagination__per-page-select {
@@ -113,4 +116,18 @@
   background-color: var(--pagination-bg);
   color: var(--pagination-text);
   padding: 0.375rem 0.5rem;
+}
+
+/* Dark mode overrides */
+.dark {
+  --pagination-bg: var(--color-slate-800);
+  --pagination-border: var(--color-slate-600);
+  --pagination-text: var(--color-slate-200);
+  --pagination-hover-bg: var(--color-slate-700);
+  --pagination-active-bg: var(--color-primary-500);
+  --pagination-active-text: white;
+  --pagination-active-hover-bg: var(--color-primary-400);
+  --pagination-disabled-text: var(--color-slate-500);
+  --pagination-info-color: var(--color-slate-400);
+  --pagination-label-color: var(--color-slate-300);
 }

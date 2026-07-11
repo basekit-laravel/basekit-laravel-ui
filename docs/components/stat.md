@@ -192,6 +192,26 @@ Customize stat appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --stat-bg: var(--color-slate-800);
+  --stat-label-color: var(--color-slate-400);
+  --stat-value-color: var(--color-slate-100);
+  --stat-icon-bg: var(--color-primary-900);
+  --stat-icon-color: var(--color-primary-300);
+
+  --stat-change-up-color: var(--color-success-400);
+  --stat-change-down-color: var(--color-danger-400);
+  --stat-change-neutral-color: var(--color-slate-400);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 ```php

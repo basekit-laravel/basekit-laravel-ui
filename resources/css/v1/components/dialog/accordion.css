@@ -183,3 +183,14 @@
     font-size: var(--font-size-md);
   }
 }
+
+/* Dark mode overrides */
+.dark {
+  --accordion-border: var(--color-slate-700);
+  --accordion-header-bg: var(--color-slate-800);
+  --accordion-hover-bg: var(--color-slate-700);
+  --accordion-title-color: var(--color-slate-100);
+  --accordion-icon-color: var(--color-slate-400);
+  --accordion-body-color: var(--color-slate-300);
+  --accordion-flush-hover-color: var(--color-primary-400);
+}

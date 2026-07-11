@@ -243,6 +243,28 @@ Customize progress appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --progress-bg: var(--color-slate-700);
+  --progress-label-color: var(--color-slate-300);
+
+  --progress-bar-primary: var(--color-primary-400);
+  --progress-bar-secondary: var(--color-slate-400);
+  --progress-bar-success: var(--color-success-400);
+  --progress-bar-warning: var(--color-warning-400);
+  --progress-bar-danger: var(--color-danger-400);
+  --progress-bar-info: var(--color-info-400);
+  --progress-bar-ghost: var(--color-slate-500);
+  --progress-bar-white: white;
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 Configure defaults in `config/basekit-laravel-ui.php`:

@@ -971,6 +971,7 @@ body {
   --button-text-secondary: var(--color-slate-700);
   --button-border-secondary: var(--color-slate-300);
   --button-hover-bg-secondary: var(--color-slate-50);
+  --button-hover-border-secondary: var(--color-slate-400);
   --button-active-bg-secondary: var(--color-slate-100);
   --button-focus-ring-secondary: var(--color-slate-100);
 
@@ -1164,7 +1165,7 @@ body {
     background-color: #f8fafc;
     background-color: var(--button-hover-bg-secondary);
     border-color: #94a3b8;
-    border-color: var(--button-hover-border-secondary, var(--color-slate-400));
+    border-color: var(--button-hover-border-secondary);
     color: #334155;
     color: var(--button-hover-text-secondary, var(--button-text-secondary));
   }
@@ -1345,6 +1346,51 @@ body {
   }
 }
 
+/* Dark mode overrides */
+
+.dark {
+  --button-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --button-shadow-hover: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.2);
+
+  --button-bg-primary: var(--color-primary-500);
+  --button-hover-bg-primary: var(--color-primary-400);
+  --button-active-bg-primary: var(--color-primary-600);
+  --button-focus-ring-primary: rgba(99, 102, 241, 0.3);
+
+  --button-bg-secondary: var(--color-slate-800);
+  --button-text-secondary: var(--color-slate-200);
+  --button-border-secondary: var(--color-slate-600);
+  --button-hover-bg-secondary: var(--color-slate-700);
+  --button-hover-border-secondary: var(--color-slate-500);
+  --button-active-bg-secondary: var(--color-slate-600);
+  --button-focus-ring-secondary: rgba(148, 163, 184, 0.2);
+
+  --button-bg-success: var(--color-success-500);
+  --button-hover-bg-success: var(--color-success-400);
+  --button-active-bg-success: var(--color-success-600);
+  --button-focus-ring-success: rgba(34, 197, 94, 0.3);
+
+  --button-bg-danger: var(--color-danger-500);
+  --button-hover-bg-danger: var(--color-danger-400);
+  --button-active-bg-danger: var(--color-danger-600);
+  --button-focus-ring-danger: rgba(239, 68, 68, 0.3);
+
+  --button-bg-warning: var(--color-warning-500);
+  --button-hover-bg-warning: var(--color-warning-400);
+  --button-active-bg-warning: var(--color-warning-600);
+  --button-focus-ring-warning: rgba(245, 158, 11, 0.3);
+
+  --button-bg-info: var(--color-info-500);
+  --button-hover-bg-info: var(--color-info-400);
+  --button-active-bg-info: var(--color-info-600);
+  --button-focus-ring-info: rgba(59, 130, 246, 0.3);
+
+  --button-text-ghost: var(--color-slate-400);
+  --button-hover-bg-ghost: var(--color-slate-800);
+  --button-active-bg-ghost: var(--color-slate-700);
+  --button-focus-ring-ghost: rgba(148, 163, 184, 0.15);
+}
+
 /* =============================================================================
   Input Component
   ============================================================================= */
@@ -1377,6 +1423,23 @@ body {
   --input-disabled-bg: var(--color-slate-50);
   --input-disabled-color: var(--color-slate-500);
   --input-disabled-border-color: var(--color-slate-200);
+
+  /* Input - Labels & Helpers */
+  --input-label-color: var(--color-slate-700);
+  --input-hint-color: var(--color-slate-500);
+  --input-icon-color: var(--color-slate-400);
+  --input-icon-hover-color: var(--color-slate-600);
+
+  /* Input - Addons (Prefix/Suffix) */
+  --input-addon-bg: var(--color-slate-50);
+  --input-addon-color: var(--color-slate-500);
+
+  /* Input - Number Stepper */
+  --input-number-btn-bg: var(--color-slate-50);
+  --input-number-btn-color: var(--color-slate-500);
+  --input-number-btn-hover-bg: var(--color-slate-100);
+  --input-number-btn-hover-color: var(--color-slate-700);
+  --input-number-btn-active-bg: var(--color-slate-200);
 
   /* Input - Variants */
   --input-primary-border-color: var(--color-primary-500);
@@ -1435,7 +1498,7 @@ body {
     font-size: 0.875rem;
     font-weight: 500;
     color: #334155;
-    color: var(--color-slate-700);
+    color: var(--input-label-color);
     line-height: 1.25rem;
   }
 
@@ -1491,7 +1554,7 @@ body {
   margin-left: auto;
   font-size: 0.75rem;
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--input-hint-color);
 }
 
 /**
@@ -1936,7 +1999,7 @@ body {
   left: 0.75rem;
   font-size: 0.75rem;
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--input-hint-color);
   pointer-events: none;
   z-index: 2;
 }
@@ -2178,7 +2241,7 @@ body {
 
 .bk-input__hint {
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--input-hint-color);
 }
 
 .bk-input__error-message {
@@ -2203,7 +2266,7 @@ body {
   pointer-events: none;
   z-index: 20;
   color: #94a3b8;
-  color: var(--color-slate-400);
+  color: var(--input-icon-color);
   transition: color 150ms ease-in-out;
   transition: color var(--transition-fast) ease-in-out;
 }
@@ -2268,11 +2331,11 @@ body {
   align-items: center;
   white-space: nowrap;
   background-color: #f8fafc;
-  background-color: var(--color-slate-50);
+  background-color: var(--input-addon-bg);
   border: 1px solid #cbd5e1;
   border: 1px solid var(--input-border-color);
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--input-addon-color);
   font-size: 0.875rem;
   padding: 0 0.75rem;
   transition:
@@ -2282,7 +2345,7 @@ body {
 }
 
 .bk-input__container--underline {
-  --input-bg: var(--color-slate-50);
+  --input-bg: var(--input-addon-bg);
   border-radius: 0;
 }
 
@@ -2365,14 +2428,14 @@ body {
   padding: 0;
   cursor: pointer;
   color: #94a3b8;
-  color: var(--color-slate-400);
+  color: var(--input-icon-color);
   transition: color 150ms ease-in-out;
   transition: color var(--transition-fast) ease-in-out;
 }
 
 .bk-input__password-toggle:hover {
     color: #475569;
-    color: var(--color-slate-600);
+    color: var(--input-icon-hover-color);
   }
 
 .bk-input__password-toggle svg {
@@ -2409,11 +2472,11 @@ body {
   justify-content: center;
   flex-shrink: 0;
   background-color: #f8fafc;
-  background-color: var(--color-slate-50);
+  background-color: var(--input-number-btn-bg);
   border: 1px solid #cbd5e1;
   border: 1px solid var(--input-border-color);
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--input-number-btn-color);
   cursor: pointer;
   padding: 0;
   transition:
@@ -2424,14 +2487,14 @@ body {
 
 .bk-input__number-btn:hover {
     background-color: #f1f5f9;
-    background-color: var(--color-slate-100);
+    background-color: var(--input-number-btn-hover-bg);
     color: #334155;
-    color: var(--color-slate-700);
+    color: var(--input-number-btn-hover-color);
   }
 
 .bk-input__number-btn:active {
     background-color: #e2e8f0;
-    background-color: var(--color-slate-200);
+    background-color: var(--input-number-btn-active-bg);
   }
 
 .bk-input__number-btn svg {
@@ -2481,6 +2544,66 @@ body {
       border-color: #ef4444;
       border-color: var(--input-error-border-color);
     }
+
+/* Dark mode overrides */
+
+.dark {
+  --input-bg: var(--color-slate-800);
+  --input-color: var(--color-slate-100);
+  --input-placeholder-color: var(--color-slate-500);
+  --input-error-color: var(--color-danger-400);
+  --input-border-color: var(--color-slate-600);
+  --input-hover-border-color: var(--color-slate-500);
+  --input-focus-border-color: var(--color-primary-400);
+  --input-focus-ring-color: rgba(99, 102, 241, 0.25);
+  --input-disabled-bg: var(--color-slate-900);
+  --input-disabled-color: var(--color-slate-600);
+  --input-disabled-border-color: var(--color-slate-800);
+
+  /* Labels & helpers */
+  --input-label-color: var(--color-slate-300);
+  --input-hint-color: var(--color-slate-400);
+  --input-icon-color: var(--color-slate-500);
+  --input-icon-hover-color: var(--color-slate-300);
+
+  /* Addons */
+  --input-addon-bg: var(--color-slate-700);
+  --input-addon-color: var(--color-slate-400);
+
+  /* Number stepper */
+  --input-number-btn-bg: var(--color-slate-700);
+  --input-number-btn-color: var(--color-slate-400);
+  --input-number-btn-hover-bg: var(--color-slate-600);
+  --input-number-btn-hover-color: var(--color-slate-200);
+  --input-number-btn-active-bg: var(--color-slate-500);
+
+  /* Variant: secondary (default) */
+  --input-secondary-border-color: var(--color-slate-600);
+  --input-secondary-ring-color: rgba(99, 102, 241, 0.25);
+
+  /* Variant: primary */
+  --input-primary-border-color: var(--color-primary-500);
+  --input-primary-ring-color: rgba(99, 102, 241, 0.25);
+
+  /* Variant: error */
+  --input-error-border-color: var(--color-danger-500);
+  --input-error-ring-color: rgba(239, 68, 68, 0.2);
+
+  /* Variant: success */
+  --input-success-border-color: var(--color-success-500);
+  --input-success-ring-color: rgba(34, 197, 94, 0.2);
+
+  /* Variant: warning */
+  --input-warning-border-color: var(--color-warning-500);
+  --input-warning-ring-color: rgba(245, 158, 11, 0.2);
+
+  /* Variant: info */
+  --input-info-border-color: var(--color-info-500);
+  --input-info-ring-color: rgba(59, 130, 246, 0.2);
+
+  /* Variant: ghost */
+  --input-ghost-ring-color: rgba(148, 163, 184, 0.15);
+}
 
 /* =============================================================================
   Textarea Component
@@ -2542,6 +2665,15 @@ body {
   --textarea-ghost-border: transparent;
   --textarea-ghost-ring: var(--color-slate-100);
   --textarea-ghost-bg: transparent;
+
+  /* Labels & helpers */
+  --textarea-label-color: var(--color-slate-700);
+  --textarea-hint-color: var(--color-slate-500);
+
+  /* Disabled state */
+  --textarea-disabled-bg: var(--color-slate-50);
+  --textarea-disabled-color: var(--color-slate-500);
+  --textarea-disabled-border: var(--color-slate-200);
 }
 
 /**
@@ -2561,7 +2693,7 @@ body {
     font-size: 0.875rem;
     font-weight: 500;
     color: #334155;
-    color: var(--color-slate-700);
+    color: var(--textarea-label-color);
     line-height: 1.25rem;
   }
 
@@ -2575,7 +2707,7 @@ body {
   margin-left: auto;
   font-size: 0.75rem;
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--textarea-hint-color);
 }
 
 .bk-textarea__label--inset,
@@ -2584,7 +2716,7 @@ body {
   left: 0.75rem;
   font-size: 0.75rem;
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--textarea-hint-color);
   pointer-events: none;
   z-index: 2;
 }
@@ -2604,8 +2736,8 @@ body {
 }
 
 .bk-textarea:has(.bk-textarea__container--error) .bk-textarea__label {
-  color: #b91c1c;
-  color: var(--color-danger-700);
+  color: #ef4444;
+  color: var(--textarea-error-border);
 }
 
 /**
@@ -2632,11 +2764,11 @@ body {
 
 .bk-textarea__container:has(:disabled) .bk-textarea__control {
     background-color: #f8fafc;
-    background-color: var(--color-slate-50);
+    background-color: var(--textarea-disabled-bg);
     color: #64748b;
-    color: var(--color-slate-500);
+    color: var(--textarea-disabled-color);
     border-color: #e2e8f0;
-    border-color: var(--color-slate-200);
+    border-color: var(--textarea-disabled-border);
     cursor: not-allowed;
   }
 
@@ -2678,9 +2810,9 @@ body {
 
 .bk-textarea__control:disabled {
     background-color: #f8fafc;
-    background-color: var(--color-slate-50);
+    background-color: var(--textarea-disabled-bg);
     color: #64748b;
-    color: var(--color-slate-500);
+    color: var(--textarea-disabled-color);
     cursor: not-allowed;
   }
 
@@ -2715,7 +2847,7 @@ body {
 }
 
 .bk-textarea__container--underline {
-  --textarea-bg: var(--color-slate-50);
+  --textarea-bg: var(--textarea-disabled-bg);
   border-radius: 0;
 }
 
@@ -2898,8 +3030,8 @@ body {
 
 .bk-textarea__container--error .bk-textarea__label--inset,
   .bk-textarea__container--error .bk-textarea__label--overlap {
-    color: #b91c1c;
-    color: var(--color-danger-700);
+    color: #ef4444;
+    color: var(--textarea-error-border);
   }
 
 .bk-textarea__control--success {
@@ -3052,7 +3184,51 @@ body {
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--textarea-hint-color);
+}
+
+/* Dark mode overrides */
+
+.dark {
+  --textarea-bg: var(--color-slate-800);
+  --textarea-border: var(--color-slate-600);
+  --textarea-text: var(--color-slate-100);
+  --textarea-placeholder: var(--color-slate-500);
+
+  --textarea-focus-border: var(--color-primary-400);
+  --textarea-focus-ring: rgba(99, 102, 241, 0.25);
+
+  --textarea-primary-border: var(--color-primary-500);
+  --textarea-primary-ring: rgba(99, 102, 241, 0.25);
+
+  --textarea-secondary-border: var(--color-slate-600);
+  --textarea-secondary-ring: rgba(148, 163, 184, 0.2);
+
+  --textarea-error-border: var(--color-danger-500);
+  --textarea-error-ring: rgba(239, 68, 68, 0.2);
+
+  --textarea-success-border: var(--color-success-500);
+  --textarea-success-ring: rgba(34, 197, 94, 0.2);
+
+  --textarea-warning-border: var(--color-warning-500);
+  --textarea-warning-ring: rgba(245, 158, 11, 0.2);
+
+  --textarea-danger-border: var(--color-danger-500);
+  --textarea-danger-ring: rgba(239, 68, 68, 0.2);
+
+  --textarea-info-border: var(--color-info-500);
+  --textarea-info-ring: rgba(59, 130, 246, 0.2);
+
+  --textarea-ghost-ring: rgba(148, 163, 184, 0.15);
+
+  /* Labels & helpers */
+  --textarea-label-color: var(--color-slate-300);
+  --textarea-hint-color: var(--color-slate-400);
+
+  /* Disabled state */
+  --textarea-disabled-bg: var(--color-slate-900);
+  --textarea-disabled-color: var(--color-slate-600);
+  --textarea-disabled-border: var(--color-slate-800);
 }
 
 /* =============================================================================
@@ -3120,6 +3296,14 @@ body {
   --checkbox-ghost-checked-bg: var(--color-slate-700);
   --checkbox-ghost-checked-border: var(--color-slate-700);
   --checkbox-ghost-focus-ring: var(--color-slate-200);
+
+  /* Labels & helpers */
+  --checkbox-label-color: var(--color-slate-700);
+  --checkbox-hint-color: var(--color-slate-500);
+
+  /* Disabled checked state */
+  --checkbox-disabled-checked-bg: var(--color-slate-400);
+  --checkbox-disabled-checked-border: var(--color-slate-400);
 }
 
 /**
@@ -3144,7 +3328,7 @@ body {
   font-weight: 500;
   font-weight: var(--font-weight-medium);
   color: #334155;
-  color: var(--color-slate-700);
+  color: var(--checkbox-label-color);
   line-height: 1.25rem;
   margin-top: 1px;
   cursor: pointer;
@@ -3166,7 +3350,7 @@ body {
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--checkbox-hint-color);
 }
 
 /**
@@ -3222,9 +3406,9 @@ body {
 
 .bk-checkbox__control:checked:disabled {
     background-color: #94a3b8;
-    background-color: var(--color-slate-400);
+    background-color: var(--checkbox-disabled-checked-bg);
     border-color: #94a3b8;
-    border-color: var(--color-slate-400);
+    border-color: var(--checkbox-disabled-checked-border);
     opacity: 1;
   }
 
@@ -3355,6 +3539,57 @@ body {
     margin-left: calc(var(--checkbox-size-lg) + 0.75rem);
   }
 
+/* Dark mode overrides */
+
+.dark {
+  --checkbox-border-color: var(--color-slate-600);
+  --checkbox-hover-border-color: var(--color-slate-500);
+  --checkbox-focus-ring-color: rgba(99, 102, 241, 0.25);
+
+  --checkbox-disabled-bg: var(--color-slate-800);
+  --checkbox-disabled-border-color: var(--color-slate-700);
+  --checkbox-disabled-color: var(--color-slate-500);
+
+  --checkbox-error-border-color: var(--color-danger-500);
+  --checkbox-error-ring-color: rgba(239, 68, 68, 0.2);
+  --checkbox-error-color: var(--color-danger-400);
+
+  /* Labels & helpers */
+  --checkbox-label-color: var(--color-slate-300);
+  --checkbox-hint-color: var(--color-slate-400);
+
+  /* Disabled checked state */
+  --checkbox-disabled-checked-bg: var(--color-slate-600);
+  --checkbox-disabled-checked-border: var(--color-slate-600);
+
+  --checkbox-primary-checked-bg: var(--color-primary-500);
+  --checkbox-primary-checked-border: var(--color-primary-500);
+  --checkbox-primary-focus-ring: rgba(99, 102, 241, 0.25);
+
+  --checkbox-secondary-checked-bg: var(--color-slate-600);
+  --checkbox-secondary-checked-border: var(--color-slate-600);
+  --checkbox-secondary-focus-ring: rgba(148, 163, 184, 0.2);
+
+  --checkbox-success-checked-bg: var(--color-success-500);
+  --checkbox-success-checked-border: var(--color-success-500);
+  --checkbox-success-focus-ring: rgba(34, 197, 94, 0.2);
+
+  --checkbox-warning-checked-bg: var(--color-warning-500);
+  --checkbox-warning-checked-border: var(--color-warning-500);
+  --checkbox-warning-focus-ring: rgba(245, 158, 11, 0.2);
+
+  --checkbox-danger-checked-bg: var(--color-danger-500);
+  --checkbox-danger-checked-border: var(--color-danger-500);
+  --checkbox-danger-focus-ring: rgba(239, 68, 68, 0.2);
+
+  --checkbox-info-checked-bg: var(--color-info-500);
+  --checkbox-info-checked-border: var(--color-info-500);
+  --checkbox-info-focus-ring: rgba(59, 130, 246, 0.2);
+
+  --checkbox-ghost-border: var(--color-slate-600);
+  --checkbox-ghost-focus-ring: rgba(148, 163, 184, 0.2);
+}
+
 /* =============================================================================
   Radio Component
   ============================================================================= */
@@ -3417,6 +3652,14 @@ body {
   --radio-error-ring: var(--color-danger-100);
   --radio-error-checked-bg: var(--color-danger-600);
   --radio-error-checked-border: var(--color-danger-600);
+
+  /* Labels & helpers */
+  --radio-label-color: var(--color-slate-700);
+  --radio-hint-color: var(--color-slate-500);
+
+  /* Disabled state */
+  --radio-disabled-bg: var(--color-slate-100);
+  --radio-disabled-border: var(--color-slate-200);
 }
 
 /**
@@ -3448,7 +3691,7 @@ body {
   font-weight: 500;
   font-weight: var(--font-weight-medium);
   color: #334155;
-  color: var(--color-slate-700);
+  color: var(--radio-label-color);
   line-height: 1.25rem;
   margin-top: 1px;
   cursor: pointer;
@@ -3472,7 +3715,7 @@ body {
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--radio-hint-color);
   margin-left: calc(1.125rem + 0.75rem);
   margin-left: calc(var(--radio-size-md) + 0.75rem);
 }
@@ -3522,9 +3765,9 @@ body {
 
 .bk-radio__control:disabled {
     background-color: #f1f5f9;
-    background-color: var(--color-slate-100);
+    background-color: var(--radio-disabled-bg);
     border-color: #e2e8f0;
-    border-color: var(--color-slate-200);
+    border-color: var(--radio-disabled-border);
     cursor: not-allowed;
     opacity: 0.7;
   }
@@ -3688,6 +3931,53 @@ body {
   height: var(--radio-size-lg);
 }
 
+/* Dark mode overrides */
+
+.dark {
+  --radio-border: var(--color-slate-600);
+  --radio-bg: var(--color-slate-800);
+  --radio-focus-ring: rgba(99, 102, 241, 0.25);
+
+  /* Labels & helpers */
+  --radio-label-color: var(--color-slate-300);
+  --radio-hint-color: var(--color-slate-400);
+
+  /* Disabled state */
+  --radio-disabled-bg: var(--color-slate-800);
+  --radio-disabled-border: var(--color-slate-700);
+
+  --radio-primary-checked-bg: var(--color-primary-500);
+  --radio-primary-checked-border: var(--color-primary-500);
+  --radio-primary-focus-ring: rgba(99, 102, 241, 0.25);
+
+  --radio-secondary-checked-bg: var(--color-slate-500);
+  --radio-secondary-checked-border: var(--color-slate-500);
+  --radio-secondary-focus-ring: rgba(148, 163, 184, 0.2);
+
+  --radio-success-checked-bg: var(--color-success-500);
+  --radio-success-checked-border: var(--color-success-500);
+  --radio-success-focus-ring: rgba(34, 197, 94, 0.2);
+
+  --radio-warning-checked-bg: var(--color-warning-500);
+  --radio-warning-checked-border: var(--color-warning-500);
+  --radio-warning-focus-ring: rgba(245, 158, 11, 0.2);
+
+  --radio-danger-checked-bg: var(--color-danger-500);
+  --radio-danger-checked-border: var(--color-danger-500);
+  --radio-danger-focus-ring: rgba(239, 68, 68, 0.2);
+
+  --radio-info-checked-bg: var(--color-info-500);
+  --radio-info-checked-border: var(--color-info-500);
+  --radio-info-focus-ring: rgba(59, 130, 246, 0.2);
+
+  --radio-ghost-bg: transparent;
+  --radio-ghost-border: var(--color-slate-600);
+  --radio-ghost-focus-ring: rgba(148, 163, 184, 0.2);
+
+  --radio-error-border: var(--color-danger-500);
+  --radio-error-ring: rgba(239, 68, 68, 0.2);
+}
+
 /* =============================================================================
   Select Component
   ============================================================================= */
@@ -3751,6 +4041,16 @@ body {
   --select-px-lg: 1rem;
   --select-fs-lg: 1rem;
 
+  /* Labels & helpers */
+  --select-label-color: var(--color-slate-700);
+  --select-hint-color: var(--color-slate-500);
+  --select-icon-color: var(--color-slate-400);
+
+  /* Options */
+  --select-option-text: var(--color-slate-700);
+  --select-option-selected-bg: var(--color-slate-100);
+  --select-option-selected-text: var(--color-slate-900);
+
   /* Dropdown Menu */
   --select-menu-bg: var(--surface-base);
   --select-menu-border: var(--color-slate-200);
@@ -3783,7 +4083,7 @@ body {
   font-size: 0.8125rem;
   line-height: 1.25rem;
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--select-hint-color);
 }
 
 /* Error state on parent changes label color */
@@ -3804,7 +4104,7 @@ body {
   font-size: 0.875rem;
   font-weight: 500;
   color: #334155;
-  color: var(--color-slate-700);
+  color: var(--select-label-color);
   line-height: 1.25rem;
 }
 
@@ -3817,7 +4117,7 @@ body {
   margin-left: auto;
   font-size: 0.75rem;
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--select-hint-color);
 }
 
 /* Inline label styles */
@@ -3828,7 +4128,7 @@ body {
   left: 0.75rem;
   font-size: 0.75rem;
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--select-hint-color);
   pointer-events: none;
   z-index: 2;
 }
@@ -3902,9 +4202,9 @@ body {
 
 .bk-select__control:disabled {
     background-color: #f8fafc;
-    background-color: var(--color-slate-50);
+    background-color: var(--select-disabled-bg);
     color: #64748b;
-    color: var(--color-slate-500);
+    color: var(--select-disabled-color);
     cursor: not-allowed;
   }
 
@@ -3927,7 +4227,7 @@ body {
   width: 1.25rem;
   height: 1.25rem;
   color: #94a3b8;
-  color: var(--color-slate-400);
+  color: var(--select-icon-color);
   pointer-events: none;
 }
 
@@ -3939,7 +4239,7 @@ body {
   width: 1.25rem;
   height: 1.25rem;
   color: #94a3b8;
-  color: var(--color-slate-400);
+  color: var(--select-icon-color);
   pointer-events: none;
   transition:
     transform 150ms, color 200ms ease;
@@ -4000,7 +4300,7 @@ body {
   text-align: left;
   cursor: pointer;
   color: #334155;
-  color: var(--color-slate-700);
+  color: var(--select-option-text);
 }
 
 .bk-select__option:hover {
@@ -4010,9 +4310,9 @@ body {
 
 .bk-select__option--selected {
   background-color: #f1f5f9;
-  background-color: var(--color-slate-100);
+  background-color: var(--select-option-selected-bg);
   color: #0f172a;
-  color: var(--color-slate-900);
+  color: var(--select-option-selected-text);
 }
 
 .bk-select__error-icon {
@@ -4399,8 +4699,8 @@ body {
 }
 
 .bk-select__control--underline {
-  background-color: #f8fafc;
-  background-color: var(--color-slate-50);
+  background-color: white;
+  background-color: var(--select-bg);
   border-width: 0 0 1px 0;
   border-radius: 0;
   border-style: solid;
@@ -4423,6 +4723,61 @@ body {
 
 .bk-select__control--pill {
   border-radius: 9999px;
+}
+
+/* Dark mode overrides */
+
+.dark {
+  --select-color: var(--color-slate-100);
+  --select-placeholder-color: var(--color-slate-500);
+  --select-border-color: var(--color-slate-600);
+  --select-bg: var(--color-slate-800);
+  --select-hover-border-color: var(--color-slate-500);
+  --select-focus-border-color: var(--color-primary-400);
+  --select-focus-ring-color: rgba(99, 102, 241, 0.25);
+
+  --select-disabled-bg: var(--color-slate-900);
+  --select-disabled-color: var(--color-slate-600);
+  --select-disabled-border-color: var(--color-slate-800);
+
+  /* Labels & helpers */
+  --select-label-color: var(--color-slate-300);
+  --select-hint-color: var(--color-slate-400);
+  --select-icon-color: var(--color-slate-500);
+
+  /* Options */
+  --select-option-text: var(--color-slate-200);
+  --select-option-selected-bg: var(--color-slate-700);
+  --select-option-selected-text: var(--color-slate-100);
+
+  --select-primary-border-color: var(--color-primary-500);
+  --select-primary-ring-color: rgba(99, 102, 241, 0.25);
+
+  --select-secondary-border-color: var(--color-slate-600);
+  --select-secondary-ring-color: rgba(148, 163, 184, 0.2);
+
+  --select-error-border-color: var(--color-danger-500);
+  --select-error-ring-color: rgba(239, 68, 68, 0.2);
+  --select-error-color: var(--color-danger-400);
+
+  --select-success-border-color: var(--color-success-500);
+  --select-success-ring-color: rgba(34, 197, 94, 0.2);
+
+  --select-warning-border-color: var(--color-warning-500);
+  --select-warning-ring-color: rgba(245, 158, 11, 0.2);
+
+  --select-danger-border-color: var(--color-danger-500);
+  --select-danger-ring-color: rgba(239, 68, 68, 0.2);
+
+  --select-info-border-color: var(--color-info-500);
+  --select-info-ring-color: rgba(59, 130, 246, 0.2);
+
+  --select-ghost-ring-color: rgba(148, 163, 184, 0.15);
+
+  --select-menu-bg: var(--color-slate-800);
+  --select-menu-border: var(--color-slate-700);
+  --select-menu-shadow: 0 10px 20px rgb(0 0 0 / 0.3);
+  --select-option-hover: var(--color-slate-700);
 }
 
 /* =============================================================================
@@ -4500,6 +4855,19 @@ body {
   --multiselect-chip-bg: var(--color-slate-100);
   --multiselect-chip-text: var(--color-slate-700);
   --multiselect-chip-border: var(--color-slate-200);
+  --multiselect-chip-remove-color: var(--color-slate-500);
+  --multiselect-chip-remove-hover-color: var(--color-slate-700);
+
+  /* Multi Select - Labels & helpers */
+  --multiselect-label-color: var(--color-slate-700);
+  --multiselect-hint-color: var(--color-slate-500);
+  --multiselect-icon-color: var(--color-slate-400);
+
+  /* Multi Select - Options */
+  --multiselect-option-text: var(--color-slate-700);
+  --multiselect-option-selected-bg: var(--color-slate-100);
+  --multiselect-option-selected-text: var(--color-slate-900);
+  --multiselect-check-border: var(--color-slate-300);
 
   /* Multi Select - Menu */
   --multiselect-menu-bg: var(--surface-base);
@@ -4533,7 +4901,7 @@ body {
   font-size: 0.8125rem;
   line-height: 1.25rem;
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--multiselect-hint-color);
 }
 
 /* Error state on parent changes label color */
@@ -4554,7 +4922,7 @@ body {
   font-size: 0.875rem;
   font-weight: 500;
   color: #334155;
-  color: var(--color-slate-700);
+  color: var(--multiselect-label-color);
   line-height: 1.25rem;
 }
 
@@ -4567,7 +4935,7 @@ body {
   margin-left: auto;
   font-size: 0.75rem;
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--multiselect-hint-color);
 }
 
 /* Inline label styles */
@@ -4578,7 +4946,7 @@ body {
   left: 0.75rem;
   font-size: 0.75rem;
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--multiselect-hint-color);
   pointer-events: none;
 }
 
@@ -4654,9 +5022,9 @@ body {
 
 .bk-multiselect__control:disabled {
     background-color: #f8fafc;
-    background-color: var(--color-slate-50);
+    background-color: var(--multiselect-disabled-bg);
     color: #64748b;
-    color: var(--color-slate-500);
+    color: var(--multiselect-disabled-color);
     cursor: not-allowed;
   }
 
@@ -4675,7 +5043,7 @@ body {
 
 .bk-multiselect__placeholder {
   color: #94a3b8;
-  color: var(--color-slate-400);
+  color: var(--multiselect-placeholder-color);
 }
 
 /**
@@ -4703,7 +5071,7 @@ body {
   border: none;
   background: transparent;
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--multiselect-chip-remove-color);
   cursor: pointer;
   padding: 0;
   line-height: 1;
@@ -4711,7 +5079,7 @@ body {
 
 .bk-multiselect__chip-remove:hover {
     color: #334155;
-    color: var(--color-slate-700);
+    color: var(--multiselect-chip-remove-hover-color);
   }
 
 /**
@@ -4728,7 +5096,7 @@ body {
   width: 1.25rem;
   height: 1.25rem;
   color: #94a3b8;
-  color: var(--color-slate-400);
+  color: var(--multiselect-icon-color);
   pointer-events: none;
 }
 
@@ -4740,7 +5108,7 @@ body {
   width: 1.25rem;
   height: 1.25rem;
   color: #94a3b8;
-  color: var(--color-slate-400);
+  color: var(--multiselect-icon-color);
   pointer-events: none;
   transition:
     transform 150ms, color 200ms ease;
@@ -4814,7 +5182,7 @@ body {
   text-align: left;
   cursor: pointer;
   color: #334155;
-  color: var(--color-slate-700);
+  color: var(--multiselect-option-text);
 }
 
 .bk-multiselect__option:hover {
@@ -4824,9 +5192,9 @@ body {
 
 .bk-multiselect__option--selected {
   background-color: #f1f5f9;
-  background-color: var(--color-slate-100);
+  background-color: var(--multiselect-option-selected-bg);
   color: #0f172a;
-  color: var(--color-slate-900);
+  color: var(--multiselect-option-selected-text);
 }
 
 .bk-multiselect__option-check {
@@ -4834,7 +5202,7 @@ body {
   height: 1rem;
   border-radius: 0.25rem;
   border: 1px solid #cbd5e1;
-  border: 1px solid var(--color-slate-300);
+  border: 1px solid var(--multiselect-check-border);
   background-color: white;
   background-color: var(--multiselect-option-check-bg);
   flex-shrink: 0;
@@ -5236,8 +5604,8 @@ body {
 }
 
 .bk-multiselect__control--underline {
-  background-color: #f8fafc;
-  background-color: var(--color-slate-50);
+  background-color: white;
+  background-color: var(--multiselect-bg);
   border-width: 0 0 1px 0;
   border-radius: 0;
   border-style: solid;
@@ -5260,6 +5628,70 @@ body {
 
 .bk-multiselect__control--pill {
   border-radius: 9999px;
+}
+
+/* Dark mode overrides */
+
+.dark {
+  --multiselect-color: var(--color-slate-100);
+  --multiselect-placeholder-color: var(--color-slate-500);
+  --multiselect-border-color: var(--color-slate-600);
+  --multiselect-bg: var(--color-slate-800);
+  --multiselect-hover-border-color: var(--color-slate-500);
+  --multiselect-focus-border-color: var(--color-primary-400);
+  --multiselect-focus-ring-color: rgba(99, 102, 241, 0.25);
+
+  --multiselect-disabled-bg: var(--color-slate-900);
+  --multiselect-disabled-color: var(--color-slate-600);
+  --multiselect-disabled-border-color: var(--color-slate-800);
+
+  --multiselect-error-border-color: var(--color-danger-500);
+  --multiselect-error-ring-color: rgba(239, 68, 68, 0.2);
+  --multiselect-error-color: var(--color-danger-400);
+
+  --multiselect-primary-border-color: var(--color-primary-500);
+  --multiselect-primary-ring-color: rgba(99, 102, 241, 0.25);
+
+  --multiselect-secondary-border-color: var(--color-slate-600);
+  --multiselect-secondary-ring-color: rgba(148, 163, 184, 0.2);
+
+  --multiselect-success-border-color: var(--color-success-500);
+  --multiselect-success-ring-color: rgba(34, 197, 94, 0.2);
+
+  --multiselect-warning-border-color: var(--color-warning-500);
+  --multiselect-warning-ring-color: rgba(245, 158, 11, 0.2);
+
+  --multiselect-danger-border-color: var(--color-danger-500);
+  --multiselect-danger-ring-color: rgba(239, 68, 68, 0.2);
+
+  --multiselect-info-border-color: var(--color-info-500);
+  --multiselect-info-ring-color: rgba(59, 130, 246, 0.2);
+
+  --multiselect-ghost-ring-color: rgba(148, 163, 184, 0.15);
+
+  --multiselect-chip-bg: var(--color-slate-700);
+  --multiselect-chip-text: var(--color-slate-200);
+  --multiselect-chip-border: var(--color-slate-600);
+  --multiselect-chip-remove-color: var(--color-slate-400);
+  --multiselect-chip-remove-hover-color: var(--color-slate-200);
+
+  /* Labels & helpers */
+  --multiselect-label-color: var(--color-slate-300);
+  --multiselect-hint-color: var(--color-slate-400);
+  --multiselect-icon-color: var(--color-slate-500);
+
+  /* Options */
+  --multiselect-option-text: var(--color-slate-200);
+  --multiselect-option-selected-bg: var(--color-slate-700);
+  --multiselect-option-selected-text: var(--color-slate-100);
+  --multiselect-check-border: var(--color-slate-600);
+
+  --multiselect-menu-bg: var(--color-slate-800);
+  --multiselect-menu-border: var(--color-slate-700);
+  --multiselect-menu-shadow: 0 10px 20px rgb(0 0 0 / 0.3);
+  --multiselect-option-hover: var(--color-slate-700);
+  --multiselect-option-check-bg: var(--color-slate-700);
+  --multiselect-option-check-inset: var(--color-slate-700);
 }
 
 /* =============================================================================
@@ -5318,6 +5750,11 @@ body {
   /* Interaction */
   --toggle-transition: var(--transition-normal) cubic-bezier(0.4, 0, 0.2, 1);
   --toggle-focus-ring: var(--color-primary-100);
+
+  /* Labels & helpers */
+  --toggle-label-color: var(--color-slate-700);
+  --toggle-hint-color: var(--color-slate-500);
+  --toggle-disabled-label-color: var(--color-slate-400);
 }
 
 /**
@@ -5347,7 +5784,7 @@ body {
   font-weight: 500;
   font-weight: var(--font-weight-medium);
   color: #334155;
-  color: var(--color-slate-700);
+  color: var(--toggle-label-color);
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -5363,7 +5800,7 @@ body {
 
 .bk-toggle__hint {
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--toggle-hint-color);
 }
 
 /**
@@ -5421,7 +5858,7 @@ body {
   height: 1.25rem;
   height: var(--toggle-height-sm);
   color: #334155;
-  color: var(--color-slate-700);
+  color: var(--toggle-label-color);
   --toggle-thumb-translate: 1.25rem;
 }
 
@@ -5509,7 +5946,7 @@ body {
 
 .bk-toggle__input:disabled ~ .bk-toggle__label {
   color: #94a3b8;
-  color: var(--color-slate-400);
+  color: var(--toggle-disabled-label-color);
   cursor: not-allowed;
 }
 
@@ -5559,6 +5996,45 @@ body {
 .bk-toggle__button--ghost {
   --toggle-bg-on: var(--toggle-ghost-bg-on);
   --toggle-focus-ring: var(--toggle-ghost-focus-ring);
+}
+
+/* Dark mode overrides */
+
+.dark {
+  --toggle-bg-off: var(--color-slate-700);
+  --toggle-bg-on: var(--color-primary-500);
+  --toggle-thumb-bg: var(--color-slate-300);
+  --toggle-thumb-border-off: var(--color-slate-600);
+
+  --toggle-focus-ring: rgba(99, 102, 241, 0.25);
+
+  /* Labels & helpers */
+  --toggle-label-color: var(--color-slate-300);
+  --toggle-hint-color: var(--color-slate-400);
+  --toggle-disabled-label-color: var(--color-slate-600);
+
+  --toggle-primary-bg-on: var(--color-primary-500);
+  --toggle-primary-focus-ring: rgba(99, 102, 241, 0.25);
+
+  --toggle-secondary-bg-on: var(--color-slate-500);
+  --toggle-secondary-focus-ring: rgba(148, 163, 184, 0.2);
+
+  --toggle-success-bg-on: var(--color-success-500);
+  --toggle-success-focus-ring: rgba(34, 197, 94, 0.25);
+
+  --toggle-warning-bg-on: var(--color-warning-500);
+  --toggle-warning-focus-ring: rgba(245, 158, 11, 0.25);
+
+  --toggle-danger-bg-on: var(--color-danger-500);
+  --toggle-danger-focus-ring: rgba(239, 68, 68, 0.25);
+
+  --toggle-info-bg-on: var(--color-info-500);
+  --toggle-info-focus-ring: rgba(59, 130, 246, 0.25);
+
+  --toggle-ghost-bg-on: var(--color-slate-700);
+  --toggle-ghost-focus-ring: rgba(148, 163, 184, 0.2);
+
+  --toggle-error-focus-ring: rgba(239, 68, 68, 0.25);
 }
 
 /* =============================================================================
@@ -5733,6 +6209,36 @@ body {
   border-color: var(--alert-border-ghost);
 }
 
+/* Dark mode overrides */
+
+.dark {
+  --alert-bg-primary: var(--color-primary-950);
+  --alert-text-primary: var(--color-primary-200);
+  --alert-border-primary: var(--color-primary-800);
+
+  --alert-bg-info: var(--color-info-950);
+  --alert-text-info: var(--color-info-200);
+  --alert-border-info: var(--color-info-800);
+
+  --alert-bg-secondary: var(--color-slate-800);
+  --alert-text-secondary: var(--color-slate-200);
+  --alert-border-secondary: var(--color-slate-700);
+
+  --alert-bg-success: var(--color-success-950);
+  --alert-text-success: var(--color-success-200);
+  --alert-border-success: var(--color-success-800);
+
+  --alert-bg-warning: var(--color-warning-950);
+  --alert-text-warning: var(--color-warning-200);
+  --alert-border-warning: var(--color-warning-800);
+
+  --alert-bg-danger: var(--color-danger-950);
+  --alert-text-danger: var(--color-danger-200);
+  --alert-border-danger: var(--color-danger-800);
+
+  --alert-text-ghost: var(--color-slate-400);
+}
+
 /* =============================================================================
    Toast Component
    ============================================================================= */
@@ -5775,6 +6281,9 @@ body {
   --toast-bg-ghost: transparent;
   --toast-text-ghost: var(--color-slate-700);
   --toast-border-ghost: transparent;
+
+  /* Toast - Dismiss */
+  --toast-dismiss-hover-bg: rgba(0, 0, 0, 0.08);
 }
 
 /* =============================================================================
@@ -5868,6 +6377,7 @@ body {
 
 .bk-toast__dismiss:hover {
     background-color: rgba(0, 0, 0, 0.08);
+    background-color: var(--toast-dismiss-hover-bg);
     opacity: 1;
   }
 
@@ -5942,6 +6452,42 @@ body {
   border-color: var(--toast-border-ghost);
   color: #334155;
   color: var(--toast-text-ghost);
+}
+
+/* Dark mode overrides */
+
+.dark {
+  --toast-shadow:
+    0 4px 12px -2px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+
+  --toast-bg-primary: var(--color-primary-950);
+  --toast-text-primary: var(--color-primary-200);
+  --toast-border-primary: var(--color-primary-500);
+
+  --toast-bg-info: var(--color-info-950);
+  --toast-text-info: var(--color-info-200);
+  --toast-border-info: var(--color-info-500);
+
+  --toast-bg-secondary: var(--color-slate-800);
+  --toast-text-secondary: var(--color-slate-200);
+  --toast-border-secondary: var(--color-slate-400);
+
+  --toast-bg-success: var(--color-success-950);
+  --toast-text-success: var(--color-success-200);
+  --toast-border-success: var(--color-success-500);
+
+  --toast-bg-warning: var(--color-warning-950);
+  --toast-text-warning: var(--color-warning-200);
+  --toast-border-warning: var(--color-warning-500);
+
+  --toast-bg-danger: var(--color-danger-950);
+  --toast-text-danger: var(--color-danger-200);
+  --toast-border-danger: var(--color-danger-500);
+
+  --toast-text-ghost: var(--color-slate-400);
+
+  /* Dismiss */
+  --toast-dismiss-hover-bg: rgba(255, 255, 255, 0.1);
 }
 
 /* =============================================================================
@@ -6022,6 +6568,14 @@ body {
   top: 50%;
   transform: translateY(-50%);
   margin-left: 0.5rem;
+}
+
+/* Dark mode overrides */
+
+.dark {
+  --tooltip-bg: var(--color-slate-800);
+  --tooltip-text: var(--color-slate-100);
+  --tooltip-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
 }
 
 /* =============================================================================
@@ -6172,6 +6726,22 @@ body {
     background-color: var(--progress-bar-white);
   }
 
+/* Dark mode overrides */
+
+.dark {
+  --progress-bg: var(--color-slate-700);
+  --progress-label-color: var(--color-slate-300);
+
+  --progress-bar-primary: var(--color-primary-400);
+  --progress-bar-secondary: var(--color-slate-400);
+  --progress-bar-success: var(--color-success-400);
+  --progress-bar-warning: var(--color-warning-400);
+  --progress-bar-danger: var(--color-danger-400);
+  --progress-bar-info: var(--color-info-400);
+  --progress-bar-ghost: var(--color-slate-500);
+  --progress-bar-white: white;
+}
+
 /* =============================================================================
    Spinner Component
    ============================================================================= */
@@ -6319,6 +6889,18 @@ body {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Dark mode overrides */
+
+.dark {
+  --spinner-color-primary: var(--color-primary-400);
+  --spinner-color-slate: var(--color-slate-400);
+  --spinner-color-success: var(--color-success-400);
+  --spinner-color-warning: var(--color-warning-400);
+  --spinner-color-danger: var(--color-danger-400);
+  --spinner-color-info: var(--color-info-400);
+  --spinner-color-ghost: var(--color-slate-500);
 }
 
 /* =============================================================================
@@ -6484,6 +7066,12 @@ body {
   50% {
     opacity: 0.5;
   }
+}
+
+/* Dark mode overrides */
+
+.dark {
+  --skeleton-bg: var(--color-slate-700);
 }
 
 /* =============================================================================
@@ -6713,6 +7301,42 @@ body {
   --empty-state-description-color: var(--empty-state-ghost-description-color);
 }
 
+/* Dark mode overrides */
+
+.dark {
+  --empty-state-icon-color: var(--color-slate-500);
+  --empty-state-title-color: var(--color-slate-100);
+  --empty-state-description-color: var(--color-slate-400);
+
+  --empty-state-primary-icon-color: var(--color-primary-400);
+  --empty-state-primary-title-color: var(--color-primary-200);
+  --empty-state-primary-description-color: var(--color-primary-300);
+
+  --empty-state-secondary-icon-color: var(--color-slate-400);
+  --empty-state-secondary-title-color: var(--color-slate-100);
+  --empty-state-secondary-description-color: var(--color-slate-400);
+
+  --empty-state-success-icon-color: var(--color-success-400);
+  --empty-state-success-title-color: var(--color-success-200);
+  --empty-state-success-description-color: var(--color-success-300);
+
+  --empty-state-warning-icon-color: var(--color-warning-400);
+  --empty-state-warning-title-color: var(--color-warning-200);
+  --empty-state-warning-description-color: var(--color-warning-300);
+
+  --empty-state-danger-icon-color: var(--color-danger-400);
+  --empty-state-danger-title-color: var(--color-danger-200);
+  --empty-state-danger-description-color: var(--color-danger-300);
+
+  --empty-state-info-icon-color: var(--color-info-400);
+  --empty-state-info-title-color: var(--color-info-200);
+  --empty-state-info-description-color: var(--color-info-300);
+
+  --empty-state-ghost-icon-color: var(--color-slate-500);
+  --empty-state-ghost-title-color: var(--color-slate-400);
+  --empty-state-ghost-description-color: var(--color-slate-500);
+}
+
 /* =============================================================================
    Navigation Components
    ============================================================================= */
@@ -6842,6 +7466,14 @@ body {
     height: 1.125rem;
   }
 
+/* Dark mode overrides */
+
+.dark {
+  --breadcrumb-separator-color: var(--color-slate-500);
+  --breadcrumb-link-color: var(--color-primary-400);
+  --breadcrumb-current-color: var(--color-slate-200);
+}
+
 /* =============================================================================
    Pagination Component
    ============================================================================= */
@@ -6857,7 +7489,10 @@ body {
   --pagination-hover-bg: var(--color-slate-50);
   --pagination-active-bg: var(--color-primary-600);
   --pagination-active-text: white;
+  --pagination-active-hover-bg: var(--color-primary-700);
   --pagination-disabled-text: var(--color-slate-400);
+  --pagination-info-color: var(--color-slate-600);
+  --pagination-label-color: var(--color-slate-700);
 }
 
 /* =============================================================================
@@ -6923,7 +7558,7 @@ body {
 
 .bk-pagination__number--active:hover {
     background-color: #4338ca;
-    background-color: var(--color-primary-700);
+    background-color: var(--pagination-active-hover-bg);
   }
 
 .bk-pagination__link--disabled {
@@ -6955,7 +7590,7 @@ body {
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
   color: #475569;
-  color: var(--color-slate-600);
+  color: var(--pagination-info-color);
 }
 
 .bk-pagination__per-page {
@@ -6968,7 +7603,7 @@ body {
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
   color: #334155;
-  color: var(--color-slate-700);
+  color: var(--pagination-label-color);
 }
 
 .bk-pagination__per-page-select {
@@ -6981,6 +7616,21 @@ body {
   color: #334155;
   color: var(--pagination-text);
   padding: 0.375rem 0.5rem;
+}
+
+/* Dark mode overrides */
+
+.dark {
+  --pagination-bg: var(--color-slate-800);
+  --pagination-border: var(--color-slate-600);
+  --pagination-text: var(--color-slate-200);
+  --pagination-hover-bg: var(--color-slate-700);
+  --pagination-active-bg: var(--color-primary-500);
+  --pagination-active-text: white;
+  --pagination-active-hover-bg: var(--color-primary-400);
+  --pagination-disabled-text: var(--color-slate-500);
+  --pagination-info-color: var(--color-slate-400);
+  --pagination-label-color: var(--color-slate-300);
 }
 
 /* =============================================================================
@@ -7106,6 +7756,20 @@ body {
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     box-shadow: var(--tabs-boxed-active-shadow);
   }
+
+/* Dark mode overrides */
+
+.dark {
+  --tabs-border: var(--color-slate-700);
+  --tabs-active-border: var(--color-primary-400);
+  --tabs-text: var(--color-slate-400);
+  --tabs-active-text: var(--color-primary-300);
+  --tabs-hover-text: var(--color-slate-100);
+  --tabs-pills-active-bg: var(--color-primary-900);
+  --tabs-boxed-bg: var(--color-slate-800);
+  --tabs-boxed-active-bg: var(--color-slate-700);
+  --tabs-boxed-active-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
 
 /* =============================================================================
    Dropdown Menu Component
@@ -7373,6 +8037,23 @@ body {
   pointer-events: none;
 }
 
+/* Dark mode overrides */
+
+.dark {
+  --dropdown-bg: var(--color-slate-800);
+  --dropdown-trigger-bg: var(--color-slate-800);
+  --dropdown-trigger-text: var(--color-slate-200);
+  --dropdown-trigger-hover-bg: var(--color-slate-700);
+  --dropdown-trigger-hover-border: var(--color-slate-600);
+  --dropdown-trigger-focus-ring: rgba(99, 102, 241, 0.25);
+  --dropdown-border: var(--color-slate-700);
+  --dropdown-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  --dropdown-trigger-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.2);
+  --dropdown-item-hover-bg: var(--color-slate-700);
+  --dropdown-item-text: var(--color-slate-200);
+  --dropdown-item-icon: var(--color-slate-400);
+}
+
 /* =============================================================================
    Link Component
    ============================================================================= */
@@ -7461,6 +8142,19 @@ body {
 :where(.bk-link--ghost):not([class*="text-"]) {
   color: #64748b;
   color: var(--link-ghost-color);
+}
+
+/* Dark mode overrides */
+
+.dark {
+  --link-primary-color: var(--color-primary-400);
+  --link-secondary-color: var(--color-slate-200);
+  --link-success-color: var(--color-success-400);
+  --link-warning-color: var(--color-warning-400);
+  --link-danger-color: var(--color-danger-400);
+  --link-info-color: var(--color-info-400);
+  --link-ghost-color: var(--color-slate-400);
+  --link-muted-color: var(--color-slate-400);
 }
 
 /* =============================================================================
@@ -7567,6 +8261,16 @@ body {
   border-top: 1px dotted #e2e8f0;
   border-top: 1px dotted var(--divider-color);
   background: none;
+}
+
+/* Dark mode overrides */
+
+.dark {
+  --divider-color: var(--color-slate-700);
+  --divider-color-light: var(--color-slate-800);
+  --divider-color-dark: var(--color-slate-500);
+  --divider-label-bg: var(--color-slate-900);
+  --divider-label-color: var(--color-slate-400);
 }
 
 /* =============================================================================
@@ -7803,6 +8507,7 @@ body {
   --card-radius: var(--radius-xl);
   --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --card-header-padding: 1.25rem 1.5rem;
+  --card-header-text: var(--color-slate-900);
   --card-body-padding: 1.5rem;
   --card-footer-padding: 1rem 1.5rem;
   --card-footer-bg: var(--color-slate-50);
@@ -7849,7 +8554,7 @@ body {
   font-weight: 600;
   font-weight: var(--font-weight-semibold);
   color: #0f172a;
-  color: var(--color-slate-900);
+  color: var(--card-header-text);
 }
 
 .bk-card__body {
@@ -7903,6 +8608,16 @@ body {
   border-bottom-left-radius: var(--card-radius);
   border-bottom-right-radius: 1rem;
   border-bottom-right-radius: var(--card-radius);
+}
+
+/* Dark mode overrides */
+
+.dark {
+  --card-bg: var(--color-slate-800);
+  --card-border: var(--color-slate-700);
+  --card-footer-bg: var(--color-slate-800);
+  --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.2);
+  --card-header-text: var(--color-slate-100);
 }
 
 /* =============================================================================
@@ -8090,6 +8805,19 @@ body {
   font-size: var(--avatar-font-xl);
 }
 
+/* Dark mode overrides */
+
+.dark {
+  --avatar-bg: var(--color-slate-700);
+  --avatar-text: var(--color-slate-300);
+  --avatar-ring: 2px solid var(--color-slate-900);
+  --avatar-status-border: 1px solid var(--color-slate-900);
+  --avatar-status-online: var(--color-success-400);
+  --avatar-status-away: var(--color-warning-400);
+  --avatar-status-busy: var(--color-danger-400);
+  --avatar-status-offline: var(--color-slate-500);
+}
+
 /* =============================================================================
    Badge Component
    ============================================================================= */
@@ -8271,6 +8999,36 @@ body {
   border-color: var(--badge-border-ghost);
 }
 
+/* Dark mode overrides */
+
+.dark {
+  --badge-bg-secondary: var(--color-slate-800);
+  --badge-text-secondary: var(--color-slate-200);
+  --badge-border-secondary: var(--color-slate-700);
+
+  --badge-bg-primary: var(--color-primary-950);
+  --badge-text-primary: var(--color-primary-200);
+  --badge-border-primary: var(--color-primary-800);
+
+  --badge-bg-info: var(--color-info-950);
+  --badge-text-info: var(--color-info-200);
+  --badge-border-info: var(--color-info-800);
+
+  --badge-bg-success: var(--color-success-950);
+  --badge-text-success: var(--color-success-200);
+  --badge-border-success: var(--color-success-800);
+
+  --badge-bg-warning: var(--color-warning-950);
+  --badge-text-warning: var(--color-warning-200);
+  --badge-border-warning: var(--color-warning-800);
+
+  --badge-bg-danger: var(--color-danger-950);
+  --badge-text-danger: var(--color-danger-200);
+  --badge-border-danger: var(--color-danger-800);
+
+  --badge-text-ghost: var(--color-slate-400);
+}
+
 /* =============================================================================
    Table Component
    ============================================================================= */
@@ -8284,14 +9042,26 @@ body {
   --table-border: var(--color-slate-200);
   --table-header-bg: var(--color-slate-50);
   --table-header-text: var(--color-slate-700);
+  --table-body-text: var(--color-slate-900);
   --table-row-hover-bg: var(--color-slate-50);
   --table-stripe-bg: var(--color-slate-50);
   --table-stack-radius: var(--radius-md);
   --table-stack-detail-bg: var(--color-slate-50);
   --table-menu-bg: var(--table-bg);
   --table-menu-border: var(--table-border);
+  --table-menu-text: var(--color-slate-700);
+  --table-menu-text-hover: var(--color-slate-900);
+  --table-menu-checkbox-border: var(--color-slate-300);
   --table-menu-item-hover-bg: var(--table-row-hover-bg);
   --table-menu-shadow: 0 10px 20px rgb(15 23 42 / 0.08);
+  --table-empty-text: var(--color-slate-500);
+  --table-expand-color: var(--color-slate-400);
+  --table-expand-hover-bg: var(--color-slate-100);
+  --table-expand-hover-color: var(--color-slate-700);
+  --table-expand-active-color: var(--color-slate-600);
+  --table-expand-active-bg: var(--color-slate-100);
+  --table-detail-text: var(--color-slate-700);
+  --table-detail-label-color: var(--color-slate-600);
 }
 
 /* =============================================================================
@@ -8359,7 +9129,7 @@ body {
     padding-left: 1rem;
     padding-right: 1rem;
     color: #0f172a;
-    color: var(--color-slate-900);
+    color: var(--table-body-text);
     border-bottom: 1px solid #e2e8f0;
     border-bottom: 1px solid var(--table-border);
   }
@@ -8476,12 +9246,12 @@ body {
   font-weight: 500;
   font-weight: var(--font-weight-medium);
   color: #334155;
-  color: var(--color-slate-700);
+  color: var(--table-menu-text);
 }
 
 .bk-table__menu-trigger:hover {
     color: #0f172a;
-    color: var(--color-slate-900);
+    color: var(--table-menu-text-hover);
   }
 
 .bk-table__menu-icon {
@@ -8515,7 +9285,7 @@ body {
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
   color: #334155;
-  color: var(--color-slate-700);
+  color: var(--table-menu-text);
 }
 
 .bk-table__menu-item:hover {
@@ -8529,7 +9299,7 @@ body {
   border-radius: 0.25rem;
   border-radius: var(--radius-sm);
   border: 1px solid #cbd5e1;
-  border: 1px solid var(--color-slate-300);
+  border: 1px solid var(--table-menu-checkbox-border);
 }
 
 /* =============================================================================
@@ -8712,7 +9482,7 @@ body {
   padding: 1.5rem;
   text-align: center;
   color: #64748b;
-  color: var(--color-slate-500);
+  color: var(--table-empty-text);
 }
 
 /* =============================================================================
@@ -8822,23 +9592,23 @@ body {
   background-color: transparent;
   cursor: pointer;
   color: #94a3b8;
-  color: var(--color-slate-400);
+  color: var(--table-expand-color);
   transition: all 150ms ease;
   transition: all var(--transition-fast) ease;
 }
 
 .bk-table__stack-expand-btn:hover {
     background-color: #f1f5f9;
-    background-color: var(--color-slate-100);
+    background-color: var(--table-expand-hover-bg);
     color: #334155;
-    color: var(--color-slate-700);
+    color: var(--table-expand-hover-color);
   }
 
 .bk-table__stack-expand-btn[aria-expanded="true"] {
     color: #475569;
-    color: var(--color-slate-600);
+    color: var(--table-expand-active-color);
     background-color: #f1f5f9;
-    background-color: var(--color-slate-100);
+    background-color: var(--table-expand-active-bg);
   }
 
 .bk-table__stack-expand-btn[aria-expanded="true"] .bk-table__expand-icon {
@@ -8885,7 +9655,7 @@ body {
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
   color: #334155;
-  color: var(--color-slate-700);
+  color: var(--table-detail-text);
 }
 
 .bk-table__stack-detail-label {
@@ -8893,7 +9663,7 @@ body {
   font-weight: 600;
   font-weight: var(--font-weight-semibold);
   color: #475569;
-  color: var(--color-slate-600);
+  color: var(--table-detail-label-color);
 }
 
 .bk-table__stack-detail-value {
@@ -9041,6 +9811,34 @@ body {
   }
 }
 
+/* Dark mode overrides */
+
+.dark {
+  --table-bg: var(--color-slate-800);
+  --table-border: var(--color-slate-700);
+  --table-header-bg: var(--color-slate-800);
+  --table-header-text: var(--color-slate-200);
+  --table-body-text: var(--color-slate-200);
+  --table-row-hover-bg: var(--color-slate-700);
+  --table-stripe-bg: var(--color-slate-800);
+  --table-stack-detail-bg: var(--color-slate-800);
+  --table-menu-bg: var(--color-slate-800);
+  --table-menu-border: var(--color-slate-700);
+  --table-menu-text: var(--color-slate-300);
+  --table-menu-text-hover: var(--color-slate-100);
+  --table-menu-checkbox-border: var(--color-slate-600);
+  --table-menu-item-hover-bg: var(--color-slate-700);
+  --table-menu-shadow: 0 10px 20px rgb(0 0 0 / 0.3);
+  --table-empty-text: var(--color-slate-400);
+  --table-expand-color: var(--color-slate-500);
+  --table-expand-hover-bg: var(--color-slate-700);
+  --table-expand-hover-color: var(--color-slate-200);
+  --table-expand-active-color: var(--color-slate-300);
+  --table-expand-active-bg: var(--color-slate-700);
+  --table-detail-text: var(--color-slate-300);
+  --table-detail-label-color: var(--color-slate-400);
+}
+
 /* =============================================================================
    List Component
    ============================================================================= */
@@ -9132,6 +9930,12 @@ body {
       border-bottom: none;
     }
 
+/* Dark mode overrides */
+
+.dark {
+  --list-divided-border: var(--color-slate-700);
+}
+
 /* =============================================================================
    Description List Component
    ============================================================================= */
@@ -9144,6 +9948,7 @@ body {
   --dl-term-color: var(--color-slate-700);
   --dl-description-color: var(--color-slate-900);
   --dl-border: var(--color-slate-200);
+  --dl-striped-bg: var(--color-slate-50);
 }
 
 /* =============================================================================
@@ -9230,8 +10035,17 @@ body {
 
 .bk-description-list--striped dt {
     background-color: #f8fafc;
-    background-color: var(--color-slate-50);
+    background-color: var(--dl-striped-bg);
   }
+
+/* Dark mode overrides */
+
+.dark {
+  --dl-term-color: var(--color-slate-300);
+  --dl-description-color: var(--color-slate-100);
+  --dl-border: var(--color-slate-700);
+  --dl-striped-bg: var(--color-slate-700);
+}
 
 /* =============================================================================
    Stat Component
@@ -9356,6 +10170,20 @@ body {
   color: var(--stat-change-neutral-color);
 }
 
+/* Dark mode overrides */
+
+.dark {
+  --stat-bg: var(--color-slate-800);
+  --stat-label-color: var(--color-slate-400);
+  --stat-value-color: var(--color-slate-100);
+  --stat-icon-bg: var(--color-primary-900);
+  --stat-icon-color: var(--color-primary-300);
+
+  --stat-change-up-color: var(--color-success-400);
+  --stat-change-down-color: var(--color-danger-400);
+  --stat-change-neutral-color: var(--color-slate-400);
+}
+
 /* =============================================================================
    Dialog Components
    ============================================================================= */
@@ -9379,6 +10207,7 @@ body {
   --modal-close-color: var(--color-slate-400);
   --modal-close-hover-bg: var(--color-slate-100);
   --modal-close-hover-color: var(--color-slate-600);
+  --modal-title-color: var(--color-slate-900);
   --modal-size-sm: 24rem;
   --modal-size-md: 32rem;
   --modal-size-lg: 42rem;
@@ -9462,7 +10291,7 @@ body {
   font-weight: 600;
   font-weight: var(--font-weight-semibold);
   color: #0f172a;
-  color: var(--color-slate-900);
+  color: var(--modal-title-color);
 }
 
 .bk-modal__close {
@@ -9533,6 +10362,20 @@ body {
   max-width: var(--modal-size-full);
   height: 90vh;
   height: var(--modal-height-full);
+}
+
+/* Dark mode overrides */
+
+.dark {
+  --modal-overlay-bg: rgba(0, 0, 0, 0.7);
+  --modal-bg: var(--color-slate-800);
+  --modal-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  --modal-header-border: var(--color-slate-700);
+  --modal-footer-border: var(--color-slate-700);
+  --modal-close-color: var(--color-slate-400);
+  --modal-close-hover-bg: var(--color-slate-700);
+  --modal-close-hover-color: var(--color-slate-200);
+  --modal-title-color: var(--color-slate-100);
 }
 
 /* =============================================================================
@@ -9755,6 +10598,18 @@ body {
     font-size: 1rem;
     font-size: var(--font-size-md);
   }
+
+/* Dark mode overrides */
+
+.dark {
+  --accordion-border: var(--color-slate-700);
+  --accordion-header-bg: var(--color-slate-800);
+  --accordion-hover-bg: var(--color-slate-700);
+  --accordion-title-color: var(--color-slate-100);
+  --accordion-icon-color: var(--color-slate-400);
+  --accordion-body-color: var(--color-slate-300);
+  --accordion-flush-hover-color: var(--color-primary-400);
+}
 
 /* =============================================================================
   Basekit UI Components - Theme Configuration
@@ -10023,16 +10878,115 @@ body {
             --color-emerald-800: #065f46;
             --color-emerald-900: #064e3b;
         }
+
+        html, body {
+            transition: background-color 0.2s ease;
+        }
+
+        html.dark,
+        html.dark body {
+            background-color: #0f172a !important;
+            color: #e2e8f0;
+        }
+
+        html.dark .styleguide-layout {
+            color: #e2e8f0;
+        }
+
+        html.dark .styleguide-layout header {
+            border-color: #334155;
+        }
+
+        .styleguide-card {
+            background-color: #fff;
+        }
+
+        html.dark .styleguide-layout .styleguide-card {
+            background-color: #1e293b;
+            border-color: #334155;
+        }
+
+        html.dark .styleguide-layout .bg-white {
+            background-color: #1e293b;
+        }
+
+        html.dark .styleguide-layout .bg-white\/90 {
+            background-color: rgba(30, 41, 59, 0.9);
+        }
+
+        html.dark .styleguide-layout .bg-slate-50,
+        html.dark .styleguide-layout .bg-slate-50\/70 {
+            background-color: #1e293b;
+        }
+
+        html.dark .styleguide-layout .bg-slate-100 {
+            background-color: #334155;
+        }
+
+        html.dark .styleguide-layout .bg-slate-200 {
+            background-color: #475569;
+        }
+
+        html.dark .styleguide-layout .border-slate-200 {
+            border-color: #334155;
+        }
+
+        html.dark .styleguide-layout .border-slate-300 {
+            border-color: #475569;
+        }
+
+        html.dark .styleguide-layout .border-slate-400 {
+            border-color: #64748b;
+        }
+
+        html.dark .styleguide-layout footer {
+            border-color: #334155;
+        }
+
+        html.dark .styleguide-layout h2 {
+            color: #f1f5f9;
+        }
+
+        html.dark .styleguide-layout .text-slate-500,
+        html.dark .styleguide-layout .text-slate-600,
+        html.dark .styleguide-layout .text-slate-700,
+        html.dark .styleguide-layout .text-slate-800,
+        html.dark .styleguide-layout .text-slate-900,
+        html.dark .styleguide-layout .text-slate-400 {
+            color: #cbd5e1;
+        }
+
+        html.dark .styleguide-layout nav a {
+            color: #94a3b8;
+        }
+
+        html.dark .styleguide-layout nav a:hover {
+            color: #818cf8;
+        }
     </style>
 
-<div>
-    <div class="max-w-7xl mx-auto space-y-12">
+<div x-data="{ dark: document.documentElement.classList.contains('dark') }" x-init="$watch('dark', val => { document.documentElement.classList.toggle('dark', val); })">
+    <div class="styleguide-layout max-w-7xl mx-auto space-y-12">
         <!-- Header -->
         <header class="border-b border-slate-200 pb-8">
-            <h1 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-indigo-600">
-                Basekit Laravel UI
-            </h1>
-            <p class="text-slate-500 mt-2 text-lg">Component Styleguide & Examples</p>
+            <div class="flex items-start justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-indigo-600">
+                        Basekit Laravel UI
+                    </h1>
+                    <p class="text-slate-500 mt-2 text-lg">Component Styleguide & Examples</p>
+                </div>
+                <div class="flex items-center gap-3 mt-1">
+                    <span class="text-xs font-medium text-slate-400" x-text="dark ? 'Dark' : 'Light'"></span>
+                    <button type="button" @click="dark = !dark"
+                        class="relative inline-flex h-6 w-11 items-center rounded-full cursor-pointer transition-colors"
+                        :class="dark ? 'bg-primary-600' : 'bg-slate-300'"
+                        role="switch" :aria-checked="dark">
+                        <span class="inline-block h-4 w-4 rounded-full bg-white transition-transform"
+                            :class="dark ? 'translate-x-[1.375rem]' : 'translate-x-[0.25rem]'"></span>
+                    </button>
+                </div>
+            </div>
             <nav class="flex flex-wrap gap-4 mt-6">
                                     <a href="#form"
                         class="text-sm font-medium text-slate-600 hover:text-primary-600 hover:underline">
@@ -10066,7 +11020,7 @@ body {
                     <div class="mb-6 flex items-center gap-3">
                         <h2 class="text-2xl font-bold text-slate-800">Form</h2>
                     </div>
-                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-8">
+                    <div class="styleguide-card rounded-xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-8">
                         <div class="space-y-10" x-data="{
     sections: (function() {
         var h = window.__bkHash || '';
@@ -13629,7 +14583,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--primary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d174ab-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc7b1c5-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -13656,7 +14610,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d17988-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc7b38e-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -13714,7 +14668,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d18417-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc7b88d-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -13741,7 +14695,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d1856f-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc7b9a0-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -13799,7 +14753,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--success"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d1900e-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc7be81-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -13826,7 +14780,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d1916b-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc7bf18-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -13884,7 +14838,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--warning"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d19b6e-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc7c45b-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -13911,7 +14865,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d19d54-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc7c502-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -13969,7 +14923,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--info"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d1a8c7-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc7c9ea-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -13996,7 +14950,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d1aa0b-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc7ca82-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14054,7 +15008,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--ghost"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d1b3f6-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc7cf84-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14081,7 +15035,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d1b53e-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc7d021-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14146,7 +15100,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d1b8dd-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc7d365-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14173,7 +15127,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d1ba17-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc7d561-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14231,7 +15185,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d1be52-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc7d92f-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14258,7 +15212,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d1bf90-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc7daf2-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14316,7 +15270,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d1c342-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc7dd3f-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14343,7 +15297,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d1c469-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc7ddd5-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14408,7 +15362,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--sm bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d1ce73-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc7e364-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14435,7 +15389,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d1cfd5-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc7e406-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14493,7 +15447,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d1d367-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc7e5ac-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14520,7 +15474,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d1d487-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc7e63c-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14578,7 +15532,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--lg bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d1df0c-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc7eb26-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14605,7 +15559,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d1e1e9-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc7ebc2-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14669,7 +15623,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d1e586-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc7ed6d-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14696,7 +15650,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d1e6bb-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc7edfb-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14757,7 +15711,7 @@ body {
         
         <button type="button"
             disabled="disabled" class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d1ea0a-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc7f0d5-list" aria-haspopup="listbox"
                          disabled >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14784,7 +15738,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d1eb3b-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc7f19e-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14842,7 +15796,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--error bk-multiselect__control--has-error-icon"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d1f610-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc7f713-list" aria-haspopup="listbox"
              aria-invalid="true" aria-describedby="-error"             >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14875,7 +15829,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d1f74f-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc7f7b4-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14937,7 +15891,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d1fad7-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc7f95a-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14964,7 +15918,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d1fbfe-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc7f9e9-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15032,7 +15986,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d1ff54-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc7fb8b-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15059,7 +16013,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d20071-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc7fc38-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15121,7 +16075,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--underline"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d20bbb-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc8019a-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15148,7 +16102,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d20d12-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc80238-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15208,7 +16162,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--label-inset"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d217f7-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc80b4a-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15235,7 +16189,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d21943-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc80c62-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15295,7 +16249,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--label-overlap"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d22459-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc81352-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15322,7 +16276,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d2264b-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc814e3-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15384,7 +16338,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--pill"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d231d7-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc81c4a-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15411,7 +16365,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d233a9-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc81cf3-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15476,7 +16430,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--with-icon"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a4e8c3d24817-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a525bfc82884-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15503,7 +16457,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a4e8c3d249d2-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a525bfc8299e-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -16084,12 +17038,12 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-3dcde025-af9f-4316-8654-4289da577901"
+        <input type="checkbox" id="bk-checkbox-73a5c57c-6b79-417c-bb5b-acf884b33d34"
             name="ckx_primary" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-3dcde025-af9f-4316-8654-4289da577901">
+                    <label class="bk-checkbox__label" for="bk-checkbox-73a5c57c-6b79-417c-bb5b-acf884b33d34">
                 Primary
             </label>
             </div>
@@ -16101,12 +17055,12 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-b5b06d7c-7e8b-4572-a840-2dd643197200"
+        <input type="checkbox" id="bk-checkbox-bd2d83cb-de44-45ff-ab03-27b9b4057c74"
             name="ckx_secondary" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--secondary"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-b5b06d7c-7e8b-4572-a840-2dd643197200">
+                    <label class="bk-checkbox__label" for="bk-checkbox-bd2d83cb-de44-45ff-ab03-27b9b4057c74">
                 Secondary
             </label>
             </div>
@@ -16118,12 +17072,12 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-ef6b993b-c684-4d9a-8e64-097086ee8a4e"
+        <input type="checkbox" id="bk-checkbox-29e1b974-9359-4567-a577-fc1d2350869c"
             name="ckx_success" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--success"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-ef6b993b-c684-4d9a-8e64-097086ee8a4e">
+                    <label class="bk-checkbox__label" for="bk-checkbox-29e1b974-9359-4567-a577-fc1d2350869c">
                 Success
             </label>
             </div>
@@ -16135,12 +17089,12 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-cba8f8fe-d319-4fe8-9e9c-8016ec7fcaa9"
+        <input type="checkbox" id="bk-checkbox-99b62891-a004-4599-b83f-f111b754af13"
             name="ckx_warning" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--warning"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-cba8f8fe-d319-4fe8-9e9c-8016ec7fcaa9">
+                    <label class="bk-checkbox__label" for="bk-checkbox-99b62891-a004-4599-b83f-f111b754af13">
                 Warning
             </label>
             </div>
@@ -16152,12 +17106,12 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-3fc6c19b-a484-4760-b141-c55cdc49ca8e"
+        <input type="checkbox" id="bk-checkbox-efd0f40f-5aa5-4bbe-80c5-2affb19aed0c"
             name="ckx_danger" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--danger"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-3fc6c19b-a484-4760-b141-c55cdc49ca8e">
+                    <label class="bk-checkbox__label" for="bk-checkbox-efd0f40f-5aa5-4bbe-80c5-2affb19aed0c">
                 Danger
             </label>
             </div>
@@ -16169,12 +17123,12 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-c56692f7-9474-4cf5-9c53-75b3067e89bc"
+        <input type="checkbox" id="bk-checkbox-d7960dbf-878b-472d-9802-0cf78f968539"
             name="ckx_info" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--info"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-c56692f7-9474-4cf5-9c53-75b3067e89bc">
+                    <label class="bk-checkbox__label" for="bk-checkbox-d7960dbf-878b-472d-9802-0cf78f968539">
                 Info
             </label>
             </div>
@@ -16186,12 +17140,12 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-fa852ead-77e3-4485-b557-e55dc2a7f74a"
+        <input type="checkbox" id="bk-checkbox-4dc6bee5-cff5-48db-b379-b8348811f2a6"
             name="ckx_ghost" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--ghost"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-fa852ead-77e3-4485-b557-e55dc2a7f74a">
+                    <label class="bk-checkbox__label" for="bk-checkbox-4dc6bee5-cff5-48db-b379-b8348811f2a6">
                 Ghost
             </label>
             </div>
@@ -16210,12 +17164,12 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-514753b9-bcc1-422c-b2a3-2fc9a3b6f277"
+        <input type="checkbox" id="bk-checkbox-304df58a-978c-4c4f-8438-85fa9e75e42a"
             name="ckx_color_indigo" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
              style="--checkbox-primary-checked-bg: var(--color-indigo-500); --checkbox-primary-checked-border: var(--color-indigo-700); --checkbox-primary-focus-ring: var(--color-indigo-100)"                          checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-514753b9-bcc1-422c-b2a3-2fc9a3b6f277">
+                    <label class="bk-checkbox__label" for="bk-checkbox-304df58a-978c-4c4f-8438-85fa9e75e42a">
                 Indigo
             </label>
             </div>
@@ -16227,12 +17181,12 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-ea635ee9-1c49-48f1-9f38-a9357f69897d"
+        <input type="checkbox" id="bk-checkbox-7f4cc4ca-cc86-4236-84be-036fdd5ad59b"
             name="ckx_color_pink" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
              style="--checkbox-primary-checked-bg: var(--color-pink-500); --checkbox-primary-checked-border: var(--color-pink-700); --checkbox-primary-focus-ring: var(--color-pink-100)"                          checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-ea635ee9-1c49-48f1-9f38-a9357f69897d">
+                    <label class="bk-checkbox__label" for="bk-checkbox-7f4cc4ca-cc86-4236-84be-036fdd5ad59b">
                 Pink
             </label>
             </div>
@@ -16244,12 +17198,12 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-b1aad6bb-ced9-46fc-8314-93ee9ce7f25b"
+        <input type="checkbox" id="bk-checkbox-e493283f-0191-4b4c-8827-a5bc96648698"
             name="ckx_color_emerald" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
              style="--checkbox-primary-checked-bg: var(--color-emerald-500); --checkbox-primary-checked-border: var(--color-emerald-700); --checkbox-primary-focus-ring: var(--color-emerald-100)"                          checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-b1aad6bb-ced9-46fc-8314-93ee9ce7f25b">
+                    <label class="bk-checkbox__label" for="bk-checkbox-e493283f-0191-4b4c-8827-a5bc96648698">
                 Emerald
             </label>
             </div>
@@ -16268,12 +17222,12 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-045eb467-8404-43b2-a7f4-73da88ac6762"
+        <input type="checkbox" id="bk-checkbox-fce85837-617b-4459-a05b-de0fcc7da0aa"
             name="ckx_sm" class="bk-checkbox__control bk-checkbox__control--sm bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-045eb467-8404-43b2-a7f4-73da88ac6762">
+                    <label class="bk-checkbox__label" for="bk-checkbox-fce85837-617b-4459-a05b-de0fcc7da0aa">
                 Small
             </label>
             </div>
@@ -16285,12 +17239,12 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-16107617-e070-44de-87fb-4c890d2d7ef8"
+        <input type="checkbox" id="bk-checkbox-81b1929d-501c-4b9e-afb2-69037d41cf06"
             name="ckx_md" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-16107617-e070-44de-87fb-4c890d2d7ef8">
+                    <label class="bk-checkbox__label" for="bk-checkbox-81b1929d-501c-4b9e-afb2-69037d41cf06">
                 Medium
             </label>
             </div>
@@ -16302,12 +17256,12 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-45d0169d-c1c1-4875-8242-257363dd3e37"
+        <input type="checkbox" id="bk-checkbox-89987fcc-0b48-4c7f-b7d0-6a959854332a"
             name="ckx_lg" class="bk-checkbox__control bk-checkbox__control--lg bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-45d0169d-c1c1-4875-8242-257363dd3e37">
+                    <label class="bk-checkbox__label" for="bk-checkbox-89987fcc-0b48-4c7f-b7d0-6a959854332a">
                 Large
             </label>
             </div>
@@ -16326,12 +17280,12 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-b8a321f4-d7b1-4158-b54e-71c8590f92fd"
+        <input type="checkbox" id="bk-checkbox-3305df18-cef0-464e-a5b3-d2e894ab5ce7"
             name="ckx_unchecked" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-b8a321f4-d7b1-4158-b54e-71c8590f92fd">
+                    <label class="bk-checkbox__label" for="bk-checkbox-3305df18-cef0-464e-a5b3-d2e894ab5ce7">
                 Unchecked
             </label>
             </div>
@@ -16343,12 +17297,12 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-5d4d8124-c297-4971-91b1-30fe8734570a"
+        <input type="checkbox" id="bk-checkbox-e65c853e-0038-4c45-a2be-3a70e7eebc92"
             name="ckx_checked" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-5d4d8124-c297-4971-91b1-30fe8734570a">
+                    <label class="bk-checkbox__label" for="bk-checkbox-e65c853e-0038-4c45-a2be-3a70e7eebc92">
                 Checked
             </label>
             </div>
@@ -16360,12 +17314,12 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-0022e01d-51fc-426a-9816-66cde9088efe"
+        <input type="checkbox" id="bk-checkbox-c3230fdf-25dc-4c42-8e92-fbd4c5f890f0"
             name="ckx_disabled" disabled="disabled" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-0022e01d-51fc-426a-9816-66cde9088efe">
+                    <label class="bk-checkbox__label" for="bk-checkbox-c3230fdf-25dc-4c42-8e92-fbd4c5f890f0">
                 Disabled
             </label>
             </div>
@@ -16377,12 +17331,12 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-cc0cef19-4413-4d2a-a40c-d000df8c64c3"
+        <input type="checkbox" id="bk-checkbox-c3982cf3-d954-4891-bdbf-61c1ca66e6e8"
             name="ckx_disabled_checked" disabled="disabled" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-cc0cef19-4413-4d2a-a40c-d000df8c64c3">
+                    <label class="bk-checkbox__label" for="bk-checkbox-c3982cf3-d954-4891-bdbf-61c1ca66e6e8">
                 Disabled &amp; Checked
             </label>
             </div>
@@ -16394,18 +17348,18 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container bk-checkbox__container--error">
         
-        <input type="checkbox" id="bk-checkbox-f3d49ead-55d0-4327-9f19-91704166fb97"
+        <input type="checkbox" id="bk-checkbox-8933ed47-0e82-41d3-804a-e5d1a85aa7fe"
             name="ckx_error" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--error"
-                                                 aria-invalid="true" aria-describedby="bk-checkbox-f3d49ead-55d0-4327-9f19-91704166fb97-error" >
+                                                 aria-invalid="true" aria-describedby="bk-checkbox-8933ed47-0e82-41d3-804a-e5d1a85aa7fe-error" >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-f3d49ead-55d0-4327-9f19-91704166fb97">
+                    <label class="bk-checkbox__label" for="bk-checkbox-8933ed47-0e82-41d3-804a-e5d1a85aa7fe">
                 With Error
             </label>
             </div>
 
     
-            <p class="bk-checkbox__error-message" id="bk-checkbox-f3d49ead-55d0-4327-9f19-91704166fb97-error">
+            <p class="bk-checkbox__error-message" id="bk-checkbox-8933ed47-0e82-41d3-804a-e5d1a85aa7fe-error">
             This is required
         </p>
     
@@ -16414,12 +17368,12 @@ body {
                     <div class="bk-checkbox">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-01b42a68-9178-4dad-a152-01eb7ed8357d"
+        <input type="checkbox" id="bk-checkbox-7a20f488-f109-410f-9916-177dd8918a1e"
             name="ckx_hint" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-01b42a68-9178-4dad-a152-01eb7ed8357d">
+                    <label class="bk-checkbox__label" for="bk-checkbox-7a20f488-f109-410f-9916-177dd8918a1e">
                 With Hint
             </label>
             </div>
@@ -16458,12 +17412,12 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-af5aa741-b1d8-4f1a-8579-32dca5e57291"
+        <input type="radio" id="bk-radio-7fa32c1b-01fb-4abc-9b4e-05f23f05393b"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="primary"              checked             >
 
         
-                    <label class="bk-radio__label" for="bk-radio-af5aa741-b1d8-4f1a-8579-32dca5e57291">
+                    <label class="bk-radio__label" for="bk-radio-7fa32c1b-01fb-4abc-9b4e-05f23f05393b">
                 Primary
             </label>
             </div>
@@ -16476,12 +17430,12 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-4d103157-0b9b-46f1-b7f2-27e16b3dda82"
+        <input type="radio" id="bk-radio-5121543c-a6cf-4db8-8808-6101b8c9ede0"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--secondary"
                          value="secondary"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-4d103157-0b9b-46f1-b7f2-27e16b3dda82">
+                    <label class="bk-radio__label" for="bk-radio-5121543c-a6cf-4db8-8808-6101b8c9ede0">
                 Secondary
             </label>
             </div>
@@ -16494,12 +17448,12 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-9d8729a3-9677-4e2e-b992-8ea9db110592"
+        <input type="radio" id="bk-radio-1d62de2b-1985-463d-96a3-1a71f6fc5ab6"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--success"
                          value="success"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-9d8729a3-9677-4e2e-b992-8ea9db110592">
+                    <label class="bk-radio__label" for="bk-radio-1d62de2b-1985-463d-96a3-1a71f6fc5ab6">
                 Success
             </label>
             </div>
@@ -16512,12 +17466,12 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-98b775c3-fc56-46b1-8120-58fb43adc4b9"
+        <input type="radio" id="bk-radio-0c4d403d-2533-4064-8d68-c5cf36fa2ba0"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--warning"
                          value="warning"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-98b775c3-fc56-46b1-8120-58fb43adc4b9">
+                    <label class="bk-radio__label" for="bk-radio-0c4d403d-2533-4064-8d68-c5cf36fa2ba0">
                 Warning
             </label>
             </div>
@@ -16530,12 +17484,12 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-b532a836-2896-465f-bbaa-c075fcc05c69"
+        <input type="radio" id="bk-radio-78e8da52-7c49-415c-934b-ce4f43877164"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--danger"
                          value="danger"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-b532a836-2896-465f-bbaa-c075fcc05c69">
+                    <label class="bk-radio__label" for="bk-radio-78e8da52-7c49-415c-934b-ce4f43877164">
                 Danger
             </label>
             </div>
@@ -16548,12 +17502,12 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-7409ecaa-5a88-44b5-b7d0-782dcd1770ea"
+        <input type="radio" id="bk-radio-d0f736ae-dc90-4bee-b2cd-e172dc6e1e63"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--info"
                          value="info"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-7409ecaa-5a88-44b5-b7d0-782dcd1770ea">
+                    <label class="bk-radio__label" for="bk-radio-d0f736ae-dc90-4bee-b2cd-e172dc6e1e63">
                 Info
             </label>
             </div>
@@ -16566,12 +17520,12 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-49efed57-a1b7-4e2a-9b91-8fdec0760710"
+        <input type="radio" id="bk-radio-e01571dc-db93-4820-9715-522858890fb2"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--ghost"
                          value="ghost"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-49efed57-a1b7-4e2a-9b91-8fdec0760710">
+                    <label class="bk-radio__label" for="bk-radio-e01571dc-db93-4820-9715-522858890fb2">
                 Ghost
             </label>
             </div>
@@ -16591,12 +17545,12 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-f294b650-fa65-46b8-bd9d-794432e5fcae"
+        <input type="radio" id="bk-radio-4788e5e8-d253-462c-987a-a69678430c2c"
             name="radio_color" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
              style="--radio-primary-checked-bg: var(--color-indigo-500); --radio-primary-checked-border: var(--color-indigo-700); --radio-primary-focus-ring: var(--color-indigo-100)"              value="indigo"              checked             >
 
         
-                    <label class="bk-radio__label" for="bk-radio-f294b650-fa65-46b8-bd9d-794432e5fcae">
+                    <label class="bk-radio__label" for="bk-radio-4788e5e8-d253-462c-987a-a69678430c2c">
                 Indigo
             </label>
             </div>
@@ -16609,12 +17563,12 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-40ebb82f-8039-43d2-841e-fbc7188fb065"
+        <input type="radio" id="bk-radio-faaf01f4-ef16-4d03-ac31-c1cccfd973d0"
             name="radio_color" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
              style="--radio-primary-checked-bg: var(--color-pink-500); --radio-primary-checked-border: var(--color-pink-700); --radio-primary-focus-ring: var(--color-pink-100)"              value="pink"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-40ebb82f-8039-43d2-841e-fbc7188fb065">
+                    <label class="bk-radio__label" for="bk-radio-faaf01f4-ef16-4d03-ac31-c1cccfd973d0">
                 Pink
             </label>
             </div>
@@ -16627,12 +17581,12 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-1c3a0886-4169-4f3f-8408-fa02c9d00208"
+        <input type="radio" id="bk-radio-86000f84-b011-4e4b-b6e5-324a361acfcc"
             name="radio_color" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
              style="--radio-primary-checked-bg: var(--color-emerald-500); --radio-primary-checked-border: var(--color-emerald-700); --radio-primary-focus-ring: var(--color-emerald-100)"              value="emerald"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-1c3a0886-4169-4f3f-8408-fa02c9d00208">
+                    <label class="bk-radio__label" for="bk-radio-86000f84-b011-4e4b-b6e5-324a361acfcc">
                 Emerald
             </label>
             </div>
@@ -16652,12 +17606,12 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-ca28b5b4-34cd-477d-bd1a-8e56ec2c3df6"
+        <input type="radio" id="bk-radio-ab67f367-9f6c-4730-a378-d92f41014c92"
             name="radio_sizes" class="bk-radio__control bk-radio__control--sm bk-radio__control--primary"
                          value="sm"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-ca28b5b4-34cd-477d-bd1a-8e56ec2c3df6">
+                    <label class="bk-radio__label" for="bk-radio-ab67f367-9f6c-4730-a378-d92f41014c92">
                 Small
             </label>
             </div>
@@ -16670,12 +17624,12 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-8d616422-46b7-44a8-82e7-ca6bee428074"
+        <input type="radio" id="bk-radio-ebefc4fb-62c8-4fb5-893b-6002f5e701a5"
             name="radio_sizes" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="md"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-8d616422-46b7-44a8-82e7-ca6bee428074">
+                    <label class="bk-radio__label" for="bk-radio-ebefc4fb-62c8-4fb5-893b-6002f5e701a5">
                 Medium
             </label>
             </div>
@@ -16688,12 +17642,12 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-dd4322a1-2da2-4e24-a243-960c1d01c48a"
+        <input type="radio" id="bk-radio-2c3b291f-daad-4809-86aa-c9aef0cc5e19"
             name="radio_sizes" class="bk-radio__control bk-radio__control--lg bk-radio__control--primary"
                          value="lg"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-dd4322a1-2da2-4e24-a243-960c1d01c48a">
+                    <label class="bk-radio__label" for="bk-radio-2c3b291f-daad-4809-86aa-c9aef0cc5e19">
                 Large
             </label>
             </div>
@@ -16713,12 +17667,12 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-17c64248-42ae-4992-881e-c9d1e22b2ff9"
+        <input type="radio" id="bk-radio-e9a6acdc-3b99-4b73-958e-438a2fc3e7dc"
             name="radio_group" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="unchecked"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-17c64248-42ae-4992-881e-c9d1e22b2ff9">
+                    <label class="bk-radio__label" for="bk-radio-e9a6acdc-3b99-4b73-958e-438a2fc3e7dc">
                 Unchecked
             </label>
             </div>
@@ -16731,12 +17685,12 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-272debfe-682b-4d05-99a9-90b9db2fa556"
+        <input type="radio" id="bk-radio-e5c034f7-9c6f-4d24-b2a4-5ce3c24993f1"
             name="radio_group" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="checked"              checked             >
 
         
-                    <label class="bk-radio__label" for="bk-radio-272debfe-682b-4d05-99a9-90b9db2fa556">
+                    <label class="bk-radio__label" for="bk-radio-e5c034f7-9c6f-4d24-b2a4-5ce3c24993f1">
                 Checked
             </label>
             </div>
@@ -16749,12 +17703,12 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-c675be08-07fe-4c57-bd9a-0a0dbbf9e15f"
+        <input type="radio" id="bk-radio-ed946772-90f5-42a0-86b5-c94bea62bd66"
             name="radio_group" disabled="disabled" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="disabled"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-c675be08-07fe-4c57-bd9a-0a0dbbf9e15f">
+                    <label class="bk-radio__label" for="bk-radio-ed946772-90f5-42a0-86b5-c94bea62bd66">
                 Disabled
             </label>
             </div>
@@ -16767,12 +17721,12 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-e8fd6b72-57f4-4b3e-9cc1-6391b5476407"
+        <input type="radio" id="bk-radio-83b35d26-6334-47a3-ad83-14d0d91a267e"
             name="radio_group_disabled" disabled="disabled" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="checked_disabled"              checked             >
 
         
-                    <label class="bk-radio__label" for="bk-radio-e8fd6b72-57f4-4b3e-9cc1-6391b5476407">
+                    <label class="bk-radio__label" for="bk-radio-83b35d26-6334-47a3-ad83-14d0d91a267e">
                 Disabled &amp; Checked
             </label>
             </div>
@@ -16785,18 +17739,18 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-2bad8577-ff15-4d20-8c4f-6001ff76108e"
+        <input type="radio" id="bk-radio-7051caa7-2ef2-42d4-b1ec-8797bfb995c4"
             name="radio_group" class="bk-radio__control bk-radio__control--md bk-radio__control--error"
-                         value="error"                          aria-invalid="true" aria-describedby="bk-radio-2bad8577-ff15-4d20-8c4f-6001ff76108e-error" >
+                         value="error"                          aria-invalid="true" aria-describedby="bk-radio-7051caa7-2ef2-42d4-b1ec-8797bfb995c4-error" >
 
         
-                    <label class="bk-radio__label" for="bk-radio-2bad8577-ff15-4d20-8c4f-6001ff76108e">
+                    <label class="bk-radio__label" for="bk-radio-7051caa7-2ef2-42d4-b1ec-8797bfb995c4">
                 With Error
             </label>
             </div>
 
     
-            <p class="bk-radio__error-message" id="bk-radio-2bad8577-ff15-4d20-8c4f-6001ff76108e-error">
+            <p class="bk-radio__error-message" id="bk-radio-7051caa7-2ef2-42d4-b1ec-8797bfb995c4-error">
             Please select an option
         </p>
     
@@ -16806,12 +17760,12 @@ body {
     
     <div class="bk-radio__container">
         
-        <input type="radio" id="bk-radio-fe31c5aa-4f47-4c09-9cbb-3e4465aadd89"
+        <input type="radio" id="bk-radio-de0e034e-10ed-4008-b1af-a6208878806b"
             name="radio_group" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="hint"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-fe31c5aa-4f47-4c09-9cbb-3e4465aadd89">
+                    <label class="bk-radio__label" for="bk-radio-de0e034e-10ed-4008-b1af-a6208878806b">
                 With Hint
             </label>
             </div>
@@ -17305,7 +18259,7 @@ body {
                     <div class="mb-6 flex items-center gap-3">
                         <h2 class="text-2xl font-bold text-slate-800">Feedback</h2>
                     </div>
-                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-8">
+                    <div class="styleguide-card rounded-xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-8">
                         <div class="space-y-10" x-data="{
     sections: (function() {
         var h = window.__bkHash || '';
@@ -19818,6 +20772,7 @@ body {
         </div>
     </div>
 </div>
+
 </div>
                     </div>
                 </section>
@@ -19825,7 +20780,7 @@ body {
                     <div class="mb-6 flex items-center gap-3">
                         <h2 class="text-2xl font-bold text-slate-800">Navigation</h2>
                     </div>
-                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-8">
+                    <div class="styleguide-card rounded-xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-8">
                         <div class="space-y-10" x-data="{
     sections: (function() {
         var h = window.__bkHash || '';
@@ -21047,7 +22002,7 @@ body {
                     <div class="mb-6 flex items-center gap-3">
                         <h2 class="text-2xl font-bold text-slate-800">Layout</h2>
                     </div>
-                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-8">
+                    <div class="styleguide-card rounded-xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-8">
                         <div class="space-y-10" x-data="{
     sections: (function() {
         var h = window.__bkHash || '';
@@ -21596,7 +22551,7 @@ body {
                     <div class="mb-6 flex items-center gap-3">
                         <h2 class="text-2xl font-bold text-slate-800">Display</h2>
                     </div>
-                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-8">
+                    <div class="styleguide-card rounded-xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-8">
                         <div class="space-y-10" x-data="{
     sections: (function() {
         var h = window.__bkHash || '';
@@ -23341,7 +24296,7 @@ body {
                     <div class="mb-6 flex items-center gap-3">
                         <h2 class="text-2xl font-bold text-slate-800">Dialog</h2>
                     </div>
-                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-8">
+                    <div class="styleguide-card rounded-xl shadow-sm border border-slate-200 p-6 md:p-8 space-y-8">
                         <div class="space-y-10" x-data="{
     sections: (function() {
         var h = window.__bkHash || '';

@@ -72,6 +72,19 @@
   --multiselect-chip-bg: var(--color-slate-100);
   --multiselect-chip-text: var(--color-slate-700);
   --multiselect-chip-border: var(--color-slate-200);
+  --multiselect-chip-remove-color: var(--color-slate-500);
+  --multiselect-chip-remove-hover-color: var(--color-slate-700);
+
+  /* Multi Select - Labels & helpers */
+  --multiselect-label-color: var(--color-slate-700);
+  --multiselect-hint-color: var(--color-slate-500);
+  --multiselect-icon-color: var(--color-slate-400);
+
+  /* Multi Select - Options */
+  --multiselect-option-text: var(--color-slate-700);
+  --multiselect-option-selected-bg: var(--color-slate-100);
+  --multiselect-option-selected-text: var(--color-slate-900);
+  --multiselect-check-border: var(--color-slate-300);
 
   /* Multi Select - Menu */
   --multiselect-menu-bg: var(--surface-base);
@@ -103,7 +116,7 @@
 .bk-multiselect__hint {
   font-size: 0.8125rem;
   line-height: 1.25rem;
-  color: var(--color-slate-500);
+  color: var(--multiselect-hint-color);
 }
 
 /* Error state on parent changes label color */
@@ -121,7 +134,7 @@
   display: block;
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--color-slate-700);
+  color: var(--multiselect-label-color);
   line-height: 1.25rem;
 }
 
@@ -133,7 +146,7 @@
 .bk-multiselect__corner-hint {
   margin-inline-start: auto;
   font-size: 0.75rem;
-  color: var(--color-slate-500);
+  color: var(--multiselect-hint-color);
 }
 
 /* Inline label styles */
@@ -142,7 +155,7 @@
   position: absolute;
   inset-inline-start: 0.75rem;
   font-size: 0.75rem;
-  color: var(--color-slate-500);
+  color: var(--multiselect-hint-color);
   pointer-events: none;
 }
 
@@ -203,8 +216,8 @@
   }
 
   &:disabled {
-    background-color: var(--color-slate-50);
-    color: var(--color-slate-500);
+    background-color: var(--multiselect-disabled-bg);
+    color: var(--multiselect-disabled-color);
     cursor: not-allowed;
   }
 
@@ -222,7 +235,7 @@
 }
 
 .bk-multiselect__placeholder {
-  color: var(--color-slate-400);
+  color: var(--multiselect-placeholder-color);
 }
 
 /**
@@ -246,13 +259,13 @@
 .bk-multiselect__chip-remove {
   border: none;
   background: transparent;
-  color: var(--color-slate-500);
+  color: var(--multiselect-chip-remove-color);
   cursor: pointer;
   padding: 0;
   line-height: 1;
 
   &:hover {
-    color: var(--color-slate-700);
+    color: var(--multiselect-chip-remove-hover-color);
   }
 }
 
@@ -269,7 +282,7 @@
   transform: translateY(-50%);
   width: 1.25rem;
   height: 1.25rem;
-  color: var(--color-slate-400);
+  color: var(--multiselect-icon-color);
   pointer-events: none;
 }
 
@@ -280,7 +293,7 @@
   transform: translateY(-50%);
   width: 1.25rem;
   height: 1.25rem;
-  color: var(--color-slate-400);
+  color: var(--multiselect-icon-color);
   pointer-events: none;
   transition:
     transform var(--transition-fast),
@@ -345,7 +358,7 @@
   border: none;
   text-align: left;
   cursor: pointer;
-  color: var(--color-slate-700);
+  color: var(--multiselect-option-text);
 
   &:hover {
     background-color: var(--multiselect-option-hover);
@@ -353,15 +366,15 @@
 }
 
 .bk-multiselect__option--selected {
-  background-color: var(--color-slate-100);
-  color: var(--color-slate-900);
+  background-color: var(--multiselect-option-selected-bg);
+  color: var(--multiselect-option-selected-text);
 }
 
 .bk-multiselect__option-check {
   width: 1rem;
   height: 1rem;
   border-radius: 0.25rem;
-  border: 1px solid var(--color-slate-300);
+  border: 1px solid var(--multiselect-check-border);
   background-color: var(--multiselect-option-check-bg);
   flex-shrink: 0;
 }
@@ -718,7 +731,7 @@
 }
 
 .bk-multiselect__control--underline {
-  background-color: var(--color-slate-50);
+  background-color: var(--multiselect-bg);
   border-width: 0 0 1px 0;
   border-radius: 0;
   border-style: solid;
@@ -738,4 +751,67 @@
 
 .bk-multiselect__control--pill {
   border-radius: 9999px;
+}
+
+/* Dark mode overrides */
+.dark {
+  --multiselect-color: var(--color-slate-100);
+  --multiselect-placeholder-color: var(--color-slate-500);
+  --multiselect-border-color: var(--color-slate-600);
+  --multiselect-bg: var(--color-slate-800);
+  --multiselect-hover-border-color: var(--color-slate-500);
+  --multiselect-focus-border-color: var(--color-primary-400);
+  --multiselect-focus-ring-color: rgba(99, 102, 241, 0.25);
+
+  --multiselect-disabled-bg: var(--color-slate-900);
+  --multiselect-disabled-color: var(--color-slate-600);
+  --multiselect-disabled-border-color: var(--color-slate-800);
+
+  --multiselect-error-border-color: var(--color-danger-500);
+  --multiselect-error-ring-color: rgba(239, 68, 68, 0.2);
+  --multiselect-error-color: var(--color-danger-400);
+
+  --multiselect-primary-border-color: var(--color-primary-500);
+  --multiselect-primary-ring-color: rgba(99, 102, 241, 0.25);
+
+  --multiselect-secondary-border-color: var(--color-slate-600);
+  --multiselect-secondary-ring-color: rgba(148, 163, 184, 0.2);
+
+  --multiselect-success-border-color: var(--color-success-500);
+  --multiselect-success-ring-color: rgba(34, 197, 94, 0.2);
+
+  --multiselect-warning-border-color: var(--color-warning-500);
+  --multiselect-warning-ring-color: rgba(245, 158, 11, 0.2);
+
+  --multiselect-danger-border-color: var(--color-danger-500);
+  --multiselect-danger-ring-color: rgba(239, 68, 68, 0.2);
+
+  --multiselect-info-border-color: var(--color-info-500);
+  --multiselect-info-ring-color: rgba(59, 130, 246, 0.2);
+
+  --multiselect-ghost-ring-color: rgba(148, 163, 184, 0.15);
+
+  --multiselect-chip-bg: var(--color-slate-700);
+  --multiselect-chip-text: var(--color-slate-200);
+  --multiselect-chip-border: var(--color-slate-600);
+  --multiselect-chip-remove-color: var(--color-slate-400);
+  --multiselect-chip-remove-hover-color: var(--color-slate-200);
+
+  /* Labels & helpers */
+  --multiselect-label-color: var(--color-slate-300);
+  --multiselect-hint-color: var(--color-slate-400);
+  --multiselect-icon-color: var(--color-slate-500);
+
+  /* Options */
+  --multiselect-option-text: var(--color-slate-200);
+  --multiselect-option-selected-bg: var(--color-slate-700);
+  --multiselect-option-selected-text: var(--color-slate-100);
+  --multiselect-check-border: var(--color-slate-600);
+
+  --multiselect-menu-bg: var(--color-slate-800);
+  --multiselect-menu-border: var(--color-slate-700);
+  --multiselect-menu-shadow: 0 10px 20px rgb(0 0 0 / 0.3);
+  --multiselect-option-hover: var(--color-slate-700);
+  --multiselect-option-check-bg: var(--color-slate-700);
+  --multiselect-option-check-inset: var(--color-slate-700);
 }

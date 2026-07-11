@@ -160,3 +160,9 @@
     opacity: 0.5;
   }
 }
+
+/* Dark mode overrides */
+
+.dark {
+  --skeleton-bg: var(--color-slate-700);
+}

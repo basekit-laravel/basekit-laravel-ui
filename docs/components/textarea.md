@@ -202,6 +202,56 @@ Customize textarea appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --textarea-bg: var(--color-slate-800);
+  --textarea-border: var(--color-slate-600);
+  --textarea-text: var(--color-slate-100);
+  --textarea-placeholder: var(--color-slate-500);
+
+  --textarea-focus-border: var(--color-primary-400);
+  --textarea-focus-ring: rgba(99, 102, 241, 0.25);
+
+  --textarea-primary-border: var(--color-primary-500);
+  --textarea-primary-ring: rgba(99, 102, 241, 0.25);
+
+  --textarea-secondary-border: var(--color-slate-600);
+  --textarea-secondary-ring: rgba(148, 163, 184, 0.2);
+
+  --textarea-error-border: var(--color-danger-500);
+  --textarea-error-ring: rgba(239, 68, 68, 0.2);
+
+  --textarea-success-border: var(--color-success-500);
+  --textarea-success-ring: rgba(34, 197, 94, 0.2);
+
+  --textarea-warning-border: var(--color-warning-500);
+  --textarea-warning-ring: rgba(245, 158, 11, 0.2);
+
+  --textarea-danger-border: var(--color-danger-500);
+  --textarea-danger-ring: rgba(239, 68, 68, 0.2);
+
+  --textarea-info-border: var(--color-info-500);
+  --textarea-info-ring: rgba(59, 130, 246, 0.2);
+
+  --textarea-ghost-ring: rgba(148, 163, 184, 0.15);
+
+  /* Labels & helpers */
+  --textarea-label-color: var(--color-slate-300);
+  --textarea-hint-color: var(--color-slate-400);
+
+  /* Disabled state */
+  --textarea-disabled-bg: var(--color-slate-900);
+  --textarea-disabled-color: var(--color-slate-600);
+  --textarea-disabled-border: var(--color-slate-800);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 Configure defaults in `config/basekit-laravel-ui.php`:

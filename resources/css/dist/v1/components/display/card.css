@@ -12,6 +12,7 @@
   --card-radius: var(--radius-xl);
   --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --card-header-padding: 1.25rem 1.5rem;
+  --card-header-text: var(--color-slate-900);
   --card-body-padding: 1.5rem;
   --card-footer-padding: 1rem 1.5rem;
   --card-footer-bg: var(--color-slate-50);
@@ -52,7 +53,7 @@
 .bk-card__header-content {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-slate-900);
+  color: var(--card-header-text);
 }
 
 .bk-card__body {
@@ -98,4 +99,14 @@
   border-bottom: 1px solid var(--card-border);
   border-bottom-left-radius: var(--card-radius);
   border-bottom-right-radius: var(--card-radius);
+}
+
+/* Dark mode overrides */
+
+.dark {
+  --card-bg: var(--color-slate-800);
+  --card-border: var(--color-slate-700);
+  --card-footer-bg: var(--color-slate-800);
+  --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.2);
+  --card-header-text: var(--color-slate-100);
 }

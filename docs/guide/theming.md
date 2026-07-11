@@ -319,41 +319,163 @@ These variables are component-scoped. They are not global design tokens, but the
 
 ## Dark Mode
 
-Implement dark mode using CSS media queries or class-based toggling:
+All components ship with built-in dark mode overrides via a parent `.dark` class — no manual CSS required. **30 of 33 components** have dark overrides; the remaining 3 (Stack, Grid, Media) are purely structural and contain no color tokens.
 
-### Media Query Approach
+### Enabling Dark Mode
 
-```css
-:root {
-  --card-bg: white;
-  --card-text: #1f2937;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --card-bg: #1f2937;
-    --card-text: white;
-  }
-}
-```
-
-### Class-Based Approach
-
-```css
-:root {
-  --card-bg: white;
-  --card-text: #1f2937;
-}
-
-.dark {
-  --card-bg: #1f2937;
-  --card-text: white;
-}
-```
+Add the `.dark` class to a parent element — typically `<html>` or `<body>` — and all Basekit components inside it will automatically switch to dark-appropriate colors:
 
 ```blade
 <html class="{{ $darkMode ? 'dark' : '' }}">
 ```
+
+You can also scope dark mode to a specific section:
+
+```blade
+<div class="dark">
+    <x-basekit-ui::card>
+        This card will render in dark mode
+    </x-basekit-ui::card>
+</div>
+```
+
+### How It Works
+
+Each component's CSS file contains a `.dark {}` block that re-declares its design tokens with dark-appropriate values. When the `.dark` class is present on any ancestor, CSS specificity causes the dark overrides to take effect automatically.
+
+All overrides reference **Tailwind CSS color tokens** (e.g., `var(--color-slate-800)`, `var(--color-primary-400)`) via a shared `theme.css` file, so dark mode stays in sync with your Tailwind palette.
+
+### Color Mapping
+
+The built-in overrides follow a consistent light-to-dark mapping:
+
+| Light Value | Dark Replacement | Used For |
+|---|---|---|
+| `--surface-base` (white) | `slate-800` | Component backgrounds |
+| `slate-50` / `slate-100` | `slate-800` / `slate-700` | Backgrounds, hover states |
+| `slate-200` / `slate-300` | `slate-700` / `slate-600` | Borders, dividers |
+| `slate-400` / `slate-500` | `slate-400` / `slate-500` | Placeholders, icons (unchanged) |
+| `slate-600` | `slate-300` / `slate-400` | Muted text |
+| `slate-700` / `slate-900` | `slate-200` / `slate-100` | Body text, headings |
+| `{variant}-50` | `{variant}-950` | Variant backgrounds (e.g., badge, alert, toast) |
+| `{variant}-200` | `{variant}-200` | Variant text (unchanged) |
+| `{variant}-500` | `{variant}-500` | Variant borders (unchanged) |
+| `{variant}-600` / `{variant}-700` | `{variant}-400` | Variant text on dark |
+| White thumb / ring | `slate-300` / `slate-900` | Toggle thumb, focus rings |
+| `rgba(0,0,0,0.5)` | `rgba(0,0,0,0.7)` | Overlays (higher opacity) |
+
+### Per-Component Dark Mode Tokens
+
+Every component with color tokens has a complete set of dark overrides. Below is a summary of the **key tokens** per component that change in dark mode. Refer to each component's CSS file for the full list.
+
+#### Form Components
+
+| Component | Key Dark Tokens |
+|---|---|
+| **Input** | `--input-bg`, `--input-color`, `--input-border-color`, `--input-label-color`, `--input-hint-color`, `--input-addon-bg`, `--input-disabled-bg`, plus all variant borders/rings (35 dark variables total) |
+| **Select** | `--select-bg`, `--select-color`, `--select-border-color`, `--select-label-color`, `--select-option-text`, `--select-option-selected-bg`, `--select-menu-bg` (36 dark variables total) |
+| **Textarea** | `--textarea-bg`, `--textarea-text`, `--textarea-border`, `--textarea-label-color`, `--textarea-hint-color`, `--textarea-disabled-bg` (26 dark variables total) |
+| **MultiSelect** | `--multiselect-bg`, `--multiselect-color`, `--multiselect-chip-bg`, `--multiselect-chip-text`, `--multiselect-option-text`, `--multiselect-menu-bg`, `--multiselect-label-color` (43 dark variables total) |
+| **Checkbox** | `--checkbox-border-color`, `--checkbox-label-color`, `--checkbox-hint-color`, `--checkbox-disabled-bg`, plus all variant checked/focus colors (33 dark variables total) |
+| **Radio** | `--radio-border`, `--radio-bg`, `--radio-label-color`, `--radio-hint-color`, `--radio-disabled-bg`, plus all variant checked/focus colors (30 dark variables total) |
+| **Toggle** | `--toggle-bg-off`, `--toggle-thumb-bg`, `--toggle-thumb-border-off`, `--toggle-label-color`, `--toggle-hint-color`, `--toggle-disabled-label-color` (23 dark variables total) |
+| **Button** | `--button-shadow`, `--button-shadow-hover`, `--button-bg-secondary`, `--button-text-secondary`, `--button-border-secondary`, `--button-hover-bg-secondary`, `--button-text-ghost` (33 dark variables total) |
+
+#### Display Components
+
+| Component | Key Dark Tokens |
+|---|---|
+| **Card** | `--card-bg`, `--card-border`, `--card-footer-bg`, `--card-shadow`, `--card-header-text` (5 dark variables) |
+| **Table** | `--table-bg`, `--table-border`, `--table-header-bg`, `--table-header-text`, `--table-body-text`, `--table-row-hover-bg`, `--table-stripe-bg`, `--table-menu-bg`, `--table-empty-text`, `--table-expand-color` (23 dark variables total) |
+| **Badge** | `--badge-bg-secondary`, `--badge-text-secondary`, `--badge-border-secondary`, plus all variant bg/text/border pairs (19 dark variables total) |
+| **Stat** | `--stat-bg`, `--stat-label-color`, `--stat-value-color`, `--stat-icon-bg`, `--stat-icon-color`, `--stat-change-up-color`, `--stat-change-down-color` (8 dark variables) |
+| **Avatar** | `--avatar-bg`, `--avatar-text`, `--avatar-ring`, `--avatar-status-border`, plus status colors (8 dark variables) |
+| **DescriptionList** | `--dl-term-color`, `--dl-description-color`, `--dl-border`, `--dl-striped-bg` (4 dark variables) |
+| **List** | `--list-divided-border` (1 dark variable) |
+
+#### Feedback Components
+
+| Component | Key Dark Tokens |
+|---|---|
+| **Alert** | `--alert-bg-primary/info/secondary/success/warning/danger`, `--alert-text-*`, `--alert-border-*` (19 dark variables total) |
+| **Toast** | `--toast-shadow`, `--toast-bg-*`, `--toast-text-*`, `--toast-border-*`, `--toast-dismiss-hover-bg` (21 dark variables total) |
+| **Tooltip** | `--tooltip-bg`, `--tooltip-text`, `--tooltip-shadow` (3 dark variables) |
+| **Progress** | `--progress-bg`, `--progress-label-color`, `--progress-bar-primary/secondary/success/warning/danger/info/ghost/white` (10 dark variables) |
+| **Spinner** | `--spinner-color-primary/slate/success/warning/danger/info/ghost` (7 dark variables) |
+| **EmptyState** | `--empty-state-icon-color`, `--empty-state-title-color`, `--empty-state-description-color`, plus all variant icon/title/description colors (24 dark variables total) |
+| **Skeleton** | `--skeleton-bg` (1 dark variable) |
+
+#### Navigation Components
+
+| Component | Key Dark Tokens |
+|---|---|
+| **Tabs** | `--tabs-border`, `--tabs-active-border`, `--tabs-text`, `--tabs-active-text`, `--tabs-hover-text`, `--tabs-pills-active-bg`, `--tabs-boxed-bg`, `--tabs-boxed-active-bg` (9 dark variables) |
+| **Pagination** | `--pagination-bg`, `--pagination-border`, `--pagination-text`, `--pagination-hover-bg`, `--pagination-active-bg`, `--pagination-active-text`, `--pagination-active-hover-bg`, `--pagination-disabled-text`, `--pagination-info-color`, `--pagination-label-color` (10 dark variables) |
+| **DropdownMenu** | `--dropdown-bg`, `--dropdown-trigger-bg`, `--dropdown-trigger-text`, `--dropdown-trigger-hover-bg`, `--dropdown-trigger-hover-border`, `--dropdown-border`, `--dropdown-shadow`, `--dropdown-item-hover-bg`, `--dropdown-item-text`, `--dropdown-item-icon` (12 dark variables) |
+| **Link** | `--link-primary-color`, `--link-secondary-color`, `--link-success-color`, `--link-warning-color`, `--link-danger-color`, `--link-info-color`, `--link-ghost-color`, `--link-muted-color` (8 dark variables) |
+| **Breadcrumb** | `--breadcrumb-separator-color`, `--breadcrumb-link-color`, `--breadcrumb-current-color` (3 dark variables) |
+
+#### Dialog Components
+
+| Component | Key Dark Tokens |
+|---|---|
+| **Modal** | `--modal-overlay-bg`, `--modal-bg`, `--modal-shadow`, `--modal-header-border`, `--modal-footer-border`, `--modal-close-color`, `--modal-close-hover-bg`, `--modal-close-hover-color`, `--modal-title-color` (9 dark variables) |
+| **Accordion** | `--accordion-border`, `--accordion-header-bg`, `--accordion-hover-bg`, `--accordion-title-color`, `--accordion-icon-color`, `--accordion-body-color`, `--accordion-flush-hover-color` (7 dark variables) |
+
+#### Layout Components
+
+| Component | Key Dark Tokens |
+|---|---|
+| **Divider** | `--divider-color`, `--divider-color-light`, `--divider-color-dark`, `--divider-label-bg`, `--divider-label-color` (5 dark variables) |
+
+**Total: 468 dark mode CSS variables across 30 components.**
+
+### Custom Dark Mode Overrides
+
+Override any component's dark mode tokens by re-declaring them under `.dark` in your theme file:
+
+```css
+.dark {
+  --card-bg: var(--color-slate-900);
+  --card-border: var(--color-slate-600);
+  --input-bg: #0f172a;
+  --input-border-color: #334155;
+}
+```
+
+You can also scope overrides to a specific component instance:
+
+```blade
+<x-basekit-ui::card style="--card-bg: #0f172a; --card-border: #334155;">
+    Dark card with custom colors
+</x-basekit-ui::card>
+```
+
+### Auto Dark Mode with Media Query
+
+If you prefer automatic dark mode based on the user's OS preference instead of class-based toggling, wrap the built-in overrides in a media query:
+
+```css
+@media (prefers-color-scheme: dark) {
+  :root {
+    --card-bg: var(--color-slate-800);
+    --card-border: var(--color-slate-700);
+    --input-bg: var(--color-slate-800);
+    --input-color: var(--color-slate-100);
+    --input-border-color: var(--color-slate-600);
+  }
+}
+```
+
+This works because all components use CSS custom properties — the values are resolved at compute time, so overriding `:root` inside a media query achieves the same effect as the `.dark` class approach.
+
+### Components Without Dark Overrides
+
+These components have no dark mode overrides because they contain no color tokens:
+
+- **Stack** — layout spacing only (gap size tokens)
+- **Grid** — layout columns only (no CSS custom properties)
+- **Media** — only contains `@custom-media` breakpoint definitions
 
 ## Per-Component Scoping
 
@@ -447,27 +569,51 @@ Raw CSS values passthrough literally — no auto-hover or auto-contrast is appli
   --font-weight-semibold: 700;
 }
 
-/* Dark Mode */
+/* Dark Mode — class-based (add .dark to <html>) */
+.dark {
+  --card-bg: #0f172a;
+  --card-header-text: #f1f5f9;
+  --card-border: #1e293b;
+  --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+
+  --input-bg: #0f172a;
+  --input-color: #f1f5f9;
+  --input-border-color: #334155;
+  --input-label-color: #cbd5e1;
+  --input-hint-color: #64748b;
+
+  --button-bg-secondary: #1e293b;
+  --button-text-secondary: #e2e8f0;
+  --button-border-secondary: #475569;
+
+  --table-bg: #0f172a;
+  --table-border: #1e293b;
+  --table-header-text: #e2e8f0;
+  --table-body-text: #e2e8f0;
+}
+
+/* Dark Mode — media query (automatic) */
 @media (prefers-color-scheme: dark) {
   :root {
-    --card-bg: #1f2937;
-    --card-text: #f3f4f6;
-    --card-border-color: #374151;
+    --card-bg: #0f172a;
+    --card-header-text: #f1f5f9;
+    --card-border: #1e293b;
 
-    --input-bg: #1f2937;
-    --input-text: #f3f4f6;
-    --input-border-color: #374151;
+    --input-bg: #0f172a;
+    --input-color: #f1f5f9;
+    --input-border-color: #334155;
   }
 }
 ```
 
 ## Theming Best Practices
 
-1. **Use semantic tokens** - Reference design tokens in component tokens
-2. **Scope appropriately** - Use global for brand, component-level for specifics
-3. **Test dark mode** - Ensure all overrides work in both themes
-4. **Document overrides** - Keep track of customized variables
-5. **Version control** - Commit your theme file
+1. **Use semantic tokens** — Reference design tokens (`var(--color-primary-600)`) in component tokens instead of hardcoded values
+2. **Scope appropriately** — Use `:root` for brand-wide changes, component tokens for specifics
+3. **Test dark mode** — Verify all overrides work in both light and dark themes; use the [styleguide](/styleguide) to preview
+4. **Document overrides** — Keep track of customized variables in your theme file
+5. **Version control** — Commit your theme file with your application code
+6. **Start with built-in defaults** — Override only what you need; the 468 built-in dark mode variables handle most cases
 
 ## Build CSS with Artisan
 

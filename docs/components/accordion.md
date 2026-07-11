@@ -213,6 +213,24 @@ Customize accordion appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --accordion-border: var(--color-slate-700);
+  --accordion-header-bg: var(--color-slate-800);
+  --accordion-hover-bg: var(--color-slate-700);
+  --accordion-title-color: var(--color-slate-100);
+  --accordion-icon-color: var(--color-slate-400);
+  --accordion-body-color: var(--color-slate-300);
+  --accordion-flush-hover-color: var(--color-primary-400);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 Configure defaults in `config/basekit-laravel-ui.php`:

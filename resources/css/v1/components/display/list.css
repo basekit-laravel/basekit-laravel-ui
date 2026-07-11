@@ -84,3 +84,8 @@
     }
   }
 }
+
+/* Dark mode overrides */
+.dark {
+  --list-divided-border: var(--color-slate-700);
+}

@@ -279,6 +279,40 @@ Customize table appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --table-bg: var(--color-slate-800);
+  --table-border: var(--color-slate-700);
+  --table-header-bg: var(--color-slate-800);
+  --table-header-text: var(--color-slate-200);
+  --table-body-text: var(--color-slate-200);
+  --table-row-hover-bg: var(--color-slate-700);
+  --table-stripe-bg: var(--color-slate-800);
+  --table-stack-detail-bg: var(--color-slate-800);
+  --table-menu-bg: var(--color-slate-800);
+  --table-menu-border: var(--color-slate-700);
+  --table-menu-text: var(--color-slate-300);
+  --table-menu-text-hover: var(--color-slate-100);
+  --table-menu-checkbox-border: var(--color-slate-600);
+  --table-menu-item-hover-bg: var(--color-slate-700);
+  --table-menu-shadow: 0 10px 20px rgb(0 0 0 / 0.3);
+  --table-empty-text: var(--color-slate-400);
+  --table-expand-color: var(--color-slate-500);
+  --table-expand-hover-bg: var(--color-slate-700);
+  --table-expand-hover-color: var(--color-slate-200);
+  --table-expand-active-color: var(--color-slate-300);
+  --table-expand-active-bg: var(--color-slate-700);
+  --table-detail-text: var(--color-slate-300);
+  --table-detail-label-color: var(--color-slate-400);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 Configure table defaults in `config/basekit-laravel-ui.php`:

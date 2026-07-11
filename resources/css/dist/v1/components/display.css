@@ -30,6 +30,7 @@
   --card-radius: var(--radius-xl);
   --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --card-header-padding: 1.25rem 1.5rem;
+  --card-header-text: var(--color-slate-900);
   --card-body-padding: 1.5rem;
   --card-footer-padding: 1rem 1.5rem;
   --card-footer-bg: var(--color-slate-50);
@@ -70,7 +71,7 @@
 .bk-card__header-content {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-slate-900);
+  color: var(--card-header-text);
 }
 
 .bk-card__body {
@@ -116,6 +117,16 @@
   border-bottom: 1px solid var(--card-border);
   border-bottom-left-radius: var(--card-radius);
   border-bottom-right-radius: var(--card-radius);
+}
+
+/* Dark mode overrides */
+
+.dark {
+  --card-bg: var(--color-slate-800);
+  --card-border: var(--color-slate-700);
+  --card-footer-bg: var(--color-slate-800);
+  --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.2);
+  --card-header-text: var(--color-slate-100);
 }
 
 /* =============================================================================
@@ -291,6 +302,19 @@
   font-size: var(--avatar-font-xl);
 }
 
+/* Dark mode overrides */
+
+.dark {
+  --avatar-bg: var(--color-slate-700);
+  --avatar-text: var(--color-slate-300);
+  --avatar-ring: 2px solid var(--color-slate-900);
+  --avatar-status-border: 1px solid var(--color-slate-900);
+  --avatar-status-online: var(--color-success-400);
+  --avatar-status-away: var(--color-warning-400);
+  --avatar-status-busy: var(--color-danger-400);
+  --avatar-status-offline: var(--color-slate-500);
+}
+
 /* =============================================================================
    Badge Component
    ============================================================================= */
@@ -446,6 +470,36 @@
   border-color: var(--badge-border-ghost);
 }
 
+/* Dark mode overrides */
+
+.dark {
+  --badge-bg-secondary: var(--color-slate-800);
+  --badge-text-secondary: var(--color-slate-200);
+  --badge-border-secondary: var(--color-slate-700);
+
+  --badge-bg-primary: var(--color-primary-950);
+  --badge-text-primary: var(--color-primary-200);
+  --badge-border-primary: var(--color-primary-800);
+
+  --badge-bg-info: var(--color-info-950);
+  --badge-text-info: var(--color-info-200);
+  --badge-border-info: var(--color-info-800);
+
+  --badge-bg-success: var(--color-success-950);
+  --badge-text-success: var(--color-success-200);
+  --badge-border-success: var(--color-success-800);
+
+  --badge-bg-warning: var(--color-warning-950);
+  --badge-text-warning: var(--color-warning-200);
+  --badge-border-warning: var(--color-warning-800);
+
+  --badge-bg-danger: var(--color-danger-950);
+  --badge-text-danger: var(--color-danger-200);
+  --badge-border-danger: var(--color-danger-800);
+
+  --badge-text-ghost: var(--color-slate-400);
+}
+
 /* =============================================================================
    Table Component
    ============================================================================= */
@@ -459,14 +513,26 @@
   --table-border: var(--color-slate-200);
   --table-header-bg: var(--color-slate-50);
   --table-header-text: var(--color-slate-700);
+  --table-body-text: var(--color-slate-900);
   --table-row-hover-bg: var(--color-slate-50);
   --table-stripe-bg: var(--color-slate-50);
   --table-stack-radius: var(--radius-md);
   --table-stack-detail-bg: var(--color-slate-50);
   --table-menu-bg: var(--table-bg);
   --table-menu-border: var(--table-border);
+  --table-menu-text: var(--color-slate-700);
+  --table-menu-text-hover: var(--color-slate-900);
+  --table-menu-checkbox-border: var(--color-slate-300);
   --table-menu-item-hover-bg: var(--table-row-hover-bg);
   --table-menu-shadow: 0 10px 20px rgb(15 23 42 / 0.08);
+  --table-empty-text: var(--color-slate-500);
+  --table-expand-color: var(--color-slate-400);
+  --table-expand-hover-bg: var(--color-slate-100);
+  --table-expand-hover-color: var(--color-slate-700);
+  --table-expand-active-color: var(--color-slate-600);
+  --table-expand-active-bg: var(--color-slate-100);
+  --table-detail-text: var(--color-slate-700);
+  --table-detail-label-color: var(--color-slate-600);
 }
 
 /* =============================================================================
@@ -526,7 +592,7 @@
     padding-bottom: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
-    color: var(--color-slate-900);
+    color: var(--table-body-text);
     border-bottom: 1px solid var(--table-border);
   }
 
@@ -632,11 +698,11 @@
   cursor: pointer;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--color-slate-700);
+  color: var(--table-menu-text);
 }
 
 .bk-table__menu-trigger:hover {
-    color: var(--color-slate-900);
+    color: var(--table-menu-text-hover);
   }
 
 .bk-table__menu-icon {
@@ -665,7 +731,7 @@
   padding: 0.375rem 0.5rem;
   cursor: pointer;
   font-size: var(--font-size-sm);
-  color: var(--color-slate-700);
+  color: var(--table-menu-text);
 }
 
 .bk-table__menu-item:hover {
@@ -676,7 +742,7 @@
   width: 0.875rem;
   height: 0.875rem;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--color-slate-300);
+  border: 1px solid var(--table-menu-checkbox-border);
 }
 
 /* =============================================================================
@@ -858,7 +924,7 @@
 .bk-table__empty {
   padding: 1.5rem;
   text-align: center;
-  color: var(--color-slate-500);
+  color: var(--table-empty-text);
 }
 
 /* =============================================================================
@@ -957,18 +1023,18 @@
   border-radius: var(--radius-sm);
   background-color: transparent;
   cursor: pointer;
-  color: var(--color-slate-400);
+  color: var(--table-expand-color);
   transition: all var(--transition-fast) ease;
 }
 
 .bk-table__stack-expand-btn:hover {
-    background-color: var(--color-slate-100);
-    color: var(--color-slate-700);
+    background-color: var(--table-expand-hover-bg);
+    color: var(--table-expand-hover-color);
   }
 
 .bk-table__stack-expand-btn[aria-expanded="true"] {
-    color: var(--color-slate-600);
-    background-color: var(--color-slate-100);
+    color: var(--table-expand-active-color);
+    background-color: var(--table-expand-active-bg);
   }
 
 .bk-table__stack-expand-btn[aria-expanded="true"] .bk-table__expand-icon {
@@ -1011,13 +1077,13 @@
   gap: 1rem;
   padding: 0.25rem 0;
   font-size: var(--font-size-sm);
-  color: var(--color-slate-700);
+  color: var(--table-detail-text);
 }
 
 .bk-table__stack-detail-label {
   flex-shrink: 0;
   font-weight: var(--font-weight-semibold);
-  color: var(--color-slate-600);
+  color: var(--table-detail-label-color);
 }
 
 .bk-table__stack-detail-value {
@@ -1161,6 +1227,34 @@
   }
 }
 
+/* Dark mode overrides */
+
+.dark {
+  --table-bg: var(--color-slate-800);
+  --table-border: var(--color-slate-700);
+  --table-header-bg: var(--color-slate-800);
+  --table-header-text: var(--color-slate-200);
+  --table-body-text: var(--color-slate-200);
+  --table-row-hover-bg: var(--color-slate-700);
+  --table-stripe-bg: var(--color-slate-800);
+  --table-stack-detail-bg: var(--color-slate-800);
+  --table-menu-bg: var(--color-slate-800);
+  --table-menu-border: var(--color-slate-700);
+  --table-menu-text: var(--color-slate-300);
+  --table-menu-text-hover: var(--color-slate-100);
+  --table-menu-checkbox-border: var(--color-slate-600);
+  --table-menu-item-hover-bg: var(--color-slate-700);
+  --table-menu-shadow: 0 10px 20px rgb(0 0 0 / 0.3);
+  --table-empty-text: var(--color-slate-400);
+  --table-expand-color: var(--color-slate-500);
+  --table-expand-hover-bg: var(--color-slate-700);
+  --table-expand-hover-color: var(--color-slate-200);
+  --table-expand-active-color: var(--color-slate-300);
+  --table-expand-active-bg: var(--color-slate-700);
+  --table-detail-text: var(--color-slate-300);
+  --table-detail-label-color: var(--color-slate-400);
+}
+
 /* =============================================================================
    List Component
    ============================================================================= */
@@ -1248,6 +1342,12 @@
       border-bottom: none;
     }
 
+/* Dark mode overrides */
+
+.dark {
+  --list-divided-border: var(--color-slate-700);
+}
+
 /* =============================================================================
    Description List Component
    ============================================================================= */
@@ -1260,6 +1360,7 @@
   --dl-term-color: var(--color-slate-700);
   --dl-description-color: var(--color-slate-900);
   --dl-border: var(--color-slate-200);
+  --dl-striped-bg: var(--color-slate-50);
 }
 
 /* =============================================================================
@@ -1342,8 +1443,17 @@
   }
 
 .bk-description-list--striped dt {
-    background-color: var(--color-slate-50);
+    background-color: var(--dl-striped-bg);
   }
+
+/* Dark mode overrides */
+
+.dark {
+  --dl-term-color: var(--color-slate-300);
+  --dl-description-color: var(--color-slate-100);
+  --dl-border: var(--color-slate-700);
+  --dl-striped-bg: var(--color-slate-700);
+}
 
 /* =============================================================================
    Stat Component
@@ -1450,4 +1560,18 @@
 
 .bk-stat__change--neutral {
   color: var(--stat-change-neutral-color);
+}
+
+/* Dark mode overrides */
+
+.dark {
+  --stat-bg: var(--color-slate-800);
+  --stat-label-color: var(--color-slate-400);
+  --stat-value-color: var(--color-slate-100);
+  --stat-icon-bg: var(--color-primary-900);
+  --stat-icon-color: var(--color-primary-300);
+
+  --stat-change-up-color: var(--color-success-400);
+  --stat-change-down-color: var(--color-danger-400);
+  --stat-change-neutral-color: var(--color-slate-400);
 }

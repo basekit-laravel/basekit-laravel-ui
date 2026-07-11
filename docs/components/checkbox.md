@@ -211,6 +211,63 @@ Customize checkbox appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --checkbox-border-color: var(--color-slate-600);
+  --checkbox-hover-border-color: var(--color-slate-500);
+  --checkbox-focus-ring-color: rgba(99, 102, 241, 0.25);
+
+  --checkbox-disabled-bg: var(--color-slate-800);
+  --checkbox-disabled-border-color: var(--color-slate-700);
+  --checkbox-disabled-color: var(--color-slate-500);
+
+  --checkbox-error-border-color: var(--color-danger-500);
+  --checkbox-error-ring-color: rgba(239, 68, 68, 0.2);
+  --checkbox-error-color: var(--color-danger-400);
+
+  /* Labels & helpers */
+  --checkbox-label-color: var(--color-slate-300);
+  --checkbox-hint-color: var(--color-slate-400);
+
+  /* Disabled checked state */
+  --checkbox-disabled-checked-bg: var(--color-slate-600);
+  --checkbox-disabled-checked-border: var(--color-slate-600);
+
+  --checkbox-primary-checked-bg: var(--color-primary-500);
+  --checkbox-primary-checked-border: var(--color-primary-500);
+  --checkbox-primary-focus-ring: rgba(99, 102, 241, 0.25);
+
+  --checkbox-secondary-checked-bg: var(--color-slate-600);
+  --checkbox-secondary-checked-border: var(--color-slate-600);
+  --checkbox-secondary-focus-ring: rgba(148, 163, 184, 0.2);
+
+  --checkbox-success-checked-bg: var(--color-success-500);
+  --checkbox-success-checked-border: var(--color-success-500);
+  --checkbox-success-focus-ring: rgba(34, 197, 94, 0.2);
+
+  --checkbox-warning-checked-bg: var(--color-warning-500);
+  --checkbox-warning-checked-border: var(--color-warning-500);
+  --checkbox-warning-focus-ring: rgba(245, 158, 11, 0.2);
+
+  --checkbox-danger-checked-bg: var(--color-danger-500);
+  --checkbox-danger-checked-border: var(--color-danger-500);
+  --checkbox-danger-focus-ring: rgba(239, 68, 68, 0.2);
+
+  --checkbox-info-checked-bg: var(--color-info-500);
+  --checkbox-info-checked-border: var(--color-info-500);
+  --checkbox-info-focus-ring: rgba(59, 130, 246, 0.2);
+
+  --checkbox-ghost-border: var(--color-slate-600);
+  --checkbox-ghost-focus-ring: rgba(148, 163, 184, 0.2);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 Configure defaults in `config/basekit-laravel-ui.php`:

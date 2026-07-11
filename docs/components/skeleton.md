@@ -203,6 +203,18 @@ Customize skeleton appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --skeleton-bg: var(--color-slate-700);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 Configure defaults in `config/basekit-laravel-ui.php`:

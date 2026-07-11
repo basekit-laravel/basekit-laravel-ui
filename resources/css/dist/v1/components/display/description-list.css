@@ -10,6 +10,7 @@
   --dl-term-color: var(--color-slate-700);
   --dl-description-color: var(--color-slate-900);
   --dl-border: var(--color-slate-200);
+  --dl-striped-bg: var(--color-slate-50);
 }
 
 /* =============================================================================
@@ -92,5 +93,14 @@
   }
 
 .bk-description-list--striped dt {
-    background-color: var(--color-slate-50);
+    background-color: var(--dl-striped-bg);
   }
+
+/* Dark mode overrides */
+
+.dark {
+  --dl-term-color: var(--color-slate-300);
+  --dl-description-color: var(--color-slate-100);
+  --dl-border: var(--color-slate-700);
+  --dl-striped-bg: var(--color-slate-700);
+}

@@ -246,6 +246,27 @@ Customize pagination appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --pagination-bg: var(--color-slate-800);
+  --pagination-border: var(--color-slate-600);
+  --pagination-text: var(--color-slate-200);
+  --pagination-hover-bg: var(--color-slate-700);
+  --pagination-active-bg: var(--color-primary-500);
+  --pagination-active-text: white;
+  --pagination-active-hover-bg: var(--color-primary-400);
+  --pagination-disabled-text: var(--color-slate-500);
+  --pagination-info-color: var(--color-slate-400);
+  --pagination-label-color: var(--color-slate-300);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 Configure defaults in `config/basekit-laravel-ui.php`:

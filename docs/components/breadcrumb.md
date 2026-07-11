@@ -197,6 +197,20 @@ Customize breadcrumb appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --breadcrumb-separator-color: var(--color-slate-500);
+  --breadcrumb-link-color: var(--color-primary-400);
+  --breadcrumb-current-color: var(--color-slate-200);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 Configure defaults in `config/basekit-laravel-ui.php`:

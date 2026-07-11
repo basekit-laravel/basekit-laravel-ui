@@ -343,6 +343,76 @@ Customize multi-select appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --multiselect-color: var(--color-slate-100);
+  --multiselect-placeholder-color: var(--color-slate-500);
+  --multiselect-border-color: var(--color-slate-600);
+  --multiselect-bg: var(--color-slate-800);
+  --multiselect-hover-border-color: var(--color-slate-500);
+  --multiselect-focus-border-color: var(--color-primary-400);
+  --multiselect-focus-ring-color: rgba(99, 102, 241, 0.25);
+
+  --multiselect-disabled-bg: var(--color-slate-900);
+  --multiselect-disabled-color: var(--color-slate-600);
+  --multiselect-disabled-border-color: var(--color-slate-800);
+
+  --multiselect-error-border-color: var(--color-danger-500);
+  --multiselect-error-ring-color: rgba(239, 68, 68, 0.2);
+  --multiselect-error-color: var(--color-danger-400);
+
+  --multiselect-primary-border-color: var(--color-primary-500);
+  --multiselect-primary-ring-color: rgba(99, 102, 241, 0.25);
+
+  --multiselect-secondary-border-color: var(--color-slate-600);
+  --multiselect-secondary-ring-color: rgba(148, 163, 184, 0.2);
+
+  --multiselect-success-border-color: var(--color-success-500);
+  --multiselect-success-ring-color: rgba(34, 197, 94, 0.2);
+
+  --multiselect-warning-border-color: var(--color-warning-500);
+  --multiselect-warning-ring-color: rgba(245, 158, 11, 0.2);
+
+  --multiselect-danger-border-color: var(--color-danger-500);
+  --multiselect-danger-ring-color: rgba(239, 68, 68, 0.2);
+
+  --multiselect-info-border-color: var(--color-info-500);
+  --multiselect-info-ring-color: rgba(59, 130, 246, 0.2);
+
+  --multiselect-ghost-ring-color: rgba(148, 163, 184, 0.15);
+
+  --multiselect-chip-bg: var(--color-slate-700);
+  --multiselect-chip-text: var(--color-slate-200);
+  --multiselect-chip-border: var(--color-slate-600);
+  --multiselect-chip-remove-color: var(--color-slate-400);
+  --multiselect-chip-remove-hover-color: var(--color-slate-200);
+
+  /* Labels & helpers */
+  --multiselect-label-color: var(--color-slate-300);
+  --multiselect-hint-color: var(--color-slate-400);
+  --multiselect-icon-color: var(--color-slate-500);
+
+  /* Options */
+  --multiselect-option-text: var(--color-slate-200);
+  --multiselect-option-selected-bg: var(--color-slate-700);
+  --multiselect-option-selected-text: var(--color-slate-100);
+  --multiselect-check-border: var(--color-slate-600);
+
+  --multiselect-menu-bg: var(--color-slate-800);
+  --multiselect-menu-border: var(--color-slate-700);
+  --multiselect-menu-shadow: 0 10px 20px rgb(0 0 0 / 0.3);
+  --multiselect-option-hover: var(--color-slate-700);
+  --multiselect-option-check-bg: var(--color-slate-700);
+  --multiselect-option-check-inset: var(--color-slate-700);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 Configure defaults in `config/basekit-laravel-ui.php`:

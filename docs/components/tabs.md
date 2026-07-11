@@ -215,6 +215,26 @@ Customize tabs appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --tabs-border: var(--color-slate-700);
+  --tabs-active-border: var(--color-primary-400);
+  --tabs-text: var(--color-slate-400);
+  --tabs-active-text: var(--color-primary-300);
+  --tabs-hover-text: var(--color-slate-100);
+  --tabs-pills-active-bg: var(--color-primary-900);
+  --tabs-boxed-bg: var(--color-slate-800);
+  --tabs-boxed-active-bg: var(--color-slate-700);
+  --tabs-boxed-active-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 Configure defaults in `config/basekit-laravel-ui.php`:

@@ -311,6 +311,57 @@ Customize button appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --button-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --button-shadow-hover: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.2);
+
+  --button-bg-primary: var(--color-primary-500);
+  --button-hover-bg-primary: var(--color-primary-400);
+  --button-active-bg-primary: var(--color-primary-600);
+  --button-focus-ring-primary: rgba(99, 102, 241, 0.3);
+
+  --button-bg-secondary: var(--color-slate-800);
+  --button-text-secondary: var(--color-slate-200);
+  --button-border-secondary: var(--color-slate-600);
+  --button-hover-bg-secondary: var(--color-slate-700);
+  --button-hover-border-secondary: var(--color-slate-500);
+  --button-active-bg-secondary: var(--color-slate-600);
+  --button-focus-ring-secondary: rgba(148, 163, 184, 0.2);
+
+  --button-bg-success: var(--color-success-500);
+  --button-hover-bg-success: var(--color-success-400);
+  --button-active-bg-success: var(--color-success-600);
+  --button-focus-ring-success: rgba(34, 197, 94, 0.3);
+
+  --button-bg-danger: var(--color-danger-500);
+  --button-hover-bg-danger: var(--color-danger-400);
+  --button-active-bg-danger: var(--color-danger-600);
+  --button-focus-ring-danger: rgba(239, 68, 68, 0.3);
+
+  --button-bg-warning: var(--color-warning-500);
+  --button-hover-bg-warning: var(--color-warning-400);
+  --button-active-bg-warning: var(--color-warning-600);
+  --button-focus-ring-warning: rgba(245, 158, 11, 0.3);
+
+  --button-bg-info: var(--color-info-500);
+  --button-hover-bg-info: var(--color-info-400);
+  --button-active-bg-info: var(--color-info-600);
+  --button-focus-ring-info: rgba(59, 130, 246, 0.3);
+
+  --button-text-ghost: var(--color-slate-400);
+  --button-hover-bg-ghost: var(--color-slate-800);
+  --button-active-bg-ghost: var(--color-slate-700);
+  --button-focus-ring-ghost: rgba(148, 163, 184, 0.15);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 Configure button defaults in `config/basekit-laravel-ui.php`:

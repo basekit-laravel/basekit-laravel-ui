@@ -136,6 +136,26 @@ Customize modal appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --modal-overlay-bg: rgba(0, 0, 0, 0.7);
+  --modal-bg: var(--color-slate-800);
+  --modal-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  --modal-header-border: var(--color-slate-700);
+  --modal-footer-border: var(--color-slate-700);
+  --modal-close-color: var(--color-slate-400);
+  --modal-close-hover-bg: var(--color-slate-700);
+  --modal-close-hover-color: var(--color-slate-200);
+  --modal-title-color: var(--color-slate-100);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 Configure defaults in `config/basekit-laravel-ui.php`:

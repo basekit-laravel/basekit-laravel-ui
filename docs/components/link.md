@@ -226,6 +226,25 @@ Customize link appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --link-primary-color: var(--color-primary-400);
+  --link-secondary-color: var(--color-slate-200);
+  --link-success-color: var(--color-success-400);
+  --link-warning-color: var(--color-warning-400);
+  --link-danger-color: var(--color-danger-400);
+  --link-info-color: var(--color-info-400);
+  --link-ghost-color: var(--color-slate-400);
+  --link-muted-color: var(--color-slate-400);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 Configure defaults in `config/basekit-laravel-ui.php`:

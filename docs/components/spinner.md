@@ -190,6 +190,24 @@ Customize spinner appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --spinner-color-primary: var(--color-primary-400);
+  --spinner-color-slate: var(--color-slate-400);
+  --spinner-color-success: var(--color-success-400);
+  --spinner-color-warning: var(--color-warning-400);
+  --spinner-color-danger: var(--color-danger-400);
+  --spinner-color-info: var(--color-info-400);
+  --spinner-color-ghost: var(--color-slate-500);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 Configure defaults in `config/basekit-laravel-ui.php`:

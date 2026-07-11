@@ -105,6 +105,22 @@ Customize divider appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --divider-color: var(--color-slate-700);
+  --divider-color-light: var(--color-slate-800);
+  --divider-color-dark: var(--color-slate-500);
+  --divider-label-bg: var(--color-slate-900);
+  --divider-label-color: var(--color-slate-400);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 ```php

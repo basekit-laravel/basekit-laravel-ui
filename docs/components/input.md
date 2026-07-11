@@ -299,6 +299,72 @@ Customize input appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --input-bg: var(--color-slate-800);
+  --input-color: var(--color-slate-100);
+  --input-placeholder-color: var(--color-slate-500);
+  --input-error-color: var(--color-danger-400);
+  --input-border-color: var(--color-slate-600);
+  --input-hover-border-color: var(--color-slate-500);
+  --input-focus-border-color: var(--color-primary-400);
+  --input-focus-ring-color: rgba(99, 102, 241, 0.25);
+  --input-disabled-bg: var(--color-slate-900);
+  --input-disabled-color: var(--color-slate-600);
+  --input-disabled-border-color: var(--color-slate-800);
+
+  /* Labels & helpers */
+  --input-label-color: var(--color-slate-300);
+  --input-hint-color: var(--color-slate-400);
+  --input-icon-color: var(--color-slate-500);
+  --input-icon-hover-color: var(--color-slate-300);
+
+  /* Addons */
+  --input-addon-bg: var(--color-slate-700);
+  --input-addon-color: var(--color-slate-400);
+
+  /* Number stepper */
+  --input-number-btn-bg: var(--color-slate-700);
+  --input-number-btn-color: var(--color-slate-400);
+  --input-number-btn-hover-bg: var(--color-slate-600);
+  --input-number-btn-hover-color: var(--color-slate-200);
+  --input-number-btn-active-bg: var(--color-slate-500);
+
+  /* Variant: secondary (default) */
+  --input-secondary-border-color: var(--color-slate-600);
+  --input-secondary-ring-color: rgba(99, 102, 241, 0.25);
+
+  /* Variant: primary */
+  --input-primary-border-color: var(--color-primary-500);
+  --input-primary-ring-color: rgba(99, 102, 241, 0.25);
+
+  /* Variant: error */
+  --input-error-border-color: var(--color-danger-500);
+  --input-error-ring-color: rgba(239, 68, 68, 0.2);
+
+  /* Variant: success */
+  --input-success-border-color: var(--color-success-500);
+  --input-success-ring-color: rgba(34, 197, 94, 0.2);
+
+  /* Variant: warning */
+  --input-warning-border-color: var(--color-warning-500);
+  --input-warning-ring-color: rgba(245, 158, 11, 0.2);
+
+  /* Variant: info */
+  --input-info-border-color: var(--color-info-500);
+  --input-info-ring-color: rgba(59, 130, 246, 0.2);
+
+  /* Variant: ghost */
+  --input-ghost-ring-color: rgba(148, 163, 184, 0.15);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 Configure defaults in `config/basekit-laravel-ui.php`:

@@ -129,6 +129,21 @@ Customize description list appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --dl-term-color: var(--color-slate-300);
+  --dl-description-color: var(--color-slate-100);
+  --dl-border: var(--color-slate-700);
+  --dl-striped-bg: var(--color-slate-700);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 ```php

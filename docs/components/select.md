@@ -363,6 +363,67 @@ Customize select appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --select-color: var(--color-slate-100);
+  --select-placeholder-color: var(--color-slate-500);
+  --select-border-color: var(--color-slate-600);
+  --select-bg: var(--color-slate-800);
+  --select-hover-border-color: var(--color-slate-500);
+  --select-focus-border-color: var(--color-primary-400);
+  --select-focus-ring-color: rgba(99, 102, 241, 0.25);
+
+  --select-disabled-bg: var(--color-slate-900);
+  --select-disabled-color: var(--color-slate-600);
+  --select-disabled-border-color: var(--color-slate-800);
+
+  /* Labels & helpers */
+  --select-label-color: var(--color-slate-300);
+  --select-hint-color: var(--color-slate-400);
+  --select-icon-color: var(--color-slate-500);
+
+  /* Options */
+  --select-option-text: var(--color-slate-200);
+  --select-option-selected-bg: var(--color-slate-700);
+  --select-option-selected-text: var(--color-slate-100);
+
+  --select-primary-border-color: var(--color-primary-500);
+  --select-primary-ring-color: rgba(99, 102, 241, 0.25);
+
+  --select-secondary-border-color: var(--color-slate-600);
+  --select-secondary-ring-color: rgba(148, 163, 184, 0.2);
+
+  --select-error-border-color: var(--color-danger-500);
+  --select-error-ring-color: rgba(239, 68, 68, 0.2);
+  --select-error-color: var(--color-danger-400);
+
+  --select-success-border-color: var(--color-success-500);
+  --select-success-ring-color: rgba(34, 197, 94, 0.2);
+
+  --select-warning-border-color: var(--color-warning-500);
+  --select-warning-ring-color: rgba(245, 158, 11, 0.2);
+
+  --select-danger-border-color: var(--color-danger-500);
+  --select-danger-ring-color: rgba(239, 68, 68, 0.2);
+
+  --select-info-border-color: var(--color-info-500);
+  --select-info-ring-color: rgba(59, 130, 246, 0.2);
+
+  --select-ghost-ring-color: rgba(148, 163, 184, 0.15);
+
+  --select-menu-bg: var(--color-slate-800);
+  --select-menu-border: var(--color-slate-700);
+  --select-menu-shadow: 0 10px 20px rgb(0 0 0 / 0.3);
+  --select-option-hover: var(--color-slate-700);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 Configure defaults in `config/basekit-laravel-ui.php`:

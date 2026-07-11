@@ -194,6 +194,51 @@ Customize toggle appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --toggle-bg-off: var(--color-slate-700);
+  --toggle-bg-on: var(--color-primary-500);
+  --toggle-thumb-bg: var(--color-slate-300);
+  --toggle-thumb-border-off: var(--color-slate-600);
+
+  --toggle-focus-ring: rgba(99, 102, 241, 0.25);
+
+  /* Labels & helpers */
+  --toggle-label-color: var(--color-slate-300);
+  --toggle-hint-color: var(--color-slate-400);
+  --toggle-disabled-label-color: var(--color-slate-600);
+
+  --toggle-primary-bg-on: var(--color-primary-500);
+  --toggle-primary-focus-ring: rgba(99, 102, 241, 0.25);
+
+  --toggle-secondary-bg-on: var(--color-slate-500);
+  --toggle-secondary-focus-ring: rgba(148, 163, 184, 0.2);
+
+  --toggle-success-bg-on: var(--color-success-500);
+  --toggle-success-focus-ring: rgba(34, 197, 94, 0.25);
+
+  --toggle-warning-bg-on: var(--color-warning-500);
+  --toggle-warning-focus-ring: rgba(245, 158, 11, 0.25);
+
+  --toggle-danger-bg-on: var(--color-danger-500);
+  --toggle-danger-focus-ring: rgba(239, 68, 68, 0.25);
+
+  --toggle-info-bg-on: var(--color-info-500);
+  --toggle-info-focus-ring: rgba(59, 130, 246, 0.25);
+
+  --toggle-ghost-bg-on: var(--color-slate-700);
+  --toggle-ghost-focus-ring: rgba(148, 163, 184, 0.2);
+
+  --toggle-error-focus-ring: rgba(239, 68, 68, 0.25);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 Configure defaults in `config/basekit-laravel-ui.php`:

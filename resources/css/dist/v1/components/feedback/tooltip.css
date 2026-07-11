@@ -74,3 +74,11 @@
   transform: translateY(-50%);
   margin-left: 0.5rem;
 }
+
+/* Dark mode overrides */
+
+.dark {
+  --tooltip-bg: var(--color-slate-800);
+  --tooltip-text: var(--color-slate-100);
+  --tooltip-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}

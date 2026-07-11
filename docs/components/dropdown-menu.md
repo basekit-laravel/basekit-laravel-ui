@@ -324,6 +324,29 @@ Customize dropdown appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --dropdown-bg: var(--color-slate-800);
+  --dropdown-trigger-bg: var(--color-slate-800);
+  --dropdown-trigger-text: var(--color-slate-200);
+  --dropdown-trigger-hover-bg: var(--color-slate-700);
+  --dropdown-trigger-hover-border: var(--color-slate-600);
+  --dropdown-trigger-focus-ring: rgba(99, 102, 241, 0.25);
+  --dropdown-border: var(--color-slate-700);
+  --dropdown-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  --dropdown-trigger-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.2);
+  --dropdown-item-hover-bg: var(--color-slate-700);
+  --dropdown-item-text: var(--color-slate-200);
+  --dropdown-item-icon: var(--color-slate-400);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 Configure defaults in `config/basekit-laravel-ui.php`:

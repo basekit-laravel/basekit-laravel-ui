@@ -152,3 +152,33 @@
   border-color: transparent;
   border-color: var(--badge-border-ghost);
 }
+
+/* Dark mode overrides */
+
+.dark {
+  --badge-bg-secondary: var(--color-slate-800);
+  --badge-text-secondary: var(--color-slate-200);
+  --badge-border-secondary: var(--color-slate-700);
+
+  --badge-bg-primary: var(--color-primary-950);
+  --badge-text-primary: var(--color-primary-200);
+  --badge-border-primary: var(--color-primary-800);
+
+  --badge-bg-info: var(--color-info-950);
+  --badge-text-info: var(--color-info-200);
+  --badge-border-info: var(--color-info-800);
+
+  --badge-bg-success: var(--color-success-950);
+  --badge-text-success: var(--color-success-200);
+  --badge-border-success: var(--color-success-800);
+
+  --badge-bg-warning: var(--color-warning-950);
+  --badge-text-warning: var(--color-warning-200);
+  --badge-border-warning: var(--color-warning-800);
+
+  --badge-bg-danger: var(--color-danger-950);
+  --badge-text-danger: var(--color-danger-200);
+  --badge-border-danger: var(--color-danger-800);
+
+  --badge-text-ghost: var(--color-slate-400);
+}

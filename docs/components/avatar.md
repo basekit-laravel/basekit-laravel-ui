@@ -150,6 +150,25 @@ Customize avatar appearance via CSS variables:
 }
 ```
 
+## Dark Mode
+
+Dark mode overrides are applied automatically when a parent element has the `.dark` class:
+
+```css
+.dark {
+  --avatar-bg: var(--color-slate-700);
+  --avatar-text: var(--color-slate-300);
+  --avatar-ring: 2px solid var(--color-slate-900);
+  --avatar-status-border: 1px solid var(--color-slate-900);
+  --avatar-status-online: var(--color-success-400);
+  --avatar-status-away: var(--color-warning-400);
+  --avatar-status-busy: var(--color-danger-400);
+  --avatar-status-offline: var(--color-slate-500);
+}
+```
+
+For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mode).
+
 ## Configuration
 
 ```php

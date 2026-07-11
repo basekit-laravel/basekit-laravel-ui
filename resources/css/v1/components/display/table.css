@@ -11,14 +11,26 @@
   --table-border: var(--color-slate-200);
   --table-header-bg: var(--color-slate-50);
   --table-header-text: var(--color-slate-700);
+  --table-body-text: var(--color-slate-900);
   --table-row-hover-bg: var(--color-slate-50);
   --table-stripe-bg: var(--color-slate-50);
   --table-stack-radius: var(--radius-md);
   --table-stack-detail-bg: var(--color-slate-50);
   --table-menu-bg: var(--table-bg);
   --table-menu-border: var(--table-border);
+  --table-menu-text: var(--color-slate-700);
+  --table-menu-text-hover: var(--color-slate-900);
+  --table-menu-checkbox-border: var(--color-slate-300);
   --table-menu-item-hover-bg: var(--table-row-hover-bg);
   --table-menu-shadow: 0 10px 20px rgb(15 23 42 / 0.08);
+  --table-empty-text: var(--color-slate-500);
+  --table-expand-color: var(--color-slate-400);
+  --table-expand-hover-bg: var(--color-slate-100);
+  --table-expand-hover-color: var(--color-slate-700);
+  --table-expand-active-color: var(--color-slate-600);
+  --table-expand-active-bg: var(--color-slate-100);
+  --table-detail-text: var(--color-slate-700);
+  --table-detail-label-color: var(--color-slate-600);
 }
 
 /* =============================================================================
@@ -75,7 +87,7 @@
   td {
     padding-block: 1rem;
     padding-inline: 1rem;
-    color: var(--color-slate-900);
+    color: var(--table-body-text);
     border-bottom: 1px solid var(--table-border);
   }
 
@@ -184,10 +196,10 @@
   cursor: pointer;
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--color-slate-700);
+  color: var(--table-menu-text);
 
   &:hover {
-    color: var(--color-slate-900);
+    color: var(--table-menu-text-hover);
   }
 }
 
@@ -216,7 +228,7 @@
   padding: 0.375rem 0.5rem;
   cursor: pointer;
   font-size: var(--font-size-sm);
-  color: var(--color-slate-700);
+  color: var(--table-menu-text);
 
   &:hover {
     background-color: var(--table-menu-item-hover-bg);
@@ -227,7 +239,7 @@
   width: 0.875rem;
   height: 0.875rem;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--color-slate-300);
+  border: 1px solid var(--table-menu-checkbox-border);
 }
 
 /* =============================================================================
@@ -356,7 +368,7 @@
 .bk-table__empty {
   padding: 1.5rem;
   text-align: center;
-  color: var(--color-slate-500);
+  color: var(--table-empty-text);
 }
 
 /* =============================================================================
@@ -457,17 +469,17 @@
   border-radius: var(--radius-sm);
   background-color: transparent;
   cursor: pointer;
-  color: var(--color-slate-400);
+  color: var(--table-expand-color);
   transition: all var(--transition-fast) ease;
 
   &:hover {
-    background-color: var(--color-slate-100);
-    color: var(--color-slate-700);
+    background-color: var(--table-expand-hover-bg);
+    color: var(--table-expand-hover-color);
   }
 
   &[aria-expanded="true"] {
-    color: var(--color-slate-600);
-    background-color: var(--color-slate-100);
+    color: var(--table-expand-active-color);
+    background-color: var(--table-expand-active-bg);
 
     .bk-table__expand-icon {
       transform: rotate(180deg);
@@ -510,13 +522,13 @@
   gap: 1rem;
   padding: 0.25rem 0;
   font-size: var(--font-size-sm);
-  color: var(--color-slate-700);
+  color: var(--table-detail-text);
 }
 
 .bk-table__stack-detail-label {
   flex-shrink: 0;
   font-weight: var(--font-weight-semibold);
-  color: var(--color-slate-600);
+  color: var(--table-detail-label-color);
 }
 
 .bk-table__stack-detail-value {
@@ -660,4 +672,31 @@
   .bk-table__stack-detail-value {
     text-align: left;
   }
+}
+
+/* Dark mode overrides */
+.dark {
+  --table-bg: var(--color-slate-800);
+  --table-border: var(--color-slate-700);
+  --table-header-bg: var(--color-slate-800);
+  --table-header-text: var(--color-slate-200);
+  --table-body-text: var(--color-slate-200);
+  --table-row-hover-bg: var(--color-slate-700);
+  --table-stripe-bg: var(--color-slate-800);
+  --table-stack-detail-bg: var(--color-slate-800);
+  --table-menu-bg: var(--color-slate-800);
+  --table-menu-border: var(--color-slate-700);
+  --table-menu-text: var(--color-slate-300);
+  --table-menu-text-hover: var(--color-slate-100);
+  --table-menu-checkbox-border: var(--color-slate-600);
+  --table-menu-item-hover-bg: var(--color-slate-700);
+  --table-menu-shadow: 0 10px 20px rgb(0 0 0 / 0.3);
+  --table-empty-text: var(--color-slate-400);
+  --table-expand-color: var(--color-slate-500);
+  --table-expand-hover-bg: var(--color-slate-700);
+  --table-expand-hover-color: var(--color-slate-200);
+  --table-expand-active-color: var(--color-slate-300);
+  --table-expand-active-bg: var(--color-slate-700);
+  --table-detail-text: var(--color-slate-300);
+  --table-detail-label-color: var(--color-slate-400);
 }

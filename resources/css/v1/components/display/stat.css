@@ -102,3 +102,16 @@
 .bk-stat__change--neutral {
   color: var(--stat-change-neutral-color);
 }
+
+/* Dark mode overrides */
+.dark {
+  --stat-bg: var(--color-slate-800);
+  --stat-label-color: var(--color-slate-400);
+  --stat-value-color: var(--color-slate-100);
+  --stat-icon-bg: var(--color-primary-900);
+  --stat-icon-color: var(--color-primary-300);
+
+  --stat-change-up-color: var(--color-success-400);
+  --stat-change-down-color: var(--color-danger-400);
+  --stat-change-neutral-color: var(--color-slate-400);
+}

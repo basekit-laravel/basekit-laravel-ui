@@ -60,6 +60,14 @@
   --radio-error-ring: var(--color-danger-100);
   --radio-error-checked-bg: var(--color-danger-600);
   --radio-error-checked-border: var(--color-danger-600);
+
+  /* Labels & helpers */
+  --radio-label-color: var(--color-slate-700);
+  --radio-hint-color: var(--color-slate-500);
+
+  /* Disabled state */
+  --radio-disabled-bg: var(--color-slate-100);
+  --radio-disabled-border: var(--color-slate-200);
 }
 
 /**
@@ -86,7 +94,7 @@
 .bk-radio__label {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--color-slate-700);
+  color: var(--radio-label-color);
   line-height: 1.25rem;
   margin-top: 1px;
   cursor: pointer;
@@ -106,7 +114,7 @@
 .bk-radio__hint {
   margin-top: 0.25rem;
   font-size: var(--font-size-sm);
-  color: var(--color-slate-500);
+  color: var(--radio-hint-color);
   margin-left: calc(1.125rem + 0.75rem);
   margin-left: calc(var(--radio-size-md) + 0.75rem);
 }
@@ -148,8 +156,8 @@
   }
 
 .bk-radio__control:disabled {
-    background-color: var(--color-slate-100);
-    border-color: var(--color-slate-200);
+    background-color: var(--radio-disabled-bg);
+    border-color: var(--radio-disabled-border);
     cursor: not-allowed;
     opacity: 0.7;
   }
@@ -304,4 +312,51 @@
   width: var(--radio-size-lg);
   height: 1.25rem;
   height: var(--radio-size-lg);
+}
+
+/* Dark mode overrides */
+
+.dark {
+  --radio-border: var(--color-slate-600);
+  --radio-bg: var(--color-slate-800);
+  --radio-focus-ring: rgba(99, 102, 241, 0.25);
+
+  /* Labels & helpers */
+  --radio-label-color: var(--color-slate-300);
+  --radio-hint-color: var(--color-slate-400);
+
+  /* Disabled state */
+  --radio-disabled-bg: var(--color-slate-800);
+  --radio-disabled-border: var(--color-slate-700);
+
+  --radio-primary-checked-bg: var(--color-primary-500);
+  --radio-primary-checked-border: var(--color-primary-500);
+  --radio-primary-focus-ring: rgba(99, 102, 241, 0.25);
+
+  --radio-secondary-checked-bg: var(--color-slate-500);
+  --radio-secondary-checked-border: var(--color-slate-500);
+  --radio-secondary-focus-ring: rgba(148, 163, 184, 0.2);
+
+  --radio-success-checked-bg: var(--color-success-500);
+  --radio-success-checked-border: var(--color-success-500);
+  --radio-success-focus-ring: rgba(34, 197, 94, 0.2);
+
+  --radio-warning-checked-bg: var(--color-warning-500);
+  --radio-warning-checked-border: var(--color-warning-500);
+  --radio-warning-focus-ring: rgba(245, 158, 11, 0.2);
+
+  --radio-danger-checked-bg: var(--color-danger-500);
+  --radio-danger-checked-border: var(--color-danger-500);
+  --radio-danger-focus-ring: rgba(239, 68, 68, 0.2);
+
+  --radio-info-checked-bg: var(--color-info-500);
+  --radio-info-checked-border: var(--color-info-500);
+  --radio-info-focus-ring: rgba(59, 130, 246, 0.2);
+
+  --radio-ghost-bg: transparent;
+  --radio-ghost-border: var(--color-slate-600);
+  --radio-ghost-focus-ring: rgba(148, 163, 184, 0.2);
+
+  --radio-error-border: var(--color-danger-500);
+  --radio-error-ring: rgba(239, 68, 68, 0.2);
 }
