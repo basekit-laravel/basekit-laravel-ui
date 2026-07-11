@@ -5,6 +5,13 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.5.1...v1.6.0) (2026-07-11)
+
+
+### Features
+
+* add dark mode overrides ([283ab01](https://github.com/basekit-laravel/basekit-laravel-ui/commit/283ab0102db28df66d21c67b20d5a04e1ceacad1))
+
 ## [1.5.1](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.5.0...v1.5.1) (2026-07-08)
 
 
