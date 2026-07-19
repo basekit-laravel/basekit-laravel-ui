@@ -20,6 +20,8 @@ A versatile card container component for grouping related content.
 | ---------- | --------- | ----------- | ------------------------------------------------------ |
 | `variant`  | `string`  | `'default'` | Card style variant (`default`, `bordered`, `transparent`) |
 | `isPadded` | `boolean` | `true`      | Apply default body padding                             |
+| `header-class` | `string` | `null`  | Additional classes for the header wrapper              |
+| `footer-class` | `string` | `null`  | Additional classes for the footer wrapper              |
 
 ## Slots
 

@@ -30,6 +30,8 @@ A radio button component for single-choice selections with configurable variants
 | `color`      | `string` | `null`      | Quick color shortcut. Sets checked background and border simultaneously. |
 | `background` | `string` | `null`      | Custom checked background color. |
 | `border`     | `string` | `null`      | Custom checked border color. |
+| `wrapper-class` | `string` | `null`    | Additional classes for the outer wrapper div |
+| `container-class` | `string` | `null`  | Additional classes for the inner container div |
 
 Standard radio attributes such as `name`, `id`, and `disabled` pass through to the underlying `<input>` element.
 

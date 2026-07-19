@@ -28,7 +28,7 @@
     @endif>
     {{-- Prefix Slot --}}
     @isset($prefix)
-        <span class="bk-button__prefix">{{ $prefix }}</span>
+        <span class="bk-button__prefix {{ $prefixClass ?? '' }}">{{ $prefix }}</span>
     @endisset
 
     {{-- Icon on the left (default orientation) --}}
@@ -37,7 +37,7 @@
     @endif
 
     {{-- Main Content --}}
-    <span class="bk-button__content">{{ $slot }}</span>
+    <span class="bk-button__content {{ $contentClass ?? '' }}">{{ $slot }}</span>
 
     {{-- Icon on the right --}}
     @if ($iconOrientation->value === \BasekitLaravel\BasekitLaravelUi\Enums\Orientation::Right->value)
@@ -46,6 +46,6 @@
 
     {{-- Suffix Slot --}}
     @isset($suffix)
-        <span class="bk-button__suffix">{{ $suffix }}</span>
+        <span class="bk-button__suffix {{ $suffixClass ?? '' }}">{{ $suffix }}</span>
     @endisset
 </{{ $as }}>

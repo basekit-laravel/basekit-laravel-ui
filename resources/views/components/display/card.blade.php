@@ -3,7 +3,7 @@
 <div {{ $attributes->twMerge($rootClassNames) }}>
     {{-- Header --}}
     @if (isset($header))
-        <div class="bk-card__header">
+        <div class="bk-card__header {{ $headerClass ?? '' }}">
             <div class="bk-card__header-content">
                 {{ $header }}
             </div>
@@ -23,7 +23,7 @@
 
     {{-- Footer --}}
     @if (isset($footer))
-        <div class="bk-card__footer">
+        <div class="bk-card__footer {{ $footerClass ?? '' }}">
             {{ $footer }}
         </div>
     @endif

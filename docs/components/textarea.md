@@ -32,6 +32,8 @@ A multi-line text input component with configurable variants, sizes, label place
 | `label-style`  | `string` | `'default'`   | Label placement: `default`, `inset`, `overlap`                              |
 | `is-underline` | `bool`   | `false`       | Use underline-only styling                                                  |
 | `border`       | `string` | `null`        | Custom border color. |
+| `wrapper-class` | `string` | `null`        | Additional classes for the outer wrapper div |
+| `container-class` | `string` | `null`        | Additional classes for the inner container div |
 
 Standard textarea attributes such as `name`, `maxlength`, `disabled`, and `readonly` pass through to the underlying `<textarea>` element.
 

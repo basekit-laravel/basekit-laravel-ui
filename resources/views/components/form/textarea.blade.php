@@ -12,6 +12,8 @@
     - corner-hint: string (optional, right-aligned hint text)
     - label-style: 'default', 'inset', 'overlap' (optional, controls label placement)
     - is-underline: bool (optional, gray background with bottom border only)
+    - wrapper-class: string (optional, additional classes for the outer wrapper div)
+    - container-class: string (optional, additional classes for the inner container div)
     
     Slots:
     - label: Custom label content
@@ -26,7 +28,7 @@
     $hasAnyError = $hasError() || $hasCustomError;
 @endphp
 
-<div class="bk-textarea" @if ($colorStyle()) style="{{ $colorStyle() }}" @endif>
+<div class="bk-textarea {{ $wrapperClass ?? '' }}" @if ($colorStyle()) style="{{ $colorStyle() }}" @endif>
     {{-- Label / Corner Hint --}}
     @include('basekit::components.form.partials.textarea.textarea-label-row', [
         'shouldShowTopLabel' => $shouldShowTopLabel(),
@@ -37,7 +39,7 @@
     ])
 
     {{-- Textarea Container --}}
-    <div class="{{ $containerClasses() }}">
+    <div class="{{ $containerClasses() }}{{ $containerClass ? ' ' . $containerClass : '' }}">
         {{-- Inline Labels (inset/overlap) --}}
         @include('basekit::components.form.partials.textarea.textarea-inline-label', [
             'labelStyle' => $labelStyle->value,

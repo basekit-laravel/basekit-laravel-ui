@@ -118,6 +118,14 @@ class Input extends Component
          * Custom hover border color.
          */
         public ?string $hoverBorder = null,
+        /**
+         * Additional classes for the outer wrapper div.
+         */
+        public ?string $wrapperClass = null,
+        /**
+         * Additional classes for the inner container div.
+         */
+        public ?string $containerClass = null,
     ) {
         $this->isTogglePassword = $this->type === 'password' && $isTogglePassword;
         $this->labelStyle = $this->resolveLabelStyle($labelStyle);

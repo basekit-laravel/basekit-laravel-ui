@@ -16,6 +16,8 @@
     - label-style: 'default', 'inset', 'overlap' (optional, controls label placement)
     - control-style: 'default', 'pill', 'underline' (optional, controls control shape)
     - allow-empty: bool (optional, allows selecting an explicit empty value)
+    - wrapper-class: string (optional, additional classes for the outer wrapper div)
+    - container-class: string (optional, additional classes for the inner container div)
     
     Slots:
     - label: Custom label content
@@ -57,7 +59,7 @@
     }
 @endphp
 
-<div class="bk-select" @if ($colorStyle()) style="{{ $colorStyle() }}" @endif x-data="{
+<div class="bk-select {{ $wrapperClass ?? '' }}" @if ($colorStyle()) style="{{ $colorStyle() }}" @endif x-data="{
     open: false,
     disabled: @js($isDisabledAttribute()),
     _blurTimer: null,
@@ -85,7 +87,7 @@
     ])
 
     {{-- Select Container --}}
-    <div class="{{ $containerClasses() }}" :class="{ 'bk-select__container--open': open }">
+    <div class="{{ $containerClasses() }}{{ $containerClass ? ' ' . $containerClass : '' }}" :class="{ 'bk-select__container--open': open }">
         {{-- Inline Labels (inset/overlap) --}}
         @include('basekit::components.form.partials.select.select-inline-label', [
             'labelStyle' => $labelStyle->value,

@@ -14,7 +14,7 @@
 --}}
 
 <div {{ $attributes->twMerge($classes()) }}{!! $colorStyle() ? ' style="' . $colorStyle() . '"' : '' !!} role="alert" x-data="{ show: true }" x-show="show" x-transition>
-    <div class="bk-alert__icon">
+    <div class="bk-alert__icon {{ $iconClass ?? '' }}">
         @if (isset($icon) && !is_string($icon))
             {{ $icon }}
         @else
@@ -22,7 +22,7 @@
         @endif
     </div>
 
-    <div class="bk-alert__content">
+    <div class="bk-alert__content {{ $contentClass ?? '' }}">
         @if ($title)
             <div class="bk-alert__title">{{ $title }}</div>
         @endif

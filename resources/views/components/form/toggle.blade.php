@@ -9,6 +9,8 @@
     - value: string (optional)
     - is-checked: bool (default: false)
     - disabled: bool attribute (optional)
+    - wrapper-class: string (optional, additional classes for the outer wrapper div)
+    - container-class: string (optional, additional classes for the inner container div)
     
     Slots:
     - label: Custom label content
@@ -18,8 +20,8 @@
     Note: Uses native checkbox behavior for toggle functionality
 --}}
 
-<div class="bk-toggle">
-    <div class="bk-toggle__container">
+<div class="bk-toggle {{ $wrapperClass ?? '' }}">
+    <div class="bk-toggle__container {{ $containerClass ?? '' }}">
         {{-- Hidden Input --}}
         <input type="checkbox" id="{{ $inputId() }}"
             {{ $attributes->except(['label', 'error', 'hint', 'id'])->class(['bk-toggle__input', 'sr-only']) }}

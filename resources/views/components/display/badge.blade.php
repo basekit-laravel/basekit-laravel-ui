@@ -4,12 +4,12 @@
 <span @if ($colorStyle()) style="{{ $colorStyle() }}" @endif {{ $attributes->twMerge($classes()) }}>
     {{-- Dot Indicator --}}
     @if ($isDot)
-        <span class="bk-badge__dot"></span>
+        <span class="bk-badge__dot {{ $dotClass ?? '' }}"></span>
     @endif
 
     {{-- Icon --}}
     @if ((isset($icon) && !is_string($icon)) || $hasIcon())
-        <span class="bk-badge__icon">
+        <span class="bk-badge__icon {{ $iconClass ?? '' }}">
             @if (isset($icon) && !is_string($icon))
                 {{ $icon }}
             @else

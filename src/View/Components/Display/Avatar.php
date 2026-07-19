@@ -78,6 +78,10 @@ class Avatar extends Component
          * @var string|null Status tone ('online', 'away', 'busy', 'offline')
          */
         ?string $status = null,
+        /**
+         * Additional classes for the content wrapper.
+         */
+        public ?string $contentClass = null,
     ) {
         $this->size = $this->resolveSize($size);
         $this->shape = $this->resolveShape($shape ?? $variant);

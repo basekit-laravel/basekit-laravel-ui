@@ -66,6 +66,14 @@ class Badge extends Component
          * Custom border color.
          */
         public ?string $border = null,
+        /**
+         * Additional classes for the dot indicator.
+         */
+        public ?string $dotClass = null,
+        /**
+         * Additional classes for the icon wrapper.
+         */
+        public ?string $iconClass = null,
     ) {
         $this->variant = $this->resolveVariant($variant);
         $this->size = $this->resolveSize($size);

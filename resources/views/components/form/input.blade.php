@@ -15,6 +15,8 @@
     - corner-hint: string (optional, right-aligned hint text)
     - label-style: 'default', 'inset', 'overlap' (optional, controls label placement)
     - control-style: 'default', 'pill', 'underline' (optional, controls control shape)
+    - wrapper-class: string (optional, additional classes for the outer wrapper div)
+    - container-class: string (optional, additional classes for the inner container div)
     
     Slots:
     - prefix: Content before the input
@@ -33,7 +35,7 @@
     $hasAnyError = $hasError() || $hasCustomError;
 @endphp
 
-<div class="bk-input" @if ($colorStyle()) style="{{ $colorStyle() }}" @endif {!! $xDataAttribute() ?? '' !!}>
+<div class="bk-input {{ $wrapperClass ?? '' }}" @if ($colorStyle()) style="{{ $colorStyle() }}" @endif {!! $xDataAttribute() ?? '' !!}>
     {{-- Label / Corner Hint --}}
     @include('basekit::components.form.partials.input.input-label-row', [
         'shouldShowTopLabel' => $shouldShowTopLabel(),
@@ -44,7 +46,7 @@
     ])
 
     {{-- Input Container --}}
-    <div class="{{ $containerClasses() }}">
+    <div class="{{ $containerClasses() }}{{ $containerClass ? ' ' . $containerClass : '' }}">
         {{-- Prefix Slot --}}
         @if (isset($prefix))
             <span class="bk-input__prefix">{{ $prefix }}</span>

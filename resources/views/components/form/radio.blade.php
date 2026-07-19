@@ -8,6 +8,8 @@
     - hint: string (optional, shows help text)
     - value: string (optional)
     - is-checked: bool (default: false)
+    - wrapper-class: string (optional, additional classes for the outer wrapper div)
+    - container-class: string (optional, additional classes for the inner container div)
     
     Slots:
     - label: Custom label content
@@ -15,9 +17,9 @@
     - hint: Custom hint content
 --}}
 
-<div class="bk-radio">
+<div class="bk-radio {{ $wrapperClass ?? '' }}">
     {{-- Radio Container --}}
-    <div class="bk-radio__container">
+    <div class="bk-radio__container {{ $containerClass ?? '' }}">
         {{-- Radio Input --}}
         <input type="radio" id="{{ $inputId() }}"
             {{ $attributes->except(['label', 'error', 'hint', 'id'])->twMerge($classes()) }}

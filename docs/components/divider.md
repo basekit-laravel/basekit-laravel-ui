@@ -90,6 +90,24 @@ Override or extend styles with the `class` attribute:
 <x-basekit-ui::divider class="my-6" />
 ```
 
+## Custom Label Background
+
+The label background defaults to `--surface-base` so it masks the divider line behind it. When the divider sits inside a container with a different background (e.g. a card), override `--divider-label-bg` to match:
+
+```blade
+<div class="bg-gray-50 rounded-lg p-4">
+    <x-basekit-ui::divider label="OR" style="--divider-label-bg: var(--color-gray-50);" />
+</div>
+```
+
+You can also set it globally:
+
+```css
+:root {
+  --divider-label-bg: var(--surface-base);
+}
+```
+
 ## CSS Variables
 
 Customize divider appearance via CSS variables:
@@ -114,7 +132,7 @@ Dark mode overrides are applied automatically when a parent element has the `.da
   --divider-color: var(--color-slate-700);
   --divider-color-light: var(--color-slate-800);
   --divider-color-dark: var(--color-slate-500);
-  --divider-label-bg: var(--color-slate-900);
+  --divider-label-bg: var(--surface-base);
   --divider-label-color: var(--color-slate-400);
 }
 ```

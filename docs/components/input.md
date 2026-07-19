@@ -36,6 +36,8 @@ A flexible text input component with configurable variants, sizes, inline labels
 | `is-toggle-password` | `bool`   | `false`       | Show password visibility toggle for password inputs                         |
 | `border`             | `string` | `null`        | Custom border color. |
 | `hover-border`       | `string` | `null`        | Custom hover border color. |
+| `wrapper-class`      | `string` | `null`        | Additional classes for the outer wrapper div |
+| `container-class`    | `string` | `null`        | Additional classes for the inner container div |
 
 Standard HTML input attributes such as `name`, `min`, `max`, `step`, `disabled`, and `readonly` pass through to the underlying `<input>` element.
 
