@@ -55,6 +55,14 @@ class Alert extends Component
          * Custom border color.
          */
         public ?string $border = null,
+        /**
+         * Additional classes for the icon wrapper.
+         */
+        public ?string $iconClass = null,
+        /**
+         * Additional classes for the content wrapper.
+         */
+        public ?string $contentClass = null,
     ) {
         $this->variant = $this->resolveVariant($variant);
     }

@@ -25,6 +25,8 @@ A switch-style boolean control with configurable variants, sizes, labels, and va
 | `hint`       | `string` | `null`      | Helper text shown below the control                                                   |
 | `color`      | `string` | `null`      | Quick color shortcut. Sets the ON background color. |
 | `background` | `string` | `null`      | Custom ON background color. |
+| `wrapper-class` | `string` | `null`    | Additional classes for the outer wrapper div |
+| `container-class` | `string` | `null`  | Additional classes for the inner container div |
 
 Standard checkbox attributes such as `name`, `id`, and `disabled` pass through to the underlying hidden checkbox input.
 

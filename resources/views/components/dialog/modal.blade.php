@@ -39,7 +39,7 @@
         role="dialog" aria-modal="true" @click.stop>
 
         @if ($title || $isCloseButton)
-            <div class="bk-modal__header">
+            <div class="bk-modal__header {{ $headerClass ?? '' }}">
                 @if ($title)
                     <h3 class="bk-modal__title">{{ $title }}</h3>
                 @endif
@@ -53,12 +53,12 @@
             </div>
         @endif
 
-        <div class="bk-modal__body">
+        <div class="bk-modal__body {{ $bodyClass ?? '' }}">
             {{ $slot }}
         </div>
 
         @if (isset($footer))
-            <div class="bk-modal__footer">
+            <div class="bk-modal__footer {{ $footerClass ?? '' }}">
                 {{ $footer }}
             </div>
         @endif

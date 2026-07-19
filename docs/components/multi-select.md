@@ -42,6 +42,8 @@ This component requires Alpine.js to be loaded in your layout for interactive be
 | `control-style` | `string` | `'default'`        | Control style: `default`, `pill`, `underline`                               |
 | `border`        | `string` | `null`             | Custom border color. |
 | `hover-border`  | `string` | `null`             | Custom hover border color. |
+| `wrapper-class` | `string` | `null`             | Additional classes for the outer wrapper div |
+| `container-class` | `string` | `null`           | Additional classes for the inner container div |
 
 Pass `name="tags"` or `name="tags[]"`; the component normalizes hidden inputs to array submission format automatically.
 

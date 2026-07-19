@@ -24,6 +24,8 @@ A small badge component for labels, counts, and status indicators.
 | `background` | `string` | `null`     | Custom background color. |
 | `text`    | `string`  | `null`        | Custom text color. |
 | `border`  | `string`  | `null`        | Custom border color. |
+| `dot-class` | `string` | `null`       | Additional classes for the dot indicator |
+| `icon-class` | `string` | `null`      | Additional classes for the icon wrapper |
 
 ## Slots
 

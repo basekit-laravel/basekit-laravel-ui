@@ -44,7 +44,19 @@ class Modal extends Component
         /**
          * External Alpine.js variable to bind to (e.g., 'isModalOpen').
          */
-        public ?string $show = null
+        public ?string $show = null,
+        /**
+         * Additional classes for the header wrapper.
+         */
+        public ?string $headerClass = null,
+        /**
+         * Additional classes for the body wrapper.
+         */
+        public ?string $bodyClass = null,
+        /**
+         * Additional classes for the footer wrapper.
+         */
+        public ?string $footerClass = null,
     ) {
         $this->size = $this->resolveSize($size);
     }

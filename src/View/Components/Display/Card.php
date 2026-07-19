@@ -43,7 +43,15 @@ class Card extends Component
          * @var bool Apply padding to card body (default: true)
          */
         public bool $isPadded = true,
-        ?string $variant = null
+        ?string $variant = null,
+        /**
+         * Additional classes for the header wrapper.
+         */
+        public ?string $headerClass = null,
+        /**
+         * Additional classes for the footer wrapper.
+         */
+        public ?string $footerClass = null,
     ) {
         $this->variant = $this->resolveVariant($variant);
         $this->rootClassNames = $this->buildRootClassNames();

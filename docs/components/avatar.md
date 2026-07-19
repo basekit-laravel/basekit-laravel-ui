@@ -23,6 +23,7 @@ An avatar component for displaying user profile images.
 | `variant`  | `string` | `null`    | Alias for `shape` (`round`,`soft`,`square`)            |
 | `status`   | `string` | `null`    | Optional status dot (`online`,`away`,`busy`,`offline`) |
 | `initials` | `string` | `null`    | Text fallback when image fails                         |
+| `content-class` | `string` | `null` | Additional classes for the content wrapper             |
 
 ## Slots
 

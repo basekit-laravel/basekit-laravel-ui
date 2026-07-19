@@ -42,6 +42,8 @@ A select component with support for generated options, custom option markup, ico
 | `control-style` | `string` | `'default'`   | Control style: `default`, `pill`, `underline`                               |
 | `border`        | `string` | `null`        | Custom border color. |
 | `hover-border`  | `string` | `null`        | Custom hover border color. |
+| `wrapper-class` | `string` | `null`        | Additional classes for the outer wrapper div |
+| `container-class` | `string` | `null`        | Additional classes for the inner container div |
 
 Standard select attributes such as `name`, `multiple`, and `disabled` can also be passed through.
 

@@ -26,6 +26,8 @@ Alert banner component for displaying status and feedback messages. Interactive 
 | `background`     | `string\|null` | `null`                  | Custom background color. |
 | `text`           | `string\|null` | `null`                  | Custom text color. |
 | `border`         | `string\|null` | `null`                  | Custom border color. |
+| `icon-class`     | `string\|null` | `null`                  | Additional classes for the icon wrapper |
+| `content-class`  | `string\|null` | `null`                  | Additional classes for the content wrapper |
 
 ## Slots
 

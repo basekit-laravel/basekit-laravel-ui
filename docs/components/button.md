@@ -35,6 +35,9 @@ A versatile button component with multiple variants, sizes, and icon support.
 | `hover-background` | `string` | `null`      | Custom hover background color. |
 | `hover-text`       | `string` | `null`      | Custom hover text color. |
 | `hover-border`     | `string` | `null`      | Custom hover border color. |
+| `prefix-class`     | `string` | `null`      | Additional classes for the prefix slot wrapper |
+| `suffix-class`     | `string` | `null`      | Additional classes for the suffix slot wrapper |
+| `content-class`    | `string` | `null`      | Additional classes for the content wrapper |
 
 ## Slots
 

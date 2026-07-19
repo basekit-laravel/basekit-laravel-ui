@@ -73,6 +73,14 @@ class Checkbox extends Component
          * Custom checked border color.
          */
         public ?string $border = null,
+        /**
+         * Additional classes for the outer wrapper div.
+         */
+        public ?string $wrapperClass = null,
+        /**
+         * Additional classes for the inner container div.
+         */
+        public ?string $containerClass = null,
     ) {
         $this->variant = $this->resolveVariant($variant);
         $this->size = $this->resolveSize($size);

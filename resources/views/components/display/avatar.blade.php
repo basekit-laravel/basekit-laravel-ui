@@ -2,7 +2,7 @@
 
 {{-- Avatar Container --}}
 <div {{ $attributes->twMerge($classes()) }}>
-    <div class="bk-avatar__content">
+    <div class="bk-avatar__content {{ $contentClass ?? '' }}">
         {{-- Image --}}
         @if ($hasImage())
             <img src="{{ $src }}" alt="{{ $alt }}" class="bk-avatar__image"

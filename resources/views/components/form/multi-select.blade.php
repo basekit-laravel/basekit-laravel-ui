@@ -13,6 +13,8 @@
     - corner-hint: string (optional, right-aligned hint text)
     - label-style: 'default', 'inset', 'overlap' (optional, controls label placement)
     - control-style: 'default', 'pill', 'underline' (optional, controls control shape)
+    - wrapper-class: string (optional, additional classes for the outer wrapper div)
+    - container-class: string (optional, additional classes for the inner container div)
 
     Slots:
     - label: Custom label content
@@ -29,7 +31,7 @@
     $hasAnyError = $hasError() || $hasCustomError;
 @endphp
 
-<div class="bk-multiselect" @if ($colorStyle()) style="{{ $colorStyle() }}" @endif x-data="{
+<div class="bk-multiselect {{ $wrapperClass ?? '' }}" @if ($colorStyle()) style="{{ $colorStyle() }}" @endif x-data="{
     open: false,
     disabled: @js($isDisabled()),
     options: @js($optionsList()),
@@ -62,7 +64,7 @@
     ])
 
     {{-- Select Container --}}
-    <div class="{{ $containerClasses() }}{{ $hasCustomIcon || $iconComponent() ? ' bk-multiselect__container--with-icon' : '' }}"
+    <div class="{{ $containerClasses() }}{{ $containerClass ? ' ' . $containerClass : '' }}{{ $hasCustomIcon || $iconComponent() ? ' bk-multiselect__container--with-icon' : '' }}"
         @click="if (!disabled) open = !open">
         {{-- Inline Labels (inset/overlap) --}}
         @include('basekit::components.form.partials.multi_select.multi-select-inline-label', [

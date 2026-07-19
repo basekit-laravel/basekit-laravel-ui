@@ -98,6 +98,18 @@ class Button extends Component
          * Custom hover border color.
          */
         public ?string $hoverBorder = null,
+        /**
+         * Additional classes for the prefix slot wrapper.
+         */
+        public ?string $prefixClass = null,
+        /**
+         * Additional classes for the suffix slot wrapper.
+         */
+        public ?string $suffixClass = null,
+        /**
+         * Additional classes for the content wrapper.
+         */
+        public ?string $contentClass = null,
     ) {
         if ($this->href !== null) {
             $this->as = 'a';

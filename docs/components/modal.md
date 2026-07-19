@@ -58,6 +58,9 @@ To control the modal from outside (e.g., from a button), use the `show` prop to 
 | `isCloseButton`     | `bool`         | `true`                | Show header close button                                          |
 | `isOpen`            | `bool`         | `false`               | Initial open state for internally controlled modal state          |
 | `show`              | `string\|null` | `null`                | External Alpine.js variable name to bind to (e.g., `isModalOpen`) |
+| `header-class`      | `string\|null` | `null`                | Additional classes for the header wrapper                        |
+| `body-class`        | `string\|null` | `null`                | Additional classes for the body wrapper                          |
+| `footer-class`      | `string\|null` | `null`                | Additional classes for the footer wrapper                        |
 
 Use `isOpen` for a self-contained modal, or `show` when controlling visibility from a parent Alpine.js scope.
 
