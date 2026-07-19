@@ -79,10 +79,6 @@
  * =============================================================================
  */
 
-.bk-checkbox {
-  margin-bottom: 0.5rem;
-}
-
 .bk-checkbox__container {
   display: flex;
   align-items: center;
