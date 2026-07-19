@@ -83,7 +83,7 @@
 
 .bk-checkbox__container {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.75rem;
 }
 
@@ -92,7 +92,6 @@
   font-weight: var(--font-weight-medium);
   color: var(--checkbox-label-color);
   line-height: 1.25rem;
-  margin-top: 1px;
   cursor: pointer;
   user-select: none;
 }
