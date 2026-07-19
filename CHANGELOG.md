@@ -5,6 +5,13 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.1](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.6.0...v1.6.1) (2026-07-19)
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump rector/rector from 2.5.4 to 2.5.7 ([#33](https://github.com/basekit-laravel/basekit-laravel-ui/issues/33)) ([1efb0c9](https://github.com/basekit-laravel/basekit-laravel-ui/commit/1efb0c959a89a2c436f299712f4d21195059020e))
+
 ## [1.6.0](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.5.1...v1.6.0) (2026-07-11)
 
 
