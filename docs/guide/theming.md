@@ -323,7 +323,7 @@ All components ship with built-in dark mode overrides via a parent `.dark` class
 
 ### Enabling Dark Mode
 
-Add the `.dark` class to a parent element — typically `<html>` or `<body>` — and all Basekit components inside it will automatically switch to dark-appropriate colors:
+Add the `.dark` class to a parent element — typically `<html>` or `<body>` — and all Basekit components inside it will automatically switch to dark-appropriate colors. `dark:` Tailwind utilities also work alongside the component CSS, and native browser controls (scrollbars, form elements) follow the theme via `color-scheme`:
 
 ```blade
 <html class="{{ $darkMode ? 'dark' : '' }}">
@@ -341,7 +341,22 @@ You can also scope dark mode to a specific section:
 
 ### How It Works
 
+The package registers a Tailwind CSS `@custom-variant dark` directive in `theme.css` so that `dark:` Tailwind utilities (e.g., `dark:bg-gray-900`) work alongside the component CSS variable system:
+
+```css
+@custom-variant dark (&:where(.dark, .dark *));
+```
+
 Each component's CSS file contains a `.dark {}` block that re-declares its design tokens with dark-appropriate values. When the `.dark` class is present on any ancestor, CSS specificity causes the dark overrides to take effect automatically.
+
+A global `--surface-base` token is also overridden under `.dark` so that components referencing it (Card, Input, Table, etc.) get a consistent dark background without individual overrides.
+
+Native browser controls (scrollbars, `<select>` dropdowns, date pickers) follow the theme via `color-scheme`:
+
+```css
+:root { color-scheme: light; }
+.dark { color-scheme: dark; }
+```
 
 All overrides reference **Tailwind CSS color tokens** (e.g., `var(--color-slate-800)`, `var(--color-primary-400)`) via a shared `theme.css` file, so dark mode stays in sync with your Tailwind palette.
 
@@ -351,7 +366,7 @@ The built-in overrides follow a consistent light-to-dark mapping:
 
 | Light Value | Dark Replacement | Used For |
 |---|---|---|
-| `--surface-base` (white) | `slate-800` | Component backgrounds |
+| `--surface-base` (white) | `slate-900` | Global surface background; component-specific overrides may use `slate-800` |
 | `slate-50` / `slate-100` | `slate-800` / `slate-700` | Backgrounds, hover states |
 | `slate-200` / `slate-300` | `slate-700` / `slate-600` | Borders, dividers |
 | `slate-400` / `slate-500` | `slate-400` / `slate-500` | Placeholders, icons (unchanged) |
@@ -426,9 +441,9 @@ Every component with color tokens has a complete set of dark overrides. Below is
 
 | Component | Key Dark Tokens |
 |---|---|
-| **Divider** | `--divider-color`, `--divider-color-light`, `--divider-color-dark`, `--divider-label-bg`, `--divider-label-color` (5 dark variables) |
+| **Divider** | `--divider-color`, `--divider-color-light`, `--divider-color-dark`, `--divider-label-color` (4 dark variables) |
 
-**Total: 468 dark mode CSS variables across 30 components.**
+**Total: 467 dark mode CSS variables across 30 components.**
 
 ### Custom Dark Mode Overrides
 
@@ -453,21 +468,29 @@ You can also scope overrides to a specific component instance:
 
 ### Auto Dark Mode with Media Query
 
-If you prefer automatic dark mode based on the user's OS preference instead of class-based toggling, wrap the built-in overrides in a media query:
+The package ships with `@custom-variant dark (&:where(.dark, .dark *))` which makes dark mode class-based. If you prefer automatic dark mode based on the user's OS preference instead, replace the variant in your CSS:
 
 ```css
-@media (prefers-color-scheme: dark) {
-  :root {
-    --card-bg: var(--color-slate-800);
-    --card-border: var(--color-slate-700);
-    --input-bg: var(--color-slate-800);
-    --input-color: var(--color-slate-100);
-    --input-border-color: var(--color-slate-600);
+@import "tailwindcss";
+@custom-variant dark (@media (prefers-color-scheme: dark));
+```
+
+This removes the need for a `.dark` toggle — dark styles apply automatically when the OS is in dark mode. If you want **both** (class-based toggle with OS fallback), combine them:
+
+```css
+@custom-variant dark {
+  &:where(.dark, .dark *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:not(.light *)) {
+      @slot;
+    }
   }
 }
 ```
 
-This works because all components use CSS custom properties — the values are resolved at compute time, so overriding `:root` inside a media query achieves the same effect as the `.dark` class approach.
+This applies dark styles when `.dark` is present, **or** when the OS prefers dark and no `.light` class is set.
 
 ### Components Without Dark Overrides
 
@@ -544,7 +567,15 @@ Raw CSS values passthrough literally — no auto-hover or auto-contrast is appli
 ```css
 /* resources/css/custom-theme.css */
 
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Component imports from the build */
+@import "../../public/vendor/basekit-laravel/v1/basekit-ui.css";
+
 :root {
+  color-scheme: light;
+
   /* Brand Colors */
   --color-primary-600: #7c3aed;
   --color-primary-700: #6d28d9;
@@ -571,6 +602,10 @@ Raw CSS values passthrough literally — no auto-hover or auto-contrast is appli
 
 /* Dark Mode — class-based (add .dark to <html>) */
 .dark {
+  color-scheme: dark;
+
+  --surface-base: var(--color-slate-900);
+
   --card-bg: #0f172a;
   --card-header-text: #f1f5f9;
   --card-border: #1e293b;
@@ -591,19 +626,6 @@ Raw CSS values passthrough literally — no auto-hover or auto-contrast is appli
   --table-header-text: #e2e8f0;
   --table-body-text: #e2e8f0;
 }
-
-/* Dark Mode — media query (automatic) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --card-bg: #0f172a;
-    --card-header-text: #f1f5f9;
-    --card-border: #1e293b;
-
-    --input-bg: #0f172a;
-    --input-color: #f1f5f9;
-    --input-border-color: #334155;
-  }
-}
 ```
 
 ## Theming Best Practices
@@ -613,7 +635,8 @@ Raw CSS values passthrough literally — no auto-hover or auto-contrast is appli
 3. **Test dark mode** — Verify all overrides work in both light and dark themes; use the [styleguide](/styleguide) to preview
 4. **Document overrides** — Keep track of customized variables in your theme file
 5. **Version control** — Commit your theme file with your application code
-6. **Start with built-in defaults** — Override only what you need; the 468 built-in dark mode variables handle most cases
+6. **Start with built-in defaults** — Override only what you need; the 467 built-in dark mode variables handle most cases
+7. **Set `color-scheme`** — Always set `color-scheme: light` on `:root` and `color-scheme: dark` under `.dark` so native browser controls follow the theme
 
 ## Build CSS with Artisan
 
