@@ -40,6 +40,7 @@ $totalPages = 10;
 | `perPageLabel`   | `string` | `Per page:`                              | Per-page selector label text                            |
 | `perPageName`    | `string` | `per_page`                               | Query parameter key for per-page selection              |
 | `perPageOptions` | `int[]`  | `[15, 30, 50]`                           | Available per-page values                               |
+| `responsive`     | `bool`   | `false`                                  | Show full pagination on desktop, simple prev/next on mobile |
 
 ## Slots
 
@@ -97,6 +98,24 @@ $totalPages = 10;
     type="simple"
 />
 ```
+
+## Responsive Pagination
+
+Shows full numbered pagination on desktop (≥768px) and collapses to simple prev/next buttons with a "1 / 12" page indicator on mobile:
+
+```blade
+<x-basekit-ui::pagination
+    :currentPage="$currentPage"
+    :totalPages="$totalPages"
+    :perPage="$perPage"
+    :total="$total"
+    path="{{ url()->current() }}"
+    :showInfo="true"
+    responsive
+/>
+```
+
+On desktop the full pagination renders normally. On mobile the page numbers are hidden and replaced with previous/next buttons flanking a compact "currentPage / totalPages" indicator. The info text is also hidden on mobile to save space.
 
 ## Custom Previous/Next Labels
 

@@ -61,6 +61,37 @@ describe('Navigation Components', function () {
         expect($html)->not->toContain('<span>Next</span>');
     });
 
+    test('pagination responsive renders both desktop and mobile views', function (): void {
+        $html = Blade::render(
+            '<x-basekit-ui::pagination :current-page="2" :total-pages="5" :responsive="true" path="/items" />',
+        );
+
+        expect($html)->toContain('bk-pagination__desktop');
+        expect($html)->toContain('bk-pagination__mobile');
+        expect($html)->toContain('bk-pagination__mobile-indicator');
+        expect($html)->toContain('2 / 5');
+    });
+
+    test('pagination responsive mobile shows disabled state on first page', function (): void {
+        $html = Blade::render(
+            '<x-basekit-ui::pagination :current-page="1" :total-pages="5" :responsive="true" path="/items" />',
+        );
+
+        expect($html)->toContain('bk-pagination__mobile');
+        expect($html)->toContain('1 / 5');
+        expect($html)->toContain('bk-pagination__link--disabled');
+    });
+
+    test('pagination responsive mobile shows disabled state on last page', function (): void {
+        $html = Blade::render(
+            '<x-basekit-ui::pagination :current-page="5" :total-pages="5" :responsive="true" path="/items" />',
+        );
+
+        expect($html)->toContain('bk-pagination__mobile');
+        expect($html)->toContain('5 / 5');
+        expect($html)->toContain('bk-pagination__link--disabled');
+    });
+
     test('tabs renders with items and selected', function () {
         $html = Blade::render('<x-basekit-ui::tabs :items="[[\'label\'=>\'Tab1\',\'value\'=>\'tab1\'],[\'label\'=>\'Tab2\',\'value\'=>\'tab2\']]" selected="tab2" />');
         expect($html)->toContain('Tab1');

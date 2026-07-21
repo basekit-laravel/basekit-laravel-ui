@@ -95,6 +95,10 @@ class Pagination extends Component
          * Base URL path for pagination links.
          */
         public ?string $path = null,
+        /**
+         * Whether to render responsive mode (full pagination on desktop, simple prev/next on mobile).
+         */
+        public bool $responsive = false,
     ) {
         $this->totalPages = max(1, $totalPages);
         $this->currentPage = max(1, min($currentPage, $this->totalPages));
@@ -190,6 +194,14 @@ class Pagination extends Component
             ':to' => (string) $this->lastItem(),
             ':total' => (string) $this->total,
         ]);
+    }
+
+    /**
+     * Check if responsive mode is enabled.
+     */
+    public function isResponsive(): bool
+    {
+        return $this->responsive;
     }
 
     /**

@@ -7613,6 +7613,69 @@ body {
   padding: 0.375rem 0.5rem;
 }
 
+/* =============================================================================
+   Responsive Mode
+   ============================================================================= */
+
+.bk-pagination--responsive {
+  container-type: inline-size;
+  container-name: pagination;
+}
+
+.bk-pagination__desktop {
+  display: none;
+}
+
+.bk-pagination__mobile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bk-pagination__mobile-indicator {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-weight: 500;
+  font-weight: var(--font-weight-medium);
+  color: #334155;
+  color: var(--pagination-text);
+}
+
+/* Container query: primary mechanism for responsive preview widgets */
+
+@container pagination (min-width: 768px) {
+  .bk-pagination__desktop {
+    display: block;
+  }
+
+  .bk-pagination__mobile {
+    display: none;
+  }
+}
+
+/* Viewport fallback for browsers that do not support container queries */
+
+@supports not (container-type: inline-size) {
+  @media (min-width: 768px) {
+    .bk-pagination__desktop {
+      display: block;
+    }
+
+    .bk-pagination__mobile {
+      display: none;
+    }
+  }
+  @media (--bk-md) {
+    .bk-pagination__desktop {
+      display: block;
+    }
+
+    .bk-pagination__mobile {
+      display: none;
+    }
+  }
+}
+
 /* Dark mode overrides */
 
 .dark {
@@ -14578,7 +14641,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--primary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca6099d7ca-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f9600e693d-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14605,7 +14668,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca6099da96-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f9600e732c-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14663,7 +14726,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca6099e0d8-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f9600e9111-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14690,7 +14753,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca6099e186-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f9600e94cf-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14748,7 +14811,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--success"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca6099e84e-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f9600ea904-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14775,7 +14838,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca6099e981-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f9600eab40-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14833,7 +14896,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--warning"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca6099f032-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f9600ec0c1-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14860,7 +14923,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca6099f139-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f9600ec37e-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14918,7 +14981,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--info"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca6099f8d4-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f9600ed90f-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14945,7 +15008,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca6099fa4f-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f9600edc27-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15003,7 +15066,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--ghost"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca609a00b4-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f9600ef2e8-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15030,7 +15093,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca609a0156-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f9600ef609-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15095,7 +15158,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca609a05f0-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f9600f06bf-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15122,7 +15185,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca609a08c2-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f9600f0d84-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15180,7 +15243,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca609a0e3a-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f9600f1bb8-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15207,7 +15270,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca609a0f22-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f9600f1fb8-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15265,7 +15328,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca609a1166-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f9600f2b33-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15292,7 +15355,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca609a126f-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f9600f3082-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15357,7 +15420,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--sm bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca609a18ba-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f960102034-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15384,7 +15447,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca609a19ac-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f960102530-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15442,7 +15505,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca609a1bca-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f9601031f6-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15469,7 +15532,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca609a1c81-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f960103813-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15527,7 +15590,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--lg bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca609a24b4-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f960107ae4-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15554,7 +15617,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca609a2675-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f960108422-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15618,7 +15681,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca609a28a8-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f960109fae-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15645,7 +15708,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca609a2985-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f96010a421-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15706,7 +15769,7 @@ body {
         
         <button type="button"
             disabled="disabled" class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca609a2b7b-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f96010b175-list" aria-haspopup="listbox"
                          disabled >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15733,7 +15796,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca609a2c22-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f96010b969-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15791,7 +15854,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--error bk-multiselect__control--has-error-icon"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca609a3301-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f96010fc27-list" aria-haspopup="listbox"
              aria-invalid="true" aria-describedby="-error"             >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15824,7 +15887,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca609a33c3-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f96010ffb1-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15886,7 +15949,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca609a3645-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f960110f14-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15913,7 +15976,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca609a3721-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f9601112c5-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15981,7 +16044,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca609a3997-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f960111b7e-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -16008,7 +16071,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca609a3a6d-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f960111e47-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -16070,7 +16133,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--underline"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca609a4191-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f960113b42-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -16097,7 +16160,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca609a427b-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f960113f16-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -16157,7 +16220,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--label-inset"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca609a4906-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f960115695-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -16184,7 +16247,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca609a49e4-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f9601159a6-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -16244,7 +16307,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--label-overlap"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca609a50ad-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f9601175eb-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -16271,7 +16334,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca609a5197-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f960117922-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -16333,7 +16396,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--pill"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca609a5864-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f960119506-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -16360,7 +16423,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca609a594f-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f9601198b7-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -16425,7 +16488,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--with-icon"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5ca609a670d-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a5f96011ce81-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -16452,7 +16515,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5ca609a67f7-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a5f96011d1d7-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -17033,12 +17096,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-fa88527c-796d-403e-b938-d84efaa4da82"
+        <input type="checkbox" id="bk-checkbox-b43f3732-8501-41f5-878d-8b623fd0c7ce"
             name="ckx_primary" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-fa88527c-796d-403e-b938-d84efaa4da82">
+                    <label class="bk-checkbox__label" for="bk-checkbox-b43f3732-8501-41f5-878d-8b623fd0c7ce">
                 Primary
             </label>
             </div>
@@ -17050,12 +17113,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-7f6375f9-3662-409b-9ad0-7eb688f4d163"
+        <input type="checkbox" id="bk-checkbox-90f6a728-5c66-43fb-96dd-4755a8f17414"
             name="ckx_secondary" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--secondary"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-7f6375f9-3662-409b-9ad0-7eb688f4d163">
+                    <label class="bk-checkbox__label" for="bk-checkbox-90f6a728-5c66-43fb-96dd-4755a8f17414">
                 Secondary
             </label>
             </div>
@@ -17067,12 +17130,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-80eeae28-77fb-45c4-93fb-4d592a2b5def"
+        <input type="checkbox" id="bk-checkbox-0caacc9e-bd0c-4eb9-8978-a86ff6630ae4"
             name="ckx_success" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--success"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-80eeae28-77fb-45c4-93fb-4d592a2b5def">
+                    <label class="bk-checkbox__label" for="bk-checkbox-0caacc9e-bd0c-4eb9-8978-a86ff6630ae4">
                 Success
             </label>
             </div>
@@ -17084,12 +17147,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-fef7e7cc-2266-4990-961c-b406dafcc3be"
+        <input type="checkbox" id="bk-checkbox-acc5db66-8b4c-4145-bcd7-70d75965b1cf"
             name="ckx_warning" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--warning"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-fef7e7cc-2266-4990-961c-b406dafcc3be">
+                    <label class="bk-checkbox__label" for="bk-checkbox-acc5db66-8b4c-4145-bcd7-70d75965b1cf">
                 Warning
             </label>
             </div>
@@ -17101,12 +17164,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-971a7af7-fa1e-4d6c-92ac-89d848f9ce9e"
+        <input type="checkbox" id="bk-checkbox-70f20c73-c448-4853-9144-317842c63079"
             name="ckx_danger" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--danger"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-971a7af7-fa1e-4d6c-92ac-89d848f9ce9e">
+                    <label class="bk-checkbox__label" for="bk-checkbox-70f20c73-c448-4853-9144-317842c63079">
                 Danger
             </label>
             </div>
@@ -17118,12 +17181,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-5c3e1691-b309-41c8-a9e5-bf57ac2c2ba2"
+        <input type="checkbox" id="bk-checkbox-e4f256af-b2d6-4333-996a-69f70d725984"
             name="ckx_info" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--info"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-5c3e1691-b309-41c8-a9e5-bf57ac2c2ba2">
+                    <label class="bk-checkbox__label" for="bk-checkbox-e4f256af-b2d6-4333-996a-69f70d725984">
                 Info
             </label>
             </div>
@@ -17135,12 +17198,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-10e1d933-40a5-4a13-8366-bcb93be9fd93"
+        <input type="checkbox" id="bk-checkbox-3eec19e6-bd92-40e4-b76b-0b135c668bad"
             name="ckx_ghost" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--ghost"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-10e1d933-40a5-4a13-8366-bcb93be9fd93">
+                    <label class="bk-checkbox__label" for="bk-checkbox-3eec19e6-bd92-40e4-b76b-0b135c668bad">
                 Ghost
             </label>
             </div>
@@ -17159,12 +17222,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-5c826a9d-6a51-4a10-b6c9-c228eb72c124"
+        <input type="checkbox" id="bk-checkbox-a1b1e8be-8146-4507-92b8-b9fd1bdeeefe"
             name="ckx_color_indigo" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
              style="--checkbox-primary-checked-bg: var(--color-indigo-500); --checkbox-primary-checked-border: var(--color-indigo-700); --checkbox-primary-focus-ring: var(--color-indigo-100)"                          checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-5c826a9d-6a51-4a10-b6c9-c228eb72c124">
+                    <label class="bk-checkbox__label" for="bk-checkbox-a1b1e8be-8146-4507-92b8-b9fd1bdeeefe">
                 Indigo
             </label>
             </div>
@@ -17176,12 +17239,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-58888202-cc2e-4898-8270-928d46a67e8a"
+        <input type="checkbox" id="bk-checkbox-cbf92029-886d-456c-a006-8959e7e966db"
             name="ckx_color_pink" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
              style="--checkbox-primary-checked-bg: var(--color-pink-500); --checkbox-primary-checked-border: var(--color-pink-700); --checkbox-primary-focus-ring: var(--color-pink-100)"                          checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-58888202-cc2e-4898-8270-928d46a67e8a">
+                    <label class="bk-checkbox__label" for="bk-checkbox-cbf92029-886d-456c-a006-8959e7e966db">
                 Pink
             </label>
             </div>
@@ -17193,12 +17256,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-5b64de32-d0d5-4eb1-8678-869e98d88413"
+        <input type="checkbox" id="bk-checkbox-3c578e97-3f05-41f0-bbe5-61b2b54df7cc"
             name="ckx_color_emerald" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
              style="--checkbox-primary-checked-bg: var(--color-emerald-500); --checkbox-primary-checked-border: var(--color-emerald-700); --checkbox-primary-focus-ring: var(--color-emerald-100)"                          checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-5b64de32-d0d5-4eb1-8678-869e98d88413">
+                    <label class="bk-checkbox__label" for="bk-checkbox-3c578e97-3f05-41f0-bbe5-61b2b54df7cc">
                 Emerald
             </label>
             </div>
@@ -17217,12 +17280,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-1737b0a8-9d15-40d9-8f15-59cf7c6b934a"
+        <input type="checkbox" id="bk-checkbox-a3ffe6ea-1a52-485e-b635-e9bc0692c1c7"
             name="ckx_sm" class="bk-checkbox__control bk-checkbox__control--sm bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-1737b0a8-9d15-40d9-8f15-59cf7c6b934a">
+                    <label class="bk-checkbox__label" for="bk-checkbox-a3ffe6ea-1a52-485e-b635-e9bc0692c1c7">
                 Small
             </label>
             </div>
@@ -17234,12 +17297,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-7415036a-abac-4847-85a5-278b0e6cdcd1"
+        <input type="checkbox" id="bk-checkbox-62482270-5a01-407e-81ce-147cab37231a"
             name="ckx_md" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-7415036a-abac-4847-85a5-278b0e6cdcd1">
+                    <label class="bk-checkbox__label" for="bk-checkbox-62482270-5a01-407e-81ce-147cab37231a">
                 Medium
             </label>
             </div>
@@ -17251,12 +17314,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-4ffc4731-2320-410e-935f-381848be7c25"
+        <input type="checkbox" id="bk-checkbox-91cd4c9f-3f22-406e-8a3f-33fb4b105afe"
             name="ckx_lg" class="bk-checkbox__control bk-checkbox__control--lg bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-4ffc4731-2320-410e-935f-381848be7c25">
+                    <label class="bk-checkbox__label" for="bk-checkbox-91cd4c9f-3f22-406e-8a3f-33fb4b105afe">
                 Large
             </label>
             </div>
@@ -17275,12 +17338,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-f7ef6bc1-1704-4f85-89e5-10d20b3ddd0a"
+        <input type="checkbox" id="bk-checkbox-b144ca10-e7e0-4985-89df-a6f1b25b662d"
             name="ckx_unchecked" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-f7ef6bc1-1704-4f85-89e5-10d20b3ddd0a">
+                    <label class="bk-checkbox__label" for="bk-checkbox-b144ca10-e7e0-4985-89df-a6f1b25b662d">
                 Unchecked
             </label>
             </div>
@@ -17292,12 +17355,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-02fc9993-84c5-4a8a-879c-b2002141bea1"
+        <input type="checkbox" id="bk-checkbox-eb308bc6-561c-4fcc-b1ec-53ebaebb02af"
             name="ckx_checked" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-02fc9993-84c5-4a8a-879c-b2002141bea1">
+                    <label class="bk-checkbox__label" for="bk-checkbox-eb308bc6-561c-4fcc-b1ec-53ebaebb02af">
                 Checked
             </label>
             </div>
@@ -17309,12 +17372,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-f364ea51-3b38-4d4a-a7be-572d9214277f"
+        <input type="checkbox" id="bk-checkbox-899016e1-a273-4f2c-a5b7-cf9185e7367c"
             name="ckx_disabled" disabled="disabled" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-f364ea51-3b38-4d4a-a7be-572d9214277f">
+                    <label class="bk-checkbox__label" for="bk-checkbox-899016e1-a273-4f2c-a5b7-cf9185e7367c">
                 Disabled
             </label>
             </div>
@@ -17326,12 +17389,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-7e33502f-bc6d-407a-9ff5-9377ca7fe352"
+        <input type="checkbox" id="bk-checkbox-1c4fd144-1a01-4750-a778-0c46721d2f23"
             name="ckx_disabled_checked" disabled="disabled" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-7e33502f-bc6d-407a-9ff5-9377ca7fe352">
+                    <label class="bk-checkbox__label" for="bk-checkbox-1c4fd144-1a01-4750-a778-0c46721d2f23">
                 Disabled &amp; Checked
             </label>
             </div>
@@ -17343,18 +17406,18 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container bk-checkbox__container--error">
         
-        <input type="checkbox" id="bk-checkbox-ce19ba0e-be5f-4ced-b7b0-180e3712a9d9"
+        <input type="checkbox" id="bk-checkbox-38d1e911-2d92-495f-938e-82103c123160"
             name="ckx_error" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--error"
-                                                 aria-invalid="true" aria-describedby="bk-checkbox-ce19ba0e-be5f-4ced-b7b0-180e3712a9d9-error" >
+                                                 aria-invalid="true" aria-describedby="bk-checkbox-38d1e911-2d92-495f-938e-82103c123160-error" >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-ce19ba0e-be5f-4ced-b7b0-180e3712a9d9">
+                    <label class="bk-checkbox__label" for="bk-checkbox-38d1e911-2d92-495f-938e-82103c123160">
                 With Error
             </label>
             </div>
 
     
-            <p class="bk-checkbox__error-message" id="bk-checkbox-ce19ba0e-be5f-4ced-b7b0-180e3712a9d9-error">
+            <p class="bk-checkbox__error-message" id="bk-checkbox-38d1e911-2d92-495f-938e-82103c123160-error">
             This is required
         </p>
     
@@ -17363,12 +17426,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-3811252d-c01d-4ed1-9306-4942a2c8765c"
+        <input type="checkbox" id="bk-checkbox-ae310f46-b198-4116-ad98-9b571156eee4"
             name="ckx_hint" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-3811252d-c01d-4ed1-9306-4942a2c8765c">
+                    <label class="bk-checkbox__label" for="bk-checkbox-ae310f46-b198-4116-ad98-9b571156eee4">
                 With Hint
             </label>
             </div>
@@ -17407,12 +17470,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-c691f326-016b-4e8f-8582-8acf61506c9c"
+        <input type="radio" id="bk-radio-43ce4f52-5c83-40cf-bc1b-ea0583b17c61"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="primary"              checked             >
 
         
-                    <label class="bk-radio__label" for="bk-radio-c691f326-016b-4e8f-8582-8acf61506c9c">
+                    <label class="bk-radio__label" for="bk-radio-43ce4f52-5c83-40cf-bc1b-ea0583b17c61">
                 Primary
             </label>
             </div>
@@ -17425,12 +17488,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-92676c87-b2f7-4105-aa2d-da5d47da768f"
+        <input type="radio" id="bk-radio-46ef2fc1-ab4f-4ace-a7f7-030f478b2962"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--secondary"
                          value="secondary"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-92676c87-b2f7-4105-aa2d-da5d47da768f">
+                    <label class="bk-radio__label" for="bk-radio-46ef2fc1-ab4f-4ace-a7f7-030f478b2962">
                 Secondary
             </label>
             </div>
@@ -17443,12 +17506,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-a7717f18-cd63-4b25-b3bb-b29562073b48"
+        <input type="radio" id="bk-radio-2fdce547-b331-4367-abe7-857700318ccd"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--success"
                          value="success"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-a7717f18-cd63-4b25-b3bb-b29562073b48">
+                    <label class="bk-radio__label" for="bk-radio-2fdce547-b331-4367-abe7-857700318ccd">
                 Success
             </label>
             </div>
@@ -17461,12 +17524,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-b2b97590-fd23-4505-8dfa-dc571c0691e4"
+        <input type="radio" id="bk-radio-1299036a-dda7-4d90-b96b-df3efb367461"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--warning"
                          value="warning"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-b2b97590-fd23-4505-8dfa-dc571c0691e4">
+                    <label class="bk-radio__label" for="bk-radio-1299036a-dda7-4d90-b96b-df3efb367461">
                 Warning
             </label>
             </div>
@@ -17479,12 +17542,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-9f0d2df5-97d6-4cee-af6c-711efb362a56"
+        <input type="radio" id="bk-radio-5a0dcdfa-a18e-419b-9f02-1270e5515207"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--danger"
                          value="danger"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-9f0d2df5-97d6-4cee-af6c-711efb362a56">
+                    <label class="bk-radio__label" for="bk-radio-5a0dcdfa-a18e-419b-9f02-1270e5515207">
                 Danger
             </label>
             </div>
@@ -17497,12 +17560,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-9bb182a9-fc7f-4a0a-9638-3a28aab0603a"
+        <input type="radio" id="bk-radio-973f4d99-3d09-4a8d-bcf0-1a7267b42e90"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--info"
                          value="info"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-9bb182a9-fc7f-4a0a-9638-3a28aab0603a">
+                    <label class="bk-radio__label" for="bk-radio-973f4d99-3d09-4a8d-bcf0-1a7267b42e90">
                 Info
             </label>
             </div>
@@ -17515,12 +17578,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-079be6c1-ced9-44b1-9c94-3ca58b3d6256"
+        <input type="radio" id="bk-radio-70f9e704-77b0-4ad9-91e9-72520c20d426"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--ghost"
                          value="ghost"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-079be6c1-ced9-44b1-9c94-3ca58b3d6256">
+                    <label class="bk-radio__label" for="bk-radio-70f9e704-77b0-4ad9-91e9-72520c20d426">
                 Ghost
             </label>
             </div>
@@ -17540,12 +17603,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-dd267f54-d756-4046-8d8a-33571dec743b"
+        <input type="radio" id="bk-radio-20b09ef8-4669-440e-a91e-806dd32f40ab"
             name="radio_color" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
              style="--radio-primary-checked-bg: var(--color-indigo-500); --radio-primary-checked-border: var(--color-indigo-700); --radio-primary-focus-ring: var(--color-indigo-100)"              value="indigo"              checked             >
 
         
-                    <label class="bk-radio__label" for="bk-radio-dd267f54-d756-4046-8d8a-33571dec743b">
+                    <label class="bk-radio__label" for="bk-radio-20b09ef8-4669-440e-a91e-806dd32f40ab">
                 Indigo
             </label>
             </div>
@@ -17558,12 +17621,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-8a0fa3f5-42ed-428d-82da-ec43d1ac3401"
+        <input type="radio" id="bk-radio-7482cc01-d6f1-458d-bd6b-4823bb94f335"
             name="radio_color" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
              style="--radio-primary-checked-bg: var(--color-pink-500); --radio-primary-checked-border: var(--color-pink-700); --radio-primary-focus-ring: var(--color-pink-100)"              value="pink"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-8a0fa3f5-42ed-428d-82da-ec43d1ac3401">
+                    <label class="bk-radio__label" for="bk-radio-7482cc01-d6f1-458d-bd6b-4823bb94f335">
                 Pink
             </label>
             </div>
@@ -17576,12 +17639,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-a83dd85e-231f-4c43-970f-60b09989fba3"
+        <input type="radio" id="bk-radio-6208649e-7168-4cb2-83f4-d6f344777055"
             name="radio_color" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
              style="--radio-primary-checked-bg: var(--color-emerald-500); --radio-primary-checked-border: var(--color-emerald-700); --radio-primary-focus-ring: var(--color-emerald-100)"              value="emerald"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-a83dd85e-231f-4c43-970f-60b09989fba3">
+                    <label class="bk-radio__label" for="bk-radio-6208649e-7168-4cb2-83f4-d6f344777055">
                 Emerald
             </label>
             </div>
@@ -17601,12 +17664,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-6fa68ec0-0837-4077-a882-61429df68ae6"
+        <input type="radio" id="bk-radio-8829d8e4-5f16-4ca6-a387-2f2b078a3aab"
             name="radio_sizes" class="bk-radio__control bk-radio__control--sm bk-radio__control--primary"
                          value="sm"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-6fa68ec0-0837-4077-a882-61429df68ae6">
+                    <label class="bk-radio__label" for="bk-radio-8829d8e4-5f16-4ca6-a387-2f2b078a3aab">
                 Small
             </label>
             </div>
@@ -17619,12 +17682,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-2f6f3fb4-f556-425b-9201-654ecfbef9d1"
+        <input type="radio" id="bk-radio-0bd3d3b8-380f-489d-9889-7fa6d3232ac0"
             name="radio_sizes" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="md"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-2f6f3fb4-f556-425b-9201-654ecfbef9d1">
+                    <label class="bk-radio__label" for="bk-radio-0bd3d3b8-380f-489d-9889-7fa6d3232ac0">
                 Medium
             </label>
             </div>
@@ -17637,12 +17700,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-b30b311b-4576-4ad0-8215-3c6898d3da8b"
+        <input type="radio" id="bk-radio-0b58b9bf-56d4-491b-8483-4c9a12df9726"
             name="radio_sizes" class="bk-radio__control bk-radio__control--lg bk-radio__control--primary"
                          value="lg"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-b30b311b-4576-4ad0-8215-3c6898d3da8b">
+                    <label class="bk-radio__label" for="bk-radio-0b58b9bf-56d4-491b-8483-4c9a12df9726">
                 Large
             </label>
             </div>
@@ -17662,12 +17725,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-952b301a-1e32-4994-9a70-3699b9915728"
+        <input type="radio" id="bk-radio-4a772436-a777-4ea1-8c10-5471f6f77752"
             name="radio_group" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="unchecked"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-952b301a-1e32-4994-9a70-3699b9915728">
+                    <label class="bk-radio__label" for="bk-radio-4a772436-a777-4ea1-8c10-5471f6f77752">
                 Unchecked
             </label>
             </div>
@@ -17680,12 +17743,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-bd0c5af6-8a36-42f1-b407-e1fbaa290b5c"
+        <input type="radio" id="bk-radio-7700994e-b912-43bb-9c88-8609443ffcbb"
             name="radio_group" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="checked"              checked             >
 
         
-                    <label class="bk-radio__label" for="bk-radio-bd0c5af6-8a36-42f1-b407-e1fbaa290b5c">
+                    <label class="bk-radio__label" for="bk-radio-7700994e-b912-43bb-9c88-8609443ffcbb">
                 Checked
             </label>
             </div>
@@ -17698,12 +17761,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-bb0be8fb-c93b-48d2-b69d-4ba937c62e28"
+        <input type="radio" id="bk-radio-c5177851-a916-480f-922c-7a9c273f692f"
             name="radio_group" disabled="disabled" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="disabled"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-bb0be8fb-c93b-48d2-b69d-4ba937c62e28">
+                    <label class="bk-radio__label" for="bk-radio-c5177851-a916-480f-922c-7a9c273f692f">
                 Disabled
             </label>
             </div>
@@ -17716,12 +17779,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-28880917-d9d9-49e3-8cae-83e6958d2ccf"
+        <input type="radio" id="bk-radio-2621ba41-cc53-4bcf-9f93-8db19657dbcb"
             name="radio_group_disabled" disabled="disabled" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="checked_disabled"              checked             >
 
         
-                    <label class="bk-radio__label" for="bk-radio-28880917-d9d9-49e3-8cae-83e6958d2ccf">
+                    <label class="bk-radio__label" for="bk-radio-2621ba41-cc53-4bcf-9f93-8db19657dbcb">
                 Disabled &amp; Checked
             </label>
             </div>
@@ -17734,18 +17797,18 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-23adbb4d-0f9c-4f21-98d3-5cf134583a83"
+        <input type="radio" id="bk-radio-ea56bd94-890e-42d4-b761-967d2b29e9e0"
             name="radio_group" class="bk-radio__control bk-radio__control--md bk-radio__control--error"
-                         value="error"                          aria-invalid="true" aria-describedby="bk-radio-23adbb4d-0f9c-4f21-98d3-5cf134583a83-error" >
+                         value="error"                          aria-invalid="true" aria-describedby="bk-radio-ea56bd94-890e-42d4-b761-967d2b29e9e0-error" >
 
         
-                    <label class="bk-radio__label" for="bk-radio-23adbb4d-0f9c-4f21-98d3-5cf134583a83">
+                    <label class="bk-radio__label" for="bk-radio-ea56bd94-890e-42d4-b761-967d2b29e9e0">
                 With Error
             </label>
             </div>
 
     
-            <p class="bk-radio__error-message" id="bk-radio-23adbb4d-0f9c-4f21-98d3-5cf134583a83-error">
+            <p class="bk-radio__error-message" id="bk-radio-ea56bd94-890e-42d4-b761-967d2b29e9e0-error">
             Please select an option
         </p>
     
@@ -17755,12 +17818,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-fb6a4a6d-af14-46df-bfe4-e74b85ea82e6"
+        <input type="radio" id="bk-radio-b8ca9954-c818-4112-b8f1-98ffda4cdbd4"
             name="radio_group" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="hint"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-fb6a4a6d-af14-46df-bfe4-e74b85ea82e6">
+                    <label class="bk-radio__label" for="bk-radio-b8ca9954-c818-4112-b8f1-98ffda4cdbd4">
                 With Hint
             </label>
             </div>
@@ -21805,41 +21868,41 @@ body {
                 <h4 class="text-sm text-slate-500 font-medium">Default</h4>
                 <div class="border rounded p-4">
                     <nav class="bk-pagination" role="navigation" aria-label="Pagination">
-    <div class="bk-pagination__container">
-        
-        <div class="bk-pagination__previous">
-                                                <a href="#?page=2" class="bk-pagination__link" rel="prev">
-                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <div class="bk-pagination__container">
+            
+            <div class="bk-pagination__previous">
+                                                            <a href="#?page=2" class="bk-pagination__link" rel="prev">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
   <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/>
-</svg>                        <span>Previous</span>
-                    </a>
-                                    </div>
+</svg>                            <span>Previous</span>
+                        </a>
+                                                </div>
 
+                            
+                <div class="bk-pagination__pages">
                     
-            <div class="bk-pagination__pages">
-                
-                                                            <a href="#?page=1" class="bk-pagination__number">1</a>
-                                                                                <a href="#?page=2" class="bk-pagination__number">2</a>
-                                                                                <span class="bk-pagination__number bk-pagination__number--active"
-                            aria-current="page">3</span>
-                                                                                <a href="#?page=4" class="bk-pagination__number">4</a>
-                                                                                <a href="#?page=5" class="bk-pagination__number">5</a>
-                                    
-                                                                                <span class="bk-pagination__ellipsis">...</span>
-                                        <a href="#?page=12" class="bk-pagination__number">12</a>
-                            </div>
-        
-        
-        <div class="bk-pagination__next">
-                                                <a href="#?page=4" class="bk-pagination__link" rel="next">
-                        <span>Next</span>
-                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
-</svg>                    </a>
+                                                                        <a href="#?page=1" class="bk-pagination__number">1</a>
+                                                                                                <a href="#?page=2" class="bk-pagination__number">2</a>
+                                                                                                <span class="bk-pagination__number bk-pagination__number--active"
+                                aria-current="page">3</span>
+                                                                                                <a href="#?page=4" class="bk-pagination__number">4</a>
+                                                                                                <a href="#?page=5" class="bk-pagination__number">5</a>
+                                            
+                                                                                                <span class="bk-pagination__ellipsis">...</span>
+                                                <a href="#?page=12" class="bk-pagination__number">12</a>
                                     </div>
-    </div>
+            
+            
+            <div class="bk-pagination__next">
+                                                            <a href="#?page=4" class="bk-pagination__link" rel="next">
+                            <span>Next</span>
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
+</svg>                        </a>
+                                                </div>
+        </div>
 
-    </nav>
+            </nav>
                 </div>
             </div>
 
@@ -21848,28 +21911,28 @@ body {
                 <h4 class="text-sm text-slate-500 font-medium">Simple Pagination</h4>
                 <div class="border rounded p-4">
                     <nav class="bk-pagination" role="navigation" aria-label="Pagination">
-    <div class="bk-pagination__container">
-        
-        <div class="bk-pagination__previous">
-                                                <a href="#?page=2" class="bk-pagination__link" rel="prev">
-                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <div class="bk-pagination__container">
+            
+            <div class="bk-pagination__previous">
+                                                            <a href="#?page=2" class="bk-pagination__link" rel="prev">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
   <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/>
-</svg>                        <span>Previous</span>
-                    </a>
-                                    </div>
+</svg>                            <span>Previous</span>
+                        </a>
+                                                </div>
 
-        
-        
-        <div class="bk-pagination__next">
-                                                <a href="#?page=4" class="bk-pagination__link" rel="next">
-                        <span>Next</span>
-                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            
+            
+            <div class="bk-pagination__next">
+                                                            <a href="#?page=4" class="bk-pagination__link" rel="next">
+                            <span>Next</span>
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
   <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
-</svg>                    </a>
-                                    </div>
-    </div>
+</svg>                        </a>
+                                                </div>
+        </div>
 
-    </nav>
+            </nav>
                 </div>
             </div>
 
@@ -21878,62 +21941,63 @@ body {
                 <h4 class="text-sm text-slate-500 font-medium">Built-in Per Page</h4>
                 <div class="border rounded p-4">
                     <nav class="bk-pagination" role="navigation" aria-label="Pagination">
-    <div class="bk-pagination__container">
-        
-        <div class="bk-pagination__previous">
-                                                <a href="#?page=2" class="bk-pagination__link" rel="prev">
-                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/>
-</svg>                        <span>Previous</span>
-                    </a>
-                                    </div>
-
-                    
-            <div class="bk-pagination__pages">
-                
-                                                            <a href="#?page=1" class="bk-pagination__number">1</a>
-                                                                                <a href="#?page=2" class="bk-pagination__number">2</a>
-                                                                                <span class="bk-pagination__number bk-pagination__number--active"
-                            aria-current="page">3</span>
-                                                                                <a href="#?page=4" class="bk-pagination__number">4</a>
-                                                                                <a href="#?page=5" class="bk-pagination__number">5</a>
-                                    
-                                                                                <span class="bk-pagination__ellipsis">...</span>
-                                        <a href="#?page=12" class="bk-pagination__number">12</a>
-                            </div>
-        
-        
-        <div class="bk-pagination__next">
-                                                <a href="#?page=4" class="bk-pagination__link" rel="next">
-                        <span>Next</span>
-                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
-</svg>                    </a>
-                                    </div>
-    </div>
-
-            <div class="bk-pagination__meta">
-                            <p class="bk-pagination__info">Showing 21 to 30 of 115 results</p>
+            <div class="bk-pagination__container">
             
-                            
-                <form method="GET" action="#" class="bk-pagination__per-page">
-                    
-                    <label class="bk-pagination__per-page-label" for="bk-pagination-per-page-per_page">
-                        Rows per page:
-                    </label>
+            <div class="bk-pagination__previous">
+                                                            <a href="#?page=2" class="bk-pagination__link" rel="prev">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/>
+</svg>                            <span>Previous</span>
+                        </a>
+                                                </div>
 
-                    <select id="bk-pagination-per-page-per_page" name="per_page"
-                        class="bk-pagination__per-page-select" onchange="this.form.submit()">
-                                                    <option value="10" selected>10
-                            </option>
-                                                    <option value="25" >25
-                            </option>
-                                                    <option value="50" >50
-                            </option>
-                                            </select>
-                </form>
-                    </div>
-    </nav>
+                            
+                <div class="bk-pagination__pages">
+                    
+                                                                        <a href="#?page=1" class="bk-pagination__number">1</a>
+                                                                                                <a href="#?page=2" class="bk-pagination__number">2</a>
+                                                                                                <span class="bk-pagination__number bk-pagination__number--active"
+                                aria-current="page">3</span>
+                                                                                                <a href="#?page=4" class="bk-pagination__number">4</a>
+                                                                                                <a href="#?page=5" class="bk-pagination__number">5</a>
+                                            
+                                                                                                <span class="bk-pagination__ellipsis">...</span>
+                                                <a href="#?page=12" class="bk-pagination__number">12</a>
+                                    </div>
+            
+            
+            <div class="bk-pagination__next">
+                                                            <a href="#?page=4" class="bk-pagination__link" rel="next">
+                            <span>Next</span>
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
+</svg>                        </a>
+                                                </div>
+        </div>
+
+                    <div class="bk-pagination__meta">
+                                    <p class="bk-pagination__info">Showing 21 to 30 of 115 results</p>
+                
+                                    
+                    <form method="GET" action="#" class="bk-pagination__per-page">
+                        
+                        <label class="bk-pagination__per-page-label"
+                            for="bk-pagination-per-page-per_page">
+                            Rows per page:
+                        </label>
+
+                        <select id="bk-pagination-per-page-per_page" name="per_page"
+                            class="bk-pagination__per-page-select" onchange="this.form.submit()">
+                                                            <option value="10" selected>10
+                                </option>
+                                                            <option value="25" >25
+                                </option>
+                                                            <option value="50" >50
+                                </option>
+                                                    </select>
+                    </form>
+                            </div>
+            </nav>
                 </div>
             </div>
 
@@ -21942,49 +22006,219 @@ body {
                 <h4 class="text-sm text-slate-500 font-medium">Custom Info Text</h4>
                 <div class="border rounded p-4">
                     <nav class="bk-pagination" role="navigation" aria-label="Pagination">
-    <div class="bk-pagination__container">
-        
-        <div class="bk-pagination__previous">
-                                                <a href="#?page=2" class="bk-pagination__link" rel="prev">
-                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+            <div class="bk-pagination__container">
+            
+            <div class="bk-pagination__previous">
+                                                            <a href="#?page=2" class="bk-pagination__link" rel="prev">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
   <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/>
-</svg>                        <span>Previous</span>
-                    </a>
-                                    </div>
+</svg>                            <span>Previous</span>
+                        </a>
+                                                </div>
 
+                            
+                <div class="bk-pagination__pages">
                     
-            <div class="bk-pagination__pages">
-                
-                                                            <a href="#?page=1" class="bk-pagination__number">1</a>
-                                                                                <a href="#?page=2" class="bk-pagination__number">2</a>
-                                                                                <span class="bk-pagination__number bk-pagination__number--active"
-                            aria-current="page">3</span>
-                                                                                <a href="#?page=4" class="bk-pagination__number">4</a>
-                                                                                <a href="#?page=5" class="bk-pagination__number">5</a>
-                                    
-                                                                                <span class="bk-pagination__ellipsis">...</span>
-                                        <a href="#?page=12" class="bk-pagination__number">12</a>
-                            </div>
-        
-        
-        <div class="bk-pagination__next">
-                                                <a href="#?page=4" class="bk-pagination__link" rel="next">
-                        <span>Next</span>
-                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
-  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
-</svg>                    </a>
+                                                                        <a href="#?page=1" class="bk-pagination__number">1</a>
+                                                                                                <a href="#?page=2" class="bk-pagination__number">2</a>
+                                                                                                <span class="bk-pagination__number bk-pagination__number--active"
+                                aria-current="page">3</span>
+                                                                                                <a href="#?page=4" class="bk-pagination__number">4</a>
+                                                                                                <a href="#?page=5" class="bk-pagination__number">5</a>
+                                            
+                                                                                                <span class="bk-pagination__ellipsis">...</span>
+                                                <a href="#?page=12" class="bk-pagination__number">12</a>
                                     </div>
-    </div>
+            
+            
+            <div class="bk-pagination__next">
+                                                            <a href="#?page=4" class="bk-pagination__link" rel="next">
+                            <span>Next</span>
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
+</svg>                        </a>
+                                                </div>
+        </div>
 
-            <div class="bk-pagination__meta">
-                            <div class="bk-pagination__info"><p class="text-sm text-slate-600">
+                    <div class="bk-pagination__meta">
+                                    <div class="bk-pagination__info"><p class="text-sm text-slate-600">
                                 Page 3 with items
                                 21-30
                             </p></div>
+                
+                            </div>
+            </nav>
+                </div>
+            </div>
+
+            <!-- Responsive -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Responsive</h4>
+                <div x-data="{
+    previewWidth: 520,
+    minWidth: 280,
+    maxWidth: 1100,
+    breakpoint: 768,
+    smallModeLabel: 'Mobile prev\/next',
+    largeModeLabel: 'Desktop full',
+    dragging: false,
+    startX: 0,
+    startWidth: 0,
+    setWidth(width) {
+        this.previewWidth = Math.max(this.minWidth, Math.min(this.maxWidth, width));
+    },
+    modeLabel() {
+        return this.previewWidth < this.breakpoint ? this.smallModeLabel : this.largeModeLabel;
+    },
+    isPresetActive(width) {
+        return Math.round(this.previewWidth) === width;
+    },
+    startResize(event) {
+        this.dragging = true;
+        this.startX = event.clientX;
+        this.startWidth = this.previewWidth;
+
+        const onMove = (moveEvent) => {
+            const nextWidth = this.startWidth + (moveEvent.clientX - this.startX);
+            this.previewWidth = Math.max(this.minWidth, Math.min(this.maxWidth, nextWidth));
+        };
+
+        const onUp = () => {
+            this.dragging = false;
+            window.removeEventListener('mousemove', onMove);
+            window.removeEventListener('mouseup', onUp);
+        };
+
+        window.addEventListener('mousemove', onMove);
+        window.addEventListener('mouseup', onUp);
+    },
+}">
+    <div class="mb-4 rounded-xl border border-slate-200 bg-slate-50/70 p-4">
+        <div class="flex flex-wrap items-center gap-3 justify-between">
+            <div>
+                <p class="text-sm font-medium text-slate-900">Responsive Pagination Preview</p>
+                <p class="text-xs text-slate-500">Resize to see full page numbers on desktop, simple prev/next on mobile</p>
+            </div>
+            <div class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs">
+                <span class="h-2 w-2 rounded-full"
+                    :class="previewWidth < breakpoint ? 'bg-amber-500' : 'bg-emerald-500'"></span>
+                <span class="font-medium text-slate-700" x-text="modeLabel()"></span>
+                <span class="text-slate-400">•</span>
+                <span class="font-semibold text-slate-900" x-text="`${Math.round(previewWidth)}px`"></span>
+            </div>
+        </div>
+
+        <div class="mt-3 flex flex-wrap gap-2">
+                                            <button type="button"
+                    class="inline-flex items-center rounded-md border px-3 py-1.5 text-xs font-medium transition-colors"
+                    :class="isPresetActive(320) ?
+                        'border-slate-300 bg-white text-slate-900 shadow-sm' :
+                        'border-transparent bg-transparent text-slate-600 hover:border-slate-200 hover:bg-white/90 hover:text-slate-900'"
+                    @click="setWidth(320)">Mobile 320</button>
+                                            <button type="button"
+                    class="inline-flex items-center rounded-md border px-3 py-1.5 text-xs font-medium transition-colors"
+                    :class="isPresetActive(480) ?
+                        'border-slate-300 bg-white text-slate-900 shadow-sm' :
+                        'border-transparent bg-transparent text-slate-600 hover:border-slate-200 hover:bg-white/90 hover:text-slate-900'"
+                    @click="setWidth(480)">Mobile 480</button>
+                                            <button type="button"
+                    class="inline-flex items-center rounded-md border px-3 py-1.5 text-xs font-medium transition-colors"
+                    :class="isPresetActive(768) ?
+                        'border-slate-300 bg-white text-slate-900 shadow-sm' :
+                        'border-transparent bg-transparent text-slate-600 hover:border-slate-200 hover:bg-white/90 hover:text-slate-900'"
+                    @click="setWidth(768)">Tablet 768</button>
+                                            <button type="button"
+                    class="inline-flex items-center rounded-md border px-3 py-1.5 text-xs font-medium transition-colors"
+                    :class="isPresetActive(1024) ?
+                        'border-slate-300 bg-white text-slate-900 shadow-sm' :
+                        'border-transparent bg-transparent text-slate-600 hover:border-slate-200 hover:bg-white/90 hover:text-slate-900'"
+                    @click="setWidth(1024)">Desktop 1024</button>
+                    </div>
+    </div>
+
+    <div class="relative w-full" :style="`max-width: ${previewWidth}px;`">
+        <div class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-shadow"
+            :class="dragging ? 'shadow-md' : ''">
+            <div class="my-3">
+                        <nav class="bk-pagination bk-pagination--responsive" role="navigation" aria-label="Pagination">
             
+        <div class="bk-pagination__desktop">
+            <div class="bk-pagination__container">
+                
+                <div class="bk-pagination__previous">
+                                                                        <a href="#?page=2" class="bk-pagination__link" rel="prev">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/>
+</svg>                                <span>Previous</span>
+                            </a>
+                                                            </div>
+
+                                    
+                    <div class="bk-pagination__pages">
+                        
+                                                                                    <a href="#?page=1" class="bk-pagination__number">1</a>
+                                                                                                                <a href="#?page=2" class="bk-pagination__number">2</a>
+                                                                                                                <span class="bk-pagination__number bk-pagination__number--active"
+                                    aria-current="page">3</span>
+                                                                                                                <a href="#?page=4" class="bk-pagination__number">4</a>
+                                                                                                                <a href="#?page=5" class="bk-pagination__number">5</a>
+                                                    
+                                                                                                                <span class="bk-pagination__ellipsis">...</span>
+                                                        <a href="#?page=12" class="bk-pagination__number">12</a>
+                                            </div>
+                
+                
+                <div class="bk-pagination__next">
+                                                                        <a href="#?page=4" class="bk-pagination__link" rel="next">
+                                <span>Next</span>
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
+</svg>                            </a>
+                                                            </div>
+            </div>
+
+                            <div class="bk-pagination__meta">
+                                            <p class="bk-pagination__info">Showing 21 to 30 of 115 results</p>
+                    
+                                    </div>
+                    </div>
+
+        
+        <div class="bk-pagination__mobile">
+                            <a href="#?page=2" class="bk-pagination__link" rel="prev">
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/>
+</svg>                    <span>Previous</span>
+                </a>
+            
+            <span class="bk-pagination__mobile-indicator">
+                3 / 12
+            </span>
+
+                            <a href="#?page=4" class="bk-pagination__link" rel="next">
+                    <span>Next</span>
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5"/>
+</svg>                </a>
                     </div>
     </nav>
-                </div>
+                    </div>
+        </div>
+
+        <button type="button"
+            class="group absolute inset-y-0 -right-3 flex w-6 cursor-col-resize items-center justify-center"
+            @mousedown.prevent="startResize($event)"
+            :aria-label="dragging ? 'Resizing table preview' : 'Resize table preview'">
+            <span
+                class="flex h-[calc(100%-1rem)] w-4 flex-col items-center justify-center gap-1 rounded-md border border-slate-300 bg-slate-100 shadow-sm transition-colors"
+                :class="dragging ? 'bg-slate-200 border-slate-400' : 'group-hover:bg-slate-200 group-hover:border-slate-400'">
+                <span class="h-1 w-1 rounded-full bg-slate-500"></span>
+                <span class="h-1 w-1 rounded-full bg-slate-500"></span>
+                <span class="h-1 w-1 rounded-full bg-slate-500"></span>
+            </span>
+        </button>
+    </div>
+</div>
             </div>
         </div>
     </div>

@@ -413,6 +413,20 @@
                     </x-basekit-ui::pagination>
                 </div>
             </div>
+
+            <!-- Responsive -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Responsive</h4>
+                <x-basekit-ui::styleguide.responsive-preview title="Responsive Pagination Preview"
+                    subtitle="Resize to see full page numbers on desktop, simple prev/next on mobile"
+                    small-label="Mobile prev/next" large-label="Desktop full" :breakpoint="768"
+                    :default-width="520">
+                    <div class="my-3">
+                        <x-basekit-ui::pagination :current-page="$paginationCurrentPage" :total-pages="$paginationTotalPages" :per-page="$paginationPerPage"
+                            :total="$paginationTotal" path="#" :show-info="true" :responsive="true" />
+                    </div>
+                </x-basekit-ui::styleguide.responsive-preview>
+            </div>
         </div>
     </x-basekit-ui::styleguide.section-toggle>
 
