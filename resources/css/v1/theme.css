@@ -15,6 +15,8 @@
 @import "./components/display.css";
 @import "./components/dialog.css";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* =============================================================================
   Basekit UI Components - Theme Configuration
   Version: 1.0.0
@@ -27,6 +29,7 @@
   Used for runtime detection and migration tracking
   ============================================================================= */
 :root {
+  color-scheme: light;
   --basekit-theme-version: "1";
 }
 
@@ -219,4 +222,11 @@
   --transition-fast: 150ms;
   --transition-normal: 200ms;
   --transition-slow: 300ms;
+}
+
+.dark {
+  color-scheme: dark;
+
+  /* Semantic Surfaces */
+  --surface-base: var(--color-slate-900);
 }

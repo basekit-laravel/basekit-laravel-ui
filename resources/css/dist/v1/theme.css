@@ -8307,7 +8307,6 @@
   --divider-color: var(--color-slate-700);
   --divider-color-light: var(--color-slate-800);
   --divider-color-dark: var(--color-slate-500);
-  --divider-label-bg: var(--surface-base);
   --divider-label-color: var(--color-slate-400);
 }
 
@@ -10649,6 +10648,8 @@
   --accordion-flush-hover-color: var(--color-primary-400);
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* =============================================================================
   Basekit UI Components - Theme Configuration
   Version: 1.0.0
@@ -10662,6 +10663,7 @@
   ============================================================================= */
 
 :root {
+  color-scheme: light;
   --basekit-theme-version: "1";
 }
 
@@ -10856,4 +10858,11 @@
   --transition-fast: 150ms;
   --transition-normal: 200ms;
   --transition-slow: 300ms;
+}
+
+.dark {
+  color-scheme: dark;
+
+  /* Semantic Surfaces */
+  --surface-base: var(--color-slate-900);
 }
