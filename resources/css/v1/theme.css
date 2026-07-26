@@ -18,13 +18,6 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* =============================================================================
-  Basekit UI Components - Theme Configuration
-  Version: 1.0.0
-  Schema: v1
-  Compatible with: Tailwind CSS 4.x
-  ============================================================================= */
-
-/* =============================================================================
   Theme Schema Version
   Used for runtime detection and migration tracking
   ============================================================================= */
@@ -80,12 +73,19 @@
   );
 }
 
-/**
- * Global Design Tokens
- * These tokens are used across all components and can be customized
- */
-:root {
-  /* Color Palette - Primary (Modern Indigo) */
+/* =============================================================================
+  Theme Colors — registered via @theme so Tailwind generates utility classes
+  (bg-primary, text-success, border-danger, etc.)
+  ============================================================================= */
+@theme default {
+  /* Base colors — enables `bg-primary`, `text-success`, etc. (no shade suffix) */
+  --color-primary: var(--color-primary-600);
+  --color-success: var(--color-success-600);
+  --color-warning: var(--color-warning-600);
+  --color-danger: var(--color-danger-600);
+  --color-info: var(--color-info-600);
+
+  /* Primary (Modern Indigo) */
   --color-primary-50: #eef2ff;
   --color-primary-100: #e0e7ff;
   --color-primary-200: #c7d2fe;
@@ -98,7 +98,7 @@
   --color-primary-900: #312e81;
   --color-primary-950: #1e1b4b;
 
-  /* Color Palette - Slate (was Secondary) */
+  /* Slate */
   --color-slate-50: #f8fafc;
   --color-slate-100: #f1f5f9;
   --color-slate-200: #e2e8f0;
@@ -111,7 +111,7 @@
   --color-slate-900: #0f172a;
   --color-slate-950: #020617;
 
-  /* Color Palette - Success */
+  /* Success */
   --color-success-50: #f0fdf4;
   --color-success-100: #dcfce7;
   --color-success-200: #bbf7d0;
@@ -124,7 +124,7 @@
   --color-success-900: #14532d;
   --color-success-950: #052e16;
 
-  /* Color Palette - Warning */
+  /* Warning */
   --color-warning-50: #fffbeb;
   --color-warning-100: #fef3c7;
   --color-warning-200: #fde68a;
@@ -137,7 +137,7 @@
   --color-warning-900: #78350f;
   --color-warning-950: #451a03;
 
-  /* Color Palette - Danger */
+  /* Danger */
   --color-danger-50: #fef2f2;
   --color-danger-100: #fee2e2;
   --color-danger-200: #fecaca;
@@ -150,7 +150,7 @@
   --color-danger-900: #7f1d1d;
   --color-danger-950: #450a0a;
 
-  /* Color Palette - Info */
+  /* Info */
   --color-info-50: #eff6ff;
   --color-info-100: #dbeafe;
   --color-info-200: #bfdbfe;
@@ -162,7 +162,13 @@
   --color-info-800: #1e40af;
   --color-info-900: #1e3a8a;
   --color-info-950: #172554;
+}
 
+/**
+ * Global Design Tokens
+ * These tokens are used across all components and can be customized
+ */
+:root {
   /* Semantic Surfaces */
   --surface-base: white;
 
