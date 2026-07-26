@@ -99,6 +99,10 @@ class Button extends Component
          */
         public ?string $hoverBorder = null,
         /**
+         * Custom focus ring color.
+         */
+        public ?string $focusRing = null,
+        /**
          * Additional classes for the prefix slot wrapper.
          */
         public ?string $prefixClass = null,
@@ -164,6 +168,7 @@ class Button extends Component
             $this->hoverBackground,
             $this->hoverText,
             $this->hoverBorder,
+            $this->focusRing,
         );
     }
 

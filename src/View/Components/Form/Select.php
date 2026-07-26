@@ -106,9 +106,25 @@ class Select extends Component
          */
         public ?string $color = null,
         /**
+         * Custom background color.
+         */
+        public ?string $background = null,
+        /**
+         * Custom text color.
+         */
+        public ?string $text = null,
+        /**
          * Custom border color.
          */
         public ?string $border = null,
+        /**
+         * Custom hover background color.
+         */
+        public ?string $hoverBackground = null,
+        /**
+         * Custom hover text color.
+         */
+        public ?string $hoverText = null,
         /**
          * Custom hover border color.
          */
@@ -207,11 +223,11 @@ class Select extends Component
             'select',
             $this->variant->value,
             $this->color,
-            null,
-            null,
+            $this->background,
+            $this->text,
             $this->border,
-            null,
-            null,
+            $this->hoverBackground,
+            $this->hoverText,
             $this->hoverBorder,
         );
     }

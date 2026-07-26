@@ -1132,7 +1132,6 @@ body {
  */
 
 .bk-button--primary {
-  background-color: #4f46e5;
   background-color: var(--button-bg-primary);
   color: white;
   color: var(--button-text-primary);
@@ -1140,43 +1139,34 @@ body {
 }
 
 .bk-button--primary:hover:not(:disabled) {
-    background-color: #6366f1;
     background-color: var(--button-hover-bg-primary);
     color: white;
     color: var(--button-hover-text-primary, var(--button-text-primary));
   }
 
 .bk-button--primary:active:not(:disabled) {
-    background-color: #4338ca;
     background-color: var(--button-active-bg-primary);
   }
 
 .bk-button--secondary {
   background-color: white;
   background-color: var(--button-bg-secondary);
-  color: #334155;
   color: var(--button-text-secondary);
-  border-color: #cbd5e1;
   border-color: var(--button-border-secondary);
   --button-focus-ring: var(--button-focus-ring-secondary);
 }
 
 .bk-button--secondary:hover:not(:disabled) {
-    background-color: #f8fafc;
     background-color: var(--button-hover-bg-secondary);
-    border-color: #94a3b8;
     border-color: var(--button-hover-border-secondary);
-    color: #334155;
     color: var(--button-hover-text-secondary, var(--button-text-secondary));
   }
 
 .bk-button--secondary:active:not(:disabled) {
-    background-color: #f1f5f9;
     background-color: var(--button-active-bg-secondary);
   }
 
 .bk-button--success {
-  background-color: #16a34a;
   background-color: var(--button-bg-success);
   color: white;
   color: var(--button-text-success);
@@ -1184,19 +1174,16 @@ body {
 }
 
 .bk-button--success:hover:not(:disabled) {
-    background-color: #22c55e;
     background-color: var(--button-hover-bg-success);
     color: white;
     color: var(--button-hover-text-success, var(--button-text-success));
   }
 
 .bk-button--success:active:not(:disabled) {
-    background-color: #15803d;
     background-color: var(--button-active-bg-success);
   }
 
 .bk-button--danger {
-  background-color: #dc2626;
   background-color: var(--button-bg-danger);
   color: white;
   color: var(--button-text-danger);
@@ -1204,19 +1191,16 @@ body {
 }
 
 .bk-button--danger:hover:not(:disabled) {
-    background-color: #ef4444;
     background-color: var(--button-hover-bg-danger);
     color: white;
     color: var(--button-hover-text-danger, var(--button-text-danger));
   }
 
 .bk-button--danger:active:not(:disabled) {
-    background-color: #b91c1c;
     background-color: var(--button-active-bg-danger);
   }
 
 .bk-button--warning {
-  background-color: #d97706;
   background-color: var(--button-bg-warning);
   color: white;
   color: var(--button-text-warning);
@@ -1224,19 +1208,16 @@ body {
 }
 
 .bk-button--warning:hover:not(:disabled) {
-    background-color: #f59e0b;
     background-color: var(--button-hover-bg-warning);
     color: white;
     color: var(--button-hover-text-warning, var(--button-text-warning));
   }
 
 .bk-button--warning:active:not(:disabled) {
-    background-color: #b45309;
     background-color: var(--button-active-bg-warning);
   }
 
 .bk-button--info {
-  background-color: #2563eb;
   background-color: var(--button-bg-info);
   color: white;
   color: var(--button-text-info);
@@ -1244,36 +1225,30 @@ body {
 }
 
 .bk-button--info:hover:not(:disabled) {
-    background-color: #3b82f6;
     background-color: var(--button-hover-bg-info);
     color: white;
     color: var(--button-hover-text-info, var(--button-text-info));
   }
 
 .bk-button--info:active:not(:disabled) {
-    background-color: #1d4ed8;
     background-color: var(--button-active-bg-info);
   }
 
 .bk-button--ghost {
   background-color: transparent;
   background-color: var(--button-bg-ghost);
-  color: #475569;
   color: var(--button-text-ghost);
   box-shadow: none;
   --button-focus-ring: var(--button-focus-ring-ghost);
 }
 
 .bk-button--ghost:hover:not(:disabled) {
-    background-color: #f1f5f9;
     background-color: var(--button-hover-bg-ghost);
-    color: #475569;
     color: var(--button-hover-text-ghost, var(--button-text-ghost));
     box-shadow: none;
   }
 
 .bk-button--ghost:active:not(:disabled) {
-    background-color: #e2e8f0;
     background-color: var(--button-active-bg-ghost);
   }
 
@@ -1497,7 +1472,6 @@ body {
     display: block;
     font-size: 0.875rem;
     font-weight: 500;
-    color: #334155;
     color: var(--input-label-color);
     line-height: 1.25rem;
   }
@@ -1553,7 +1527,6 @@ body {
 .bk-input__corner-hint {
   margin-left: auto;
   font-size: 0.75rem;
-  color: #64748b;
   color: var(--input-hint-color);
 }
 
@@ -1575,7 +1548,7 @@ body {
 
 .bk-input__container:focus-within {
     box-shadow: 0 0 0 2px
-      #e0e7ff;
+      var(--input-focus-ring-color);
     box-shadow: 0 0 0 var(--input-focus-ring-width)
       var(--input-focus-ring-color);
     z-index: 5;
@@ -1595,11 +1568,9 @@ body {
           appearance: none;
   background-color: white;
   background-color: var(--input-bg);
-  border: 1px solid #cbd5e1;
   border: 1px solid var(--input-border-color);
   border-radius: 0.5rem;
   border-radius: var(--input-border-radius);
-  color: #0f172a;
   color: var(--input-color);
   font-family: inherit;
   font-family: var(--input-font-family);
@@ -1610,40 +1581,32 @@ body {
 }
 
 .bk-input__control::-moz-placeholder {
-    color: #94a3b8;
     color: var(--input-placeholder-color);
     opacity: 1;
   }
 
 .bk-input__control::placeholder {
-    color: #94a3b8;
     color: var(--input-placeholder-color);
     opacity: 1;
   }
 
 .bk-input__control:focus {
     outline: none;
-    border-color: #6366f1;
     border-color: var(--input-focus-border-color);
     box-shadow: none;
     z-index: 10;
   }
 
 .bk-input__control:disabled {
-    background-color: #f8fafc;
     background-color: var(--input-disabled-bg);
-    color: #64748b;
     color: var(--input-disabled-color);
-    border-color: #e2e8f0;
     border-color: var(--input-disabled-border-color);
     cursor: not-allowed;
     box-shadow: none;
   }
 
 .bk-input__control[readonly] {
-    background-color: #f8fafc;
     background-color: var(--input-disabled-bg);
-    border-color: #cbd5e1;
     border-color: var(--input-border-color);
     cursor: default;
   }
@@ -1655,23 +1618,18 @@ body {
  */
 
 .bk-input__container:hover .bk-input__control:not(:disabled):not([readonly]) {
-      border-color: #94a3b8;
       border-color: var(--input-hover-border-color);
     }
 
 .bk-input__container:hover:has(.bk-input__control:not(:disabled):not([readonly])) .bk-input__prefix,
       .bk-input__container:hover:has(.bk-input__control:not(:disabled):not([readonly])) .bk-input__suffix {
-        border-color: #94a3b8;
         border-color: var(--input-hover-border-color);
       }
 
 .bk-input__container:has(:disabled) .bk-input__prefix,
   .bk-input__container:has(:disabled) .bk-input__suffix {
-    background-color: #f8fafc;
     background-color: var(--input-disabled-bg);
-    color: #64748b;
     color: var(--input-disabled-color);
-    border-color: #e2e8f0;
     border-color: var(--input-disabled-border-color);
     cursor: not-allowed;
   }
@@ -1681,11 +1639,8 @@ body {
   }
 
 .bk-input__container:has(:disabled) .bk-input__number-btn {
-    background-color: #f8fafc;
     background-color: var(--input-disabled-bg);
-    color: #64748b;
     color: var(--input-disabled-color);
-    border-color: #e2e8f0;
     border-color: var(--input-disabled-border-color);
     cursor: not-allowed;
     pointer-events: none;
@@ -1699,235 +1654,195 @@ body {
 
 .bk-input__control--error,
 .bk-input__control[aria-invalid="true"] {
-  border-color: #ef4444;
   border-color: var(--input-error-border-color);
-  color: #b91c1c;
   color: var(--input-error-color);
 }
 
 :is(.bk-input__control--error,.bk-input__control[aria-invalid="true"]):focus {
-    border-color: #ef4444;
     border-color: var(--input-error-border-color);
     box-shadow: none;
   }
 
 .bk-input__container--error .bk-input__control {
-    border-color: #ef4444;
     border-color: var(--input-error-border-color);
-    color: #b91c1c;
     color: var(--input-error-color);
   }
 
 .bk-input__container--error .bk-input__control:focus {
-      border-color: #ef4444;
       border-color: var(--input-error-border-color);
       box-shadow: none;
     }
 
 .bk-input__container--error:focus-within {
     box-shadow: 0 0 0 2px
-      #fee2e2;
+      var(--input-error-ring-color);
     box-shadow: 0 0 0 var(--input-focus-ring-width)
       var(--input-error-ring-color);
   }
 
 .bk-input__container--error .bk-input__prefix,
   .bk-input__container--error .bk-input__suffix {
-    border-color: #ef4444;
     border-color: var(--input-error-border-color);
   }
 
 .bk-input__container--error .bk-input__label--inset,
   .bk-input__container--error .bk-input__label--overlap {
-    color: #b91c1c;
     color: var(--input-error-color);
   }
 
 .bk-input__container--error:focus-within .bk-input__icon {
-      color: #ef4444;
       color: var(--input-error-border-color);
     }
 
 .bk-input:has(.bk-input__container--error) .bk-input__label {
-  color: #b91c1c;
   color: var(--input-error-color);
 }
 
 .bk-input__control--primary {
-  border-color: #6366f1;
   border-color: var(--input-primary-border-color);
 }
 
 .bk-input__control--primary:focus {
-    border-color: #6366f1;
     border-color: var(--input-primary-border-color);
     box-shadow: none;
   }
 
 .bk-input__container--primary .bk-input__prefix,
   .bk-input__container--primary .bk-input__suffix {
-    border-color: #6366f1;
     border-color: var(--input-primary-border-color);
   }
 
 .bk-input__container--primary .bk-input__number-btn {
-    border-color: #6366f1;
     border-color: var(--input-primary-border-color);
-    color: #6366f1;
     color: var(--input-primary-border-color);
   }
 
 .bk-input__container--primary:focus-within {
     box-shadow: 0 0 0 2px
-      #e0e7ff;
+      var(--input-primary-ring-color);
     box-shadow: 0 0 0 var(--input-focus-ring-width)
       var(--input-primary-ring-color);
   }
 
 .bk-input__container--primary:focus-within .bk-input__icon {
-      color: #6366f1;
       color: var(--input-primary-border-color);
     }
 
 .bk-input__control--secondary {
-  border-color: #cbd5e1;
   border-color: var(--input-secondary-border-color);
 }
 
 .bk-input__control--secondary:focus {
-    border-color: #cbd5e1;
     border-color: var(--input-secondary-border-color);
     box-shadow: none;
   }
 
 .bk-input__container--secondary .bk-input__prefix,
   .bk-input__container--secondary .bk-input__suffix {
-    border-color: #cbd5e1;
     border-color: var(--input-secondary-border-color);
   }
 
 .bk-input__container--secondary .bk-input__number-btn {
-    border-color: #cbd5e1;
     border-color: var(--input-secondary-border-color);
-    color: #cbd5e1;
     color: var(--input-secondary-border-color);
   }
 
 .bk-input__container--secondary:focus-within {
     box-shadow: 0 0 0 2px
-      #f1f5f9;
+      var(--input-secondary-ring-color);
     box-shadow: 0 0 0 var(--input-focus-ring-width)
       var(--input-secondary-ring-color);
   }
 
 .bk-input__container--secondary:focus-within .bk-input__icon {
-      color: #cbd5e1;
       color: var(--input-secondary-border-color);
     }
 
 .bk-input__control--success {
-  border-color: #22c55e;
   border-color: var(--input-success-border-color);
 }
 
 .bk-input__control--success:focus {
-    border-color: #22c55e;
     border-color: var(--input-success-border-color);
     box-shadow: none;
   }
 
 .bk-input__container--success .bk-input__prefix,
   .bk-input__container--success .bk-input__suffix {
-    border-color: #22c55e;
     border-color: var(--input-success-border-color);
   }
 
 .bk-input__container--success .bk-input__number-btn {
-    border-color: #22c55e;
     border-color: var(--input-success-border-color);
-    color: #22c55e;
     color: var(--input-success-border-color);
   }
 
 .bk-input__container--success:focus-within {
     box-shadow: 0 0 0 2px
-      #dcfce7;
+      var(--input-success-ring-color);
     box-shadow: 0 0 0 var(--input-focus-ring-width)
       var(--input-success-ring-color);
   }
 
 .bk-input__container--success:focus-within .bk-input__icon {
-      color: #22c55e;
       color: var(--input-success-border-color);
     }
 
 .bk-input__control--warning {
-  border-color: #f59e0b;
   border-color: var(--input-warning-border-color);
 }
 
 .bk-input__control--warning:focus {
-    border-color: #f59e0b;
     border-color: var(--input-warning-border-color);
     box-shadow: none;
   }
 
 .bk-input__container--warning .bk-input__prefix,
   .bk-input__container--warning .bk-input__suffix {
-    border-color: #f59e0b;
     border-color: var(--input-warning-border-color);
   }
 
 .bk-input__container--warning .bk-input__number-btn {
-    border-color: #f59e0b;
     border-color: var(--input-warning-border-color);
-    color: #f59e0b;
     color: var(--input-warning-border-color);
   }
 
 .bk-input__container--warning:focus-within {
     box-shadow: 0 0 0 2px
-      #fef3c7;
+      var(--input-warning-ring-color);
     box-shadow: 0 0 0 var(--input-focus-ring-width)
       var(--input-warning-ring-color);
   }
 
 .bk-input__container--warning:focus-within .bk-input__icon {
-      color: #f59e0b;
       color: var(--input-warning-border-color);
     }
 
 .bk-input__control--info {
-  border-color: #3b82f6;
   border-color: var(--input-info-border-color);
 }
 
 .bk-input__control--info:focus {
-    border-color: #3b82f6;
     border-color: var(--input-info-border-color);
     box-shadow: none;
   }
 
 .bk-input__container--info .bk-input__prefix,
   .bk-input__container--info .bk-input__suffix {
-    border-color: #3b82f6;
     border-color: var(--input-info-border-color);
   }
 
 .bk-input__container--info .bk-input__number-btn {
-    border-color: #3b82f6;
     border-color: var(--input-info-border-color);
-    color: #3b82f6;
     color: var(--input-info-border-color);
   }
 
 .bk-input__container--info:focus-within {
-    box-shadow: 0 0 0 2px #dbeafe;
+    box-shadow: 0 0 0 2px var(--input-info-ring-color);
     box-shadow: 0 0 0 var(--input-focus-ring-width) var(--input-info-ring-color);
   }
 
 .bk-input__container--info:focus-within .bk-input__icon {
-      color: #3b82f6;
       color: var(--input-info-border-color);
     }
 
@@ -1955,7 +1870,7 @@ body {
 
 .bk-input__container--ghost:focus-within {
     box-shadow: 0 0 0 2px
-      #f1f5f9;
+      var(--input-ghost-ring-color);
     box-shadow: 0 0 0 var(--input-focus-ring-width)
       var(--input-ghost-ring-color);
   }
@@ -1998,7 +1913,6 @@ body {
   position: absolute;
   left: 0.75rem;
   font-size: 0.75rem;
-  color: #64748b;
   color: var(--input-hint-color);
   pointer-events: none;
   z-index: 2;
@@ -2240,12 +2154,10 @@ body {
 }
 
 .bk-input__hint {
-  color: #64748b;
   color: var(--input-hint-color);
 }
 
 .bk-input__error-message {
-  color: #ef4444;
   color: var(--input-error-border-color);
 }
 
@@ -2265,7 +2177,6 @@ body {
   justify-content: center;
   pointer-events: none;
   z-index: 20;
-  color: #94a3b8;
   color: var(--input-icon-color);
   transition: color 150ms ease-in-out;
   transition: color var(--transition-fast) ease-in-out;
@@ -2279,22 +2190,18 @@ body {
 }
 
 .bk-input__container:focus-within .bk-input__icon {
-  color: #6366f1;
   color: var(--input-focus-border-color);
 }
 
 .bk-input__container--error:focus-within .bk-input__icon {
-  color: #ef4444;
   color: var(--input-error-border-color);
 }
 
 .bk-input__container--success:focus-within .bk-input__icon {
-  color: #22c55e;
   color: var(--input-success-border-color);
 }
 
 .bk-input__container--warning:focus-within .bk-input__icon {
-  color: #f59e0b;
   color: var(--input-warning-border-color);
 }
 
@@ -2306,7 +2213,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ef4444;
   color: var(--input-error-border-color);
   pointer-events: none;
   z-index: 20;
@@ -2330,11 +2236,8 @@ body {
   display: flex;
   align-items: center;
   white-space: nowrap;
-  background-color: #f8fafc;
   background-color: var(--input-addon-bg);
-  border: 1px solid #cbd5e1;
   border: 1px solid var(--input-border-color);
-  color: #64748b;
   color: var(--input-addon-color);
   font-size: 0.875rem;
   padding: 0 0.75rem;
@@ -2365,7 +2268,6 @@ body {
 }
 
 .bk-input__control--underline:focus {
-    border-bottom-color: #6366f1;
     border-bottom-color: var(--input-focus-border-color);
   }
 
@@ -2399,7 +2301,6 @@ body {
 
 .bk-input__container:focus-within .bk-input__prefix,
 .bk-input__container:focus-within .bk-input__suffix {
-  border-color: #6366f1;
   border-color: var(--input-focus-border-color);
 }
 
@@ -2427,14 +2328,12 @@ body {
   border: none;
   padding: 0;
   cursor: pointer;
-  color: #94a3b8;
   color: var(--input-icon-color);
   transition: color 150ms ease-in-out;
   transition: color var(--transition-fast) ease-in-out;
 }
 
 .bk-input__password-toggle:hover {
-    color: #475569;
     color: var(--input-icon-hover-color);
   }
 
@@ -2445,7 +2344,6 @@ body {
   }
 
 .bk-input__container:focus-within .bk-input__password-toggle {
-  color: #6366f1;
   color: var(--input-focus-border-color);
 }
 
@@ -2471,11 +2369,8 @@ body {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background-color: #f8fafc;
   background-color: var(--input-number-btn-bg);
-  border: 1px solid #cbd5e1;
   border: 1px solid var(--input-border-color);
-  color: #64748b;
   color: var(--input-number-btn-color);
   cursor: pointer;
   padding: 0;
@@ -2486,14 +2381,11 @@ body {
 }
 
 .bk-input__number-btn:hover {
-    background-color: #f1f5f9;
     background-color: var(--input-number-btn-hover-bg);
-    color: #334155;
     color: var(--input-number-btn-hover-color);
   }
 
 .bk-input__number-btn:active {
-    background-color: #e2e8f0;
     background-color: var(--input-number-btn-active-bg);
   }
 
@@ -2524,24 +2416,19 @@ body {
   }
 
 .bk-input__container:focus-within .bk-input__number-btn {
-      border-color: #6366f1;
       border-color: var(--input-focus-border-color);
-      color: #6366f1;
       color: var(--input-focus-border-color);
     }
 
 .bk-input__container:focus-within .bk-input__number {
-      border-color: #6366f1;
       border-color: var(--input-focus-border-color);
     }
 
 .bk-input__container--error:focus-within .bk-input__number-btn {
-      border-color: #ef4444;
       border-color: var(--input-error-border-color);
     }
 
 .bk-input__container--error:focus-within .bk-input__number {
-      border-color: #ef4444;
       border-color: var(--input-error-border-color);
     }
 
@@ -2692,7 +2579,6 @@ body {
     margin-bottom: 0.375rem;
     font-size: 0.875rem;
     font-weight: 500;
-    color: #334155;
     color: var(--textarea-label-color);
     line-height: 1.25rem;
   }
@@ -2706,7 +2592,6 @@ body {
 .bk-textarea__corner-hint {
   margin-left: auto;
   font-size: 0.75rem;
-  color: #64748b;
   color: var(--textarea-hint-color);
 }
 
@@ -2715,7 +2600,6 @@ body {
   position: absolute;
   left: 0.75rem;
   font-size: 0.75rem;
-  color: #64748b;
   color: var(--textarea-hint-color);
   pointer-events: none;
   z-index: 2;
@@ -2736,7 +2620,6 @@ body {
 }
 
 .bk-textarea:has(.bk-textarea__container--error) .bk-textarea__label {
-  color: #ef4444;
   color: var(--textarea-error-border);
 }
 
@@ -2757,17 +2640,13 @@ body {
 }
 
 .bk-textarea__container:focus-within {
-    box-shadow: 0 0 0 2px #e0e7ff;
     box-shadow: 0 0 0 2px var(--textarea-focus-ring);
     z-index: 5;
   }
 
 .bk-textarea__container:has(:disabled) .bk-textarea__control {
-    background-color: #f8fafc;
     background-color: var(--textarea-disabled-bg);
-    color: #64748b;
     color: var(--textarea-disabled-color);
-    border-color: #e2e8f0;
     border-color: var(--textarea-disabled-border);
     cursor: not-allowed;
   }
@@ -2777,11 +2656,9 @@ body {
   width: 100%;
   border-radius: 0.5rem;
   border-radius: var(--textarea-radius);
-  border: 1px solid #cbd5e1;
   border: 1px solid var(--textarea-border);
   background-color: white;
   background-color: var(--textarea-bg);
-  color: #0f172a;
   color: var(--textarea-text);
   transition: border-color 200ms ease, box-shadow 200ms ease;
   transition: var(--textarea-transition);
@@ -2792,26 +2669,20 @@ body {
 
 .bk-textarea__control:focus {
     outline: none;
-    border-color: #6366f1;
     border-color: var(--textarea-focus-border);
-    box-shadow: 0 0 0 2px #e0e7ff;
     box-shadow: 0 0 0 2px var(--textarea-focus-ring);
   }
 
 .bk-textarea__control::-moz-placeholder {
-    color: #94a3b8;
     color: var(--textarea-placeholder);
   }
 
 .bk-textarea__control::placeholder {
-    color: #94a3b8;
     color: var(--textarea-placeholder);
   }
 
 .bk-textarea__control:disabled {
-    background-color: #f8fafc;
     background-color: var(--textarea-disabled-bg);
-    color: #64748b;
     color: var(--textarea-disabled-color);
     cursor: not-allowed;
   }
@@ -2822,12 +2693,10 @@ body {
     border-width: 0 0 1px 0;
     border-radius: 0;
     border-style: solid;
-    border-color: #cbd5e1;
     border-color: var(--textarea-border);
   }
 
 .bk-textarea__control.bk-textarea__control--underline:focus {
-      border-bottom-color: #6366f1;
       border-bottom-color: var(--textarea-focus-border);
       box-shadow: none;
     }
@@ -2966,131 +2835,106 @@ body {
  */
 
 .bk-textarea__control--primary {
-  border-color: #6366f1;
   border-color: var(--textarea-primary-border);
 }
 
 .bk-textarea__control--primary:focus {
-    border-color: #6366f1;
     border-color: var(--textarea-primary-border);
     box-shadow: none;
   }
 
 .bk-textarea__container--primary .bk-textarea__control {
-    border-color: #6366f1;
     border-color: var(--textarea-primary-border);
   }
 
 .bk-textarea__container--primary:focus-within {
-    box-shadow: 0 0 0 2px #e0e7ff;
     box-shadow: 0 0 0 2px var(--textarea-primary-ring);
   }
 
 .bk-textarea__control--secondary {
-  border-color: #cbd5e1;
   border-color: var(--textarea-secondary-border);
 }
 
 .bk-textarea__control--secondary:focus {
-    border-color: #cbd5e1;
     border-color: var(--textarea-secondary-border);
     box-shadow: none;
   }
 
 .bk-textarea__container--secondary .bk-textarea__control {
-    border-color: #cbd5e1;
     border-color: var(--textarea-secondary-border);
   }
 
 .bk-textarea__container--secondary:focus-within {
-    box-shadow: 0 0 0 2px #f1f5f9;
     box-shadow: 0 0 0 2px var(--textarea-secondary-ring);
   }
 
 .bk-textarea__control--error,
 .bk-textarea__control[aria-invalid="true"] {
-  border-color: #ef4444;
   border-color: var(--textarea-error-border);
 }
 
 :is(.bk-textarea__control--error,.bk-textarea__control[aria-invalid="true"]):focus {
-    box-shadow: 0 0 0 4px #fee2e2;
     box-shadow: 0 0 0 4px var(--textarea-error-ring);
   }
 
 .bk-textarea__container--error .bk-textarea__control {
-    border-color: #ef4444;
     border-color: var(--textarea-error-border);
   }
 
 .bk-textarea__container--error:focus-within {
-    box-shadow: 0 0 0 2px #fee2e2;
     box-shadow: 0 0 0 2px var(--textarea-error-ring);
   }
 
 .bk-textarea__container--error .bk-textarea__label--inset,
   .bk-textarea__container--error .bk-textarea__label--overlap {
-    color: #ef4444;
     color: var(--textarea-error-border);
   }
 
 .bk-textarea__control--success {
-  border-color: #22c55e;
   border-color: var(--textarea-success-border);
 }
 
 .bk-textarea__container--success .bk-textarea__control {
-    border-color: #22c55e;
     border-color: var(--textarea-success-border);
   }
 
 .bk-textarea__container--success:focus-within {
-    box-shadow: 0 0 0 2px #dcfce7;
     box-shadow: 0 0 0 2px var(--textarea-success-ring);
   }
 
 .bk-textarea__control--warning {
-  border-color: #f59e0b;
   border-color: var(--textarea-warning-border);
 }
 
 .bk-textarea__container--warning .bk-textarea__control {
-    border-color: #f59e0b;
     border-color: var(--textarea-warning-border);
   }
 
 .bk-textarea__container--warning:focus-within {
-    box-shadow: 0 0 0 2px #fef3c7;
     box-shadow: 0 0 0 2px var(--textarea-warning-ring);
   }
 
 .bk-textarea__control--danger {
-  border-color: #ef4444;
   border-color: var(--textarea-danger-border);
 }
 
 .bk-textarea__container--danger .bk-textarea__control {
-    border-color: #ef4444;
     border-color: var(--textarea-danger-border);
   }
 
 .bk-textarea__container--danger:focus-within {
-    box-shadow: 0 0 0 2px #fee2e2;
     box-shadow: 0 0 0 2px var(--textarea-danger-ring);
   }
 
 .bk-textarea__control--info {
-  border-color: #3b82f6;
   border-color: var(--textarea-info-border);
 }
 
 .bk-textarea__container--info .bk-textarea__control {
-    border-color: #3b82f6;
     border-color: var(--textarea-info-border);
   }
 
 .bk-textarea__container--info:focus-within {
-    box-shadow: 0 0 0 2px #dbeafe;
     box-shadow: 0 0 0 2px var(--textarea-info-ring);
   }
 
@@ -3103,7 +2947,6 @@ body {
 }
 
 .bk-textarea__container--ghost:focus-within {
-  box-shadow: 0 0 0 2px #f1f5f9;
   box-shadow: 0 0 0 2px var(--textarea-ghost-ring);
 }
 
@@ -3119,7 +2962,6 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  color: #ef4444;
   color: var(--textarea-error-border, var(--color-danger-500));
   pointer-events: none;
   z-index: 2;
@@ -3175,7 +3017,6 @@ body {
   margin-top: 0.375rem;
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
-  color: #dc2626;
   color: var(--color-danger-600);
 }
 
@@ -3183,7 +3024,6 @@ body {
   margin-top: 0.375rem;
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
-  color: #64748b;
   color: var(--textarea-hint-color);
 }
 
@@ -3323,7 +3163,6 @@ body {
   font-size: var(--font-size-sm);
   font-weight: 500;
   font-weight: var(--font-weight-medium);
-  color: #334155;
   color: var(--checkbox-label-color);
   line-height: 1.25rem;
   cursor: pointer;
@@ -3336,7 +3175,6 @@ body {
   margin-top: 0.25rem;
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
-  color: #dc2626;
   color: var(--color-danger-600);
 }
 
@@ -3344,7 +3182,6 @@ body {
   margin-top: 0.25rem;
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
-  color: #64748b;
   color: var(--checkbox-hint-color);
 }
 
@@ -3363,7 +3200,6 @@ body {
   flex-shrink: 0;
   border-radius: 0.25rem;
   border-radius: var(--checkbox-border-radius);
-  border: 1px solid #cbd5e1;
   border: 1px solid var(--checkbox-border-color);
   transition: background-color 200ms, border-color 200ms, box-shadow 200ms;
   transition: var(--checkbox-transition);
@@ -3384,25 +3220,21 @@ body {
 .bk-checkbox__control:focus {
     outline: none;
     box-shadow: 0 0 0 2px
-      #e0e7ff;
+      var(--checkbox-focus-ring-color);
     box-shadow: 0 0 0 var(--checkbox-focus-ring-width)
       var(--checkbox-focus-ring-color);
     border-color: var(--checkbox-checked-border);
   }
 
 .bk-checkbox__control:disabled {
-    background-color: #f1f5f9;
     background-color: var(--checkbox-disabled-bg);
-    border-color: #e2e8f0;
     border-color: var(--checkbox-disabled-border-color);
     cursor: not-allowed;
     opacity: 0.7;
   }
 
 .bk-checkbox__control:checked:disabled {
-    background-color: #94a3b8;
     background-color: var(--checkbox-disabled-checked-bg);
-    border-color: #94a3b8;
     border-color: var(--checkbox-disabled-checked-border);
     opacity: 1;
   }
@@ -3414,28 +3246,23 @@ body {
  */
 
 .bk-checkbox__container--error .bk-checkbox__control {
-    border-color: #ef4444;
     border-color: var(--checkbox-error-border-color);
   }
 
 .bk-checkbox__container--error .bk-checkbox__control:checked {
-      background-color: #dc2626;
       background-color: var(--color-danger-600);
-      border-color: #dc2626;
       border-color: var(--color-danger-600);
     }
 
 .bk-checkbox__container--error:focus-within .bk-checkbox__control {
     box-shadow: 0 0 0 2px
-      #fee2e2;
+      var(--checkbox-error-ring-color);
     box-shadow: 0 0 0 var(--checkbox-focus-ring-width)
       var(--checkbox-error-ring-color);
-    border-color: #ef4444;
     border-color: var(--checkbox-error-border-color);
   }
 
 .bk-checkbox:has(.bk-checkbox__container--error) .bk-checkbox__label {
-  color: #b91c1c;
   color: var(--checkbox-error-color);
 }
 
@@ -3674,9 +3501,7 @@ body {
 }
 
 .bk-radio__container:focus-within .bk-radio__control {
-    box-shadow: 0 0 0 2px #e0e7ff;
     box-shadow: 0 0 0 2px var(--radio-focus-ring);
-    border-color: #4f46e5;
     border-color: var(--radio-checked-border);
   }
 
@@ -3685,7 +3510,6 @@ body {
   font-size: var(--font-size-sm);
   font-weight: 500;
   font-weight: var(--font-weight-medium);
-  color: #334155;
   color: var(--radio-label-color);
   line-height: 1.25rem;
   margin-top: 1px;
@@ -3699,7 +3523,6 @@ body {
   margin-top: 0.25rem;
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
-  color: #dc2626;
   color: var(--color-danger-600);
   margin-left: calc(1.125rem + 0.75rem);
   margin-left: calc(var(--radio-size-md) + 0.75rem);
@@ -3709,7 +3532,6 @@ body {
   margin-top: 0.25rem;
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
-  color: #64748b;
   color: var(--radio-hint-color);
   margin-left: calc(1.125rem + 0.75rem);
   margin-left: calc(var(--radio-size-md) + 0.75rem);
@@ -3730,7 +3552,6 @@ body {
   margin: 0;
   flex-shrink: 0;
   border-radius: 50%;
-  border: 1px solid #cbd5e1;
   border: 1px solid var(--radio-border);
   transition: background-color 200ms, border-color 200ms, box-shadow 200ms;
   transition: var(--radio-transition);
@@ -3743,25 +3564,19 @@ body {
 }
 
 .bk-radio__control:checked {
-    background-color: #4f46e5;
     background-color: var(--radio-checked-bg);
-    border-color: #4f46e5;
     border-color: var(--radio-checked-border);
     background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
   }
 
 .bk-radio__control:focus {
     outline: none;
-    box-shadow: 0 0 0 2px #e0e7ff;
     box-shadow: 0 0 0 2px var(--radio-focus-ring);
-    border-color: #4f46e5;
     border-color: var(--radio-checked-border);
   }
 
 .bk-radio__control:disabled {
-    background-color: #f1f5f9;
     background-color: var(--radio-disabled-bg);
-    border-color: #e2e8f0;
     border-color: var(--radio-disabled-border);
     cursor: not-allowed;
     opacity: 0.7;
@@ -3774,30 +3589,24 @@ body {
  */
 
 .bk-radio__container--error .bk-radio__control {
-    border-color: #ef4444;
     border-color: var(--radio-error-border);
   }
 
 .bk-radio__container--error:focus-within {
-    box-shadow: 0 0 0 2px #fee2e2;
     box-shadow: 0 0 0 2px var(--radio-error-ring);
   }
 
 .bk-radio__control--error,
 .bk-radio__control[aria-invalid="true"] {
-  border-color: #ef4444;
   border-color: var(--radio-error-border);
 }
 
 :is(.bk-radio__control--error,.bk-radio__control[aria-invalid="true"]):focus {
-    box-shadow: 0 0 0 4px #fee2e2;
     box-shadow: 0 0 0 4px var(--radio-error-ring);
   }
 
 :is(.bk-radio__control--error,.bk-radio__control[aria-invalid="true"]):checked {
-    background-color: #dc2626;
     background-color: var(--radio-error-checked-bg);
-    border-color: #dc2626;
     border-color: var(--radio-error-checked-border);
   }
 
@@ -3806,7 +3615,6 @@ body {
     .bk-radio__control[aria-invalid="true"]
   )
   .bk-radio__label {
-  color: #b91c1c;
   color: var(--color-danger-700);
 }
 
@@ -3996,6 +3804,8 @@ body {
 
   /* Interaction States */
   --select-hover-border-color: var(--color-slate-400);
+  --select-hover-bg: initial;
+  --select-hover-color: initial;
   --select-focus-border-color: var(--color-primary-500);
   --select-focus-ring-color: var(--color-primary-100);
   --select-focus-ring-width: 2px;
@@ -4070,21 +3880,18 @@ body {
 .bk-select__error-message {
   font-size: 0.8125rem;
   line-height: 1.25rem;
-  color: #ef4444;
   color: var(--select-error-border-color);
 }
 
 .bk-select__hint {
   font-size: 0.8125rem;
   line-height: 1.25rem;
-  color: #64748b;
   color: var(--select-hint-color);
 }
 
 /* Error state on parent changes label color */
 
 .bk-select:has(.bk-select__container--error) .bk-select__label {
-  color: #b91c1c;
   color: var(--select-error-color);
 }
 
@@ -4098,7 +3905,6 @@ body {
   display: block;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #334155;
   color: var(--select-label-color);
   line-height: 1.25rem;
 }
@@ -4111,7 +3917,6 @@ body {
 .bk-select__corner-hint {
   margin-left: auto;
   font-size: 0.75rem;
-  color: #64748b;
   color: var(--select-hint-color);
 }
 
@@ -4122,7 +3927,6 @@ body {
   position: absolute;
   left: 0.75rem;
   font-size: 0.75rem;
-  color: #64748b;
   color: var(--select-hint-color);
   pointer-events: none;
   z-index: 2;
@@ -4158,7 +3962,6 @@ body {
 }
 
 .bk-select__container:focus-within {
-    box-shadow: 0 0 0 2px #e0e7ff;
     box-shadow: 0 0 0 2px var(--select-focus-ring-color);
     z-index: 5;
   }
@@ -4170,11 +3973,9 @@ body {
   width: 100%;
   border-radius: 0.5rem;
   border-radius: var(--select-border-radius);
-  border: 1px solid #cbd5e1;
   border: 1px solid var(--select-border-color);
   background-color: white;
   background-color: var(--select-bg);
-  color: #0f172a;
   color: var(--select-color);
   transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
   transition: var(--select-transition);
@@ -4190,22 +3991,21 @@ body {
 
 .bk-select__control:focus {
     outline: none;
-    border-color: #6366f1;
     border-color: var(--select-focus-border-color);
     box-shadow: none;
   }
 
 .bk-select__control:disabled {
-    background-color: #f8fafc;
     background-color: var(--select-disabled-bg);
-    color: #64748b;
     color: var(--select-disabled-color);
     cursor: not-allowed;
   }
 
 .bk-select__control:hover:not(:disabled) {
-    border-color: #94a3b8;
     border-color: var(--select-hover-border-color);
+    background-color: white;
+    background-color: var(--select-hover-bg, var(--select-bg));
+    color: var(--select-hover-color, var(--select-color));
   }
 
 /**
@@ -4221,7 +4021,6 @@ body {
   transform: translateY(-50%);
   width: 1.25rem;
   height: 1.25rem;
-  color: #94a3b8;
   color: var(--select-icon-color);
   pointer-events: none;
 }
@@ -4233,7 +4032,6 @@ body {
   transform: translateY(-50%);
   width: 1.25rem;
   height: 1.25rem;
-  color: #94a3b8;
   color: var(--select-icon-color);
   pointer-events: none;
   transition:
@@ -4266,20 +4064,21 @@ body {
   margin-top: 0.5rem;
   background-color: white;
   background-color: var(--select-menu-bg);
-  border: 1px solid #e2e8f0;
   border: 1px solid var(--select-menu-border);
   border-radius: 0.5rem;
   border-radius: var(--radius-md);
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   box-shadow: var(--select-menu-shadow);
   max-height: 16rem;
+  min-width: -moz-max-content;
+  min-width: max-content;
   overflow-y: auto;
   padding: 0.25rem;
-  z-index: 120;
+  z-index: 60;
 }
 
 .bk-select__container--open {
-  z-index: 110;
+  z-index: 50;
 }
 
 .bk-select__option {
@@ -4294,19 +4093,15 @@ body {
   border: none;
   text-align: left;
   cursor: pointer;
-  color: #334155;
   color: var(--select-option-text);
 }
 
 .bk-select__option:hover {
-    background-color: #f8fafc;
     background-color: var(--select-option-hover);
   }
 
 .bk-select__option--selected {
-  background-color: #f1f5f9;
   background-color: var(--select-option-selected-bg);
-  color: #0f172a;
   color: var(--select-option-selected-text);
 }
 
@@ -4318,7 +4113,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ef4444;
   color: var(--select-error-border-color);
   pointer-events: none;
   z-index: 2;
@@ -4496,9 +4290,7 @@ body {
 
 .bk-select__control--error,
 .bk-select__control[aria-invalid="true"] {
-  border-color: #ef4444;
   border-color: var(--select-error-border-color);
-  color: #b91c1c;
   color: var(--select-error-color);
 }
 
@@ -4507,162 +4299,134 @@ body {
   }
 
 .bk-select__container--error .bk-select__control {
-    border-color: #ef4444;
     border-color: var(--select-error-border-color);
   }
 
 .bk-select__container--error .bk-select__label--inset,
   .bk-select__container--error .bk-select__label--overlap {
-    color: #b91c1c;
     color: var(--select-error-color);
   }
 
 .bk-select__container--error .bk-select__chevron,
   .bk-select__container--error .bk-select__icon {
-    color: #b91c1c;
     color: var(--select-error-color);
     right: 0.625rem;
   }
 
 .bk-select__container--error:focus-within {
-    box-shadow: 0 0 0 2px #fee2e2;
     box-shadow: 0 0 0 2px var(--select-error-ring-color);
   }
 
 /* Primary variant */
 
 .bk-select__control--primary {
-  border-color: #6366f1;
   border-color: var(--select-primary-border-color);
 }
 
 .bk-select__container--primary .bk-select__control {
-    border-color: #6366f1;
     border-color: var(--select-primary-border-color);
   }
 
 .bk-select__container--primary .bk-select__chevron,
   .bk-select__container--primary .bk-select__icon {
-    color: #6366f1;
     color: var(--select-primary-border-color);
   }
 
 .bk-select__container--primary:focus-within {
-    box-shadow: 0 0 0 2px #e0e7ff;
     box-shadow: 0 0 0 2px var(--select-primary-ring-color);
   }
 
 /* Secondary variant */
 
 .bk-select__control--secondary {
-  border-color: #cbd5e1;
   border-color: var(--select-secondary-border-color);
 }
 
 .bk-select__container--secondary .bk-select__control {
-    border-color: #cbd5e1;
     border-color: var(--select-secondary-border-color);
   }
 
 .bk-select__container--secondary .bk-select__chevron,
   .bk-select__container--secondary .bk-select__icon {
-    color: #cbd5e1;
     color: var(--select-secondary-border-color);
   }
 
 .bk-select__container--secondary:focus-within {
-    box-shadow: 0 0 0 2px #f1f5f9;
     box-shadow: 0 0 0 2px var(--select-secondary-ring-color);
   }
 
 /* Success variant */
 
 .bk-select__control--success {
-  border-color: #22c55e;
   border-color: var(--select-success-border-color);
 }
 
 .bk-select__container--success .bk-select__control {
-    border-color: #22c55e;
     border-color: var(--select-success-border-color);
   }
 
 .bk-select__container--success .bk-select__chevron,
   .bk-select__container--success .bk-select__icon {
-    color: #22c55e;
     color: var(--select-success-border-color);
   }
 
 .bk-select__container--success:focus-within {
-    box-shadow: 0 0 0 2px #dcfce7;
     box-shadow: 0 0 0 2px var(--select-success-ring-color);
   }
 
 /* Warning variant */
 
 .bk-select__control--warning {
-  border-color: #f59e0b;
   border-color: var(--select-warning-border-color);
 }
 
 .bk-select__container--warning .bk-select__control {
-    border-color: #f59e0b;
     border-color: var(--select-warning-border-color);
   }
 
 .bk-select__container--warning .bk-select__chevron,
   .bk-select__container--warning .bk-select__icon {
-    color: #f59e0b;
     color: var(--select-warning-border-color);
   }
 
 .bk-select__container--warning:focus-within {
-    box-shadow: 0 0 0 2px #fef3c7;
     box-shadow: 0 0 0 2px var(--select-warning-ring-color);
   }
 
 /* Danger variant */
 
 .bk-select__control--danger {
-  border-color: #ef4444;
   border-color: var(--select-danger-border-color);
 }
 
 .bk-select__container--danger .bk-select__control {
-    border-color: #ef4444;
     border-color: var(--select-danger-border-color);
   }
 
 .bk-select__container--danger .bk-select__chevron {
-    color: #ef4444;
     color: var(--select-danger-border-color);
   }
 
 .bk-select__container--danger:focus-within {
-    box-shadow: 0 0 0 2px #fee2e2;
     box-shadow: 0 0 0 2px var(--select-danger-ring-color);
   }
 
 /* Info variant */
 
 .bk-select__control--info {
-  border-color: #3b82f6;
   border-color: var(--select-info-border-color);
 }
 
 .bk-select__container--info .bk-select__control {
-    border-color: #3b82f6;
     border-color: var(--select-info-border-color);
   }
 
 .bk-select__container--info .bk-select__chevron,
   .bk-select__container--info .bk-select__icon {
-    color: #3b82f6;
     color: var(--select-info-border-color);
   }
 
 .bk-select__container--info:focus-within {
-    box-shadow: 0 0 0 2px #dbeafe;
     box-shadow: 0 0 0 2px var(--select-info-ring-color);
   }
 
@@ -4677,7 +4441,6 @@ body {
 }
 
 .bk-select__container--ghost:focus-within {
-  box-shadow: 0 0 0 2px #f1f5f9;
   box-shadow: 0 0 0 2px var(--select-ghost-ring-color);
 }
 
@@ -4699,13 +4462,11 @@ body {
   border-width: 0 0 1px 0;
   border-radius: 0;
   border-style: solid;
-  border-color: #cbd5e1;
   border-color: var(--select-border-color);
   box-shadow: none;
 }
 
 .bk-select__control--underline:focus {
-    border-bottom-color: #6366f1;
     border-bottom-color: var(--select-focus-border-color);
     box-shadow: none;
   }
@@ -4888,21 +4649,18 @@ body {
 .bk-multiselect__error-message {
   font-size: 0.8125rem;
   line-height: 1.25rem;
-  color: #ef4444;
   color: var(--multiselect-error-border-color);
 }
 
 .bk-multiselect__hint {
   font-size: 0.8125rem;
   line-height: 1.25rem;
-  color: #64748b;
   color: var(--multiselect-hint-color);
 }
 
 /* Error state on parent changes label color */
 
 .bk-multiselect:has(.bk-multiselect__container--error) .bk-multiselect__label {
-  color: #b91c1c;
   color: var(--multiselect-error-color);
 }
 
@@ -4916,7 +4674,6 @@ body {
   display: block;
   font-size: 0.875rem;
   font-weight: 500;
-  color: #334155;
   color: var(--multiselect-label-color);
   line-height: 1.25rem;
 }
@@ -4929,7 +4686,6 @@ body {
 .bk-multiselect__corner-hint {
   margin-left: auto;
   font-size: 0.75rem;
-  color: #64748b;
   color: var(--multiselect-hint-color);
 }
 
@@ -4940,7 +4696,6 @@ body {
   position: absolute;
   left: 0.75rem;
   font-size: 0.75rem;
-  color: #64748b;
   color: var(--multiselect-hint-color);
   pointer-events: none;
 }
@@ -4978,7 +4733,6 @@ body {
 }
 
 .bk-multiselect__container:focus-within {
-    box-shadow: 0 0 0 2px #e0e7ff;
     box-shadow: 0 0 0 2px var(--multiselect-focus-ring-color);
     z-index: 5;
   }
@@ -4990,11 +4744,9 @@ body {
   width: 100%;
   border-radius: 0.5rem;
   border-radius: var(--multiselect-border-radius);
-  border: 1px solid #cbd5e1;
   border: 1px solid var(--multiselect-border-color);
   background-color: white;
   background-color: var(--multiselect-bg);
-  color: #0f172a;
   color: var(--multiselect-color);
   transition: border-color 150ms ease-in-out, box-shadow 150ms ease-in-out;
   transition: var(--multiselect-transition);
@@ -5010,21 +4762,17 @@ body {
 
 .bk-multiselect__control:focus {
     outline: none;
-    border-color: #6366f1;
     border-color: var(--multiselect-focus-border-color);
     box-shadow: none;
   }
 
 .bk-multiselect__control:disabled {
-    background-color: #f8fafc;
     background-color: var(--multiselect-disabled-bg);
-    color: #64748b;
     color: var(--multiselect-disabled-color);
     cursor: not-allowed;
   }
 
 .bk-multiselect__control:hover:not(:disabled) {
-    border-color: #94a3b8;
     border-color: var(--multiselect-hover-border-color);
   }
 
@@ -5037,7 +4785,6 @@ body {
 }
 
 .bk-multiselect__placeholder {
-  color: #94a3b8;
   color: var(--multiselect-placeholder-color);
 }
 
@@ -5053,11 +4800,8 @@ body {
   gap: 0.25rem;
   padding: 0.125rem 0.5rem;
   border-radius: 9999px;
-  background-color: #f1f5f9;
   background-color: var(--multiselect-chip-bg);
-  color: #334155;
   color: var(--multiselect-chip-text);
-  border: 1px solid #e2e8f0;
   border: 1px solid var(--multiselect-chip-border);
   font-size: 0.75rem;
 }
@@ -5065,7 +4809,6 @@ body {
 .bk-multiselect__chip-remove {
   border: none;
   background: transparent;
-  color: #64748b;
   color: var(--multiselect-chip-remove-color);
   cursor: pointer;
   padding: 0;
@@ -5073,7 +4816,6 @@ body {
 }
 
 .bk-multiselect__chip-remove:hover {
-    color: #334155;
     color: var(--multiselect-chip-remove-hover-color);
   }
 
@@ -5090,7 +4832,6 @@ body {
   transform: translateY(-50%);
   width: 1.25rem;
   height: 1.25rem;
-  color: #94a3b8;
   color: var(--multiselect-icon-color);
   pointer-events: none;
 }
@@ -5102,7 +4843,6 @@ body {
   transform: translateY(-50%);
   width: 1.25rem;
   height: 1.25rem;
-  color: #94a3b8;
   color: var(--multiselect-icon-color);
   pointer-events: none;
   transition:
@@ -5123,7 +4863,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ef4444;
   color: var(--multiselect-error-border-color);
   pointer-events: none;
   z-index: 2;
@@ -5151,7 +4890,6 @@ body {
   margin-top: 0.5rem;
   background-color: white;
   background-color: var(--multiselect-menu-bg);
-  border: 1px solid #e2e8f0;
   border: 1px solid var(--multiselect-menu-border);
   border-radius: 0.5rem;
   border-radius: var(--radius-md);
@@ -5176,19 +4914,15 @@ body {
   border: none;
   text-align: left;
   cursor: pointer;
-  color: #334155;
   color: var(--multiselect-option-text);
 }
 
 .bk-multiselect__option:hover {
-    background-color: #f8fafc;
     background-color: var(--multiselect-option-hover);
   }
 
 .bk-multiselect__option--selected {
-  background-color: #f1f5f9;
   background-color: var(--multiselect-option-selected-bg);
-  color: #0f172a;
   color: var(--multiselect-option-selected-text);
 }
 
@@ -5196,7 +4930,6 @@ body {
   width: 1rem;
   height: 1rem;
   border-radius: 0.25rem;
-  border: 1px solid #cbd5e1;
   border: 1px solid var(--multiselect-check-border);
   background-color: white;
   background-color: var(--multiselect-option-check-bg);
@@ -5204,9 +4937,7 @@ body {
 }
 
 .bk-multiselect__option--selected .bk-multiselect__option-check {
-  background-color: #4f46e5;
   background-color: var(--color-primary-600);
-  border-color: #4f46e5;
   border-color: var(--color-primary-600);
   box-shadow: inset 0 0 0 2px white;
   box-shadow: inset 0 0 0 2px var(--multiselect-option-check-inset);
@@ -5393,14 +5124,11 @@ body {
 
 .bk-multiselect__control--error,
 .bk-multiselect__control[aria-invalid="true"] {
-  border-color: #ef4444;
   border-color: var(--multiselect-error-border-color);
-  color: #b91c1c;
   color: var(--multiselect-error-color);
 }
 
 :is(.bk-multiselect__control--error,.bk-multiselect__control[aria-invalid="true"]) .bk-multiselect__placeholder {
-    color: #b91c1c;
     color: var(--multiselect-error-color);
   }
 
@@ -5409,19 +5137,16 @@ body {
   }
 
 .bk-multiselect__container--error .bk-multiselect__control {
-    border-color: #ef4444;
     border-color: var(--multiselect-error-border-color);
   }
 
 .bk-multiselect__container--error .bk-multiselect__label--inset,
   .bk-multiselect__container--error .bk-multiselect__label--overlap {
-    color: #b91c1c;
     color: var(--multiselect-error-color);
   }
 
 .bk-multiselect__container--error .bk-multiselect__chevron,
   .bk-multiselect__container--error .bk-multiselect__icon {
-    color: #b91c1c;
     color: var(--multiselect-error-color);
   }
 
@@ -5430,144 +5155,119 @@ body {
   }
 
 .bk-multiselect__container--error:focus-within {
-    box-shadow: 0 0 0 2px #fee2e2;
     box-shadow: 0 0 0 2px var(--multiselect-error-ring-color);
   }
 
 /* Primary variant */
 
 .bk-multiselect__control--primary {
-  border-color: #6366f1;
   border-color: var(--multiselect-primary-border-color);
 }
 
 .bk-multiselect__container--primary .bk-multiselect__control {
-    border-color: #6366f1;
     border-color: var(--multiselect-primary-border-color);
   }
 
 .bk-multiselect__container--primary .bk-multiselect__chevron,
   .bk-multiselect__container--primary .bk-multiselect__icon {
-    color: #6366f1;
     color: var(--multiselect-primary-border-color);
   }
 
 .bk-multiselect__container--primary:focus-within {
-    box-shadow: 0 0 0 2px #e0e7ff;
     box-shadow: 0 0 0 2px var(--multiselect-primary-ring-color);
   }
 
 /* Secondary variant */
 
 .bk-multiselect__control--secondary {
-  border-color: #cbd5e1;
   border-color: var(--multiselect-secondary-border-color);
 }
 
 .bk-multiselect__container--secondary .bk-multiselect__control {
-    border-color: #cbd5e1;
     border-color: var(--multiselect-secondary-border-color);
   }
 
 .bk-multiselect__container--secondary .bk-multiselect__chevron,
   .bk-multiselect__container--secondary .bk-multiselect__icon {
-    color: #cbd5e1;
     color: var(--multiselect-secondary-border-color);
   }
 
 .bk-multiselect__container--secondary:focus-within {
-    box-shadow: 0 0 0 2px #f1f5f9;
     box-shadow: 0 0 0 2px var(--multiselect-secondary-ring-color);
   }
 
 /* Success variant */
 
 .bk-multiselect__control--success {
-  border-color: #22c55e;
   border-color: var(--multiselect-success-border-color);
 }
 
 .bk-multiselect__container--success .bk-multiselect__control {
-    border-color: #22c55e;
     border-color: var(--multiselect-success-border-color);
   }
 
 .bk-multiselect__container--success .bk-multiselect__chevron,
   .bk-multiselect__container--success .bk-multiselect__icon {
-    color: #22c55e;
     color: var(--multiselect-success-border-color);
   }
 
 .bk-multiselect__container--success:focus-within {
-    box-shadow: 0 0 0 2px #dcfce7;
     box-shadow: 0 0 0 2px var(--multiselect-success-ring-color);
   }
 
 /* Warning variant */
 
 .bk-multiselect__control--warning {
-  border-color: #f59e0b;
   border-color: var(--multiselect-warning-border-color);
 }
 
 .bk-multiselect__container--warning .bk-multiselect__control {
-    border-color: #f59e0b;
     border-color: var(--multiselect-warning-border-color);
   }
 
 .bk-multiselect__container--warning .bk-multiselect__chevron,
   .bk-multiselect__container--warning .bk-multiselect__icon {
-    color: #f59e0b;
     color: var(--multiselect-warning-border-color);
   }
 
 .bk-multiselect__container--warning:focus-within {
-    box-shadow: 0 0 0 2px #fef3c7;
     box-shadow: 0 0 0 2px var(--multiselect-warning-ring-color);
   }
 
 /* Danger variant */
 
 .bk-multiselect__control--danger {
-  border-color: #ef4444;
   border-color: var(--multiselect-danger-border-color);
 }
 
 .bk-multiselect__container--danger .bk-multiselect__control {
-    border-color: #ef4444;
     border-color: var(--multiselect-danger-border-color);
   }
 
 .bk-multiselect__container--danger .bk-multiselect__chevron {
-    color: #ef4444;
     color: var(--multiselect-danger-border-color);
   }
 
 .bk-multiselect__container--danger:focus-within {
-    box-shadow: 0 0 0 2px #fee2e2;
     box-shadow: 0 0 0 2px var(--multiselect-danger-ring-color);
   }
 
 /* Info variant */
 
 .bk-multiselect__control--info {
-  border-color: #3b82f6;
   border-color: var(--multiselect-info-border-color);
 }
 
 .bk-multiselect__container--info .bk-multiselect__control {
-    border-color: #3b82f6;
     border-color: var(--multiselect-info-border-color);
   }
 
 .bk-multiselect__container--info .bk-multiselect__chevron,
   .bk-multiselect__container--info .bk-multiselect__icon {
-    color: #3b82f6;
     color: var(--multiselect-info-border-color);
   }
 
 .bk-multiselect__container--info:focus-within {
-    box-shadow: 0 0 0 2px #dbeafe;
     box-shadow: 0 0 0 2px var(--multiselect-info-ring-color);
   }
 
@@ -5582,7 +5282,6 @@ body {
 }
 
 .bk-multiselect__container--ghost:focus-within {
-  box-shadow: 0 0 0 2px #f1f5f9;
   box-shadow: 0 0 0 2px var(--multiselect-ghost-ring-color);
 }
 
@@ -5604,13 +5303,11 @@ body {
   border-width: 0 0 1px 0;
   border-radius: 0;
   border-style: solid;
-  border-color: #cbd5e1;
   border-color: var(--multiselect-border-color);
   box-shadow: none;
 }
 
 .bk-multiselect__control--underline:focus {
-    border-bottom-color: #6366f1;
     border-bottom-color: var(--multiselect-focus-border-color);
     box-shadow: none;
   }
@@ -5763,7 +5460,6 @@ body {
 }
 
 .bk-toggle:has(.bk-toggle__button--error) .bk-toggle__label {
-    color: #b91c1c;
     color: var(--color-danger-700);
   }
 
@@ -5778,7 +5474,6 @@ body {
   font-size: var(--font-size-sm);
   font-weight: 500;
   font-weight: var(--font-weight-medium);
-  color: #334155;
   color: var(--toggle-label-color);
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -5789,12 +5484,10 @@ body {
   margin-top: 0.375rem;
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
-  color: #dc2626;
   color: var(--color-danger-600);
 }
 
 .bk-toggle__hint {
-  color: #64748b;
   color: var(--toggle-hint-color);
 }
 
@@ -5809,7 +5502,6 @@ body {
   display: inline-flex;
   flex-shrink: 0;
   border-radius: 9999px;
-  background-color: #e2e8f0;
   background-color: var(--toggle-bg-off);
   cursor: pointer;
   border: 2px solid transparent;
@@ -5818,13 +5510,11 @@ body {
 
 .bk-toggle__button:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 2px #e0e7ff;
     box-shadow: 0 0 0 2px var(--toggle-focus-ring);
   }
 
 .bk-toggle__input:focus-visible + .bk-toggle__button {
   outline: none;
-  box-shadow: 0 0 0 2px #e0e7ff;
   box-shadow: 0 0 0 2px var(--toggle-focus-ring);
 }
 
@@ -5852,7 +5542,6 @@ body {
   width: var(--toggle-width-sm);
   height: 1.25rem;
   height: var(--toggle-height-sm);
-  color: #334155;
   color: var(--toggle-label-color);
   --toggle-thumb-translate: 1.25rem;
 }
@@ -5901,7 +5590,6 @@ body {
  */
 
 .bk-toggle__button--on {
-  background-color: #4f46e5;
   background-color: var(--toggle-bg-on);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
 }
@@ -5913,12 +5601,10 @@ body {
   }
 
 .bk-toggle__button--off .bk-toggle__slider {
-  box-shadow: inset 0 0 0 1px #cbd5e1;
   box-shadow: inset 0 0 0 1px var(--toggle-thumb-border-off);
 }
 
 .bk-toggle__input:checked + .bk-toggle__button {
-  background-color: #4f46e5;
   background-color: var(--toggle-bg-on);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
 }
@@ -5930,7 +5616,6 @@ body {
   }
 
 .bk-toggle__input:not(:checked) + .bk-toggle__button .bk-toggle__slider {
-  box-shadow: inset 0 0 0 1px #cbd5e1;
   box-shadow: inset 0 0 0 1px var(--toggle-thumb-border-off);
 }
 
@@ -5940,13 +5625,11 @@ body {
 }
 
 .bk-toggle__input:disabled ~ .bk-toggle__label {
-  color: #94a3b8;
   color: var(--toggle-disabled-label-color);
   cursor: not-allowed;
 }
 
 .bk-toggle__button--error.bk-toggle__button--on {
-  background-color: #dc2626;
   background-color: var(--toggle-error-bg-on);
   --toggle-bg-on: var(--toggle-error-bg-on);
   --toggle-focus-ring: var(--toggle-error-focus-ring);
@@ -6141,64 +5824,45 @@ body {
    ============================================================================= */
 
 .bk-alert--primary {
-  background-color: #eef2ff;
   background-color: var(--alert-bg-primary);
-  color: #4338ca;
   color: var(--alert-text-primary);
-  border-color: #c7d2fe;
   border-color: var(--alert-border-primary);
 }
 
 .bk-alert--info {
-  background-color: #eff6ff;
   background-color: var(--alert-bg-info);
-  color: #1d4ed8;
   color: var(--alert-text-info);
-  border-color: #bfdbfe;
   border-color: var(--alert-border-info);
 }
 
 .bk-alert--secondary {
-  background-color: #f8fafc;
   background-color: var(--alert-bg-secondary);
-  color: #334155;
   color: var(--alert-text-secondary);
-  border-color: #e2e8f0;
   border-color: var(--alert-border-secondary);
 }
 
 .bk-alert--success {
-  background-color: #f0fdf4;
   background-color: var(--alert-bg-success);
-  color: #15803d;
   color: var(--alert-text-success);
-  border-color: #bbf7d0;
   border-color: var(--alert-border-success);
 }
 
 .bk-alert--warning {
-  background-color: #fffbeb;
   background-color: var(--alert-bg-warning);
-  color: #92400e;
   color: var(--alert-text-warning);
-  border-color: #fde68a;
   border-color: var(--alert-border-warning);
 }
 
 .bk-alert--danger,
 .bk-alert--error {
-  background-color: #fef2f2;
   background-color: var(--alert-bg-danger);
-  color: #b91c1c;
   color: var(--alert-text-danger);
-  border-color: #fecaca;
   border-color: var(--alert-border-danger);
 }
 
 .bk-alert--ghost {
   background-color: transparent;
   background-color: var(--alert-bg-ghost);
-  color: #334155;
   color: var(--alert-text-ghost);
   border-color: transparent;
   border-color: var(--alert-border-ghost);
@@ -6386,57 +6050,39 @@ body {
    ============================================================================= */
 
 .bk-toast--info {
-  background-color: #eff6ff;
   background-color: var(--toast-bg-info);
-  border-color: #3b82f6;
   border-color: var(--toast-border-info);
-  color: #1e3a8a;
   color: var(--toast-text-info);
 }
 
 .bk-toast--primary {
-  background-color: #eef2ff;
   background-color: var(--toast-bg-primary);
-  border-color: #6366f1;
   border-color: var(--toast-border-primary);
-  color: #312e81;
   color: var(--toast-text-primary);
 }
 
 .bk-toast--secondary {
-  background-color: #f8fafc;
   background-color: var(--toast-bg-secondary);
-  border-color: #94a3b8;
   border-color: var(--toast-border-secondary);
-  color: #0f172a;
   color: var(--toast-text-secondary);
 }
 
 .bk-toast--success {
-  background-color: #f0fdf4;
   background-color: var(--toast-bg-success);
-  border-color: #22c55e;
   border-color: var(--toast-border-success);
-  color: #14532d;
   color: var(--toast-text-success);
 }
 
 .bk-toast--warning {
-  background-color: #fffbeb;
   background-color: var(--toast-bg-warning);
-  border-color: #f59e0b;
   border-color: var(--toast-border-warning);
-  color: #78350f;
   color: var(--toast-text-warning);
 }
 
 .bk-toast--danger,
 .bk-toast--error {
-  background-color: #fef2f2;
   background-color: var(--toast-bg-danger);
-  border-color: #ef4444;
   border-color: var(--toast-border-danger);
-  color: #7f1d1d;
   color: var(--toast-text-danger);
 }
 
@@ -6445,7 +6091,6 @@ body {
   background-color: var(--toast-bg-ghost);
   border-color: transparent;
   border-color: var(--toast-border-ghost);
-  color: #334155;
   color: var(--toast-text-ghost);
 }
 
@@ -6520,7 +6165,6 @@ body {
   padding-bottom: 0.5rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
-  background-color: #0f172a;
   background-color: var(--tooltip-bg);
   color: white;
   color: var(--tooltip-text);
@@ -6618,13 +6262,11 @@ body {
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
-  color: #334155;
   color: var(--progress-label-color);
 }
 
 .bk-progress__track {
   width: 100%;
-  background-color: #e2e8f0;
   background-color: var(--progress-bg);
   border-radius: 9999px;
   border-radius: var(--progress-radius);
@@ -6682,37 +6324,30 @@ body {
    ============================================================================= */
 
 .bk-progress__track--primary .bk-progress__fill {
-    background-color: #4f46e5;
     background-color: var(--progress-bar-primary);
   }
 
 .bk-progress__track--secondary .bk-progress__fill {
-    background-color: #475569;
     background-color: var(--progress-bar-secondary);
   }
 
 .bk-progress__track--success .bk-progress__fill {
-    background-color: #16a34a;
     background-color: var(--progress-bar-success);
   }
 
 .bk-progress__track--warning .bk-progress__fill {
-    background-color: #d97706;
     background-color: var(--progress-bar-warning);
   }
 
 .bk-progress__track--danger .bk-progress__fill {
-    background-color: #dc2626;
     background-color: var(--progress-bar-danger);
   }
 
 .bk-progress__track--info .bk-progress__fill {
-    background-color: #2563eb;
     background-color: var(--progress-bar-info);
   }
 
 .bk-progress__track--ghost .bk-progress__fill {
-    background-color: #94a3b8;
     background-color: var(--progress-bar-ghost);
   }
 
@@ -6833,37 +6468,30 @@ body {
    ============================================================================= */
 
 .bk-spinner__icon--primary {
-  color: #4f46e5;
   color: var(--spinner-color-primary);
 }
 
 .bk-spinner__icon--secondary {
-  color: #475569;
   color: var(--spinner-color-slate);
 }
 
 .bk-spinner__icon--success {
-  color: #16a34a;
   color: var(--spinner-color-success);
 }
 
 .bk-spinner__icon--warning {
-  color: #d97706;
   color: var(--spinner-color-warning);
 }
 
 .bk-spinner__icon--danger {
-  color: #dc2626;
   color: var(--spinner-color-danger);
 }
 
 .bk-spinner__icon--info {
-  color: #2563eb;
   color: var(--spinner-color-info);
 }
 
 .bk-spinner__icon--ghost {
-  color: #94a3b8;
   color: var(--spinner-color-ghost);
 }
 
@@ -6931,7 +6559,6 @@ body {
    ============================================================================= */
 
 .bk-skeleton {
-  background-color: #e2e8f0;
   background-color: var(--skeleton-bg);
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
@@ -7179,7 +6806,6 @@ body {
   width: var(--empty-state-icon-size);
   height: 3rem;
   height: var(--empty-state-icon-size);
-  color: #94a3b8;
   color: var(--empty-state-icon-color);
   margin-bottom: 1rem;
   margin-bottom: var(--empty-state-icon-gap);
@@ -7190,7 +6816,6 @@ body {
   font-size: var(--empty-state-title-size);
   font-weight: 600;
   font-weight: var(--font-weight-semibold);
-  color: #0f172a;
   color: var(--empty-state-title-color);
   margin-bottom: 0.5rem;
   margin-bottom: var(--empty-state-title-gap);
@@ -7199,7 +6824,6 @@ body {
 .bk-empty-state__description {
   font-size: 1rem;
   font-size: var(--empty-state-description-size);
-  color: #475569;
   color: var(--empty-state-description-color);
   max-width: 28rem;
   margin-bottom: 1.5rem;
@@ -7379,7 +7003,6 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
-  color: #4f46e5;
   color: var(--breadcrumb-link-color);
   text-decoration: none;
   transition: color 150ms;
@@ -7394,7 +7017,6 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.375rem;
-  color: #334155;
   color: var(--breadcrumb-current-color);
   font-weight: 500;
   font-weight: var(--font-weight-medium);
@@ -7403,7 +7025,6 @@ body {
 .bk-breadcrumb__icon {
   width: 1rem;
   height: 1rem;
-  color: #334155;
   color: var(--breadcrumb-current-color);
   flex-shrink: 0;
 }
@@ -7411,7 +7032,6 @@ body {
 .bk-breadcrumb__separator {
   width: 1rem;
   height: 1rem;
-  color: #94a3b8;
   color: var(--breadcrumb-separator-color);
   flex-shrink: 0;
 }
@@ -7526,11 +7146,9 @@ body {
   padding-right: 0.75rem;
   border-radius: 0.5rem;
   border-radius: var(--radius-md);
-  border: 1px solid #cbd5e1;
   border: 1px solid var(--pagination-border);
   background-color: white;
   background-color: var(--pagination-bg);
-  color: #334155;
   color: var(--pagination-text);
   text-decoration: none;
   transition: all 150ms;
@@ -7538,21 +7156,17 @@ body {
 }
 
 .bk-pagination__link:hover, .bk-pagination__number:hover {
-    background-color: #f8fafc;
     background-color: var(--pagination-hover-bg);
   }
 
 .bk-pagination__number--active {
-  background-color: #4f46e5;
   background-color: var(--pagination-active-bg);
   color: white;
   color: var(--pagination-active-text);
-  border-color: #4f46e5;
   border-color: var(--pagination-active-bg);
 }
 
 .bk-pagination__number--active:hover {
-    background-color: #4338ca;
     background-color: var(--pagination-active-hover-bg);
   }
 
@@ -7567,7 +7181,6 @@ body {
   padding-bottom: 0.5rem;
   padding-left: 0.25rem;
   padding-right: 0.25rem;
-  color: #94a3b8;
   color: var(--pagination-disabled-text);
 }
 
@@ -7584,7 +7197,6 @@ body {
 .bk-pagination__info {
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
-  color: #475569;
   color: var(--pagination-info-color);
 }
 
@@ -7597,18 +7209,15 @@ body {
 .bk-pagination__per-page-label {
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
-  color: #334155;
   color: var(--pagination-label-color);
 }
 
 .bk-pagination__per-page-select {
   border-radius: 0.5rem;
   border-radius: var(--radius-md);
-  border: 1px solid #cbd5e1;
   border: 1px solid var(--pagination-border);
   background-color: white;
   background-color: var(--pagination-bg);
-  color: #334155;
   color: var(--pagination-text);
   padding: 0.375rem 0.5rem;
 }
@@ -7637,7 +7246,6 @@ body {
   padding-right: 0.5rem;
   font-weight: 500;
   font-weight: var(--font-weight-medium);
-  color: #334155;
   color: var(--pagination-text);
 }
 
@@ -7752,17 +7360,14 @@ body {
   }
 
 .bk-tabs__list .bk-tabs__tab--inactive {
-    color: #475569;
     color: var(--tabs-text);
   }
 
 .bk-tabs__list .bk-tabs__tab--inactive:hover {
-      color: #0f172a;
       color: var(--tabs-hover-text);
     }
 
 .bk-tabs__list .bk-tabs__tab--active {
-    color: #4f46e5;
     color: var(--tabs-active-text);
   }
 
@@ -7771,7 +7376,6 @@ body {
    ============================================================================= */
 
 .bk-tabs__list--underline {
-  border-bottom: 2px solid #e2e8f0;
   border-bottom: 2px solid var(--tabs-border);
 }
 
@@ -7781,7 +7385,6 @@ body {
   }
 
 .bk-tabs__list--underline .bk-tabs__tab--active {
-    border-bottom-color: #4f46e5;
     border-bottom-color: var(--tabs-active-border);
   }
 
@@ -7791,12 +7394,10 @@ body {
   }
 
 .bk-tabs__list--pills .bk-tabs__tab--active {
-    background-color: #e0e7ff;
     background-color: var(--tabs-pills-active-bg);
   }
 
 .bk-tabs__list--boxed {
-  background-color: #f1f5f9;
   background-color: var(--tabs-boxed-bg);
   border-radius: 0.75rem;
   border-radius: var(--tabs-boxed-radius);
@@ -7875,11 +7476,9 @@ body {
     padding-right: 0.875rem;
     border-radius: 0.5rem;
     border-radius: var(--dropdown-radius);
-    border: 1px solid #e2e8f0;
     border: 1px solid var(--dropdown-border);
     background-color: white;
     background-color: var(--dropdown-trigger-bg);
-    color: #334155;
     color: var(--dropdown-trigger-text);
     font-size: 0.875rem;
     font-size: var(--font-size-sm);
@@ -7894,9 +7493,7 @@ body {
   }
 
 .bk-dropdown .bk-dropdown__trigger:hover {
-      background-color: #f8fafc;
       background-color: var(--dropdown-trigger-hover-bg);
-      border-color: #cbd5e1;
       border-color: var(--dropdown-trigger-hover-border);
     }
 
@@ -7906,14 +7503,12 @@ body {
 
 .bk-dropdown .bk-dropdown__trigger:focus-visible {
       outline: none;
-      box-shadow: 0 0 0 4px #e0e7ff;
       box-shadow: 0 0 0 4px var(--dropdown-trigger-focus-ring);
     }
 
 .bk-dropdown .bk-dropdown__trigger-icon {
     width: 1rem;
     height: 1rem;
-    color: #64748b;
     color: var(--dropdown-item-icon);
     transition: transform 150ms;
     transition: transform var(--transition-fast);
@@ -7955,7 +7550,6 @@ body {
     margin-top: 0.5rem;
     background-color: white;
     background-color: var(--dropdown-bg);
-    border: 1px solid #e2e8f0;
     border: 1px solid var(--dropdown-border);
     border-radius: 0.5rem;
     border-radius: var(--dropdown-radius);
@@ -7975,7 +7569,6 @@ body {
   min-width: 12rem;
   background-color: white;
   background-color: var(--dropdown-bg);
-  border: 1px solid #e2e8f0;
   border: 1px solid var(--dropdown-border);
   border-radius: 0.5rem;
   border-radius: var(--dropdown-radius);
@@ -8028,7 +7621,6 @@ body {
 
 .bk-dropdown__separator {
   height: 1px;
-  background-color: #e2e8f0;
   background-color: var(--dropdown-border);
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
@@ -8044,7 +7636,6 @@ body {
   padding-right: 1rem;
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
-  color: #334155;
   color: var(--dropdown-item-text);
   text-decoration: none;
   transition: background-color 150ms;
@@ -8053,7 +7644,6 @@ body {
 }
 
 .bk-dropdown__item:hover {
-    background-color: #f8fafc;
     background-color: var(--dropdown-item-hover-bg);
   }
 
@@ -8075,7 +7665,6 @@ body {
 .bk-dropdown__submenu-toggle-icon {
   width: 1rem;
   height: 1rem;
-  color: #64748b;
   color: var(--dropdown-item-icon);
   flex-shrink: 0;
   transition: transform 150ms;
@@ -8085,7 +7674,6 @@ body {
 .bk-dropdown__item-icon {
   width: 1.25rem;
   height: 1.25rem;
-  color: #64748b;
   color: var(--dropdown-item-icon);
 }
 
@@ -8140,6 +7728,7 @@ body {
   align-items: center;
   gap: 0.375rem;
   text-decoration: underline;
+  cursor: pointer;
   transition: opacity 150ms;
   transition: opacity var(--transition-fast);
 }
@@ -8163,42 +7752,34 @@ body {
    ============================================================================= */
 
 :where(.bk-link--primary):not([class*="text-"]) {
-  color: #4f46e5;
   color: var(--link-primary-color);
 }
 
 :where(.bk-link--secondary):not([class*="text-"]) {
-  color: #334155;
   color: var(--link-secondary-color);
 }
 
 :where(.bk-link--success):not([class*="text-"]) {
-  color: #16a34a;
   color: var(--link-success-color);
 }
 
 :where(.bk-link--warning):not([class*="text-"]) {
-  color: #d97706;
   color: var(--link-warning-color);
 }
 
 :where(.bk-link--muted):not([class*="text-"]) {
-  color: #475569;
   color: var(--link-muted-color);
 }
 
 :where(.bk-link--danger):not([class*="text-"]) {
-  color: #dc2626;
   color: var(--link-danger-color);
 }
 
 :where(.bk-link--info):not([class*="text-"]) {
-  color: #2563eb;
   color: var(--link-info-color);
 }
 
 :where(.bk-link--ghost):not([class*="text-"]) {
-  color: #64748b;
   color: var(--link-ghost-color);
 }
 
@@ -8269,7 +7850,6 @@ body {
   background-color: var(--divider-label-bg);
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
-  color: #64748b;
   color: var(--divider-label-color);
   white-space: nowrap;
 }
@@ -8290,13 +7870,11 @@ body {
 
 .bk-divider--vertical.bk-divider--dashed {
     border-top: none;
-    border-left: 1px dashed #e2e8f0;
     border-left: 1px dashed var(--divider-color);
   }
 
 .bk-divider--vertical.bk-divider--dotted {
     border-top: none;
-    border-left: 1px dotted #e2e8f0;
     border-left: 1px dotted var(--divider-color);
   }
 
@@ -8305,18 +7883,15 @@ body {
    ============================================================================= */
 
 .bk-divider--solid {
-  background-color: #e2e8f0;
   background-color: var(--divider-color);
 }
 
 .bk-divider--dashed {
-  border-top: 1px dashed #e2e8f0;
   border-top: 1px dashed var(--divider-color);
   background: none;
 }
 
 .bk-divider--dotted {
-  border-top: 1px dotted #e2e8f0;
   border-top: 1px dotted var(--divider-color);
   background: none;
 }
@@ -8563,6 +8138,8 @@ body {
   --card-border: var(--color-slate-200);
   --card-radius: var(--radius-xl);
   --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --card-hover-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --card-hover-border: var(--color-slate-300);
   --card-header-padding: 1.25rem 1.5rem;
   --card-header-text: var(--color-slate-900);
   --card-body-padding: 1.5rem;
@@ -8592,7 +8169,6 @@ body {
 .bk-cardbody,
 .bk-cardfooter {
   position: relative;
-  z-index: 1;
 }
 
 .bk-card__header {
@@ -8601,7 +8177,6 @@ body {
   justify-content: space-between;
   padding: 1.25rem 1.5rem;
   padding: var(--card-header-padding);
-  border-bottom: 1px solid #e2e8f0;
   border-bottom: 1px solid var(--card-border);
 }
 
@@ -8610,7 +8185,6 @@ body {
   font-size: var(--font-size-lg);
   font-weight: 600;
   font-weight: var(--font-weight-semibold);
-  color: #0f172a;
   color: var(--card-header-text);
 }
 
@@ -8626,9 +8200,7 @@ body {
 .bk-card__footer {
   padding: 1rem 1.5rem;
   padding: var(--card-footer-padding);
-  border-top: 1px solid #e2e8f0;
   border-top: 1px solid var(--card-border);
-  background-color: #f8fafc;
   background-color: var(--card-footer-bg);
 }
 
@@ -8639,17 +8211,32 @@ body {
 .bk-card--default {
   background-color: white;
   background-color: var(--card-bg);
-  border: 1px solid #e2e8f0;
   border: 1px solid var(--card-border);
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   box-shadow: var(--card-shadow);
+  transition: box-shadow 150ms, border-color 150ms;
+  transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
 }
 
+.bk-card--default:hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    box-shadow: var(--card-hover-shadow);
+    border-color: var(--card-hover-border);
+  }
+
 .bk-card--bordered {
-  border: 1px solid #e2e8f0;
   border: 1px solid var(--card-border);
-  box-shadow: none;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 150ms, border-color 150ms;
+  transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
 }
+
+.bk-card--bordered:hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    box-shadow: var(--card-hover-shadow);
+    border-color: var(--card-hover-border);
+  }
 
 .bk-card--transparent {
   background-color: transparent;
@@ -8659,7 +8246,6 @@ body {
 
 .bk-card--default .bk-card__footer,
 .bk-card--bordered .bk-card__footer {
-  border-bottom: 1px solid #e2e8f0;
   border-bottom: 1px solid var(--card-border);
   border-bottom-left-radius: 1rem;
   border-bottom-left-radius: var(--card-radius);
@@ -8674,6 +8260,8 @@ body {
   --card-border: var(--color-slate-700);
   --card-footer-bg: var(--color-slate-800);
   --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px -1px rgba(0, 0, 0, 0.2);
+  --card-hover-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.2);
+  --card-hover-border: var(--color-slate-600);
   --card-header-text: var(--color-slate-100);
 }
 
@@ -8724,9 +8312,7 @@ body {
   flex-shrink: 0;
   border-radius: 9999px;
   border-radius: var(--avatar-radius, 9999px);
-  background-color: #e2e8f0;
   background-color: var(--avatar-bg);
-  color: #475569;
   color: var(--avatar-text);
 }
 
@@ -8781,28 +8367,23 @@ body {
   border-radius: 9999px;
   border: 1px solid white;
   border: var(--avatar-status-border);
-  background-color: #22c55e;
   background-color: var(--avatar-status-online);
   transform: translate(12%, 12%);
 }
 
 .bk-avatar__status--online {
-  background-color: #22c55e;
   background-color: var(--avatar-status-online);
 }
 
 .bk-avatar__status--away {
-  background-color: #f59e0b;
   background-color: var(--avatar-status-away);
 }
 
 .bk-avatar__status--busy {
-  background-color: #ef4444;
   background-color: var(--avatar-status-busy);
 }
 
 .bk-avatar__status--offline {
-  background-color: #94a3b8;
   background-color: var(--avatar-status-offline);
 }
 
@@ -8929,13 +8510,10 @@ body {
   gap: 0.375rem;
   line-height: 1;
   white-space: nowrap;
-  border: 1px solid #e2e8f0;
   border: 1px solid var(--badge-border-secondary);
   border-radius: 9999px;
   border-radius: var(--badge-radius);
-  background-color: #f1f5f9;
   background-color: var(--badge-bg-secondary);
-  color: #334155;
   color: var(--badge-text-secondary);
   font-weight: 500;
   font-weight: var(--badge-font-weight);
@@ -8994,63 +8572,44 @@ body {
    ============================================================================= */
 
 .bk-badge--primary {
-  background-color: #eef2ff;
   background-color: var(--badge-bg-primary);
-  color: #4338ca;
   color: var(--badge-text-primary);
-  border-color: #c7d2fe;
   border-color: var(--badge-border-primary);
 }
 
 .bk-badge--secondary {
-  background-color: #f1f5f9;
   background-color: var(--badge-bg-secondary);
-  color: #334155;
   color: var(--badge-text-secondary);
-  border-color: #e2e8f0;
   border-color: var(--badge-border-secondary);
 }
 
 .bk-badge--info {
-  background-color: #eff6ff;
   background-color: var(--badge-bg-info);
-  color: #1d4ed8;
   color: var(--badge-text-info);
-  border-color: #bfdbfe;
   border-color: var(--badge-border-info);
 }
 
 .bk-badge--success {
-  background-color: #f0fdf4;
   background-color: var(--badge-bg-success);
-  color: #15803d;
   color: var(--badge-text-success);
-  border-color: #bbf7d0;
   border-color: var(--badge-border-success);
 }
 
 .bk-badge--warning {
-  background-color: #fffbeb;
   background-color: var(--badge-bg-warning);
-  color: #92400e;
   color: var(--badge-text-warning);
-  border-color: #fde68a;
   border-color: var(--badge-border-warning);
 }
 
 .bk-badge--danger {
-  background-color: #fef2f2;
   background-color: var(--badge-bg-danger);
-  color: #b91c1c;
   color: var(--badge-text-danger);
-  border-color: #fecaca;
   border-color: var(--badge-border-danger);
 }
 
 .bk-badge--ghost {
   background-color: transparent;
   background-color: var(--badge-bg-ghost);
-  color: #334155;
   color: var(--badge-text-ghost);
   border-color: transparent;
   border-color: var(--badge-border-ghost);
@@ -9146,7 +8705,6 @@ body {
 .bk-table__wrapper {
   width: 100%;
   overflow-x: auto;
-  border: 1px solid #e2e8f0;
   border: 1px solid var(--table-border);
   border-radius: 0.75rem;
   border-radius: var(--radius-lg);
@@ -9162,7 +8720,6 @@ body {
 }
 
 .bk-table__header {
-  background-color: #f8fafc;
   background-color: var(--table-header-bg);
 }
 
@@ -9173,9 +8730,7 @@ body {
     padding-right: 1rem;
     font-weight: 500;
     font-weight: var(--font-weight-medium);
-    color: #334155;
     color: var(--table-header-text);
-    border-bottom: 1px solid #e2e8f0;
     border-bottom: 1px solid var(--table-border);
     text-align: left;
   }
@@ -9185,9 +8740,7 @@ body {
     padding-bottom: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
-    color: #0f172a;
     color: var(--table-body-text);
-    border-bottom: 1px solid #e2e8f0;
     border-bottom: 1px solid var(--table-border);
   }
 
@@ -9196,7 +8749,6 @@ body {
   }
 
 .bk-table__footer {
-  background-color: #f8fafc;
   background-color: var(--table-header-bg);
 }
 
@@ -9207,7 +8759,6 @@ body {
     padding-right: 1rem;
     font-weight: 500;
     font-weight: var(--font-weight-medium);
-    border-top: 1px solid #e2e8f0;
     border-top: 1px solid var(--table-border);
   }
 
@@ -9249,9 +8800,7 @@ body {
 
 .bk-table--bordered th,
   .bk-table--bordered td {
-    border-right: 1px solid #e2e8f0;
     border-right: 1px solid var(--table-border);
-    border-left: 1px solid #e2e8f0;
     border-left: 1px solid var(--table-border);
   }
 
@@ -9266,12 +8815,10 @@ body {
   }
 
 .bk-table--striped tbody tr:nth-child(even) {
-    background-color: #f8fafc;
     background-color: var(--table-stripe-bg);
   }
 
 .bk-table--hoverable tbody tr:hover {
-    background-color: #f8fafc;
     background-color: var(--table-row-hover-bg);
   }
 
@@ -9302,12 +8849,10 @@ body {
   font-size: var(--font-size-sm);
   font-weight: 500;
   font-weight: var(--font-weight-medium);
-  color: #334155;
   color: var(--table-menu-text);
 }
 
 .bk-table__menu-trigger:hover {
-    color: #0f172a;
     color: var(--table-menu-text-hover);
   }
 
@@ -9325,7 +8870,6 @@ body {
   padding: 0.5rem;
   background-color: white;
   background-color: var(--table-menu-bg);
-  border: 1px solid #e2e8f0;
   border: 1px solid var(--table-menu-border);
   border-radius: 0.5rem;
   border-radius: var(--table-stack-radius);
@@ -9341,12 +8885,10 @@ body {
   cursor: pointer;
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
-  color: #334155;
   color: var(--table-menu-text);
 }
 
 .bk-table__menu-item:hover {
-    background-color: #f8fafc;
     background-color: var(--table-menu-item-hover-bg);
   }
 
@@ -9355,7 +8897,6 @@ body {
   height: 0.875rem;
   border-radius: 0.25rem;
   border-radius: var(--radius-sm);
-  border: 1px solid #cbd5e1;
   border: 1px solid var(--table-menu-checkbox-border);
 }
 
@@ -9538,7 +9079,6 @@ body {
 .bk-table__empty {
   padding: 1.5rem;
   text-align: center;
-  color: #64748b;
   color: var(--table-empty-text);
 }
 
@@ -9575,12 +9115,10 @@ body {
        plain nth-child(even) always target the wrong elements. */
 
 .bk-table--stacked.bk-table--striped .bk-table__stack-row:nth-child(even of .bk-table__stack-row) {
-      background-color: #f8fafc;
       background-color: var(--table-stripe-bg);
     }
 
 .bk-table--stacked.bk-table--hoverable .bk-table__stack-row:hover {
-      background-color: #f8fafc;
       background-color: var(--table-row-hover-bg);
     }
 
@@ -9594,7 +9132,6 @@ body {
 
 .bk-table__stack-row {
   display: block;
-  border: 1px solid #e2e8f0;
   border: 1px solid var(--table-border);
   border-radius: 0;
   overflow: hidden;
@@ -9648,23 +9185,18 @@ body {
   border-radius: var(--radius-sm);
   background-color: transparent;
   cursor: pointer;
-  color: #94a3b8;
   color: var(--table-expand-color);
   transition: all 150ms ease;
   transition: all var(--transition-fast) ease;
 }
 
 .bk-table__stack-expand-btn:hover {
-    background-color: #f1f5f9;
     background-color: var(--table-expand-hover-bg);
-    color: #334155;
     color: var(--table-expand-hover-color);
   }
 
 .bk-table__stack-expand-btn[aria-expanded="true"] {
-    color: #475569;
     color: var(--table-expand-active-color);
-    background-color: #f1f5f9;
     background-color: var(--table-expand-active-bg);
   }
 
@@ -9681,7 +9213,6 @@ body {
 
 .bk-table__stack-detail-row {
   display: none;
-  background-color: #f8fafc;
   background-color: var(--table-stack-detail-bg);
 }
 
@@ -9711,7 +9242,6 @@ body {
   padding: 0.25rem 0;
   font-size: 0.875rem;
   font-size: var(--font-size-sm);
-  color: #334155;
   color: var(--table-detail-text);
 }
 
@@ -9719,7 +9249,6 @@ body {
   flex-shrink: 0;
   font-weight: 600;
   font-weight: var(--font-weight-semibold);
-  color: #475569;
   color: var(--table-detail-label-color);
 }
 
@@ -9804,7 +9333,6 @@ body {
       display: table-cell;
       padding: 1rem;
       border: none;
-      border-bottom: 1px solid #e2e8f0;
       border-bottom: 1px solid var(--table-border);
       text-align: left;
     }
@@ -9816,7 +9344,6 @@ body {
 
       .bk-table--stacked td:last-child {
         padding: 1rem;
-        border-bottom: 1px solid #e2e8f0;
         border-bottom: 1px solid var(--table-border);
       }
 
@@ -9835,9 +9362,7 @@ body {
     /* Bordered: add column separators on desktop, matching the regular bordered table */
       .bk-table--stacked.bk-table--bordered th,
       .bk-table--stacked.bk-table--bordered td {
-        border-right: 1px solid #e2e8f0;
         border-right: 1px solid var(--table-border);
-        border-left: 1px solid #e2e8f0;
         border-left: 1px solid var(--table-border);
       }
 
@@ -9961,7 +9486,6 @@ body {
 .bk-list--divided li {
     padding: 0.75rem 1rem;
     padding: var(--list-item-padding);
-    border-bottom: 1px solid #e2e8f0;
     border-bottom: 1px solid var(--list-divided-border);
   }
 
@@ -9970,7 +9494,6 @@ body {
     }
 
 .bk-list--bordered {
-  border: 1px solid #e2e8f0;
   border: 1px solid var(--list-divided-border);
   border-radius: 0.5rem;
   border-radius: var(--radius-md);
@@ -9979,7 +9502,6 @@ body {
 .bk-list--bordered li {
     padding: 0.75rem 1rem;
     padding: var(--list-item-padding);
-    border-bottom: 1px solid #e2e8f0;
     border-bottom: 1px solid var(--list-divided-border);
   }
 
@@ -10015,7 +9537,6 @@ body {
 .bk-description-list dt {
     font-weight: 600;
     font-weight: var(--font-weight-semibold);
-    color: #334155;
     color: var(--dl-term-color);
     margin-bottom: 0.25rem;
   }
@@ -10025,7 +9546,6 @@ body {
     }
 
 .bk-description-list dd {
-    color: #0f172a;
     color: var(--dl-description-color);
     margin-left: 0;
   }
@@ -10091,7 +9611,6 @@ body {
   }
 
 .bk-description-list--striped dt {
-    background-color: #f8fafc;
     background-color: var(--dl-striped-bg);
   }
 
@@ -10154,9 +9673,7 @@ body {
   height: var(--stat-icon-size);
   border-radius: 0.75rem;
   border-radius: var(--radius-lg);
-  background-color: #e0e7ff;
   background-color: var(--stat-icon-bg);
-  color: #4f46e5;
   color: var(--stat-icon-color);
 }
 
@@ -10177,7 +9694,6 @@ body {
   font-size: var(--font-size-sm);
   font-weight: 500;
   font-weight: var(--font-weight-medium);
-  color: #475569;
   color: var(--stat-label-color);
 }
 
@@ -10188,7 +9704,6 @@ body {
   font-weight: 700;
   font-weight: var(--font-weight-bold);
   line-height: 1;
-  color: #0f172a;
   color: var(--stat-value-color);
 }
 
@@ -10213,17 +9728,14 @@ body {
    ============================================================================= */
 
 .bk-stat__change--up {
-  color: #16a34a;
   color: var(--stat-change-up-color);
 }
 
 .bk-stat__change--down {
-  color: #dc2626;
   color: var(--stat-change-down-color);
 }
 
 .bk-stat__change--neutral {
-  color: #475569;
   color: var(--stat-change-neutral-color);
 }
 
@@ -10338,7 +9850,6 @@ body {
   padding-bottom: 1.25rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  border-bottom: 1px solid #e2e8f0;
   border-bottom: 1px solid var(--modal-header-border);
 }
 
@@ -10347,7 +9858,6 @@ body {
   font-size: var(--font-size-lg);
   font-weight: 600;
   font-weight: var(--font-weight-semibold);
-  color: #0f172a;
   color: var(--modal-title-color);
 }
 
@@ -10357,7 +9867,6 @@ body {
   border-radius: var(--radius-md);
   background: transparent;
   border: none;
-  color: #94a3b8;
   color: var(--modal-close-color);
   cursor: pointer;
   transition: all 150ms;
@@ -10365,9 +9874,7 @@ body {
 }
 
 .bk-modal__close:hover {
-    background-color: #f1f5f9;
     background-color: var(--modal-close-hover-bg);
-    color: #475569;
     color: var(--modal-close-hover-color);
   }
 
@@ -10386,7 +9893,6 @@ body {
   padding-bottom: 1.25rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  border-top: 1px solid #e2e8f0;
   border-top: 1px solid var(--modal-footer-border);
 }
 
@@ -10461,7 +9967,6 @@ body {
   width: 100%;
   max-width: 100%;
   min-width: 0;
-  border: 1px solid #e2e8f0;
   border: 1px solid var(--accordion-border);
   border-radius: 0.75rem;
   border-radius: var(--radius-lg);
@@ -10469,7 +9974,6 @@ body {
 }
 
 .bk-accordion__item {
-  border-bottom: 1px solid #e2e8f0;
   border-bottom: 1px solid var(--accordion-border);
 }
 
@@ -10487,7 +9991,6 @@ body {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
   text-align: left;
-  background-color: #f8fafc;
   background-color: var(--accordion-header-bg);
   border: none;
   cursor: pointer;
@@ -10496,7 +9999,6 @@ body {
 }
 
 .bk-accordion__trigger:hover {
-    background-color: #f1f5f9;
     background-color: var(--accordion-hover-bg);
   }
 
@@ -10505,14 +10007,12 @@ body {
   font-size: var(--font-size-md);
   font-weight: 500;
   font-weight: var(--font-weight-medium);
-  color: #0f172a;
   color: var(--accordion-title-color);
 }
 
 .bk-accordion__icon {
   width: 1.25rem;
   height: 1.25rem;
-  color: #64748b;
   color: var(--accordion-icon-color);
   transition: transform 150ms;
   transition: transform var(--transition-fast);
@@ -10527,7 +10027,6 @@ body {
   padding-bottom: 1rem;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
-  color: #334155;
   color: var(--accordion-body-color);
 }
 
@@ -10553,7 +10052,6 @@ body {
 }
 
 .bk-accordion--flush .bk-accordion__item {
-    border-bottom: 1px solid #e2e8f0;
     border-bottom: 1px solid var(--accordion-border);
   }
 
@@ -10569,7 +10067,6 @@ body {
 
 .bk-accordion--flush .bk-accordion__trigger:hover .bk-accordion__title,
       .bk-accordion--flush .bk-accordion__trigger:hover .bk-accordion__icon {
-        color: #4f46e5;
         color: var(--accordion-flush-hover-color);
       }
 
@@ -10589,7 +10086,6 @@ body {
 }
 
 .bk-accordion--separated .bk-accordion__item {
-    border: 1px solid #e2e8f0;
     border: 1px solid var(--accordion-border);
     border-radius: 0.75rem;
     border-radius: var(--radius-lg);
@@ -10671,13 +10167,6 @@ body {
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* =============================================================================
-  Basekit UI Components - Theme Configuration
-  Version: 1.0.0
-  Schema: v1
-  Compatible with: Tailwind CSS 4.x
-  ============================================================================= */
-
-/* =============================================================================
   Theme Schema Version
   Used for runtime detection and migration tracking
   ============================================================================= */
@@ -10735,13 +10224,20 @@ body {
   );
 }
 
-/**
- * Global Design Tokens
- * These tokens are used across all components and can be customized
- */
+/* =============================================================================
+  Theme Colors — registered via @theme so Tailwind generates utility classes
+  (bg-primary, text-success, border-danger, etc.)
+  ============================================================================= */
 
-:root {
-  /* Color Palette - Primary (Modern Indigo) */
+@theme default {
+  /* Base colors — enables `bg-primary`, `text-success`, etc. (no shade suffix) */
+  --color-primary: var(--color-primary-600);
+  --color-success: var(--color-success-600);
+  --color-warning: var(--color-warning-600);
+  --color-danger: var(--color-danger-600);
+  --color-info: var(--color-info-600);
+
+  /* Primary (Modern Indigo) */
   --color-primary-50: #eef2ff;
   --color-primary-100: #e0e7ff;
   --color-primary-200: #c7d2fe;
@@ -10754,7 +10250,7 @@ body {
   --color-primary-900: #312e81;
   --color-primary-950: #1e1b4b;
 
-  /* Color Palette - Slate (was Secondary) */
+  /* Slate */
   --color-slate-50: #f8fafc;
   --color-slate-100: #f1f5f9;
   --color-slate-200: #e2e8f0;
@@ -10767,7 +10263,7 @@ body {
   --color-slate-900: #0f172a;
   --color-slate-950: #020617;
 
-  /* Color Palette - Success */
+  /* Success */
   --color-success-50: #f0fdf4;
   --color-success-100: #dcfce7;
   --color-success-200: #bbf7d0;
@@ -10780,7 +10276,7 @@ body {
   --color-success-900: #14532d;
   --color-success-950: #052e16;
 
-  /* Color Palette - Warning */
+  /* Warning */
   --color-warning-50: #fffbeb;
   --color-warning-100: #fef3c7;
   --color-warning-200: #fde68a;
@@ -10793,7 +10289,7 @@ body {
   --color-warning-900: #78350f;
   --color-warning-950: #451a03;
 
-  /* Color Palette - Danger */
+  /* Danger */
   --color-danger-50: #fef2f2;
   --color-danger-100: #fee2e2;
   --color-danger-200: #fecaca;
@@ -10806,7 +10302,7 @@ body {
   --color-danger-900: #7f1d1d;
   --color-danger-950: #450a0a;
 
-  /* Color Palette - Info */
+  /* Info */
   --color-info-50: #eff6ff;
   --color-info-100: #dbeafe;
   --color-info-200: #bfdbfe;
@@ -10818,7 +10314,14 @@ body {
   --color-info-800: #1e40af;
   --color-info-900: #1e3a8a;
   --color-info-950: #172554;
+}
 
+/**
+ * Global Design Tokens
+ * These tokens are used across all components and can be customized
+ */
+
+:root {
   /* Semantic Surfaces */
   --surface-base: white;
 
@@ -13559,7 +13062,7 @@ body {
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
                 <div class="flex flex-wrap items-center gap-3">
-                    <div class="bk-select "  style="--select-secondary-border-color: var(--color-indigo-700); --select-hover-border-color: var(--color-indigo-600); --select-secondary-ring-color: var(--color-indigo-100)"  x-data="{
+                    <div class="bk-select "  style="--select-bg: var(--color-indigo-500); --select-color: var(--color-indigo-100); --select-secondary-border-color: var(--color-indigo-700); --select-hover-bg: var(--color-indigo-600); --select-secondary-ring-color: var(--color-indigo-100)"  x-data="{
     open: false,
     disabled: false,
     _blurTimer: null,
@@ -13624,7 +13127,7 @@ body {
     
     
     </div>
-                    <div class="bk-select "  style="--select-secondary-border-color: var(--color-pink-700); --select-hover-border-color: var(--color-pink-600); --select-secondary-ring-color: var(--color-pink-100)"  x-data="{
+                    <div class="bk-select "  style="--select-bg: var(--color-pink-500); --select-color: var(--color-pink-100); --select-secondary-border-color: var(--color-pink-700); --select-hover-bg: var(--color-pink-600); --select-secondary-ring-color: var(--color-pink-100)"  x-data="{
     open: false,
     disabled: false,
     _blurTimer: null,
@@ -13689,7 +13192,7 @@ body {
     
     
     </div>
-                    <div class="bk-select "  style="--select-secondary-border-color: var(--color-emerald-700); --select-hover-border-color: var(--color-emerald-600); --select-secondary-ring-color: var(--color-emerald-100)"  x-data="{
+                    <div class="bk-select "  style="--select-bg: var(--color-emerald-500); --select-color: var(--color-emerald-100); --select-secondary-border-color: var(--color-emerald-700); --select-hover-bg: var(--color-emerald-600); --select-secondary-ring-color: var(--color-emerald-100)"  x-data="{
     open: false,
     disabled: false,
     _blurTimer: null,
@@ -14650,7 +14153,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--primary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb3dd48-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec09816-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14677,7 +14180,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb3df1a-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec09c45-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14735,7 +14238,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb3e414-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec0a4ad-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14762,7 +14265,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb3e4ac-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec0a661-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14820,7 +14323,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--success"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb3e9a9-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec0b0a9-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14847,7 +14350,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb3ea5b-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec0b255-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14905,7 +14408,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--warning"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb3ef5b-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec0bb58-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14932,7 +14435,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb3eff7-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec0bd1e-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14990,7 +14493,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--info"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb3f4e3-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec0c667-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15017,7 +14520,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb3f583-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec0c7f5-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15075,7 +14578,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--ghost"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb3fa8b-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec0d02d-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15102,7 +14605,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb3fd29-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec0d1b2-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15167,7 +14670,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb404b1-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec0d566-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15194,7 +14697,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb40608-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec0d6c8-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15252,7 +14755,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb4090d-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec0da46-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15279,7 +14782,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb409fa-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec0dbbb-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15337,7 +14840,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb40bc3-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec0df80-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15364,7 +14867,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb40d97-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec0e0b5-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15429,7 +14932,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--sm bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb414c2-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec0eb5c-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15456,7 +14959,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb415ba-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec0ecbe-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15514,7 +15017,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb417a0-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec0f24a-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15541,7 +15044,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb41841-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec0f44f-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15599,7 +15102,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--lg bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb41e37-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec102e4-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15626,7 +15129,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb41f8b-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec104cf-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15690,7 +15193,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb421b9-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec10933-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15717,7 +15220,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb42249-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec10ad1-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15778,7 +15281,7 @@ body {
         
         <button type="button"
             disabled="disabled" class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb423f0-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec10ed4-list" aria-haspopup="listbox"
                          disabled >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15805,7 +15308,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb4247f-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec10fec-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15863,7 +15366,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--error bk-multiselect__control--has-error-icon"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb429bf-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec119b8-list" aria-haspopup="listbox"
              aria-invalid="true" aria-describedby="-error"             >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15896,7 +15399,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb42ae9-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec11b16-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15958,7 +15461,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb42c9b-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec11e60-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15985,7 +15488,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb42d2c-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec11f5b-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -16053,7 +15556,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb42ed0-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec12246-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -16080,7 +15583,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb42f70-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec1233f-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -16142,7 +15645,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--underline"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb435fb-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec12d17-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -16169,7 +15672,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb43738-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec12ead-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -16229,7 +15732,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--label-inset"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb43cb0-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec13c2f-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -16256,7 +15759,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb43d49-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec13e39-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -16316,7 +15819,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--label-overlap"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb44725-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec14d11-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -16343,7 +15846,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb44b0f-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec14ec6-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -16405,7 +15908,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--pill"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb454c4-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec15988-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -16432,7 +15935,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb4566e-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec15b5d-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -16497,7 +16000,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--with-icon"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a5fb5bb46548-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a65d3ec1792c-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -16524,7 +16027,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a5fb5bb46607-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a65d3ec17b14-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -17105,12 +16608,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-fbd3988a-8861-45e6-b4c2-92614335d0b3"
+        <input type="checkbox" id="bk-checkbox-51bd0ace-8a10-4f2b-bab4-044e4abcdf6b"
             name="ckx_primary" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-fbd3988a-8861-45e6-b4c2-92614335d0b3">
+                    <label class="bk-checkbox__label" for="bk-checkbox-51bd0ace-8a10-4f2b-bab4-044e4abcdf6b">
                 Primary
             </label>
             </div>
@@ -17122,12 +16625,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-ee8918af-2af7-4a57-ab74-0d22cbbebdc5"
+        <input type="checkbox" id="bk-checkbox-15f1c221-be4f-4027-87ca-45f80375c2ee"
             name="ckx_secondary" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--secondary"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-ee8918af-2af7-4a57-ab74-0d22cbbebdc5">
+                    <label class="bk-checkbox__label" for="bk-checkbox-15f1c221-be4f-4027-87ca-45f80375c2ee">
                 Secondary
             </label>
             </div>
@@ -17139,12 +16642,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-1fe5d867-6841-4712-bb4a-c06fd7e6dd12"
+        <input type="checkbox" id="bk-checkbox-74cb203f-b7a0-420d-80ef-74a2228c565a"
             name="ckx_success" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--success"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-1fe5d867-6841-4712-bb4a-c06fd7e6dd12">
+                    <label class="bk-checkbox__label" for="bk-checkbox-74cb203f-b7a0-420d-80ef-74a2228c565a">
                 Success
             </label>
             </div>
@@ -17156,12 +16659,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-2df3d7c0-388e-462c-a6cf-55aa17f9872d"
+        <input type="checkbox" id="bk-checkbox-456aa875-6f9b-4637-851a-3e9a1c114cf4"
             name="ckx_warning" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--warning"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-2df3d7c0-388e-462c-a6cf-55aa17f9872d">
+                    <label class="bk-checkbox__label" for="bk-checkbox-456aa875-6f9b-4637-851a-3e9a1c114cf4">
                 Warning
             </label>
             </div>
@@ -17173,12 +16676,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-ea9d562a-dc49-4330-9017-d436f7b7ce8c"
+        <input type="checkbox" id="bk-checkbox-dcc2092a-6b54-4182-a7c2-9531b1d4576a"
             name="ckx_danger" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--danger"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-ea9d562a-dc49-4330-9017-d436f7b7ce8c">
+                    <label class="bk-checkbox__label" for="bk-checkbox-dcc2092a-6b54-4182-a7c2-9531b1d4576a">
                 Danger
             </label>
             </div>
@@ -17190,12 +16693,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-4ea532b1-005a-4582-8db7-7c310c07b419"
+        <input type="checkbox" id="bk-checkbox-8dd1d875-53bf-45dc-ba8f-bb99fd07c775"
             name="ckx_info" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--info"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-4ea532b1-005a-4582-8db7-7c310c07b419">
+                    <label class="bk-checkbox__label" for="bk-checkbox-8dd1d875-53bf-45dc-ba8f-bb99fd07c775">
                 Info
             </label>
             </div>
@@ -17207,12 +16710,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-48327465-acf7-4e56-8ae5-a122a50a744a"
+        <input type="checkbox" id="bk-checkbox-e2e39346-bac9-463d-b547-f061348fa07f"
             name="ckx_ghost" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--ghost"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-48327465-acf7-4e56-8ae5-a122a50a744a">
+                    <label class="bk-checkbox__label" for="bk-checkbox-e2e39346-bac9-463d-b547-f061348fa07f">
                 Ghost
             </label>
             </div>
@@ -17231,12 +16734,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-b5b459b6-9e6f-472e-9fb8-5e5a4994a7f0"
+        <input type="checkbox" id="bk-checkbox-08160808-85cf-4569-9f13-1d68ba69f75e"
             name="ckx_color_indigo" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
              style="--checkbox-primary-checked-bg: var(--color-indigo-500); --checkbox-primary-checked-border: var(--color-indigo-700); --checkbox-primary-focus-ring: var(--color-indigo-100)"                          checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-b5b459b6-9e6f-472e-9fb8-5e5a4994a7f0">
+                    <label class="bk-checkbox__label" for="bk-checkbox-08160808-85cf-4569-9f13-1d68ba69f75e">
                 Indigo
             </label>
             </div>
@@ -17248,12 +16751,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-2df814ca-60f9-4201-9bdf-2fd030868981"
+        <input type="checkbox" id="bk-checkbox-7b64aa1e-e4a2-47b7-bcea-c5a17a9e3d18"
             name="ckx_color_pink" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
              style="--checkbox-primary-checked-bg: var(--color-pink-500); --checkbox-primary-checked-border: var(--color-pink-700); --checkbox-primary-focus-ring: var(--color-pink-100)"                          checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-2df814ca-60f9-4201-9bdf-2fd030868981">
+                    <label class="bk-checkbox__label" for="bk-checkbox-7b64aa1e-e4a2-47b7-bcea-c5a17a9e3d18">
                 Pink
             </label>
             </div>
@@ -17265,12 +16768,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-6cca6076-574c-429e-896d-3aa274788819"
+        <input type="checkbox" id="bk-checkbox-331bdc50-136d-4686-b6f1-a218cec4defc"
             name="ckx_color_emerald" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
              style="--checkbox-primary-checked-bg: var(--color-emerald-500); --checkbox-primary-checked-border: var(--color-emerald-700); --checkbox-primary-focus-ring: var(--color-emerald-100)"                          checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-6cca6076-574c-429e-896d-3aa274788819">
+                    <label class="bk-checkbox__label" for="bk-checkbox-331bdc50-136d-4686-b6f1-a218cec4defc">
                 Emerald
             </label>
             </div>
@@ -17289,12 +16792,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-4f1964c8-ac45-4a96-94a0-4862a20998ce"
+        <input type="checkbox" id="bk-checkbox-1b86e3a2-67eb-4a7a-a7d6-2ff855f58733"
             name="ckx_sm" class="bk-checkbox__control bk-checkbox__control--sm bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-4f1964c8-ac45-4a96-94a0-4862a20998ce">
+                    <label class="bk-checkbox__label" for="bk-checkbox-1b86e3a2-67eb-4a7a-a7d6-2ff855f58733">
                 Small
             </label>
             </div>
@@ -17306,12 +16809,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-7f9a0f7b-6f71-4f8c-94e8-896fd40a9ec1"
+        <input type="checkbox" id="bk-checkbox-9378b7bd-3b02-4aef-aae8-6faf58b4c14e"
             name="ckx_md" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-7f9a0f7b-6f71-4f8c-94e8-896fd40a9ec1">
+                    <label class="bk-checkbox__label" for="bk-checkbox-9378b7bd-3b02-4aef-aae8-6faf58b4c14e">
                 Medium
             </label>
             </div>
@@ -17323,12 +16826,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-c189ec9a-12f3-4ade-a6d8-14570fbed148"
+        <input type="checkbox" id="bk-checkbox-03c418d8-0f32-472b-9092-8253a225a597"
             name="ckx_lg" class="bk-checkbox__control bk-checkbox__control--lg bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-c189ec9a-12f3-4ade-a6d8-14570fbed148">
+                    <label class="bk-checkbox__label" for="bk-checkbox-03c418d8-0f32-472b-9092-8253a225a597">
                 Large
             </label>
             </div>
@@ -17347,12 +16850,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-5591d2cf-2593-4e64-85ca-f3d38f57431b"
+        <input type="checkbox" id="bk-checkbox-5c90cacb-6bf5-4288-a2d7-8aa1657c6c77"
             name="ckx_unchecked" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-5591d2cf-2593-4e64-85ca-f3d38f57431b">
+                    <label class="bk-checkbox__label" for="bk-checkbox-5c90cacb-6bf5-4288-a2d7-8aa1657c6c77">
                 Unchecked
             </label>
             </div>
@@ -17364,12 +16867,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-60bc4a2f-b115-4c19-a860-a0b7abce44a0"
+        <input type="checkbox" id="bk-checkbox-5d8d0c2a-8888-4169-879e-b7dae4d4e240"
             name="ckx_checked" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-60bc4a2f-b115-4c19-a860-a0b7abce44a0">
+                    <label class="bk-checkbox__label" for="bk-checkbox-5d8d0c2a-8888-4169-879e-b7dae4d4e240">
                 Checked
             </label>
             </div>
@@ -17381,12 +16884,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-f8f6a25e-7ef0-48d5-aed3-867633451138"
+        <input type="checkbox" id="bk-checkbox-cdca0a86-64b0-40dd-88d2-428cfa51a8b0"
             name="ckx_disabled" disabled="disabled" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-f8f6a25e-7ef0-48d5-aed3-867633451138">
+                    <label class="bk-checkbox__label" for="bk-checkbox-cdca0a86-64b0-40dd-88d2-428cfa51a8b0">
                 Disabled
             </label>
             </div>
@@ -17398,12 +16901,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-1ce7e917-b0d5-4d80-9604-a4315ee26c4b"
+        <input type="checkbox" id="bk-checkbox-4cba7f55-4481-4375-a3e6-9d0ac195ce9e"
             name="ckx_disabled_checked" disabled="disabled" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-1ce7e917-b0d5-4d80-9604-a4315ee26c4b">
+                    <label class="bk-checkbox__label" for="bk-checkbox-4cba7f55-4481-4375-a3e6-9d0ac195ce9e">
                 Disabled &amp; Checked
             </label>
             </div>
@@ -17415,18 +16918,18 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container bk-checkbox__container--error">
         
-        <input type="checkbox" id="bk-checkbox-c93f56ac-e580-4b9f-80d0-5b7728a32420"
+        <input type="checkbox" id="bk-checkbox-1e7ce52e-ea58-4f25-84ab-2a31b034a676"
             name="ckx_error" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--error"
-                                                 aria-invalid="true" aria-describedby="bk-checkbox-c93f56ac-e580-4b9f-80d0-5b7728a32420-error" >
+                                                 aria-invalid="true" aria-describedby="bk-checkbox-1e7ce52e-ea58-4f25-84ab-2a31b034a676-error" >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-c93f56ac-e580-4b9f-80d0-5b7728a32420">
+                    <label class="bk-checkbox__label" for="bk-checkbox-1e7ce52e-ea58-4f25-84ab-2a31b034a676">
                 With Error
             </label>
             </div>
 
     
-            <p class="bk-checkbox__error-message" id="bk-checkbox-c93f56ac-e580-4b9f-80d0-5b7728a32420-error">
+            <p class="bk-checkbox__error-message" id="bk-checkbox-1e7ce52e-ea58-4f25-84ab-2a31b034a676-error">
             This is required
         </p>
     
@@ -17435,12 +16938,12 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-69a5c41f-dc05-4352-8dbe-5e4c132eb6d0"
+        <input type="checkbox" id="bk-checkbox-5b58cbc1-2774-402e-bd74-57b9341ca278"
             name="ckx_hint" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-69a5c41f-dc05-4352-8dbe-5e4c132eb6d0">
+                    <label class="bk-checkbox__label" for="bk-checkbox-5b58cbc1-2774-402e-bd74-57b9341ca278">
                 With Hint
             </label>
             </div>
@@ -17479,12 +16982,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-f19167a6-ebba-46d5-9150-275e853b4e5f"
+        <input type="radio" id="bk-radio-41ce5d90-af68-4031-bea7-d10c32bc3245"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="primary"              checked             >
 
         
-                    <label class="bk-radio__label" for="bk-radio-f19167a6-ebba-46d5-9150-275e853b4e5f">
+                    <label class="bk-radio__label" for="bk-radio-41ce5d90-af68-4031-bea7-d10c32bc3245">
                 Primary
             </label>
             </div>
@@ -17497,12 +17000,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-6cf28656-34b0-4c43-bcf9-fa075279a049"
+        <input type="radio" id="bk-radio-30685975-f2e4-431f-97b0-711e8a3d7ec2"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--secondary"
                          value="secondary"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-6cf28656-34b0-4c43-bcf9-fa075279a049">
+                    <label class="bk-radio__label" for="bk-radio-30685975-f2e4-431f-97b0-711e8a3d7ec2">
                 Secondary
             </label>
             </div>
@@ -17515,12 +17018,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-5f6dc17a-cd8e-4c44-a3ed-ece5bbb2cc79"
+        <input type="radio" id="bk-radio-2ed50d4e-a03d-4ee1-ba16-ff257a2e7f24"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--success"
                          value="success"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-5f6dc17a-cd8e-4c44-a3ed-ece5bbb2cc79">
+                    <label class="bk-radio__label" for="bk-radio-2ed50d4e-a03d-4ee1-ba16-ff257a2e7f24">
                 Success
             </label>
             </div>
@@ -17533,12 +17036,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-0769467b-f66e-4467-97cb-5ad108e1d931"
+        <input type="radio" id="bk-radio-1f37c31b-b658-49df-9643-26f5e38a4277"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--warning"
                          value="warning"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-0769467b-f66e-4467-97cb-5ad108e1d931">
+                    <label class="bk-radio__label" for="bk-radio-1f37c31b-b658-49df-9643-26f5e38a4277">
                 Warning
             </label>
             </div>
@@ -17551,12 +17054,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-cdce9fb0-a2ce-41ea-b1b9-e37377746f2c"
+        <input type="radio" id="bk-radio-726e25f7-6a61-47ef-a5d4-a1886e45612e"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--danger"
                          value="danger"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-cdce9fb0-a2ce-41ea-b1b9-e37377746f2c">
+                    <label class="bk-radio__label" for="bk-radio-726e25f7-6a61-47ef-a5d4-a1886e45612e">
                 Danger
             </label>
             </div>
@@ -17569,12 +17072,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-e3d35965-04db-437b-8513-fa941f1be096"
+        <input type="radio" id="bk-radio-00c80d95-c586-40f6-b2bb-73dcfa481929"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--info"
                          value="info"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-e3d35965-04db-437b-8513-fa941f1be096">
+                    <label class="bk-radio__label" for="bk-radio-00c80d95-c586-40f6-b2bb-73dcfa481929">
                 Info
             </label>
             </div>
@@ -17587,12 +17090,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-ea2480f6-a6f5-4370-9454-cde430067a85"
+        <input type="radio" id="bk-radio-24d9834c-514b-4aea-94dc-2db58ee7d93e"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--ghost"
                          value="ghost"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-ea2480f6-a6f5-4370-9454-cde430067a85">
+                    <label class="bk-radio__label" for="bk-radio-24d9834c-514b-4aea-94dc-2db58ee7d93e">
                 Ghost
             </label>
             </div>
@@ -17612,12 +17115,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-3371c8a7-a51d-44f8-af9a-efe5233eb4f4"
+        <input type="radio" id="bk-radio-1209252f-a145-401f-a8e3-147ce7f77973"
             name="radio_color" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
              style="--radio-primary-checked-bg: var(--color-indigo-500); --radio-primary-checked-border: var(--color-indigo-700); --radio-primary-focus-ring: var(--color-indigo-100)"              value="indigo"              checked             >
 
         
-                    <label class="bk-radio__label" for="bk-radio-3371c8a7-a51d-44f8-af9a-efe5233eb4f4">
+                    <label class="bk-radio__label" for="bk-radio-1209252f-a145-401f-a8e3-147ce7f77973">
                 Indigo
             </label>
             </div>
@@ -17630,12 +17133,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-56b172d8-db90-4106-91b7-231ea50bf02a"
+        <input type="radio" id="bk-radio-5c3974b1-d300-4ed0-ae4d-85548ed60284"
             name="radio_color" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
              style="--radio-primary-checked-bg: var(--color-pink-500); --radio-primary-checked-border: var(--color-pink-700); --radio-primary-focus-ring: var(--color-pink-100)"              value="pink"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-56b172d8-db90-4106-91b7-231ea50bf02a">
+                    <label class="bk-radio__label" for="bk-radio-5c3974b1-d300-4ed0-ae4d-85548ed60284">
                 Pink
             </label>
             </div>
@@ -17648,12 +17151,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-97d306dd-7c97-4586-b5ea-19c5ecf168da"
+        <input type="radio" id="bk-radio-2bc98e74-8735-41fe-8218-d1c2bc4711fa"
             name="radio_color" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
              style="--radio-primary-checked-bg: var(--color-emerald-500); --radio-primary-checked-border: var(--color-emerald-700); --radio-primary-focus-ring: var(--color-emerald-100)"              value="emerald"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-97d306dd-7c97-4586-b5ea-19c5ecf168da">
+                    <label class="bk-radio__label" for="bk-radio-2bc98e74-8735-41fe-8218-d1c2bc4711fa">
                 Emerald
             </label>
             </div>
@@ -17673,12 +17176,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-6a5b32bb-22ed-4cb3-acc5-d9e79e594f16"
+        <input type="radio" id="bk-radio-c25e70e7-0d15-4382-a843-3cc1fbe2b74e"
             name="radio_sizes" class="bk-radio__control bk-radio__control--sm bk-radio__control--primary"
                          value="sm"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-6a5b32bb-22ed-4cb3-acc5-d9e79e594f16">
+                    <label class="bk-radio__label" for="bk-radio-c25e70e7-0d15-4382-a843-3cc1fbe2b74e">
                 Small
             </label>
             </div>
@@ -17691,12 +17194,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-e0034b15-5321-44d8-8e6d-21ebeec7c00f"
+        <input type="radio" id="bk-radio-f0557989-b637-483b-b085-545ae0c37ee4"
             name="radio_sizes" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="md"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-e0034b15-5321-44d8-8e6d-21ebeec7c00f">
+                    <label class="bk-radio__label" for="bk-radio-f0557989-b637-483b-b085-545ae0c37ee4">
                 Medium
             </label>
             </div>
@@ -17709,12 +17212,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-472962a7-ce41-432a-8607-2c20ed041fc2"
+        <input type="radio" id="bk-radio-682419fe-697a-4781-8d00-2ddf3991e91c"
             name="radio_sizes" class="bk-radio__control bk-radio__control--lg bk-radio__control--primary"
                          value="lg"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-472962a7-ce41-432a-8607-2c20ed041fc2">
+                    <label class="bk-radio__label" for="bk-radio-682419fe-697a-4781-8d00-2ddf3991e91c">
                 Large
             </label>
             </div>
@@ -17734,12 +17237,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-59ab6bee-08ee-4cd0-9845-6ad06495c421"
+        <input type="radio" id="bk-radio-b8e9c1e5-09ec-43dc-ba1f-78dd401da595"
             name="radio_group" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="unchecked"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-59ab6bee-08ee-4cd0-9845-6ad06495c421">
+                    <label class="bk-radio__label" for="bk-radio-b8e9c1e5-09ec-43dc-ba1f-78dd401da595">
                 Unchecked
             </label>
             </div>
@@ -17752,12 +17255,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-c2f20003-032b-49c4-bc34-82cb161199f3"
+        <input type="radio" id="bk-radio-c4f3e8ea-d899-4b26-96d2-355cdba27e0b"
             name="radio_group" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="checked"              checked             >
 
         
-                    <label class="bk-radio__label" for="bk-radio-c2f20003-032b-49c4-bc34-82cb161199f3">
+                    <label class="bk-radio__label" for="bk-radio-c4f3e8ea-d899-4b26-96d2-355cdba27e0b">
                 Checked
             </label>
             </div>
@@ -17770,12 +17273,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-6ee50732-fb7d-4444-b729-38a2c9587c9f"
+        <input type="radio" id="bk-radio-9769f1f9-e352-48d4-a936-7954cf69368f"
             name="radio_group" disabled="disabled" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="disabled"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-6ee50732-fb7d-4444-b729-38a2c9587c9f">
+                    <label class="bk-radio__label" for="bk-radio-9769f1f9-e352-48d4-a936-7954cf69368f">
                 Disabled
             </label>
             </div>
@@ -17788,12 +17291,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-b4c4d2ca-6e44-422e-b0bf-676a938459c6"
+        <input type="radio" id="bk-radio-b7e838c5-41cb-4c9b-946e-53c3af0e8a32"
             name="radio_group_disabled" disabled="disabled" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="checked_disabled"              checked             >
 
         
-                    <label class="bk-radio__label" for="bk-radio-b4c4d2ca-6e44-422e-b0bf-676a938459c6">
+                    <label class="bk-radio__label" for="bk-radio-b7e838c5-41cb-4c9b-946e-53c3af0e8a32">
                 Disabled &amp; Checked
             </label>
             </div>
@@ -17806,18 +17309,18 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-4cd8f46e-6185-4e3e-a361-a737d8377bb0"
+        <input type="radio" id="bk-radio-652d1510-c7ff-4034-bbad-b2b0f94f99c3"
             name="radio_group" class="bk-radio__control bk-radio__control--md bk-radio__control--error"
-                         value="error"                          aria-invalid="true" aria-describedby="bk-radio-4cd8f46e-6185-4e3e-a361-a737d8377bb0-error" >
+                         value="error"                          aria-invalid="true" aria-describedby="bk-radio-652d1510-c7ff-4034-bbad-b2b0f94f99c3-error" >
 
         
-                    <label class="bk-radio__label" for="bk-radio-4cd8f46e-6185-4e3e-a361-a737d8377bb0">
+                    <label class="bk-radio__label" for="bk-radio-652d1510-c7ff-4034-bbad-b2b0f94f99c3">
                 With Error
             </label>
             </div>
 
     
-            <p class="bk-radio__error-message" id="bk-radio-4cd8f46e-6185-4e3e-a361-a737d8377bb0-error">
+            <p class="bk-radio__error-message" id="bk-radio-652d1510-c7ff-4034-bbad-b2b0f94f99c3-error">
             Please select an option
         </p>
     
@@ -17827,12 +17330,12 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-49206b6e-d82b-4943-b72b-d68d9ed785c2"
+        <input type="radio" id="bk-radio-5c526784-9a36-4962-9ad2-0f91b0758486"
             name="radio_group" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="hint"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-49206b6e-d82b-4943-b72b-d68d9ed785c2">
+                    <label class="bk-radio__label" for="bk-radio-5c526784-9a36-4962-9ad2-0f91b0758486">
                 With Hint
             </label>
             </div>

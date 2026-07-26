@@ -28,7 +28,11 @@ class ComponentColorResolver
             'focus-ring' => '--textarea-{variant}-ring',
         ],
         'select' => [
+            'background' => '--select-bg',
+            'text' => '--select-color',
             'border' => '--select-{variant}-border-color',
+            'hover-background' => '--select-hover-bg',
+            'hover-text' => '--select-hover-color',
             'hover-border' => '--select-hover-border-color',
             'focus-ring' => '--select-{variant}-ring-color',
         ],
