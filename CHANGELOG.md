@@ -5,6 +5,19 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.4](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.6.3...v1.6.4) (2026-07-26)
+
+
+### Bug Fixes
+
+* card, select, navigation and link components css ([5275bd2](https://github.com/basekit-laravel/basekit-laravel-ui/commit/5275bd25d052b3915424b1c4e614d84f156785a1))
+
+
+### Miscellaneous Chores
+
+* **deps-dev:** bump phpstan/phpstan-strict-rules from 2.0.11 to 2.0.12 ([ecbdbb5](https://github.com/basekit-laravel/basekit-laravel-ui/commit/ecbdbb556ce84a3ad5d8cbb44883689171035962))
+* **deps-dev:** bump phpstan/phpstan-strict-rules from 2.0.11 to 2.0.12 ([5708b0d](https://github.com/basekit-laravel/basekit-laravel-ui/commit/5708b0d7c58a8ba7390d37eb18ae3b62bb54ec29))
+
 ## [1.6.3](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.6.2...v1.6.3) (2026-07-21)
 
 
