@@ -5,6 +5,18 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.5](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.6.4...v1.6.5) (2026-08-01)
+
+
+### Bug Fixes
+
+* button & input css issues ([3f667ef](https://github.com/basekit-laravel/basekit-laravel-ui/commit/3f667efc7a3f8989b62001f04068783c38f23b2b))
+
+
+### Miscellaneous Chores
+
+* update blade-heroicons 2.0 =&gt; 2.7, update pest to v4 =&gt; v5 ([c14607e](https://github.com/basekit-laravel/basekit-laravel-ui/commit/c14607ea50c6e757c73f1680d2eb799884335fe1))
+
 ## [1.6.4](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.6.3...v1.6.4) (2026-07-26)
 
 
