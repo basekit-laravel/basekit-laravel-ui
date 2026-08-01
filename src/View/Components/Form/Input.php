@@ -47,6 +47,14 @@ class Input extends Component
     public bool $isTogglePassword = false;
 
     /**
+     * Whether the control should render its error state without a message.
+     *
+     * Used to mark linked fields (e.g. password + confirmation) as invalid
+     * when a sibling in the same validation group fails.
+     */
+    public bool $invalid = false;
+
+    /**
      * Create a new component instance.
      */
     public function __construct(
@@ -66,6 +74,13 @@ class Input extends Component
          * Whether to enable the password visibility toggle for password inputs.
          */
         bool $isTogglePassword = false,
+        /**
+         * Whether the control should render its error state without a message.
+         *
+         * Used to mark linked fields (e.g. password + confirmation) as invalid
+         * when a sibling in the same validation group fails.
+         */
+        bool $invalid = false,
         /**
          * The input variant style.
          */
@@ -128,6 +143,7 @@ class Input extends Component
         public ?string $containerClass = null,
     ) {
         $this->isTogglePassword = $this->type === 'password' && $isTogglePassword;
+        $this->invalid = $invalid;
         $this->labelStyle = $this->resolveLabelStyle($labelStyle);
         $this->controlStyle = $this->resolveControlStyle($controlStyle);
         $this->variant = $this->resolveVariant($variant);
@@ -225,7 +241,7 @@ class Input extends Component
      */
     public function hasError(): bool
     {
-        return $this->error !== null;
+        return $this->invalid || ($this->error !== null && $this->error !== '');
     }
 
     /**

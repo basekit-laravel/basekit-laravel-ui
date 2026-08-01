@@ -933,7 +933,7 @@
   --button-font-size-sm: var(--font-size-sm);
 
   --button-padding-x-md: 1.125rem;
-  --button-padding-y-md: 0.625rem;
+  --button-padding-y-md: 0.5rem;
   --button-font-size-md: var(--font-size-sm);
 
   --button-padding-x-lg: 1.5rem;

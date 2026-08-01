@@ -81,7 +81,7 @@
             {{ $attributes->except(['label', 'error', 'hint', 'icon', 'is-toggle-password', 'mask', 'label-style', 'control-style'])->twMerge($classes() . ($shouldShowErrorIcon(isset($suffix)) ? ' bk-input__control--has-error-icon' : '')) }}
             @if ($placeholder) placeholder="{{ $placeholder }}" @endif
             @if ($value !== null) value="{{ $value }}" @endif
-            @if ($hasAnyError) aria-invalid="true" aria-describedby="{{ $attributes->get('id') }}-error" @endif
+            @if ($hasAnyError) aria-invalid="true" @if (filled($error)) aria-describedby="{{ $attributes->get('id') }}-error" @endif @endif
             @if ($shouldUseNumberStepper()) x-ref="numberInput" x-model.number="value" @endif
             @if ($hasMask()) x-on:input="$el.value = applyMask($el.value, $event)" @endif>
 
@@ -110,7 +110,7 @@
     </div>
 
     {{-- Error Message --}}
-    @if ($hasAnyError)
+    @if (filled($error))
         <p class="bk-input__error-message"
             @if ($attributes->get('id')) id="{{ $attributes->get('id') }}-error" @endif>
             {{ $error }}
