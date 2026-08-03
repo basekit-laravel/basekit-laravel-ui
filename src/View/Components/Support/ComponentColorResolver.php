@@ -237,6 +237,14 @@ class ComponentColorResolver
             return $value;
         }
 
+        if (preg_match('/^([a-zA-Z]+-\d+)\/(\d+)$/', $value, $m) === 1) {
+            return "color-mix(in srgb, var(--color-{$m[1]}) {$m[2]}%, transparent)";
+        }
+
+        if (preg_match('/^([a-zA-Z]+)\/(\d+)$/', $value, $m) === 1) {
+            return "color-mix(in srgb, {$m[1]} {$m[2]}%, transparent)";
+        }
+
         if (in_array(strtolower($value), self::$cssNamedColors, true)) {
             return $value;
         }

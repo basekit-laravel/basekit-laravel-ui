@@ -39,7 +39,7 @@
   --button-text-secondary: var(--color-slate-700);
   --button-border-secondary: var(--color-slate-300);
   --button-hover-bg-secondary: var(--color-slate-50);
-  --button-hover-border-secondary: var(--color-slate-400);
+  --button-hover-border-secondary: var(--button-border-secondary, var(--color-slate-300));
   --button-active-bg-secondary: var(--color-slate-100);
   --button-focus-ring-secondary: var(--color-slate-100);
 
@@ -349,7 +349,7 @@
   --button-text-secondary: var(--color-slate-200);
   --button-border-secondary: var(--color-slate-600);
   --button-hover-bg-secondary: var(--color-slate-700);
-  --button-hover-border-secondary: var(--color-slate-500);
+  --button-hover-border-secondary: var(--button-border-secondary, var(--color-slate-600));
   --button-active-bg-secondary: var(--color-slate-600);
   --button-focus-ring-secondary: rgba(148, 163, 184, 0.2);
 
