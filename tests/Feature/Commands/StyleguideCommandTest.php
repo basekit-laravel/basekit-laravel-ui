@@ -40,6 +40,14 @@ describe('Styleguide Command', function () {
         expect($html)->toContain('<!DOCTYPE html>');
         expect($html)->toContain('cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js');
         expect($html)->toContain('Basekit Laravel UI');
+
+        // Raw Tailwind v4 at-rules must be compiled into browser-applicable
+        // CSS custom properties, otherwise the palette never renders.
+        expect($html)->not->toContain('@theme default');
+        expect($html)->not->toContain('@theme default inline reference');
+        expect($html)->not->toContain('--theme(');
+        expect($html)->toContain('--color-primary-600: #4f46e5');
+        expect($html)->toContain(':root {');
     });
 
     test('styleguide command generates advanced-demo snapshot', function (): void {

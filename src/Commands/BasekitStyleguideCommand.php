@@ -88,7 +88,61 @@ class BasekitStyleguideCommand extends Command
             return '';
         }
 
-        return $this->resolveImports($themePath);
+        $css = $this->resolveImports($themePath);
+
+        // The snapshot is self-contained: it runs in a plain browser with the
+        // Tailwind Play CDN, so raw Tailwind v4 at-rules are not compiled into
+        // CSS custom properties. Convert @theme blocks to :root so the custom
+        // palette is actually applied (see compileThemeForBrowser()).
+        return $this->compileThemeForBrowser($css);
+    }
+
+    /**
+     * Convert Tailwind v4 theme-registration at-rules into real CSS custom
+     * properties so the self-contained styleguide renders colors without a
+     * Tailwind compiler.
+     *
+     * Browsers ignore unknown at-rules, so `@theme default { --color-primary-600: #4f46e5; }`
+     * never registers the palette as CSS variables. Rewriting each @theme block
+     * as a `:root { ... }` rule makes those variables resolvable by components
+     * (e.g. `var(--button-bg-primary)`). The `--theme(...)` function is likewise
+     * rewritten to the equivalent `var(...)`.
+     */
+    protected function compileThemeForBrowser(string $css): string
+    {
+        $result = '';
+        $offset = 0;
+        $length = strlen($css);
+        $pattern = '/@theme(?:\s+(?:default|inline|reference))*\s*\{/';
+
+        while (preg_match($pattern, $css, $match, PREG_OFFSET_CAPTURE, $offset) === 1) {
+            $start = $match[0][1];
+            $result .= substr($css, $offset, $start - $offset);
+
+            $open = $start + strlen($match[0][0]) - 1;
+            $depth = 0;
+            $close = $open;
+            while ($close < $length) {
+                $char = $css[$close];
+                if ($char === '{') {
+                    $depth++;
+                } elseif ($char === '}') {
+                    $depth--;
+                    if ($depth === 0) {
+                        break;
+                    }
+                }
+                $close++;
+            }
+
+            $block = substr($css, $open, $close - $open + 1);
+            $result .= ':root '.$block."\n";
+            $offset = $close + 1;
+        }
+
+        $result .= substr($css, $offset);
+
+        return str_replace('--theme(', 'var(', $result);
     }
 
     /**
