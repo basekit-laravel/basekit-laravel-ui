@@ -5,6 +5,13 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.7](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.6.6...v1.6.7) (2026-08-04)
+
+
+### Bug Fixes
+
+* styleguide generation ([137553d](https://github.com/basekit-laravel/basekit-laravel-ui/commit/137553d6005c508a9702a7a4c646f6a8864b7b35))
+
 ## [1.6.6](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.6.5...v1.6.6) (2026-08-03)
 
 
