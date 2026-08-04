@@ -5,6 +5,20 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.6](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.6.5...v1.6.6) (2026-08-03)
+
+
+### Bug Fixes
+
+* **form:** button secondary border ([4b68266](https://github.com/basekit-laravel/basekit-laravel-ui/commit/4b682666e83dc233edeeac5f1a8ac5e55d4adf8e))
+* php version in CI.yml ([3dd21a7](https://github.com/basekit-laravel/basekit-laravel-ui/commit/3dd21a73529803cfb1a252d3f66699d63a80f104))
+
+
+### Miscellaneous Chores
+
+* Stop tracking composer.lock ([34aa80e](https://github.com/basekit-laravel/basekit-laravel-ui/commit/34aa80e53fc8ccd445d6419ccb23671444b7775d))
+* update php packages ([4f4bda7](https://github.com/basekit-laravel/basekit-laravel-ui/commit/4f4bda79d59538449e54c4c37b363dd515a07eb2))
+
 ## [1.6.5](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.6.4...v1.6.5) (2026-08-01)
 
 
