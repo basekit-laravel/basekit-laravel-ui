@@ -65,6 +65,13 @@ A comprehensive quick reference for all Basekit Laravel UI components.
 | [Modal](/components/modal)         | `<x-basekit-ui::modal>`     | Modal dialog (Alpine.js)       |
 | [Accordion](/components/accordion) | `<x-basekit-ui::accordion>` | Collapsible panels (Alpine.js) |
 
+## Meta & Theme Components
+
+| Component                                        | Tag                                    | Purpose                          |
+| ------------------------------------------------ | -------------------------------------- | -------------------------------- |
+| [SEO](/components/seo)                           | `<x-basekit-ui::seo>`                  | Title, meta and social head tags |
+| [Theme Variables](/components/theme-variables)   | `<x-basekit-ui::theme-variables>`      | Runtime theme palette CSS vars   |
+
 ## Common Props
 
 ### Variants

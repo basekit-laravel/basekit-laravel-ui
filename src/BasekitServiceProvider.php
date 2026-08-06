@@ -43,6 +43,8 @@ use BasekitLaravel\BasekitLaravelUi\View\Components\Navigation\Pagination;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Navigation\Tabs;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Dialog\Accordion;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Dialog\Modal;
+use BasekitLaravel\BasekitLaravelUi\View\Components\Meta\Seo;
+use BasekitLaravel\BasekitLaravelUi\View\Components\Theme\ColorVariables;
 
 class BasekitServiceProvider extends ServiceProvider
 {
@@ -179,6 +181,12 @@ class BasekitServiceProvider extends ServiceProvider
         // Overlay Components
         $this->registerComponentIfEnabled('modal', Modal::class);
         $this->registerComponentIfEnabled('accordion', Accordion::class);
+
+        // Meta Components
+        $this->registerComponentIfEnabled('seo', Seo::class);
+
+        // Theme Components
+        $this->registerComponentIfEnabled('theme-variables', ColorVariables::class);
     }
 
     /**

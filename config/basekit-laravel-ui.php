@@ -266,6 +266,16 @@ return [
             'default_variant' => 'default',
             'default_size' => 'md',
         ],
+
+        // Meta Components
+        'seo' => [
+            'enabled' => true,
+        ],
+
+        // Theme Components
+        'theme-variables' => [
+            'enabled' => true,
+        ],
     ],
 
     /*
