@@ -157,7 +157,7 @@ class Checkbox extends Component
      */
     public function hasError(): bool
     {
-        return $this->error !== null;
+        return $this->error !== null && $this->error !== '';
     }
 
     /**

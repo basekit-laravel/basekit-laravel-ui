@@ -49,6 +49,34 @@ describe('Form Components', function () {
         expect($html)->toContain('bk-select');
     });
 
+    test('select does not render an error state for an empty error string', function () {
+        $html = Blade::render('<x-basekit-ui::select name="role" label="Role" error=""><option value="admin">Admin</option></x-basekit-ui::select>');
+        expect($html)
+            ->not->toContain('bk-select__container--error')
+            ->not->toContain('bk-select__control--error')
+            ->not->toContain('bk-select__error-message')
+            ->not->toContain('aria-invalid="true"');
+    });
+
+    test('select renders an error state for a real error message', function () {
+        $html = Blade::render('<x-basekit-ui::select name="role" label="Role" error="The selected role is invalid."><option value="admin">Admin</option></x-basekit-ui::select>');
+        expect($html)
+            ->toContain('bk-select__container--error')
+            ->toContain('bk-select__control--error')
+            ->toContain('bk-select__error-message')
+            ->toContain('The selected role is invalid.');
+    });
+
+    test('checkbox does not render an error state for an empty error string', function () {
+        $html = Blade::render('<x-basekit-ui::checkbox label="Accept" error="" />');
+        expect($html)->not->toContain('bk-checkbox__container--error');
+    });
+
+    test('textarea does not render an error state for an empty error string', function () {
+        $html = Blade::render('<x-basekit-ui::textarea name="bio" error="" />');
+        expect($html)->not->toContain('bk-textarea__container--error');
+    });
+
     test('multi-select renders with options and value', function () {
         $html = Blade::render('<x-basekit-ui::multi-select name="tags" :options="[\'laravel\' => \'Laravel\', \'vue\' => \'Vue.js\']" :value="[\'laravel\']" />');
         expect($html)->toContain('bk-multiselect');
