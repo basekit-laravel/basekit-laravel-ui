@@ -5,6 +5,19 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.6.7...v1.7.0) (2026-08-13)
+
+
+### Features
+
+* **theme:** add reusable seo and theme-variables components ([974cc4c](https://github.com/basekit-laravel/basekit-laravel-ui/commit/974cc4c44ddd0a51236f389c63200cccc9891a58))
+* **ui:** add reusable copy-button component ([7ed0e95](https://github.com/basekit-laravel/basekit-laravel-ui/commit/7ed0e9596a7396f643ddc0e042069b4a74096783))
+
+
+### Bug Fixes
+
+* **form:** treat empty error strings as no error state ([3a47c02](https://github.com/basekit-laravel/basekit-laravel-ui/commit/3a47c0288c5b2d63632ea6463e62889dcd86be2a))
+
 ## [1.7.0] - 2026-08-13
 
 ### Features
