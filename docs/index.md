@@ -167,7 +167,7 @@ php artisan basekit:ui:build --watch
 
 ## Component Catalog
 
-### Form (8)
+### Form (9)
 
 Build accessible forms with full validation support.
 
@@ -179,6 +179,7 @@ Build accessible forms with full validation support.
 - **[Select](/components/select)** - Dropdown select for single-option selection
 - **[Multi-Select](/components/multi-select)** - Select multiple options with chips
 - **[Toggle](/components/toggle)** - Switch toggle powered by Alpine.js
+- **[Copy Button](/components/copy-button)** - Copy to clipboard with transient feedback
 
 ### Feedback (7)
 

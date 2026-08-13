@@ -104,4 +104,34 @@ describe('Form Components', function () {
         expect($html)->toContain('With Icon');
         expect($html)->toContain('<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle></svg>');
     });
+
+    test('copy-button renders value via data attribute and clipboard handler', function () {
+        $html = Blade::render('<x-basekit-ui::copy-button value="secret-token" label="Copy" copied-label="Copied!" />');
+        expect($html)
+            ->toContain('bk-button')
+            ->toContain('bk-button--secondary')
+            ->toContain('data-value="secret-token"')
+            ->toContain('navigator.clipboard.writeText($el.dataset.value)')
+            ->toContain('Copy')
+            ->toContain('Copied!')
+            ->toContain('aria-live="polite"');
+    });
+
+    test('copy-button renders slot content when provided', function () {
+        $html = Blade::render('<x-basekit-ui::copy-button value="abc">Copy token</x-basekit-ui::copy-button>');
+        expect($html)->toContain('Copy token');
+        expect($html)->toContain('data-value="abc"');
+    });
+
+    test('copy-button honours variant and size props', function () {
+        $html = Blade::render('<x-basekit-ui::copy-button value="x" label="Copy" variant="ghost" size="sm" />');
+        expect($html)
+            ->toContain('bk-button--ghost')
+            ->toContain('bk-button--sm');
+    });
+
+    test('copy-button does not interpolate value into inline javascript', function () {
+        $html = Blade::render('<x-basekit-ui::copy-button value="abc&#039;&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;" label="Copy" />');
+        expect($html)->not->toContain('writeText(\'abc');
+    });
 });

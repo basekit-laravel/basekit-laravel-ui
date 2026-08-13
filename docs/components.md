@@ -14,6 +14,7 @@ A comprehensive quick reference for all Basekit Laravel UI components.
 | [Select](/components/select)             | `<x-basekit-ui::select>`       | Dropdown select (single value)           |
 | [Multi-Select](/components/multi-select) | `<x-basekit-ui::multi-select>` | Dropdown select (multiple values)        |
 | [Toggle](/components/toggle)             | `<x-basekit-ui::toggle>`       | Switch toggle (Alpine.js)                |
+| [Copy Button](/components/copy-button)   | `<x-basekit-ui::copy-button>`  | Copy to clipboard with transient feedback |
 
 ## Feedback Components
 

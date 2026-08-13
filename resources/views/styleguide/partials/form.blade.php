@@ -11,6 +11,7 @@
             checkboxes: open('checkboxes'),
             radios: open('radios'),
             toggles: open('toggles'),
+            copybuttons: open('copybuttons'),
         };
     })(),
     expandAll() {
@@ -115,6 +116,43 @@
                     <x-basekit-ui::button variant="secondary" as="a" icon="arrow-top-right-on-square">
                         No Href
                     </x-basekit-ui::button>
+                </div>
+            </div>
+        </div>
+    </x-basekit-ui::styleguide.section-toggle>
+
+    <!-- Copy Buttons -->
+    <x-basekit-ui::styleguide.section-toggle section="copybuttons" title="Copy Buttons">
+        <div class="space-y-6">
+            <!-- Variants -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Variants</h4>
+                <div class="flex flex-wrap items-center gap-3">
+                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link" copied-label="Copied!" variant="primary" />
+                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link" copied-label="Copied!" variant="secondary" />
+                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link" copied-label="Copied!" variant="success" />
+                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link" copied-label="Copied!" variant="danger" />
+                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link" copied-label="Copied!" variant="warning" />
+                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link" copied-label="Copied!" variant="info" />
+                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link" copied-label="Copied!" variant="ghost" />
+                </div>
+            </div>
+
+            <!-- Sizes -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Sizes</h4>
+                <div class="flex flex-wrap items-center gap-3">
+                    <x-basekit-ui::copy-button value="secret-value" size="sm" label="Small" copied-label="Copied!" />
+                    <x-basekit-ui::copy-button value="secret-value" size="md" label="Medium" copied-label="Copied!" />
+                    <x-basekit-ui::copy-button value="secret-value" size="lg" label="Large" copied-label="Copied!" />
+                </div>
+            </div>
+
+            <!-- Custom Icons -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Custom Icons</h4>
+                <div class="flex flex-wrap items-center gap-3">
+                    <x-basekit-ui::copy-button value="abc-123" icon="link" copied-icon="check-circle" label="Copy token" copied-label="Copied!" />
                 </div>
             </div>
         </div>

@@ -5,6 +5,12 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0] - 2026-08-13
+
+### Features
+
+* add `copy-button` component — copies a value to the clipboard via `navigator.clipboard` with transient "copied" feedback; value is passed through a `data-*` attribute (no inline JS interpolation)
+
 ## [1.6.7](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.6.6...v1.6.7) (2026-08-04)
 
 

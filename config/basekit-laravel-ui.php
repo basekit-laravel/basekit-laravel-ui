@@ -89,6 +89,14 @@ return [
             'default_size' => 'md',
         ],
 
+        'copy-button' => [
+            'enabled' => true,
+            'variants' => ['primary', 'secondary', 'success', 'warning', 'danger', 'info', 'ghost'],
+            'sizes' => ['sm', 'md', 'lg'],
+            'default_variant' => 'secondary',
+            'default_size' => 'md',
+        ],
+
         // Feedback Components
         'alert' => [
             'enabled' => true,
