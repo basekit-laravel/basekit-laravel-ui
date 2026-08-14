@@ -5,6 +5,14 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.2](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.7.1...v1.7.2) (2026-08-14)
+
+
+### Miscellaneous Chores
+
+* restore package-lock.json for ci ([5562685](https://github.com/basekit-laravel/basekit-laravel-ui/commit/556268516b9c632bb7615515e53cc868761df63b))
+* stop tracking package-lock.json ([c522101](https://github.com/basekit-laravel/basekit-laravel-ui/commit/c52210199bfdf372098dfec6814d1487a7c0cd0d))
+
 ## [1.7.1](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.7.0...v1.7.1) (2026-08-14)
 
 
