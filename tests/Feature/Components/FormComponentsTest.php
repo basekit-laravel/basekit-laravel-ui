@@ -24,6 +24,33 @@ describe('Form Components', function () {
         expect($html)->toContain('bk-input');
     });
 
+    test('input renders an error state for a real error message', function () {
+        $html = Blade::render('<x-basekit-ui::input name="email" type="email" error="The email must be a valid email address." />');
+        expect($html)
+            ->toContain('bk-input__container--error')
+            ->toContain('bk-input__control--error')
+            ->toContain('aria-invalid="true"')
+            ->toContain('bk-input__error-message')
+            ->toContain('The email must be a valid email address.');
+    });
+
+    test('input does not render an error state for an empty error string', function () {
+        $html = Blade::render('<x-basekit-ui::input name="email" type="email" error="" />');
+        expect($html)
+            ->not->toContain('bk-input__container--error')
+            ->not->toContain('bk-input__control--error')
+            ->not->toContain('aria-invalid="true"')
+            ->not->toContain('bk-input__error-message');
+    });
+
+    test('input keeps the error state when marked invalid without a message', function () {
+        $html = Blade::render('<x-basekit-ui::input name="password" type="password" invalid />');
+        expect($html)
+            ->toContain('bk-input__container--error')
+            ->toContain('bk-input__control--error')
+            ->toContain('aria-invalid="true"');
+    });
+
     test('textarea renders with value', function () {
         $html = Blade::render('<x-basekit-ui::textarea value="Some text" />');
         expect($html)->toContain('Some text');

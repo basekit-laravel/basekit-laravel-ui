@@ -62,4 +62,15 @@ describe('Build Command', function () {
         expect($css)->toContain('.bk-button--primary');
         expect($css)->toContain('.bk-button--sm');
     });
+
+    test('build command keeps the input error border on hover', function (): void {
+        $exitCode = Artisan::call('basekit:ui:build');
+        expect($exitCode)->toBe(0);
+
+        $css = File::get(public_path('vendor/basekit-laravel/v1/basekit-ui.css'));
+
+        expect($css)->toContain('bk-input__control--error');
+        expect($css)->toContain('bk-input__container:hover .bk-input__control:not(:disabled):not([readonly]):not(.bk-input__control--error):not([aria-invalid="true"])');
+        expect($css)->toContain('border-color: var(--input-error-border-color)');
+    });
 });

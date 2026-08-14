@@ -246,12 +246,16 @@
  * =============================================================================
  */
 
-.bk-input__container:hover .bk-input__control:not(:disabled):not([readonly]) {
+.bk-input__container:hover .bk-input__control:not(:disabled):not([readonly]):not(.bk-input__control--error):not([aria-invalid="true"]) {
       border-color: var(--input-hover-border-color);
     }
 
-.bk-input__container:hover:has(.bk-input__control:not(:disabled):not([readonly])) .bk-input__prefix,
-      .bk-input__container:hover:has(.bk-input__control:not(:disabled):not([readonly])) .bk-input__suffix {
+.bk-input__container:hover:has(
+        .bk-input__control:not(:disabled):not([readonly]):not(.bk-input__control--error):not([aria-invalid="true"])
+      ) .bk-input__prefix,
+      .bk-input__container:hover:has(
+        .bk-input__control:not(:disabled):not([readonly]):not(.bk-input__control--error):not([aria-invalid="true"])
+      ) .bk-input__suffix {
         border-color: var(--input-hover-border-color);
       }
 
