@@ -5,6 +5,13 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.7.3...v1.8.0) (2026-08-15)
+
+
+### Features
+
+* **form:** add fieldset group component and border-only color shortcuts ([defb74d](https://github.com/basekit-laravel/basekit-laravel-ui/commit/defb74d52234e1a9485675b1f8598ab5e0d34d9f))
+
 ## [1.7.3](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.7.2...v1.7.3) (2026-08-15)
 
 
