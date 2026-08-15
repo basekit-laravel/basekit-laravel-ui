@@ -26,6 +26,7 @@ A multi-line text input component with configurable variants, sizes, label place
 | `label`        | `string` | `null`        | Label text                                                                  |
 | `error`        | `string` | `null`        | Error message shown below the field                                         |
 | `hint`         | `string` | `null`        | Helper text shown below the field                                           |
+| `reserves-messages` | `bool` | `true`     | Keep the reserved message slot below the field                              |
 | `placeholder`  | `string` | `null`        | Placeholder text                                                            |
 | `value`        | `string` | `null`        | Initial textarea value                                                      |
 | `corner-hint`  | `string` | `null`        | Top-right label row hint                                                    |

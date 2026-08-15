@@ -168,16 +168,18 @@
     </div>
 
     {{-- Messages (reserved slot prevents layout shift when validation messages appear) --}}
-    <div class="bk-select__messages">
-        @if ($hasAnyError)
-            <p class="bk-select__error-message" role="alert"
-                @if ($attributes->get('id')) id="{{ $attributes->get('id') }}-error" @endif>
-                {{ $error }}
-            </p>
-        @elseif (!$hasAnyError && ($hint || $hasCustomHint))
-            <p class="bk-select__hint">
-                {{ $hint }}
-            </p>
-        @endif
-    </div>
+    @if ($hasAnyError || $hint || $hasCustomHint || $reservesMessages)
+        <div class="bk-select__messages">
+            @if ($hasAnyError)
+                <p class="bk-select__error-message" role="alert"
+                    @if ($attributes->get('id')) id="{{ $attributes->get('id') }}-error" @endif>
+                    {{ $error }}
+                </p>
+            @elseif (!$hasAnyError && ($hint || $hasCustomHint))
+                <p class="bk-select__hint">
+                    {{ $hint }}
+                </p>
+            @endif
+        </div>
+    @endif
 </div>

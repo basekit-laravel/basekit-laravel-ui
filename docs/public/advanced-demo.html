@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Basekit UI — Advanced Demo</title>
+    <!-- Alpine Collapse plugin must load BEFORE core Alpine: current Alpine CDN builds boot via queueMicrotask, so 'alpine:init' fires before any later-deferred plugin script executes -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
     <!-- Alpine.js for interactive components -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
     <!-- Tailwind CSS v4 browser runtime for utility classes -->
@@ -2149,6 +2151,9 @@ body {
  */
 .bk-input__messages {
   min-height: 1.25rem;
+  /* Cancel the wrapper's flex gap so the reserved space is exactly one
+     message line, keeping stacked fields tightly spaced. */
+  margin-top: -0.375rem;
 }
 
 .bk-input__hint,
@@ -2565,7 +2570,6 @@ body {
  * =============================================================================
  */
 .bk-textarea {
-  margin-bottom: 1rem;
   width: 100%;
 }
 .bk-textarea .bk-textarea__label {
@@ -2999,7 +3003,6 @@ body {
  */
 .bk-textarea__messages {
   min-height: 1.25rem;
-  margin-top: 0.375rem;
 }
 
 .bk-textarea__error-message {
@@ -3158,7 +3161,6 @@ body {
 
 .bk-checkbox__messages {
   min-height: 1.25rem;
-  margin-top: 0.25rem;
 }
 
 .bk-checkbox__error-message {
@@ -3465,16 +3467,11 @@ body {
  * Base Structure
  * =============================================================================
  */
-.bk-radio {
-  margin-bottom: 0.5rem;
-}
-
 .bk-radio__container {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
 }
-
 .bk-radio__container:focus-within .bk-radio__control {
     box-shadow: 0 0 0 2px var(--radio-focus-ring);
     border-color: var(--radio-checked-border);
@@ -3496,7 +3493,6 @@ body {
 
 .bk-radio__messages {
   min-height: 1.25rem;
-  margin-top: 0.25rem;
   margin-left: calc(1.125rem + 0.75rem);
   margin-left: calc(var(--radio-size-md) + 0.75rem);
 }
@@ -3844,6 +3840,9 @@ body {
 
 .bk-select__messages {
   min-height: 1.25rem;
+  /* Cancel the wrapper's flex gap so the reserved space is exactly one
+     message line, keeping stacked fields tightly spaced. */
+  margin-top: -0.375rem;
 }
 
 .bk-select__error-message {
@@ -4596,6 +4595,9 @@ body {
 
 .bk-multiselect__messages {
   min-height: 1.25rem;
+  /* Cancel the wrapper's flex gap so the reserved space is exactly one
+     message line, keeping stacked fields tightly spaced. */
+  margin-top: -0.375rem;
 }
 
 .bk-multiselect__error-message {
@@ -5409,7 +5411,6 @@ body {
 
 .bk-toggle__messages {
   min-height: 1.25rem;
-  margin-top: 0.375rem;
 }
 
 .bk-toggle__error-message {
@@ -5638,6 +5639,92 @@ body {
   --toggle-ghost-focus-ring: rgba(148, 163, 184, 0.2);
 
   --toggle-error-focus-ring: rgba(239, 68, 68, 0.25);
+}
+/* =============================================================================
+  Fieldset Component
+  ============================================================================= */
+
+/* =============================================================================
+  Design Tokens
+  ============================================================================= */
+:root {
+  /* Labels & helpers */
+  --fieldset-label-color: var(--color-slate-700);
+  --fieldset-hint-color: var(--color-slate-500);
+  --fieldset-error-color: var(--color-danger-700);
+}
+
+/**
+ * =============================================================================
+ * Base Structure
+ * =============================================================================
+ */
+
+/* Root wrapper */
+.bk-fieldset {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.bk-fieldset__legend {
+  display: block;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: var(--fieldset-label-color);
+}
+
+.bk-fieldset__items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+/**
+ * =============================================================================
+ * Messages
+ * =============================================================================
+ */
+
+/* One reserved message line for the whole group so group-level validation
+   messages never shift the layout while the items stay tightly packed. */
+.bk-fieldset__messages {
+  min-height: 1.25rem;
+}
+
+.bk-fieldset__error-message,
+.bk-fieldset__hint {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+}
+
+.bk-fieldset__error-message {
+  color: var(--fieldset-error-color);
+}
+
+.bk-fieldset__hint {
+  color: var(--fieldset-hint-color);
+}
+
+/* Items inside a group do not reserve their own message line — the group owns
+   a single reserved line instead. Standalone items keep their reservation. */
+.bk-fieldset .bk-checkbox__messages,
+.bk-fieldset .bk-radio__messages,
+.bk-fieldset .bk-toggle__messages {
+  min-height: 0;
+}
+
+/* Dark mode overrides */
+.dark {
+  --fieldset-label-color: var(--color-slate-300);
+  --fieldset-hint-color: var(--color-slate-400);
+  --fieldset-error-color: var(--color-danger-400);
 }
 /* =============================================================================
 	Feedback Components
@@ -10321,9 +10408,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
 
                     <div class="bk-input "  >
     
@@ -10362,9 +10449,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
 
                     <div class="bk-select "  x-data="{
     open: false,
@@ -10428,9 +10515,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
 
                     <div class="bk-textarea " >
     
@@ -10452,9 +10539,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
 
 
                     <div class="bk-toggle ">
@@ -10476,9 +10563,9 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-            </div>
-</div>
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
                     <button class="bk-button bk-button--primary bk-button--md"
                 type="button"
             >

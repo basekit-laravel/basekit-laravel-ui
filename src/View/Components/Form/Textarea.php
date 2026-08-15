@@ -56,6 +56,16 @@ class Textarea extends Component
         public ?string $label = null,
         public ?string $error = null,
         public ?string $hint = null,
+        /**
+         * Whether to keep the reserved message slot below the control.
+         *
+         * When true, the message slot always reserves one line of vertical
+         * space so validation messages never shift the layout. Set to false
+         * for fields that provably never show an error or hint — the slot is
+         * then omitted entirely (unless a message is present) and the control
+         * can sit flush with the next element.
+         */
+        public bool $reservesMessages = true,
         public ?string $placeholder = null,
         public ?string $value = null,
         public int $rows = 4,

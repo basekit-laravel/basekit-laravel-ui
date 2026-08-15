@@ -24,7 +24,7 @@ docs/
 
 ## Component Categories
 
-### Form Components (8)
+### Form Components (9)
 
 Build accessible forms with full validation support.
 
@@ -36,6 +36,7 @@ Build accessible forms with full validation support.
 - [Select](components/select.md)
 - [Multi-Select](components/multi-select.md)
 - [Toggle](components/toggle.md)
+- [Fieldset](components/fieldset.md)
 
 ### Feedback Components (7)
 

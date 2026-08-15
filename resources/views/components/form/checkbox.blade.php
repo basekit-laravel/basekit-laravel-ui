@@ -36,15 +36,17 @@
     </div>
 
     {{-- Messages (reserved slot prevents layout shift when validation messages appear) --}}
-    <div class="bk-checkbox__messages">
-        @if ($error)
-            <p class="bk-checkbox__error-message" id="{{ $inputId() }}-error" role="alert">
-                {{ $error }}
-            </p>
-        @elseif (!$hasError() && $hint)
-            <p class="bk-checkbox__hint">
-                {{ $hint }}
-            </p>
-        @endif
-    </div>
+    @if ($error || $hint || $reservesMessages)
+        <div class="bk-checkbox__messages">
+            @if ($error)
+                <p class="bk-checkbox__error-message" id="{{ $inputId() }}-error" role="alert">
+                    {{ $error }}
+                </p>
+            @elseif (!$hasError() && $hint)
+                <p class="bk-checkbox__hint">
+                    {{ $hint }}
+                </p>
+            @endif
+        </div>
+    @endif
 </div>

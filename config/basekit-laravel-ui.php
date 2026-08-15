@@ -89,6 +89,10 @@ return [
             'default_size' => 'md',
         ],
 
+        'fieldset' => [
+            'enabled' => true,
+        ],
+
         'copy-button' => [
             'enabled' => true,
             'variants' => ['primary', 'secondary', 'success', 'warning', 'danger', 'info', 'ghost'],

@@ -27,6 +27,7 @@ A radio button component for single-choice selections with configurable variants
 | `label`      | `string` | `null`      | Label text                                                                            |
 | `error`      | `string` | `null`      | Error message shown below the control                                                 |
 | `hint`       | `string` | `null`      | Helper text shown below the control                                                   |
+| `reserves-messages` | `bool` | `true`  | Keep the reserved message slot below the control                                      |
 | `color`      | `string` | `null`      | Quick color shortcut. Sets checked background and border simultaneously. |
 | `background` | `string` | `null`      | Custom checked background color. |
 | `border`     | `string` | `null`      | Custom checked border color. |
@@ -94,6 +95,18 @@ Supported sizes: `sm`,`md`,`lg`.
     <x-basekit-ui::radio name="payment" value="card" error="Please select a payment method" label="Credit Card" />
     <x-basekit-ui::radio name="payment" value="paypal" error="Please select a payment method" label="PayPal" />
 </div>
+```
+
+## Grouping
+
+Wrap related radios in a [Fieldset](fieldset.md) so the group owns a single reserved message line
+and the list stays tightly packed without per-item spacing.
+
+```blade
+<x-basekit-ui::fieldset label="Billing cycle">
+    <x-basekit-ui::radio name="billing" value="monthly" label="Monthly" />
+    <x-basekit-ui::radio name="billing" value="yearly" label="Yearly" />
+</x-basekit-ui::fieldset>
 ```
 
 ## Custom Classes

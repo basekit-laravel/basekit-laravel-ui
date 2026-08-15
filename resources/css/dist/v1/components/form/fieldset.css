@@ -1,0 +1,86 @@
+/* =============================================================================
+  Fieldset Component
+  ============================================================================= */
+
+/* =============================================================================
+  Design Tokens
+  ============================================================================= */
+:root {
+  /* Labels & helpers */
+  --fieldset-label-color: var(--color-slate-700);
+  --fieldset-hint-color: var(--color-slate-500);
+  --fieldset-error-color: var(--color-danger-700);
+}
+
+/**
+ * =============================================================================
+ * Base Structure
+ * =============================================================================
+ */
+
+/* Root wrapper */
+.bk-fieldset {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.bk-fieldset__legend {
+  display: block;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: var(--fieldset-label-color);
+}
+
+.bk-fieldset__items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+/**
+ * =============================================================================
+ * Messages
+ * =============================================================================
+ */
+
+/* One reserved message line for the whole group so group-level validation
+   messages never shift the layout while the items stay tightly packed. */
+.bk-fieldset__messages {
+  min-height: 1.25rem;
+}
+
+.bk-fieldset__error-message,
+.bk-fieldset__hint {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+}
+
+.bk-fieldset__error-message {
+  color: var(--fieldset-error-color);
+}
+
+.bk-fieldset__hint {
+  color: var(--fieldset-hint-color);
+}
+
+/* Items inside a group do not reserve their own message line — the group owns
+   a single reserved line instead. Standalone items keep their reservation. */
+.bk-fieldset .bk-checkbox__messages,
+.bk-fieldset .bk-radio__messages,
+.bk-fieldset .bk-toggle__messages {
+  min-height: 0;
+}
+
+/* Dark mode overrides */
+.dark {
+  --fieldset-label-color: var(--color-slate-300);
+  --fieldset-hint-color: var(--color-slate-400);
+  --fieldset-error-color: var(--color-danger-400);
+}

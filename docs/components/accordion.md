@@ -2,8 +2,35 @@
 
 An accordion/collapsible component powered by Alpine.js.
 
-::: warning Alpine.js Required
-This component requires Alpine.js to be loaded in your layout for interactive behavior. See the [installation guide](/guide/installation#alpine-js-required-for-interactive-components) for setup instructions.
+::: warning Alpine.js + Collapse Plugin Required
+This component requires Alpine.js **and the Alpine Collapse plugin** to be loaded in your layout for interactive behavior. Without the plugin, the accordion still opens and closes but the `x-collapse` animation is disabled and Alpine logs a warning.
+
+CDN:
+
+```html
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+```
+
+> Load the collapse plugin **before** Alpine core. Current Alpine CDN builds boot via
+> `queueMicrotask`, so `alpine:init` fires before any plugin script deferred *after*
+> core executes — loading the plugin first guarantees it registers in time.
+
+NPM:
+
+```bash
+npm install alpinejs @alpinejs/collapse
+```
+
+```javascript
+import Alpine from "alpinejs";
+import collapse from "@alpinejs/collapse";
+
+Alpine.plugin(collapse);
+Alpine.start();
+```
+
+See the [installation guide](/guide/installation#alpine-js-required-for-interactive-components) for more setup options.
 :::
 
 ::: tip Live Preview

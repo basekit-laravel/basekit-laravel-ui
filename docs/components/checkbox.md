@@ -27,6 +27,7 @@ A checkbox component with configurable variants, sizes, label content, and valid
 | `label`      | `string` | `null`      | Label text                                                                            |
 | `error`      | `string` | `null`      | Error message shown below the control                                                 |
 | `hint`       | `string` | `null`      | Helper text shown below the control                                                   |
+| `reserves-messages` | `bool` | `true`  | Keep the reserved message slot below the control                                      |
 | `color`      | `string` | `null`      | Quick color shortcut. Sets checked background and border simultaneously. |
 | `background` | `string` | `null`      | Custom checked background color. |
 | `border`     | `string` | `null`      | Custom checked border color. |
@@ -91,6 +92,18 @@ Supported sizes: `sm`, `md`, `lg`.
     error="Please confirm your choice"
     label="Subscribe to updates"
 />
+```
+
+## Grouping
+
+Wrap related checkboxes in a [Fieldset](fieldset.md) so the group owns a single reserved message line
+and the list stays tightly packed without per-item spacing.
+
+```blade
+<x-basekit-ui::fieldset label="Topics" error="Please select at least one topic">
+    <x-basekit-ui::checkbox name="topics" value="security" label="Security" />
+    <x-basekit-ui::checkbox name="topics" value="releases" label="Releases" />
+</x-basekit-ui::fieldset>
 ```
 
 ## Custom Classes

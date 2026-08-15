@@ -9,6 +9,7 @@
 @import "./components/form/select.css";
 @import "./components/form/multi-select.css";
 @import "./components/form/toggle.css";
+@import "./components/form/fieldset.css";
 @import "./components/feedback.css";
 @import "./components/navigation.css";
 @import "./components/layout.css";

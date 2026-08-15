@@ -129,6 +129,37 @@ import Alpine from "alpinejs";
 Alpine.start();
 ```
 
+### Alpine Collapse Plugin (Required for the Accordion)
+
+The **Accordion** component animates open/close with the `x-collapse` directive, which ships in the [Alpine Collapse plugin](https://alpinejs.dev/plugins/collapse) — not in Alpine core. Install it and register it before calling `Alpine.start()`:
+
+```blade
+<!-- resources/views/layouts/app.blade.php -->
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+```
+
+> Load the collapse plugin **before** Alpine core. Current Alpine CDN builds boot via
+> `queueMicrotask`, so `alpine:init` fires before any plugin script deferred *after*
+> core executes — loading the plugin first guarantees it registers in time.
+
+Or via NPM:
+
+```bash
+npm install alpinejs @alpinejs/collapse
+```
+
+```javascript
+// resources/js/app.js
+import Alpine from "alpinejs";
+import collapse from "@alpinejs/collapse";
+
+Alpine.plugin(collapse);
+Alpine.start();
+```
+
+Without the plugin the accordion still toggles, but the collapse animation is disabled and Alpine logs a console warning.
+
 ### Using with Livewire
 
 If you're using Livewire, add `@livewireScripts` to your layout to include Alpine.js and Livewire's Alpine integration:

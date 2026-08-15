@@ -99,4 +99,39 @@ describe('Build Command', function () {
         expect($css)->toContain('.bk-textarea__messages');
         expect($css)->toContain('min-height: 1.25rem');
     });
+
+    test('build command keeps stacked fields tightly spaced', function (): void {
+        $exitCode = Artisan::call('basekit:ui:build');
+        expect($exitCode)->toBe(0);
+
+        $css = File::get(public_path('vendor/basekit-laravel/v1/basekit-ui.css'));
+
+        // Flex-gap components cancel the wrapper gap so the reserved space
+        // below the control is exactly one message line.
+        expect($css)->toContain('.bk-input__messages');
+        expect($css)->toContain('margin-top: -0.375rem');
+
+        // The textarea and radio wrappers no longer add their own bottom
+        // margin on top of the reserved message slot.
+        expect($css)->toContain('.bk-textarea {');
+        expect($css)->not->toContain('.bk-textarea {\n  margin-bottom');
+        expect($css)->not->toContain('.bk-radio {');
+    });
+
+    test('build command bundles the fieldset group wrapper', function (): void {
+        $exitCode = Artisan::call('basekit:ui:build');
+        expect($exitCode)->toBe(0);
+
+        $css = File::get(public_path('vendor/basekit-laravel/v1/basekit-ui.css'));
+
+        // The group wrapper owns a single reserved message line while the
+        // items inside a group stay tightly packed (no per-item reservation).
+        expect($css)->toContain('.bk-fieldset {');
+        expect($css)->toContain('.bk-fieldset__messages');
+        expect($css)->toContain('min-height: 1.25rem');
+        expect($css)->toContain('.bk-fieldset .bk-checkbox__messages');
+        expect($css)->toContain('.bk-fieldset .bk-radio__messages');
+        expect($css)->toContain('.bk-fieldset .bk-toggle__messages');
+        expect($css)->toContain('min-height: 0');
+    });
 });

@@ -177,6 +177,38 @@ describe('Form Components', function () {
         'toggle' => ['<x-basekit-ui::toggle name="field" label="Enable" error="Required." />', 'bk-toggle__messages', 'bk-toggle__error-message'],
     ]);
 
+    test('each form component omits the reserved slot when reservation is disabled and no message is present', function (string $blade, string $slotClass) {
+        $html = Blade::render($blade);
+        expect($html)
+            ->not->toContain($slotClass)
+            ->not->toContain('__error-message')
+            ->not->toContain('__hint');
+    })->with([
+        'input' => ['<x-basekit-ui::input name="field" :reserves-messages="false" />', 'bk-input__messages'],
+        'textarea' => ['<x-basekit-ui::textarea name="field" :reserves-messages="false" />', 'bk-textarea__messages'],
+        'select' => ['<x-basekit-ui::select name="field" :options="[\'a\' => \'A\']" :reserves-messages="false" />', 'bk-select__messages'],
+        'multi-select' => ['<x-basekit-ui::multi-select name="field" :options="[\'a\' => \'A\']" :reserves-messages="false" />', 'bk-multiselect__messages'],
+        'checkbox' => ['<x-basekit-ui::checkbox name="field" label="Accept" :reserves-messages="false" />', 'bk-checkbox__messages'],
+        'radio' => ['<x-basekit-ui::radio name="field" label="Option" :reserves-messages="false" />', 'bk-radio__messages'],
+        'toggle' => ['<x-basekit-ui::toggle name="field" label="Enable" :reserves-messages="false" />', 'bk-toggle__messages'],
+    ]);
+
+    test('each form component still renders a message when present even with reservation disabled', function (string $blade, string $slotClass, string $messageClass, string $message) {
+        $html = Blade::render($blade);
+        expect($html)
+            ->toContain($slotClass)
+            ->toContain($messageClass)
+            ->toContain($message);
+    })->with([
+        'input error' => ['<x-basekit-ui::input name="field" error="Required." :reserves-messages="false" />', 'bk-input__messages', 'bk-input__error-message', 'Required.'],
+        'input hint' => ['<x-basekit-ui::input name="field" hint="Helpful." :reserves-messages="false" />', 'bk-input__messages', 'bk-input__hint', 'Helpful.'],
+        'checkbox hint' => ['<x-basekit-ui::checkbox name="field" label="Accept" hint="Helpful." :reserves-messages="false" />', 'bk-checkbox__messages', 'bk-checkbox__hint', 'Helpful.'],
+        'toggle error' => ['<x-basekit-ui::toggle name="field" label="Enable" error="Required." :reserves-messages="false" />', 'bk-toggle__messages', 'bk-toggle__error-message', 'Required.'],
+        'select hint' => ['<x-basekit-ui::select name="field" :options="[\'a\' => \'A\']" hint="Helpful." :reserves-messages="false" />', 'bk-select__messages', 'bk-select__hint', 'Helpful.'],
+        'fieldset hint' => ['<x-basekit-ui::fieldset label="Topics" hint="Helpful." :reserves-messages="false" />', 'bk-fieldset__messages', 'bk-fieldset__hint', 'Helpful.'],
+        'fieldset error' => ['<x-basekit-ui::fieldset label="Topics" error="Required." :reserves-messages="false" />', 'bk-fieldset__messages', 'bk-fieldset__error-message', 'Required.'],
+    ]);
+
     // Extra: test button with icon slot
     test('button renders custom icon slot', function () {
         $html = Blade::render(<<<'BLADE'
@@ -219,5 +251,71 @@ describe('Form Components', function () {
     test('copy-button does not interpolate value into inline javascript', function () {
         $html = Blade::render('<x-basekit-ui::copy-button value="abc&#039;&quot;&gt;&lt;script&gt;alert(1)&lt;/script&gt;" label="Copy" />');
         expect($html)->not->toContain('writeText(\'abc');
+    });
+});
+
+describe('Fieldset', function () {
+    test('renders a semantic fieldset with a legend', function () {
+        $html = Blade::render('<x-basekit-ui::fieldset label="Billing cycle" />');
+        expect($html)
+            ->toContain('<fieldset')
+            ->toContain('<legend')
+            ->toContain('Billing cycle')
+            ->toContain('bk-fieldset');
+    });
+
+    test('renders without a legend when no label is given', function () {
+        $html = Blade::render('<x-basekit-ui::fieldset />');
+        expect($html)
+            ->toContain('bk-fieldset')
+            ->not->toContain('<legend');
+    });
+
+    test('reserves a single message line without an error or hint', function () {
+        $html = Blade::render('<x-basekit-ui::fieldset label="Topics" />');
+        expect($html)
+            ->toContain('bk-fieldset__messages')
+            ->not->toContain('bk-fieldset__error-message')
+            ->not->toContain('bk-fieldset__hint');
+    });
+
+    test('renders the group error inside the reserved slot with an alert role', function () {
+        $html = Blade::render('<x-basekit-ui::fieldset label="Topics" error="Please select at least one topic." />');
+        expect($html)
+            ->toContain('bk-fieldset__messages')
+            ->toContain('bk-fieldset__error-message')
+            ->toContain('role="alert"')
+            ->toContain('Please select at least one topic.')
+            ->not->toContain('bk-fieldset__hint');
+    });
+
+    test('renders the hint inside the reserved slot', function () {
+        $html = Blade::render('<x-basekit-ui::fieldset label="Topics" hint="Choose at least one." />');
+        expect($html)
+            ->toContain('bk-fieldset__messages')
+            ->toContain('bk-fieldset__hint')
+            ->toContain('Choose at least one.')
+            ->not->toContain('bk-fieldset__error-message');
+    });
+
+    test('renders grouped controls inside the items container', function () {
+        $html = Blade::render(<<<'BLADE'
+            <x-basekit-ui::fieldset label="Billing cycle">
+                <x-basekit-ui::radio name="billing" value="monthly" label="Monthly" />
+                <x-basekit-ui::radio name="billing" value="yearly" label="Yearly" />
+            </x-basekit-ui::fieldset>
+        BLADE);
+        expect($html)
+            ->toContain('bk-fieldset__items')
+            ->toContain('Monthly')
+            ->toContain('Yearly')
+            ->toContain('bk-radio');
+    });
+
+    test('merges wrapper-class and attribute classes onto the fieldset', function () {
+        $html = Blade::render('<x-basekit-ui::fieldset label="Topics" wrapper-class="mt-4" class="sm:col-span-2" />');
+        expect($html)
+            ->toContain('class="bk-fieldset mt-4 sm:col-span-2"')
+            ->toContain('bk-fieldset__items');
     });
 });

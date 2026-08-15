@@ -181,6 +181,8 @@ class BasekitStyleguideCommand extends Command
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{$title}</title>
+    <!-- Alpine Collapse plugin must load BEFORE core Alpine: current Alpine CDN builds boot via queueMicrotask, so 'alpine:init' fires before any later-deferred plugin script executes -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
     <!-- Alpine.js for interactive components -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
     <!-- Tailwind CSS v4 browser runtime for utility classes -->

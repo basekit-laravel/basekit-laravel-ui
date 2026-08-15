@@ -43,15 +43,17 @@
     </div>
 
     {{-- Messages (reserved slot prevents layout shift when validation messages appear) --}}
-    <div class="bk-toggle__messages">
-        @if ($error)
-            <p class="bk-toggle__error-message" id="{{ $inputId() }}-error" role="alert">
-                {{ $error }}
-            </p>
-        @elseif (!$hasError() && $hint)
-            <p class="bk-toggle__hint">
-                {{ $hint }}
-            </p>
-        @endif
-    </div>
+    @if ($error || $hint || $reservesMessages)
+        <div class="bk-toggle__messages">
+            @if ($error)
+                <p class="bk-toggle__error-message" id="{{ $inputId() }}-error" role="alert">
+                    {{ $error }}
+                </p>
+            @elseif (!$hasError() && $hint)
+                <p class="bk-toggle__hint">
+                    {{ $hint }}
+                </p>
+            @endif
+        </div>
+    @endif
 </div>

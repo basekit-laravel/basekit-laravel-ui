@@ -35,6 +35,7 @@ This component requires Alpine.js to be loaded in your layout for interactive be
 | `label`         | `string` | `null`             | Label text                                                                  |
 | `error`         | `string` | `null`             | Error message shown below the field                                         |
 | `hint`          | `string` | `null`             | Helper text shown below the field                                           |
+| `reserves-messages` | `bool` | `true`           | Keep the reserved message slot below the field                              |
 | `icon`          | `string` | `null`             | Heroicon name rendered inside the control                                   |
 | `placeholder`   | `string` | `'Select options'` | Placeholder text when nothing is selected                                   |
 | `corner-hint`   | `string` | `null`             | Top-right label row hint                                                    |

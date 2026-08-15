@@ -91,6 +91,16 @@ class ComponentColorResolver
         'badge', 'alert',
     ];
 
+    /**
+     * Outlined form controls: the color shortcut only tints the border (and
+     * focus ring), never the background or text.
+     *
+     * @var string[]
+     */
+    private static array $outlinedColorComponents = [
+        'input', 'textarea', 'select', 'multi-select',
+    ];
+
     /** @var string[] */
     private static array $cssNamedColors = [
         'transparent', 'currentColor', 'currentcolor', 'currentcolor',
@@ -115,7 +125,9 @@ class ComponentColorResolver
     ): ?string {
         if ($color !== null && $color !== '' && ($background === null && $text === null && $border === null && $hoverBackground === null && $hoverText === null && $hoverBorder === null && $focusRing === null && $activeBackground === null)) {
             $schema = self::$schemas[$component] ?? [];
-            if (isset($schema['background'])) {
+            $fillsSurface = isset($schema['background']) && ! in_array($component, self::$outlinedColorComponents, true);
+
+            if ($fillsSurface) {
                 $expansion = in_array($component, self::$lightBackgroundComponents, true)
                     ? self::expandColorLight($color)
                     : self::expandColor($color);
@@ -133,7 +145,7 @@ class ComponentColorResolver
             } else {
                 $value = self::resolveColorValue($color);
                 if (isset($schema['text']) || isset($schema['border'])) {
-                    if (isset($schema['text'])) {
+                    if (isset($schema['text']) && ! in_array($component, self::$outlinedColorComponents, true)) {
                         $text = $value;
                     }
                     if (isset($schema['border'])) {

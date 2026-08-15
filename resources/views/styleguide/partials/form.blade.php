@@ -11,6 +11,7 @@
             checkboxes: open('checkboxes'),
             radios: open('radios'),
             toggles: open('toggles'),
+            fieldsets: open('fieldsets'),
             copybuttons: open('copybuttons'),
         };
     })(),
@@ -128,13 +129,20 @@
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Variants</h4>
                 <div class="flex flex-wrap items-center gap-3">
-                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link" copied-label="Copied!" variant="primary" />
-                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link" copied-label="Copied!" variant="secondary" />
-                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link" copied-label="Copied!" variant="success" />
-                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link" copied-label="Copied!" variant="danger" />
-                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link" copied-label="Copied!" variant="warning" />
-                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link" copied-label="Copied!" variant="info" />
-                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link" copied-label="Copied!" variant="ghost" />
+                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link"
+                        copied-label="Copied!" variant="primary" />
+                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link"
+                        copied-label="Copied!" variant="secondary" />
+                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link"
+                        copied-label="Copied!" variant="success" />
+                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link"
+                        copied-label="Copied!" variant="danger" />
+                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link"
+                        copied-label="Copied!" variant="warning" />
+                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link"
+                        copied-label="Copied!" variant="info" />
+                    <x-basekit-ui::copy-button value="https://example.com/api/v1" label="Copy link"
+                        copied-label="Copied!" variant="ghost" />
                 </div>
             </div>
 
@@ -142,9 +150,12 @@
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Sizes</h4>
                 <div class="flex flex-wrap items-center gap-3">
-                    <x-basekit-ui::copy-button value="secret-value" size="sm" label="Small" copied-label="Copied!" />
-                    <x-basekit-ui::copy-button value="secret-value" size="md" label="Medium" copied-label="Copied!" />
-                    <x-basekit-ui::copy-button value="secret-value" size="lg" label="Large" copied-label="Copied!" />
+                    <x-basekit-ui::copy-button value="secret-value" size="sm" label="Small"
+                        copied-label="Copied!" />
+                    <x-basekit-ui::copy-button value="secret-value" size="md" label="Medium"
+                        copied-label="Copied!" />
+                    <x-basekit-ui::copy-button value="secret-value" size="lg" label="Large"
+                        copied-label="Copied!" />
                 </div>
             </div>
 
@@ -152,7 +163,8 @@
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Custom Icons</h4>
                 <div class="flex flex-wrap items-center gap-3">
-                    <x-basekit-ui::copy-button value="abc-123" icon="link" copied-icon="check-circle" label="Copy token" copied-label="Copied!" />
+                    <x-basekit-ui::copy-button value="abc-123" icon="link" copied-icon="check-circle"
+                        label="Copy token" copied-label="Copied!" />
                 </div>
             </div>
         </div>
@@ -169,10 +181,12 @@
                         variant="primary" />
                     <x-basekit-ui::input label="Secondary" name="variant_secondary" placeholder="Secondary variant"
                         variant="secondary" />
-                    <x-basekit-ui::input label="Success" name="variant_success" value="Valid input" variant="success" />
+                    <x-basekit-ui::input label="Success" name="variant_success" value="Valid input"
+                        variant="success" />
                     <x-basekit-ui::input label="Warning" name="variant_warning" value="Check this value"
                         variant="warning" />
-                    <x-basekit-ui::input label="Info" name="variant_info" placeholder="Info variant" variant="info" />
+                    <x-basekit-ui::input label="Info" name="variant_info" placeholder="Info variant"
+                        variant="info" />
                     <x-basekit-ui::input label="Ghost" name="variant_ghost" placeholder="Ghost variant"
                         variant="ghost" />
                 </div>
@@ -631,17 +645,20 @@
     <!-- Form Checkboxes -->
     <x-basekit-ui::styleguide.section-toggle section="checkboxes" title="Form Checkboxes">
         <div class="space-y-6">
-            <!-- Checkbox Variants -->
+            <!-- Checkbox Group (Variants) -->
             <div class="space-y-2">
-                <h4 class="text-sm text-slate-500 font-medium">Variants</h4>
-                <div class="space-y-2">
-                    <x-basekit-ui::checkbox name="ckx_primary" label="Primary" variant="primary" is-checked />
-                    <x-basekit-ui::checkbox name="ckx_secondary" label="Secondary" variant="secondary" is-checked />
-                    <x-basekit-ui::checkbox name="ckx_success" label="Success" variant="success" is-checked />
-                    <x-basekit-ui::checkbox name="ckx_warning" label="Warning" variant="warning" is-checked />
-                    <x-basekit-ui::checkbox name="ckx_danger" label="Danger" variant="danger" is-checked />
-                    <x-basekit-ui::checkbox name="ckx_info" label="Info" variant="info" is-checked />
-                    <x-basekit-ui::checkbox name="ckx_ghost" label="Ghost" variant="ghost" is-checked />
+                <h4 class="text-sm text-slate-500 font-medium">Grouped</h4>
+                <div class="max-w-md">
+                    <x-basekit-ui::fieldset label="Checkbox variants">
+                        <x-basekit-ui::checkbox name="ckx_primary" label="Primary" variant="primary" is-checked />
+                        <x-basekit-ui::checkbox name="ckx_secondary" label="Secondary" variant="secondary"
+                            is-checked />
+                        <x-basekit-ui::checkbox name="ckx_success" label="Success" variant="success" is-checked />
+                        <x-basekit-ui::checkbox name="ckx_warning" label="Warning" variant="warning" is-checked />
+                        <x-basekit-ui::checkbox name="ckx_danger" label="Danger" variant="danger" is-checked />
+                        <x-basekit-ui::checkbox name="ckx_info" label="Info" variant="info" is-checked />
+                        <x-basekit-ui::checkbox name="ckx_ghost" label="Ghost" variant="ghost" is-checked />
+                    </x-basekit-ui::fieldset>
                 </div>
             </div>
 
@@ -658,18 +675,20 @@
 
             <!-- Checkbox Sizes -->
             <div class="space-y-2">
-                <h4 class="text-sm text-slate-500 font-medium">Sizes</h4>
-                <div class="space-y-2">
-                    <x-basekit-ui::checkbox name="ckx_sm" label="Small" size="sm" />
-                    <x-basekit-ui::checkbox name="ckx_md" label="Medium" size="md" />
-                    <x-basekit-ui::checkbox name="ckx_lg" label="Large" size="lg" />
+                <h4 class="text-sm text-slate-500 font-medium">Checkbox sizes</h4>
+                <div class="max-w-md">
+                    <x-basekit-ui::fieldset>
+                        <x-basekit-ui::checkbox name="ckx_sm" label="Small" size="sm" />
+                        <x-basekit-ui::checkbox name="ckx_md" label="Medium" size="md" />
+                        <x-basekit-ui::checkbox name="ckx_lg" label="Large" size="lg" />
+                    </x-basekit-ui::fieldset>
                 </div>
             </div>
 
             <!-- Checkbox States -->
             <div class="space-y-2">
-                <h4 class="text-sm text-slate-500 font-medium">States</h4>
-                <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Standalone States</h4>
+                <x-basekit-ui::fieldset>
                     <x-basekit-ui::checkbox name="ckx_unchecked" label="Unchecked" />
                     <x-basekit-ui::checkbox name="ckx_checked" label="Checked" is-checked />
                     <x-basekit-ui::checkbox name="ckx_disabled" label="Disabled" disabled />
@@ -677,7 +696,7 @@
                         disabled />
                     <x-basekit-ui::checkbox name="ckx_error" label="With Error" error="This is required" />
                     <x-basekit-ui::checkbox name="ckx_hint" label="With Hint" hint="This is a helpful hint" />
-                </div>
+                </x-basekit-ui::fieldset>
             </div>
 
         </div>
@@ -686,19 +705,23 @@
     <!-- Form Radios -->
     <x-basekit-ui::styleguide.section-toggle section="radios" title="Form Radios">
         <div class="space-y-6">
-            <!-- Radio Variants -->
+            <!-- Radio Group (Variants) -->
             <div class="space-y-2">
-                <h4 class="text-sm text-slate-500 font-medium">Variants</h4>
-                <div class="space-y-2">
-                    <x-basekit-ui::radio name="radio_variants" value="primary" label="Primary" variant="primary"
-                        is-checked />
-                    <x-basekit-ui::radio name="radio_variants" value="secondary" label="Secondary"
-                        variant="secondary" />
-                    <x-basekit-ui::radio name="radio_variants" value="success" label="Success" variant="success" />
-                    <x-basekit-ui::radio name="radio_variants" value="warning" label="Warning" variant="warning" />
-                    <x-basekit-ui::radio name="radio_variants" value="danger" label="Danger" variant="danger" />
-                    <x-basekit-ui::radio name="radio_variants" value="info" label="Info" variant="info" />
-                    <x-basekit-ui::radio name="radio_variants" value="ghost" label="Ghost" variant="ghost" />
+                <h4 class="text-sm text-slate-500 font-medium">Grouped</h4>
+                <div class="max-w-md">
+                    <x-basekit-ui::fieldset label="Radio variants">
+                        <x-basekit-ui::radio name="radio_variants" value="primary" label="Primary" variant="primary"
+                            is-checked />
+                        <x-basekit-ui::radio name="radio_variants" value="secondary" label="Secondary"
+                            variant="secondary" />
+                        <x-basekit-ui::radio name="radio_variants" value="success" label="Success"
+                            variant="success" />
+                        <x-basekit-ui::radio name="radio_variants" value="warning" label="Warning"
+                            variant="warning" />
+                        <x-basekit-ui::radio name="radio_variants" value="danger" label="Danger" variant="danger" />
+                        <x-basekit-ui::radio name="radio_variants" value="info" label="Info" variant="info" />
+                        <x-basekit-ui::radio name="radio_variants" value="ghost" label="Ghost" variant="ghost" />
+                    </x-basekit-ui::fieldset>
                 </div>
             </div>
 
@@ -715,18 +738,20 @@
 
             <!-- Radio Sizes -->
             <div class="space-y-2">
-                <h4 class="text-sm text-slate-500 font-medium">Sizes</h4>
-                <div class="space-y-2">
-                    <x-basekit-ui::radio name="radio_sizes" value="sm" label="Small" size="sm" />
-                    <x-basekit-ui::radio name="radio_sizes" value="md" label="Medium" size="md" />
-                    <x-basekit-ui::radio name="radio_sizes" value="lg" label="Large" size="lg" />
+                <h4 class="text-sm text-slate-500 font-medium">Radio sizes</h4>
+                <div class="max-w-md">
+                    <x-basekit-ui::fieldset>
+                        <x-basekit-ui::radio name="radio_sizes" value="sm" label="Small" size="sm" />
+                        <x-basekit-ui::radio name="radio_sizes" value="md" label="Medium" size="md" />
+                        <x-basekit-ui::radio name="radio_sizes" value="lg" label="Large" size="lg" />
+                    </x-basekit-ui::fieldset>
                 </div>
             </div>
 
             <!-- Radio States -->
             <div class="space-y-2">
-                <h4 class="text-sm text-slate-500 font-medium">States</h4>
-                <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Standalone States</h4>
+                <x-basekit-ui::fieldset>
                     <x-basekit-ui::radio name="radio_group" value="unchecked" label="Unchecked" />
                     <x-basekit-ui::radio name="radio_group" value="checked" label="Checked" is-checked />
                     <x-basekit-ui::radio name="radio_group" value="disabled" label="Disabled" disabled />
@@ -736,6 +761,48 @@
                         error="Please select an option" />
                     <x-basekit-ui::radio name="radio_group" value="hint" label="With Hint"
                         hint="Select the option that applies" />
+                </x-basekit-ui::fieldset>
+            </div>
+
+        </div>
+    </x-basekit-ui::styleguide.section-toggle>
+
+    <!-- Form Groups (Fieldset) -->
+    <x-basekit-ui::styleguide.section-toggle section="fieldsets" title="Form Groups">
+        <div class="space-y-6">
+            <!-- Radio Group -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Radio Group</h4>
+                <div class="max-w-md">
+                    <x-basekit-ui::fieldset label="Billing cycle" hint="Choose how often you are billed">
+                        <x-basekit-ui::radio name="fieldset_billing" value="monthly" label="Monthly" is-checked />
+                        <x-basekit-ui::radio name="fieldset_billing" value="yearly" label="Yearly (save 20%)" />
+                        <x-basekit-ui::radio name="fieldset_billing" value="lifetime" label="Lifetime" />
+                    </x-basekit-ui::fieldset>
+                </div>
+            </div>
+
+            <!-- Checkbox Group with Error -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Checkbox Group with Error</h4>
+                <div class="max-w-md">
+                    <x-basekit-ui::fieldset label="Topics" error="Please select at least one topic">
+                        <x-basekit-ui::checkbox name="fieldset_topics" value="security" label="Security" />
+                        <x-basekit-ui::checkbox name="fieldset_topics" value="releases" label="Releases" />
+                        <x-basekit-ui::checkbox name="fieldset_topics" value="product" label="Product news" />
+                    </x-basekit-ui::fieldset>
+                </div>
+            </div>
+
+            <!-- Toggle Group -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Toggle Group</h4>
+                <div class="max-w-md">
+                    <x-basekit-ui::fieldset label="Notifications" hint="Choose which emails you receive">
+                        <x-basekit-ui::toggle name="fieldset_marketing" label="Marketing emails" />
+                        <x-basekit-ui::toggle name="fieldset_security" label="Security alerts" is-checked />
+                        <x-basekit-ui::toggle name="fieldset_product" label="Product news" is-checked />
+                    </x-basekit-ui::fieldset>
                 </div>
             </div>
 
@@ -748,7 +815,7 @@
             <!-- Toggle Variants -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Variants</h4>
-                <div class="space-y-2">
+                <x-basekit-ui::fieldset>
                     <x-basekit-ui::toggle name="toggle_primary" label="Primary" variant="primary" is-checked />
                     <x-basekit-ui::toggle name="toggle_secondary" label="Secondary" variant="secondary" is-checked />
                     <x-basekit-ui::toggle name="toggle_success" label="Success" variant="success" is-checked />
@@ -756,34 +823,34 @@
                     <x-basekit-ui::toggle name="toggle_danger" label="Danger" variant="danger" is-checked />
                     <x-basekit-ui::toggle name="toggle_info" label="Info" variant="info" is-checked />
                     <x-basekit-ui::toggle name="toggle_ghost" label="Ghost" variant="ghost" is-checked />
-                </div>
+                </x-basekit-ui::fieldset>
             </div>
 
             <!-- Custom Colors -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
-                <div class="flex flex-wrap items-center gap-3">
+                <x-basekit-ui::fieldset>
                     <x-basekit-ui::toggle color="indigo-500" name="toggle_color_indigo" label="Indigo" is-checked />
                     <x-basekit-ui::toggle color="pink-500" name="toggle_color_pink" label="Pink" is-checked />
                     <x-basekit-ui::toggle color="emerald-500" name="toggle_color_emerald" label="Emerald"
                         is-checked />
-                </div>
+                </x-basekit-ui::fieldset>
             </div>
 
             <!-- Toggle Sizes -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Sizes</h4>
-                <div class="space-y-2">
+                <x-basekit-ui::fieldset>
                     <x-basekit-ui::toggle name="toggle_sm" label="Small" size="sm" />
                     <x-basekit-ui::toggle name="toggle_md" label="Medium" size="md" />
                     <x-basekit-ui::toggle name="toggle_lg" label="Large" size="lg" />
-                </div>
+                </x-basekit-ui::fieldset>
             </div>
 
             <!-- Toggle States -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">States</h4>
-                <div class="space-y-2">
+                <x-basekit-ui::fieldset>
                     <x-basekit-ui::toggle name="toggle_off" label="Off" />
                     <x-basekit-ui::toggle name="toggle_on" label="On" is-checked />
                     <x-basekit-ui::toggle name="toggle_disabled" label="Disabled" disabled />
@@ -791,7 +858,7 @@
                     <x-basekit-ui::toggle name="toggle_error" label="With Error" error="This setting is required" />
                     <x-basekit-ui::toggle name="toggle_hint" label="With Hint"
                         hint="Enable to activate this feature" />
-                </div>
+                </x-basekit-ui::fieldset>
             </div>
 
         </div>

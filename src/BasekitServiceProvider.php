@@ -20,6 +20,7 @@ use BasekitLaravel\BasekitLaravelUi\View\Components\Feedback\Tooltip;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Form\Button;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Form\Checkbox;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Form\CopyButton;
+use BasekitLaravel\BasekitLaravelUi\View\Components\Form\Fieldset;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Form\Input;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Form\MultiSelect;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Form\Radio;
@@ -145,6 +146,7 @@ class BasekitServiceProvider extends ServiceProvider
         $this->registerComponentIfEnabled('select', Select::class);
         $this->registerComponentIfEnabled('multi-select', MultiSelect::class);
         $this->registerComponentIfEnabled('toggle', Toggle::class);
+        $this->registerComponentIfEnabled('fieldset', Fieldset::class);
         $this->registerComponentIfEnabled('copy-button', CopyButton::class);
 
         // Feedback Components

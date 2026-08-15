@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Basekit Laravel UI — Styleguide</title>
+    <!-- Alpine Collapse plugin must load BEFORE core Alpine: current Alpine CDN builds boot via queueMicrotask, so 'alpine:init' fires before any later-deferred plugin script executes -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
     <!-- Alpine.js for interactive components -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
     <!-- Tailwind CSS v4 browser runtime for utility classes -->
@@ -2149,6 +2151,9 @@ body {
  */
 .bk-input__messages {
   min-height: 1.25rem;
+  /* Cancel the wrapper's flex gap so the reserved space is exactly one
+     message line, keeping stacked fields tightly spaced. */
+  margin-top: -0.375rem;
 }
 
 .bk-input__hint,
@@ -2565,7 +2570,6 @@ body {
  * =============================================================================
  */
 .bk-textarea {
-  margin-bottom: 1rem;
   width: 100%;
 }
 .bk-textarea .bk-textarea__label {
@@ -2999,7 +3003,6 @@ body {
  */
 .bk-textarea__messages {
   min-height: 1.25rem;
-  margin-top: 0.375rem;
 }
 
 .bk-textarea__error-message {
@@ -3158,7 +3161,6 @@ body {
 
 .bk-checkbox__messages {
   min-height: 1.25rem;
-  margin-top: 0.25rem;
 }
 
 .bk-checkbox__error-message {
@@ -3465,16 +3467,11 @@ body {
  * Base Structure
  * =============================================================================
  */
-.bk-radio {
-  margin-bottom: 0.5rem;
-}
-
 .bk-radio__container {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
 }
-
 .bk-radio__container:focus-within .bk-radio__control {
     box-shadow: 0 0 0 2px var(--radio-focus-ring);
     border-color: var(--radio-checked-border);
@@ -3496,7 +3493,6 @@ body {
 
 .bk-radio__messages {
   min-height: 1.25rem;
-  margin-top: 0.25rem;
   margin-left: calc(1.125rem + 0.75rem);
   margin-left: calc(var(--radio-size-md) + 0.75rem);
 }
@@ -3844,6 +3840,9 @@ body {
 
 .bk-select__messages {
   min-height: 1.25rem;
+  /* Cancel the wrapper's flex gap so the reserved space is exactly one
+     message line, keeping stacked fields tightly spaced. */
+  margin-top: -0.375rem;
 }
 
 .bk-select__error-message {
@@ -4596,6 +4595,9 @@ body {
 
 .bk-multiselect__messages {
   min-height: 1.25rem;
+  /* Cancel the wrapper's flex gap so the reserved space is exactly one
+     message line, keeping stacked fields tightly spaced. */
+  margin-top: -0.375rem;
 }
 
 .bk-multiselect__error-message {
@@ -5409,7 +5411,6 @@ body {
 
 .bk-toggle__messages {
   min-height: 1.25rem;
-  margin-top: 0.375rem;
 }
 
 .bk-toggle__error-message {
@@ -5638,6 +5639,92 @@ body {
   --toggle-ghost-focus-ring: rgba(148, 163, 184, 0.2);
 
   --toggle-error-focus-ring: rgba(239, 68, 68, 0.25);
+}
+/* =============================================================================
+  Fieldset Component
+  ============================================================================= */
+
+/* =============================================================================
+  Design Tokens
+  ============================================================================= */
+:root {
+  /* Labels & helpers */
+  --fieldset-label-color: var(--color-slate-700);
+  --fieldset-hint-color: var(--color-slate-500);
+  --fieldset-error-color: var(--color-danger-700);
+}
+
+/**
+ * =============================================================================
+ * Base Structure
+ * =============================================================================
+ */
+
+/* Root wrapper */
+.bk-fieldset {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.bk-fieldset__legend {
+  display: block;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: var(--fieldset-label-color);
+}
+
+.bk-fieldset__items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+/**
+ * =============================================================================
+ * Messages
+ * =============================================================================
+ */
+
+/* One reserved message line for the whole group so group-level validation
+   messages never shift the layout while the items stay tightly packed. */
+.bk-fieldset__messages {
+  min-height: 1.25rem;
+}
+
+.bk-fieldset__error-message,
+.bk-fieldset__hint {
+  margin: 0;
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+}
+
+.bk-fieldset__error-message {
+  color: var(--fieldset-error-color);
+}
+
+.bk-fieldset__hint {
+  color: var(--fieldset-hint-color);
+}
+
+/* Items inside a group do not reserve their own message line — the group owns
+   a single reserved line instead. Standalone items keep their reservation. */
+.bk-fieldset .bk-checkbox__messages,
+.bk-fieldset .bk-radio__messages,
+.bk-fieldset .bk-toggle__messages {
+  min-height: 0;
+}
+
+/* Dark mode overrides */
+.dark {
+  --fieldset-label-color: var(--color-slate-300);
+  --fieldset-hint-color: var(--color-slate-400);
+  --fieldset-error-color: var(--color-danger-400);
 }
 /* =============================================================================
 	Feedback Components
@@ -10448,6 +10535,7 @@ body {
             checkboxes: open('checkboxes'),
             radios: open('radios'),
             toggles: open('toggles'),
+            fieldsets: open('fieldsets'),
             copybuttons: open('copybuttons'),
         };
     })(),
@@ -11240,9 +11328,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     <div class="bk-input "  >
     
     <div class="bk-input__label-row">
@@ -11276,9 +11364,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     <div class="bk-input "  >
     
     <div class="bk-input__label-row">
@@ -11312,9 +11400,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     <div class="bk-input "  >
     
     <div class="bk-input__label-row">
@@ -11348,9 +11436,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     <div class="bk-input "  >
     
     <div class="bk-input__label-row">
@@ -11384,9 +11472,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     <div class="bk-input "  >
     
     <div class="bk-input__label-row">
@@ -11420,9 +11508,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -11463,9 +11551,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     <div class="bk-input "  style="--input-secondary-border-color: var(--color-pink-700); --input-hover-border-color: var(--color-pink-600); --input-secondary-ring-color: var(--color-pink-100)"  >
     
     <div class="bk-input__label-row">
@@ -11499,9 +11587,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     <div class="bk-input "  style="--input-secondary-border-color: var(--color-emerald-700); --input-hover-border-color: var(--color-emerald-600); --input-secondary-ring-color: var(--color-emerald-100)"  >
     
     <div class="bk-input__label-row">
@@ -11535,9 +11623,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -11578,9 +11666,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     <div class="bk-input "  >
     
     <div class="bk-input__label-row">
@@ -11614,9 +11702,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     <div class="bk-input "  >
     
     <div class="bk-input__label-row">
@@ -11650,9 +11738,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -11693,12 +11781,12 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-                    <p class="bk-input__hint">
-                Helper text goes here
-            </p>
-            </div>
-</div>
+            <div class="bk-input__messages">
+                            <p class="bk-input__hint">
+                    Helper text goes here
+                </p>
+                    </div>
+    </div>
                     <div class="bk-input "  >
     
     <div class="bk-input__label-row">
@@ -11732,9 +11820,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     <div class="bk-input "  >
     
     <div class="bk-input__label-row">
@@ -11768,9 +11856,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     <div class="bk-input "  >
     
     <div class="bk-input__label-row">
@@ -11810,13 +11898,13 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-                    <p class="bk-input__error-message" role="alert"
-                >
-                This field is required
-            </p>
-            </div>
-</div>
+            <div class="bk-input__messages">
+                            <p class="bk-input__error-message" role="alert"
+                    >
+                    This field is required
+                </p>
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -11860,9 +11948,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold text-slate-700">Underline Input</p>
@@ -11899,9 +11987,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold text-slate-700">Inset Label</p>
@@ -11936,9 +12024,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold text-slate-700">Overlap Label</p>
@@ -11973,9 +12061,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     </div>
                     <div class="space-y-2">
                         <p class="text-xs font-semibold text-slate-700">Pill Input</p>
@@ -12007,9 +12095,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     </div>
                 </div>
             </div>
@@ -12052,9 +12140,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     <div class="bk-input "  >
     
     <div class="bk-input__label-row">
@@ -12089,9 +12177,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     <div class="bk-input "  >
     
     <div class="bk-input__label-row">
@@ -12126,9 +12214,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     <div class="bk-input "  >
     
     <div class="bk-input__label-row">
@@ -12164,9 +12252,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -12291,9 +12379,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     <div class="bk-input "  x-data="{ mask: &quot;#### #### #### ####&quot;, rawDigits: [], lastValue: '', applyMask(value, event) {
             const maxDigits = (this.mask.match(/#/g) || []).length;
             const inputType = event?.inputType || '';
@@ -12411,9 +12499,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -12458,9 +12546,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     <div class="bk-input "  >
     
     <div class="bk-input__label-row">
@@ -12498,9 +12586,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     <div class="bk-input "  x-data="{ mask: &quot;+1 (###) ###-####&quot;, rawDigits: [], lastValue: '', applyMask(value, event) {
             const maxDigits = (this.mask.match(/#/g) || []).length;
             const inputType = event?.inputType || '';
@@ -12622,9 +12710,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -12686,9 +12774,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     </div>
                     <div>
                         <!-- Number Input -->
@@ -12740,9 +12828,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                     </div>
                 </div>
             </div>
@@ -12828,9 +12916,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
                     <div class="bk-select "  x-data="{
     open: false,
     disabled: false,
@@ -12893,9 +12981,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
                     <div class="bk-select "  x-data="{
     open: false,
     disabled: false,
@@ -12958,9 +13046,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
                     <div class="bk-select "  x-data="{
     open: false,
     disabled: false,
@@ -13023,9 +13111,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
                     <div class="bk-select "  x-data="{
     open: false,
     disabled: false,
@@ -13088,9 +13176,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
                     <div class="bk-select "  x-data="{
     open: false,
     disabled: false,
@@ -13153,9 +13241,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -13163,7 +13251,7 @@ body {
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
                 <div class="flex flex-wrap items-center gap-3">
-                    <div class="bk-select "  style="--select-bg: var(--color-indigo-500); --select-color: var(--color-indigo-100); --select-secondary-border-color: var(--color-indigo-700); --select-hover-bg: var(--color-indigo-600); --select-secondary-ring-color: var(--color-indigo-100)"  x-data="{
+                    <div class="bk-select "  style="--select-secondary-border-color: var(--color-indigo-700); --select-hover-border-color: var(--color-indigo-600); --select-secondary-ring-color: var(--color-indigo-100)"  x-data="{
     open: false,
     disabled: false,
     _blurTimer: null,
@@ -13225,10 +13313,10 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
-                    <div class="bk-select "  style="--select-bg: var(--color-pink-500); --select-color: var(--color-pink-100); --select-secondary-border-color: var(--color-pink-700); --select-hover-bg: var(--color-pink-600); --select-secondary-ring-color: var(--color-pink-100)"  x-data="{
+            <div class="bk-select__messages">
+                    </div>
+    </div>
+                    <div class="bk-select "  style="--select-secondary-border-color: var(--color-pink-700); --select-hover-border-color: var(--color-pink-600); --select-secondary-ring-color: var(--color-pink-100)"  x-data="{
     open: false,
     disabled: false,
     _blurTimer: null,
@@ -13290,10 +13378,10 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
-                    <div class="bk-select "  style="--select-bg: var(--color-emerald-500); --select-color: var(--color-emerald-100); --select-secondary-border-color: var(--color-emerald-700); --select-hover-bg: var(--color-emerald-600); --select-secondary-ring-color: var(--color-emerald-100)"  x-data="{
+            <div class="bk-select__messages">
+                    </div>
+    </div>
+                    <div class="bk-select "  style="--select-secondary-border-color: var(--color-emerald-700); --select-hover-border-color: var(--color-emerald-600); --select-secondary-ring-color: var(--color-emerald-100)"  x-data="{
     open: false,
     disabled: false,
     _blurTimer: null,
@@ -13355,9 +13443,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -13427,9 +13515,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
                     <div class="bk-select "  x-data="{
     open: false,
     disabled: false,
@@ -13492,9 +13580,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
                     <div class="bk-select "  x-data="{
     open: false,
     disabled: false,
@@ -13557,9 +13645,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -13629,12 +13717,12 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-                    <p class="bk-select__hint">
-                Helper text goes here
-            </p>
-            </div>
-</div>
+            <div class="bk-select__messages">
+                            <p class="bk-select__hint">
+                    Helper text goes here
+                </p>
+                    </div>
+    </div>
                     <div class="bk-select "  x-data="{
     open: false,
     disabled: false,
@@ -13697,9 +13785,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
                     <div class="bk-select "  x-data="{
     open: false,
     disabled: false,
@@ -13768,13 +13856,13 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-                    <p class="bk-select__error-message" role="alert"
-                >
-                This field is required
-            </p>
-            </div>
-</div>
+            <div class="bk-select__messages">
+                            <p class="bk-select__error-message" role="alert"
+                    >
+                    This field is required
+                </p>
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -13847,9 +13935,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
                     </div>
 
                     <div class="space-y-2">
@@ -13916,9 +14004,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
                     </div>
 
                     <div class="space-y-2">
@@ -13983,9 +14071,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
                     </div>
 
                     <div class="space-y-2">
@@ -14050,9 +14138,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
                     </div>
 
                     <div class="space-y-2">
@@ -14114,9 +14202,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
                     </div>
                 </div>
             </div>
@@ -14189,9 +14277,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
                 </div>
             </div>
         </div>
@@ -14254,7 +14342,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--primary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a80658315012-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b789d4-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14281,7 +14369,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a80658315154-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b78ba4-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14296,9 +14384,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                     <div class="bk-multiselect "  x-data="{
     open: false,
     disabled: false,
@@ -14339,7 +14427,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a80658315640-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7908c-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14366,7 +14454,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a806583156da-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b79118-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14381,9 +14469,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                     <div class="bk-multiselect "  x-data="{
     open: false,
     disabled: false,
@@ -14424,7 +14512,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--success"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a80658315bd1-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b795dd-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14451,7 +14539,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a80658315c6d-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7966b-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14466,9 +14554,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                     <div class="bk-multiselect "  x-data="{
     open: false,
     disabled: false,
@@ -14509,7 +14597,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--warning"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a80658316165-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b79c57-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14536,7 +14624,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a80658316202-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b79de7-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14551,9 +14639,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                     <div class="bk-multiselect "  x-data="{
     open: false,
     disabled: false,
@@ -14594,7 +14682,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--info"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a80658316754-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7a2f2-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14621,7 +14709,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a806583167f9-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7a392-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14636,9 +14724,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                     <div class="bk-multiselect "  x-data="{
     open: false,
     disabled: false,
@@ -14679,7 +14767,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--ghost"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a80658316daa-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7a85f-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14706,7 +14794,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a80658316f24-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7a925-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14721,9 +14809,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -14771,7 +14859,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a80658317131-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7ab2f-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14798,7 +14886,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a806583171c4-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7abb9-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14813,9 +14901,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                     <div class="bk-multiselect "  style="--multiselect-secondary-border-color: var(--color-pink-700); --multiselect-hover-border-color: var(--color-pink-600); --multiselect-secondary-ring-color: var(--color-pink-100)"  x-data="{
     open: false,
     disabled: false,
@@ -14856,7 +14944,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a8065831738a-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7ad5b-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14883,7 +14971,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a8065831741c-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7ade1-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14898,9 +14986,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                     <div class="bk-multiselect "  style="--multiselect-secondary-border-color: var(--color-emerald-700); --multiselect-hover-border-color: var(--color-emerald-600); --multiselect-secondary-ring-color: var(--color-emerald-100)"  x-data="{
     open: false,
     disabled: false,
@@ -14941,7 +15029,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a806583176ae-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7afd9-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -14968,7 +15056,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a8065831776d-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7b060-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -14983,9 +15071,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -15033,7 +15121,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--sm bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a80658317c89-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7b518-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15060,7 +15148,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a80658317d27-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7b5b2-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15075,9 +15163,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                     <div class="bk-multiselect "  x-data="{
     open: false,
     disabled: false,
@@ -15118,7 +15206,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a80658317ed7-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7b76e-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15145,7 +15233,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a80658317f6a-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7b800-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15160,9 +15248,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                     <div class="bk-multiselect "  x-data="{
     open: false,
     disabled: false,
@@ -15203,7 +15291,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--lg bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a806583184b3-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7bcde-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15230,7 +15318,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a80658318552-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7bd78-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15245,9 +15333,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -15294,7 +15382,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a80658318704-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7bf34-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15321,7 +15409,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a80658318797-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7bfc6-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15336,12 +15424,12 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-                    <p class="bk-multiselect__hint">
-                Helper text goes here
-            </p>
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                            <p class="bk-multiselect__hint">
+                    Helper text goes here
+                </p>
+                    </div>
+    </div>
                     <div class="bk-multiselect "  x-data="{
     open: false,
     disabled: true,
@@ -15382,7 +15470,7 @@ body {
         
         <button type="button"
             disabled="disabled" class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a806583189ae-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7c177-list" aria-haspopup="listbox"
                          disabled >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15409,7 +15497,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a80658318a42-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7c20e-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15424,9 +15512,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                     <div class="bk-multiselect "  x-data="{
     open: false,
     disabled: false,
@@ -15467,7 +15555,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--error bk-multiselect__control--has-error-icon"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a80658318f89-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7c74e-list" aria-haspopup="listbox"
              aria-invalid="true" aria-describedby="-error"             >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15500,7 +15588,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a80658319060-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7c7eb-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15515,13 +15603,13 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-                    <p class="bk-multiselect__error-message" role="alert"
-                >
-                This field is required
-            </p>
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                            <p class="bk-multiselect__error-message" role="alert"
+                    >
+                    This field is required
+                </p>
+                    </div>
+    </div>
                     <div class="bk-multiselect "  x-data="{
     open: false,
     disabled: false,
@@ -15562,7 +15650,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a80658319314-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7c9a1-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15589,7 +15677,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a80658319475-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7ca54-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15604,9 +15692,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -15657,7 +15745,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a806583196a6-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7cc07-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15684,7 +15772,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a8065831973d-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7cc99-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15699,9 +15787,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                     </div>
 
                     <div class="space-y-2">
@@ -15746,7 +15834,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--underline"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a80658319cf6-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7d2d8-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15773,7 +15861,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a80658319d95-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7d445-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15788,9 +15876,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                     </div>
 
                     <div class="space-y-2">
@@ -15833,7 +15921,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--label-inset"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a8065831a2f7-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7d9f7-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15860,7 +15948,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a8065831a4c3-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7da93-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15875,9 +15963,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                     </div>
 
                     <div class="space-y-2">
@@ -15920,7 +16008,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--label-overlap"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a8065831aa7c-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7dfdc-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -15947,7 +16035,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a8065831ab8b-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7e075-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -15962,9 +16050,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                     </div>
 
                     <div class="space-y-2">
@@ -16009,7 +16097,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--pill"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a8065831b0ed-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7e681-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -16036,7 +16124,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a8065831b186-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7e7f7-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -16051,9 +16139,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                     </div>
 
                     <div class="space-y-2">
@@ -16101,7 +16189,7 @@ body {
         
         <button type="button"
             class="bk-multiselect__control bk-multiselect__control--md bk-multiselect__control--secondary bk-multiselect__control--with-icon"
-            :aria-expanded="open" aria-controls="bk-multiselect-6a8065831b9da-list" aria-haspopup="listbox"
+            :aria-expanded="open" aria-controls="bk-multiselect-6a80892b7f014-list" aria-haspopup="listbox"
                         >
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -16128,7 +16216,7 @@ body {
             </template>
         
         
-        <div id="bk-multiselect-6a8065831ba75-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
+        <div id="bk-multiselect-6a80892b7f0ae-list" class="bk-multiselect__menu" role="listbox" aria-multiselectable="true"
             x-show="open" x-transition @click.stop>
             <template x-for="option in options" :key="option.value">
                 <button type="button" class="bk-multiselect__option" role="option"
@@ -16143,9 +16231,9 @@ body {
     </div>
 
     
-    <div class="bk-multiselect__messages">
-            </div>
-</div>
+            <div class="bk-multiselect__messages">
+                    </div>
+    </div>
                     </div>
                 </div>
             </div>
@@ -16190,9 +16278,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                     <div class="bk-textarea " >
     
     <div class="bk-textarea__label-row">
@@ -16213,9 +16301,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                     <div class="bk-textarea " >
     
     <div class="bk-textarea__label-row">
@@ -16236,9 +16324,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                     <div class="bk-textarea " >
     
     <div class="bk-textarea__label-row">
@@ -16259,9 +16347,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                     <div class="bk-textarea " >
     
     <div class="bk-textarea__label-row">
@@ -16282,9 +16370,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                     <div class="bk-textarea " >
     
     <div class="bk-textarea__label-row">
@@ -16305,9 +16393,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -16335,9 +16423,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                     <div class="bk-textarea "  style="--textarea-secondary-border: var(--color-pink-700); --textarea-secondary-ring: var(--color-pink-100)" >
     
     <div class="bk-textarea__label-row">
@@ -16358,9 +16446,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                     <div class="bk-textarea "  style="--textarea-secondary-border: var(--color-emerald-700); --textarea-secondary-ring: var(--color-emerald-100)" >
     
     <div class="bk-textarea__label-row">
@@ -16381,9 +16469,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -16411,9 +16499,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                     <div class="bk-textarea " >
     
     <div class="bk-textarea__label-row">
@@ -16434,9 +16522,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                     <div class="bk-textarea " >
     
     <div class="bk-textarea__label-row">
@@ -16457,9 +16545,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -16487,12 +16575,12 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-                    <p class="bk-textarea__hint">
-                Helper text goes here
-            </p>
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                            <p class="bk-textarea__hint">
+                    Helper text goes here
+                </p>
+                    </div>
+    </div>
                     <div class="bk-textarea " >
     
     <div class="bk-textarea__label-row">
@@ -16513,9 +16601,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                     <div class="bk-textarea " >
     
     <div class="bk-textarea__label-row">
@@ -16536,9 +16624,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                     <div class="bk-textarea " >
     
     <div class="bk-textarea__label-row">
@@ -16565,13 +16653,13 @@ body {
     </div>
 
     
-    <div class="bk-textarea__messages">
-                    <p class="bk-textarea__error-message" role="alert"
-                >
-                This field is required
-            </p>
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                            <p class="bk-textarea__error-message" role="alert"
+                    >
+                    This field is required
+                </p>
+                    </div>
+    </div>
                 </div>
             </div>
 
@@ -16602,9 +16690,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                     </div>
 
                     <div class="space-y-2">
@@ -16629,9 +16717,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                     </div>
 
                     <div class="space-y-2">
@@ -16654,9 +16742,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                     </div>
 
                     <div class="space-y-2">
@@ -16679,9 +16767,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                     </div>
                 </div>
             </div>
@@ -16702,129 +16790,141 @@ body {
     </div>
     <div x-show="sections.checkboxes" x-transition>
         <div class="space-y-6">
-            <!-- Checkbox Variants -->
+            <!-- Checkbox Group (Variants) -->
             <div class="space-y-2">
-                <h4 class="text-sm text-slate-500 font-medium">Variants</h4>
-                <div class="space-y-2">
-                    <div class="bk-checkbox ">
+                <h4 class="text-sm text-slate-500 font-medium">Grouped</h4>
+                <div class="max-w-md">
+                    <fieldset class="bk-fieldset">
+            <legend class="bk-fieldset__legend">
+            Checkbox variants
+        </legend>
+    
+    <div class="bk-fieldset__items ">
+        <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-9f2493cd-232c-455b-a71b-945a6fb9d95d"
+        <input type="checkbox" id="bk-checkbox-42355b7c-bcf1-440a-82a8-569bb0e65b6a"
             name="ckx_primary" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-9f2493cd-232c-455b-a71b-945a6fb9d95d">
+                    <label class="bk-checkbox__label" for="bk-checkbox-42355b7c-bcf1-440a-82a8-569bb0e65b6a">
                 Primary
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-            </div>
-</div>
-                    <div class="bk-checkbox ">
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
+                        <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-0df358ce-b1a2-4ac5-8185-b287a3b0020a"
+        <input type="checkbox" id="bk-checkbox-87958f06-1ebf-4ad6-ac62-305b47405f10"
             name="ckx_secondary" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--secondary"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-0df358ce-b1a2-4ac5-8185-b287a3b0020a">
+                    <label class="bk-checkbox__label" for="bk-checkbox-87958f06-1ebf-4ad6-ac62-305b47405f10">
                 Secondary
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-            </div>
-</div>
-                    <div class="bk-checkbox ">
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
+                        <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-facafef6-5208-417a-8de0-6f915022e78e"
+        <input type="checkbox" id="bk-checkbox-a91c2215-f26b-4026-8ee2-865ba954d674"
             name="ckx_success" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--success"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-facafef6-5208-417a-8de0-6f915022e78e">
+                    <label class="bk-checkbox__label" for="bk-checkbox-a91c2215-f26b-4026-8ee2-865ba954d674">
                 Success
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-            </div>
-</div>
-                    <div class="bk-checkbox ">
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
+                        <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-2199f35e-feb0-4181-8841-29f800f6b79f"
+        <input type="checkbox" id="bk-checkbox-3c9fa19e-d30e-49b0-8cc8-49769b966ab9"
             name="ckx_warning" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--warning"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-2199f35e-feb0-4181-8841-29f800f6b79f">
+                    <label class="bk-checkbox__label" for="bk-checkbox-3c9fa19e-d30e-49b0-8cc8-49769b966ab9">
                 Warning
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-            </div>
-</div>
-                    <div class="bk-checkbox ">
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
+                        <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-1848b3b0-0683-465d-ada6-cf0675ce7756"
+        <input type="checkbox" id="bk-checkbox-3edbcdd5-8f41-4a6a-a9dd-ef22d2064927"
             name="ckx_danger" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--danger"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-1848b3b0-0683-465d-ada6-cf0675ce7756">
+                    <label class="bk-checkbox__label" for="bk-checkbox-3edbcdd5-8f41-4a6a-a9dd-ef22d2064927">
                 Danger
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-            </div>
-</div>
-                    <div class="bk-checkbox ">
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
+                        <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-dc4a753a-1401-4b46-9cec-6d32427259f0"
+        <input type="checkbox" id="bk-checkbox-378fa123-59e7-42b7-9ef6-cc465f1cd247"
             name="ckx_info" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--info"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-dc4a753a-1401-4b46-9cec-6d32427259f0">
+                    <label class="bk-checkbox__label" for="bk-checkbox-378fa123-59e7-42b7-9ef6-cc465f1cd247">
                 Info
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-            </div>
-</div>
-                    <div class="bk-checkbox ">
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
+                        <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-09b2910a-2290-42da-848e-bec7ecf86ccf"
+        <input type="checkbox" id="bk-checkbox-1e254ef1-a5eb-4fe0-92d5-9516457ac994"
             name="ckx_ghost" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--ghost"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-09b2910a-2290-42da-848e-bec7ecf86ccf">
+                    <label class="bk-checkbox__label" for="bk-checkbox-1e254ef1-a5eb-4fe0-92d5-9516457ac994">
                 Ghost
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-            </div>
-</div>
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
+    </div>
+
+    
+            <div class="bk-fieldset__messages">
+                    </div>
+    </fieldset>
                 </div>
             </div>
 
@@ -16835,228 +16935,244 @@ body {
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-35d5c8b5-f05f-4d0e-b5da-088f3f6c9274"
+        <input type="checkbox" id="bk-checkbox-4443a333-06ea-42cc-8388-037d220ed25b"
             name="ckx_color_indigo" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
              style="--checkbox-primary-checked-bg: var(--color-indigo-500); --checkbox-primary-checked-border: var(--color-indigo-700); --checkbox-primary-focus-ring: var(--color-indigo-100)"                          checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-35d5c8b5-f05f-4d0e-b5da-088f3f6c9274">
+                    <label class="bk-checkbox__label" for="bk-checkbox-4443a333-06ea-42cc-8388-037d220ed25b">
                 Indigo
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-            </div>
-</div>
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-73bccbd1-afaf-4917-adc8-86602e802f9e"
+        <input type="checkbox" id="bk-checkbox-ab7a8ad0-f16a-4c97-bdc5-dc159d40bf45"
             name="ckx_color_pink" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
              style="--checkbox-primary-checked-bg: var(--color-pink-500); --checkbox-primary-checked-border: var(--color-pink-700); --checkbox-primary-focus-ring: var(--color-pink-100)"                          checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-73bccbd1-afaf-4917-adc8-86602e802f9e">
+                    <label class="bk-checkbox__label" for="bk-checkbox-ab7a8ad0-f16a-4c97-bdc5-dc159d40bf45">
                 Pink
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-            </div>
-</div>
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-9e76e153-3f21-4b4c-804b-686ba278ca76"
+        <input type="checkbox" id="bk-checkbox-2307d31c-93df-4e56-a190-6c8070d925c9"
             name="ckx_color_emerald" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
              style="--checkbox-primary-checked-bg: var(--color-emerald-500); --checkbox-primary-checked-border: var(--color-emerald-700); --checkbox-primary-focus-ring: var(--color-emerald-100)"                          checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-9e76e153-3f21-4b4c-804b-686ba278ca76">
+                    <label class="bk-checkbox__label" for="bk-checkbox-2307d31c-93df-4e56-a190-6c8070d925c9">
                 Emerald
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-            </div>
-</div>
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
                 </div>
             </div>
 
             <!-- Checkbox Sizes -->
             <div class="space-y-2">
-                <h4 class="text-sm text-slate-500 font-medium">Sizes</h4>
-                <div class="space-y-2">
-                    <div class="bk-checkbox ">
+                <h4 class="text-sm text-slate-500 font-medium">Checkbox sizes</h4>
+                <div class="max-w-md">
+                    <fieldset class="bk-fieldset">
+    
+    <div class="bk-fieldset__items ">
+        <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-8024d03b-5e89-46c2-a287-6389dc5fb9c5"
+        <input type="checkbox" id="bk-checkbox-d43fcb1b-2d9c-42ee-bde8-cf204b873907"
             name="ckx_sm" class="bk-checkbox__control bk-checkbox__control--sm bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-8024d03b-5e89-46c2-a287-6389dc5fb9c5">
+                    <label class="bk-checkbox__label" for="bk-checkbox-d43fcb1b-2d9c-42ee-bde8-cf204b873907">
                 Small
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-            </div>
-</div>
-                    <div class="bk-checkbox ">
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
+                        <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-adfc4155-1ed0-4a39-ae17-2db8034bb19a"
+        <input type="checkbox" id="bk-checkbox-2a1466f8-8ac3-4d72-874d-23beaae3408b"
             name="ckx_md" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-adfc4155-1ed0-4a39-ae17-2db8034bb19a">
+                    <label class="bk-checkbox__label" for="bk-checkbox-2a1466f8-8ac3-4d72-874d-23beaae3408b">
                 Medium
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-            </div>
-</div>
-                    <div class="bk-checkbox ">
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
+                        <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-e208e262-d988-4c41-8185-be24571dbebe"
+        <input type="checkbox" id="bk-checkbox-b7271a5f-6cff-4d1b-83f9-672a1f7737c2"
             name="ckx_lg" class="bk-checkbox__control bk-checkbox__control--lg bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-e208e262-d988-4c41-8185-be24571dbebe">
+                    <label class="bk-checkbox__label" for="bk-checkbox-b7271a5f-6cff-4d1b-83f9-672a1f7737c2">
                 Large
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-            </div>
-</div>
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
+    </div>
+
+    
+            <div class="bk-fieldset__messages">
+                    </div>
+    </fieldset>
                 </div>
             </div>
 
             <!-- Checkbox States -->
             <div class="space-y-2">
-                <h4 class="text-sm text-slate-500 font-medium">States</h4>
-                <div class="space-y-2">
-                    <div class="bk-checkbox ">
+                <h4 class="text-sm text-slate-500 font-medium">Standalone States</h4>
+                <fieldset class="bk-fieldset">
+    
+    <div class="bk-fieldset__items ">
+        <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-d27b3518-a69d-4fbc-9086-7d8ff83816dd"
+        <input type="checkbox" id="bk-checkbox-d00ba413-e0a4-4a92-b882-a8792e567b93"
             name="ckx_unchecked" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-d27b3518-a69d-4fbc-9086-7d8ff83816dd">
+                    <label class="bk-checkbox__label" for="bk-checkbox-d00ba413-e0a4-4a92-b882-a8792e567b93">
                 Unchecked
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-            </div>
-</div>
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-8fa1b914-8f92-45bf-82b3-9ba8a4ae2b64"
+        <input type="checkbox" id="bk-checkbox-08838bcb-c045-40a0-94e5-a3ed924887e8"
             name="ckx_checked" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-8fa1b914-8f92-45bf-82b3-9ba8a4ae2b64">
+                    <label class="bk-checkbox__label" for="bk-checkbox-08838bcb-c045-40a0-94e5-a3ed924887e8">
                 Checked
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-            </div>
-</div>
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-3a842720-9ad9-4b9f-a94c-f03210922d44"
+        <input type="checkbox" id="bk-checkbox-f93244a8-821f-49ff-928e-4b3ec7197555"
             name="ckx_disabled" disabled="disabled" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-3a842720-9ad9-4b9f-a94c-f03210922d44">
+                    <label class="bk-checkbox__label" for="bk-checkbox-f93244a8-821f-49ff-928e-4b3ec7197555">
                 Disabled
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-            </div>
-</div>
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-12cbcbcc-c5db-40d0-a44b-d0e3686960e2"
+        <input type="checkbox" id="bk-checkbox-4ef3fed5-0723-4b8a-b532-494f54165a5a"
             name="ckx_disabled_checked" disabled="disabled" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                      checked             >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-12cbcbcc-c5db-40d0-a44b-d0e3686960e2">
+                    <label class="bk-checkbox__label" for="bk-checkbox-4ef3fed5-0723-4b8a-b532-494f54165a5a">
                 Disabled &amp; Checked
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-            </div>
-</div>
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container bk-checkbox__container--error">
         
-        <input type="checkbox" id="bk-checkbox-6e36b9b3-32b2-4a0f-bf69-42a24dce8d0c"
+        <input type="checkbox" id="bk-checkbox-421b001a-69f3-418b-a140-8ada225e4c79"
             name="ckx_error" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--error"
-                                                 aria-invalid="true" aria-describedby="bk-checkbox-6e36b9b3-32b2-4a0f-bf69-42a24dce8d0c-error" >
+                                                 aria-invalid="true" aria-describedby="bk-checkbox-421b001a-69f3-418b-a140-8ada225e4c79-error" >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-6e36b9b3-32b2-4a0f-bf69-42a24dce8d0c">
+                    <label class="bk-checkbox__label" for="bk-checkbox-421b001a-69f3-418b-a140-8ada225e4c79">
                 With Error
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-                    <p class="bk-checkbox__error-message" id="bk-checkbox-6e36b9b3-32b2-4a0f-bf69-42a24dce8d0c-error" role="alert">
-                This is required
-            </p>
-            </div>
-</div>
+            <div class="bk-checkbox__messages">
+                            <p class="bk-checkbox__error-message" id="bk-checkbox-421b001a-69f3-418b-a140-8ada225e4c79-error" role="alert">
+                    This is required
+                </p>
+                    </div>
+    </div>
                     <div class="bk-checkbox ">
     <div class="bk-checkbox__container">
         
-        <input type="checkbox" id="bk-checkbox-501d5eff-a248-4ab4-80ab-ecbe16fdedf4"
+        <input type="checkbox" id="bk-checkbox-b8bef062-dce0-452a-9619-6ddf06ba4c59"
             name="ckx_hint" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
                                                 >
 
         
-                    <label class="bk-checkbox__label" for="bk-checkbox-501d5eff-a248-4ab4-80ab-ecbe16fdedf4">
+                    <label class="bk-checkbox__label" for="bk-checkbox-b8bef062-dce0-452a-9619-6ddf06ba4c59">
                 With Hint
             </label>
             </div>
 
     
-    <div class="bk-checkbox__messages">
-                    <p class="bk-checkbox__hint">
-                This is a helpful hint
-            </p>
-            </div>
-</div>
-                </div>
+            <div class="bk-checkbox__messages">
+                            <p class="bk-checkbox__hint">
+                    This is a helpful hint
+                </p>
+                    </div>
+    </div>
+    </div>
+
+    
+            <div class="bk-fieldset__messages">
+                    </div>
+    </fieldset>
             </div>
 
         </div>
@@ -17075,136 +17191,148 @@ body {
     </div>
     <div x-show="sections.radios" x-transition>
         <div class="space-y-6">
-            <!-- Radio Variants -->
+            <!-- Radio Group (Variants) -->
             <div class="space-y-2">
-                <h4 class="text-sm text-slate-500 font-medium">Variants</h4>
-                <div class="space-y-2">
-                    <div class="bk-radio ">
+                <h4 class="text-sm text-slate-500 font-medium">Grouped</h4>
+                <div class="max-w-md">
+                    <fieldset class="bk-fieldset">
+            <legend class="bk-fieldset__legend">
+            Radio variants
+        </legend>
+    
+    <div class="bk-fieldset__items ">
+        <div class="bk-radio ">
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-f5d7b0eb-36ae-4607-bce4-156a5cd50896"
+        <input type="radio" id="bk-radio-378c9896-fe92-4bbd-af36-e75d2ad39bab"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="primary"              checked             >
 
         
-                    <label class="bk-radio__label" for="bk-radio-f5d7b0eb-36ae-4607-bce4-156a5cd50896">
+                    <label class="bk-radio__label" for="bk-radio-378c9896-fe92-4bbd-af36-e75d2ad39bab">
                 Primary
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-            </div>
-</div>
-                    <div class="bk-radio ">
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
+                        <div class="bk-radio ">
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-904f1e9f-9611-4055-9d6f-7874fa5b53a9"
+        <input type="radio" id="bk-radio-e640c84e-5b94-4324-be91-60e42f794073"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--secondary"
                          value="secondary"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-904f1e9f-9611-4055-9d6f-7874fa5b53a9">
+                    <label class="bk-radio__label" for="bk-radio-e640c84e-5b94-4324-be91-60e42f794073">
                 Secondary
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-            </div>
-</div>
-                    <div class="bk-radio ">
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
+                        <div class="bk-radio ">
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-b3f97ee3-675c-4475-b43e-49f8d39d0a8e"
+        <input type="radio" id="bk-radio-ccd76563-4c33-4dfd-9dfe-584955e491de"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--success"
                          value="success"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-b3f97ee3-675c-4475-b43e-49f8d39d0a8e">
+                    <label class="bk-radio__label" for="bk-radio-ccd76563-4c33-4dfd-9dfe-584955e491de">
                 Success
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-            </div>
-</div>
-                    <div class="bk-radio ">
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
+                        <div class="bk-radio ">
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-c6b73ec1-56c1-4a60-81d4-82bb34587be0"
+        <input type="radio" id="bk-radio-fdf6b2c8-bd9d-4d79-a7b0-6bc7aa205136"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--warning"
                          value="warning"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-c6b73ec1-56c1-4a60-81d4-82bb34587be0">
+                    <label class="bk-radio__label" for="bk-radio-fdf6b2c8-bd9d-4d79-a7b0-6bc7aa205136">
                 Warning
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-            </div>
-</div>
-                    <div class="bk-radio ">
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
+                        <div class="bk-radio ">
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-25ec088f-2d2f-4220-9f5b-a0be60fa2679"
+        <input type="radio" id="bk-radio-2b0fbe84-f4f8-4099-99d7-e0e4e70560b4"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--danger"
                          value="danger"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-25ec088f-2d2f-4220-9f5b-a0be60fa2679">
+                    <label class="bk-radio__label" for="bk-radio-2b0fbe84-f4f8-4099-99d7-e0e4e70560b4">
                 Danger
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-            </div>
-</div>
-                    <div class="bk-radio ">
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
+                        <div class="bk-radio ">
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-c43f1b60-8207-4935-ad36-8df334f5e819"
+        <input type="radio" id="bk-radio-1aa11d4d-8e44-45fd-8ab2-92c0472edf75"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--info"
                          value="info"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-c43f1b60-8207-4935-ad36-8df334f5e819">
+                    <label class="bk-radio__label" for="bk-radio-1aa11d4d-8e44-45fd-8ab2-92c0472edf75">
                 Info
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-            </div>
-</div>
-                    <div class="bk-radio ">
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
+                        <div class="bk-radio ">
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-a4252e69-b567-4e90-b7ab-903e0e22b0a5"
+        <input type="radio" id="bk-radio-24e17f4d-50a1-4d82-8655-f3e59df274a3"
             name="radio_variants" class="bk-radio__control bk-radio__control--md bk-radio__control--ghost"
                          value="ghost"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-a4252e69-b567-4e90-b7ab-903e0e22b0a5">
+                    <label class="bk-radio__label" for="bk-radio-24e17f4d-50a1-4d82-8655-f3e59df274a3">
                 Ghost
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-            </div>
-</div>
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
+    </div>
+
+    
+            <div class="bk-fieldset__messages">
+                    </div>
+    </fieldset>
                 </div>
             </div>
 
@@ -17216,238 +17344,507 @@ body {
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-50ef55e8-fcfc-4aa6-8ac4-529218a79e35"
+        <input type="radio" id="bk-radio-1e993664-96a6-4e2e-ac8a-1211c69a3acd"
             name="radio_color" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
              style="--radio-primary-checked-bg: var(--color-indigo-500); --radio-primary-checked-border: var(--color-indigo-700); --radio-primary-focus-ring: var(--color-indigo-100)"              value="indigo"              checked             >
 
         
-                    <label class="bk-radio__label" for="bk-radio-50ef55e8-fcfc-4aa6-8ac4-529218a79e35">
+                    <label class="bk-radio__label" for="bk-radio-1e993664-96a6-4e2e-ac8a-1211c69a3acd">
                 Indigo
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-            </div>
-</div>
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
                     <div class="bk-radio ">
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-6d92c36c-e2d3-4f38-9c36-262766b18caa"
+        <input type="radio" id="bk-radio-03002b67-83e3-44eb-9fa4-46f733ff844b"
             name="radio_color" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
              style="--radio-primary-checked-bg: var(--color-pink-500); --radio-primary-checked-border: var(--color-pink-700); --radio-primary-focus-ring: var(--color-pink-100)"              value="pink"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-6d92c36c-e2d3-4f38-9c36-262766b18caa">
+                    <label class="bk-radio__label" for="bk-radio-03002b67-83e3-44eb-9fa4-46f733ff844b">
                 Pink
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-            </div>
-</div>
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
                     <div class="bk-radio ">
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-da59c3ec-978a-428d-be2a-2e2ff15b490b"
+        <input type="radio" id="bk-radio-1fdef15c-8802-480b-851a-a89300fbb772"
             name="radio_color" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
              style="--radio-primary-checked-bg: var(--color-emerald-500); --radio-primary-checked-border: var(--color-emerald-700); --radio-primary-focus-ring: var(--color-emerald-100)"              value="emerald"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-da59c3ec-978a-428d-be2a-2e2ff15b490b">
+                    <label class="bk-radio__label" for="bk-radio-1fdef15c-8802-480b-851a-a89300fbb772">
                 Emerald
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-            </div>
-</div>
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
                 </div>
             </div>
 
             <!-- Radio Sizes -->
             <div class="space-y-2">
-                <h4 class="text-sm text-slate-500 font-medium">Sizes</h4>
-                <div class="space-y-2">
-                    <div class="bk-radio ">
+                <h4 class="text-sm text-slate-500 font-medium">Radio sizes</h4>
+                <div class="max-w-md">
+                    <fieldset class="bk-fieldset">
+    
+    <div class="bk-fieldset__items ">
+        <div class="bk-radio ">
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-1687c726-5ec1-4a06-86bb-ef1140ef5390"
+        <input type="radio" id="bk-radio-06afa0c6-d8f9-4ff4-8492-f949cebe92fd"
             name="radio_sizes" class="bk-radio__control bk-radio__control--sm bk-radio__control--primary"
                          value="sm"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-1687c726-5ec1-4a06-86bb-ef1140ef5390">
+                    <label class="bk-radio__label" for="bk-radio-06afa0c6-d8f9-4ff4-8492-f949cebe92fd">
                 Small
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-            </div>
-</div>
-                    <div class="bk-radio ">
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
+                        <div class="bk-radio ">
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-47770a32-2912-4954-b70d-7d1284830b5c"
+        <input type="radio" id="bk-radio-ff7679ed-63c6-4fb8-a748-81be11edfdf7"
             name="radio_sizes" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="md"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-47770a32-2912-4954-b70d-7d1284830b5c">
+                    <label class="bk-radio__label" for="bk-radio-ff7679ed-63c6-4fb8-a748-81be11edfdf7">
                 Medium
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-            </div>
-</div>
-                    <div class="bk-radio ">
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
+                        <div class="bk-radio ">
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-dcca4ecd-2247-4aef-b572-34d1ed562bcf"
+        <input type="radio" id="bk-radio-5de5f04b-04c1-4cca-b14d-49e8a866dc5b"
             name="radio_sizes" class="bk-radio__control bk-radio__control--lg bk-radio__control--primary"
                          value="lg"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-dcca4ecd-2247-4aef-b572-34d1ed562bcf">
+                    <label class="bk-radio__label" for="bk-radio-5de5f04b-04c1-4cca-b14d-49e8a866dc5b">
                 Large
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-            </div>
-</div>
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
+    </div>
+
+    
+            <div class="bk-fieldset__messages">
+                    </div>
+    </fieldset>
                 </div>
             </div>
 
             <!-- Radio States -->
             <div class="space-y-2">
-                <h4 class="text-sm text-slate-500 font-medium">States</h4>
-                <div class="space-y-2">
-                    <div class="bk-radio ">
+                <h4 class="text-sm text-slate-500 font-medium">Standalone States</h4>
+                <fieldset class="bk-fieldset">
+    
+    <div class="bk-fieldset__items ">
+        <div class="bk-radio ">
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-269fed1a-37ad-41fc-aa64-9cdee0c91d38"
+        <input type="radio" id="bk-radio-8921889d-d3dc-46aa-955d-55aa3de16982"
             name="radio_group" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="unchecked"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-269fed1a-37ad-41fc-aa64-9cdee0c91d38">
+                    <label class="bk-radio__label" for="bk-radio-8921889d-d3dc-46aa-955d-55aa3de16982">
                 Unchecked
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-            </div>
-</div>
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
                     <div class="bk-radio ">
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-596f13a2-5099-4a5e-9445-18c9cfd26d71"
+        <input type="radio" id="bk-radio-81777c44-b4f9-406a-ace0-98d9ed95e19e"
             name="radio_group" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="checked"              checked             >
 
         
-                    <label class="bk-radio__label" for="bk-radio-596f13a2-5099-4a5e-9445-18c9cfd26d71">
+                    <label class="bk-radio__label" for="bk-radio-81777c44-b4f9-406a-ace0-98d9ed95e19e">
                 Checked
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-            </div>
-</div>
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
                     <div class="bk-radio ">
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-b2aa8389-a013-4bf6-8640-4e8218b0d229"
+        <input type="radio" id="bk-radio-0f8e12ab-07c0-44a6-b264-22e63d59de79"
             name="radio_group" disabled="disabled" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="disabled"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-b2aa8389-a013-4bf6-8640-4e8218b0d229">
+                    <label class="bk-radio__label" for="bk-radio-0f8e12ab-07c0-44a6-b264-22e63d59de79">
                 Disabled
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-            </div>
-</div>
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
                     <div class="bk-radio ">
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-171d28e8-bde3-41b7-a188-accaf47f852c"
+        <input type="radio" id="bk-radio-16126b25-2781-419d-8451-7aecfd07e1ca"
             name="radio_group_disabled" disabled="disabled" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="checked_disabled"              checked             >
 
         
-                    <label class="bk-radio__label" for="bk-radio-171d28e8-bde3-41b7-a188-accaf47f852c">
+                    <label class="bk-radio__label" for="bk-radio-16126b25-2781-419d-8451-7aecfd07e1ca">
                 Disabled &amp; Checked
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-            </div>
-</div>
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
                     <div class="bk-radio ">
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-2017a2de-76ad-4a2c-bd6c-f2608bee5ff0"
+        <input type="radio" id="bk-radio-33315600-d908-4bac-aaca-5eb8e9e1790a"
             name="radio_group" class="bk-radio__control bk-radio__control--md bk-radio__control--error"
-                         value="error"                          aria-invalid="true" aria-describedby="bk-radio-2017a2de-76ad-4a2c-bd6c-f2608bee5ff0-error" >
+                         value="error"                          aria-invalid="true" aria-describedby="bk-radio-33315600-d908-4bac-aaca-5eb8e9e1790a-error" >
 
         
-                    <label class="bk-radio__label" for="bk-radio-2017a2de-76ad-4a2c-bd6c-f2608bee5ff0">
+                    <label class="bk-radio__label" for="bk-radio-33315600-d908-4bac-aaca-5eb8e9e1790a">
                 With Error
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-                    <p class="bk-radio__error-message" id="bk-radio-2017a2de-76ad-4a2c-bd6c-f2608bee5ff0-error" role="alert">
-                Please select an option
-            </p>
-            </div>
-</div>
+            <div class="bk-radio__messages">
+                            <p class="bk-radio__error-message" id="bk-radio-33315600-d908-4bac-aaca-5eb8e9e1790a-error" role="alert">
+                    Please select an option
+                </p>
+                    </div>
+    </div>
                     <div class="bk-radio ">
     
     <div class="bk-radio__container ">
         
-        <input type="radio" id="bk-radio-cdfb3e5e-f4dd-49c7-bfe0-e1f2f858d833"
+        <input type="radio" id="bk-radio-73c5a8c3-7e2e-477c-90c4-bd1bdba2bf85"
             name="radio_group" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
                          value="hint"                         >
 
         
-                    <label class="bk-radio__label" for="bk-radio-cdfb3e5e-f4dd-49c7-bfe0-e1f2f858d833">
+                    <label class="bk-radio__label" for="bk-radio-73c5a8c3-7e2e-477c-90c4-bd1bdba2bf85">
                 With Hint
             </label>
             </div>
 
     
-    <div class="bk-radio__messages">
-                    <p class="bk-radio__hint">
-                Select the option that applies
-            </p>
+            <div class="bk-radio__messages">
+                            <p class="bk-radio__hint">
+                    Select the option that applies
+                </p>
+                    </div>
+    </div>
+    </div>
+
+    
+            <div class="bk-fieldset__messages">
+                    </div>
+    </fieldset>
             </div>
+
+        </div>
+    </div>
 </div>
+
+    <!-- Form Groups (Fieldset) -->
+    <div id="fieldsets">
+    <div class="flex items-center justify-between border-b border-slate-100 pb-2 mb-4">
+        <h3 class="text-lg font-semibold">Form Groups</h3>
+        <button type="button" class="text-sm font-medium text-slate-600 hover:text-slate-900 cursor-pointer"
+            @click="sections.fieldsets = !sections.fieldsets"
+            :aria-expanded="sections.fieldsets.toString()">
+            <span x-text="sections.fieldsets ? 'Hide' : 'Show'"></span>
+        </button>
+    </div>
+    <div x-show="sections.fieldsets" x-transition>
+        <div class="space-y-6">
+            <!-- Radio Group -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Radio Group</h4>
+                <div class="max-w-md">
+                    <fieldset class="bk-fieldset">
+            <legend class="bk-fieldset__legend">
+            Billing cycle
+        </legend>
+    
+    <div class="bk-fieldset__items ">
+        <div class="bk-radio ">
+    
+    <div class="bk-radio__container ">
+        
+        <input type="radio" id="bk-radio-06f93b48-ee8f-4d17-adb4-f2c36f5cfc92"
+            name="fieldset_billing" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
+                         value="monthly"              checked             >
+
+        
+                    <label class="bk-radio__label" for="bk-radio-06f93b48-ee8f-4d17-adb4-f2c36f5cfc92">
+                Monthly
+            </label>
+            </div>
+
+    
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
+                        <div class="bk-radio ">
+    
+    <div class="bk-radio__container ">
+        
+        <input type="radio" id="bk-radio-c37ac22d-9b26-473f-baad-469f63ad6920"
+            name="fieldset_billing" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
+                         value="yearly"                         >
+
+        
+                    <label class="bk-radio__label" for="bk-radio-c37ac22d-9b26-473f-baad-469f63ad6920">
+                Yearly (save 20%)
+            </label>
+            </div>
+
+    
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
+                        <div class="bk-radio ">
+    
+    <div class="bk-radio__container ">
+        
+        <input type="radio" id="bk-radio-6b8e45d4-5774-4145-ac96-610bec101e14"
+            name="fieldset_billing" class="bk-radio__control bk-radio__control--md bk-radio__control--primary"
+                         value="lifetime"                         >
+
+        
+                    <label class="bk-radio__label" for="bk-radio-6b8e45d4-5774-4145-ac96-610bec101e14">
+                Lifetime
+            </label>
+            </div>
+
+    
+            <div class="bk-radio__messages">
+                    </div>
+    </div>
+    </div>
+
+    
+            <div class="bk-fieldset__messages">
+                            <p class="bk-fieldset__hint">
+                    Choose how often you are billed
+                </p>
+                    </div>
+    </fieldset>
+                </div>
+            </div>
+
+            <!-- Checkbox Group with Error -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Checkbox Group with Error</h4>
+                <div class="max-w-md">
+                    <fieldset class="bk-fieldset">
+            <legend class="bk-fieldset__legend">
+            Topics
+        </legend>
+    
+    <div class="bk-fieldset__items ">
+        <div class="bk-checkbox ">
+    <div class="bk-checkbox__container">
+        
+        <input type="checkbox" id="bk-checkbox-245bdf2e-ad88-4f22-b7a8-4e91df88c7a8"
+            name="fieldset_topics" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
+                         value="security"                         >
+
+        
+                    <label class="bk-checkbox__label" for="bk-checkbox-245bdf2e-ad88-4f22-b7a8-4e91df88c7a8">
+                Security
+            </label>
+            </div>
+
+    
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
+                        <div class="bk-checkbox ">
+    <div class="bk-checkbox__container">
+        
+        <input type="checkbox" id="bk-checkbox-0ee8f5e1-968d-4512-a852-c95be563646c"
+            name="fieldset_topics" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
+                         value="releases"                         >
+
+        
+                    <label class="bk-checkbox__label" for="bk-checkbox-0ee8f5e1-968d-4512-a852-c95be563646c">
+                Releases
+            </label>
+            </div>
+
+    
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
+                        <div class="bk-checkbox ">
+    <div class="bk-checkbox__container">
+        
+        <input type="checkbox" id="bk-checkbox-6a226bd3-4b54-4c06-9bff-01e7a827fdb4"
+            name="fieldset_topics" class="bk-checkbox__control bk-checkbox__control--md bk-checkbox__control--primary"
+                         value="product"                         >
+
+        
+                    <label class="bk-checkbox__label" for="bk-checkbox-6a226bd3-4b54-4c06-9bff-01e7a827fdb4">
+                Product news
+            </label>
+            </div>
+
+    
+            <div class="bk-checkbox__messages">
+                    </div>
+    </div>
+    </div>
+
+    
+            <div class="bk-fieldset__messages">
+                            <p class="bk-fieldset__error-message" role="alert">
+                    Please select at least one topic
+                </p>
+                    </div>
+    </fieldset>
+                </div>
+            </div>
+
+            <!-- Toggle Group -->
+            <div class="space-y-2">
+                <h4 class="text-sm text-slate-500 font-medium">Toggle Group</h4>
+                <div class="max-w-md">
+                    <fieldset class="bk-fieldset">
+            <legend class="bk-fieldset__legend">
+            Notifications
+        </legend>
+    
+    <div class="bk-fieldset__items ">
+        <div class="bk-toggle ">
+    <div class="bk-toggle__container ">
+        
+        <input type="checkbox" id="fieldset_marketing"
+            class="bk-toggle__input sr-only" name="fieldset_marketing"
+                                     >
+
+        
+        <label class="bk-toggle__button bk-toggle__button--md bk-toggle__button--primary" for="fieldset_marketing" >
+            <span class="bk-toggle__slider"></span>
+        </label>
+
+        
+                    <label class="bk-toggle__label" for="fieldset_marketing">
+                Marketing emails
+            </label>
+            </div>
+
+    
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
+                        <div class="bk-toggle ">
+    <div class="bk-toggle__container ">
+        
+        <input type="checkbox" id="fieldset_security"
+            class="bk-toggle__input sr-only" name="fieldset_security"
+                         checked              >
+
+        
+        <label class="bk-toggle__button bk-toggle__button--md bk-toggle__button--primary" for="fieldset_security" >
+            <span class="bk-toggle__slider"></span>
+        </label>
+
+        
+                    <label class="bk-toggle__label" for="fieldset_security">
+                Security alerts
+            </label>
+            </div>
+
+    
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
+                        <div class="bk-toggle ">
+    <div class="bk-toggle__container ">
+        
+        <input type="checkbox" id="fieldset_product"
+            class="bk-toggle__input sr-only" name="fieldset_product"
+                         checked              >
+
+        
+        <label class="bk-toggle__button bk-toggle__button--md bk-toggle__button--primary" for="fieldset_product" >
+            <span class="bk-toggle__slider"></span>
+        </label>
+
+        
+                    <label class="bk-toggle__label" for="fieldset_product">
+                Product news
+            </label>
+            </div>
+
+    
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
+    </div>
+
+    
+            <div class="bk-fieldset__messages">
+                            <p class="bk-fieldset__hint">
+                    Choose which emails you receive
+                </p>
+                    </div>
+    </fieldset>
                 </div>
             </div>
 
@@ -17470,8 +17867,10 @@ body {
             <!-- Toggle Variants -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Variants</h4>
-                <div class="space-y-2">
-                    <div class="bk-toggle ">
+                <fieldset class="bk-fieldset">
+    
+    <div class="bk-fieldset__items ">
+        <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
         <input type="checkbox" id="toggle_primary"
@@ -17490,9 +17889,9 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-            </div>
-</div>
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
                     <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
@@ -17512,9 +17911,9 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-            </div>
-</div>
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
                     <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
@@ -17534,9 +17933,9 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-            </div>
-</div>
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
                     <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
@@ -17556,9 +17955,9 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-            </div>
-</div>
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
                     <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
@@ -17578,9 +17977,9 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-            </div>
-</div>
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
                     <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
@@ -17600,9 +17999,9 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-            </div>
-</div>
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
                     <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
@@ -17622,17 +18021,24 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-            </div>
-</div>
-                </div>
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
+    </div>
+
+    
+            <div class="bk-fieldset__messages">
+                    </div>
+    </fieldset>
             </div>
 
             <!-- Custom Colors -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
-                <div class="flex flex-wrap items-center gap-3">
-                    <div class="bk-toggle ">
+                <fieldset class="bk-fieldset">
+    
+    <div class="bk-fieldset__items ">
+        <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
         <input type="checkbox" id="toggle_color_indigo"
@@ -17651,9 +18057,9 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-            </div>
-</div>
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
                     <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
@@ -17673,9 +18079,9 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-            </div>
-</div>
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
                     <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
@@ -17695,17 +18101,24 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-            </div>
-</div>
-                </div>
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
+    </div>
+
+    
+            <div class="bk-fieldset__messages">
+                    </div>
+    </fieldset>
             </div>
 
             <!-- Toggle Sizes -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Sizes</h4>
-                <div class="space-y-2">
-                    <div class="bk-toggle ">
+                <fieldset class="bk-fieldset">
+    
+    <div class="bk-fieldset__items ">
+        <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
         <input type="checkbox" id="toggle_sm"
@@ -17724,9 +18137,9 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-            </div>
-</div>
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
                     <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
@@ -17746,9 +18159,9 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-            </div>
-</div>
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
                     <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
@@ -17768,17 +18181,24 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-            </div>
-</div>
-                </div>
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
+    </div>
+
+    
+            <div class="bk-fieldset__messages">
+                    </div>
+    </fieldset>
             </div>
 
             <!-- Toggle States -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">States</h4>
-                <div class="space-y-2">
-                    <div class="bk-toggle ">
+                <fieldset class="bk-fieldset">
+    
+    <div class="bk-fieldset__items ">
+        <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
         <input type="checkbox" id="toggle_off"
@@ -17797,9 +18217,9 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-            </div>
-</div>
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
                     <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
@@ -17819,9 +18239,9 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-            </div>
-</div>
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
                     <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
@@ -17841,9 +18261,9 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-            </div>
-</div>
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
                     <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
@@ -17863,9 +18283,9 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-            </div>
-</div>
+            <div class="bk-toggle__messages">
+                    </div>
+    </div>
                     <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
@@ -17885,12 +18305,12 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-                    <p class="bk-toggle__error-message" id="toggle_error-error" role="alert">
-                This setting is required
-            </p>
-            </div>
-</div>
+            <div class="bk-toggle__messages">
+                            <p class="bk-toggle__error-message" id="toggle_error-error" role="alert">
+                    This setting is required
+                </p>
+                    </div>
+    </div>
                     <div class="bk-toggle ">
     <div class="bk-toggle__container ">
         
@@ -17910,13 +18330,18 @@ body {
             </div>
 
     
-    <div class="bk-toggle__messages">
-                    <p class="bk-toggle__hint">
-                Enable to activate this feature
-            </p>
-            </div>
-</div>
-                </div>
+            <div class="bk-toggle__messages">
+                            <p class="bk-toggle__hint">
+                    Enable to activate this feature
+                </p>
+                    </div>
+    </div>
+    </div>
+
+    
+            <div class="bk-fieldset__messages">
+                    </div>
+    </fieldset>
             </div>
 
         </div>
@@ -25518,9 +25943,9 @@ body {
             </div>
 
     
-    <div class="bk-input__messages">
-            </div>
-</div>
+            <div class="bk-input__messages">
+                    </div>
+    </div>
                             </div>
                             <div>
                                 <div class="bk-textarea " >
@@ -25543,9 +25968,9 @@ body {
             </div>
 
     
-    <div class="bk-textarea__messages">
-            </div>
-</div>
+            <div class="bk-textarea__messages">
+                    </div>
+    </div>
                             </div>
                             <div>
                                 <div class="bk-select "  x-data="{
@@ -25609,9 +26034,9 @@ body {
 </svg>    </div>
 
     
-    <div class="bk-select__messages">
-            </div>
-</div>
+            <div class="bk-select__messages">
+                    </div>
+    </div>
                             </div>
                         </form>
         </div>

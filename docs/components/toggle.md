@@ -23,6 +23,7 @@ A switch-style boolean control with configurable variants, sizes, labels, and va
 | `label`      | `string` | `null`      | Label text                                                                            |
 | `error`      | `string` | `null`      | Error message shown below the control                                                 |
 | `hint`       | `string` | `null`      | Helper text shown below the control                                                   |
+| `reserves-messages` | `bool` | `true`  | Keep the reserved message slot below the control                                      |
 | `color`      | `string` | `null`      | Quick color shortcut. Sets the ON background color. |
 | `background` | `string` | `null`      | Custom ON background color. |
 | `wrapper-class` | `string` | `null`    | Additional classes for the outer wrapper div |
@@ -87,6 +88,18 @@ Supported sizes: `sm`,`md`,`lg`.
     error="You must accept the terms"
     label="I accept the terms and conditions"
 />
+```
+
+## Grouping
+
+Wrap related toggles in a [Fieldset](fieldset.md) so the group owns a single reserved message line
+and the list stays tightly packed without per-item spacing.
+
+```blade
+<x-basekit-ui::fieldset label="Notifications" hint="Choose which emails you receive">
+    <x-basekit-ui::toggle name="marketing" label="Marketing emails" />
+    <x-basekit-ui::toggle name="security" label="Security alerts" />
+</x-basekit-ui::fieldset>
 ```
 
 ## Custom Classes

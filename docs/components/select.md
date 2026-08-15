@@ -32,6 +32,7 @@ A select component with support for generated options, custom option markup, ico
 | `label`         | `string` | `null`        | Label text                                                                  |
 | `error`         | `string` | `null`        | Error message shown below the field                                         |
 | `hint`          | `string` | `null`        | Helper text shown below the field                                           |
+| `reserves-messages` | `bool` | `true`      | Keep the reserved message slot below the field                              |
 | `icon`          | `string` | `null`        | Heroicon name rendered inside the field                                     |
 | `placeholder`   | `string` | `null`        | Placeholder option text                                                     |
 | `corner-hint`   | `string` | `null`        | Top-right label row hint                                                    |
@@ -42,6 +43,11 @@ A select component with support for generated options, custom option markup, ico
 | `control-style` | `string` | `'default'`   | Control style: `default`, `pill`, `underline`                               |
 | `border`        | `string` | `null`        | Custom border color. |
 | `hover-border`  | `string` | `null`        | Custom hover border color. |
+| `color`         | `string` | `null`        | Quick color shortcut — sets the border, hover border and focus ring colors only (never the background or text). Accepts Tailwind v4 color names or raw CSS colors. |
+| `background`    | `string` | `null`        | Custom background color. |
+| `text`          | `string` | `null`        | Custom text color. |
+| `hover-background` | `string` | `null`    | Custom hover background color. |
+| `hover-text`    | `string` | `null`        | Custom hover text color. |
 | `wrapper-class` | `string` | `null`        | Additional classes for the outer wrapper div |
 | `container-class` | `string` | `null`        | Additional classes for the inner container div |
 

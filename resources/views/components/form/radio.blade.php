@@ -37,15 +37,17 @@
     </div>
 
     {{-- Messages (reserved slot prevents layout shift when validation messages appear) --}}
-    <div class="bk-radio__messages">
-        @if ($error)
-            <p class="bk-radio__error-message" id="{{ $inputId() }}-error" role="alert">
-                {{ $error }}
-            </p>
-        @elseif (!$hasError() && $hint)
-            <p class="bk-radio__hint">
-                {{ $hint }}
-            </p>
-        @endif
-    </div>
+    @if ($error || $hint || $reservesMessages)
+        <div class="bk-radio__messages">
+            @if ($error)
+                <p class="bk-radio__error-message" id="{{ $inputId() }}-error" role="alert">
+                    {{ $error }}
+                </p>
+            @elseif (!$hasError() && $hint)
+                <p class="bk-radio__hint">
+                    {{ $hint }}
+                </p>
+            @endif
+        </div>
+    @endif
 </div>

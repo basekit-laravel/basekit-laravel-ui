@@ -74,16 +74,11 @@
  * Base Structure
  * =============================================================================
  */
-.bk-radio {
-  margin-bottom: 0.5rem;
-}
-
 .bk-radio__container {
   display: flex;
   align-items: flex-start;
   gap: 0.75rem;
 }
-
 .bk-radio__container:focus-within .bk-radio__control {
     box-shadow: 0 0 0 2px var(--radio-focus-ring);
     border-color: var(--radio-checked-border);
@@ -103,7 +98,6 @@
 
 .bk-radio__messages {
   min-height: 1.25rem;
-  margin-top: 0.25rem;
   margin-left: calc(1.125rem + 0.75rem);
   margin-left: calc(var(--radio-size-md) + 0.75rem);
 }

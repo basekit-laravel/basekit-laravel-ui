@@ -26,6 +26,7 @@ A flexible text input component with configurable variants, sizes, inline labels
 | `label`              | `string` | `null`        | Label text                                                                  |
 | `error`              | `string` | `null`        | Error message shown below the field                                         |
 | `hint`               | `string` | `null`        | Helper text shown below the field                                           |
+| `reserves-messages`  | `bool`   | `true`        | Keep the reserved message slot below the field                              |
 | `icon`               | `string` | `null`        | Heroicon name rendered inside the field                                     |
 | `placeholder`        | `string` | `null`        | Placeholder text                                                            |
 | `value`              | `string` | `null`        | Initial input value                                                         |
