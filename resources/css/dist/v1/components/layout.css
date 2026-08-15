@@ -97,14 +97,12 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --divider-color: var(--color-slate-700);
   --divider-color-light: var(--color-slate-800);
   --divider-color-dark: var(--color-slate-500);
   --divider-label-color: var(--color-slate-400);
 }
-
 /* =============================================================================
    Stack Component
    ============================================================================= */
@@ -213,7 +211,6 @@
 .bk-stack--justify-around {
   justify-content: space-around;
 }
-
 /* =============================================================================
    Grid Component
    ============================================================================= */

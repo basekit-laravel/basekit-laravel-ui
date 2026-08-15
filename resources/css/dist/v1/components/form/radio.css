@@ -5,7 +5,6 @@
 /* =============================================================================
   Design Tokens
   ============================================================================= */
-
 :root {
   --radio-transition:
     background-color var(--transition-normal),
@@ -75,7 +74,6 @@
  * Base Structure
  * =============================================================================
  */
-
 .bk-radio {
   margin-bottom: 0.5rem;
 }
@@ -103,20 +101,23 @@
           user-select: none;
 }
 
-.bk-radio__error-message {
+.bk-radio__messages {
+  min-height: 1.25rem;
   margin-top: 0.25rem;
-  font-size: var(--font-size-sm);
-  color: var(--color-danger-600);
   margin-left: calc(1.125rem + 0.75rem);
   margin-left: calc(var(--radio-size-md) + 0.75rem);
 }
 
+.bk-radio__error-message {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-danger-600);
+}
+
 .bk-radio__hint {
-  margin-top: 0.25rem;
+  margin: 0;
   font-size: var(--font-size-sm);
   color: var(--radio-hint-color);
-  margin-left: calc(1.125rem + 0.75rem);
-  margin-left: calc(var(--radio-size-md) + 0.75rem);
 }
 
 /**
@@ -124,7 +125,6 @@
  * Control
  * =============================================================================
  */
-
 .bk-radio__control {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -142,19 +142,16 @@
   -webkit-print-color-adjust: exact;
           print-color-adjust: exact;
 }
-
 .bk-radio__control:checked {
     background-color: var(--radio-checked-bg);
     border-color: var(--radio-checked-border);
     background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
   }
-
 .bk-radio__control:focus {
     outline: none;
     box-shadow: 0 0 0 2px var(--radio-focus-ring);
     border-color: var(--radio-checked-border);
   }
-
 .bk-radio__control:disabled {
     background-color: var(--radio-disabled-bg);
     border-color: var(--radio-disabled-border);
@@ -167,11 +164,9 @@
  * State Modifiers
  * =============================================================================
  */
-
 .bk-radio__container--error .bk-radio__control {
     border-color: var(--radio-error-border);
   }
-
 .bk-radio__container--error:focus-within {
     box-shadow: 0 0 0 2px var(--radio-error-ring);
   }
@@ -203,7 +198,6 @@
  * Variant Modifiers
  * =============================================================================
  */
-
 .bk-radio__control--primary {
   --radio-checked-bg: var(--radio-primary-checked-bg);
   --radio-checked-border: var(--radio-primary-checked-border);
@@ -253,14 +247,12 @@
  * Size Modifiers
  * =============================================================================
  */
-
 .bk-radio__container--sm .bk-radio__control {
     width: 1rem;
     width: var(--radio-size-sm);
     height: 1rem;
     height: var(--radio-size-sm);
   }
-
 .bk-radio__container--sm .bk-radio__error-message,
   .bk-radio__container--sm .bk-radio__hint {
     margin-left: calc(1rem + 0.75rem);
@@ -315,7 +307,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --radio-border: var(--color-slate-600);
   --radio-bg: var(--color-slate-800);

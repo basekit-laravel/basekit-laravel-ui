@@ -755,8 +755,13 @@
  * Messages
  * =============================================================================
  */
+.bk-input__messages {
+  min-height: 1.25rem;
+}
+
 .bk-input__hint,
 .bk-input__error-message {
+  margin: 0;
   font-size: 0.8125rem;
   line-height: 1.25rem;
 }

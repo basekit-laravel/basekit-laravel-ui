@@ -172,7 +172,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --avatar-bg: var(--color-slate-700);
   --avatar-text: var(--color-slate-300);

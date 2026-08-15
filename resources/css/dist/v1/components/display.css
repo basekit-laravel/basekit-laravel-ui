@@ -7,15 +7,10 @@
 	============================================================================= */
 
 @custom-media --bk-sm (min-width: 640px);
-
 @custom-media --bk-md (min-width: 768px);
-
 @custom-media --bk-lg (min-width: 1024px);
-
 @custom-media --bk-xl (min-width: 1280px);
-
 @custom-media --bk-2xl (min-width: 1536px);
-
 /* =============================================================================
    Card Component
    ============================================================================= */
@@ -136,7 +131,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --card-bg: var(--color-slate-800);
   --card-border: var(--color-slate-700);
@@ -146,7 +140,6 @@
   --card-hover-border: var(--color-slate-600);
   --card-header-text: var(--color-slate-100);
 }
-
 /* =============================================================================
    Avatar Component
    ============================================================================= */
@@ -321,7 +314,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --avatar-bg: var(--color-slate-700);
   --avatar-text: var(--color-slate-300);
@@ -332,7 +324,6 @@
   --avatar-status-busy: var(--color-danger-400);
   --avatar-status-offline: var(--color-slate-500);
 }
-
 /* =============================================================================
    Badge Component
    ============================================================================= */
@@ -489,7 +480,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --badge-bg-secondary: var(--color-slate-800);
   --badge-text-secondary: var(--color-slate-200);
@@ -517,7 +507,6 @@
 
   --badge-text-ghost: var(--color-slate-400);
 }
-
 /* =============================================================================
    Table Component
    ============================================================================= */
@@ -793,7 +782,6 @@
 
 /* Viewport fallback for browsers that do not support container queries.
    Keep these aligned with layout/media.css custom breakpoints. */
-
 @supports not (container-type: inline-size) {
   @media (min-width: 640px) {
     .bk-table__cell--sm {
@@ -1025,7 +1013,6 @@
 }
 
 /* Ensure expand cell is hidden in stacked mode by default */
-
 .bk-table--stacked .bk-table__expand-cell {
   display: none;
 }
@@ -1071,7 +1058,6 @@
 }
 
 /* Ensure detail row is hidden in stacked mode by default */
-
 .bk-table--stacked .bk-table__stack-detail-row {
   display: none;
 }
@@ -1117,13 +1103,11 @@
 }
 
 /* Ensure header expand is hidden in stacked mode by default */
-
 .bk-table--stacked .bk-table__header-expand {
   display: none;
 }
 
 /* Hide detail-only columns on small containers, show on large */
-
 .bk-table__cell--detail-only {
   display: none;
 }
@@ -1133,7 +1117,6 @@
 }
 
 /* Container query: show expand cells and details ONLY on small containers in stacked mode */
-
 @container table-stacked (max-width: 767px) {
   .bk-table--stacked .bk-table__expand-cell {
     display: table-cell;
@@ -1246,7 +1229,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --table-bg: var(--color-slate-800);
   --table-border: var(--color-slate-700);
@@ -1272,7 +1254,6 @@
   --table-detail-text: var(--color-slate-300);
   --table-detail-label-color: var(--color-slate-400);
 }
-
 /* =============================================================================
    List Component
    ============================================================================= */
@@ -1361,11 +1342,9 @@
     }
 
 /* Dark mode overrides */
-
 .dark {
   --list-divided-border: var(--color-slate-700);
 }
-
 /* =============================================================================
    Description List Component
    ============================================================================= */
@@ -1439,7 +1418,6 @@
   }
 
 /* Horizontal gap overrides */
-
 .bk-description-list--horizontal.bk-description-list--gap-sm {
   gap: 0.5rem;
 }
@@ -1465,14 +1443,12 @@
   }
 
 /* Dark mode overrides */
-
 .dark {
   --dl-term-color: var(--color-slate-300);
   --dl-description-color: var(--color-slate-100);
   --dl-border: var(--color-slate-700);
   --dl-striped-bg: var(--color-slate-700);
 }
-
 /* =============================================================================
    Stat Component
    ============================================================================= */
@@ -1581,7 +1557,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --stat-bg: var(--color-slate-800);
   --stat-label-color: var(--color-slate-400);

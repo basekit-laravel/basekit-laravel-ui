@@ -167,18 +167,17 @@
         <x-heroicon-o-chevron-down class="bk-select__chevron" x-bind:class="{ 'bk-select__chevron--open': open }" />
     </div>
 
-    {{-- Error Message --}}
-    @if ($hasAnyError)
-        <p class="bk-select__error-message"
-            @if ($attributes->get('id')) id="{{ $attributes->get('id') }}-error" @endif>
-            {{ $error }}
-        </p>
-    @endif
-
-    {{-- Hint Text --}}
-    @if (!$hasAnyError && ($hint || $hasCustomHint))
-        <p class="bk-select__hint">
-            {{ $hint }}
-        </p>
-    @endif
+    {{-- Messages (reserved slot prevents layout shift when validation messages appear) --}}
+    <div class="bk-select__messages">
+        @if ($hasAnyError)
+            <p class="bk-select__error-message" role="alert"
+                @if ($attributes->get('id')) id="{{ $attributes->get('id') }}-error" @endif>
+                {{ $error }}
+            </p>
+        @elseif (!$hasAnyError && ($hint || $hasCustomHint))
+            <p class="bk-select__hint">
+                {{ $hint }}
+            </p>
+        @endif
+    </div>
 </div>

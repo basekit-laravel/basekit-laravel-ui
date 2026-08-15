@@ -109,7 +109,6 @@
   }
 
 /* Dark mode overrides */
-
 .dark {
   --tabs-border: var(--color-slate-700);
   --tabs-active-border: var(--color-primary-400);

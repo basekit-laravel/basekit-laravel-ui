@@ -134,7 +134,6 @@
   }
 
 /* Dark mode overrides */
-
 .dark {
   --progress-bg: var(--color-slate-700);
   --progress-label-color: var(--color-slate-300);

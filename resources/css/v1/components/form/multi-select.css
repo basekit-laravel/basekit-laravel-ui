@@ -107,13 +107,19 @@
   gap: 0.375rem;
 }
 
+.bk-multiselect__messages {
+  min-height: 1.25rem;
+}
+
 .bk-multiselect__error-message {
+  margin: 0;
   font-size: 0.8125rem;
   line-height: 1.25rem;
   color: var(--multiselect-error-border-color);
 }
 
 .bk-multiselect__hint {
+  margin: 0;
   font-size: 0.8125rem;
   line-height: 1.25rem;
   color: var(--multiselect-hint-color);
@@ -221,7 +227,7 @@
     cursor: not-allowed;
   }
 
-  &:hover:not(:disabled) {
+  &:hover:not(:disabled):not(.bk-multiselect__control--error):not([aria-invalid="true"]) {
     border-color: var(--multiselect-hover-border-color);
   }
 }

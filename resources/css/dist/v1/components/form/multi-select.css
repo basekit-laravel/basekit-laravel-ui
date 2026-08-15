@@ -5,7 +5,6 @@
 /* =============================================================================
   Design Tokens
   ============================================================================= */
-
 :root {
   /* Multi Select - Base */
   --multiselect-color: var(--color-slate-900);
@@ -108,20 +107,25 @@
   gap: 0.375rem;
 }
 
+.bk-multiselect__messages {
+  min-height: 1.25rem;
+}
+
 .bk-multiselect__error-message {
+  margin: 0;
   font-size: 0.8125rem;
   line-height: 1.25rem;
   color: var(--multiselect-error-border-color);
 }
 
 .bk-multiselect__hint {
+  margin: 0;
   font-size: 0.8125rem;
   line-height: 1.25rem;
   color: var(--multiselect-hint-color);
 }
 
 /* Error state on parent changes label color */
-
 .bk-multiselect:has(.bk-multiselect__container--error) .bk-multiselect__label {
   color: var(--multiselect-error-color);
 }
@@ -152,7 +156,6 @@
 }
 
 /* Inline label styles */
-
 .bk-multiselect__label--inset,
 .bk-multiselect__label--overlap {
   position: absolute;
@@ -229,7 +232,7 @@
     cursor: not-allowed;
   }
 
-.bk-multiselect__control:hover:not(:disabled) {
+.bk-multiselect__control:hover:not(:disabled):not(.bk-multiselect__control--error):not([aria-invalid="true"]) {
     border-color: var(--multiselect-hover-border-color);
   }
 
@@ -411,7 +414,6 @@
 }
 
 /* Icon label positioning adjustment */
-
 .bk-multiselect__container--with-icon .bk-multiselect__label--inset,
   .bk-multiselect__container--with-icon .bk-multiselect__label--overlap {
     left: 2.5rem;
@@ -466,7 +468,6 @@
 }
 
 /* Icon padding by size */
-
 .bk-multiselect__control--with-icon.bk-multiselect__control--sm {
   padding-left: 2.25rem;
 }
@@ -480,11 +481,9 @@
 }
 
 /* Error icon sizing */
-
 .bk-multiselect__container--sm .bk-multiselect__error-icon {
   width: 2rem;
 }
-
 .bk-multiselect__container--sm .bk-multiselect__error-icon svg {
     width: 1rem;
     height: 1rem;
@@ -509,7 +508,6 @@
   }
 
 /* Error icon control padding adjustment */
-
 .bk-multiselect__container--sm .bk-multiselect__control--has-error-icon {
   padding-right: 2rem;
 }
@@ -523,15 +521,12 @@
 }
 
 /* Label padding by size + label variant */
-
 .bk-multiselect__container--sm .bk-multiselect__control--label-inset {
     padding-top: 1rem;
   }
-
 .bk-multiselect__container--sm .bk-multiselect__control--label-overlap {
     padding-top: 0.75rem;
   }
-
 .bk-multiselect__container--sm.bk-multiselect__container--with-icon .bk-multiselect__label--inset,
     .bk-multiselect__container--sm.bk-multiselect__container--with-icon .bk-multiselect__label--overlap {
       left: 2.25rem;
@@ -570,17 +565,14 @@
  */
 
 /* Error variant */
-
 .bk-multiselect__control--error,
 .bk-multiselect__control[aria-invalid="true"] {
   border-color: var(--multiselect-error-border-color);
   color: var(--multiselect-error-color);
 }
-
 :is(.bk-multiselect__control--error,.bk-multiselect__control[aria-invalid="true"]) .bk-multiselect__placeholder {
     color: var(--multiselect-error-color);
   }
-
 :is(.bk-multiselect__control--error,.bk-multiselect__control[aria-invalid="true"]):focus {
     box-shadow: none;
   }
@@ -608,7 +600,6 @@
   }
 
 /* Primary variant */
-
 .bk-multiselect__control--primary {
   border-color: var(--multiselect-primary-border-color);
 }
@@ -627,7 +618,6 @@
   }
 
 /* Secondary variant */
-
 .bk-multiselect__control--secondary {
   border-color: var(--multiselect-secondary-border-color);
 }
@@ -646,7 +636,6 @@
   }
 
 /* Success variant */
-
 .bk-multiselect__control--success {
   border-color: var(--multiselect-success-border-color);
 }
@@ -665,7 +654,6 @@
   }
 
 /* Warning variant */
-
 .bk-multiselect__control--warning {
   border-color: var(--multiselect-warning-border-color);
 }
@@ -684,7 +672,6 @@
   }
 
 /* Danger variant */
-
 .bk-multiselect__control--danger {
   border-color: var(--multiselect-danger-border-color);
 }
@@ -702,7 +689,6 @@
   }
 
 /* Info variant */
-
 .bk-multiselect__control--info {
   border-color: var(--multiselect-info-border-color);
 }
@@ -721,7 +707,6 @@
   }
 
 /* Ghost variant */
-
 .bk-multiselect__control--ghost {
   background-color: transparent;
   background-color: var(--multiselect-ghost-bg);
@@ -741,7 +726,6 @@
  */
 
 /* Underline variant */
-
 .bk-multiselect__container--underline {
   border-radius: 0;
 }
@@ -761,7 +745,6 @@
   }
 
 /* Pill variant */
-
 .bk-multiselect__container--pill {
   border-radius: 9999px;
 }
@@ -771,7 +754,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --multiselect-color: var(--color-slate-100);
   --multiselect-placeholder-color: var(--color-slate-500);

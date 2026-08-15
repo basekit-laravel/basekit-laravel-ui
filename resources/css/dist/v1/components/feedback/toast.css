@@ -189,7 +189,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --toast-shadow:
     0 4px 12px -2px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);

@@ -118,7 +118,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --card-bg: var(--color-slate-800);
   --card-border: var(--color-slate-700);

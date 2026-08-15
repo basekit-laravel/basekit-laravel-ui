@@ -92,14 +92,19 @@
   user-select: none;
 }
 
-.bk-checkbox__error-message {
+.bk-checkbox__messages {
+  min-height: 1.25rem;
   margin-top: 0.25rem;
+}
+
+.bk-checkbox__error-message {
+  margin: 0;
   font-size: var(--font-size-sm);
   color: var(--color-danger-600);
 }
 
 .bk-checkbox__hint {
-  margin-top: 0.25rem;
+  margin: 0;
   font-size: var(--font-size-sm);
   color: var(--checkbox-hint-color);
 }

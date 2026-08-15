@@ -141,7 +141,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --spinner-color-primary: var(--color-primary-400);
   --spinner-color-slate: var(--color-slate-400);

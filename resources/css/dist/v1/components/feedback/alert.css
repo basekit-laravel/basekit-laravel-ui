@@ -145,7 +145,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --alert-bg-primary: var(--color-primary-950);
   --alert-text-primary: var(--color-primary-200);

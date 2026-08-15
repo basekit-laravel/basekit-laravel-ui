@@ -237,7 +237,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --dropdown-bg: var(--color-slate-800);
   --dropdown-trigger-bg: var(--color-slate-800);

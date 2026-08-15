@@ -17,7 +17,7 @@ final class ThemeColor
     /**
      * @var array<string, array<int, string>>
      */
-    private const COLORS = [
+    private const array COLORS = [
         'amber' => [
             50 => 'oklch(0.987 0.022 95.277)',
             100 => 'oklch(0.962 0.059 95.617)',

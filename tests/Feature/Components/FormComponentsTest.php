@@ -118,6 +118,65 @@ describe('Form Components', function () {
         expect($html)->toContain('bk-toggle');
     });
 
+    // Validation message slot (prevents layout shift when errors appear) --------------------
+
+    test('input reserves a message slot even without an error or hint', function () {
+        $html = Blade::render('<x-basekit-ui::input name="name" />');
+        expect($html)
+            ->toContain('bk-input__messages')
+            ->not->toContain('bk-input__error-message')
+            ->not->toContain('bk-input__hint');
+    });
+
+    test('input renders the error message inside the reserved slot with an alert role', function () {
+        $html = Blade::render('<x-basekit-ui::input name="name" error="The name field is required." />');
+        expect($html)
+            ->toContain('bk-input__messages')
+            ->toContain('bk-input__error-message')
+            ->toContain('role="alert"')
+            ->toContain('The name field is required.');
+    });
+
+    test('input renders the hint inside the reserved slot', function () {
+        $html = Blade::render('<x-basekit-ui::input name="name" hint="Visible only to you." />');
+        expect($html)
+            ->toContain('bk-input__messages')
+            ->toContain('bk-input__hint')
+            ->toContain('Visible only to you.')
+            ->not->toContain('bk-input__error-message');
+    });
+
+    test('each form component reserves a message slot without an error', function (string $blade, string $slotClass, string $errorClass) {
+        $html = Blade::render($blade);
+        expect($html)
+            ->toContain($slotClass)
+            ->not->toContain($errorClass);
+    })->with([
+        'input' => ['<x-basekit-ui::input name="field" />', 'bk-input__messages', 'bk-input__error-message'],
+        'textarea' => ['<x-basekit-ui::textarea name="field" />', 'bk-textarea__messages', 'bk-textarea__error-message'],
+        'select' => ['<x-basekit-ui::select name="field" :options="[\'a\' => \'A\']" />', 'bk-select__messages', 'bk-select__error-message'],
+        'multi-select' => ['<x-basekit-ui::multi-select name="field" :options="[\'a\' => \'A\']" />', 'bk-multiselect__messages', 'bk-multiselect__error-message'],
+        'checkbox' => ['<x-basekit-ui::checkbox name="field" label="Accept" />', 'bk-checkbox__messages', 'bk-checkbox__error-message'],
+        'radio' => ['<x-basekit-ui::radio name="field" label="Option" />', 'bk-radio__messages', 'bk-radio__error-message'],
+        'toggle' => ['<x-basekit-ui::toggle name="field" label="Enable" />', 'bk-toggle__messages', 'bk-toggle__error-message'],
+    ]);
+
+    test('each form component renders the error message inside its reserved slot with an alert role', function (string $blade, string $slotClass, string $errorClass) {
+        $html = Blade::render($blade);
+        expect($html)
+            ->toContain($slotClass)
+            ->toContain($errorClass)
+            ->toContain('role="alert"');
+    })->with([
+        'input' => ['<x-basekit-ui::input name="field" error="Required." />', 'bk-input__messages', 'bk-input__error-message'],
+        'textarea' => ['<x-basekit-ui::textarea name="field" error="Required." />', 'bk-textarea__messages', 'bk-textarea__error-message'],
+        'select' => ['<x-basekit-ui::select name="field" :options="[\'a\' => \'A\']" error="Required." />', 'bk-select__messages', 'bk-select__error-message'],
+        'multi-select' => ['<x-basekit-ui::multi-select name="field" :options="[\'a\' => \'A\']" error="Required." />', 'bk-multiselect__messages', 'bk-multiselect__error-message'],
+        'checkbox' => ['<x-basekit-ui::checkbox name="field" label="Accept" error="Required." />', 'bk-checkbox__messages', 'bk-checkbox__error-message'],
+        'radio' => ['<x-basekit-ui::radio name="field" label="Option" error="Required." />', 'bk-radio__messages', 'bk-radio__error-message'],
+        'toggle' => ['<x-basekit-ui::toggle name="field" label="Enable" error="Required." />', 'bk-toggle__messages', 'bk-toggle__error-message'],
+    ]);
+
     // Extra: test button with icon slot
     test('button renders custom icon slot', function () {
         $html = Blade::render(<<<'BLADE'

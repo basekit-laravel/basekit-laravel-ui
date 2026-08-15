@@ -149,7 +149,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --alert-bg-primary: var(--color-primary-950);
   --alert-text-primary: var(--color-primary-200);
@@ -177,7 +176,6 @@
 
   --alert-text-ghost: var(--color-slate-400);
 }
-
 /* =============================================================================
    Toast Component
    ============================================================================= */
@@ -369,7 +367,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --toast-shadow:
     0 4px 12px -2px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
@@ -403,7 +400,6 @@
   /* Dismiss */
   --toast-dismiss-hover-bg: rgba(255, 255, 255, 0.1);
 }
-
 /* =============================================================================
    Tooltip Component
    ============================================================================= */
@@ -482,13 +478,11 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --tooltip-bg: var(--color-slate-800);
   --tooltip-text: var(--color-slate-100);
   --tooltip-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
 }
-
 /* =============================================================================
    Progress Component
    ============================================================================= */
@@ -625,7 +619,6 @@
   }
 
 /* Dark mode overrides */
-
 .dark {
   --progress-bg: var(--color-slate-700);
   --progress-label-color: var(--color-slate-300);
@@ -639,7 +632,6 @@
   --progress-bar-ghost: var(--color-slate-500);
   --progress-bar-white: white;
 }
-
 /* =============================================================================
    Spinner Component
    ============================================================================= */
@@ -783,7 +775,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --spinner-color-primary: var(--color-primary-400);
   --spinner-color-slate: var(--color-slate-400);
@@ -793,7 +784,6 @@
   --spinner-color-info: var(--color-info-400);
   --spinner-color-ghost: var(--color-slate-500);
 }
-
 /* =============================================================================
    Skeleton Component
    ============================================================================= */
@@ -958,11 +948,9 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --skeleton-bg: var(--color-slate-700);
 }
-
 /* =============================================================================
    Empty State Component
    ============================================================================= */
@@ -1185,7 +1173,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --empty-state-icon-color: var(--color-slate-500);
   --empty-state-title-color: var(--color-slate-100);

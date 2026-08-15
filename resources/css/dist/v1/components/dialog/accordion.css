@@ -87,48 +87,39 @@
    ============================================================================= */
 
 /* Bordered variant - thicker borders */
-
 .bk-accordion--bordered {
   border-width: 2px;
 }
-
 .bk-accordion--bordered .bk-accordion__item {
     border-bottom-width: 2px;
   }
 
 /* Flush variant - no borders or background */
-
 .bk-accordion--flush {
   border: none;
   border-radius: 0;
 }
-
 .bk-accordion--flush .bk-accordion__item {
     border-bottom: 1px solid var(--accordion-border);
   }
-
 .bk-accordion--flush .bk-accordion__trigger {
     background-color: transparent;
     padding-left: 0;
     padding-right: 0;
   }
-
 .bk-accordion--flush .bk-accordion__trigger:hover {
       background-color: transparent;
     }
-
 .bk-accordion--flush .bk-accordion__trigger:hover .bk-accordion__title,
       .bk-accordion--flush .bk-accordion__trigger:hover .bk-accordion__icon {
         color: var(--accordion-flush-hover-color);
       }
-
 .bk-accordion--flush .bk-accordion__body {
     padding-left: 0;
     padding-right: 0;
   }
 
 /* Separated variant - gaps between items */
-
 .bk-accordion--separated {
   border: none;
   border-radius: 0;
@@ -136,7 +127,6 @@
   flex-direction: column;
   gap: 0.75rem;
 }
-
 .bk-accordion--separated .bk-accordion__item {
     border: 1px solid var(--accordion-border);
     border-radius: var(--radius-lg);
@@ -148,23 +138,19 @@
    ============================================================================= */
 
 /* Small size */
-
 .bk-accordion--sm .bk-accordion__trigger {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
     padding-left: 1rem;
     padding-right: 1rem;
   }
-
 .bk-accordion--sm .bk-accordion__title {
     font-size: var(--font-size-sm);
   }
-
 .bk-accordion--sm .bk-accordion__icon {
     width: 1rem;
     height: 1rem;
   }
-
 .bk-accordion--sm .bk-accordion__body {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
@@ -174,23 +160,19 @@
   }
 
 /* Large size */
-
 .bk-accordion--lg .bk-accordion__trigger {
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
-
 .bk-accordion--lg .bk-accordion__title {
     font-size: var(--font-size-lg);
   }
-
 .bk-accordion--lg .bk-accordion__icon {
     width: 1.5rem;
     height: 1.5rem;
   }
-
 .bk-accordion--lg .bk-accordion__body {
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
@@ -200,7 +182,6 @@
   }
 
 /* Dark mode overrides */
-
 .dark {
   --accordion-border: var(--color-slate-700);
   --accordion-header-bg: var(--color-slate-800);

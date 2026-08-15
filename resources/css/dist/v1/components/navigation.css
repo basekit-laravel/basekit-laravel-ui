@@ -119,13 +119,11 @@
   }
 
 /* Dark mode overrides */
-
 .dark {
   --breadcrumb-separator-color: var(--color-slate-500);
   --breadcrumb-link-color: var(--color-primary-400);
   --breadcrumb-current-color: var(--color-slate-200);
 }
-
 /* =============================================================================
    Pagination Component
    ============================================================================= */
@@ -278,7 +276,6 @@
 }
 
 /* Container query: primary mechanism for responsive preview widgets */
-
 @container pagination (min-width: 768px) {
   .bk-pagination__desktop {
     display: block;
@@ -290,7 +287,6 @@
 }
 
 /* Viewport fallback for browsers that do not support container queries */
-
 @supports not (container-type: inline-size) {
   @media (--bk-md) {
     .bk-pagination__desktop {
@@ -304,7 +300,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --pagination-bg: var(--color-slate-800);
   --pagination-border: var(--color-slate-600);
@@ -317,7 +312,6 @@
   --pagination-info-color: var(--color-slate-400);
   --pagination-label-color: var(--color-slate-300);
 }
-
 /* =============================================================================
    Tabs Component
    ============================================================================= */
@@ -429,7 +423,6 @@
   }
 
 /* Dark mode overrides */
-
 .dark {
   --tabs-border: var(--color-slate-700);
   --tabs-active-border: var(--color-primary-400);
@@ -441,7 +434,6 @@
   --tabs-boxed-active-bg: var(--color-slate-700);
   --tabs-boxed-active-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
 }
-
 /* =============================================================================
    Dropdown Menu Component
    ============================================================================= */
@@ -681,7 +673,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --dropdown-bg: var(--color-slate-800);
   --dropdown-trigger-bg: var(--color-slate-800);
@@ -696,7 +687,6 @@
   --dropdown-item-text: var(--color-slate-200);
   --dropdown-item-icon: var(--color-slate-400);
 }
-
 /* =============================================================================
    Link Component
    ============================================================================= */
@@ -780,7 +770,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --link-primary-color: var(--color-primary-400);
   --link-secondary-color: var(--color-slate-200);

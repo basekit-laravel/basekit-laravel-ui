@@ -106,7 +106,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --stat-bg: var(--color-slate-800);
   --stat-label-color: var(--color-slate-400);

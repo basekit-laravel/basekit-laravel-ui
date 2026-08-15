@@ -93,7 +93,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --divider-color: var(--color-slate-700);
   --divider-color-light: var(--color-slate-800);

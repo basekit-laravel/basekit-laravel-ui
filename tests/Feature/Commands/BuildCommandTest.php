@@ -73,4 +73,30 @@ describe('Build Command', function () {
         expect($css)->toContain('bk-input__container:hover .bk-input__control:not(:disabled):not([readonly]):not(.bk-input__control--error):not([aria-invalid="true"])');
         expect($css)->toContain('border-color: var(--input-error-border-color)');
     });
+
+    test('build command keeps the select and multi-select error borders on hover', function (): void {
+        $exitCode = Artisan::call('basekit:ui:build');
+        expect($exitCode)->toBe(0);
+
+        $css = File::get(public_path('vendor/basekit-laravel/v1/basekit-ui.css'));
+
+        expect($css)->toContain('.bk-select__control:hover:not(:disabled):not(.bk-select__control--error):not([aria-invalid="true"])');
+        expect($css)->toContain('.bk-multiselect__control:hover:not(:disabled):not(.bk-multiselect__control--error):not([aria-invalid="true"])');
+    });
+
+    test('build command includes reserved message slot styles for form components', function (): void {
+        $exitCode = Artisan::call('basekit:ui:build');
+        expect($exitCode)->toBe(0);
+
+        $css = File::get(public_path('vendor/basekit-laravel/v1/basekit-ui.css'));
+
+        expect($css)->toContain('.bk-input__messages');
+        expect($css)->toContain('.bk-select__messages');
+        expect($css)->toContain('.bk-multiselect__messages');
+        expect($css)->toContain('.bk-checkbox__messages');
+        expect($css)->toContain('.bk-radio__messages');
+        expect($css)->toContain('.bk-toggle__messages');
+        expect($css)->toContain('.bk-textarea__messages');
+        expect($css)->toContain('min-height: 1.25rem');
+    });
 });

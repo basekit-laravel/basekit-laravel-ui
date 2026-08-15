@@ -71,7 +71,6 @@
   }
 
 /* Horizontal gap overrides */
-
 .bk-description-list--horizontal.bk-description-list--gap-sm {
   gap: 0.5rem;
 }
@@ -97,7 +96,6 @@
   }
 
 /* Dark mode overrides */
-
 .dark {
   --dl-term-color: var(--color-slate-300);
   --dl-description-color: var(--color-slate-100);

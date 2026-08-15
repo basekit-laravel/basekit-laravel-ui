@@ -59,18 +59,17 @@
         ])
     </div>
 
-    {{-- Error Message --}}
-    @if ($hasAnyError)
-        <p class="bk-textarea__error-message"
-            @if ($attributes->get('id')) id="{{ $attributes->get('id') }}-error" @endif>
-            {{ $error }}
-        </p>
-    @endif
-
-    {{-- Hint Text --}}
-    @if (!$hasAnyError && ($hint || $hasCustomHint))
-        <p class="bk-textarea__hint">
-            {{ $hint }}
-        </p>
-    @endif
+    {{-- Messages (reserved slot prevents layout shift when validation messages appear) --}}
+    <div class="bk-textarea__messages">
+        @if ($hasAnyError)
+            <p class="bk-textarea__error-message" role="alert"
+                @if ($attributes->get('id')) id="{{ $attributes->get('id') }}-error" @endif>
+                {{ $error }}
+            </p>
+        @elseif (!$hasAnyError && ($hint || $hasCustomHint))
+            <p class="bk-textarea__hint">
+                {{ $hint }}
+            </p>
+        @endif
+    </div>
 </div>

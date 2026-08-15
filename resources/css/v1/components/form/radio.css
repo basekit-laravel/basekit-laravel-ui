@@ -99,18 +99,22 @@
   user-select: none;
 }
 
-.bk-radio__error-message {
+.bk-radio__messages {
+  min-height: 1.25rem;
   margin-top: 0.25rem;
-  font-size: var(--font-size-sm);
-  color: var(--color-danger-600);
   margin-inline-start: calc(var(--radio-size-md) + 0.75rem);
 }
 
+.bk-radio__error-message {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-danger-600);
+}
+
 .bk-radio__hint {
-  margin-top: 0.25rem;
+  margin: 0;
   font-size: var(--font-size-sm);
   color: var(--radio-hint-color);
-  margin-inline-start: calc(var(--radio-size-md) + 0.75rem);
 }
 
 /**

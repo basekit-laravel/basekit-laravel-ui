@@ -154,7 +154,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --badge-bg-secondary: var(--color-slate-800);
   --badge-text-secondary: var(--color-slate-200);

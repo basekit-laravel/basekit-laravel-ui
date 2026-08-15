@@ -220,7 +220,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --empty-state-icon-color: var(--color-slate-500);
   --empty-state-title-color: var(--color-slate-100);

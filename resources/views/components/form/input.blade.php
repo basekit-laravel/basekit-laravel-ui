@@ -109,18 +109,17 @@
         @endif
     </div>
 
-    {{-- Error Message --}}
-    @if (filled($error))
-        <p class="bk-input__error-message"
-            @if ($attributes->get('id')) id="{{ $attributes->get('id') }}-error" @endif>
-            {{ $error }}
-        </p>
-    @endif
-
-    {{-- Hint Text --}}
-    @if (!$hasAnyError && ($hint || $hasCustomHint))
-        <p class="bk-input__hint">
-            {{ $hint }}
-        </p>
-    @endif
+    {{-- Messages (reserved slot prevents layout shift when validation messages appear) --}}
+    <div class="bk-input__messages">
+        @if (filled($error))
+            <p class="bk-input__error-message" role="alert"
+                @if ($attributes->get('id')) id="{{ $attributes->get('id') }}-error" @endif>
+                {{ $error }}
+            </p>
+        @elseif (!$hasAnyError && ($hint || $hasCustomHint))
+            <p class="bk-input__hint">
+                {{ $hint }}
+            </p>
+        @endif
+    </div>
 </div>

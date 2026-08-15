@@ -81,7 +81,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --link-primary-color: var(--color-primary-400);
   --link-secondary-color: var(--color-slate-200);

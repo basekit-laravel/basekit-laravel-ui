@@ -5,7 +5,6 @@
 /* =============================================================================
   Design Tokens
   ============================================================================= */
-
 :root {
   /* Input - Base */
   --input-color: var(--color-slate-900);
@@ -93,13 +92,11 @@
  * Base Structure
  * =============================================================================
  */
-
 .bk-input {
   display: flex;
   flex-direction: column;
   gap: 0.375rem;
 }
-
 .bk-input .bk-input__label {
     display: block;
     font-size: 0.875rem;
@@ -107,28 +104,23 @@
     color: var(--input-label-color);
     line-height: 1.25rem;
   }
-
 .bk-input .bk-input__label-row {
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
-
 .bk-input:has(.bk-input__container--pill.bk-input__container--sm) .bk-input__label {
     padding-left: 0.75rem;
     padding-left: var(--input-px-sm);
   }
-
 .bk-input:has(.bk-input__container--pill.bk-input__container--md) .bk-input__label {
     padding-left: 0.875rem;
     padding-left: var(--input-px-md);
   }
-
 .bk-input:has(.bk-input__container--pill.bk-input__container--lg) .bk-input__label {
     padding-left: 1rem;
     padding-left: var(--input-px-lg);
   }
-
 .bk-input:has(
       .bk-input__container--pill.bk-input__container--sm:has(
           .bk-input__control--with-icon
@@ -137,7 +129,6 @@
     .bk-input__label {
     padding-left: 2rem;
   }
-
 .bk-input:has(
       .bk-input__container--pill.bk-input__container--md:has(
           .bk-input__control--with-icon
@@ -146,7 +137,6 @@
     .bk-input__label {
     padding-left: 2.25rem;
   }
-
 .bk-input:has(
       .bk-input__container--pill.bk-input__container--lg:has(
           .bk-input__control--with-icon
@@ -167,7 +157,6 @@
  * Container
  * =============================================================================
  */
-
 .bk-input__container {
   display: flex;
   position: relative;
@@ -176,7 +165,6 @@
   border-radius: var(--input-border-radius);
   transition: box-shadow var(--transition-fast) ease-in-out;
 }
-
 .bk-input__container:focus-within {
     box-shadow: 0 0 0 2px
       var(--input-focus-ring-color);
@@ -190,7 +178,6 @@
  * Control
  * =============================================================================
  */
-
 .bk-input__control {
   display: block;
   width: 100%;
@@ -208,24 +195,20 @@
   line-height: var(--input-line-height);
   transition: var(--input-transition);
 }
-
 .bk-input__control::-moz-placeholder {
     color: var(--input-placeholder-color);
     opacity: 1;
   }
-
 .bk-input__control::placeholder {
     color: var(--input-placeholder-color);
     opacity: 1;
   }
-
 .bk-input__control:focus {
     outline: none;
     border-color: var(--input-focus-border-color);
     box-shadow: none;
     z-index: 10;
   }
-
 .bk-input__control:disabled {
     background-color: var(--input-disabled-bg);
     color: var(--input-disabled-color);
@@ -233,7 +216,6 @@
     cursor: not-allowed;
     box-shadow: none;
   }
-
 .bk-input__control[readonly] {
     background-color: var(--input-disabled-bg);
     border-color: var(--input-border-color);
@@ -245,11 +227,9 @@
  * State Modifiers
  * =============================================================================
  */
-
 .bk-input__container:hover .bk-input__control:not(:disabled):not([readonly]):not(.bk-input__control--error):not([aria-invalid="true"]) {
       border-color: var(--input-hover-border-color);
     }
-
 .bk-input__container:hover:has(
         .bk-input__control:not(:disabled):not([readonly]):not(.bk-input__control--error):not([aria-invalid="true"])
       ) .bk-input__prefix,
@@ -284,13 +264,11 @@
  * Variant Modifiers
  * =============================================================================
  */
-
 .bk-input__control--error,
 .bk-input__control[aria-invalid="true"] {
   border-color: var(--input-error-border-color);
   color: var(--input-error-color);
 }
-
 :is(.bk-input__control--error,.bk-input__control[aria-invalid="true"]):focus {
     border-color: var(--input-error-border-color);
     box-shadow: none;
@@ -513,7 +491,6 @@
  * Size Modifiers
  * =============================================================================
  */
-
 .bk-input__control--sm {
   padding: 0.375rem 0.75rem;
   padding: var(--input-py-sm) var(--input-px-sm);
@@ -540,7 +517,6 @@
  * Labels
  * =============================================================================
  */
-
 .bk-input__label--inset,
 .bk-input__label--overlap {
   position: absolute;
@@ -577,67 +553,52 @@
  * Container Size Modifiers
  * =============================================================================
  */
-
 .bk-input__container--sm .bk-input__control--label-inset {
     padding-top: 1rem;
   }
-
 .bk-input__container--sm .bk-input__control--label-overlap {
     padding-top: 0.75rem;
   }
-
 .bk-input__container--sm .bk-input__icon {
     width: 2rem;
     --input-icon-size: 0.875rem;
   }
-
 .bk-input__container--sm .bk-input__control--with-icon {
     padding-left: 2rem;
   }
-
 .bk-input__container--sm:has(.bk-input__control--with-icon) .bk-input__label--inset,
     .bk-input__container--sm:has(.bk-input__control--with-icon) .bk-input__label--overlap {
       left: 2rem;
     }
-
 .bk-input__container--sm .bk-input__error-icon {
     width: 2rem;
   }
-
 .bk-input__container--sm .bk-input__error-icon svg {
       width: 1rem;
       height: 1rem;
     }
-
 .bk-input__container--sm .bk-input__error-icon .bk-input__control--has-error-icon {
     padding-right: 2rem;
   }
-
 .bk-input__container--sm .bk-input__error-icon--with-toggle {
     right: 2rem;
   }
-
 .bk-input__container--sm .bk-input__control--has-password-toggle.bk-input__control--has-error-icon {
     padding-right: 4rem;
   }
-
 .bk-input__container--sm .bk-input__password-toggle {
     width: 2rem;
   }
-
 .bk-input__container--sm .bk-input__control--has-password-toggle {
     padding-right: 2rem;
   }
-
 .bk-input__container--sm .bk-input__password-toggle svg {
     width: 0.875rem;
     height: 0.875rem;
   }
-
 .bk-input__container--sm .bk-input__number-btn {
     width: 2rem;
   }
-
 .bk-input__container--sm .bk-input__number-btn svg {
     width: 0.75rem;
     height: 0.75rem;
@@ -778,9 +739,13 @@
  * Messages
  * =============================================================================
  */
+.bk-input__messages {
+  min-height: 1.25rem;
+}
 
 .bk-input__hint,
 .bk-input__error-message {
+  margin: 0;
   font-size: 0.8125rem;
   line-height: 1.25rem;
 }
@@ -798,7 +763,6 @@
  * Icons
  * =============================================================================
  */
-
 .bk-input__icon {
   position: absolute;
   top: 0;
@@ -861,7 +825,6 @@
  * Addons (Prefix/Suffix)
  * =============================================================================
  */
-
 .bk-input__prefix,
 .bk-input__suffix {
   display: flex;
@@ -940,7 +903,6 @@
  * Password Toggle
  * =============================================================================
  */
-
 .bk-input__password-toggle {
   position: absolute;
   top: 0;
@@ -958,11 +920,9 @@
   color: var(--input-icon-color);
   transition: color var(--transition-fast) ease-in-out;
 }
-
 .bk-input__password-toggle:hover {
     color: var(--input-icon-hover-color);
   }
-
 .bk-input__password-toggle svg {
     width: 1.125rem;
     height: 1.125rem;
@@ -978,7 +938,6 @@
  * Number Input
  * =============================================================================
  */
-
 .bk-input__number::-webkit-outer-spin-button,
 .bk-input__number::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -1057,7 +1016,6 @@
     }
 
 /* Dark mode overrides */
-
 .dark {
   --input-bg: var(--color-slate-800);
   --input-color: var(--color-slate-100);

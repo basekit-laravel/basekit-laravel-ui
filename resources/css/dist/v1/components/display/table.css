@@ -273,7 +273,6 @@
 
 /* Viewport fallback for browsers that do not support container queries.
    Keep these aligned with layout/media.css custom breakpoints. */
-
 @supports not (container-type: inline-size) {
   @media (--bk-sm) {
     .bk-table__cell--sm {
@@ -453,7 +452,6 @@
 }
 
 /* Ensure expand cell is hidden in stacked mode by default */
-
 .bk-table--stacked .bk-table__expand-cell {
   display: none;
 }
@@ -499,7 +497,6 @@
 }
 
 /* Ensure detail row is hidden in stacked mode by default */
-
 .bk-table--stacked .bk-table__stack-detail-row {
   display: none;
 }
@@ -545,13 +542,11 @@
 }
 
 /* Ensure header expand is hidden in stacked mode by default */
-
 .bk-table--stacked .bk-table__header-expand {
   display: none;
 }
 
 /* Hide detail-only columns on small containers, show on large */
-
 .bk-table__cell--detail-only {
   display: none;
 }
@@ -561,7 +556,6 @@
 }
 
 /* Container query: show expand cells and details ONLY on small containers in stacked mode */
-
 @container table-stacked (max-width: 767px) {
   .bk-table--stacked .bk-table__expand-cell {
     display: table-cell;
@@ -674,7 +668,6 @@
 }
 
 /* Dark mode overrides */
-
 .dark {
   --table-bg: var(--color-slate-800);
   --table-border: var(--color-slate-700);
