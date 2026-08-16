@@ -5785,6 +5785,10 @@
   margin-bottom: 0.25rem;
 }
 
+.bk-alert__title--standalone {
+  margin-bottom: 0;
+}
+
 .bk-alert__actions {
   margin-top: 0.75rem;
   display: flex;
@@ -5981,6 +5985,10 @@
   line-height: 1.25rem;
   margin-bottom: 0.125rem;
   grid-column: 1;
+}
+
+.bk-toast__title--standalone {
+  margin-bottom: 0;
 }
 
 .bk-toast__description {

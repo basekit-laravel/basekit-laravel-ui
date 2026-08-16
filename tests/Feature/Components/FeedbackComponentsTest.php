@@ -29,11 +29,39 @@ describe('Feedback Components', function () {
         expect($html)->toContain('<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle></svg>');
     });
 
+    test('alert with only a title adds the standalone modifier', function () {
+        $html = Blade::render('<x-basekit-ui::alert title="Something went wrong" variant="danger" />');
+        expect($html)->toContain('bk-alert__title--standalone');
+    });
+
+    test('alert with title and body content omits the standalone modifier', function () {
+        $html = Blade::render('<x-basekit-ui::alert title="Something went wrong" variant="danger">Error occurred</x-basekit-ui::alert>');
+        expect($html)->toContain('Error occurred');
+        expect($html)->not->toContain('bk-alert__title--standalone');
+    });
+
     test('toast renders with message and variant', function () {
         $html = Blade::render('<x-basekit-ui::toast variant="success">Saved!</x-basekit-ui::toast>');
         expect($html)->toContain('Saved!');
         expect($html)->toContain('bk-toast');
         expect($html)->toContain('bk-toast--success');
+    });
+
+    test('toast with only a title adds the standalone modifier', function () {
+        $html = Blade::render('<x-basekit-ui::toast title="Saved!" variant="success" />');
+        expect($html)->toContain('bk-toast__title--standalone');
+    });
+
+    test('toast with title and message omits the standalone modifier', function () {
+        $html = Blade::render('<x-basekit-ui::toast title="Saved!" message="All changes were stored." variant="success" />');
+        expect($html)->toContain('All changes were stored.');
+        expect($html)->not->toContain('bk-toast__title--standalone');
+    });
+
+    test('toast with title and slot content omits the standalone modifier', function () {
+        $html = Blade::render('<x-basekit-ui::toast title="Saved!" variant="success">All changes were stored.</x-basekit-ui::toast>');
+        expect($html)->toContain('All changes were stored.');
+        expect($html)->not->toContain('bk-toast__title--standalone');
     });
 
     test('tooltip renders with content and position', function () {

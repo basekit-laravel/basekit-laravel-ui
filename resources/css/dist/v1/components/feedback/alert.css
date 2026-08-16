@@ -74,6 +74,10 @@
   margin-bottom: 0.25rem;
 }
 
+.bk-alert__title--standalone {
+  margin-bottom: 0;
+}
+
 .bk-alert__actions {
   margin-top: 0.75rem;
   display: flex;

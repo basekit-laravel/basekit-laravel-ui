@@ -24,7 +24,7 @@
 
     <div class="bk-alert__content {{ $contentClass ?? '' }}">
         @if ($title)
-            <div class="bk-alert__title">{{ $title }}</div>
+            <div class="bk-alert__title{{ $slot->isEmpty() && !isset($actions) ? ' bk-alert__title--standalone' : '' }}">{{ $title }}</div>
         @endif
 
         <div class="bk-alert__message">{{ $slot }}</div>

@@ -38,7 +38,7 @@
         {{-- Message --}}
         <div class="bk-toast__message">
             @if ($title)
-                <div class="bk-toast__title">
+                <div class="bk-toast__title{{ $slot->isEmpty() && ! filled($message) ? ' bk-toast__title--standalone' : '' }}">
                     {{ $title }}
                 </div>
             @endif
