@@ -12,7 +12,7 @@
     - default: Custom menu markup
 --}}
 
-<div class="bk-dropdown" x-data="{ open: false }" @click.away="open = false"
+<div class="bk-dropdown" x-data="{ open: false }" @click.away="open = false" @keydown.escape.window="open = false"
     @if ($openOn === 'hover') @mouseenter="open = true" @mouseleave="open = false" @endif {{ $attributes }}>
 
     {{-- Trigger --}}
