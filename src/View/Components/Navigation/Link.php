@@ -38,7 +38,7 @@ class Link extends Component
         /**
          * Heroicon name.
          */
-        public ?string $icon = null,
+        public ?string $iconName = null,
         /**
          * Quick color shortcut. Sets text + hover text.
          */
@@ -101,11 +101,11 @@ class Link extends Component
      */
     public function iconComponent(): ?string
     {
-        if ($this->icon === null || $this->icon === '') {
+        if ($this->iconName === null || $this->iconName === '') {
             return null;
         }
 
-        return ComponentPropResolver::heroiconComponent($this->icon);
+        return ComponentPropResolver::heroiconComponent($this->iconName);
     }
 
     /**

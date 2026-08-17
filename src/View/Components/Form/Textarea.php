@@ -59,7 +59,7 @@ class Textarea extends Component
      * @param  string|null  $value  The textarea value
      * @param  int  $rows  Number of rows
      * @param  string|LabelStyle  $labelStyle  The label style (default, inset, overlap)
-     * @param  bool  $isUnderline  Whether to use underline style
+     * @param  string|ControlStyle  $controlStyle  The control style (default, pill, underline)
      * @param  string|null  $cornerHint  Optional corner hint text
      */
     public function __construct(
@@ -86,10 +86,6 @@ class Textarea extends Component
          * Control style: default, pill, or underline.
          */
         string|ControlStyle $controlStyle = 'default',
-        /**
-         * @deprecated Use `control-style="underline"` instead. Will be removed in a future major version.
-         */
-        public bool $isUnderline = false,
         public ?string $cornerHint = null,
         /**
          * Quick color shortcut. Sets border color.
@@ -109,7 +105,7 @@ class Textarea extends Component
         public ?string $containerClass = null,
     ) {
         $this->labelStyle = $this->resolveLabelStyle($labelStyle);
-        $this->controlStyle = $this->resolveControlStyle($controlStyle, $isUnderline);
+        $this->controlStyle = $this->resolveControlStyle($controlStyle);
         $this->variant = $this->resolveVariant($variant);
         $this->size = $this->resolveSize($size);
     }
@@ -309,28 +305,13 @@ class Textarea extends Component
 
     /**
      * Resolve control style to a supported enum value.
-     *
-     * Supports the deprecated `$isUnderline` boolean as a backwards-compatible
-     * alias: when `is-underline` is true and no explicit control style was
-     * provided, the underline style is applied.
      */
-    private function resolveControlStyle(string|ControlStyle $controlStyle, bool $isUnderline): ControlStyle
+    private function resolveControlStyle(string|ControlStyle $controlStyle): ControlStyle
     {
         if ($controlStyle instanceof ControlStyle) {
             return $controlStyle;
         }
 
-        $resolved = ControlStyle::tryFrom(strtolower($controlStyle));
-
-        if ($resolved !== null) {
-            return $resolved;
-        }
-
-        // Backwards compatibility: is-underline="true" maps to ControlStyle::Underline
-        if ($isUnderline) {
-            return ControlStyle::Underline;
-        }
-
-        return ControlStyle::Default;
+        return ControlStyle::tryFrom(strtolower($controlStyle)) ?? ControlStyle::Default;
     }
 }

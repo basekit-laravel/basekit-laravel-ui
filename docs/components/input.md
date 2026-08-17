@@ -59,10 +59,6 @@ Standard HTML input attributes such as `name`, `min`, `max`, `step`, `disabled`,
 
 Supported variants: `primary`, `secondary`, `success`, `warning`, `info`, `ghost`.
 
-::: info Shared Variant Enum
-Input now uses the shared `Variant` enum. The previous `InputVariant` enum is still available but deprecated and will be removed in a future major version.
-:::
-
 ```blade
 <x-basekit-ui::input name="primary" label="Primary" variant="primary" />
 <x-basekit-ui::input name="secondary" label="Secondary" variant="secondary" />

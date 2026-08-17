@@ -32,7 +32,6 @@ A multi-line text input component with configurable variants, sizes, label place
 | `corner-hint`  | `string` | `null`        | Top-right label row hint                                                    |
 | `label-style`  | `string` | `'default'`   | Label placement: `default`, `inset`, `overlap`                              |
 | `control-style` | `string` | `'default'`  | Control style: `default`, `pill`, `underline`                              |
-| `is-underline` | `bool`   | `false`       | Deprecated — use `control-style="underline"` instead. Will be removed in a future major version. |
 | `border`       | `string` | `null`        | Custom border color. |
 | `wrapper-class` | `string` | `null`        | Additional classes for the outer wrapper div |
 | `container-class` | `string` | `null`        | Additional classes for the inner container div |
