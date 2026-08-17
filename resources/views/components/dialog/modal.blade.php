@@ -36,12 +36,14 @@
         x-transition:leave="transition ease-in duration-200"
         x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
         x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" class="{{ $classes() }}"
-        role="dialog" aria-modal="true" @click.stop>
+        role="dialog" aria-modal="true"
+        @if ($title) aria-labelledby="{{ $modalTitleId }}" @endif
+        @click.stop>
 
         @if ($title || $isCloseButton)
             <div class="bk-modal__header {{ $headerClass ?? '' }}">
                 @if ($title)
-                    <h3 class="bk-modal__title">{{ $title }}</h3>
+                    <h3 class="bk-modal__title" id="{{ $modalTitleId }}">{{ $title }}</h3>
                 @endif
 
                 @if ($isCloseButton)

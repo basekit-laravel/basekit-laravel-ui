@@ -84,6 +84,14 @@ class Alert extends Component
     }
 
     /**
+     * Whether the alert should use assertive (role="alert") announcement.
+     */
+    public function isAssertive(): bool
+    {
+        return in_array($this->variant, [Variant::Danger, Variant::Warning], true);
+    }
+
+    /**
      * Get Heroicon component name for custom or default icon.
      */
     public function iconComponent(): string

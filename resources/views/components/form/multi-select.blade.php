@@ -81,10 +81,11 @@
         @endif
 
         {{-- Control --}}
-        <button type="button"
-            {{ $attributes->except(['label', 'error', 'hint', 'icon', 'options', 'value', 'placeholder', 'corner-hint', 'label-style', 'control-style', 'name'])->twMerge($classes() . ($hasCustomIcon || $iconComponent() ? ' bk-multiselect__control--with-icon' : '')) }}
+        <button type="button" id="{{ $inputId() }}"
+            {{ $attributes->except(['label', 'error', 'hint', 'icon', 'options', 'value', 'placeholder', 'corner-hint', 'label-style', 'control-style', 'name', 'id'])->twMerge($classes() . ($hasCustomIcon || $iconComponent() ? ' bk-multiselect__control--with-icon' : '')) }}
             :aria-expanded="open" aria-controls="{{ $listId() }}" aria-haspopup="listbox"
-            @if ($hasAnyError) aria-invalid="true" aria-describedby="{{ $attributes->get('id') }}-error" @endif
+            @if ($hasAnyError) aria-invalid="true" aria-describedby="{{ $inputId() }}-error" @endif
+            @if (!$hasAnyError && ($hint || $hasCustomHint)) aria-describedby="{{ $inputId() }}-hint" @endif
             @if ($isDisabled()) disabled @endif>
             <div class="bk-multiselect__value">
                 <template x-if="selected.length === 0">
@@ -93,7 +94,8 @@
                 <template x-for="option in selectedOptions()" :key="option.value">
                     <span class="bk-multiselect__chip">
                         <span class="bk-multiselect__chip-label" x-text="option.label"></span>
-                        <button type="button" class="bk-multiselect__chip-remove" @click.stop="toggle(option.value)">
+                        <button type="button" class="bk-multiselect__chip-remove" @click.stop="toggle(option.value)"
+                            :aria-label="'Remove ' + option.label" tabindex="-1">
                             x
                         </button>
                     </span>
@@ -135,12 +137,11 @@
     @if ($hasAnyError || $hint || $hasCustomHint || $reservesMessages)
         <div class="bk-multiselect__messages">
             @if ($hasAnyError)
-                <p class="bk-multiselect__error-message" role="alert"
-                    @if ($attributes->get('id')) id="{{ $attributes->get('id') }}-error" @endif>
+                <p class="bk-multiselect__error-message" role="alert" id="{{ $inputId() }}-error">
                     {{ $error }}
                 </p>
             @elseif (!$hasAnyError && ($hint || $hasCustomHint))
-                <p class="bk-multiselect__hint">
+                <p class="bk-multiselect__hint" id="{{ $inputId() }}-hint">
                     {{ $hint }}
                 </p>
             @endif

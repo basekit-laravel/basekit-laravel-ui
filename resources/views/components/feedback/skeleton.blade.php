@@ -10,7 +10,7 @@
 
 {{-- Skeleton Rendering --}}
 @if ($isMultiline())
-    <div {{ $attributes->except('rounded')->twMerge('bk-skeleton__text-group') }}>
+    <div {{ $attributes->except('rounded')->twMerge('bk-skeleton__text-group') }} aria-hidden="true">
         @for ($i = 0; $i < $lines; $i++)
             <div class="{{ $classes() }}" @if ($lineStyle($i)) style="{{ $lineStyle($i) }}" @endif>
             </div>
@@ -18,6 +18,6 @@
     </div>
 @else
     <div {{ $attributes->except('rounded')->twMerge($classes()) }}
-        @if ($singleStyle()) style="{{ $singleStyle() }}" @endif>
+        @if ($singleStyle()) style="{{ $singleStyle() }}" @endif aria-hidden="true">
     </div>
 @endif

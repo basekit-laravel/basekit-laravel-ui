@@ -107,11 +107,10 @@
     padding-left: 0;
     padding-right: 0;
   }
-.bk-accordion--flush .bk-accordion__trigger:hover {
+:is(.bk-accordion--flush .bk-accordion__trigger):hover {
       background-color: transparent;
     }
-.bk-accordion--flush .bk-accordion__trigger:hover .bk-accordion__title,
-      .bk-accordion--flush .bk-accordion__trigger:hover .bk-accordion__icon {
+:is(.bk-accordion--flush .bk-accordion__trigger):hover .bk-accordion__title,:is(.bk-accordion--flush .bk-accordion__trigger):hover .bk-accordion__icon {
         color: var(--accordion-flush-hover-color);
       }
 .bk-accordion--flush .bk-accordion__body {

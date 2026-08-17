@@ -19,7 +19,7 @@
     @focusout="{{ $hideHandlerExpression }}">
 
     {{-- Trigger Element --}}
-    <div class="bk-tooltip__trigger">
+    <div class="bk-tooltip__trigger" :aria-describedby="show ? '{{ $tooltipId }}' : undefined">
         {{ $slot }}
     </div>
 
@@ -27,7 +27,7 @@
     <div class="{{ $classes() }}" x-show="show" x-transition:enter="transition ease-out duration-200"
         x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100"
         x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 transform scale-100"
-        x-transition:leave-end="opacity-0 transform scale-95" role="tooltip">
+        x-transition:leave-end="opacity-0 transform scale-95" role="tooltip" id="{{ $tooltipId }}">
         {{ $content }}
     </div>
 </div>

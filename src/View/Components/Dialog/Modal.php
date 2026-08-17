@@ -21,6 +21,11 @@ class Modal extends Component
     public string $size;
 
     /**
+     * ID for the modal title element.
+     */
+    public string $modalTitleId;
+
+    /**
      * Create a new component instance.
      */
     public function __construct(
@@ -59,6 +64,7 @@ class Modal extends Component
         public ?string $footerClass = null,
     ) {
         $this->size = $this->resolveSize($size);
+        $this->modalTitleId = 'bk-modal-title-'.md5($this->title ?? 'modal');
     }
 
     /**

@@ -1,6 +1,6 @@
 @if ($isTogglePassword)
     <button type="button" class="bk-input__password-toggle" @click="showPassword = !showPassword"
-        :aria-label="showPassword ? 'Hide password' : 'Show password'" tabindex="-1">
+        :aria-label="showPassword ? 'Hide password' : 'Show password'" tabindex="0">
         {{-- Eye icon (visible when password is hidden) --}}
         <svg x-show="!showPassword" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor">

@@ -41,9 +41,9 @@ test('dismissible alert dismiss button has accessible label', function () {
     });
 });
 
-test('dismissible alert has alert role', function () {
+test('dismissible alert has status role', function () {
     $this->browse(function (Browser $browser) {
         $browser->visit('/dusk/alert-dismissible')
-            ->assertAttribute('.bk-alert', 'role', 'alert');
+            ->assertAttribute('.bk-alert', 'role', 'status');
     });
 });

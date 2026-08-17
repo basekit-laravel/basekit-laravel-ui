@@ -17,10 +17,10 @@ test('toast appears with correct content', function () {
     });
 });
 
-test('toast has alert role', function () {
+test('toast has status role', function () {
     $this->browse(function (Browser $browser) {
         $browser->visit('/dusk/toast')
-            ->assertAttribute('.bk-toast', 'role', 'alert');
+            ->assertAttribute('.bk-toast', 'role', 'status');
     });
 });
 

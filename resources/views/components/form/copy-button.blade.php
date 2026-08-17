@@ -17,7 +17,7 @@
     so it is never interpolated into an inline JavaScript expression.
 --}}
 
-<button {{ $attributes->twMerge($classes()) }}
+<button {{ $attributes->twMerge($classes(), 'bk-copy-button') }}
     type="button"
     data-value="{{ $value }}"
     data-duration="{{ $duration }}"
@@ -25,8 +25,10 @@
     x-on:click="navigator.clipboard.writeText($el.dataset.value); copied = true; setTimeout(() => copied = false, Number($el.dataset.duration ?? 2000))"
     x-bind:aria-label="copied ? @js($copiedLabel ?? $label ?? '') : @js($label ?? '')">
 
-    <x-dynamic-component :component="$iconComponent()" class="bk-button__icon" x-show="!copied" x-cloak />
-    <x-dynamic-component :component="$copiedIconComponent()" class="bk-button__icon" x-show="copied" x-cloak />
+    <span class="bk-button__icon">
+        <x-dynamic-component :component="$iconComponent()" x-show="!copied" x-cloak />
+        <x-dynamic-component :component="$copiedIconComponent()" x-show="copied" x-cloak />
+    </span>
 
     <span class="bk-button__content">
         <span x-show="!copied">{{ $slot->isEmpty() ? $label : $slot }}</span>

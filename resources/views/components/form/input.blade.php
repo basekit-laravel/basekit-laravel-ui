@@ -76,12 +76,13 @@
         @endif
 
         {{-- Input Field --}}
-        <input
+        <input id="{{ $inputId() }}"
             @if ($isTogglePassword) :type="showPassword ? 'text' : 'password'" @else type="{{ $inputType() }}" @endif
-            {{ $attributes->except(['label', 'error', 'hint', 'icon', 'is-toggle-password', 'mask', 'label-style', 'control-style'])->twMerge($classes() . ($shouldShowErrorIcon(isset($suffix)) ? ' bk-input__control--has-error-icon' : '')) }}
+            {{ $attributes->except(['label', 'error', 'hint', 'icon', 'is-toggle-password', 'mask', 'label-style', 'control-style', 'id'])->twMerge($classes() . ($shouldShowErrorIcon(isset($suffix)) ? ' bk-input__control--has-error-icon' : '')) }}
             @if ($placeholder) placeholder="{{ $placeholder }}" @endif
             @if ($value !== null) value="{{ $value }}" @endif
-            @if ($hasAnyError) aria-invalid="true" @if (filled($error)) aria-describedby="{{ $attributes->get('id') }}-error" @endif @endif
+            @if ($hasAnyError) aria-invalid="true" @if (filled($error)) aria-describedby="{{ $inputId() }}-error" @endif @endif
+            @if (!$hasAnyError && ($hint || $hasCustomHint)) aria-describedby="{{ $inputId() }}-hint" @endif
             @if ($shouldUseNumberStepper()) x-ref="numberInput" x-model.number="value" @endif
             @if ($hasMask()) x-on:input="$el.value = applyMask($el.value, $event)" @endif>
 
@@ -113,12 +114,11 @@
     @if ($error || $hint || $hasCustomHint || $reservesMessages)
         <div class="bk-input__messages">
             @if (filled($error))
-                <p class="bk-input__error-message" role="alert"
-                    @if ($attributes->get('id')) id="{{ $attributes->get('id') }}-error" @endif>
+                <p class="bk-input__error-message" role="alert" id="{{ $inputId() }}-error">
                     {{ $error }}
                 </p>
             @elseif (!$hasAnyError && ($hint || $hasCustomHint))
-                <p class="bk-input__hint">
+                <p class="bk-input__hint" id="{{ $inputId() }}-hint">
                     {{ $hint }}
                 </p>
             @endif

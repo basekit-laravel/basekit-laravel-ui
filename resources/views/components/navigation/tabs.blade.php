@@ -10,13 +10,19 @@
 --}}
 
 <div {{ $attributes->twMerge('bk-tabs') }} x-data="{ activeTab: '{{ $active }}' }">
-    <div class="{{ $classes() }}" role="tablist">
+    <div class="{{ $classes() }}" role="tablist" id="{{ $tablistId }}">
         @if (!empty($items))
             @foreach ($items as $item)
                 <button type="button" @click="activeTab = '{{ $item['value'] }}'"
                     :class="activeTab === '{{ $item['value'] }}' ? 'bk-tabs__tab--active' : 'bk-tabs__tab--inactive'"
-                    class="bk-tabs__tab" role="tab" @if (!empty($item['disabled'])) disabled @endif
-                    :aria-selected="activeTab === '{{ $item['value'] }}' ? 'true' : 'false'">
+                    class="bk-tabs__tab" role="tab" id="tab-{{ $item['value'] }}"
+                    aria-controls="tabpanel-{{ $item['value'] }}"
+                    :aria-selected="activeTab === '{{ $item['value'] }}' ? 'true' : 'false'"
+                    @if (!empty($item['disabled'])) disabled @endif
+                    @keydown.right.prevent="const tabs=$el.parentElement.querySelectorAll('[role=&quot;tab&quot;]:not([disabled])');const idx=Array.from(tabs).indexOf($el);const next=tabs[(idx+1)%tabs.length];next.focus();next.click();"
+                    @keydown.left.prevent="const tabs=$el.parentElement.querySelectorAll('[role=&quot;tab&quot;]:not([disabled])');const idx=Array.from(tabs).indexOf($el);const prev=tabs[(idx-1+tabs.length)%tabs.length];prev.focus();prev.click();"
+                    @keydown.home.prevent="const tabs=$el.parentElement.querySelectorAll('[role=&quot;tab&quot;]:not([disabled])');tabs[0]?.focus();tabs[0]?.click();"
+                    @keydown.end.prevent="const tabs=$el.parentElement.querySelectorAll('[role=&quot;tab&quot;]:not([disabled])');tabs[tabs.length-1]?.focus();tabs[tabs.length-1]?.click();">
 
                     @if ($hasIcon($item))
                         <span class="bk-tabs__tab-icon" aria-hidden="true">

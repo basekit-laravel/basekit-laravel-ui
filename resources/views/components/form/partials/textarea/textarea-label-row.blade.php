@@ -1,7 +1,7 @@
 @if ($shouldShowTopLabel && ($hasLabel || $hasCornerHint))
     <div class="bk-textarea__label-row">
         @if ($hasLabel)
-            <label class="bk-textarea__label">
+            <label class="bk-textarea__label" for="{{ $inputId() }}">
                 {{ $labelContent }}
             </label>
         @endif

@@ -20,7 +20,7 @@
     @if ($label || $isShowPercentage)
         <div class="bk-progress__label-container">
             @if ($label)
-                <span class="bk-progress__label">
+                <span class="bk-progress__label" id="{{ $progressLabelId }}">
                     {{ $label }}
                 </span>
             @endif
@@ -37,11 +37,14 @@
 
     {{-- Progress Bar --}}
     <div class="{{ $classes() }}" role="progressbar" aria-valuemin="0" aria-valuemax="{{ $max }}"
-        @if ($indeterminate) aria-busy="true"
+        @if ($label) aria-labelledby="{{ $progressLabelId }}" @endif
+        @if ($indeterminate) aria-busy="true" aria-valuetext="Loading"
         @elseif ($hasDynamicValue)
             x-bind:aria-valuenow="{{ $dynamicNowExpression }}"
+            x-bind:aria-valuetext="`${Math.round(({{ $dynamicNowExpression }} / {{ $max }}) * 100)}% complete`"
         @else
-            aria-valuenow="{{ $value }}" @endif>
+            aria-valuenow="{{ $value }}"
+            aria-valuetext="{{ number_format($percentage(), 0) }}% complete" @endif>
         <div @class([
             'bk-progress__fill',
             'bk-progress__fill--indeterminate' => $indeterminate,

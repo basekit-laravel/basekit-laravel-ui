@@ -66,7 +66,7 @@
     border-bottom: 1px solid var(--list-divided-border);
   }
 
-.bk-list--divided li:last-child {
+:is(.bk-list--divided li):last-child {
       border-bottom: none;
     }
 
@@ -81,7 +81,7 @@
     border-bottom: 1px solid var(--list-divided-border);
   }
 
-.bk-list--bordered li:last-child {
+:is(.bk-list--bordered li):last-child {
       border-bottom: none;
     }
 

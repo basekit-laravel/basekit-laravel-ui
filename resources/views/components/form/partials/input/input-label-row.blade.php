@@ -1,7 +1,7 @@
 @if ($shouldShowTopLabel && ($hasLabel || $hasCornerHint))
     <div class="bk-input__label-row">
         @if ($hasLabel)
-            <label class="bk-input__label">
+            <label class="bk-input__label" for="{{ $inputId() }}">
                 {{ $labelContent }}
             </label>
         @endif

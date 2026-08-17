@@ -10,6 +10,7 @@ use BasekitLaravel\BasekitLaravelUi\Enums\Variant;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentColorResolver;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentPropResolver;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
 /**
@@ -20,6 +21,11 @@ use Illuminate\View\Component;
  */
 class Textarea extends Component
 {
+    /**
+     * The resolved input ID for this render.
+     */
+    private ?string $resolvedInputId = null;
+
     /**
      * The textarea variant.
      */
@@ -183,6 +189,23 @@ class Textarea extends Component
     public function render(): View
     {
         return view('basekit::components.form.textarea');
+    }
+
+    /**
+     * Get or generate the textarea input ID.
+     */
+    public function inputId(): string
+    {
+        if ($this->resolvedInputId !== null) {
+            return $this->resolvedInputId;
+        }
+
+        $id = $this->attributes->get('id');
+        if (is_string($id) && $id !== '') {
+            return $this->resolvedInputId = $id;
+        }
+
+        return $this->resolvedInputId = 'bk-textarea-'.Str::uuid();
     }
 
     /**

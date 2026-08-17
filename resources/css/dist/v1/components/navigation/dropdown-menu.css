@@ -55,16 +55,16 @@
     transition: all var(--transition-fast);
   }
 
-.bk-dropdown .bk-dropdown__trigger:hover {
+:is(.bk-dropdown .bk-dropdown__trigger):hover {
       background-color: var(--dropdown-trigger-hover-bg);
       border-color: var(--dropdown-trigger-hover-border);
     }
 
-.bk-dropdown .bk-dropdown__trigger:focus {
+:is(.bk-dropdown .bk-dropdown__trigger):focus {
       outline: none;
     }
 
-.bk-dropdown .bk-dropdown__trigger:focus-visible {
+:is(.bk-dropdown .bk-dropdown__trigger):focus-visible {
       outline: none;
       box-shadow: 0 0 0 4px var(--dropdown-trigger-focus-ring);
     }

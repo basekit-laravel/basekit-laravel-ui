@@ -247,8 +247,7 @@
     height: 1rem;
     height: var(--radio-size-sm);
   }
-.bk-radio__container--sm .bk-radio__error-message,
-  .bk-radio__container--sm .bk-radio__hint {
+.bk-radio__container--sm .bk-radio__error-message,.bk-radio__container--sm .bk-radio__hint {
     margin-left: calc(1rem + 0.75rem);
     margin-left: calc(var(--radio-size-sm) + 0.75rem);
   }
@@ -260,8 +259,7 @@
     height: var(--radio-size-md);
   }
 
-.bk-radio__container--md .bk-radio__error-message,
-  .bk-radio__container--md .bk-radio__hint {
+.bk-radio__container--md .bk-radio__error-message,.bk-radio__container--md .bk-radio__hint {
     margin-left: calc(1.125rem + 0.75rem);
     margin-left: calc(var(--radio-size-md) + 0.75rem);
   }
@@ -273,8 +271,7 @@
     height: var(--radio-size-lg);
   }
 
-.bk-radio__container--lg .bk-radio__error-message,
-  .bk-radio__container--lg .bk-radio__hint {
+.bk-radio__container--lg .bk-radio__error-message,.bk-radio__container--lg .bk-radio__hint {
     margin-left: calc(1.25rem + 0.75rem);
     margin-left: calc(var(--radio-size-lg) + 0.75rem);
   }

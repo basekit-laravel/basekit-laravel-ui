@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace BasekitLaravel\BasekitLaravelUi\View\Components\Feedback;
 
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
 /**
@@ -16,6 +17,11 @@ use Illuminate\View\Component;
  */
 class Tooltip extends Component
 {
+    /**
+     * Unique ID for the tooltip content element.
+     */
+    public string $tooltipId;
+
     /**
      * The tooltip position relative to the trigger.
      *
@@ -62,6 +68,7 @@ class Tooltip extends Component
         int $showDelay = 0,
         int $hideDelay = 0
     ) {
+        $this->tooltipId = 'bk-tooltip-'.Str::uuid();
         $this->position = $position ?? config('basekit-laravel-ui.components.tooltip.default_position', 'top');
         $this->showDelay = max(0, $showDelay);
         $this->hideDelay = max(0, $hideDelay);

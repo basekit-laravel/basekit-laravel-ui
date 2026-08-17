@@ -60,7 +60,7 @@
   transition: all var(--transition-fast);
 }
 
-.bk-pagination__link:hover, .bk-pagination__number:hover {
+:is(.bk-pagination__link,.bk-pagination__number):hover {
     background-color: var(--pagination-hover-bg);
   }
 

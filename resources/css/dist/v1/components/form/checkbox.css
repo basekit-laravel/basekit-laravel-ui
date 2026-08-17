@@ -165,7 +165,7 @@
 .bk-checkbox__container--error .bk-checkbox__control {
     border-color: var(--checkbox-error-border-color);
   }
-.bk-checkbox__container--error .bk-checkbox__control:checked {
+:is(.bk-checkbox__container--error .bk-checkbox__control):checked {
       background-color: var(--color-danger-600);
       border-color: var(--color-danger-600);
     }
@@ -241,8 +241,7 @@
   height: 1rem;
   height: var(--checkbox-size-sm);
 }
-.bk-checkbox__control--sm ~ .bk-checkbox__error-message,
-  .bk-checkbox__control--sm ~ .bk-checkbox__hint {
+.bk-checkbox__control--sm ~ .bk-checkbox__error-message,.bk-checkbox__control--sm ~ .bk-checkbox__hint {
     margin-left: calc(1rem + 0.75rem);
     margin-left: calc(var(--checkbox-size-sm) + 0.75rem);
   }
@@ -254,8 +253,7 @@
   height: var(--checkbox-size-md);
 }
 
-.bk-checkbox__control--md ~ .bk-checkbox__error-message,
-  .bk-checkbox__control--md ~ .bk-checkbox__hint {
+.bk-checkbox__control--md ~ .bk-checkbox__error-message,.bk-checkbox__control--md ~ .bk-checkbox__hint {
     margin-left: calc(1.125rem + 0.75rem);
     margin-left: calc(var(--checkbox-size-md) + 0.75rem);
   }
@@ -267,8 +265,7 @@
   height: var(--checkbox-size-lg);
 }
 
-.bk-checkbox__control--lg ~ .bk-checkbox__error-message,
-  .bk-checkbox__control--lg ~ .bk-checkbox__hint {
+.bk-checkbox__control--lg ~ .bk-checkbox__error-message,.bk-checkbox__control--lg ~ .bk-checkbox__hint {
     margin-left: calc(1.25rem + 0.75rem);
     margin-left: calc(var(--checkbox-size-lg) + 0.75rem);
   }

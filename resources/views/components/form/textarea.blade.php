@@ -48,9 +48,10 @@
         ])
 
         {{-- Textarea Field --}}
-        <textarea {{ $attributes->except(['label', 'error', 'hint', 'label-style'])->twMerge($classes()) }}
+        <textarea id="{{ $inputId() }}" {{ $attributes->except(['label', 'error', 'hint', 'label-style', 'id'])->twMerge($classes()) }}
             rows="{{ $rows }}" @if ($placeholder) placeholder="{{ $placeholder }}" @endif
-            @if ($hasAnyError) aria-invalid="true" aria-describedby="{{ $attributes->get('id') }}-error" @endif>{{ $value }}</textarea>
+            @if ($hasAnyError) aria-invalid="true" aria-describedby="{{ $inputId() }}-error" @endif
+            @if (!$hasAnyError && ($hint || $hasCustomHint)) aria-describedby="{{ $inputId() }}-hint" @endif>{{ $value }}</textarea>
 
         {{-- Error Indicator --}}
         @include('basekit::components.form.partials.error-indicator', [
@@ -63,12 +64,11 @@
     @if ($hasAnyError || $hint || $hasCustomHint || $reservesMessages)
         <div class="bk-textarea__messages">
             @if ($hasAnyError)
-                <p class="bk-textarea__error-message" role="alert"
-                    @if ($attributes->get('id')) id="{{ $attributes->get('id') }}-error" @endif>
+                <p class="bk-textarea__error-message" role="alert" id="{{ $inputId() }}-error">
                     {{ $error }}
                 </p>
             @elseif (!$hasAnyError && ($hint || $hasCustomHint))
-                <p class="bk-textarea__hint">
+                <p class="bk-textarea__hint" id="{{ $inputId() }}-hint">
                     {{ $hint }}
                 </p>
             @endif

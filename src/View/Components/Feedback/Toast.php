@@ -97,6 +97,14 @@ class Toast extends Component
     }
 
     /**
+     * Whether the toast should use assertive (role="alert") announcement.
+     */
+    public function isAssertive(): bool
+    {
+        return in_array($this->variant, ['danger', 'error', 'warning'], true);
+    }
+
+    /**
      * Get the inline color style string based on color props.
      */
     public function colorStyle(): ?string

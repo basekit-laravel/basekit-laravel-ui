@@ -121,28 +121,13 @@
     padding-left: 1rem;
     padding-left: var(--input-px-lg);
   }
-.bk-input:has(
-      .bk-input__container--pill.bk-input__container--sm:has(
-          .bk-input__control--with-icon
-        )
-    )
-    .bk-input__label {
+.bk-input:has(.bk-input__container--pill.bk-input__container--sm:has(.bk-input__control--with-icon)) .bk-input__label {
     padding-left: 2rem;
   }
-.bk-input:has(
-      .bk-input__container--pill.bk-input__container--md:has(
-          .bk-input__control--with-icon
-        )
-    )
-    .bk-input__label {
+.bk-input:has(.bk-input__container--pill.bk-input__container--md:has(.bk-input__control--with-icon)) .bk-input__label {
     padding-left: 2.25rem;
   }
-.bk-input:has(
-      .bk-input__container--pill.bk-input__container--lg:has(
-          .bk-input__control--with-icon
-        )
-    )
-    .bk-input__label {
+.bk-input:has(.bk-input__container--pill.bk-input__container--lg:has(.bk-input__control--with-icon)) .bk-input__label {
     padding-left: 2.75rem;
   }
 
@@ -230,17 +215,11 @@
 .bk-input__container:hover .bk-input__control:not(:disabled):not([readonly]):not(.bk-input__control--error):not([aria-invalid="true"]) {
       border-color: var(--input-hover-border-color);
     }
-.bk-input__container:hover:has(
-        .bk-input__control:not(:disabled):not([readonly]):not(.bk-input__control--error):not([aria-invalid="true"])
-      ) .bk-input__prefix,
-      .bk-input__container:hover:has(
-        .bk-input__control:not(:disabled):not([readonly]):not(.bk-input__control--error):not([aria-invalid="true"])
-      ) .bk-input__suffix {
+.bk-input__container:hover:has(.bk-input__control:not(:disabled):not([readonly]):not(.bk-input__control--error):not([aria-invalid="true"])) .bk-input__prefix,.bk-input__container:hover:has(.bk-input__control:not(:disabled):not([readonly]):not(.bk-input__control--error):not([aria-invalid="true"])) .bk-input__suffix {
         border-color: var(--input-hover-border-color);
       }
 
-.bk-input__container:has(:disabled) .bk-input__prefix,
-  .bk-input__container:has(:disabled) .bk-input__suffix {
+.bk-input__container:has(:disabled) .bk-input__prefix,.bk-input__container:has(:disabled) .bk-input__suffix {
     background-color: var(--input-disabled-bg);
     color: var(--input-disabled-color);
     border-color: var(--input-disabled-border-color);
@@ -279,7 +258,7 @@
     color: var(--input-error-color);
   }
 
-.bk-input__container--error .bk-input__control:focus {
+:is(.bk-input__container--error .bk-input__control):focus {
       border-color: var(--input-error-border-color);
       box-shadow: none;
     }
@@ -291,13 +270,11 @@
       var(--input-error-ring-color);
   }
 
-.bk-input__container--error .bk-input__prefix,
-  .bk-input__container--error .bk-input__suffix {
+.bk-input__container--error .bk-input__prefix,.bk-input__container--error .bk-input__suffix {
     border-color: var(--input-error-border-color);
   }
 
-.bk-input__container--error .bk-input__label--inset,
-  .bk-input__container--error .bk-input__label--overlap {
+.bk-input__container--error .bk-input__label--inset,.bk-input__container--error .bk-input__label--overlap {
     color: var(--input-error-color);
   }
 
@@ -318,8 +295,7 @@
     box-shadow: none;
   }
 
-.bk-input__container--primary .bk-input__prefix,
-  .bk-input__container--primary .bk-input__suffix {
+.bk-input__container--primary .bk-input__prefix,.bk-input__container--primary .bk-input__suffix {
     border-color: var(--input-primary-border-color);
   }
 
@@ -348,8 +324,7 @@
     box-shadow: none;
   }
 
-.bk-input__container--secondary .bk-input__prefix,
-  .bk-input__container--secondary .bk-input__suffix {
+.bk-input__container--secondary .bk-input__prefix,.bk-input__container--secondary .bk-input__suffix {
     border-color: var(--input-secondary-border-color);
   }
 
@@ -378,8 +353,7 @@
     box-shadow: none;
   }
 
-.bk-input__container--success .bk-input__prefix,
-  .bk-input__container--success .bk-input__suffix {
+.bk-input__container--success .bk-input__prefix,.bk-input__container--success .bk-input__suffix {
     border-color: var(--input-success-border-color);
   }
 
@@ -408,8 +382,7 @@
     box-shadow: none;
   }
 
-.bk-input__container--warning .bk-input__prefix,
-  .bk-input__container--warning .bk-input__suffix {
+.bk-input__container--warning .bk-input__prefix,.bk-input__container--warning .bk-input__suffix {
     border-color: var(--input-warning-border-color);
   }
 
@@ -438,8 +411,7 @@
     box-shadow: none;
   }
 
-.bk-input__container--info .bk-input__prefix,
-  .bk-input__container--info .bk-input__suffix {
+.bk-input__container--info .bk-input__prefix,.bk-input__container--info .bk-input__suffix {
     border-color: var(--input-info-border-color);
   }
 
@@ -471,8 +443,7 @@
     box-shadow: none;
   }
 
-.bk-input__container--ghost .bk-input__prefix,
-  .bk-input__container--ghost .bk-input__suffix {
+.bk-input__container--ghost .bk-input__prefix,.bk-input__container--ghost .bk-input__suffix {
     border-color: transparent;
     border-color: var(--input-ghost-border-color);
     background-color: transparent;
@@ -566,14 +537,13 @@
 .bk-input__container--sm .bk-input__control--with-icon {
     padding-left: 2rem;
   }
-.bk-input__container--sm:has(.bk-input__control--with-icon) .bk-input__label--inset,
-    .bk-input__container--sm:has(.bk-input__control--with-icon) .bk-input__label--overlap {
+.bk-input__container--sm:has(.bk-input__control--with-icon) .bk-input__label--inset,.bk-input__container--sm:has(.bk-input__control--with-icon) .bk-input__label--overlap {
       left: 2rem;
     }
 .bk-input__container--sm .bk-input__error-icon {
     width: 2rem;
   }
-.bk-input__container--sm .bk-input__error-icon svg {
+:is(.bk-input__container--sm .bk-input__error-icon) svg {
       width: 1rem;
       height: 1rem;
     }
@@ -621,8 +591,7 @@
     padding-left: 2.25rem;
   }
 
-.bk-input__container--md:has(.bk-input__control--with-icon) .bk-input__label--inset,
-    .bk-input__container--md:has(.bk-input__control--with-icon) .bk-input__label--overlap {
+.bk-input__container--md:has(.bk-input__control--with-icon) .bk-input__label--inset,.bk-input__container--md:has(.bk-input__control--with-icon) .bk-input__label--overlap {
       left: 2.25rem;
     }
 
@@ -630,7 +599,7 @@
     width: 2.25rem;
   }
 
-.bk-input__container--md .bk-input__error-icon svg {
+:is(.bk-input__container--md .bk-input__error-icon) svg {
       width: 1.25rem;
       height: 1.25rem;
     }
@@ -686,8 +655,7 @@
     padding-left: 2.75rem;
   }
 
-.bk-input__container--lg:has(.bk-input__control--with-icon) .bk-input__label--inset,
-    .bk-input__container--lg:has(.bk-input__control--with-icon) .bk-input__label--overlap {
+.bk-input__container--lg:has(.bk-input__control--with-icon) .bk-input__label--inset,.bk-input__container--lg:has(.bk-input__control--with-icon) .bk-input__label--overlap {
       left: 2.75rem;
     }
 
@@ -695,7 +663,7 @@
     width: 2.75rem;
   }
 
-.bk-input__container--lg .bk-input__error-icon svg {
+:is(.bk-input__container--lg .bk-input__error-icon) svg {
       width: 1.5rem;
       height: 1.5rem;
     }

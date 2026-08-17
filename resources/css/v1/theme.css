@@ -2,6 +2,7 @@
 
 /* Component imports must come before other rules for postcss-import */
 @import "./components/form/button.css";
+@import "./components/form/copy-button.css";
 @import "./components/form/input.css";
 @import "./components/form/textarea.css";
 @import "./components/form/checkbox.css";

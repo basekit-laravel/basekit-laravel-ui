@@ -104,9 +104,10 @@
 
         @if ($useCustomDropdown)
             {{-- Custom Dropdown Field (matches multi-select menu styling) --}}
-            <button type="button"
-                {{ $attributes->except(['label', 'error', 'hint', 'icon', 'options', 'value', 'placeholder', 'empty-label', 'corner-hint', 'label-style', 'control-style', 'is-disabled', 'name', 'allow-empty'])->twMerge($classes() . ($iconComponent() || $hasCustomIcon ? ' bk-select__control--with-icon' : '')) }}
-                @if ($hasAnyError) aria-invalid="true" aria-describedby="{{ $attributes->get('id') }}-error" @endif
+            <button type="button" id="{{ $inputId() }}"
+                {{ $attributes->except(['label', 'error', 'hint', 'icon', 'options', 'value', 'placeholder', 'empty-label', 'corner-hint', 'label-style', 'control-style', 'is-disabled', 'name', 'allow-empty', 'id'])->twMerge($classes() . ($iconComponent() || $hasCustomIcon ? ' bk-select__control--with-icon' : '')) }}
+                @if ($hasAnyError) aria-invalid="true" aria-describedby="{{ $inputId() }}-error" @endif
+                @if (!$hasAnyError && ($hint || $hasCustomHint)) aria-describedby="{{ $inputId() }}-hint" @endif
                 @if ($isDisabledAttribute()) disabled @endif :aria-expanded="open" aria-haspopup="listbox"
                 @click="if (!disabled) open = !open" @blur="_blurTimer = setTimeout(() => { open = false }, 150)">
                 <span class="bk-select__display"
@@ -130,9 +131,10 @@
             </div>
         @else
             {{-- Native Select Field (fallback for slotted/multiple usage) --}}
-            <select
-                {{ $attributes->except(['label', 'error', 'hint', 'icon', 'options', 'value', 'placeholder', 'empty-label', 'corner-hint', 'label-style', 'control-style', 'is-disabled', 'allow-empty'])->twMerge($classes() . ($iconComponent() || $hasCustomIcon ? ' bk-select__control--with-icon' : '')) }}
-                @if ($hasAnyError) aria-invalid="true" aria-describedby="{{ $attributes->get('id') }}-error" @endif
+            <select id="{{ $inputId() }}"
+                {{ $attributes->except(['label', 'error', 'hint', 'icon', 'options', 'value', 'placeholder', 'empty-label', 'corner-hint', 'label-style', 'control-style', 'is-disabled', 'allow-empty', 'id'])->twMerge($classes() . ($iconComponent() || $hasCustomIcon ? ' bk-select__control--with-icon' : '')) }}
+                @if ($hasAnyError) aria-invalid="true" aria-describedby="{{ $inputId() }}-error" @endif
+                @if (!$hasAnyError && ($hint || $hasCustomHint)) aria-describedby="{{ $inputId() }}-hint" @endif
                 @if ($isDisabledAttribute()) disabled @endif @mousedown="clearTimeout(_blurTimer); open = !open"
                 @blur="_blurTimer = setTimeout(() => { open = false }, 150)"
                 @change="clearTimeout(_blurTimer); open = false">
@@ -171,12 +173,11 @@
     @if ($hasAnyError || $hint || $hasCustomHint || $reservesMessages)
         <div class="bk-select__messages">
             @if ($hasAnyError)
-                <p class="bk-select__error-message" role="alert"
-                    @if ($attributes->get('id')) id="{{ $attributes->get('id') }}-error" @endif>
+                <p class="bk-select__error-message" role="alert" id="{{ $inputId() }}-error">
                     {{ $error }}
                 </p>
             @elseif (!$hasAnyError && ($hint || $hasCustomHint))
-                <p class="bk-select__hint">
+                <p class="bk-select__hint" id="{{ $inputId() }}-hint">
                     {{ $hint }}
                 </p>
             @endif

@@ -366,8 +366,7 @@
     box-shadow: 0 0 0 2px var(--textarea-error-ring);
   }
 
-.bk-textarea__container--error .bk-textarea__label--inset,
-  .bk-textarea__container--error .bk-textarea__label--overlap {
+.bk-textarea__container--error .bk-textarea__label--inset,.bk-textarea__container--error .bk-textarea__label--overlap {
     color: var(--textarea-error-border);
   }
 
@@ -460,7 +459,7 @@
   padding-top: var(--textarea-padding-y-sm);
 }
 
-.bk-textarea__container--sm .bk-textarea__error-icon svg {
+:is(.bk-textarea__container--sm .bk-textarea__error-icon) svg {
     width: 1rem;
     height: 1rem;
   }
@@ -471,7 +470,7 @@
   padding-top: var(--textarea-padding-y-md);
 }
 
-.bk-textarea__container--md .bk-textarea__error-icon svg {
+:is(.bk-textarea__container--md .bk-textarea__error-icon) svg {
     width: 1.25rem;
     height: 1.25rem;
   }
@@ -482,7 +481,7 @@
   padding-top: var(--textarea-padding-y-lg);
 }
 
-.bk-textarea__container--lg .bk-textarea__error-icon svg {
+:is(.bk-textarea__container--lg .bk-textarea__error-icon) svg {
     width: 1.5rem;
     height: 1.5rem;
   }

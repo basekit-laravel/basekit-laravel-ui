@@ -209,11 +209,24 @@ class MultiSelect extends Component
     }
 
     /**
+     * Cached base ID to ensure consistency across multiple calls.
+     */
+    private ?string $cachedBaseId = null;
+
+    /**
      * Get the base ID for the multiselect.
      */
     public function baseId(): string
     {
-        return $this->attributes->get('id') ?? 'bk-multiselect-'.uniqid();
+        return $this->cachedBaseId ??= $this->attributes->get('id') ?? 'bk-multiselect-'.uniqid();
+    }
+
+    /**
+     * Get or generate the multiselect input ID.
+     */
+    public function inputId(): string
+    {
+        return $this->baseId();
     }
 
     /**

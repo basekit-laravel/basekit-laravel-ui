@@ -22,6 +22,11 @@ class Tabs extends Component
     public string $variant;
 
     /**
+     * Unique ID for the tablist.
+     */
+    public string $tablistId;
+
+    /**
      * Create a new component instance.
      *
      * @param  array<int, array<string, mixed>>  $items
@@ -38,6 +43,7 @@ class Tabs extends Component
         ?string $variant = null
     ) {
         $this->variant = $this->resolveVariant($variant);
+        $this->tablistId = 'bk-tabs-'.md5((string) json_encode($this->items));
     }
 
     /**

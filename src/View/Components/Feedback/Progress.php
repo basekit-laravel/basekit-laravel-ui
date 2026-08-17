@@ -7,6 +7,7 @@ namespace BasekitLaravel\BasekitLaravelUi\View\Components\Feedback;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentColorResolver;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentPropResolver;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
 /**
@@ -66,6 +67,11 @@ class Progress extends Component
     public ?string $dynamicPercentageExpression = null;
 
     /**
+     * ID for the label element to associate with aria-labelledby.
+     */
+    public string $progressLabelId;
+
+    /**
      * Create a new component instance.
      */
     public function __construct(
@@ -110,6 +116,7 @@ class Progress extends Component
         $this->size = $this->resolveSize($size);
         $this->max = $max > 0 ? $max : 100;
         $this->value = max(0, min($value, $this->max));
+        $this->progressLabelId = 'bk-progress-label-'.Str::uuid();
 
         $this->hasDynamicValue = filled($this->dynamicValue);
 

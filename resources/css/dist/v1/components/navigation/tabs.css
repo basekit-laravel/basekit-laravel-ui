@@ -59,7 +59,7 @@
     color: var(--tabs-text);
   }
 
-.bk-tabs__list .bk-tabs__tab--inactive:hover {
+:is(.bk-tabs__list .bk-tabs__tab--inactive):hover {
       color: var(--tabs-hover-text);
     }
 

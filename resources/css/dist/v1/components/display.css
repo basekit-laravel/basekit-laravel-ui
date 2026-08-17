@@ -1,8 +1,6 @@
 /* =============================================================================
 	Display Components
-	============================================================================= */
-
-/* =============================================================================
+	============================================================================= *//* =============================================================================
 	Layout & Data Display Media Queries
 	============================================================================= */
 
@@ -624,28 +622,21 @@
    Size Modifiers
    ============================================================================= */
 
-.bk-table--sm th,
-  .bk-table--md th,
-  .bk-table--lg th,
-  .bk-table--sm td,
-  .bk-table--md td,
-  .bk-table--lg td {
+:is(.bk-table--sm,.bk-table--md,.bk-table--lg) th,:is(.bk-table--sm,.bk-table--md,.bk-table--lg) td {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
 
-.bk-table--md th,
-  .bk-table--md td {
+.bk-table--md th,.bk-table--md td {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
     padding-left: 1rem;
     padding-right: 1rem;
   }
 
-.bk-table--lg th,
-  .bk-table--lg td {
+.bk-table--lg th,.bk-table--lg td {
     padding-top: 1rem;
     padding-bottom: 1rem;
     padding-left: 1.25rem;
@@ -656,19 +647,16 @@
    Table Style Modifiers
    ============================================================================= */
 
-.bk-table--bordered th,
-  .bk-table--bordered td {
+.bk-table--bordered th,.bk-table--bordered td {
     border-right: 1px solid var(--table-border);
     border-left: 1px solid var(--table-border);
   }
 
-.bk-table--bordered th:first-child,
-  .bk-table--bordered td:first-child {
+.bk-table--bordered th:first-child,.bk-table--bordered td:first-child {
     border-left: none;
   }
 
-.bk-table--bordered th:last-child,
-  .bk-table--bordered td:last-child {
+.bk-table--bordered th:last-child,.bk-table--bordered td:last-child {
     border-right: none;
   }
 
@@ -1156,8 +1144,7 @@
     background-color: transparent;
   }
 
-    .bk-table__stack-row:first-child,
-    .bk-table__stack-row:last-child {
+    .bk-table__stack-row:first-child,.bk-table__stack-row:last-child {
       border-radius: 0;
     }
 
@@ -1172,42 +1159,35 @@
       text-align: left;
     }
 
-      .bk-table--stacked td:first-child {
+      :is(.bk-table--stacked td):first-child {
         padding: 1rem;
         border-top: none;
       }
 
-      .bk-table--stacked td:last-child {
+      :is(.bk-table--stacked td):last-child {
         padding: 1rem;
         border-bottom: 1px solid var(--table-border);
       }
 
-    .bk-table--stacked.bk-table--sm td,
-    .bk-table--stacked.bk-table--sm td:first-child,
-    .bk-table--stacked.bk-table--sm td:last-child {
+    .bk-table--stacked.bk-table--sm td,.bk-table--stacked.bk-table--sm td:first-child,.bk-table--stacked.bk-table--sm td:last-child {
       padding: 0.5rem 0.75rem;
     }
 
-    .bk-table--stacked.bk-table--lg td,
-    .bk-table--stacked.bk-table--lg td:first-child,
-    .bk-table--stacked.bk-table--lg td:last-child {
+    .bk-table--stacked.bk-table--lg td,.bk-table--stacked.bk-table--lg td:first-child,.bk-table--stacked.bk-table--lg td:last-child {
       padding: 1rem 1.25rem;
     }
 
     /* Bordered: add column separators on desktop, matching the regular bordered table */
-      .bk-table--stacked.bk-table--bordered th,
-      .bk-table--stacked.bk-table--bordered td {
+      .bk-table--stacked.bk-table--bordered th,.bk-table--stacked.bk-table--bordered td {
         border-right: 1px solid var(--table-border);
         border-left: 1px solid var(--table-border);
       }
 
-      .bk-table--stacked.bk-table--bordered th:first-child,
-      .bk-table--stacked.bk-table--bordered td:first-child {
+      .bk-table--stacked.bk-table--bordered th:first-child,.bk-table--stacked.bk-table--bordered td:first-child {
         border-left: none;
       }
 
-      .bk-table--stacked.bk-table--bordered th:last-child,
-      .bk-table--stacked.bk-table--bordered td:last-child {
+      .bk-table--stacked.bk-table--bordered th:last-child,.bk-table--stacked.bk-table--bordered td:last-child {
         border-right: none;
       }
 
@@ -1322,7 +1302,7 @@
     border-bottom: 1px solid var(--list-divided-border);
   }
 
-.bk-list--divided li:last-child {
+:is(.bk-list--divided li):last-child {
       border-bottom: none;
     }
 
@@ -1337,7 +1317,7 @@
     border-bottom: 1px solid var(--list-divided-border);
   }
 
-.bk-list--bordered li:last-child {
+:is(.bk-list--bordered li):last-child {
       border-bottom: none;
     }
 
@@ -1370,7 +1350,7 @@
     margin-bottom: 0.25rem;
   }
 
-.bk-description-list dt:first-child {
+:is(.bk-description-list dt):first-child {
       margin-top: 0;
     }
 
@@ -1430,8 +1410,7 @@
   gap: 1.5rem;
 }
 
-.bk-description-list--striped dt,
-  .bk-description-list--striped dd {
+.bk-description-list--striped dt,.bk-description-list--striped dd {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
     padding-left: 1rem;

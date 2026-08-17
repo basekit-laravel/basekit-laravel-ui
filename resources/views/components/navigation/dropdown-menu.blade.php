@@ -24,7 +24,7 @@
     @if (isset($trigger))
         {{ $trigger }}
     @else
-        <button type="button" class="bk-dropdown__trigger">
+        <button type="button" class="bk-dropdown__trigger" aria-haspopup="true" :aria-expanded="open">
             <span>Menu</span>
             <x-dynamic-component :component="$triggerIconComponent()" class="bk-dropdown__trigger-icon" ::class="{ 'rotate-180': open }" />
         </button>

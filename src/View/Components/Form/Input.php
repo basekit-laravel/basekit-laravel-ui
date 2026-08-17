@@ -11,6 +11,7 @@ use BasekitLaravel\BasekitLaravelUi\Enums\Size;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentColorResolver;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentPropResolver;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
 /**
@@ -21,6 +22,11 @@ use Illuminate\View\Component;
  */
 class Input extends Component
 {
+    /**
+     * The resolved input ID for this render.
+     */
+    private ?string $resolvedInputId = null;
+
     /**
      * The input size.
      */
@@ -157,6 +163,23 @@ class Input extends Component
     public function render(): View
     {
         return view('basekit::components.form.input');
+    }
+
+    /**
+     * Get or generate the input ID.
+     */
+    public function inputId(): string
+    {
+        if ($this->resolvedInputId !== null) {
+            return $this->resolvedInputId;
+        }
+
+        $id = $this->attributes->get('id');
+        if (is_string($id) && $id !== '') {
+            return $this->resolvedInputId = $id;
+        }
+
+        return $this->resolvedInputId = 'bk-input-'.Str::uuid();
     }
 
     /**

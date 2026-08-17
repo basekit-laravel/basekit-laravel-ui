@@ -77,6 +77,26 @@ class Accordion extends Component
     }
 
     /**
+     * Get a generated ID for an accordion panel.
+     *
+     * @param  array<string, mixed>  $item
+     */
+    public function panelId(array $item): string
+    {
+        return 'bk-accordion-panel-'.md5((string) ($item['value'] ?? ''));
+    }
+
+    /**
+     * Get a generated ID for an accordion trigger.
+     *
+     * @param  array<string, mixed>  $item
+     */
+    public function triggerId(array $item): string
+    {
+        return 'bk-accordion-trigger-'.md5((string) ($item['value'] ?? ''));
+    }
+
+    /**
      * Get chevron icon component name.
      */
     public function chevronIcon(): string
