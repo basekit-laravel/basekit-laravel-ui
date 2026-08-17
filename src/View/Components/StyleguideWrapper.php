@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace BasekitLaravel\BasekitLaravelUi\View\Components;
 
 use Illuminate\View\Component;
-use Illuminate\Contracts\View\View;
 
 class StyleguideWrapper extends Component
 {
@@ -18,11 +17,9 @@ class StyleguideWrapper extends Component
 
     /**
      * Get the view / contents that represent the component.
-     *
-     * @return View|string
      */
-    public function render()
+    public function render(): string
     {
-        return view('basekit::styleguide.index');
+        return view('basekit::components.styleguide-wrapper')->render();
     }
 }
