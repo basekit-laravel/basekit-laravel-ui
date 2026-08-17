@@ -43,12 +43,16 @@ Supported markers: `disc`, `circle`, `square`, `decimal`, `none`.
 
 ## Variants
 
-Supported variants: `default`, `divided`, `bordered`.
+Supported variants: `default`, `unordered`, `ordered`, `divided`, `bordered`, `marker-disc`, `marker-circle`, `marker-square`, `marker-decimal`, `marker-none`.
 
 ```blade
 <x-basekit-ui::list variant="divided" :items="['Item 1', 'Item 2', 'Item 3']" />
 
 <x-basekit-ui::list variant="bordered" :items="['Item 1', 'Item 2']" />
+
+<x-basekit-ui::list variant="unordered" :items="['Item 1', 'Item 2']" />
+
+<x-basekit-ui::list variant="ordered" :items="['Step 1', 'Step 2']" />
 ```
 
 ## Custom Item Markup
@@ -140,7 +144,7 @@ For dark mode token details, see [Theming — Dark Mode](/guide/theming#dark-mod
 ```php
 'list' => [
     'enabled' => true,
-    'variants' => ['default', 'divided', 'bordered'],
+    'variants' => ['default', 'unordered', 'ordered', 'divided', 'bordered', 'marker-disc', 'marker-circle', 'marker-square', 'marker-decimal', 'marker-none'],
     'default_variant' => 'default',
 ],
 ```

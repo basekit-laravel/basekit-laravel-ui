@@ -2,7 +2,7 @@
 
 ## 📦 Current Package Structure
 
-The `basekit-laravel-ui` package is a Laravel component library with 33 Blade components, Tailwind 4 CSS theming, and config-driven builds.
+The `basekit-laravel-ui` package is a Laravel component library with 35 Blade components, Tailwind 4 CSS theming, and config-driven builds.
 
 ```
 basekit-laravel-ui/
@@ -73,7 +73,7 @@ basekit-laravel-ui/
 │   │       ├── theme.css           # Global tokens, design system
 │   │       └── components/         # Component-specific styles (generated)
 │   └── views/
-│       └── components/             # Blade templates for all 33 components
+│       └── components/             # Blade templates for all 35 components
 ├── tests/
 │   ├── Feature/
 │   │   ├── ComponentRenderingTest.php  # Smoke tests for all components
@@ -85,7 +85,7 @@ basekit-laravel-ui/
 ├── docs/
 │   ├── index.md
 │   ├── components.md
-│   ├── components/ (33 component docs)
+│   ├── components/ (35 component docs)
 │   ├── guide/
 │   │   ├── installation.md
 │   │   ├── performance.md
@@ -113,14 +113,16 @@ basekit-laravel-ui/
 
 ### 1. **Component System**
 
-The package includes **33 production-ready components** organized in 6 categories:
+The package includes **35 production-ready components** organized in 8 categories:
 
-- **Form (8)**: Button, Input, Textarea, Checkbox, Radio, Select, Multi-Select, Toggle
+- **Form (10)**: Button, Input, Textarea, Checkbox, Radio, Select, Multi-Select, Toggle, Fieldset, Copy Button
 - **Feedback (7)**: Alert, Toast, Tooltip, Progress, Spinner, Skeleton, Empty State
 - **Navigation (5)**: Breadcrumb, Pagination, Tabs, Dropdown Menu, Link
 - **Layout (4)**: Stack, Grid, Container, Divider
 - **Display (7)**: Table, List, Description List, Stat, Card, Badge, Avatar
-- **Dialog & Overlay (2)**: Modal, Accordion
+- **Dialog (2)**: Modal, Accordion
+- **Meta (1)**: SEO
+- **Theme (1)**: Theme Variables
 
 All components are registered conditionally via service provider based on config.
 
@@ -165,12 +167,14 @@ This centralizes prop logic and prevents duplicated resolution code across 25+ c
 
 **PHP Classes** handle complex components with multiple props and lifecycle:
 
-- Button, Input, Textarea, Checkbox, Radio, Select, Multi-Select, Toggle (Form)
+- Button, Input, Textarea, Checkbox, Radio, Select, Multi-Select, Toggle, Fieldset, Copy Button (Form)
 - Alert, Toast, Tooltip, Progress, Spinner, Skeleton, Empty State (Feedback)
 - Breadcrumb, Pagination, Tabs, Dropdown Menu, Link (Navigation)
 - Container, Stack, Grid, Divider (Layout)
 - Badge, Avatar, Table, List, Description List, Stat, Card (Display)
 - Modal, Accordion (Dialog)
+- SEO (Meta)
+- Theme Variables (Theme)
 
 ### 5. **Configuration System**
 
@@ -185,7 +189,7 @@ This centralizes prop logic and prevents duplicated resolution code across 25+ c
         'default_variant' => 'primary',
         'default_size' => 'md',
     ],
-    // ... 32 more components
+    // ... 34 more components
 ],
 
 'icons.style' => 'outline',  // Heroicons style
@@ -262,7 +266,7 @@ Applications can override:
 
 **Pest test framework** with Orchestra Testbench for isolated Laravel environment:
 
-- `ComponentRenderingTest.php` — Smoke tests for all 33 components (~65 individual tests)
+- `ComponentRenderingTest.php` — Smoke tests for all 35 components (~65 individual tests)
 - `ComponentPropResolverTest.php` — Regression tests for enum fallback behavior
 - `CommandsTest.php` — Tests for build, migrate-theme, styleguide commands
 - Test isolation via beforeEach/afterEach cleanup (no cross-test pollution)

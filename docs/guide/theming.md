@@ -319,7 +319,7 @@ These variables are component-scoped. They are not global design tokens, but the
 
 ## Dark Mode
 
-All components ship with built-in dark mode overrides via a parent `.dark` class — no manual CSS required. **30 of 33 components** have dark overrides; the remaining 3 (Stack, Grid, Media) are purely structural and contain no color tokens.
+All components ship with built-in dark mode overrides via a parent `.dark` class — no manual CSS required. Most components have dark overrides; purely structural components (Stack, Grid, Container, Divider) contain no color tokens and are unaffected by dark mode.
 
 ### Enabling Dark Mode
 

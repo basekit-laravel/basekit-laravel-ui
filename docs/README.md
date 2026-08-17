@@ -128,6 +128,6 @@ npm run docs:build
 ## Total Documentation
 
 - **39 markdown files**
-- **33 component guides**
+- **35 component guides**
 - **4 setup guides**
 - **2 reference pages**

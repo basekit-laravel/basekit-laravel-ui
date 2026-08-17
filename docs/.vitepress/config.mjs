@@ -41,6 +41,8 @@ export default defineConfig({
           { text: "Select", link: "/components/select" },
           { text: "Multi-Select", link: "/components/multi-select" },
           { text: "Toggle", link: "/components/toggle" },
+          { text: "Fieldset", link: "/components/fieldset" },
+          { text: "Copy Button", link: "/components/copy-button" },
         ],
       },
       {
@@ -91,6 +93,13 @@ export default defineConfig({
         items: [
           { text: "Modal", link: "/components/modal" },
           { text: "Accordion", link: "/components/accordion" },
+        ],
+      },
+      {
+        text: "Meta & Theme Components",
+        items: [
+          { text: "SEO", link: "/components/seo" },
+          { text: "Theme Variables", link: "/components/theme-variables" },
         ],
       },
       {

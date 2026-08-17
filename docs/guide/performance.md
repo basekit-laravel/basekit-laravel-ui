@@ -12,7 +12,7 @@ These numbers are **representative examples** from a reference setup. Actual res
 
 | Configuration        | File Size | Components    | Reduction |
 | -------------------- | --------- | ------------- | --------- |
-| **Full Bundle**      | 200 KB    | 33 components | Baseline  |
+| **Full Bundle**      | 200 KB    | 35 components | Baseline  |
 | **Medium Config**    | 116 KB    | 8 components  | 42%       |
 | **Minimal Config**   | 55 KB     | 3 components  | 73%       |
 | **Single Component** | 15 KB     | 1 component   | 93%       |

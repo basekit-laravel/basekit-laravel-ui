@@ -14,6 +14,7 @@ A comprehensive quick reference for all Basekit Laravel UI components.
 | [Select](/components/select)             | `<x-basekit-ui::select>`       | Dropdown select (single value)           |
 | [Multi-Select](/components/multi-select) | `<x-basekit-ui::multi-select>` | Dropdown select (multiple values)        |
 | [Toggle](/components/toggle)             | `<x-basekit-ui::toggle>`       | Switch toggle (Alpine.js)                |
+| [Fieldset](/components/fieldset)         | `<x-basekit-ui::fieldset>`     | Semantic group for form controls         |
 | [Copy Button](/components/copy-button)   | `<x-basekit-ui::copy-button>`  | Copy to clipboard with transient feedback |
 
 ## Feedback Components
@@ -103,15 +104,18 @@ icon="check|users|cog|..."
 
 The following components require Alpine.js:
 
-- Input — Password visibility toggle, Masked and Number Inputs
-- Toggle
-- Toast
-- Tooltip
+- Accordion
+- Alert — Dismissible alerts only
+- Copy Button
+- Dropdown Menu
+- Input — Password visibility toggle, masked and number inputs
+- Modal
+- Multi-Select
+- Select
 - Table
 - Tabs
-- Dropdown Menu
-- Modal
-- Accordion
+- Toast
+- Tooltip
 
 ## Configuration
 

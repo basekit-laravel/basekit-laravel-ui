@@ -2,11 +2,11 @@
 
 ## Overview
 
-The 33 components are organized into 6 logical categories for maintainability, discoverability, and clear responsibility boundaries. All components use the `<x-basekit-ui::` prefix regardless of internal organization.
+The 35 components are organized into 8 logical categories for maintainability, discoverability, and clear responsibility boundaries. All components use the `<x-basekit-ui::` prefix regardless of internal organization.
 
 ## Component Categories & Organization
 
-### Form Components (8)
+### Form Components (10)
 
 **Purpose**: User input & form controls  
 **Path**: `src/View/Components/Form/`  
@@ -23,6 +23,8 @@ The 33 components are organized into 6 logical categories for maintainability, d
 | [**Select**](docs/components/select.md)             | Dropdown select with options                                |
 | [**Multi-Select**](docs/components/multi-select.md) | Multiple selection dropdown                                 |
 | [**Toggle**](docs/components/toggle.md)             | On/off toggle switch                                        |
+| [**Fieldset**](docs/components/fieldset.md)         | Semantic group wrapper for related form controls            |
+| [**Copy Button**](docs/components/copy-button.md)   | Copy to clipboard with transient feedback                   |
 
 All form components support config-driven variants and sizes.
 
@@ -101,6 +103,28 @@ All form components support config-driven variants and sizes.
 | [**Modal**](docs/components/modal.md)         | Dialog modal with header, footer, and action slots |
 | [**Accordion**](docs/components/accordion.md) | Expandable sections with single/multi-open modes   |
 
+### Meta Components (1)
+
+**Purpose**: Document metadata and head tags  
+**Path**: `src/View/Components/Meta/`  
+**Namespace**: `BasekitLaravel\BasekitLaravelUi\View\Components\Meta`  
+**Template Path**: `resources/views/components/meta/`
+
+| Component                                 | Purpose                                |
+| ----------------------------------------- | -------------------------------------- |
+| [**SEO**](docs/components/seo.md)         | Document title and social sharing tags |
+
+### Theme Components (1)
+
+**Purpose**: Runtime theme palette CSS variables  
+**Path**: `src/View/Components/Theme/`  
+**Namespace**: `BasekitLaravel\BasekitLaravelUi\View\Components\Theme`  
+**Template Path**: `resources/views/components/theme/`
+
+| Component                                             | Purpose                                |
+| ----------------------------------------------------- | -------------------------------------- |
+| [**Theme Variables**](docs/components/theme-variables.md) | Runtime theme palette CSS variables |
+
 ## Directory Structure
 
 ```
@@ -108,15 +132,17 @@ basekit-laravel-ui/
 ├── src/
 │   └── View/
 │       └── Components/
-│           ├── Form/              # 8 form input components
+│           ├── Form/              # 10 form input components
 │           ├── Feedback/          # 7 notification & state components
 │           ├── Navigation/        # 5 navigation & routing components
 │           ├── Layout/            # 4 page structure components
 │           ├── Display/           # 7 data display components
 │           ├── Dialog/            # 2 dialog & overlay components
+│           ├── Meta/              # 1 document metadata component
+│           ├── Theme/             # 1 theme palette component
 │           └── Support/           # Shared utilities
 │               ├── ComponentPropResolver.php
-│               └── IconResolver.php
+│               └── ComponentColorResolver.php
 ├── resources/
 │   ├── views/
 │   │   └── components/
@@ -125,7 +151,9 @@ basekit-laravel-ui/
 │   │       ├── navigation/        # navigation/ templates
 │   │       ├── layout/            # layout/ templates
 │   │       ├── display/           # display/ templates
-│   │       └── dialog/            # dialog/ templates
+│   │       ├── dialog/            # dialog/ templates
+│   │       ├── meta/              # meta/ templates
+│   │       └── theme/             # theme/ templates
 │   └── css/
 │       └── v1/
 │           └── components/        # Generated component CSS
@@ -135,11 +163,11 @@ basekit-laravel-ui/
 
 ## Configuration
 
-All 33 components are configured in `config/basekit-laravel-ui.php`:
+All 37 components are configured in `config/basekit-laravel-ui.php`:
 
 ```php
 'components' => [
-    // Form (8 entries)
+    // Form (10 entries)
     'button' => [
         'enabled' => true,
         'variants' => ['primary', 'secondary', 'success', 'warning', 'danger', 'info', 'ghost'],

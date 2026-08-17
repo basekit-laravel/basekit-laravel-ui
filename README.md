@@ -7,7 +7,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/basekit-laravel/basekit-laravel-ui.svg?style=flat-square)](https://packagist.org/packages/basekit-laravel/basekit-laravel-ui)
 
 A modular Laravel UI component library built with **Blade components**, **Tailwind 4 CSS**, and **Alpine.js** for rich, interactive interfaces.  
-Create rich, production‑ready UIs faster with 33 pre‑built components, configurable theming, and a built‑in style guide.
+Create rich, production‑ready UIs faster with 35 pre‑built components, configurable theming, and a built‑in style guide.
 
 Explore all components in the [style guide](https://basekit-laravel.github.io/basekit-laravel-ui/styleguide.html) and read the full docs at [basekit‑laravel.github.io/basekit‑laravel‑ui](https://basekit-laravel.github.io/basekit-laravel-ui).
 
@@ -42,7 +42,7 @@ Include the CSS in your main CSS file:
 
 ### Include Alpine.js
 
-Several Basekit components (Accordion, Dropdown Menu, Input password toggle, Modal, Multi-Select, Tabs, Toast, Tooltip, and Table) require Alpine.js. Add it to your layout:
+Several Basekit components (Accordion, Alert, Copy Button, Dropdown Menu, Input password toggle, Modal, Multi-Select, Select, Tabs, Toast, Tooltip, and Table) require Alpine.js. Add it to your layout:
 
 ```blade
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -86,9 +86,9 @@ php artisan basekit:ui:build --watch
 
 ## 🧩 Available Components
 
-The package includes **33 components** organized into 6 categories.
+The package includes **35 components** organized into 8 categories.
 
-### Form Components (8)
+### Form Components (10)
 
 - [Button](https://basekit-laravel.github.io/basekit-laravel-ui/components/button.html)
 - [Input](https://basekit-laravel.github.io/basekit-laravel-ui/components/input.html)
@@ -98,6 +98,8 @@ The package includes **33 components** organized into 6 categories.
 - [Select](https://basekit-laravel.github.io/basekit-laravel-ui/components/select.html)
 - [Multi‑Select](https://basekit-laravel.github.io/basekit-laravel-ui/components/multi-select.html)
 - [Toggle](https://basekit-laravel.github.io/basekit-laravel-ui/components/toggle.html)
+- [Fieldset](https://basekit-laravel.github.io/basekit-laravel-ui/components/fieldset.html)
+- [Copy Button](https://basekit-laravel.github.io/basekit-laravel-ui/components/copy-button.html)
 
 ### Feedback Components (7)
 
@@ -138,6 +140,11 @@ The package includes **33 components** organized into 6 categories.
 
 - [Modal](https://basekit-laravel.github.io/basekit-laravel-ui/components/modal.html)
 - [Accordion](https://basekit-laravel.github.io/basekit-laravel-ui/components/accordion.html)
+
+### Meta & Theme (2)
+
+- [SEO](https://basekit-laravel.github.io/basekit-laravel-ui/components/seo.html)
+- [Theme Variables](https://basekit-laravel.github.io/basekit-laravel-ui/components/theme-variables.html)
 
 ---
 

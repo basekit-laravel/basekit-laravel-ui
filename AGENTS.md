@@ -3,7 +3,7 @@
 ## What this is
 
 A Laravel **package** (`basekit-laravel/basekit-laravel-ui`), not a full app.  
-33 Blade components + Tailwind 4 CSS + Alpine.js, for Laravel 12/13, PHP 8.3+.
+35 Blade components + Tailwind 4 CSS + Alpine.js, for Laravel 12/13, PHP 8.3+.
 
 Run commands with `composer <script>` or `./vendor/bin/...` — there is no `artisan` unless using `testbench`.
 
@@ -35,7 +35,7 @@ Run commands with `composer <script>` or `./vendor/bin/...` — there is no `art
 
 ## Architecture notes
 
-- All 33 components use the `<x-basekit-ui::...>` prefix, regardless of internal category.
+- All 35 components use the `<x-basekit-ui::...>` prefix, regardless of internal category.
 - `src/View/Components/Support/ComponentPropResolver` centralizes all size/variant/orientation resolution.
 - Enums implement `DefaultBackedEnum` interface (contract: `public static function default(): self`).
 - **Config quirk**: `mergeConfigFrom()` is shallow. `BasekitBuildCommand::resolveComponentConfig()` deep-merges user config with package defaults so partial overrides don't lose nested keys.

@@ -14,31 +14,35 @@ A skeleton loader component for placeholder content during loading.
 
 ## Props
 
-| Prop      | Type     | Default  | Description                                  |
-| --------- | -------- | -------- | -------------------------------------------- |
-| `variant` | `string` | `'text'` | Skeleton type (`text`,`circle`,`rect`)       |
-| `rounded` | `string` | `'md'`   | Border radius (`none`,`sm`,`md`,`lg`,`full`) |
-| `width`   | `string` | `'100%'` | Skeleton width                               |
-| `height`  | `string` | `null`   | Skeleton height                              |
+| Prop      | Type     | Default    | Description                                       |
+| --------- | -------- | ---------- | ------------------------------------------------- |
+| `variant` | `string` | `'default'`| Skeleton type (`default`,`text`,`circle`)         |
+| `size`    | `string` | `'md'`     | Skeleton size (`xs`,`sm`,`md`,`lg`,`xl`)          |
+| `rounded` | `string` | `'md'`     | Border radius (`none`,`sm`,`md`,`lg`,`full`)      |
+| `lines`   | `int`    | `1`        | Number of text lines (only for `text` variant)    |
+| `width`   | `string` | `null`     | Skeleton width                                     |
+| `height`  | `string` | `null`     | Skeleton height                                    |
 
 ## Variants
 
-Supported variants: `text`, `circle`, `rect`.
+Supported variants: `default`, `text`, `circle`.
 
 ```blade
+<x-basekit-ui::skeleton variant="default" width="120px" height="20px" />
 <x-basekit-ui::skeleton variant="text" width="120px" height="20px" />
 <x-basekit-ui::skeleton variant="circle" width="48px" height="48px" />
-<x-basekit-ui::skeleton variant="rect" width="120px" height="40px" />
 ```
 
 ## Sizes
 
-Supported sizes: `sm`,`md`,`lg`.
+Supported sizes: `xs`, `sm`, `md`, `lg`, `xl`.
 
 ```blade
-<x-basekit-ui::skeleton width="120px" height="12px" class="mb-2" style="font-size:0.75rem" />
-<x-basekit-ui::skeleton width="120px" height="16px" class="mb-2" style="font-size:1rem" />
-<x-basekit-ui::skeleton width="120px" height="24px" class="mb-2" style="font-size:1.25rem" />
+<x-basekit-ui::skeleton size="xs" width="120px" height="8px" />
+<x-basekit-ui::skeleton size="sm" width="120px" height="12px" />
+<x-basekit-ui::skeleton size="md" width="120px" height="16px" />
+<x-basekit-ui::skeleton size="lg" width="120px" height="20px" />
+<x-basekit-ui::skeleton size="xl" width="120px" height="24px" />
 ```
 
 ## Rounded Corners
@@ -222,9 +226,11 @@ Configure defaults in `config/basekit-laravel-ui.php`:
 ```php
 'skeleton' => [
     'enabled' => true,
-    'variants' => ['text', 'circle', 'rect'],
+    'variants' => ['default', 'circle', 'text'],
+    'sizes' => ['xs', 'sm', 'md', 'lg', 'xl'],
     'rounded' => ['none', 'sm', 'md', 'lg', 'full'],
-    'default_variant' => 'text',
+    'default_variant' => 'default',
+    'default_size' => 'md',
     'default_rounded' => 'md',
 ],
 ```

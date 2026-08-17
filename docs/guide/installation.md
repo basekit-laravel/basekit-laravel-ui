@@ -103,7 +103,7 @@ php artisan basekit:ui:build --watch
 
 ## Alpine.js (Required for Interactive Components)
 
-Several Basekit components depend on Alpine.js for interactivity: Accordion, Dropdown Menu, Input (password toggle, number input, masked inputs), Modal, Multi-Select, Tabs, Toast, Tooltip, and Table.
+Several Basekit components depend on Alpine.js for interactivity: Accordion, Alert (dismissible), Copy Button, Dropdown Menu, Input (password toggle, number input, masked inputs), Modal, Multi-Select, Select, Tabs, Toast, Tooltip, and Table.
 
 ### Install Alpine.js
 
@@ -178,10 +178,13 @@ This provides Alpine.js alongside Livewire's component lifecycle integration.
 ### Which Components Need Alpine.js?
 
 - **Accordion** — Collapsible sections
+- **Alert** — Dismissible alerts (only when `is-dismissible` is true)
+- **Copy Button** — Clipboard copy with feedback
 - **Dropdown Menu** — Interactive menu toggle
-- **Input** — Password visibility toggle, Masked and Number Inputs
+- **Input** — Password visibility toggle, masked and number inputs
 - **Modal** — Modal dialogs with transitions
 - **Multi-Select** — Chip selection and dropdown
+- **Select** — Custom dropdown select
 - **Tabs** — Tab switching
 - **Toast** — Notification toasts
 - **Tooltip** — Hover and focus tooltips
