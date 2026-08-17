@@ -4,11 +4,11 @@
     - variant: string ('primary', 'secondary', 'danger', 'success', 'warning', 'info', 'ghost', 'muted')
     - href: string|null (link URL)
     - isExternal: bool (opens in new tab, default: false)
-    - icon: string|null (Heroicon name)
+    - iconName: string|null (Heroicon name)
 
     Slots:
     - default: Link content
-    - iconSlot: Optional custom icon markup
+    - icon: Optional custom icon markup
 --}}
 
 <a href="{{ $href ?? '#' }}" @if ($colorStyle()) style="{{ $colorStyle() }}" @endif {{ $attributes->twMerge($classes()) }}
@@ -16,9 +16,9 @@
         rel="noopener noreferrer" @endif>
 
     {{-- Icon --}}
-    @if (isset($iconSlot))
-        <span class="bk-link__icon">{{ $iconSlot }}</span>
-    @elseif ($icon)
+    @if (isset($icon))
+        <span class="bk-link__icon">{{ $icon }}</span>
+    @elseif ($iconName)
         <x-dynamic-component :component="$iconComponent()" class="bk-link__icon" />
     @endif
 

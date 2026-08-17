@@ -11,7 +11,7 @@
     - rows: int (default: 4)
     - corner-hint: string (optional, right-aligned hint text)
     - label-style: 'default', 'inset', 'overlap' (optional, controls label placement)
-    - is-underline: bool (optional, gray background with bottom border only)
+    - control-style: 'default', 'pill', 'underline' (optional, controls control appearance)
     - wrapper-class: string (optional, additional classes for the outer wrapper div)
     - container-class: string (optional, additional classes for the inner container div)
     

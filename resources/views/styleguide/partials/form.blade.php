@@ -621,7 +621,7 @@
 
                     <div class="space-y-2">
                         <p class="text-xs font-semibold text-slate-700">Underline Textarea</p>
-                        <x-basekit-ui::textarea label="Notes" name="ta_underline" rows="4" is-underline
+                        <x-basekit-ui::textarea label="Notes" name="ta_underline" rows="4" control-style="underline"
                             placeholder="Enter your notes here..." />
                     </div>
 

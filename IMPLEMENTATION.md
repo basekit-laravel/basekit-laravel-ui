@@ -21,7 +21,6 @@ basekit-laravel-ui/
 │   │   ├── Size.php
 │   │   ├── ControlStyle.php
 │   │   ├── IconStyle.php
-│   │   ├── InputVariant.php  (deprecated — use Variant)
 │   │   └── LabelStyle.php
 │   └── View/
 │       └── Components/

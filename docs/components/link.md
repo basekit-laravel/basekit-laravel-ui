@@ -37,7 +37,7 @@ You can also use other Livewire link attributes the same way:
 | `href`       | `string`  | `'#'`         | Link URL                                                                                       |
 | `variant`    | `string`  | `'secondary'` | Link style variant (`primary`,`secondary`,`success`,`warning`,`danger`,`info`,`ghost`,`muted`) |
 | `isExternal` | `boolean` | `false`       | Open in new tab                                                                                |
-| `icon`       | `string`  | `null`        | Heroicon name                                                                                  |
+| `icon-name`  | `string`  | `null`        | Heroicon name                                                                                  |
 | `color`      | `string`  | `null`        | Quick color shortcut. Sets text and hover text simultaneously. |
 | `text`       | `string`  | `null`        | Custom text color. |
 | `hover-text` | `string`  | `null`        | Custom hover text color. |
@@ -47,7 +47,7 @@ You can also use other Livewire link attributes the same way:
 | Slot       | Description                                  |
 | ---------- | -------------------------------------------- |
 | `default`  | Link text/content                            |
-| `iconSlot` | Custom icon markup (rendered before content) |
+| `icon`     | Custom icon markup (rendered before content) |
 
 ## Variants
 
@@ -79,10 +79,10 @@ Supported variants: `primary`, `secondary`, `success`, `warning`, `danger`, `inf
 
 ### With Heroicon
 
-Pass any Heroicon name via the `icon` prop:
+Pass any Heroicon name via the `icon-name` prop:
 
 ```blade
-<x-basekit-ui::link href="/download" icon="arrow-down-tray">
+<x-basekit-ui::link href="/download" icon-name="arrow-down-tray">
     Download
 </x-basekit-ui::link>
 ```
@@ -91,9 +91,9 @@ Pass any Heroicon name via the `icon` prop:
 
 ```blade
 <x-basekit-ui::link href="/download">
-    <x-slot:iconSlot>
+    <x-slot:icon>
         <x-heroicon-o-arrow-down-tray class="w-4 h-4" />
-    </x-slot:iconSlot>
+    </x-slot:icon>
     Download File
 </x-basekit-ui::link>
 ```
