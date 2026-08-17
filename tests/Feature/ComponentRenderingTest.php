@@ -74,6 +74,6 @@ describe('Component Rendering', function () {
         $html = Blade::render('<x-styleguide-wrapper :sections="[]" />');
 
         expect($html)->toBeString();
-        expect($html)->toContain('max-w-7xl');
+        expect($html)->toContain('sg-main');
     });
 });

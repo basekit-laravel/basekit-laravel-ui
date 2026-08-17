@@ -2,7 +2,7 @@
 
 A live interactive preview of every Basekit component, all in one place.
 
-Open on a tab: <a href="../styleguide.html" target="_blank">Styleguide</a>
+Open in a new tab: <a href="../styleguide.html" target="_blank">Styleguide</a>
 
 <iframe
   id="styleguide-frame"
@@ -41,27 +41,42 @@ onMounted(() => {
 })
 </script>
 
-## Sections
+## What's Inside
 
-The styleguide is divided into five sections, each with collapsible sub-sections you can open individually:
+The Styleguide includes every public Basekit component organized by category:
 
-- **[Form](#form)** — Button, Input, Textarea, Checkbox, Radio, Select, Multi-Select, Toggle
-- **[Feedback](#feedback)** — Alert, Empty State, Spinner, Progress, Skeleton, Tooltip, Toast
-- **[Layout](#layout)** — Card, Avatar, Badge, Divider, Stack, Grid, List, Stat, Description List, Table
-- **[Navigation](#navigation)** — Tabs, Breadcrumb, Dropdown Menu, Link, Pagination
-- **[Overlay](#overlay)** — Accordion, Modal
+- **Form** — Button, Copy Button, Input, Select, Multi-Select, Textarea, Checkbox, Radio, Fieldset, Toggle
+- **Feedback** — Alert, Empty State, Spinner, Progress, Skeleton, Tooltip, Toast
+- **Navigation** — Tabs, Breadcrumb, Dropdown Menu, Link, Pagination
+- **Layout** — Container, Divider, Stack, Grid
+- **Display** — Card, Badge, Avatar, Table, List, Description List, Stat
+- **Dialog** — Accordion, Modal
+
+Each component includes:
+
+- Visual previews of variants, sizes, and states
+- Interactive examples (modals, dropdowns, tabs, accordions)
+- Blade code examples with copy-to-clipboard
+- Responsive preview controls
+- Dark mode support
+
+## Theme Synchronization
+
+The Styleguide automatically shares the same theme preference as the documentation site. If you switch to dark mode in the docs, the Styleguide will open in dark mode, and vice versa.
+
+Theme preference is stored in `localStorage` under the key `vitepress-theme-appearance`.
 
 ## Regenerating the Snapshot
 
-The styleguide is a pre-rendered static HTML file committed to the repository. After making changes to component Blade views or CSS, regenerate it directly from the package root — no separate Laravel app required:
+The Styleguide is a pre-rendered static HTML file. After making changes to component Blade views or CSS, regenerate it:
 
 ```bash
 composer styleguide
 ```
 
-This runs `./vendor/bin/testbench basekit:ui:styleguide` using Orchestra Testbench, which is already a dev dependency.
+This runs `./vendor/bin/testbench basekit:ui:styleguide` using Orchestra Testbench.
 
-To save it to a custom path (e.g. your app's `public/` directory):
+To save to a custom path:
 
 ```bash
 php artisan basekit:ui:styleguide --output=public/styleguide.html
@@ -69,7 +84,7 @@ php artisan basekit:ui:styleguide --output=public/styleguide.html
 
 ## Using the Styleguide in Your App
 
-You can render the Blade view directly in any Laravel application — useful during development to preview components with your own theme applied:
+You can render the Blade view directly in any Laravel application:
 
 ```blade
 @php
@@ -78,11 +93,12 @@ You can render the Blade view directly in any Laravel application — useful dur
         'Feedback'   => 'basekit::styleguide.partials.feedback',
         'Layout'     => 'basekit::styleguide.partials.layout',
         'Navigation' => 'basekit::styleguide.partials.navigation',
-        'Overlay'    => 'basekit::styleguide.partials.overlay',
+        'Display'    => 'basekit::styleguide.partials.display',
+        'Dialog'     => 'basekit::styleguide.partials.dialog',
     ];
 @endphp
 
 <x-styleguide-wrapper :sections="$sections" />
 ```
 
-Make sure your app's CSS (including Basekit's `theme.css`) is loaded on the page — the component does not load any styles itself.
+Make sure your app's CSS (including Basekit's `theme.css`) is loaded on the page.

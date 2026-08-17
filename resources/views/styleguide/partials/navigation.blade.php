@@ -44,93 +44,176 @@
     @endphp
 
     <!-- Tabs -->
-    <x-basekit-ui::styleguide.section-toggle section="tabs" title="Tabs">
+    <x-basekit-ui::styleguide.section-toggle section="tabs" title="Tabs" description="Tabbed content panels">
         <div class="space-y-6">
             <!-- Underline Variant (Default) -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Underline (Default)</h4>
-                <x-basekit-ui::tabs :items="[
-                    ['label' => 'Overview', 'value' => 'overview'],
-                    ['label' => 'Details', 'value' => 'details'],
-                    ['label' => 'Activity', 'value' => 'activity'],
-                ]" variant="underline" active="overview">
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'overview'">
-                        <p class="text-slate-700 text-sm">Overview tab content.</p>
-                    </div>
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'details'">
-                        <p class="text-slate-700 text-sm">Details tab content.</p>
-                    </div>
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'activity'">
-                        <p class="text-slate-700 text-sm">Activity tab content.</p>
-                    </div>
-                </x-basekit-ui::tabs>
+                <x-basekit-ui::styleguide.code-example>
+                    <x-slot:preview>
+                        <x-basekit-ui::tabs :items="[
+                            ['label' => 'Overview', 'value' => 'code_underline_overview'],
+                            ['label' => 'Details', 'value' => 'code_underline_details'],
+                            ['label' => 'Activity', 'value' => 'code_underline_activity'],
+                        ]" variant="underline" active="code_underline_overview">
+                            <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'code_underline_overview'">
+                                <p class="text-slate-700 text-sm">Overview tab content.</p>
+                            </div>
+                            <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'code_underline_details'">
+                                <p class="text-slate-700 text-sm">Details tab content.</p>
+                            </div>
+                            <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'code_underline_activity'">
+                                <p class="text-slate-700 text-sm">Activity tab content.</p>
+                            </div>
+                        </x-basekit-ui::tabs>
+                    </x-slot:preview>
+                    @verbatim
+<x-basekit-ui::tabs :items="[
+    ['label' => 'Overview', 'value' => 'overview'],
+    ['label' => 'Details', 'value' => 'details'],
+    ['label' => 'Activity', 'value' => 'activity'],
+]" variant="underline" active="overview">
+    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'overview'">
+        <p class="text-slate-700 text-sm">Overview tab content.</p>
+    </div>
+    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'details'">
+        <p class="text-slate-700 text-sm">Details tab content.</p>
+    </div>
+    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'activity'">
+        <p class="text-slate-700 text-sm">Activity tab content.</p>
+    </div>
+</x-basekit-ui::tabs>
+                    @endverbatim
+                </x-basekit-ui::styleguide.code-example>
             </div>
 
             <!-- Pills Variant -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Pills</h4>
-                <x-basekit-ui::tabs :items="[
-                    ['label' => 'Account', 'value' => 'account', 'icon' => 'user'],
-                    ['label' => 'Password', 'value' => 'password', 'icon' => 'key'],
-                    ['label' => 'Notifications', 'value' => 'notifications', 'icon' => 'bell'],
-                    ['label' => 'Disabled', 'value' => 'disabled', 'disabled' => true],
-                ]" variant="pills" active="account">
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'account'">
-                        <p class="text-slate-700 text-sm">Account tab content.</p>
-                    </div>
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'password'">
-                        <p class="text-slate-700 text-sm">Password tab content.</p>
-                    </div>
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white"
-                        x-show="active === 'notifications'">
-                        <p class="text-slate-700 text-sm">Notifications tab content.</p>
-                    </div>
-                </x-basekit-ui::tabs>
+                <x-basekit-ui::styleguide.code-example>
+                    <x-slot:preview>
+                        <x-basekit-ui::tabs :items="[
+                            ['label' => 'Account', 'value' => 'code_pills_account', 'icon' => 'user'],
+                            ['label' => 'Password', 'value' => 'code_pills_password', 'icon' => 'key'],
+                            ['label' => 'Notifications', 'value' => 'code_pills_notifications', 'icon' => 'bell'],
+                            ['label' => 'Disabled', 'value' => 'code_pills_disabled', 'disabled' => true],
+                        ]" variant="pills" active="code_pills_account">
+                            <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'code_pills_account'">
+                                <p class="text-slate-700 text-sm">Account tab content.</p>
+                            </div>
+                            <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'code_pills_password'">
+                                <p class="text-slate-700 text-sm">Password tab content.</p>
+                            </div>
+                            <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'code_pills_notifications'">
+                                <p class="text-slate-700 text-sm">Notifications tab content.</p>
+                            </div>
+                        </x-basekit-ui::tabs>
+                    </x-slot:preview>
+                    @verbatim
+<x-basekit-ui::tabs :items="[
+    ['label' => 'Account', 'value' => 'account', 'icon' => 'user'],
+    ['label' => 'Password', 'value' => 'password', 'icon' => 'key'],
+    ['label' => 'Notifications', 'value' => 'notifications', 'icon' => 'bell'],
+    ['label' => 'Disabled', 'value' => 'disabled', 'disabled' => true],
+]" variant="pills" active="account">
+    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'account'">
+        <p class="text-slate-700 text-sm">Account tab content.</p>
+    </div>
+    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'password'">
+        <p class="text-slate-700 text-sm">Password tab content.</p>
+    </div>
+    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'notifications'">
+        <p class="text-slate-700 text-sm">Notifications tab content.</p>
+    </div>
+</x-basekit-ui::tabs>
+                    @endverbatim
+                </x-basekit-ui::styleguide.code-example>
             </div>
 
             <!-- Boxed Variant -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Boxed</h4>
-                <x-basekit-ui::tabs :items="[
-                    ['label' => 'Documents', 'value' => 'docs'],
-                    ['label' => 'Images', 'value' => 'images'],
-                    ['label' => 'Videos', 'value' => 'videos'],
-                ]" variant="boxed" active="docs">
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'docs'">
-                        <p class="text-slate-700 text-sm">Documents tab content.</p>
-                    </div>
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'images'">
-                        <p class="text-slate-700 text-sm">Images tab content.</p>
-                    </div>
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'videos'">
-                        <p class="text-slate-700 text-sm">Videos tab content.</p>
-                    </div>
-                </x-basekit-ui::tabs>
+                <x-basekit-ui::styleguide.code-example>
+                    <x-slot:preview>
+                        <x-basekit-ui::tabs :items="[
+                            ['label' => 'Documents', 'value' => 'code_boxed_docs'],
+                            ['label' => 'Images', 'value' => 'code_boxed_images'],
+                            ['label' => 'Videos', 'value' => 'code_boxed_videos'],
+                        ]" variant="boxed" active="code_boxed_docs">
+                            <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'code_boxed_docs'">
+                                <p class="text-slate-700 text-sm">Documents tab content.</p>
+                            </div>
+                            <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'code_boxed_images'">
+                                <p class="text-slate-700 text-sm">Images tab content.</p>
+                            </div>
+                            <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'code_boxed_videos'">
+                                <p class="text-slate-700 text-sm">Videos tab content.</p>
+                            </div>
+                        </x-basekit-ui::tabs>
+                    </x-slot:preview>
+                    @verbatim
+<x-basekit-ui::tabs :items="[
+    ['label' => 'Documents', 'value' => 'docs'],
+    ['label' => 'Images', 'value' => 'images'],
+    ['label' => 'Videos', 'value' => 'videos'],
+]" variant="boxed" active="docs">
+    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'docs'">
+        <p class="text-slate-700 text-sm">Documents tab content.</p>
+    </div>
+    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'images'">
+        <p class="text-slate-700 text-sm">Images tab content.</p>
+    </div>
+    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'videos'">
+        <p class="text-slate-700 text-sm">Videos tab content.</p>
+    </div>
+</x-basekit-ui::tabs>
+                    @endverbatim
+                </x-basekit-ui::styleguide.code-example>
             </div>
 
             <!-- With Custom Icon -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">With Custom Icon (Pills)</h4>
-                <x-basekit-ui::tabs :items="$customIconTabsItems" active="custom-home" variant="pills">
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white"
-                        x-show="active === 'custom-home'">
-                        <p class="text-slate-700 text-sm">Home tab content.</p>
-                    </div>
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white"
-                        x-show="active === 'custom-search'">
-                        <p class="text-slate-700 text-sm">Search tab content.</p>
-                    </div>
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white"
-                        x-show="active === 'custom-star'">
-                        <p class="text-slate-700 text-sm">Favorites tab content.</p>
-                    </div>
-                </x-basekit-ui::tabs>
+                <x-basekit-ui::styleguide.code-example>
+                    <x-slot:preview>
+                        <x-basekit-ui::tabs :items="$customIconTabsItems" active="code_custom_home" variant="pills">
+                            <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white"
+                                x-show="active === 'code_custom_home'">
+                                <p class="text-slate-700 text-sm">Home tab content.</p>
+                            </div>
+                            <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white"
+                                x-show="active === 'code_custom_search'">
+                                <p class="text-slate-700 text-sm">Search tab content.</p>
+                            </div>
+                            <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white"
+                                x-show="active === 'code_custom_star'">
+                                <p class="text-slate-700 text-sm">Favorites tab content.</p>
+                            </div>
+                        </x-basekit-ui::tabs>
+                    </x-slot:preview>
+                    @verbatim
+<x-basekit-ui::tabs :items="$customIconTabsItems" active="custom-home" variant="pills">
+    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white"
+        x-show="active === 'custom-home'">
+        <p class="text-slate-700 text-sm">Home tab content.</p>
+    </div>
+    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white"
+        x-show="active === 'custom-search'">
+        <p class="text-slate-700 text-sm">Search tab content.</p>
+    </div>
+    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white"
+        x-show="active === 'custom-star'">
+        <p class="text-slate-700 text-sm">Favorites tab content.</p>
+    </div>
+</x-basekit-ui::tabs>
+                    @endverbatim
+                </x-basekit-ui::styleguide.code-example>
             </div>
         </div>
     </x-basekit-ui::styleguide.section-toggle>
 
     <!-- Breadcrumbs -->
-    <x-basekit-ui::styleguide.section-toggle section="breadcrumbs" title="Breadcrumbs">
+    <x-basekit-ui::styleguide.section-toggle section="breadcrumbs" title="Breadcrumbs" description="Hierarchical page trail">
         <div class="space-y-6">
             @php
                 $breadcrumbItems = [
@@ -158,68 +241,135 @@
             <!-- Variants -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Variants</h4>
-                <div class="space-y-4">
-                    <div class="space-y-2">
-                        <p class="text-xs font-semibold text-slate-700">Default (Chevron)</p>
-                        <nav aria-label="Breadcrumb Default">
-                            <x-basekit-ui::breadcrumb :items="$breadcrumbItems" />
-                        </nav>
-                    </div>
 
-                    <div class="space-y-2">
-                        <p class="text-xs font-semibold text-slate-700">Slash Separator</p>
-                        <nav aria-label="Breadcrumb Slash">
-                            <x-basekit-ui::breadcrumb :items="[
-                                ['label' => 'Home', 'url' => '#'],
-                                ['label' => 'Documentation', 'url' => '#'],
-                                ['label' => 'Components', 'url' => '#'],
-                                ['label' => 'Button'],
-                            ]" separator="slash" />
-                        </nav>
-                    </div>
+                <div class="space-y-2">
+                    <p class="text-xs font-semibold text-slate-700">Default (Chevron)</p>
+                    <x-basekit-ui::styleguide.code-example>
+                        <x-slot:preview>
+                            <nav aria-label="Breadcrumb Default">
+                                <x-basekit-ui::breadcrumb :items="$breadcrumbItems" />
+                            </nav>
+                        </x-slot:preview>
+                        @verbatim
+<x-basekit-ui::breadcrumb :items="[
+    ['label' => 'Home', 'url' => '#'],
+    ['label' => 'Projects', 'url' => '#'],
+    ['label' => 'Basekit UI'],
+]" />
+                        @endverbatim
+                    </x-basekit-ui::styleguide.code-example>
+                </div>
 
-                    <div class="space-y-2">
-                        <p class="text-xs font-semibold text-slate-700">With Icons</p>
-                        <nav aria-label="Breadcrumb Icons">
-                            <x-basekit-ui::breadcrumb :items="[
-                                ['label' => 'Dashboard', 'url' => '#', 'icon' => 'home'],
-                                ['label' => 'Settings', 'url' => '#', 'icon' => 'cog'],
-                                ['label' => 'Account'],
-                            ]" />
-                        </nav>
-                    </div>
+                <div class="space-y-2">
+                    <p class="text-xs font-semibold text-slate-700">Slash Separator</p>
+                    <x-basekit-ui::styleguide.code-example>
+                        <x-slot:preview>
+                            <nav aria-label="Breadcrumb Slash">
+                                <x-basekit-ui::breadcrumb :items="[
+                                    ['label' => 'Home', 'url' => '#'],
+                                    ['label' => 'Documentation', 'url' => '#'],
+                                    ['label' => 'Components', 'url' => '#'],
+                                    ['label' => 'Button'],
+                                ]" separator="slash" />
+                            </nav>
+                        </x-slot:preview>
+                        @verbatim
+<x-basekit-ui::breadcrumb :items="[
+    ['label' => 'Home', 'url' => '#'],
+    ['label' => 'Documentation', 'url' => '#'],
+    ['label' => 'Components', 'url' => '#'],
+    ['label' => 'Button'],
+]" separator="slash" />
+                        @endverbatim
+                    </x-basekit-ui::styleguide.code-example>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="text-xs font-semibold text-slate-700">With Icons</p>
+                    <x-basekit-ui::styleguide.code-example>
+                        <x-slot:preview>
+                            <nav aria-label="Breadcrumb Icons">
+                                <x-basekit-ui::breadcrumb :items="[
+                                    ['label' => 'Dashboard', 'url' => '#', 'icon' => 'home'],
+                                    ['label' => 'Settings', 'url' => '#', 'icon' => 'cog'],
+                                    ['label' => 'Account'],
+                                ]" />
+                            </nav>
+                        </x-slot:preview>
+                        @verbatim
+<x-basekit-ui::breadcrumb :items="[
+    ['label' => 'Dashboard', 'url' => '#', 'icon' => 'home'],
+    ['label' => 'Settings', 'url' => '#', 'icon' => 'cog'],
+    ['label' => 'Account'],
+]" />
+                        @endverbatim
+                    </x-basekit-ui::styleguide.code-example>
                 </div>
             </div>
 
             <!-- Sizes -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Sizes</h4>
-                <div class="space-y-4">
-                    <div class="space-y-2">
-                        <p class="text-xs font-semibold text-slate-700 uppercase">SM</p>
-                        <nav aria-label="Breadcrumb Small">
-                            <x-basekit-ui::breadcrumb size="sm" :items="$breadcrumbItems" />
-                        </nav>
-                    </div>
-                    <div class="space-y-2">
-                        <p class="text-xs font-semibold text-slate-700 uppercase">MD</p>
-                        <nav aria-label="Breadcrumb Medium">
-                            <x-basekit-ui::breadcrumb size="md" :items="$breadcrumbItems" />
-                        </nav>
-                    </div>
-                    <div class="space-y-2">
-                        <p class="text-xs font-semibold text-slate-700 uppercase">LG</p>
-                        <nav aria-label="Breadcrumb Large">
-                            <x-basekit-ui::breadcrumb size="lg" :items="$breadcrumbItems" />
-                        </nav>
-                    </div>
+
+                <div class="space-y-2">
+                    <p class="text-xs font-semibold text-slate-700 uppercase">SM</p>
+                    <x-basekit-ui::styleguide.code-example>
+                        <x-slot:preview>
+                            <nav aria-label="Breadcrumb Small">
+                                <x-basekit-ui::breadcrumb size="sm" :items="$breadcrumbItems" />
+                            </nav>
+                        </x-slot:preview>
+                        @verbatim
+<x-basekit-ui::breadcrumb size="sm" :items="[
+    ['label' => 'Home', 'url' => '#'],
+    ['label' => 'Projects', 'url' => '#'],
+    ['label' => 'Basekit UI'],
+]" />
+                        @endverbatim
+                    </x-basekit-ui::styleguide.code-example>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="text-xs font-semibold text-slate-700 uppercase">MD</p>
+                    <x-basekit-ui::styleguide.code-example>
+                        <x-slot:preview>
+                            <nav aria-label="Breadcrumb Medium">
+                                <x-basekit-ui::breadcrumb size="md" :items="$breadcrumbItems" />
+                            </nav>
+                        </x-slot:preview>
+                        @verbatim
+<x-basekit-ui::breadcrumb size="md" :items="[
+    ['label' => 'Home', 'url' => '#'],
+    ['label' => 'Projects', 'url' => '#'],
+    ['label' => 'Basekit UI'],
+]" />
+                        @endverbatim
+                    </x-basekit-ui::styleguide.code-example>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="text-xs font-semibold text-slate-700 uppercase">LG</p>
+                    <x-basekit-ui::styleguide.code-example>
+                        <x-slot:preview>
+                            <nav aria-label="Breadcrumb Large">
+                                <x-basekit-ui::breadcrumb size="lg" :items="$breadcrumbItems" />
+                            </nav>
+                        </x-slot:preview>
+                        @verbatim
+<x-basekit-ui::breadcrumb size="lg" :items="[
+    ['label' => 'Home', 'url' => '#'],
+    ['label' => 'Projects', 'url' => '#'],
+    ['label' => 'Basekit UI'],
+]" />
+                        @endverbatim
+                    </x-basekit-ui::styleguide.code-example>
                 </div>
             </div>
         </div>
     </x-basekit-ui::styleguide.section-toggle>
 
     <!-- Dropdowns -->
-    <x-basekit-ui::styleguide.section-toggle section="dropdowns" title="Dropdowns">
+    <x-basekit-ui::styleguide.section-toggle section="dropdowns" title="Dropdowns" description="Action menu with items">
         <div class="space-y-6">
             @php
                 $dropdownItemsDefault = [
@@ -246,44 +396,91 @@
             <!-- Variants -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Variants</h4>
-                <div class="space-y-4">
-                    <div class="space-y-2">
-                        <p class="text-xs font-semibold text-slate-700">Default</p>
-                        <div class="flex gap-4">
-                            <x-basekit-ui::dropdown-menu :items="$dropdownItemsDefault" />
-                        </div>
-                    </div>
 
-                    <div class="space-y-2">
-                        <p class="text-xs font-semibold text-slate-700">With Icons</p>
-                        <div class="flex gap-4">
-                            <x-basekit-ui::dropdown-menu :items="$dropdownItemsWithIcons" />
-                        </div>
-                    </div>
+                <div class="space-y-2">
+                    <p class="text-xs font-semibold text-slate-700">Default</p>
+                    <x-basekit-ui::styleguide.code-example>
+                        <x-slot:preview>
+                            <div class="flex gap-4">
+                                <x-basekit-ui::dropdown-menu :items="$dropdownItemsDefault" />
+                            </div>
+                        </x-slot:preview>
+                        @verbatim
+<x-basekit-ui::dropdown-menu :items="[
+    ['label' => 'New', 'url' => '#'],
+    ['label' => 'Edit', 'url' => '#'],
+    ['label' => 'Duplicate', 'url' => '#'],
+    ['separator' => true],
+    ['label' => 'Delete', 'url' => '#', 'class' => 'text-red-600 hover:bg-red-50'],
+]" />
+                        @endverbatim
+                    </x-basekit-ui::styleguide.code-example>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="text-xs font-semibold text-slate-700">With Icons</p>
+                    <x-basekit-ui::styleguide.code-example>
+                        <x-slot:preview>
+                            <div class="flex gap-4">
+                                <x-basekit-ui::dropdown-menu :items="$dropdownItemsWithIcons" />
+                            </div>
+                        </x-slot:preview>
+                        @verbatim
+<x-basekit-ui::dropdown-menu :items="[
+    ['label' => 'View Profile', 'url' => '#', 'icon' => 'user'],
+    ['label' => 'Settings', 'url' => '#', 'icon' => 'cog'],
+    ['separator' => true],
+    ['label' => 'Delete Account', 'url' => '#', 'icon' => 'trash', 'class' => 'text-red-600 hover:bg-red-50'],
+]" />
+                        @endverbatim
+                    </x-basekit-ui::styleguide.code-example>
                 </div>
             </div>
 
             <!-- Trigger Modes -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Trigger Modes</h4>
-                <div class="space-y-4">
-                    <div class="space-y-2">
-                        <p class="text-xs font-semibold text-slate-700">Click (Default)</p>
-                        <div class="flex gap-4">
-                            <x-basekit-ui::dropdown-menu :items="$dropdownItemsDefault" />
-                        </div>
-                    </div>
 
-                    <div class="space-y-2">
-                        <p class="text-xs font-semibold text-slate-700">Hover</p>
-                        <div class="flex gap-4">
-                            <x-basekit-ui::dropdown-menu trigger="hover" :items="[
-                                ['label' => 'Download', 'url' => '#', 'icon' => 'arrow-down-tray'],
-                                ['label' => 'Share', 'url' => '#', 'icon' => 'share'],
-                                ['label' => 'Move', 'url' => '#', 'icon' => 'inbox'],
-                            ]" />
-                        </div>
-                    </div>
+                <div class="space-y-2">
+                    <p class="text-xs font-semibold text-slate-700">Click (Default)</p>
+                    <x-basekit-ui::styleguide.code-example>
+                        <x-slot:preview>
+                            <div class="flex gap-4">
+                                <x-basekit-ui::dropdown-menu :items="$dropdownItemsDefault" />
+                            </div>
+                        </x-slot:preview>
+                        @verbatim
+<x-basekit-ui::dropdown-menu :items="[
+    ['label' => 'New', 'url' => '#'],
+    ['label' => 'Edit', 'url' => '#'],
+    ['label' => 'Duplicate', 'url' => '#'],
+    ['separator' => true],
+    ['label' => 'Delete', 'url' => '#', 'class' => 'text-red-600 hover:bg-red-50'],
+]" />
+                        @endverbatim
+                    </x-basekit-ui::styleguide.code-example>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="text-xs font-semibold text-slate-700">Hover</p>
+                    <x-basekit-ui::styleguide.code-example>
+                        <x-slot:preview>
+                            <div class="flex gap-4">
+                                <x-basekit-ui::dropdown-menu trigger="hover" :items="[
+                                    ['label' => 'Download', 'url' => '#', 'icon' => 'arrow-down-tray'],
+                                    ['label' => 'Share', 'url' => '#', 'icon' => 'share'],
+                                    ['label' => 'Move', 'url' => '#', 'icon' => 'inbox'],
+                                ]" />
+                            </div>
+                        </x-slot:preview>
+                        @verbatim
+<x-basekit-ui::dropdown-menu trigger="hover" :items="[
+    ['label' => 'Download', 'url' => '#', 'icon' => 'arrow-down-tray'],
+    ['label' => 'Share', 'url' => '#', 'icon' => 'share'],
+    ['label' => 'Move', 'url' => '#', 'icon' => 'inbox'],
+]" />
+                        @endverbatim
+                    </x-basekit-ui::styleguide.code-example>
                 </div>
             </div>
 
@@ -292,25 +489,48 @@
                 <h4 class="text-sm text-slate-500 font-medium">Advanced Example</h4>
                 <div class="space-y-2">
                     <p class="text-xs font-semibold text-slate-700">Custom Trigger + Nested Items</p>
-                    <x-basekit-ui::dropdown-menu :items="$dropdownItemsNested">
-                        <x-slot:trigger>
-                            <x-basekit-ui::button>File</x-basekit-ui::button>
-                        </x-slot:trigger>
-                    </x-basekit-ui::dropdown-menu>
+                    <x-basekit-ui::styleguide.code-example>
+                        <x-slot:preview>
+                            <x-basekit-ui::dropdown-menu :items="$dropdownItemsNested">
+                                <x-slot:trigger>
+                                    <x-basekit-ui::button>File</x-basekit-ui::button>
+                                </x-slot:trigger>
+                            </x-basekit-ui::dropdown-menu>
+                        </x-slot:preview>
+                        @verbatim
+<x-basekit-ui::dropdown-menu :items="[
+    ['label' => 'New', 'url' => '#', 'icon' => 'document-plus'],
+    ['label' => 'Open', 'url' => '#', 'icon' => 'folder-open'],
+    [
+        'label' => 'Recent',
+        'icon' => 'clock',
+        'children' => [
+            ['label' => 'Project Atlas', 'url' => '#'],
+            ['label' => 'Project Nova', 'url' => '#'],
+        ],
+    ],
+    ['separator' => true],
+    ['label' => 'Save', 'url' => '#', 'icon' => 'arrow-down-tray'],
+]">
+    <x-slot:trigger>
+        <x-basekit-ui::button>File</x-basekit-ui::button>
+    </x-slot:trigger>
+</x-basekit-ui::dropdown-menu>
+                        @endverbatim
+                    </x-basekit-ui::styleguide.code-example>
                 </div>
             </div>
         </div>
     </x-basekit-ui::styleguide.section-toggle>
 
     <!-- Links -->
-    <x-basekit-ui::styleguide.section-toggle section="links" title="Links">
+    <x-basekit-ui::styleguide.section-toggle section="links" title="Links" description="Styled navigation link">
         <div class="space-y-6">
             <!-- Variants -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Variants</h4>
-                <div class="space-y-4">
-                    <div class="space-y-2">
-                        <p class="text-xs font-semibold text-slate-700">Core</p>
+                <x-basekit-ui::styleguide.code-example>
+                    <x-slot:preview>
                         <div class="flex flex-wrap gap-4">
                             <x-basekit-ui::link href="#" variant="primary">Primary Link</x-basekit-ui::link>
                             <x-basekit-ui::link href="#" variant="secondary">Secondary Link</x-basekit-ui::link>
@@ -321,37 +541,74 @@
                             <x-basekit-ui::link href="#" variant="danger">Danger Link</x-basekit-ui::link>
                             <x-basekit-ui::link href="#" variant="info">Info Link</x-basekit-ui::link>
                         </div>
-                    </div>
-                </div>
+                    </x-slot:preview>
+                    @verbatim
+<x-basekit-ui::link href="#" variant="primary">Primary Link</x-basekit-ui::link>
+<x-basekit-ui::link href="#" variant="secondary">Secondary Link</x-basekit-ui::link>
+<x-basekit-ui::link href="#" variant="muted">Muted Link</x-basekit-ui::link>
+<x-basekit-ui::link href="#" variant="ghost">Ghost Link</x-basekit-ui::link>
+<x-basekit-ui::link href="#" variant="success">Success Link</x-basekit-ui::link>
+<x-basekit-ui::link href="#" variant="warning">Warning Link</x-basekit-ui::link>
+<x-basekit-ui::link href="#" variant="danger">Danger Link</x-basekit-ui::link>
+<x-basekit-ui::link href="#" variant="info">Info Link</x-basekit-ui::link>
+                    @endverbatim
+                </x-basekit-ui::styleguide.code-example>
             </div>
 
             <!-- Custom Colors -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Custom Colors</h4>
-                <div class="flex flex-wrap items-center gap-3">
-                    <x-basekit-ui::link color="indigo-500" href="#">Indigo</x-basekit-ui::link>
-                    <x-basekit-ui::link color="pink-500" href="#">Pink</x-basekit-ui::link>
-                    <x-basekit-ui::link color="emerald-500" href="#">Emerald</x-basekit-ui::link>
-                </div>
+                <x-basekit-ui::styleguide.code-example>
+                    <x-slot:preview>
+                        <div class="flex flex-wrap items-center gap-3">
+                            <x-basekit-ui::link color="indigo-500" href="#">Indigo</x-basekit-ui::link>
+                            <x-basekit-ui::link color="pink-500" href="#">Pink</x-basekit-ui::link>
+                            <x-basekit-ui::link color="emerald-500" href="#">Emerald</x-basekit-ui::link>
+                        </div>
+                    </x-slot:preview>
+                    @verbatim
+<x-basekit-ui::link color="indigo-500" href="#">Indigo</x-basekit-ui::link>
+<x-basekit-ui::link color="pink-500" href="#">Pink</x-basekit-ui::link>
+<x-basekit-ui::link color="emerald-500" href="#">Emerald</x-basekit-ui::link>
+                    @endverbatim
+                </x-basekit-ui::styleguide.code-example>
             </div>
 
             <!-- Icon & External -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Icon & External</h4>
-                <div class="space-y-4">
-                    <div class="space-y-2">
-                        <p class="text-xs font-semibold text-slate-700">With Icon</p>
-                        <x-basekit-ui::link href="#" icon="arrow-right" variant="primary">
-                            Read More
-                        </x-basekit-ui::link>
-                    </div>
-                    <div class="space-y-2">
-                        <p class="text-xs font-semibold text-slate-700">External</p>
-                        <x-basekit-ui::link href="#" icon="arrow-top-right-on-square" is-external
-                            variant="secondary">
-                            External Link
-                        </x-basekit-ui::link>
-                    </div>
+
+                <div class="space-y-2">
+                    <p class="text-xs font-semibold text-slate-700">With Icon</p>
+                    <x-basekit-ui::styleguide.code-example>
+                        <x-slot:preview>
+                            <x-basekit-ui::link href="#" icon="arrow-right" variant="primary">
+                                Read More
+                            </x-basekit-ui::link>
+                        </x-slot:preview>
+                        @verbatim
+<x-basekit-ui::link href="#" icon="arrow-right" variant="primary">
+    Read More
+</x-basekit-ui::link>
+                        @endverbatim
+                    </x-basekit-ui::styleguide.code-example>
+                </div>
+
+                <div class="space-y-2">
+                    <p class="text-xs font-semibold text-slate-700">External</p>
+                    <x-basekit-ui::styleguide.code-example>
+                        <x-slot:preview>
+                            <x-basekit-ui::link href="#" icon="arrow-top-right-on-square" is-external
+                                variant="secondary">
+                                External Link
+                            </x-basekit-ui::link>
+                        </x-slot:preview>
+                        @verbatim
+<x-basekit-ui::link href="#" icon="arrow-top-right-on-square" is-external variant="secondary">
+    External Link
+</x-basekit-ui::link>
+                        @endverbatim
+                    </x-basekit-ui::styleguide.code-example>
                 </div>
             </div>
 
@@ -359,7 +616,7 @@
     </x-basekit-ui::styleguide.section-toggle>
 
     <!-- Pagination -->
-    <x-basekit-ui::styleguide.section-toggle section="pagination" title="Pagination">
+    <x-basekit-ui::styleguide.section-toggle section="pagination" title="Pagination" description="Page navigation control">
         <div class="space-y-6">
             @php
                 $paginationCurrentPage = 3;
@@ -373,59 +630,149 @@
             <!-- Default -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Default</h4>
-                <div class="border rounded p-4">
-                    <x-basekit-ui::pagination :current-page="$paginationCurrentPage" :total-pages="$paginationTotalPages" :per-page="$paginationPerPage"
-                        :total="$paginationTotal" path="#" />
-                </div>
+                <x-basekit-ui::styleguide.code-example>
+                    <x-slot:preview>
+                        <div class="border rounded p-4">
+                            <x-basekit-ui::pagination :current-page="$paginationCurrentPage" :total-pages="$paginationTotalPages"
+                                :per-page="$paginationPerPage" :total="$paginationTotal" path="#" />
+                        </div>
+                    </x-slot:preview>
+                    @verbatim
+<x-basekit-ui::pagination
+    :current-page="3"
+    :total-pages="12"
+    :per-page="10"
+    :total="115"
+    path="#"
+/>
+                    @endverbatim
+                </x-basekit-ui::styleguide.code-example>
             </div>
 
             <!-- Simple Pagination -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Simple Pagination</h4>
-                <div class="border rounded p-4">
-                    <x-basekit-ui::pagination :current-page="$paginationCurrentPage" :total-pages="$paginationTotalPages" :per-page="$paginationPerPage"
-                        :total="$paginationTotal" path="#" type="simple" />
-                </div>
+                <x-basekit-ui::styleguide.code-example>
+                    <x-slot:preview>
+                        <div class="border rounded p-4">
+                            <x-basekit-ui::pagination :current-page="$paginationCurrentPage" :total-pages="$paginationTotalPages"
+                                :per-page="$paginationPerPage" :total="$paginationTotal" path="#"
+                                type="simple" />
+                        </div>
+                    </x-slot:preview>
+                    @verbatim
+<x-basekit-ui::pagination
+    :current-page="3"
+    :total-pages="12"
+    :per-page="10"
+    :total="115"
+    path="#"
+    type="simple"
+/>
+                    @endverbatim
+                </x-basekit-ui::styleguide.code-example>
             </div>
 
             <!-- With Page Info -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Built-in Per Page</h4>
-                <div class="border rounded p-4">
-                    <x-basekit-ui::pagination :current-page="$paginationCurrentPage" :total-pages="$paginationTotalPages" :per-page="$paginationPerPage"
-                        :total="$paginationTotal" path="#" :show-info="true" :show-per-page="true" :per-page-options="[10, 25, 50]"
-                        per-page-label="Rows per page:" />
-                </div>
+                <x-basekit-ui::styleguide.code-example>
+                    <x-slot:preview>
+                        <div class="border rounded p-4">
+                            <x-basekit-ui::pagination :current-page="$paginationCurrentPage" :total-pages="$paginationTotalPages"
+                                :per-page="$paginationPerPage" :total="$paginationTotal" path="#"
+                                :show-info="true" :show-per-page="true" :per-page-options="[10, 25, 50]"
+                                per-page-label="Rows per page:" />
+                        </div>
+                    </x-slot:preview>
+                    @verbatim
+<x-basekit-ui::pagination
+    :current-page="3"
+    :total-pages="12"
+    :per-page="10"
+    :total="115"
+    path="#"
+    :show-info="true"
+    :show-per-page="true"
+    :per-page-options="[10, 25, 50]"
+    per-page-label="Rows per page:"
+/>
+                    @endverbatim
+                </x-basekit-ui::styleguide.code-example>
             </div>
 
             <!-- Custom Info Text -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Custom Info Text</h4>
-                <div class="border rounded p-4">
-                    <x-basekit-ui::pagination :current-page="$paginationCurrentPage" :total-pages="$paginationTotalPages" :per-page="$paginationPerPage"
-                        :total="$paginationTotal" path="#" :show-info="true">
-                        <x-slot:info>
-                            <p class="text-sm text-slate-600">
-                                Page {{ $paginationCurrentPage }} with items
-                                {{ $paginationFirstItem }}-{{ $paginationLastItem }}
-                            </p>
-                        </x-slot:info>
-                    </x-basekit-ui::pagination>
-                </div>
+                <x-basekit-ui::styleguide.code-example>
+                    <x-slot:preview>
+                        <div class="border rounded p-4">
+                            <x-basekit-ui::pagination :current-page="$paginationCurrentPage" :total-pages="$paginationTotalPages"
+                                :per-page="$paginationPerPage" :total="$paginationTotal" path="#"
+                                :show-info="true">
+                                <x-slot:info>
+                                    <p class="text-sm text-slate-600">
+                                        Page {{ $paginationCurrentPage }} with items
+                                        {{ $paginationFirstItem }}-{{ $paginationLastItem }}
+                                    </p>
+                                </x-slot:info>
+                            </x-basekit-ui::pagination>
+                        </div>
+                    </x-slot:preview>
+                    @verbatim
+<x-basekit-ui::pagination
+    :current-page="3"
+    :total-pages="12"
+    :per-page="10"
+    :total="115"
+    path="#"
+    :show-info="true"
+>
+    <x-slot:info>
+        <p class="text-sm text-slate-600">Page 3 with items 21-30</p>
+    </x-slot:info>
+</x-basekit-ui::pagination>
+                    @endverbatim
+                </x-basekit-ui::styleguide.code-example>
             </div>
 
             <!-- Responsive -->
             <div class="space-y-2">
                 <h4 class="text-sm text-slate-500 font-medium">Responsive</h4>
-                <x-basekit-ui::styleguide.responsive-preview title="Responsive Pagination Preview"
-                    subtitle="Resize to see full page numbers on desktop, simple prev/next on mobile"
-                    small-label="Mobile prev/next" large-label="Desktop full" :breakpoint="768"
-                    :default-width="520">
-                    <div class="my-3">
-                        <x-basekit-ui::pagination :current-page="$paginationCurrentPage" :total-pages="$paginationTotalPages" :per-page="$paginationPerPage"
-                            :total="$paginationTotal" path="#" :show-info="true" :responsive="true" />
-                    </div>
-                </x-basekit-ui::styleguide.responsive-preview>
+                <x-basekit-ui::styleguide.code-example>
+                    <x-slot:preview>
+                        <x-basekit-ui::styleguide.responsive-preview title="Responsive Pagination Preview"
+                            subtitle="Resize to see full page numbers on desktop, simple prev/next on mobile"
+                            small-label="Mobile prev/next" large-label="Desktop full" :breakpoint="768"
+                            :default-width="520">
+                            <div class="my-3">
+                                <x-basekit-ui::pagination :current-page="$paginationCurrentPage"
+                                    :total-pages="$paginationTotalPages" :per-page="$paginationPerPage"
+                                    :total="$paginationTotal" path="#" :show-info="true" :responsive="true" />
+                            </div>
+                        </x-basekit-ui::styleguide.responsive-preview>
+                    </x-slot:preview>
+                    @verbatim
+<x-basekit-ui::styleguide.responsive-preview
+    title="Responsive Pagination Preview"
+    subtitle="Resize to see full page numbers on desktop, simple prev/next on mobile"
+    small-label="Mobile prev/next"
+    large-label="Desktop full"
+    :breakpoint="768"
+    :default-width="520"
+>
+    <x-basekit-ui::pagination
+        :current-page="3"
+        :total-pages="12"
+        :per-page="10"
+        :total="115"
+        path="#"
+        :show-info="true"
+        :responsive="true"
+    />
+</x-basekit-ui::styleguide.responsive-preview>
+                    @endverbatim
+                </x-basekit-ui::styleguide.code-example>
             </div>
         </div>
     </x-basekit-ui::styleguide.section-toggle>

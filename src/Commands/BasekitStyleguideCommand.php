@@ -181,8 +181,21 @@ class BasekitStyleguideCommand extends Command
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{$title}</title>
+    <!-- Theme flash prevention: apply dark class before first paint -->
+    <script>
+    (function() {
+        var stored = localStorage.getItem('vitepress-theme-appearance');
+        var dark = stored === 'dark' || (!stored && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (dark) document.documentElement.classList.add('dark');
+    })();
+    </script>
     <!-- Alpine Collapse plugin must load BEFORE core Alpine: current Alpine CDN builds boot via queueMicrotask, so 'alpine:init' fires before any later-deferred plugin script executes -->
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <!-- Highlight.js for code syntax highlighting -->
+    <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
+    <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/xml.min.js"></script>
     <!-- Alpine.js for interactive components -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
     <!-- Tailwind CSS v4 browser runtime for utility classes -->
@@ -190,12 +203,16 @@ class BasekitStyleguideCommand extends Command
     <style>
 *, *::before, *::after { box-sizing: border-box; }
 html { font-size: 16px; }
+html.dark body {
+    background: #0f172a;
+    color: #e2e8f0;
+}
 body {
     margin: 0;
-    padding: 2rem;
     background: #f8fafc;
     font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
     color: #1e293b;
+    transition: background-color 0.15s ease, color 0.15s ease;
 }
 {$escapedCss}
     </style>
@@ -218,6 +235,12 @@ body {
         if (e.data && typeof e.data === 'string' && e.data.startsWith('#')) {
             var el = document.querySelector(e.data);
             if (el) { el.scrollIntoView({ behavior: 'smooth' }); }
+        }
+    });
+    // Initialize highlight.js after all deferred scripts have loaded
+    window.addEventListener('load', function() {
+        if (typeof hljs !== 'undefined') {
+            hljs.highlightAll();
         }
     });
     </script>

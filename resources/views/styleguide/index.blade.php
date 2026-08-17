@@ -9,6 +9,4 @@
     ];
 @endphp
 
-{{-- This view now only renders the styleguide-wrapper component, which assumes user CSS is loaded globally. --}}
-
 <x-styleguide-wrapper :sections="$sections" />
