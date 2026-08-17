@@ -71,3 +71,40 @@ jobs:
 
       - name: Verify CSS-doc token sync
         run: bash tools/verify-doc-token-sync.sh
+
+  browser:
+    name: Browser Tests
+    needs: quality
+    if: ${{ github.event_name != 'push' || !contains(github.event.head_commit.message, 'release-please--branches--') }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.4"
+          coverage: none
+          tools: composer:v2
+
+      - name: Get Composer cache directory
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install Composer dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Install Chrome for Testing
+        run: composer test:browser:setup
+
+      - name: Run browser tests
+        run: composer test:browser -- --no-coverage

@@ -26,6 +26,12 @@ yarn-error.log
 Thumbs.db
 
 
+# Laravel Dusk browser test artifacts
+tests/Browser/bin/
+tests/Browser/screenshots/
+tests/Browser/console/
+tests/Browser/source/
+
 # Documentation build
 docs/.vitepress/cache
 docs/.vitepress/dist

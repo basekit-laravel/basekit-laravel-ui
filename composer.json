@@ -33,7 +33,8 @@
     "phpstan/extension-installer": "^1.3",
     "phpstan/phpstan-strict-rules": "^2.0",
     "larastan/larastan": "^3.10",
-    "rector/rector": "^2.5"
+    "rector/rector": "^2.5",
+    "laravel/dusk": "^8.0"
   },
   "autoload": {
     "psr-4": {
@@ -56,6 +57,9 @@
     "styleguide": "./vendor/bin/testbench basekit:ui:styleguide",
     "advanced-demo": "./vendor/bin/testbench basekit:ui:styleguide --view=basekit::styleguide.advanced-demo --title=\"Basekit UI — Advanced Demo\" --output=docs/public/advanced-demo.html",
     "test": "pest",
+    "test:unit": "pest tests/Feature",
+    "test:browser": "pest tests/Browser",
+    "test:browser:setup": "npx @puppeteer/browsers install chrome@152.0.7977.42 --path tests/Browser/bin",
     "test:coverage": "pest --coverage",
     "lint": "pint",
     "lint:check": "pint --test",

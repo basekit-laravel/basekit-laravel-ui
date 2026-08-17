@@ -1,5 +1,6 @@
 providers:
   - BasekitLaravel\BasekitLaravelUi\BasekitServiceProvider
+  - BasekitLaravel\BasekitLaravelUi\Tests\Browser\BrowserRoutesProvider
 
 env:
   CACHE_STORE: array
