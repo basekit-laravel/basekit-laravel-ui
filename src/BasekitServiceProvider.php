@@ -101,7 +101,7 @@ class BasekitServiceProvider extends ServiceProvider
             ], 'basekit-laravel-ui-config');
 
             // Publish CSS theme (v1)
-            $distPath = __DIR__.'/../resources/dist/v1';
+            $distPath = __DIR__.'/../resources/css/dist/v1';
             $cssPath = __DIR__.'/../resources/css';
             $publishSource = File::isDirectory($distPath) ? $distPath : $cssPath;
 
