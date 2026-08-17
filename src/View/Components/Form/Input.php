@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace BasekitLaravel\BasekitLaravelUi\View\Components\Form;
 
 use BasekitLaravel\BasekitLaravelUi\Enums\ControlStyle;
-use BasekitLaravel\BasekitLaravelUi\Enums\InputVariant;
+use BasekitLaravel\BasekitLaravelUi\Enums\Variant;
 use BasekitLaravel\BasekitLaravelUi\Enums\LabelStyle;
 use BasekitLaravel\BasekitLaravelUi\Enums\Size;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentColorResolver;
@@ -35,7 +35,7 @@ class Input extends Component
     /**
      * The input variant.
      */
-    public InputVariant $variant;
+    public Variant $variant;
 
     /**
      * The input label style.
@@ -431,10 +431,10 @@ class Input extends Component
     /**
      * Resolve the input variant, falling back to config default if not provided.
      */
-    private function resolveVariant(?string $variant): InputVariant
+    private function resolveVariant(?string $variant): Variant
     {
         return ComponentPropResolver::resolveEnum(
-            InputVariant::class,
+            Variant::class,
             'basekit.components.input.variants',
             'basekit.components.input.default_variant',
             $variant

@@ -40,6 +40,7 @@ A flexible text input component with configurable variants, sizes, inline labels
 | `color`              | `string` | `null`        | Quick color shortcut. Sets border and focus ring colors. |
 | `wrapper-class`      | `string` | `null`        | Additional classes for the outer wrapper div |
 | `container-class`    | `string` | `null`        | Additional classes for the inner container div |
+| `invalid`            | `bool`   | `false`       | Force the field into its error/invalid visual state without an error message |
 
 Standard HTML input attributes such as `name`, `min`, `max`, `step`, `disabled`, and `readonly` pass through to the underlying `<input>` element.
 
@@ -57,6 +58,10 @@ Standard HTML input attributes such as `name`, `min`, `max`, `step`, `disabled`,
 ## Variants
 
 Supported variants: `primary`, `secondary`, `success`, `warning`, `info`, `ghost`.
+
+::: info Shared Variant Enum
+Input now uses the shared `Variant` enum. The previous `InputVariant` enum is still available but deprecated and will be removed in a future major version.
+:::
 
 ```blade
 <x-basekit-ui::input name="primary" label="Primary" variant="primary" />

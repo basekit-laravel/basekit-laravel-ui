@@ -19,7 +19,7 @@
 
 <div class="bk-radio {{ $wrapperClass ?? '' }}">
     {{-- Radio Container --}}
-    <div class="bk-radio__container {{ $containerClass ?? '' }}">
+    <div class="{{ $containerClasses() }}{{ $containerClass ? ' ' . $containerClass : '' }}">
         {{-- Radio Input --}}
         <input type="radio" id="{{ $inputId() }}"
             {{ $attributes->except(['label', 'error', 'hint', 'id'])->twMerge($classes()) }}

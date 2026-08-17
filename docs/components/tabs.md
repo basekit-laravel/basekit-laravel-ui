@@ -159,15 +159,15 @@ SVG;
     active="profile"
 >
     <div class="mt-4">
-        <div x-show="activeTab === 'profile'" x-cloak>
+        <div x-show="active === 'profile'" x-cloak>
             Profile content here...
         </div>
 
-        <div x-show="activeTab === 'settings'" x-cloak>
+        <div x-show="active === 'settings'" x-cloak>
             Settings content here...
         </div>
 
-        <div x-show="activeTab === 'billing'" x-cloak>
+        <div x-show="active === 'billing'" x-cloak>
             Billing content here...
         </div>
     </div>

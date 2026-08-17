@@ -21,7 +21,7 @@ basekit-laravel-ui/
 │   │   ├── Size.php
 │   │   ├── ControlStyle.php
 │   │   ├── IconStyle.php
-│   │   ├── InputVariant.php
+│   │   ├── InputVariant.php  (deprecated — use Variant)
 │   │   └── LabelStyle.php
 │   └── View/
 │       └── Components/
@@ -138,7 +138,7 @@ interface DefaultBackedEnum extends \BackedEnum
 }
 ```
 
-All enums (`Orientation`, `Size`, `Variant`, `ControlStyle`, `IconStyle`, `InputVariant`, `LabelStyle`) implement this interface, ensuring:
+All enums (`Orientation`, `Size`, `Variant`, `ControlStyle`, `IconStyle`, `LabelStyle`) implement this interface, ensuring:
 
 - Predictable fallback behavior on invalid prop values
 - Strong typing through `ComponentPropResolver`

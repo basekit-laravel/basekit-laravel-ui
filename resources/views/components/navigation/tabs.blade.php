@@ -9,15 +9,15 @@
     - default: Custom tab markup/content
 --}}
 
-<div {{ $attributes->twMerge('bk-tabs') }} x-data="{ activeTab: '{{ $active }}' }">
+<div {{ $attributes->twMerge('bk-tabs') }} x-data="{ active: '{{ $active }}' }">
     <div class="{{ $classes() }}" role="tablist" id="{{ $tablistId }}">
         @if (!empty($items))
             @foreach ($items as $item)
-                <button type="button" @click="activeTab = '{{ $item['value'] }}'"
-                    :class="activeTab === '{{ $item['value'] }}' ? 'bk-tabs__tab--active' : 'bk-tabs__tab--inactive'"
+                <button type="button" @click="active = '{{ $item['value'] }}'"
+                    :class="active === '{{ $item['value'] }}' ? 'bk-tabs__tab--active' : 'bk-tabs__tab--inactive'"
                     class="bk-tabs__tab" role="tab" id="tab-{{ $item['value'] }}"
                     aria-controls="tabpanel-{{ $item['value'] }}"
-                    :aria-selected="activeTab === '{{ $item['value'] }}' ? 'true' : 'false'"
+                    :aria-selected="active === '{{ $item['value'] }}' ? 'true' : 'false'"
                     @if (!empty($item['disabled'])) disabled @endif
                     @keydown.right.prevent="const tabs=$el.parentElement.querySelectorAll('[role=&quot;tab&quot;]:not([disabled])');const idx=Array.from(tabs).indexOf($el);const next=tabs[(idx+1)%tabs.length];next.focus();next.click();"
                     @keydown.left.prevent="const tabs=$el.parentElement.querySelectorAll('[role=&quot;tab&quot;]:not([disabled])');const idx=Array.from(tabs).indexOf($el);const prev=tabs[(idx-1+tabs.length)%tabs.length];prev.focus();prev.click();"

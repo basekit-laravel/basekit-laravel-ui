@@ -9,10 +9,10 @@
             ]"
             active="first"
         >
-            <div x-show="activeTab === 'first'" id="panel-first">
+            <div x-show="active === 'first'" id="panel-first">
                 <p>First panel content</p>
             </div>
-            <div x-show="activeTab === 'second'" id="panel-second">
+            <div x-show="active === 'second'" id="panel-second">
                 <p>Second panel content</p>
             </div>
         </x-basekit-ui::tabs>

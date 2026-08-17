@@ -218,7 +218,7 @@ class MultiSelect extends Component
      */
     public function baseId(): string
     {
-        return $this->cachedBaseId ??= $this->attributes->get('id') ?? 'bk-multiselect-'.uniqid();
+        return $this->cachedBaseId ??= $this->attributes->get('id') ?? 'bk-multiselect-'.Str::uuid();
     }
 
     /**

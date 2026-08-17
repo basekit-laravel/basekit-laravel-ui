@@ -121,6 +121,19 @@ class Radio extends Component
     }
 
     /**
+     * Get the radio container classes.
+     */
+    public function containerClasses(): string
+    {
+        $classes = ['bk-radio__container'];
+        if ($this->hasError()) {
+            $classes[] = 'bk-radio__container--error';
+        }
+
+        return implode(' ', $classes);
+    }
+
+    /**
      * Get or generate the radio input ID.
      */
     public function inputId(): string

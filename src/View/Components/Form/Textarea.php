@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BasekitLaravel\BasekitLaravelUi\View\Components\Form;
 
+use BasekitLaravel\BasekitLaravelUi\Enums\ControlStyle;
 use BasekitLaravel\BasekitLaravelUi\Enums\LabelStyle;
 use BasekitLaravel\BasekitLaravelUi\Enums\Size;
 use BasekitLaravel\BasekitLaravelUi\Enums\Variant;
@@ -42,6 +43,11 @@ class Textarea extends Component
     public LabelStyle $labelStyle;
 
     /**
+     * The textarea control style.
+     */
+    public ControlStyle $controlStyle;
+
+    /**
      * Create a new component instance.
      *
      * @param  string|null  $variant  The textarea variant
@@ -76,6 +82,13 @@ class Textarea extends Component
         public ?string $value = null,
         public int $rows = 4,
         string|LabelStyle $labelStyle = 'default',
+        /**
+         * Control style: default, pill, or underline.
+         */
+        string|ControlStyle $controlStyle = 'default',
+        /**
+         * @deprecated Use `control-style="underline"` instead. Will be removed in a future major version.
+         */
         public bool $isUnderline = false,
         public ?string $cornerHint = null,
         /**
@@ -96,6 +109,7 @@ class Textarea extends Component
         public ?string $containerClass = null,
     ) {
         $this->labelStyle = $this->resolveLabelStyle($labelStyle);
+        $this->controlStyle = $this->resolveControlStyle($controlStyle, $isUnderline);
         $this->variant = $this->resolveVariant($variant);
         $this->size = $this->resolveSize($size);
     }
@@ -119,7 +133,7 @@ class Textarea extends Component
             $classes[] = 'bk-textarea__control--label-overlap';
         }
 
-        if ($this->isUnderline) {
+        if ($this->isUnderline()) {
             $classes[] = 'bk-textarea__control--underline';
         }
 
@@ -144,7 +158,7 @@ class Textarea extends Component
             $classes[] = 'bk-textarea__container--label-overlap';
         }
 
-        if ($this->isUnderline) {
+        if ($this->isUnderline()) {
             $classes[] = 'bk-textarea__container--underline';
         }
 
@@ -181,6 +195,22 @@ class Textarea extends Component
     public function isOverlapLabel(): bool
     {
         return $this->labelStyle === LabelStyle::Overlap;
+    }
+
+    /**
+     * Check if the underline control style is active.
+     */
+    public function isUnderline(): bool
+    {
+        return $this->controlStyle === ControlStyle::Underline;
+    }
+
+    /**
+     * Check if the pill control style is active.
+     */
+    public function isPill(): bool
+    {
+        return $this->controlStyle === ControlStyle::Pill;
     }
 
     /**
@@ -275,5 +305,32 @@ class Textarea extends Component
         }
 
         return LabelStyle::tryFrom(strtolower($labelStyle)) ?? LabelStyle::Default;
+    }
+
+    /**
+     * Resolve control style to a supported enum value.
+     *
+     * Supports the deprecated `$isUnderline` boolean as a backwards-compatible
+     * alias: when `is-underline` is true and no explicit control style was
+     * provided, the underline style is applied.
+     */
+    private function resolveControlStyle(string|ControlStyle $controlStyle, bool $isUnderline): ControlStyle
+    {
+        if ($controlStyle instanceof ControlStyle) {
+            return $controlStyle;
+        }
+
+        $resolved = ControlStyle::tryFrom(strtolower($controlStyle));
+
+        if ($resolved !== null) {
+            return $resolved;
+        }
+
+        // Backwards compatibility: is-underline="true" maps to ControlStyle::Underline
+        if ($isUnderline) {
+            return ControlStyle::Underline;
+        }
+
+        return ControlStyle::Default;
     }
 }

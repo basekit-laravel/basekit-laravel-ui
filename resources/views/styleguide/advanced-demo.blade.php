@@ -77,7 +77,7 @@
                         ['value' => 'settings', 'label' => 'Settings'],
                     ]" active="orders" class="mt-4">
                         <div class="mt-4">
-                            <div x-show="activeTab === 'orders'" x-cloak>
+                            <div x-show="active === 'orders'" x-cloak>
                                 <h2 class="text-lg font-semibold mb-4">My Orders</h2>
 
                                 @php
@@ -108,7 +108,7 @@
                                         :total-items="10" class="mt-6 flex-wrap gap-2" />
                                 </div>
                             </div>
-                            <div x-show="activeTab === 'profile'" x-cloak>
+                            <div x-show="active === 'profile'" x-cloak>
                                 <p class="text-slate-600">
                                     This is your profile tab. You can view and edit your personal information,
                                     change
@@ -116,7 +116,7 @@
                                     password, and manage your account settings here.
                                 </p>
                             </div>
-                            <div x-show="activeTab === 'settings'" x-cloak>
+                            <div x-show="active === 'settings'" x-cloak>
                                 <p class="text-slate-600">
                                     In the settings tab, you can customize your preferences, configure
                                     notifications,

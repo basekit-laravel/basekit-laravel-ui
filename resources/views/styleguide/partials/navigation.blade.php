@@ -54,13 +54,13 @@
                     ['label' => 'Details', 'value' => 'details'],
                     ['label' => 'Activity', 'value' => 'activity'],
                 ]" variant="underline" active="overview">
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="activeTab === 'overview'">
+                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'overview'">
                         <p class="text-slate-700 text-sm">Overview tab content.</p>
                     </div>
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="activeTab === 'details'">
+                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'details'">
                         <p class="text-slate-700 text-sm">Details tab content.</p>
                     </div>
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="activeTab === 'activity'">
+                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'activity'">
                         <p class="text-slate-700 text-sm">Activity tab content.</p>
                     </div>
                 </x-basekit-ui::tabs>
@@ -75,14 +75,14 @@
                     ['label' => 'Notifications', 'value' => 'notifications', 'icon' => 'bell'],
                     ['label' => 'Disabled', 'value' => 'disabled', 'disabled' => true],
                 ]" variant="pills" active="account">
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="activeTab === 'account'">
+                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'account'">
                         <p class="text-slate-700 text-sm">Account tab content.</p>
                     </div>
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="activeTab === 'password'">
+                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'password'">
                         <p class="text-slate-700 text-sm">Password tab content.</p>
                     </div>
                     <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white"
-                        x-show="activeTab === 'notifications'">
+                        x-show="active === 'notifications'">
                         <p class="text-slate-700 text-sm">Notifications tab content.</p>
                     </div>
                 </x-basekit-ui::tabs>
@@ -96,13 +96,13 @@
                     ['label' => 'Images', 'value' => 'images'],
                     ['label' => 'Videos', 'value' => 'videos'],
                 ]" variant="boxed" active="docs">
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="activeTab === 'docs'">
+                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'docs'">
                         <p class="text-slate-700 text-sm">Documents tab content.</p>
                     </div>
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="activeTab === 'images'">
+                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'images'">
                         <p class="text-slate-700 text-sm">Images tab content.</p>
                     </div>
-                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="activeTab === 'videos'">
+                    <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white" x-show="active === 'videos'">
                         <p class="text-slate-700 text-sm">Videos tab content.</p>
                     </div>
                 </x-basekit-ui::tabs>
@@ -113,15 +113,15 @@
                 <h4 class="text-sm text-slate-500 font-medium">With Custom Icon (Pills)</h4>
                 <x-basekit-ui::tabs :items="$customIconTabsItems" active="custom-home" variant="pills">
                     <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white"
-                        x-show="activeTab === 'custom-home'">
+                        x-show="active === 'custom-home'">
                         <p class="text-slate-700 text-sm">Home tab content.</p>
                     </div>
                     <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white"
-                        x-show="activeTab === 'custom-search'">
+                        x-show="active === 'custom-search'">
                         <p class="text-slate-700 text-sm">Search tab content.</p>
                     </div>
                     <div class="mt-4 p-4 border border-slate-200 rounded-lg bg-white"
-                        x-show="activeTab === 'custom-star'">
+                        x-show="active === 'custom-star'">
                         <p class="text-slate-700 text-sm">Favorites tab content.</p>
                     </div>
                 </x-basekit-ui::tabs>

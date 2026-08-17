@@ -31,7 +31,8 @@ A multi-line text input component with configurable variants, sizes, label place
 | `value`        | `string` | `null`        | Initial textarea value                                                      |
 | `corner-hint`  | `string` | `null`        | Top-right label row hint                                                    |
 | `label-style`  | `string` | `'default'`   | Label placement: `default`, `inset`, `overlap`                              |
-| `is-underline` | `bool`   | `false`       | Use underline-only styling                                                  |
+| `control-style` | `string` | `'default'`  | Control style: `default`, `pill`, `underline`                              |
+| `is-underline` | `bool`   | `false`       | Deprecated — use `control-style="underline"` instead. Will be removed in a future major version. |
 | `border`       | `string` | `null`        | Custom border color. |
 | `wrapper-class` | `string` | `null`        | Additional classes for the outer wrapper div |
 | `container-class` | `string` | `null`        | Additional classes for the inner container div |
@@ -74,7 +75,7 @@ Supported sizes: `sm`,`md`,`lg`.
 ```blade
 <x-basekit-ui::textarea name="bio" label="Bio" label-style="inset" />
 <x-basekit-ui::textarea name="notes" label="Notes" label-style="overlap" />
-<x-basekit-ui::textarea name="message" label="Message" is-underline />
+<x-basekit-ui::textarea name="message" label="Message" control-style="underline" />
 ```
 
 ## With Corner Hint
