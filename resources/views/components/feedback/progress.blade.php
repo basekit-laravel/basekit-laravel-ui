@@ -15,7 +15,7 @@
 --}}
 
 {{-- Progress Container --}}
-<div @if ($colorStyle()) style="{{ $colorStyle() }}" @endif {{ $attributes->twMerge('bk-progress') }}>
+<div @if ($colorStyle()) style="{{ $colorStyle() }}" @endif {{ $attributes->class('bk-progress') }}>
     {{-- Label --}}
     @if ($label || $isShowPercentage)
         <div class="bk-progress__label-container">

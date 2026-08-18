@@ -1,5 +1,5 @@
 {{-- Grid Component --}}
 
-<div {{ $attributes->twMerge($classes()) }}>
+<div {{ $attributes->class($classes()) }}>
     {{ $slot }}
 </div>

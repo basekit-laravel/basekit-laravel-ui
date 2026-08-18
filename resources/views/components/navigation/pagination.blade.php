@@ -24,7 +24,7 @@
     - info: Custom page info content
 --}}
 
-<nav {{ $attributes->twMerge('bk-pagination' . ($responsive ? ' bk-pagination--responsive' : '')) }} role="navigation" aria-label="Pagination">
+<nav {{ $attributes->class('bk-pagination' . ($responsive ? ' bk-pagination--responsive' : '')) }} role="navigation" aria-label="Pagination">
     @if ($responsive)
         {{-- Desktop: full/simple pagination --}}
         <div class="bk-pagination__desktop">

@@ -48,7 +48,7 @@
         ])
 
         {{-- Textarea Field --}}
-        <textarea id="{{ $inputId() }}" {{ $attributes->except(['label', 'error', 'hint', 'label-style', 'id'])->twMerge($classes()) }}
+        <textarea id="{{ $inputId() }}" {{ $attributes->except(['label', 'error', 'hint', 'label-style', 'id'])->class($classes()) }}
             rows="{{ $rows }}" @if ($placeholder) placeholder="{{ $placeholder }}" @endif
             @if ($hasAnyError) aria-invalid="true" aria-describedby="{{ $inputId() }}-error" @endif
             @if (!$hasAnyError && ($hint || $hasCustomHint)) aria-describedby="{{ $inputId() }}-hint" @endif>{{ $value }}</textarea>

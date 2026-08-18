@@ -1,7 +1,7 @@
 {{-- Avatar Component --}}
 
 {{-- Avatar Container --}}
-<div {{ $attributes->twMerge($classes()) }}>
+<div {{ $attributes->class($classes()) }}>
     <div class="bk-avatar__content {{ $contentClass ?? '' }}">
         {{-- Image --}}
         @if ($hasImage())
