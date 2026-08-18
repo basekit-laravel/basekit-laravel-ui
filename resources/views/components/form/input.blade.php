@@ -78,7 +78,7 @@
         {{-- Input Field --}}
         <input id="{{ $inputId() }}"
             @if ($isTogglePassword) :type="showPassword ? 'text' : 'password'" @else type="{{ $inputType() }}" @endif
-            {{ $attributes->except(['label', 'error', 'hint', 'icon', 'is-toggle-password', 'mask', 'label-style', 'control-style', 'id'])->twMerge($classes() . ($shouldShowErrorIcon(isset($suffix)) ? ' bk-input__control--has-error-icon' : '')) }}
+            {{ $attributes->except(['label', 'error', 'hint', 'icon', 'is-toggle-password', 'mask', 'label-style', 'control-style', 'id'])->class($classes() . ($shouldShowErrorIcon(isset($suffix)) ? ' bk-input__control--has-error-icon' : '')) }}
             @if ($placeholder) placeholder="{{ $placeholder }}" @endif
             @if ($value !== null) value="{{ $value }}" @endif
             @if ($hasAnyError) aria-invalid="true" @if (filled($error)) aria-describedby="{{ $inputId() }}-error" @endif @endif

@@ -24,7 +24,7 @@
     <div class="bk-toggle__container {{ $containerClass ?? '' }}">
         {{-- Hidden Input --}}
         <input type="checkbox" id="{{ $inputId() }}"
-            {{ $attributes->except(['label', 'error', 'hint', 'id'])->twMerge('bk-toggle__input', 'sr-only') }}
+            {{ $attributes->except(['label', 'error', 'hint', 'id'])->class(['bk-toggle__input', 'sr-only']) }}
             @if ($value !== null) value="{{ $value }}" @endif
             @if ($isChecked) checked @endif @if ($isDisabled()) disabled @endif
             @if ($hasError()) aria-invalid="true" aria-describedby="{{ $inputId() }}-error" @endif>

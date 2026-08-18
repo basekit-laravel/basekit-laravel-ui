@@ -8,7 +8,6 @@ use BasekitLaravel\BasekitLaravelUi\BasekitServiceProvider;
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use TailwindMerge\Laravel\TailwindMergeServiceProvider;
 
 abstract class TestCase extends Orchestra
 {
@@ -20,7 +19,6 @@ abstract class TestCase extends Orchestra
         return [
             BladeIconsServiceProvider::class,
             BladeHeroiconsServiceProvider::class,
-            TailwindMergeServiceProvider::class,
             BasekitServiceProvider::class,
         ];
     }

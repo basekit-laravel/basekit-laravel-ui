@@ -21,7 +21,7 @@
     <div class="{{ $containerClasses() }}{{ $containerClass ? ' ' . $containerClass : '' }}">
         {{-- Checkbox Input --}}
         <input type="checkbox" id="{{ $inputId() }}"
-            {{ $attributes->except(['label', 'error', 'hint', 'id'])->twMerge($classes()) }}
+            {{ $attributes->except(['label', 'error', 'hint', 'id'])->class($classes()) }}
             @if ($colorStyle()) style="{{ $colorStyle() }}" @endif
             @if ($value !== null) value="{{ $value }}" @endif
             @if ($isChecked) checked @endif

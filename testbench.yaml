@@ -1,4 +1,6 @@
 providers:
+  - BladeUI\Icons\BladeIconsServiceProvider
+  - BladeUI\Heroicons\BladeHeroiconsServiceProvider
   - BasekitLaravel\BasekitLaravelUi\BasekitServiceProvider
   - BasekitLaravel\BasekitLaravelUi\Tests\Browser\BrowserRoutesProvider
 

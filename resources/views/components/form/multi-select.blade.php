@@ -82,7 +82,7 @@
 
         {{-- Control --}}
         <button type="button" id="{{ $inputId() }}"
-            {{ $attributes->except(['label', 'error', 'hint', 'icon', 'options', 'value', 'placeholder', 'corner-hint', 'label-style', 'control-style', 'name', 'id'])->twMerge($classes() . ($hasCustomIcon || $iconComponent() ? ' bk-multiselect__control--with-icon' : '')) }}
+            {{ $attributes->except(['label', 'error', 'hint', 'icon', 'options', 'value', 'placeholder', 'corner-hint', 'label-style', 'control-style', 'name', 'id'])->class($classes() . ($hasCustomIcon || $iconComponent() ? ' bk-multiselect__control--with-icon' : '')) }}
             :aria-expanded="open" aria-controls="{{ $listId() }}" aria-haspopup="listbox"
             @if ($hasAnyError) aria-invalid="true" aria-describedby="{{ $inputId() }}-error" @endif
             @if (!$hasAnyError && ($hint || $hasCustomHint)) aria-describedby="{{ $inputId() }}-hint" @endif

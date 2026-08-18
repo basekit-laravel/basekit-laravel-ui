@@ -18,7 +18,7 @@
     - icon: Custom icon SVG (overrides icon prop)
 --}}
 
-<{{ $as }} {{ $attributes->twMerge($classes()) }}
+<{{ $as }} {{ $attributes->class($classes()) }}
     @if ($colorStyle()) style="{{ $colorStyle() }}" @endif
     @if ($as === 'button')
         type="{{ $type }}"
