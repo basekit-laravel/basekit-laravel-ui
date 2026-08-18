@@ -11,7 +11,7 @@
     - icon: Optional custom icon markup
 --}}
 
-<a href="{{ $href ?? '#' }}" @if ($colorStyle()) style="{{ $colorStyle() }}" @endif {{ $attributes->twMerge($classes()) }}
+<a href="{{ $href ?? '#' }}" @if ($colorStyle()) style="{{ $colorStyle() }}" @endif {{ $attributes->class($classes()) }}
     @if ($isExternal) target="_blank"
         rel="noopener noreferrer" @endif>
 

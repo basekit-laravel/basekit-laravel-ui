@@ -4,7 +4,7 @@
     $tag = $ordered ? 'ol' : 'ul';
 @endphp
 
-<{{ $tag }} {{ $attributes->twMerge($classes()) }}>
+<{{ $tag }} {{ $attributes->class($classes()) }}>
     @if ($slot->isNotEmpty())
         {{ $slot }}
     @else

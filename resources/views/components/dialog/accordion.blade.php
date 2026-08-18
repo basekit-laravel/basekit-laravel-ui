@@ -9,7 +9,7 @@
     - default: Custom accordion markup
 --}}
 
-<div {{ $attributes->twMerge($classes()) }} x-data="{{ $xDataAttribute() }}">
+<div {{ $attributes->class($classes()) }} x-data="{{ $xDataAttribute() }}">
 
     @if ($slot->isEmpty() && !empty($items))
         @foreach ($items as $item)

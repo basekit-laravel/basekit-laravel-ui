@@ -9,7 +9,7 @@
     - default: Custom tab markup/content
 --}}
 
-<div {{ $attributes->twMerge('bk-tabs') }} x-data="{ active: '{{ $active }}' }">
+<div {{ $attributes->class('bk-tabs') }} x-data="{ active: '{{ $active }}' }">
     <div class="{{ $classes() }}" role="tablist" id="{{ $tablistId }}">
         @if (!empty($items))
             @foreach ($items as $item)

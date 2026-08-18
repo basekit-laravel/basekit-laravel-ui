@@ -105,7 +105,7 @@
         @if ($useCustomDropdown)
             {{-- Custom Dropdown Field (matches multi-select menu styling) --}}
             <button type="button" id="{{ $inputId() }}"
-                {{ $attributes->except(['label', 'error', 'hint', 'icon', 'options', 'value', 'placeholder', 'empty-label', 'corner-hint', 'label-style', 'control-style', 'is-disabled', 'name', 'allow-empty', 'id'])->twMerge($classes() . ($iconComponent() || $hasCustomIcon ? ' bk-select__control--with-icon' : '')) }}
+                {{ $attributes->except(['label', 'error', 'hint', 'icon', 'options', 'value', 'placeholder', 'empty-label', 'corner-hint', 'label-style', 'control-style', 'is-disabled', 'name', 'allow-empty', 'id'])->class($classes() . ($iconComponent() || $hasCustomIcon ? ' bk-select__control--with-icon' : '')) }}
                 @if ($hasAnyError) aria-invalid="true" aria-describedby="{{ $inputId() }}-error" @endif
                 @if (!$hasAnyError && ($hint || $hasCustomHint)) aria-describedby="{{ $inputId() }}-hint" @endif
                 @if ($isDisabledAttribute()) disabled @endif :aria-expanded="open" aria-haspopup="listbox"
@@ -132,7 +132,7 @@
         @else
             {{-- Native Select Field (fallback for slotted/multiple usage) --}}
             <select id="{{ $inputId() }}"
-                {{ $attributes->except(['label', 'error', 'hint', 'icon', 'options', 'value', 'placeholder', 'empty-label', 'corner-hint', 'label-style', 'control-style', 'is-disabled', 'allow-empty', 'id'])->twMerge($classes() . ($iconComponent() || $hasCustomIcon ? ' bk-select__control--with-icon' : '')) }}
+                {{ $attributes->except(['label', 'error', 'hint', 'icon', 'options', 'value', 'placeholder', 'empty-label', 'corner-hint', 'label-style', 'control-style', 'is-disabled', 'allow-empty', 'id'])->class($classes() . ($iconComponent() || $hasCustomIcon ? ' bk-select__control--with-icon' : '')) }}
                 @if ($hasAnyError) aria-invalid="true" aria-describedby="{{ $inputId() }}-error" @endif
                 @if (!$hasAnyError && ($hint || $hasCustomHint)) aria-describedby="{{ $inputId() }}-hint" @endif
                 @if ($isDisabledAttribute()) disabled @endif @mousedown="clearTimeout(_blurTimer); open = !open"
