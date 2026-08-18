@@ -59,7 +59,7 @@
     "test": "pest",
     "test:unit": "pest tests/Feature",
     "test:browser": "pest tests/Browser",
-    "test:browser:setup": "npx @puppeteer/browsers install chrome@152.0.7977.42 --path tests/Browser/bin",
+    "test:browser:setup": "npx @puppeteer/browsers install chrome@stable --path tests/Browser/bin && npx @puppeteer/browsers install chromedriver@stable --path tests/Browser/bin",
     "test:coverage": "pest --coverage",
     "lint": "pint",
     "lint:check": "pint --test",
