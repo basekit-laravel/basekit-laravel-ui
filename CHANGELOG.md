@@ -5,6 +5,27 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.8.1...v2.0.0) (2026-08-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ui:** remove deprecated APIs and apply breaking changes
+
+### Features
+
+* **a11y:** comprehensive accessibility audit and copy button fix ([de5c4a3](https://github.com/basekit-laravel/basekit-laravel-ui/commit/de5c4a3b048d78484f02dd6c7540f7c29a7b1070))
+* **styleguide:** redesign with preview/code toggle, search filtering, collapsible sections ([1bd1237](https://github.com/basekit-laravel/basekit-laravel-ui/commit/1bd123701f0a3984d9c2f5bd9d1fd00f53b285d6))
+* **ui:** remove deprecated APIs and apply breaking changes ([ea1e904](https://github.com/basekit-laravel/basekit-laravel-ui/commit/ea1e904a894968e454f843021aed7f6f4ba45014))
+
+
+### Bug Fixes
+
+* correct CSS dist publish path in BasekitServiceProvider ([062ac07](https://github.com/basekit-laravel/basekit-laravel-ui/commit/062ac075b912877976eb7ce94f28965eb928cf2d))
+* **navigation:** add Escape key handler to dropdown menu ([aa6d611](https://github.com/basekit-laravel/basekit-laravel-ui/commit/aa6d611829b0fa498ebba2f4830d5009bc120e9f))
+* resolve ChromeDriver dynamically instead of using Dusk-bundled binary ([41042ca](https://github.com/basekit-laravel/basekit-laravel-ui/commit/41042caabbf075a8a6868451cb818020e39a0ff7))
+* **ui:** improve component API consistency ([3b6de7a](https://github.com/basekit-laravel/basekit-laravel-ui/commit/3b6de7a42bb9045d0ffa283c782561c168f8c590))
+
 ## [1.8.1](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.8.0...v1.8.1) (2026-08-16)
 
 

@@ -17,7 +17,7 @@
     so it is never interpolated into an inline JavaScript expression.
 --}}
 
-<button {{ $attributes->twMerge($classes(), 'bk-copy-button') }}
+<button {{ $attributes->class($classes(), 'bk-copy-button') }}
     type="button"
     data-value="{{ $value }}"
     data-duration="{{ $duration }}"

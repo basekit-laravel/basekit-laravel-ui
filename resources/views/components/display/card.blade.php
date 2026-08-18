@@ -1,6 +1,6 @@
 {{-- Card Component --}}
 
-<div {{ $attributes->twMerge($rootClassNames) }}>
+<div {{ $attributes->class($rootClassNames) }}>
     {{-- Header --}}
     @if (isset($header))
         <div class="bk-card__header {{ $headerClass ?? '' }}">

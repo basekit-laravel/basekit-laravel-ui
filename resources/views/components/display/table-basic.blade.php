@@ -35,10 +35,10 @@
 --}}
 
 @if ($hasResponsiveWrapper())
-    <div {{ $attributes->twMerge($responsiveWrapperClasses()) }}>
+    <div {{ $attributes->class($responsiveWrapperClasses()) }}>
         <div class="bk-table__wrapper">
         @else
-            <div {{ $attributes->twMerge('bk-table__wrapper') }}>
+            <div {{ $attributes->class('bk-table__wrapper') }}>
 @endif
 <table class="{{ $classes() }}">
     @if ($useData)

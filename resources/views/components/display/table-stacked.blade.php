@@ -17,7 +17,7 @@
     <x-table-stacked :columns="$columns" :rows="$rows" />
 --}}
 
-<div {{ $attributes->twMerge('bk-table__container') }} x-data="{ expanded: {} }">
+<div {{ $attributes->class('bk-table__container') }} x-data="{ expanded: {} }">
     @if ($hasResponsiveWrapper())
         <div class="{{ $responsiveWrapperClasses() }}">
     @endif
