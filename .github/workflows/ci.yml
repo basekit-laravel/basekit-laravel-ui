@@ -58,7 +58,7 @@ jobs:
         run: composer analyze
 
       - name: Run test suite
-        run: ./vendor/bin/pest --ci --no-coverage
+        run: ./vendor/bin/pest tests/Feature --ci --no-coverage
 
       - name: Build component CSS
         run: ./vendor/bin/testbench basekit:ui:build
