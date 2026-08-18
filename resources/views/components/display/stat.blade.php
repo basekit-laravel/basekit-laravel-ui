@@ -1,7 +1,7 @@
 {{-- Stat Component --}}
 
 {{-- Stat Container --}}
-<div {{ $attributes->twMerge('bk-stat') }}>
+<div {{ $attributes->class('bk-stat') }}>
     {{-- Icon --}}
     @if ((isset($icon) && !is_string($icon)) || $hasIcon())
         <div class="bk-stat__icon">

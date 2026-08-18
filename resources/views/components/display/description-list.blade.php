@@ -1,6 +1,6 @@
 {{-- Description List Component --}}
 
-<dl {{ $attributes->twMerge($classes()) }}>
+<dl {{ $attributes->class($classes()) }}>
     @if ($slot->isNotEmpty())
         {{ $slot }}
     @elseif ($hasItems())

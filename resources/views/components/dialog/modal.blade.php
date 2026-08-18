@@ -16,11 +16,11 @@
 @if ($isExternallyControlled())
     <div x-show="{{ $stateVariable() }}" @keydown.escape.window="{{ $closeExpression() }}" x-cloak
         @if ($isCloseOnBackdrop) @click="{{ $closeExpression() }}" @endif
-        {{ $attributes->twMerge('bk-modal') }}>
+        {{ $attributes->class('bk-modal') }}>
     @else
         <div x-data="{ open: {{ $isOpen ? 'true' : 'false' }} }" @keydown.escape.window="{{ $closeExpression() }}" x-show="{{ $stateVariable() }}"
             @if ($isCloseOnBackdrop) @click="{{ $closeExpression() }}" @endif x-cloak
-            {{ $attributes->twMerge('bk-modal') }}>
+            {{ $attributes->class('bk-modal') }}>
 @endif
 
 <div x-show="{{ $stateVariable() }}" x-transition:enter="transition ease-out duration-300"

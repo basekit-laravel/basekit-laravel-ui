@@ -8,7 +8,7 @@
     - default: Custom breadcrumb markup
 --}}
 
-<nav {{ $attributes->twMerge($classes()) }} aria-label="Breadcrumb">
+<nav {{ $attributes->class($classes()) }} aria-label="Breadcrumb">
     <ol class="bk-breadcrumb__list">
         @if ($slot->isEmpty() && !empty($items))
             @foreach ($items as $index => $item)

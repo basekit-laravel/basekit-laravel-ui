@@ -278,8 +278,8 @@ html.dark .sg-topbar { background: rgba(15, 23, 42, 0.92); }
 .sg-example {
     border: 1px solid var(--sg-border);
     border-radius: var(--sg-radius);
-    overflow: hidden;
     margin-top: 0.75rem;
+    overflow: visible;
 }
 .sg-example-preview {
     padding: 1.5rem;
@@ -424,6 +424,51 @@ html.dark .sg-example-code { background: #0d1117; }
     to { opacity: 1; transform: translateY(0); }
 }
 .sg-animate-in { animation: sg-fade-in 0.2s ease forwards; }
+
+/* =========================================================================
+   Dark Mode — Tailwind utility overrides for styleguide chrome
+   Scope: only within .styleguide-layout to avoid affecting Basekit components
+   ========================================================================= */
+html.dark .styleguide-layout .text-slate-400 { color: #94a3b8; }
+html.dark .styleguide-layout .text-slate-500 { color: #94a3b8; }
+html.dark .styleguide-layout .text-slate-600 { color: #cbd5e1; }
+html.dark .styleguide-layout .text-slate-700 { color: #e2e8f0; }
+html.dark .styleguide-layout .text-slate-900 { color: #f1f5f9; }
+html.dark .styleguide-layout .bg-white { background-color: var(--sg-surface-secondary); }
+html.dark .styleguide-layout .bg-slate-50 { background-color: var(--sg-surface-secondary); }
+html.dark .styleguide-layout .bg-slate-50\/70 { background-color: rgba(30, 41, 59, 0.7); }
+html.dark .styleguide-layout .bg-slate-100 { background-color: var(--sg-surface-tertiary); }
+html.dark .styleguide-layout .bg-slate-200 { background-color: #475569; }
+html.dark .styleguide-layout .hover\:bg-white\/90:hover { background-color: rgba(30, 41, 59, 0.9); }
+html.dark .styleguide-layout .hover\:bg-white:hover { background-color: var(--sg-surface-tertiary); }
+html.dark .styleguide-layout .hover\:text-slate-900:hover { color: #f1f5f9; }
+html.dark .styleguide-layout .hover\:border-slate-200:hover { border-color: var(--sg-border); }
+html.dark .styleguide-layout .hover\:border-slate-400:hover { border-color: #64748b; }
+html.dark .styleguide-layout .border-slate-400 { border-color: #64748b; }
+html.dark .styleguide-layout .bg-yellow-50 { background-color: rgba(161, 98, 7, 0.15); }
+html.dark .styleguide-layout .bg-red-50 { background-color: rgba(185, 28, 28, 0.15); }
+html.dark .styleguide-layout .border-slate-100 { border-color: var(--sg-border); }
+html.dark .styleguide-layout .border-slate-200 { border-color: var(--sg-border); }
+html.dark .styleguide-layout .border-slate-300 { border-color: var(--sg-border); }
+html.dark .styleguide-layout .border-yellow-200 { border-color: rgba(161, 98, 7, 0.3); }
+html.dark .styleguide-layout .border-red-200 { border-color: rgba(185, 28, 28, 0.3); }
+html.dark .styleguide-layout .text-yellow-800 { color: #fbbf24; }
+html.dark .styleguide-layout .text-red-600 { color: #f87171; }
+html.dark .styleguide-layout .text-primary-600 { color: var(--sg-primary); }
+html.dark .styleguide-layout .hover\:text-primary-700:hover { color: #a5b4fc; }
+html.dark .styleguide-layout .hover\:bg-red-50:hover { background-color: rgba(185, 28, 28, 0.15); }
+html.dark .styleguide-layout .shadow-sm { box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.2); }
+html.dark .styleguide-layout .shadow-md { box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3); }
+html.dark .styleguide-layout .hover\:shadow-md:hover { box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3); }
+html.dark .styleguide-layout .group-hover\:bg-slate-200:hover { background-color: #475569; }
+html.dark .styleguide-layout .group-hover\:border-slate-400:hover { border-color: #64748b; }
+html.dark .styleguide-layout .text-slate-200 { color: #e2e8f0; }
+html.dark .styleguide-layout .text-slate-300 { color: #cbd5e1; }
+
+/* Dark mode code blocks */
+html.dark .sg-example-code {
+    background: #0d1117;
+}
 </style>
 
 <div x-data="styleguideApp()" x-init="init()" class="styleguide-layout">
@@ -586,7 +631,7 @@ html.dark .sg-example-code { background: #0d1117; }
                     @php
                         $categoryComponents = $componentIndex[$name] ?? [];
                     @endphp
-                    <section id="{{ Str::slug($name) }}" class="sg-section" x-data="{ open: true }" x-init="$watch('searchQuery', (val) => { if (val && hasCategoryMatch('{{ $name }}', {{ json_encode($categoryComponents) }})) open = true; })" x-show="!searchQuery || hasCategoryMatch('{{ $name }}', {{ json_encode($categoryComponents) }})" data-category style="background: var(--sg-surface); border: 1px solid var(--sg-border); border-radius: var(--sg-radius); overflow: hidden;">
+                    <section id="{{ Str::slug($name) }}" class="sg-section" x-data="{ open: true }" x-init="$watch('searchQuery', (val) => { if (val && hasCategoryMatch('{{ $name }}', {{ json_encode($categoryComponents) }})) open = true; })" x-show="!searchQuery || hasCategoryMatch('{{ $name }}', {{ json_encode($categoryComponents) }})" data-category style="background: var(--sg-surface); border: 1px solid var(--sg-border); border-radius: var(--sg-radius);">
                         <button type="button" @click="open = !open" style="width: 100%; display: flex; align-items: center; gap: 0.75rem; padding: 1rem 1.5rem; background: none; border: none; cursor: pointer; text-align: left; transition: background 0.1s;" onmouseover="this.style.background='var(--sg-surface-secondary)'" onmouseout="this.style.background='transparent'">
                             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0; transition: transform 0.2s ease;" :style="open ? 'transform: rotate(90deg)' : ''"><path d="M5 3l4 4-4 4"/></svg>
                             <h2 style="font-size: 1.125rem; font-weight: 700; margin: 0;">{{ $name }}</h2>

@@ -213,9 +213,11 @@ abstract class DuskTestCase extends TestCase
         $port = $url['port'] ?? 9615;
 
         $publicPath = realpath(__DIR__.'/../../vendor/orchestra/testbench-core/laravel/public');
+        $projectRoot = realpath(__DIR__.'/../..');
 
         static::$serverProcess = Process::fromShellCommandline(sprintf(
-            'php -S %s:%d -t %s %s/server.php 2>&1',
+            'TESTBENCH_WORKING_PATH=%s php -S %s:%d -t %s %s/server.php 2>&1',
+            escapeshellarg($projectRoot),
             $host,
             $port,
             $publicPath,
