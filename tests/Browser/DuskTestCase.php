@@ -213,6 +213,15 @@ abstract class DuskTestCase extends TestCase
         $port = $url['port'] ?? 9615;
 
         $publicPath = realpath(__DIR__.'/../../vendor/orchestra/testbench-core/laravel/public');
+        $projectRoot = realpath(__DIR__.'/../..');
+
+        // Ensure testbench.yaml is available to the server process.
+        // The server bootstraps via vendor/orchestra/testbench-core/laravel/bootstrap/app.php
+        // which reads from bootstrap/cache/testbench.yaml when TESTBENCH_WORKING_PATH is unset.
+        $cachedConfig = dirname($publicPath).'/bootstrap/cache/testbench.yaml';
+        if (! is_file($cachedConfig)) {
+            copy($projectRoot.'/testbench.yaml', $cachedConfig);
+        }
 
         static::$serverProcess = Process::fromShellCommandline(sprintf(
             'php -S %s:%d -t %s %s/server.php 2>&1',
