@@ -115,7 +115,7 @@ For positioning multiple toasts (e.g. flash messages):
 
 ## Custom Classes
 
-Override or extend styles with the `class` attribute. The `class` attribute is automatically merged with the component's internal classes using `twMerge`:
+Override or extend styles with the `class` attribute. The `class` attribute is automatically merged with the component's internal classes using Laravel's built-in `class()` method:
 
 ```blade
 <x-basekit-ui::toast

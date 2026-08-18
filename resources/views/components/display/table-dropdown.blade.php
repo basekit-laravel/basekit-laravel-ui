@@ -15,7 +15,7 @@
     <x-table-dropdown :columns="$columns" :rows="$rows" />
 --}}
 
-<div {{ $attributes->twMerge('bk-table__container') }} x-data="{ menuOpen: false, visible: @js($visibleDefaults) }">
+<div {{ $attributes->class('bk-table__container') }} x-data="{ menuOpen: false, visible: @js($visibleDefaults) }">
     @if ($hasResponsiveWrapper())
         <div class="{{ $responsiveWrapperClasses() }}">
     @endif
