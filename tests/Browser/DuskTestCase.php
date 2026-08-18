@@ -43,9 +43,11 @@ abstract class DuskTestCase extends TestCase
     {
         parent::setUpBeforeClass();
 
-        static::useChromedriver(
-            realpath(__DIR__.'/../../vendor/laravel/dusk/bin/chromedriver-linux')
-        );
+        $chromedriver = static::resolveChromedriverBinary();
+
+        if ($chromedriver) {
+            static::useChromedriver($chromedriver);
+        }
 
         static::startChromeDriver(['--port=9515']);
         static::startServer();
@@ -150,6 +152,44 @@ abstract class DuskTestCase extends TestCase
             if ($path !== '' && is_executable($path)) {
                 return $path;
             }
+        }
+
+        return null;
+    }
+
+    /**
+     * Resolve the ChromeDriver binary path from known locations.
+     */
+    protected static function resolveChromedriverBinary(): ?string
+    {
+        // 1. Explicit env var
+        $env = $_ENV['DUSK_CHROMEDRIVER']
+            ?? $_SERVER['DUSK_CHROMEDRIVER']
+            ?? getenv('DUSK_CHROMEDRIVER');
+
+        if ($env && is_executable($env)) {
+            return $env;
+        }
+
+        // 2. Project-local Chrome for Testing (tests/Browser/bin/chromedriver/linux-*/chromedriver-linux64/chromedriver)
+        $binDir = __DIR__.'/bin/chromedriver';
+        if (is_dir($binDir)) {
+            $found = glob($binDir.'/linux-*/chromedriver-linux64/chromedriver');
+            if ($found && is_executable($found[0])) {
+                return $found[0];
+            }
+        }
+
+        // 3. Dusk-bundled chromedriver
+        $duskBin = __DIR__.'/../../vendor/laravel/dusk/bin/chromedriver-linux';
+        if (is_file($duskBin) && is_executable($duskBin)) {
+            return $duskBin;
+        }
+
+        // 4. System chromedriver
+        $path = trim((string) shell_exec('which chromedriver 2>/dev/null'));
+        if ($path !== '' && is_executable($path)) {
+            return $path;
         }
 
         return null;
