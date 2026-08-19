@@ -5,6 +5,10 @@ export default defineConfig({
   description: "A modular Laravel UI component library with Tailwind 4 theming",
   base: "/basekit-laravel-ui/",
 
+  head: [
+    ["link", { rel: "icon", type: "image/x-icon", href: "/basekit-laravel-ui/favicon.ico" }],
+  ],
+
   themeConfig: {
     nav: [
       { text: "Home", link: "/" },

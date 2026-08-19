@@ -4,8 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Basekit UI — Advanced Demo</title>
+    <!-- Theme flash prevention: apply dark class before first paint -->
+    <script>
+    (function() {
+        var stored = localStorage.getItem('vitepress-theme-appearance');
+        var dark = stored === 'dark' || (!stored && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (dark) document.documentElement.classList.add('dark');
+    })();
+    </script>
     <!-- Alpine Collapse plugin must load BEFORE core Alpine: current Alpine CDN builds boot via queueMicrotask, so 'alpine:init' fires before any later-deferred plugin script executes -->
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <!-- Highlight.js for code syntax highlighting -->
+    <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
+    <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/xml.min.js"></script>
     <!-- Alpine.js for interactive components -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3/dist/cdn.min.js"></script>
     <!-- Tailwind CSS v4 browser runtime for utility classes -->
@@ -13,15 +26,18 @@
     <style>
 *, *::before, *::after { box-sizing: border-box; }
 html { font-size: 16px; }
+html.dark body {
+    background: #0f172a;
+    color: #e2e8f0;
+}
 body {
     margin: 0;
-    padding: 2rem;
     background: #f8fafc;
     font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
     color: #1e293b;
+    transition: background-color 0.15s ease, color 0.15s ease;
 }
 @layer theme, base, components, utilities;
-
 @layer theme {
   :root {
     --font-sans:
@@ -986,6 +1002,7 @@ body {
 }
 
 /* Component imports must come before other rules for postcss-import */
+
 /* =============================================================================
   Button Component
   ============================================================================= */
@@ -1341,7 +1358,14 @@ body {
  */
 .bk-button__icon {
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
+.bk-button__icon svg {
+    width: 100%;
+    height: 100%;
+  }
 
 /**
  * =============================================================================
@@ -1404,6 +1428,14 @@ body {
   --button-active-bg-ghost: var(--color-slate-700);
   --button-focus-ring-ghost: rgba(148, 163, 184, 0.15);
 }
+/* =============================================================================
+  Copy Button Component
+  ============================================================================= */
+
+.bk-copy-button {
+  min-width: 8.125rem;
+}
+
 /* =============================================================================
   Input Component
   ============================================================================= */
@@ -1527,28 +1559,13 @@ body {
     padding-left: 1rem;
     padding-left: var(--input-px-lg);
   }
-.bk-input:has(
-      .bk-input__container--pill.bk-input__container--sm:has(
-          .bk-input__control--with-icon
-        )
-    )
-    .bk-input__label {
+.bk-input:has(.bk-input__container--pill.bk-input__container--sm:has(.bk-input__control--with-icon)) .bk-input__label {
     padding-left: 2rem;
   }
-.bk-input:has(
-      .bk-input__container--pill.bk-input__container--md:has(
-          .bk-input__control--with-icon
-        )
-    )
-    .bk-input__label {
+.bk-input:has(.bk-input__container--pill.bk-input__container--md:has(.bk-input__control--with-icon)) .bk-input__label {
     padding-left: 2.25rem;
   }
-.bk-input:has(
-      .bk-input__container--pill.bk-input__container--lg:has(
-          .bk-input__control--with-icon
-        )
-    )
-    .bk-input__label {
+.bk-input:has(.bk-input__container--pill.bk-input__container--lg:has(.bk-input__control--with-icon)) .bk-input__label {
     padding-left: 2.75rem;
   }
 
@@ -1639,17 +1656,11 @@ body {
 .bk-input__container:hover .bk-input__control:not(:disabled):not([readonly]):not(.bk-input__control--error):not([aria-invalid="true"]) {
       border-color: var(--input-hover-border-color);
     }
-.bk-input__container:hover:has(
-        .bk-input__control:not(:disabled):not([readonly]):not(.bk-input__control--error):not([aria-invalid="true"])
-      ) .bk-input__prefix,
-      .bk-input__container:hover:has(
-        .bk-input__control:not(:disabled):not([readonly]):not(.bk-input__control--error):not([aria-invalid="true"])
-      ) .bk-input__suffix {
+.bk-input__container:hover:has(.bk-input__control:not(:disabled):not([readonly]):not(.bk-input__control--error):not([aria-invalid="true"])) .bk-input__prefix,.bk-input__container:hover:has(.bk-input__control:not(:disabled):not([readonly]):not(.bk-input__control--error):not([aria-invalid="true"])) .bk-input__suffix {
         border-color: var(--input-hover-border-color);
       }
 
-.bk-input__container:has(:disabled) .bk-input__prefix,
-  .bk-input__container:has(:disabled) .bk-input__suffix {
+.bk-input__container:has(:disabled) .bk-input__prefix,.bk-input__container:has(:disabled) .bk-input__suffix {
     background-color: var(--input-disabled-bg);
     color: var(--input-disabled-color);
     border-color: var(--input-disabled-border-color);
@@ -1688,7 +1699,7 @@ body {
     color: var(--input-error-color);
   }
 
-.bk-input__container--error .bk-input__control:focus {
+:is(.bk-input__container--error .bk-input__control):focus {
       border-color: var(--input-error-border-color);
       box-shadow: none;
     }
@@ -1700,13 +1711,11 @@ body {
       var(--input-error-ring-color);
   }
 
-.bk-input__container--error .bk-input__prefix,
-  .bk-input__container--error .bk-input__suffix {
+.bk-input__container--error .bk-input__prefix,.bk-input__container--error .bk-input__suffix {
     border-color: var(--input-error-border-color);
   }
 
-.bk-input__container--error .bk-input__label--inset,
-  .bk-input__container--error .bk-input__label--overlap {
+.bk-input__container--error .bk-input__label--inset,.bk-input__container--error .bk-input__label--overlap {
     color: var(--input-error-color);
   }
 
@@ -1727,8 +1736,7 @@ body {
     box-shadow: none;
   }
 
-.bk-input__container--primary .bk-input__prefix,
-  .bk-input__container--primary .bk-input__suffix {
+.bk-input__container--primary .bk-input__prefix,.bk-input__container--primary .bk-input__suffix {
     border-color: var(--input-primary-border-color);
   }
 
@@ -1757,8 +1765,7 @@ body {
     box-shadow: none;
   }
 
-.bk-input__container--secondary .bk-input__prefix,
-  .bk-input__container--secondary .bk-input__suffix {
+.bk-input__container--secondary .bk-input__prefix,.bk-input__container--secondary .bk-input__suffix {
     border-color: var(--input-secondary-border-color);
   }
 
@@ -1787,8 +1794,7 @@ body {
     box-shadow: none;
   }
 
-.bk-input__container--success .bk-input__prefix,
-  .bk-input__container--success .bk-input__suffix {
+.bk-input__container--success .bk-input__prefix,.bk-input__container--success .bk-input__suffix {
     border-color: var(--input-success-border-color);
   }
 
@@ -1817,8 +1823,7 @@ body {
     box-shadow: none;
   }
 
-.bk-input__container--warning .bk-input__prefix,
-  .bk-input__container--warning .bk-input__suffix {
+.bk-input__container--warning .bk-input__prefix,.bk-input__container--warning .bk-input__suffix {
     border-color: var(--input-warning-border-color);
   }
 
@@ -1847,8 +1852,7 @@ body {
     box-shadow: none;
   }
 
-.bk-input__container--info .bk-input__prefix,
-  .bk-input__container--info .bk-input__suffix {
+.bk-input__container--info .bk-input__prefix,.bk-input__container--info .bk-input__suffix {
     border-color: var(--input-info-border-color);
   }
 
@@ -1880,8 +1884,7 @@ body {
     box-shadow: none;
   }
 
-.bk-input__container--ghost .bk-input__prefix,
-  .bk-input__container--ghost .bk-input__suffix {
+.bk-input__container--ghost .bk-input__prefix,.bk-input__container--ghost .bk-input__suffix {
     border-color: transparent;
     border-color: var(--input-ghost-border-color);
     background-color: transparent;
@@ -1976,14 +1979,13 @@ body {
 .bk-input__container--sm .bk-input__control--with-icon {
     padding-left: 2rem;
   }
-.bk-input__container--sm:has(.bk-input__control--with-icon) .bk-input__label--inset,
-    .bk-input__container--sm:has(.bk-input__control--with-icon) .bk-input__label--overlap {
+.bk-input__container--sm:has(.bk-input__control--with-icon) .bk-input__label--inset,.bk-input__container--sm:has(.bk-input__control--with-icon) .bk-input__label--overlap {
       left: 2rem;
     }
 .bk-input__container--sm .bk-input__error-icon {
     width: 2rem;
   }
-.bk-input__container--sm .bk-input__error-icon svg {
+:is(.bk-input__container--sm .bk-input__error-icon) svg {
       width: 1rem;
       height: 1rem;
     }
@@ -2031,8 +2033,7 @@ body {
     padding-left: 2.25rem;
   }
 
-.bk-input__container--md:has(.bk-input__control--with-icon) .bk-input__label--inset,
-    .bk-input__container--md:has(.bk-input__control--with-icon) .bk-input__label--overlap {
+.bk-input__container--md:has(.bk-input__control--with-icon) .bk-input__label--inset,.bk-input__container--md:has(.bk-input__control--with-icon) .bk-input__label--overlap {
       left: 2.25rem;
     }
 
@@ -2040,7 +2041,7 @@ body {
     width: 2.25rem;
   }
 
-.bk-input__container--md .bk-input__error-icon svg {
+:is(.bk-input__container--md .bk-input__error-icon) svg {
       width: 1.25rem;
       height: 1.25rem;
     }
@@ -2096,8 +2097,7 @@ body {
     padding-left: 2.75rem;
   }
 
-.bk-input__container--lg:has(.bk-input__control--with-icon) .bk-input__label--inset,
-    .bk-input__container--lg:has(.bk-input__control--with-icon) .bk-input__label--overlap {
+.bk-input__container--lg:has(.bk-input__control--with-icon) .bk-input__label--inset,.bk-input__container--lg:has(.bk-input__control--with-icon) .bk-input__label--overlap {
       left: 2.75rem;
     }
 
@@ -2105,7 +2105,7 @@ body {
     width: 2.75rem;
   }
 
-.bk-input__container--lg .bk-input__error-icon svg {
+:is(.bk-input__container--lg .bk-input__error-icon) svg {
       width: 1.5rem;
       height: 1.5rem;
     }
@@ -2875,8 +2875,7 @@ body {
     box-shadow: 0 0 0 2px var(--textarea-error-ring);
   }
 
-.bk-textarea__container--error .bk-textarea__label--inset,
-  .bk-textarea__container--error .bk-textarea__label--overlap {
+.bk-textarea__container--error .bk-textarea__label--inset,.bk-textarea__container--error .bk-textarea__label--overlap {
     color: var(--textarea-error-border);
   }
 
@@ -2969,7 +2968,7 @@ body {
   padding-top: var(--textarea-padding-y-sm);
 }
 
-.bk-textarea__container--sm .bk-textarea__error-icon svg {
+:is(.bk-textarea__container--sm .bk-textarea__error-icon) svg {
     width: 1rem;
     height: 1rem;
   }
@@ -2980,7 +2979,7 @@ body {
   padding-top: var(--textarea-padding-y-md);
 }
 
-.bk-textarea__container--md .bk-textarea__error-icon svg {
+:is(.bk-textarea__container--md .bk-textarea__error-icon) svg {
     width: 1.25rem;
     height: 1.25rem;
   }
@@ -2991,7 +2990,7 @@ body {
   padding-top: var(--textarea-padding-y-lg);
 }
 
-.bk-textarea__container--lg .bk-textarea__error-icon svg {
+:is(.bk-textarea__container--lg .bk-textarea__error-icon) svg {
     width: 1.5rem;
     height: 1.5rem;
   }
@@ -3234,7 +3233,7 @@ body {
 .bk-checkbox__container--error .bk-checkbox__control {
     border-color: var(--checkbox-error-border-color);
   }
-.bk-checkbox__container--error .bk-checkbox__control:checked {
+:is(.bk-checkbox__container--error .bk-checkbox__control):checked {
       background-color: var(--color-danger-600);
       border-color: var(--color-danger-600);
     }
@@ -3310,8 +3309,7 @@ body {
   height: 1rem;
   height: var(--checkbox-size-sm);
 }
-.bk-checkbox__control--sm ~ .bk-checkbox__error-message,
-  .bk-checkbox__control--sm ~ .bk-checkbox__hint {
+.bk-checkbox__control--sm ~ .bk-checkbox__error-message,.bk-checkbox__control--sm ~ .bk-checkbox__hint {
     margin-left: calc(1rem + 0.75rem);
     margin-left: calc(var(--checkbox-size-sm) + 0.75rem);
   }
@@ -3323,8 +3321,7 @@ body {
   height: var(--checkbox-size-md);
 }
 
-.bk-checkbox__control--md ~ .bk-checkbox__error-message,
-  .bk-checkbox__control--md ~ .bk-checkbox__hint {
+.bk-checkbox__control--md ~ .bk-checkbox__error-message,.bk-checkbox__control--md ~ .bk-checkbox__hint {
     margin-left: calc(1.125rem + 0.75rem);
     margin-left: calc(var(--checkbox-size-md) + 0.75rem);
   }
@@ -3336,8 +3333,7 @@ body {
   height: var(--checkbox-size-lg);
 }
 
-.bk-checkbox__control--lg ~ .bk-checkbox__error-message,
-  .bk-checkbox__control--lg ~ .bk-checkbox__hint {
+.bk-checkbox__control--lg ~ .bk-checkbox__error-message,.bk-checkbox__control--lg ~ .bk-checkbox__hint {
     margin-left: calc(1.25rem + 0.75rem);
     margin-left: calc(var(--checkbox-size-lg) + 0.75rem);
   }
@@ -3646,8 +3642,7 @@ body {
     height: 1rem;
     height: var(--radio-size-sm);
   }
-.bk-radio__container--sm .bk-radio__error-message,
-  .bk-radio__container--sm .bk-radio__hint {
+.bk-radio__container--sm .bk-radio__error-message,.bk-radio__container--sm .bk-radio__hint {
     margin-left: calc(1rem + 0.75rem);
     margin-left: calc(var(--radio-size-sm) + 0.75rem);
   }
@@ -3659,8 +3654,7 @@ body {
     height: var(--radio-size-md);
   }
 
-.bk-radio__container--md .bk-radio__error-message,
-  .bk-radio__container--md .bk-radio__hint {
+.bk-radio__container--md .bk-radio__error-message,.bk-radio__container--md .bk-radio__hint {
     margin-left: calc(1.125rem + 0.75rem);
     margin-left: calc(var(--radio-size-md) + 0.75rem);
   }
@@ -3672,8 +3666,7 @@ body {
     height: var(--radio-size-lg);
   }
 
-.bk-radio__container--lg .bk-radio__error-message,
-  .bk-radio__container--lg .bk-radio__hint {
+.bk-radio__container--lg .bk-radio__error-message,.bk-radio__container--lg .bk-radio__hint {
     margin-left: calc(1.25rem + 0.75rem);
     margin-left: calc(var(--radio-size-lg) + 0.75rem);
   }
@@ -4180,7 +4173,7 @@ body {
 .bk-select__container--sm .bk-select__error-icon {
   width: 2rem;
 }
-.bk-select__container--sm .bk-select__error-icon svg {
+:is(.bk-select__container--sm .bk-select__error-icon) svg {
     width: 1rem;
     height: 1rem;
   }
@@ -4189,7 +4182,7 @@ body {
   width: 2.25rem;
 }
 
-.bk-select__container--md .bk-select__error-icon svg {
+:is(.bk-select__container--md .bk-select__error-icon) svg {
     width: 1.25rem;
     height: 1.25rem;
   }
@@ -4198,7 +4191,7 @@ body {
   width: 2.75rem;
 }
 
-.bk-select__container--lg .bk-select__error-icon svg {
+:is(.bk-select__container--lg .bk-select__error-icon) svg {
     width: 1.5rem;
     height: 1.5rem;
   }
@@ -4261,13 +4254,11 @@ body {
     border-color: var(--select-error-border-color);
   }
 
-.bk-select__container--error .bk-select__label--inset,
-  .bk-select__container--error .bk-select__label--overlap {
+.bk-select__container--error .bk-select__label--inset,.bk-select__container--error .bk-select__label--overlap {
     color: var(--select-error-color);
   }
 
-.bk-select__container--error .bk-select__chevron,
-  .bk-select__container--error .bk-select__icon {
+.bk-select__container--error .bk-select__chevron,.bk-select__container--error .bk-select__icon {
     color: var(--select-error-color);
     right: 0.625rem;
   }
@@ -4285,8 +4276,7 @@ body {
     border-color: var(--select-primary-border-color);
   }
 
-.bk-select__container--primary .bk-select__chevron,
-  .bk-select__container--primary .bk-select__icon {
+.bk-select__container--primary .bk-select__chevron,.bk-select__container--primary .bk-select__icon {
     color: var(--select-primary-border-color);
   }
 
@@ -4303,8 +4293,7 @@ body {
     border-color: var(--select-secondary-border-color);
   }
 
-.bk-select__container--secondary .bk-select__chevron,
-  .bk-select__container--secondary .bk-select__icon {
+.bk-select__container--secondary .bk-select__chevron,.bk-select__container--secondary .bk-select__icon {
     color: var(--select-secondary-border-color);
   }
 
@@ -4321,8 +4310,7 @@ body {
     border-color: var(--select-success-border-color);
   }
 
-.bk-select__container--success .bk-select__chevron,
-  .bk-select__container--success .bk-select__icon {
+.bk-select__container--success .bk-select__chevron,.bk-select__container--success .bk-select__icon {
     color: var(--select-success-border-color);
   }
 
@@ -4339,8 +4327,7 @@ body {
     border-color: var(--select-warning-border-color);
   }
 
-.bk-select__container--warning .bk-select__chevron,
-  .bk-select__container--warning .bk-select__icon {
+.bk-select__container--warning .bk-select__chevron,.bk-select__container--warning .bk-select__icon {
     color: var(--select-warning-border-color);
   }
 
@@ -4374,8 +4361,7 @@ body {
     border-color: var(--select-info-border-color);
   }
 
-.bk-select__container--info .bk-select__chevron,
-  .bk-select__container--info .bk-select__icon {
+.bk-select__container--info .bk-select__chevron,.bk-select__container--info .bk-select__icon {
     color: var(--select-info-border-color);
   }
 
@@ -4916,8 +4902,7 @@ body {
 }
 
 /* Icon label positioning adjustment */
-.bk-multiselect__container--with-icon .bk-multiselect__label--inset,
-  .bk-multiselect__container--with-icon .bk-multiselect__label--overlap {
+.bk-multiselect__container--with-icon .bk-multiselect__label--inset,.bk-multiselect__container--with-icon .bk-multiselect__label--overlap {
     left: 2.5rem;
   }
 
@@ -4986,7 +4971,7 @@ body {
 .bk-multiselect__container--sm .bk-multiselect__error-icon {
   width: 2rem;
 }
-.bk-multiselect__container--sm .bk-multiselect__error-icon svg {
+:is(.bk-multiselect__container--sm .bk-multiselect__error-icon) svg {
     width: 1rem;
     height: 1rem;
   }
@@ -4995,7 +4980,7 @@ body {
   width: 2.25rem;
 }
 
-.bk-multiselect__container--md .bk-multiselect__error-icon svg {
+:is(.bk-multiselect__container--md .bk-multiselect__error-icon) svg {
     width: 1.25rem;
     height: 1.25rem;
   }
@@ -5004,7 +4989,7 @@ body {
   width: 2.75rem;
 }
 
-.bk-multiselect__container--lg .bk-multiselect__error-icon svg {
+:is(.bk-multiselect__container--lg .bk-multiselect__error-icon) svg {
     width: 1.5rem;
     height: 1.5rem;
   }
@@ -5029,8 +5014,7 @@ body {
 .bk-multiselect__container--sm .bk-multiselect__control--label-overlap {
     padding-top: 0.75rem;
   }
-.bk-multiselect__container--sm.bk-multiselect__container--with-icon .bk-multiselect__label--inset,
-    .bk-multiselect__container--sm.bk-multiselect__container--with-icon .bk-multiselect__label--overlap {
+.bk-multiselect__container--sm.bk-multiselect__container--with-icon .bk-multiselect__label--inset,.bk-multiselect__container--sm.bk-multiselect__container--with-icon .bk-multiselect__label--overlap {
       left: 2.25rem;
     }
 
@@ -5042,8 +5026,7 @@ body {
     padding-top: 1rem;
   }
 
-.bk-multiselect__container--md.bk-multiselect__container--with-icon .bk-multiselect__label--inset,
-    .bk-multiselect__container--md.bk-multiselect__container--with-icon .bk-multiselect__label--overlap {
+.bk-multiselect__container--md.bk-multiselect__container--with-icon .bk-multiselect__label--inset,.bk-multiselect__container--md.bk-multiselect__container--with-icon .bk-multiselect__label--overlap {
       left: 2.5rem;
     }
 
@@ -5055,8 +5038,7 @@ body {
     padding-top: 1.25rem;
   }
 
-.bk-multiselect__container--lg.bk-multiselect__container--with-icon .bk-multiselect__label--inset,
-    .bk-multiselect__container--lg.bk-multiselect__container--with-icon .bk-multiselect__label--overlap {
+.bk-multiselect__container--lg.bk-multiselect__container--with-icon .bk-multiselect__label--inset,.bk-multiselect__container--lg.bk-multiselect__container--with-icon .bk-multiselect__label--overlap {
       left: 2.75rem;
     }
 
@@ -5083,13 +5065,11 @@ body {
     border-color: var(--multiselect-error-border-color);
   }
 
-.bk-multiselect__container--error .bk-multiselect__label--inset,
-  .bk-multiselect__container--error .bk-multiselect__label--overlap {
+.bk-multiselect__container--error .bk-multiselect__label--inset,.bk-multiselect__container--error .bk-multiselect__label--overlap {
     color: var(--multiselect-error-color);
   }
 
-.bk-multiselect__container--error .bk-multiselect__chevron,
-  .bk-multiselect__container--error .bk-multiselect__icon {
+.bk-multiselect__container--error .bk-multiselect__chevron,.bk-multiselect__container--error .bk-multiselect__icon {
     color: var(--multiselect-error-color);
   }
 
@@ -5110,8 +5090,7 @@ body {
     border-color: var(--multiselect-primary-border-color);
   }
 
-.bk-multiselect__container--primary .bk-multiselect__chevron,
-  .bk-multiselect__container--primary .bk-multiselect__icon {
+.bk-multiselect__container--primary .bk-multiselect__chevron,.bk-multiselect__container--primary .bk-multiselect__icon {
     color: var(--multiselect-primary-border-color);
   }
 
@@ -5128,8 +5107,7 @@ body {
     border-color: var(--multiselect-secondary-border-color);
   }
 
-.bk-multiselect__container--secondary .bk-multiselect__chevron,
-  .bk-multiselect__container--secondary .bk-multiselect__icon {
+.bk-multiselect__container--secondary .bk-multiselect__chevron,.bk-multiselect__container--secondary .bk-multiselect__icon {
     color: var(--multiselect-secondary-border-color);
   }
 
@@ -5146,8 +5124,7 @@ body {
     border-color: var(--multiselect-success-border-color);
   }
 
-.bk-multiselect__container--success .bk-multiselect__chevron,
-  .bk-multiselect__container--success .bk-multiselect__icon {
+.bk-multiselect__container--success .bk-multiselect__chevron,.bk-multiselect__container--success .bk-multiselect__icon {
     color: var(--multiselect-success-border-color);
   }
 
@@ -5164,8 +5141,7 @@ body {
     border-color: var(--multiselect-warning-border-color);
   }
 
-.bk-multiselect__container--warning .bk-multiselect__chevron,
-  .bk-multiselect__container--warning .bk-multiselect__icon {
+.bk-multiselect__container--warning .bk-multiselect__chevron,.bk-multiselect__container--warning .bk-multiselect__icon {
     color: var(--multiselect-warning-border-color);
   }
 
@@ -5199,8 +5175,7 @@ body {
     border-color: var(--multiselect-info-border-color);
   }
 
-.bk-multiselect__container--info .bk-multiselect__chevron,
-  .bk-multiselect__container--info .bk-multiselect__icon {
+.bk-multiselect__container--info .bk-multiselect__chevron,.bk-multiselect__container--info .bk-multiselect__icon {
     color: var(--multiselect-info-border-color);
   }
 
@@ -5537,7 +5512,7 @@ body {
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
 }
 
-.bk-toggle__input:checked + .bk-toggle__button .bk-toggle__slider {
+:is(.bk-toggle__input:checked + .bk-toggle__button) .bk-toggle__slider {
     transform: translate(0, -50%);
     transform: translate(var(--toggle-thumb-translate, 0), -50%);
     box-shadow: inset 0 0 0 1.5px rgba(0, 0, 0, 0.2);
@@ -5729,7 +5704,6 @@ body {
 /* =============================================================================
 	Feedback Components
 	============================================================================= */
-
 /* =============================================================================
    Alert Component
    ============================================================================= */
@@ -5807,6 +5781,10 @@ body {
   font-weight: 600;
   font-weight: var(--font-weight-semibold);
   margin-bottom: 0.25rem;
+}
+
+.bk-alert__title--standalone {
+  margin-bottom: 0;
 }
 
 .bk-alert__actions {
@@ -6005,6 +5983,10 @@ body {
   line-height: 1.25rem;
   margin-bottom: 0.125rem;
   grid-column: 1;
+}
+
+.bk-toast__title--standalone {
+  margin-bottom: 0;
 }
 
 .bk-toast__description {
@@ -6956,7 +6938,6 @@ body {
 /* =============================================================================
    Navigation Components
    ============================================================================= */
-
 /* =============================================================================
    Breadcrumb Component
    ============================================================================= */
@@ -7042,13 +7023,11 @@ body {
   font-size: var(--font-size-xs);
 }
 
-.bk-breadcrumb--sm .bk-breadcrumb__list,
-  .bk-breadcrumb--sm .bk-breadcrumb__item {
+.bk-breadcrumb--sm .bk-breadcrumb__list,.bk-breadcrumb--sm .bk-breadcrumb__item {
     gap: 0.375rem;
   }
 
-.bk-breadcrumb--sm .bk-breadcrumb__icon,
-  .bk-breadcrumb--sm .bk-breadcrumb__separator {
+.bk-breadcrumb--sm .bk-breadcrumb__icon,.bk-breadcrumb--sm .bk-breadcrumb__separator {
     width: 0.875rem;
     height: 0.875rem;
   }
@@ -7062,18 +7041,15 @@ body {
   font-size: var(--font-size-base);
 }
 
-.bk-breadcrumb--lg .bk-breadcrumb__list,
-  .bk-breadcrumb--lg .bk-breadcrumb__item {
+.bk-breadcrumb--lg .bk-breadcrumb__list,.bk-breadcrumb--lg .bk-breadcrumb__item {
     gap: 0.625rem;
   }
 
-.bk-breadcrumb--lg .bk-breadcrumb__link,
-  .bk-breadcrumb--lg .bk-breadcrumb__current {
+.bk-breadcrumb--lg .bk-breadcrumb__link,.bk-breadcrumb--lg .bk-breadcrumb__current {
     gap: 0.5rem;
   }
 
-.bk-breadcrumb--lg .bk-breadcrumb__icon,
-  .bk-breadcrumb--lg .bk-breadcrumb__separator {
+.bk-breadcrumb--lg .bk-breadcrumb__icon,.bk-breadcrumb--lg .bk-breadcrumb__separator {
     width: 1.125rem;
     height: 1.125rem;
   }
@@ -7150,7 +7126,7 @@ body {
   transition: all var(--transition-fast);
 }
 
-.bk-pagination__link:hover, .bk-pagination__number:hover {
+:is(.bk-pagination__link,.bk-pagination__number):hover {
     background-color: var(--pagination-hover-bg);
   }
 
@@ -7354,7 +7330,7 @@ body {
     color: var(--tabs-text);
   }
 
-.bk-tabs__list .bk-tabs__tab--inactive:hover {
+:is(.bk-tabs__list .bk-tabs__tab--inactive):hover {
       color: var(--tabs-hover-text);
     }
 
@@ -7481,16 +7457,16 @@ body {
     transition: all var(--transition-fast);
   }
 
-.bk-dropdown .bk-dropdown__trigger:hover {
+:is(.bk-dropdown .bk-dropdown__trigger):hover {
       background-color: var(--dropdown-trigger-hover-bg);
       border-color: var(--dropdown-trigger-hover-border);
     }
 
-.bk-dropdown .bk-dropdown__trigger:focus {
+:is(.bk-dropdown .bk-dropdown__trigger):focus {
       outline: none;
     }
 
-.bk-dropdown .bk-dropdown__trigger:focus-visible {
+:is(.bk-dropdown .bk-dropdown__trigger):focus-visible {
       outline: none;
       box-shadow: 0 0 0 4px var(--dropdown-trigger-focus-ring);
     }
@@ -7784,7 +7760,6 @@ body {
 /* =============================================================================
 	Layout Components
 	============================================================================= */
-
 /* =============================================================================
    Divider Component
    ============================================================================= */
@@ -7996,6 +7971,7 @@ body {
 .bk-stack--justify-around {
   justify-content: space-around;
 }
+
 /* =============================================================================
    Grid Component
    ============================================================================= */
@@ -8088,6 +8064,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   }
 }
+
 /* =============================================================================
 	Display Components
 	============================================================================= */
@@ -8736,28 +8713,21 @@ body {
    Size Modifiers
    ============================================================================= */
 
-.bk-table--sm th,
-  .bk-table--md th,
-  .bk-table--lg th,
-  .bk-table--sm td,
-  .bk-table--md td,
-  .bk-table--lg td {
+:is(.bk-table--sm,.bk-table--md,.bk-table--lg) th,:is(.bk-table--sm,.bk-table--md,.bk-table--lg) td {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     padding-left: 0.75rem;
     padding-right: 0.75rem;
   }
 
-.bk-table--md th,
-  .bk-table--md td {
+.bk-table--md th,.bk-table--md td {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
     padding-left: 1rem;
     padding-right: 1rem;
   }
 
-.bk-table--lg th,
-  .bk-table--lg td {
+.bk-table--lg th,.bk-table--lg td {
     padding-top: 1rem;
     padding-bottom: 1rem;
     padding-left: 1.25rem;
@@ -8768,19 +8738,16 @@ body {
    Table Style Modifiers
    ============================================================================= */
 
-.bk-table--bordered th,
-  .bk-table--bordered td {
+.bk-table--bordered th,.bk-table--bordered td {
     border-right: 1px solid var(--table-border);
     border-left: 1px solid var(--table-border);
   }
 
-.bk-table--bordered th:first-child,
-  .bk-table--bordered td:first-child {
+.bk-table--bordered th:first-child,.bk-table--bordered td:first-child {
     border-left: none;
   }
 
-.bk-table--bordered th:last-child,
-  .bk-table--bordered td:last-child {
+.bk-table--bordered th:last-child,.bk-table--bordered td:last-child {
     border-right: none;
   }
 
@@ -9285,8 +9252,7 @@ body {
     background-color: transparent;
   }
 
-    .bk-table__stack-row:first-child,
-    .bk-table__stack-row:last-child {
+    .bk-table__stack-row:first-child,.bk-table__stack-row:last-child {
       border-radius: 0;
     }
 
@@ -9301,42 +9267,35 @@ body {
       text-align: left;
     }
 
-      .bk-table--stacked td:first-child {
+      :is(.bk-table--stacked td):first-child {
         padding: 1rem;
         border-top: none;
       }
 
-      .bk-table--stacked td:last-child {
+      :is(.bk-table--stacked td):last-child {
         padding: 1rem;
         border-bottom: 1px solid var(--table-border);
       }
 
-    .bk-table--stacked.bk-table--sm td,
-    .bk-table--stacked.bk-table--sm td:first-child,
-    .bk-table--stacked.bk-table--sm td:last-child {
+    .bk-table--stacked.bk-table--sm td,.bk-table--stacked.bk-table--sm td:first-child,.bk-table--stacked.bk-table--sm td:last-child {
       padding: 0.5rem 0.75rem;
     }
 
-    .bk-table--stacked.bk-table--lg td,
-    .bk-table--stacked.bk-table--lg td:first-child,
-    .bk-table--stacked.bk-table--lg td:last-child {
+    .bk-table--stacked.bk-table--lg td,.bk-table--stacked.bk-table--lg td:first-child,.bk-table--stacked.bk-table--lg td:last-child {
       padding: 1rem 1.25rem;
     }
 
     /* Bordered: add column separators on desktop, matching the regular bordered table */
-      .bk-table--stacked.bk-table--bordered th,
-      .bk-table--stacked.bk-table--bordered td {
+      .bk-table--stacked.bk-table--bordered th,.bk-table--stacked.bk-table--bordered td {
         border-right: 1px solid var(--table-border);
         border-left: 1px solid var(--table-border);
       }
 
-      .bk-table--stacked.bk-table--bordered th:first-child,
-      .bk-table--stacked.bk-table--bordered td:first-child {
+      .bk-table--stacked.bk-table--bordered th:first-child,.bk-table--stacked.bk-table--bordered td:first-child {
         border-left: none;
       }
 
-      .bk-table--stacked.bk-table--bordered th:last-child,
-      .bk-table--stacked.bk-table--bordered td:last-child {
+      .bk-table--stacked.bk-table--bordered th:last-child,.bk-table--stacked.bk-table--bordered td:last-child {
         border-right: none;
       }
 
@@ -9451,7 +9410,7 @@ body {
     border-bottom: 1px solid var(--list-divided-border);
   }
 
-.bk-list--divided li:last-child {
+:is(.bk-list--divided li):last-child {
       border-bottom: none;
     }
 
@@ -9467,7 +9426,7 @@ body {
     border-bottom: 1px solid var(--list-divided-border);
   }
 
-.bk-list--bordered li:last-child {
+:is(.bk-list--bordered li):last-child {
       border-bottom: none;
     }
 
@@ -9501,7 +9460,7 @@ body {
     margin-bottom: 0.25rem;
   }
 
-.bk-description-list dt:first-child {
+:is(.bk-description-list dt):first-child {
       margin-top: 0;
     }
 
@@ -9561,8 +9520,7 @@ body {
   gap: 1.5rem;
 }
 
-.bk-description-list--striped dt,
-  .bk-description-list--striped dd {
+.bk-description-list--striped dt,.bk-description-list--striped dd {
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
     padding-left: 1rem;
@@ -9711,7 +9669,6 @@ body {
 /* =============================================================================
    Dialog Components
    ============================================================================= */
-
 /* =============================================================================
    Modal Component
    ============================================================================= */
@@ -10008,11 +9965,10 @@ body {
     padding-left: 0;
     padding-right: 0;
   }
-.bk-accordion--flush .bk-accordion__trigger:hover {
+:is(.bk-accordion--flush .bk-accordion__trigger):hover {
       background-color: transparent;
     }
-.bk-accordion--flush .bk-accordion__trigger:hover .bk-accordion__title,
-      .bk-accordion--flush .bk-accordion__trigger:hover .bk-accordion__icon {
+:is(.bk-accordion--flush .bk-accordion__trigger):hover .bk-accordion__title,:is(.bk-accordion--flush .bk-accordion__trigger):hover .bk-accordion__icon {
         color: var(--accordion-flush-hover-color);
       }
 .bk-accordion--flush .bk-accordion__body {
@@ -10097,7 +10053,6 @@ body {
   --accordion-body-color: var(--color-slate-300);
   --accordion-flush-hover-color: var(--color-primary-400);
 }
-
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* =============================================================================
@@ -10343,6 +10298,12 @@ body {
             if (el) { el.scrollIntoView({ behavior: 'smooth' }); }
         }
     });
+    // Initialize highlight.js after all deferred scripts have loaded
+    window.addEventListener('load', function() {
+        if (typeof hljs !== 'undefined') {
+            hljs.highlightAll();
+        }
+    });
     </script>
 </head>
 <body>
@@ -10374,7 +10335,7 @@ body {
     <div class="bk-input "  >
     
     <div class="bk-input__label-row">
-                    <label class="bk-input__label">
+                    <label class="bk-input__label" for="bk-input-65876e71-939d-4c9f-b010-9183ea9cc9a0">
                 Name
             </label>
                     </div>
@@ -10394,9 +10355,9 @@ body {
 </svg>            </span>
         
         
-        <input
-             type="text"             name="name" class="bk-input__control bk-input__control--md bk-input__control--secondary bk-input__control--with-icon"
-             placeholder="John Doe"                                                 >
+        <input id="bk-input-65876e71-939d-4c9f-b010-9183ea9cc9a0"
+             type="text"             class="bk-input__control bk-input__control--md bk-input__control--secondary bk-input__control--with-icon" name="name"
+             placeholder="John Doe"                                                             >
 
         
         
@@ -10415,7 +10376,7 @@ body {
                     <div class="bk-input "  >
     
     <div class="bk-input__label-row">
-                    <label class="bk-input__label">
+                    <label class="bk-input__label" for="bk-input-f1ef2d6c-5578-404b-9801-c7ffeb6edb30">
                 Email
             </label>
                     </div>
@@ -10435,9 +10396,9 @@ body {
 </svg>            </span>
         
         
-        <input
-             type="email"             name="email" class="bk-input__control bk-input__control--md bk-input__control--secondary bk-input__control--with-icon"
-             placeholder="john@example.com"                                                 >
+        <input id="bk-input-f1ef2d6c-5578-404b-9801-c7ffeb6edb30"
+             type="email"             class="bk-input__control bk-input__control--md bk-input__control--secondary bk-input__control--with-icon" name="email"
+             placeholder="john@example.com"                                                             >
 
         
         
@@ -10473,7 +10434,7 @@ body {
 }" @click.away="open = false" @keydown.escape.window="open = false">
     
     <div class="bk-select__label-row">
-                    <label class="bk-select__label">
+                    <label class="bk-select__label" for="bk-select-8925efd3-3857-49f2-a8df-88fc3ff9bb5f">
                 Role
             </label>
                     </div>
@@ -10485,9 +10446,9 @@ body {
         
         
                     
-            <button type="button"
+            <button type="button" id="bk-select-8925efd3-3857-49f2-a8df-88fc3ff9bb5f"
                 class="bk-select__control bk-select__control--md bk-select__control--secondary"
-                                 :aria-expanded="open" aria-haspopup="listbox"
+                                                 :aria-expanded="open" aria-haspopup="listbox"
                 @click="if (!disabled) open = !open" @blur="_blurTimer = setTimeout(() => { open = false }, 150)">
                 <span class="bk-select__display"
                     :class="{ 'bk-select__display--placeholder': selectedValue === null || selectedValue === '' }"
@@ -10522,7 +10483,7 @@ body {
                     <div class="bk-textarea " >
     
     <div class="bk-textarea__label-row">
-                    <label class="bk-textarea__label">
+                    <label class="bk-textarea__label" for="bk-textarea-e527efbf-278e-4d28-87da-1cfc6aa11c9d">
                 Message
             </label>
                     </div>
@@ -10532,8 +10493,8 @@ body {
         
         
         
-        <textarea name="message" class="bk-textarea__control bk-textarea__control--md bk-textarea__control--secondary"
-            rows="4"  placeholder="Your message here..."             ></textarea>
+        <textarea id="bk-textarea-e527efbf-278e-4d28-87da-1cfc6aa11c9d" class="bk-textarea__control bk-textarea__control--md bk-textarea__control--secondary" name="message"
+            rows="4"  placeholder="Your message here..."                         ></textarea>
 
         
             </div>
@@ -10602,7 +10563,7 @@ body {
     
     <div class="bk-card__body bk-card__body--padded">
         <div class="bk-stack bk-stack--vertical bk-stack--spacing-md bk-stack--align-stretch bk-stack--justify-start">
-    <div class="bk-alert bk-alert--success" role="alert" x-data="{ show: true }" x-show="show" x-transition>
+    <div class="bk-alert bk-alert--success"  role="status"  x-data="{ show: true }" x-show="show" x-transition>
     <div class="bk-alert__icon ">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
   <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
@@ -10620,7 +10581,7 @@ body {
                     <div  class="bk-progress">
     
             <div class="bk-progress__label-container">
-                            <span class="bk-progress__label">
+                            <span class="bk-progress__label" id="bk-progress-label-c7d99a0d-a3cf-4a01-81ac-936635b72954">
                     Profile completion
                 </span>
             
@@ -10628,7 +10589,8 @@ body {
     
     
     <div class="bk-progress__track bk-progress__track--ghost bk-progress__track--md" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-                    aria-valuenow="30" >
+         aria-labelledby="bk-progress-label-c7d99a0d-a3cf-4a01-81ac-936635b72954"                     aria-valuenow="30"
+            aria-valuetext="30% complete" >
         <div class="bk-progress__fill"
                             style="width: 30%" >
         </div>
@@ -10650,9 +10612,9 @@ body {
     
     </div>
 
-                    <div  class="bk-spinner">
+                    <div  class="bk-spinner" role="status">
     
-    <svg class="bk-spinner__icon bk-spinner__icon--md bk-spinner__icon--primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+    <svg class="bk-spinner__icon bk-spinner__icon--md bk-spinner__icon--primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true">
         <circle class="bk-spinner__track" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
         </circle>
         <path class="bk-spinner__path" fill="currentColor"
@@ -10717,25 +10679,43 @@ body {
                                     </li>
                         </ol>
 </nav>
-                    <div class="bk-tabs mt-4" x-data="{ activeTab: 'orders' }">
-    <div class="bk-tabs__list bk-tabs__list--underline" role="tablist">
-                                    <button type="button" @click="activeTab = 'orders'"
-                    :class="activeTab === 'orders' ? 'bk-tabs__tab--active' : 'bk-tabs__tab--inactive'"
-                    class="bk-tabs__tab" role="tab"                     :aria-selected="activeTab === 'orders' ? 'true' : 'false'">
+                    <div class="bk-tabs mt-4" x-data="{ active: 'orders' }">
+    <div class="bk-tabs__list bk-tabs__list--underline" role="tablist" id="bk-tabs-613387eba68222b9c516e555630930a5">
+                                    <button type="button" @click="active = 'orders'"
+                    :class="active === 'orders' ? 'bk-tabs__tab--active' : 'bk-tabs__tab--inactive'"
+                    class="bk-tabs__tab" role="tab" id="tab-orders"
+                    aria-controls="tabpanel-orders"
+                    :aria-selected="active === 'orders' ? 'true' : 'false'"
+                                        @keydown.right.prevent="const tabs=$el.parentElement.querySelectorAll('[role=&quot;tab&quot;]:not([disabled])');const idx=Array.from(tabs).indexOf($el);const next=tabs[(idx+1)%tabs.length];next.focus();next.click();"
+                    @keydown.left.prevent="const tabs=$el.parentElement.querySelectorAll('[role=&quot;tab&quot;]:not([disabled])');const idx=Array.from(tabs).indexOf($el);const prev=tabs[(idx-1+tabs.length)%tabs.length];prev.focus();prev.click();"
+                    @keydown.home.prevent="const tabs=$el.parentElement.querySelectorAll('[role=&quot;tab&quot;]:not([disabled])');tabs[0]?.focus();tabs[0]?.click();"
+                    @keydown.end.prevent="const tabs=$el.parentElement.querySelectorAll('[role=&quot;tab&quot;]:not([disabled])');tabs[tabs.length-1]?.focus();tabs[tabs.length-1]?.click();">
 
                     
                     <span>My Orders</span>
                 </button>
-                            <button type="button" @click="activeTab = 'profile'"
-                    :class="activeTab === 'profile' ? 'bk-tabs__tab--active' : 'bk-tabs__tab--inactive'"
-                    class="bk-tabs__tab" role="tab"                     :aria-selected="activeTab === 'profile' ? 'true' : 'false'">
+                            <button type="button" @click="active = 'profile'"
+                    :class="active === 'profile' ? 'bk-tabs__tab--active' : 'bk-tabs__tab--inactive'"
+                    class="bk-tabs__tab" role="tab" id="tab-profile"
+                    aria-controls="tabpanel-profile"
+                    :aria-selected="active === 'profile' ? 'true' : 'false'"
+                                        @keydown.right.prevent="const tabs=$el.parentElement.querySelectorAll('[role=&quot;tab&quot;]:not([disabled])');const idx=Array.from(tabs).indexOf($el);const next=tabs[(idx+1)%tabs.length];next.focus();next.click();"
+                    @keydown.left.prevent="const tabs=$el.parentElement.querySelectorAll('[role=&quot;tab&quot;]:not([disabled])');const idx=Array.from(tabs).indexOf($el);const prev=tabs[(idx-1+tabs.length)%tabs.length];prev.focus();prev.click();"
+                    @keydown.home.prevent="const tabs=$el.parentElement.querySelectorAll('[role=&quot;tab&quot;]:not([disabled])');tabs[0]?.focus();tabs[0]?.click();"
+                    @keydown.end.prevent="const tabs=$el.parentElement.querySelectorAll('[role=&quot;tab&quot;]:not([disabled])');tabs[tabs.length-1]?.focus();tabs[tabs.length-1]?.click();">
 
                     
                     <span>Profile</span>
                 </button>
-                            <button type="button" @click="activeTab = 'settings'"
-                    :class="activeTab === 'settings' ? 'bk-tabs__tab--active' : 'bk-tabs__tab--inactive'"
-                    class="bk-tabs__tab" role="tab"                     :aria-selected="activeTab === 'settings' ? 'true' : 'false'">
+                            <button type="button" @click="active = 'settings'"
+                    :class="active === 'settings' ? 'bk-tabs__tab--active' : 'bk-tabs__tab--inactive'"
+                    class="bk-tabs__tab" role="tab" id="tab-settings"
+                    aria-controls="tabpanel-settings"
+                    :aria-selected="active === 'settings' ? 'true' : 'false'"
+                                        @keydown.right.prevent="const tabs=$el.parentElement.querySelectorAll('[role=&quot;tab&quot;]:not([disabled])');const idx=Array.from(tabs).indexOf($el);const next=tabs[(idx+1)%tabs.length];next.focus();next.click();"
+                    @keydown.left.prevent="const tabs=$el.parentElement.querySelectorAll('[role=&quot;tab&quot;]:not([disabled])');const idx=Array.from(tabs).indexOf($el);const prev=tabs[(idx-1+tabs.length)%tabs.length];prev.focus();prev.click();"
+                    @keydown.home.prevent="const tabs=$el.parentElement.querySelectorAll('[role=&quot;tab&quot;]:not([disabled])');tabs[0]?.focus();tabs[0]?.click();"
+                    @keydown.end.prevent="const tabs=$el.parentElement.querySelectorAll('[role=&quot;tab&quot;]:not([disabled])');tabs[tabs.length-1]?.focus();tabs[tabs.length-1]?.click();">
 
                     
                     <span>Settings</span>
@@ -10743,7 +10723,7 @@ body {
                         </div>
 
             <div class="mt-4">
-                            <div x-show="activeTab === 'orders'" x-cloak>
+                            <div x-show="active === 'orders'" x-cloak>
                                 <h2 class="text-lg font-semibold mb-4">My Orders</h2>
 
                                 
@@ -10802,7 +10782,7 @@ body {
     </div>
 </div>
                                 <div class="overflow-x-auto">
-                                    <nav total-items="10" class="bk-pagination mt-6 flex-wrap gap-2" role="navigation" aria-label="Pagination">
+                                    <nav class="bk-pagination mt-6 flex-wrap gap-2" total-items="10" role="navigation" aria-label="Pagination">
             <div class="bk-pagination__container">
             
             <div class="bk-pagination__previous">
@@ -10838,7 +10818,7 @@ body {
             </nav>
                                 </div>
                             </div>
-                            <div x-show="activeTab === 'profile'" x-cloak>
+                            <div x-show="active === 'profile'" x-cloak>
                                 <p class="text-slate-600">
                                     This is your profile tab. You can view and edit your personal information,
                                     change
@@ -10846,7 +10826,7 @@ body {
                                     password, and manage your account settings here.
                                 </p>
                             </div>
-                            <div x-show="activeTab === 'settings'" x-cloak>
+                            <div x-show="active === 'settings'" x-cloak>
                                 <p class="text-slate-600">
                                     In the settings tab, you can customize your preferences, configure
                                     notifications,
@@ -10902,7 +10882,7 @@ body {
 </span>
                                 </div>
                                 <div class="flex items-center space-x-2 overflow-x-auto">
-                                    <div variant="warning" class="bk-stat">
+                                    <div class="bk-stat" variant="warning">
     
             <div class="bk-stat__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
@@ -10924,7 +10904,7 @@ body {
         
             </div>
 </div>
-                                    <div variant="primary" class="bk-stat">
+                                    <div class="bk-stat" variant="primary">
     
             <div class="bk-stat__icon">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">

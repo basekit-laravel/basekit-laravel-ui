@@ -51,6 +51,25 @@
   --select-ghost-ring-color: var(--color-slate-100);
   --select-ghost-bg: transparent;
 
+  /* Resolved variants — pass through the raw variables.
+     .dark overrides these with color-mix() so inline styles set by
+     ComponentColorResolver still get muted for dark backgrounds. */
+  --select-primary-border-resolved: var(--select-primary-border-color);
+  --select-primary-ring-resolved: var(--select-primary-ring-color);
+  --select-secondary-border-resolved: var(--select-secondary-border-color);
+  --select-secondary-ring-resolved: var(--select-secondary-ring-color);
+  --select-error-border-resolved: var(--select-error-border-color);
+  --select-error-ring-resolved: var(--select-error-ring-color);
+  --select-success-border-resolved: var(--select-success-border-color);
+  --select-success-ring-resolved: var(--select-success-ring-color);
+  --select-warning-border-resolved: var(--select-warning-border-color);
+  --select-warning-ring-resolved: var(--select-warning-ring-color);
+  --select-danger-border-resolved: var(--select-danger-border-color);
+  --select-danger-ring-resolved: var(--select-danger-ring-color);
+  --select-info-border-resolved: var(--select-info-border-color);
+  --select-info-ring-resolved: var(--select-info-ring-color);
+  --select-ghost-ring-resolved: var(--select-ghost-ring-color);
+
   /* Sizes */
   --select-py-sm: 0.375rem;
   --select-px-sm: 0.75rem;
@@ -519,104 +538,104 @@
 
 /* Primary variant */
 .bk-select__control--primary {
-  border-color: var(--select-primary-border-color);
+  border-color: var(--select-primary-border-resolved);
 }
 
 .bk-select__container--primary .bk-select__control {
-    border-color: var(--select-primary-border-color);
+    border-color: var(--select-primary-border-resolved);
   }
 
 .bk-select__container--primary .bk-select__chevron,.bk-select__container--primary .bk-select__icon {
-    color: var(--select-primary-border-color);
+    color: var(--select-primary-border-resolved);
   }
 
 .bk-select__container--primary:focus-within {
-    box-shadow: 0 0 0 2px var(--select-primary-ring-color);
+    box-shadow: 0 0 0 2px var(--select-primary-ring-resolved);
   }
 
 /* Secondary variant */
 .bk-select__control--secondary {
-  border-color: var(--select-secondary-border-color);
+  border-color: var(--select-secondary-border-resolved);
 }
 
 .bk-select__container--secondary .bk-select__control {
-    border-color: var(--select-secondary-border-color);
+    border-color: var(--select-secondary-border-resolved);
   }
 
 .bk-select__container--secondary .bk-select__chevron,.bk-select__container--secondary .bk-select__icon {
-    color: var(--select-secondary-border-color);
+    color: var(--select-secondary-border-resolved);
   }
 
 .bk-select__container--secondary:focus-within {
-    box-shadow: 0 0 0 2px var(--select-secondary-ring-color);
+    box-shadow: 0 0 0 2px var(--select-secondary-ring-resolved);
   }
 
 /* Success variant */
 .bk-select__control--success {
-  border-color: var(--select-success-border-color);
+  border-color: var(--select-success-border-resolved);
 }
 
 .bk-select__container--success .bk-select__control {
-    border-color: var(--select-success-border-color);
+    border-color: var(--select-success-border-resolved);
   }
 
 .bk-select__container--success .bk-select__chevron,.bk-select__container--success .bk-select__icon {
-    color: var(--select-success-border-color);
+    color: var(--select-success-border-resolved);
   }
 
 .bk-select__container--success:focus-within {
-    box-shadow: 0 0 0 2px var(--select-success-ring-color);
+    box-shadow: 0 0 0 2px var(--select-success-ring-resolved);
   }
 
 /* Warning variant */
 .bk-select__control--warning {
-  border-color: var(--select-warning-border-color);
+  border-color: var(--select-warning-border-resolved);
 }
 
 .bk-select__container--warning .bk-select__control {
-    border-color: var(--select-warning-border-color);
+    border-color: var(--select-warning-border-resolved);
   }
 
 .bk-select__container--warning .bk-select__chevron,.bk-select__container--warning .bk-select__icon {
-    color: var(--select-warning-border-color);
+    color: var(--select-warning-border-resolved);
   }
 
 .bk-select__container--warning:focus-within {
-    box-shadow: 0 0 0 2px var(--select-warning-ring-color);
+    box-shadow: 0 0 0 2px var(--select-warning-ring-resolved);
   }
 
 /* Danger variant */
 .bk-select__control--danger {
-  border-color: var(--select-danger-border-color);
+  border-color: var(--select-danger-border-resolved);
 }
 
 .bk-select__container--danger .bk-select__control {
-    border-color: var(--select-danger-border-color);
+    border-color: var(--select-danger-border-resolved);
   }
 
 .bk-select__container--danger .bk-select__chevron {
-    color: var(--select-danger-border-color);
+    color: var(--select-danger-border-resolved);
   }
 
 .bk-select__container--danger:focus-within {
-    box-shadow: 0 0 0 2px var(--select-danger-ring-color);
+    box-shadow: 0 0 0 2px var(--select-danger-ring-resolved);
   }
 
 /* Info variant */
 .bk-select__control--info {
-  border-color: var(--select-info-border-color);
+  border-color: var(--select-info-border-resolved);
 }
 
 .bk-select__container--info .bk-select__control {
-    border-color: var(--select-info-border-color);
+    border-color: var(--select-info-border-resolved);
   }
 
 .bk-select__container--info .bk-select__chevron,.bk-select__container--info .bk-select__icon {
-    color: var(--select-info-border-color);
+    color: var(--select-info-border-resolved);
   }
 
 .bk-select__container--info:focus-within {
-    box-shadow: 0 0 0 2px var(--select-info-ring-color);
+    box-shadow: 0 0 0 2px var(--select-info-ring-resolved);
   }
 
 /* Ghost variant */
@@ -629,7 +648,7 @@
 }
 
 .bk-select__container--ghost:focus-within {
-  box-shadow: 0 0 0 2px var(--select-ghost-ring-color);
+  box-shadow: 0 0 0 2px var(--select-ghost-ring-resolved);
 }
 
 /**
@@ -674,7 +693,7 @@
   --select-bg: var(--color-slate-800);
   --select-hover-border-color: var(--color-slate-500);
   --select-focus-border-color: var(--color-primary-400);
-  --select-focus-ring-color: rgba(99, 102, 241, 0.25);
+  --select-focus-ring-color: var(--ring-primary);
 
   --select-disabled-bg: var(--color-slate-900);
   --select-disabled-color: var(--color-slate-600);
@@ -690,29 +709,47 @@
   --select-option-selected-bg: var(--color-slate-700);
   --select-option-selected-text: var(--color-slate-100);
 
-  --select-primary-border-color: var(--color-primary-500);
-  --select-primary-ring-color: rgba(99, 102, 241, 0.25);
+  --select-primary-border-color: var(--color-primary-400);
+  --select-primary-ring-color: var(--ring-primary);
 
   --select-secondary-border-color: var(--color-slate-600);
-  --select-secondary-ring-color: rgba(148, 163, 184, 0.2);
+  --select-secondary-ring-color: var(--ring-secondary);
 
   --select-error-border-color: var(--color-danger-500);
-  --select-error-ring-color: rgba(239, 68, 68, 0.2);
+  --select-error-ring-color: var(--ring-danger);
   --select-error-color: var(--color-danger-400);
 
-  --select-success-border-color: var(--color-success-500);
-  --select-success-ring-color: rgba(34, 197, 94, 0.2);
+  --select-success-border-color: var(--color-success-400);
+  --select-success-ring-color: var(--ring-success);
 
-  --select-warning-border-color: var(--color-warning-500);
-  --select-warning-ring-color: rgba(245, 158, 11, 0.2);
+  --select-warning-border-color: var(--color-warning-400);
+  --select-warning-ring-color: var(--ring-warning);
 
   --select-danger-border-color: var(--color-danger-500);
-  --select-danger-ring-color: rgba(239, 68, 68, 0.2);
+  --select-danger-ring-color: var(--ring-danger);
 
-  --select-info-border-color: var(--color-info-500);
-  --select-info-ring-color: rgba(59, 130, 246, 0.2);
+  --select-info-border-color: var(--color-info-400);
+  --select-info-ring-color: var(--ring-info);
 
-  --select-ghost-ring-color: rgba(148, 163, 184, 0.15);
+  --select-ghost-ring-color: var(--ring-ghost);
+
+  /* Resolved variants — applies color-mix() so custom colors set via
+     ComponentColorResolver inline styles are still muted for dark bg. */
+  --select-primary-border-resolved: color-mix(in srgb, var(--select-primary-border-color) 70%, transparent);
+  --select-primary-ring-resolved: color-mix(in srgb, var(--select-primary-ring-color) 25%, transparent);
+  --select-secondary-border-resolved: color-mix(in srgb, var(--select-secondary-border-color) 70%, transparent);
+  --select-secondary-ring-resolved: color-mix(in srgb, var(--select-secondary-ring-color) 25%, transparent);
+  --select-error-border-resolved: color-mix(in srgb, var(--select-error-border-color) 70%, transparent);
+  --select-error-ring-resolved: color-mix(in srgb, var(--select-error-ring-color) 25%, transparent);
+  --select-success-border-resolved: color-mix(in srgb, var(--select-success-border-color) 70%, transparent);
+  --select-success-ring-resolved: color-mix(in srgb, var(--select-success-ring-color) 25%, transparent);
+  --select-warning-border-resolved: color-mix(in srgb, var(--select-warning-border-color) 70%, transparent);
+  --select-warning-ring-resolved: color-mix(in srgb, var(--select-warning-ring-color) 25%, transparent);
+  --select-danger-border-resolved: color-mix(in srgb, var(--select-danger-border-color) 70%, transparent);
+  --select-danger-ring-resolved: color-mix(in srgb, var(--select-danger-ring-color) 25%, transparent);
+  --select-info-border-resolved: color-mix(in srgb, var(--select-info-border-color) 70%, transparent);
+  --select-info-ring-resolved: color-mix(in srgb, var(--select-info-ring-color) 25%, transparent);
+  --select-ghost-ring-resolved: color-mix(in srgb, var(--select-ghost-ring-color) 25%, transparent);
 
   --select-menu-bg: var(--color-slate-800);
   --select-menu-border: var(--color-slate-700);

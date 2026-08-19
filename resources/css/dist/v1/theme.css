@@ -1352,7 +1352,7 @@
   --button-bg-primary: var(--color-primary-500);
   --button-hover-bg-primary: var(--color-primary-400);
   --button-active-bg-primary: var(--color-primary-600);
-  --button-focus-ring-primary: rgba(99, 102, 241, 0.3);
+  --button-focus-ring-primary: var(--ring-primary);
 
   --button-bg-secondary: var(--color-slate-800);
   --button-text-secondary: var(--color-slate-200);
@@ -1360,32 +1360,32 @@
   --button-hover-bg-secondary: var(--color-slate-700);
   --button-hover-border-secondary: var(--button-border-secondary, var(--color-slate-600));
   --button-active-bg-secondary: var(--color-slate-600);
-  --button-focus-ring-secondary: rgba(148, 163, 184, 0.2);
+  --button-focus-ring-secondary: var(--ring-secondary);
 
   --button-bg-success: var(--color-success-500);
   --button-hover-bg-success: var(--color-success-400);
   --button-active-bg-success: var(--color-success-600);
-  --button-focus-ring-success: rgba(34, 197, 94, 0.3);
+  --button-focus-ring-success: var(--ring-success);
 
   --button-bg-danger: var(--color-danger-500);
   --button-hover-bg-danger: var(--color-danger-400);
   --button-active-bg-danger: var(--color-danger-600);
-  --button-focus-ring-danger: rgba(239, 68, 68, 0.3);
+  --button-focus-ring-danger: var(--ring-danger);
 
   --button-bg-warning: var(--color-warning-500);
   --button-hover-bg-warning: var(--color-warning-400);
   --button-active-bg-warning: var(--color-warning-600);
-  --button-focus-ring-warning: rgba(245, 158, 11, 0.3);
+  --button-focus-ring-warning: var(--ring-warning);
 
   --button-bg-info: var(--color-info-500);
   --button-hover-bg-info: var(--color-info-400);
   --button-active-bg-info: var(--color-info-600);
-  --button-focus-ring-info: rgba(59, 130, 246, 0.3);
+  --button-focus-ring-info: var(--ring-info);
 
   --button-text-ghost: var(--color-slate-400);
   --button-hover-bg-ghost: var(--color-slate-800);
   --button-active-bg-ghost: var(--color-slate-700);
-  --button-focus-ring-ghost: rgba(148, 163, 184, 0.15);
+  --button-focus-ring-ghost: var(--ring-ghost);
 }
 /* =============================================================================
   Copy Button Component
@@ -1468,6 +1468,23 @@
   --input-ghost-ring-color: var(--color-slate-100);
   --input-ghost-bg: transparent;
 
+  /* Resolved variants — pass through the raw variables.
+     .dark overrides these with color-mix() so inline styles set by
+     ComponentColorResolver still get muted for dark backgrounds. */
+  --input-primary-border-resolved: var(--input-primary-border-color);
+  --input-primary-ring-resolved: var(--input-primary-ring-color);
+  --input-secondary-border-resolved: var(--input-secondary-border-color);
+  --input-secondary-ring-resolved: var(--input-secondary-ring-color);
+  --input-error-border-resolved: var(--input-error-border-color);
+  --input-error-ring-resolved: var(--input-error-ring-color);
+  --input-success-border-resolved: var(--input-success-border-color);
+  --input-success-ring-resolved: var(--input-success-ring-color);
+  --input-warning-border-resolved: var(--input-warning-border-color);
+  --input-warning-ring-resolved: var(--input-warning-ring-color);
+  --input-info-border-resolved: var(--input-info-border-color);
+  --input-info-ring-resolved: var(--input-info-ring-color);
+  --input-ghost-ring-resolved: var(--input-ghost-ring-color);
+
   /* Input - Sizes */
   --input-py-sm: 0.375rem;
   --input-px-sm: 0.75rem;
@@ -1549,10 +1566,6 @@
   transition: box-shadow var(--transition-fast) ease-in-out;
 }
 .bk-input__container:focus-within {
-    box-shadow: 0 0 0 2px
-      var(--input-focus-ring-color);
-    box-shadow: 0 0 0 var(--input-focus-ring-width)
-      var(--input-focus-ring-color);
     z-index: 5;
   }
 
@@ -1591,7 +1604,10 @@
 .bk-input__control:focus {
     outline: none;
     border-color: var(--input-focus-border-color);
-    box-shadow: none;
+    box-shadow: 0 0 0 2px
+      var(--input-focus-ring-color);
+    box-shadow: 0 0 0 var(--input-focus-ring-width)
+      var(--input-focus-ring-color);
     z-index: 10;
   }
 .bk-input__control:disabled {
@@ -1645,33 +1661,32 @@
  */
 .bk-input__control--error,
 .bk-input__control[aria-invalid="true"] {
-  border-color: var(--input-error-border-color);
+  border-color: var(--input-error-border-resolved);
   color: var(--input-error-color);
 }
 :is(.bk-input__control--error,.bk-input__control[aria-invalid="true"]):focus {
-    border-color: var(--input-error-border-color);
-    box-shadow: none;
+    border-color: var(--input-error-border-resolved);
+    box-shadow: 0 0 0 2px
+      var(--input-error-ring-resolved);
+    box-shadow: 0 0 0 var(--input-focus-ring-width)
+      var(--input-error-ring-resolved);
   }
 
 .bk-input__container--error .bk-input__control {
-    border-color: var(--input-error-border-color);
+    border-color: var(--input-error-border-resolved);
     color: var(--input-error-color);
   }
 
 :is(.bk-input__container--error .bk-input__control):focus {
-      border-color: var(--input-error-border-color);
-      box-shadow: none;
+      border-color: var(--input-error-border-resolved);
+      box-shadow: 0 0 0 2px
+        var(--input-error-ring-resolved);
+      box-shadow: 0 0 0 var(--input-focus-ring-width)
+        var(--input-error-ring-resolved);
     }
 
-.bk-input__container--error:focus-within {
-    box-shadow: 0 0 0 2px
-      var(--input-error-ring-color);
-    box-shadow: 0 0 0 var(--input-focus-ring-width)
-      var(--input-error-ring-color);
-  }
-
 .bk-input__container--error .bk-input__prefix,.bk-input__container--error .bk-input__suffix {
-    border-color: var(--input-error-border-color);
+    border-color: var(--input-error-border-resolved);
   }
 
 .bk-input__container--error .bk-input__label--inset,.bk-input__container--error .bk-input__label--overlap {
@@ -1679,7 +1694,7 @@
   }
 
 .bk-input__container--error:focus-within .bk-input__icon {
-      color: var(--input-error-border-color);
+      color: var(--input-error-border-resolved);
     }
 
 .bk-input:has(.bk-input__container--error) .bk-input__label {
@@ -1687,146 +1702,126 @@
 }
 
 .bk-input__control--primary {
-  border-color: var(--input-primary-border-color);
+  border-color: var(--input-primary-border-resolved);
 }
 
 .bk-input__control--primary:focus {
-    border-color: var(--input-primary-border-color);
-    box-shadow: none;
+    border-color: var(--input-primary-border-resolved);
+    box-shadow: 0 0 0 2px
+      var(--input-primary-ring-resolved);
+    box-shadow: 0 0 0 var(--input-focus-ring-width)
+      var(--input-primary-ring-resolved);
   }
 
 .bk-input__container--primary .bk-input__prefix,.bk-input__container--primary .bk-input__suffix {
-    border-color: var(--input-primary-border-color);
+    border-color: var(--input-primary-border-resolved);
   }
 
 .bk-input__container--primary .bk-input__number-btn {
-    border-color: var(--input-primary-border-color);
-    color: var(--input-primary-border-color);
-  }
-
-.bk-input__container--primary:focus-within {
-    box-shadow: 0 0 0 2px
-      var(--input-primary-ring-color);
-    box-shadow: 0 0 0 var(--input-focus-ring-width)
-      var(--input-primary-ring-color);
+    border-color: var(--input-primary-border-resolved);
+    color: var(--input-primary-border-resolved);
   }
 
 .bk-input__container--primary:focus-within .bk-input__icon {
-      color: var(--input-primary-border-color);
+      color: var(--input-primary-border-resolved);
     }
 
 .bk-input__control--secondary {
-  border-color: var(--input-secondary-border-color);
+  border-color: var(--input-secondary-border-resolved);
 }
 
 .bk-input__control--secondary:focus {
-    border-color: var(--input-secondary-border-color);
-    box-shadow: none;
+    border-color: var(--input-secondary-border-resolved);
+    box-shadow: 0 0 0 2px
+      var(--input-secondary-ring-resolved);
+    box-shadow: 0 0 0 var(--input-focus-ring-width)
+      var(--input-secondary-ring-resolved);
   }
 
 .bk-input__container--secondary .bk-input__prefix,.bk-input__container--secondary .bk-input__suffix {
-    border-color: var(--input-secondary-border-color);
+    border-color: var(--input-secondary-border-resolved);
   }
 
 .bk-input__container--secondary .bk-input__number-btn {
-    border-color: var(--input-secondary-border-color);
-    color: var(--input-secondary-border-color);
-  }
-
-.bk-input__container--secondary:focus-within {
-    box-shadow: 0 0 0 2px
-      var(--input-secondary-ring-color);
-    box-shadow: 0 0 0 var(--input-focus-ring-width)
-      var(--input-secondary-ring-color);
+    border-color: var(--input-secondary-border-resolved);
+    color: var(--input-secondary-border-resolved);
   }
 
 .bk-input__container--secondary:focus-within .bk-input__icon {
-      color: var(--input-secondary-border-color);
+      color: var(--input-secondary-border-resolved);
     }
 
 .bk-input__control--success {
-  border-color: var(--input-success-border-color);
+  border-color: var(--input-success-border-resolved);
 }
 
 .bk-input__control--success:focus {
-    border-color: var(--input-success-border-color);
-    box-shadow: none;
+    border-color: var(--input-success-border-resolved);
+    box-shadow: 0 0 0 2px
+      var(--input-success-ring-resolved);
+    box-shadow: 0 0 0 var(--input-focus-ring-width)
+      var(--input-success-ring-resolved);
   }
 
 .bk-input__container--success .bk-input__prefix,.bk-input__container--success .bk-input__suffix {
-    border-color: var(--input-success-border-color);
+    border-color: var(--input-success-border-resolved);
   }
 
 .bk-input__container--success .bk-input__number-btn {
-    border-color: var(--input-success-border-color);
-    color: var(--input-success-border-color);
-  }
-
-.bk-input__container--success:focus-within {
-    box-shadow: 0 0 0 2px
-      var(--input-success-ring-color);
-    box-shadow: 0 0 0 var(--input-focus-ring-width)
-      var(--input-success-ring-color);
+    border-color: var(--input-success-border-resolved);
+    color: var(--input-success-border-resolved);
   }
 
 .bk-input__container--success:focus-within .bk-input__icon {
-      color: var(--input-success-border-color);
+      color: var(--input-success-border-resolved);
     }
 
 .bk-input__control--warning {
-  border-color: var(--input-warning-border-color);
+  border-color: var(--input-warning-border-resolved);
 }
 
 .bk-input__control--warning:focus {
-    border-color: var(--input-warning-border-color);
-    box-shadow: none;
+    border-color: var(--input-warning-border-resolved);
+    box-shadow: 0 0 0 2px
+      var(--input-warning-ring-resolved);
+    box-shadow: 0 0 0 var(--input-focus-ring-width)
+      var(--input-warning-ring-resolved);
   }
 
 .bk-input__container--warning .bk-input__prefix,.bk-input__container--warning .bk-input__suffix {
-    border-color: var(--input-warning-border-color);
+    border-color: var(--input-warning-border-resolved);
   }
 
 .bk-input__container--warning .bk-input__number-btn {
-    border-color: var(--input-warning-border-color);
-    color: var(--input-warning-border-color);
-  }
-
-.bk-input__container--warning:focus-within {
-    box-shadow: 0 0 0 2px
-      var(--input-warning-ring-color);
-    box-shadow: 0 0 0 var(--input-focus-ring-width)
-      var(--input-warning-ring-color);
+    border-color: var(--input-warning-border-resolved);
+    color: var(--input-warning-border-resolved);
   }
 
 .bk-input__container--warning:focus-within .bk-input__icon {
-      color: var(--input-warning-border-color);
+      color: var(--input-warning-border-resolved);
     }
 
 .bk-input__control--info {
-  border-color: var(--input-info-border-color);
+  border-color: var(--input-info-border-resolved);
 }
 
 .bk-input__control--info:focus {
-    border-color: var(--input-info-border-color);
-    box-shadow: none;
+    border-color: var(--input-info-border-resolved);
+    box-shadow: 0 0 0 2px var(--input-info-ring-resolved);
+    box-shadow: 0 0 0 var(--input-focus-ring-width) var(--input-info-ring-resolved);
   }
 
 .bk-input__container--info .bk-input__prefix,.bk-input__container--info .bk-input__suffix {
-    border-color: var(--input-info-border-color);
+    border-color: var(--input-info-border-resolved);
   }
 
 .bk-input__container--info .bk-input__number-btn {
-    border-color: var(--input-info-border-color);
-    color: var(--input-info-border-color);
-  }
-
-.bk-input__container--info:focus-within {
-    box-shadow: 0 0 0 2px var(--input-info-ring-color);
-    box-shadow: 0 0 0 var(--input-focus-ring-width) var(--input-info-ring-color);
+    border-color: var(--input-info-border-resolved);
+    color: var(--input-info-border-resolved);
   }
 
 .bk-input__container--info:focus-within .bk-input__icon {
-      color: var(--input-info-border-color);
+      color: var(--input-info-border-resolved);
     }
 
 .bk-input__control--ghost {
@@ -1840,7 +1835,10 @@
 .bk-input__control--ghost:focus {
     border-color: transparent;
     border-color: var(--input-ghost-border-color);
-    box-shadow: none;
+    box-shadow: 0 0 0 2px
+      var(--input-ghost-ring-resolved);
+    box-shadow: 0 0 0 var(--input-focus-ring-width)
+      var(--input-ghost-ring-resolved);
   }
 
 .bk-input__container--ghost .bk-input__prefix,.bk-input__container--ghost .bk-input__suffix {
@@ -1848,13 +1846,6 @@
     border-color: var(--input-ghost-border-color);
     background-color: transparent;
     background-color: var(--input-ghost-bg);
-  }
-
-.bk-input__container--ghost:focus-within {
-    box-shadow: 0 0 0 2px
-      var(--input-ghost-ring-color);
-    box-shadow: 0 0 0 var(--input-focus-ring-width)
-      var(--input-ghost-ring-color);
   }
 
 /**
@@ -2404,7 +2395,7 @@
   --input-border-color: var(--color-slate-600);
   --input-hover-border-color: var(--color-slate-500);
   --input-focus-border-color: var(--color-primary-400);
-  --input-focus-ring-color: rgba(99, 102, 241, 0.25);
+  --input-focus-ring-color: var(--ring-primary);
   --input-disabled-bg: var(--color-slate-900);
   --input-disabled-color: var(--color-slate-600);
   --input-disabled-border-color: var(--color-slate-800);
@@ -2419,39 +2410,55 @@
   --input-addon-bg: var(--color-slate-700);
   --input-addon-color: var(--color-slate-400);
 
-  /* Number stepper */
+  /* Number stepper — slightly lighter than input bg for an integrated feel */
   --input-number-btn-bg: var(--color-slate-700);
-  --input-number-btn-color: var(--color-slate-400);
+  --input-number-btn-color: var(--color-slate-300);
   --input-number-btn-hover-bg: var(--color-slate-600);
-  --input-number-btn-hover-color: var(--color-slate-200);
+  --input-number-btn-hover-color: var(--color-slate-100);
   --input-number-btn-active-bg: var(--color-slate-500);
 
   /* Variant: secondary (default) */
   --input-secondary-border-color: var(--color-slate-600);
-  --input-secondary-ring-color: rgba(99, 102, 241, 0.25);
+  --input-secondary-ring-color: var(--ring-secondary);
 
   /* Variant: primary */
-  --input-primary-border-color: var(--color-primary-500);
-  --input-primary-ring-color: rgba(99, 102, 241, 0.25);
+  --input-primary-border-color: var(--color-primary-400);
+  --input-primary-ring-color: var(--ring-primary);
 
   /* Variant: error */
   --input-error-border-color: var(--color-danger-500);
-  --input-error-ring-color: rgba(239, 68, 68, 0.2);
+  --input-error-ring-color: var(--ring-danger);
 
   /* Variant: success */
-  --input-success-border-color: var(--color-success-500);
-  --input-success-ring-color: rgba(34, 197, 94, 0.2);
+  --input-success-border-color: var(--color-success-400);
+  --input-success-ring-color: var(--ring-success);
 
   /* Variant: warning */
-  --input-warning-border-color: var(--color-warning-500);
-  --input-warning-ring-color: rgba(245, 158, 11, 0.2);
+  --input-warning-border-color: var(--color-warning-400);
+  --input-warning-ring-color: var(--ring-warning);
 
   /* Variant: info */
-  --input-info-border-color: var(--color-info-500);
-  --input-info-ring-color: rgba(59, 130, 246, 0.2);
+  --input-info-border-color: var(--color-info-400);
+  --input-info-ring-color: var(--ring-info);
 
   /* Variant: ghost */
-  --input-ghost-ring-color: rgba(148, 163, 184, 0.15);
+  --input-ghost-ring-color: var(--ring-ghost);
+
+  /* Resolved variants — applies color-mix() so custom colors set via
+     ComponentColorResolver inline styles are still muted for dark bg. */
+  --input-primary-border-resolved: color-mix(in srgb, var(--input-primary-border-color) 70%, transparent);
+  --input-primary-ring-resolved: color-mix(in srgb, var(--input-primary-ring-color) 25%, transparent);
+  --input-secondary-border-resolved: color-mix(in srgb, var(--input-secondary-border-color) 70%, transparent);
+  --input-secondary-ring-resolved: color-mix(in srgb, var(--input-secondary-ring-color) 25%, transparent);
+  --input-error-border-resolved: color-mix(in srgb, var(--input-error-border-color) 70%, transparent);
+  --input-error-ring-resolved: color-mix(in srgb, var(--input-error-ring-color) 25%, transparent);
+  --input-success-border-resolved: color-mix(in srgb, var(--input-success-border-color) 70%, transparent);
+  --input-success-ring-resolved: color-mix(in srgb, var(--input-success-ring-color) 25%, transparent);
+  --input-warning-border-resolved: color-mix(in srgb, var(--input-warning-border-color) 70%, transparent);
+  --input-warning-ring-resolved: color-mix(in srgb, var(--input-warning-ring-color) 25%, transparent);
+  --input-info-border-resolved: color-mix(in srgb, var(--input-info-border-color) 70%, transparent);
+  --input-info-ring-resolved: color-mix(in srgb, var(--input-info-ring-color) 25%, transparent);
+  --input-ghost-ring-resolved: color-mix(in srgb, var(--input-ghost-ring-color) 25%, transparent);
 }
 /* =============================================================================
   Textarea Component
@@ -2512,6 +2519,25 @@
   --textarea-ghost-border: transparent;
   --textarea-ghost-ring: var(--color-slate-100);
   --textarea-ghost-bg: transparent;
+
+  /* Resolved variants — pass through the raw variables.
+     .dark overrides these with color-mix() so inline styles set by
+     ComponentColorResolver still get muted for dark backgrounds. */
+  --textarea-primary-border-resolved: var(--textarea-primary-border);
+  --textarea-primary-ring-resolved: var(--textarea-primary-ring);
+  --textarea-secondary-border-resolved: var(--textarea-secondary-border);
+  --textarea-secondary-ring-resolved: var(--textarea-secondary-ring);
+  --textarea-error-border-resolved: var(--textarea-error-border);
+  --textarea-error-ring-resolved: var(--textarea-error-ring);
+  --textarea-success-border-resolved: var(--textarea-success-border);
+  --textarea-success-ring-resolved: var(--textarea-success-ring);
+  --textarea-warning-border-resolved: var(--textarea-warning-border);
+  --textarea-warning-ring-resolved: var(--textarea-warning-ring);
+  --textarea-danger-border-resolved: var(--textarea-danger-border);
+  --textarea-danger-ring-resolved: var(--textarea-danger-ring);
+  --textarea-info-border-resolved: var(--textarea-info-border);
+  --textarea-info-ring-resolved: var(--textarea-info-ring);
+  --textarea-ghost-ring-resolved: var(--textarea-ghost-ring);
 
   /* Labels & helpers */
   --textarea-label-color: var(--color-slate-700);
@@ -2785,105 +2811,105 @@
  * =============================================================================
  */
 .bk-textarea__control--primary {
-  border-color: var(--textarea-primary-border);
+  border-color: var(--textarea-primary-border-resolved);
 }
 .bk-textarea__control--primary:focus {
-    border-color: var(--textarea-primary-border);
+    border-color: var(--textarea-primary-border-resolved);
     box-shadow: none;
   }
 
 .bk-textarea__container--primary .bk-textarea__control {
-    border-color: var(--textarea-primary-border);
+    border-color: var(--textarea-primary-border-resolved);
   }
 
 .bk-textarea__container--primary:focus-within {
-    box-shadow: 0 0 0 2px var(--textarea-primary-ring);
+    box-shadow: 0 0 0 2px var(--textarea-primary-ring-resolved);
   }
 
 .bk-textarea__control--secondary {
-  border-color: var(--textarea-secondary-border);
+  border-color: var(--textarea-secondary-border-resolved);
 }
 
 .bk-textarea__control--secondary:focus {
-    border-color: var(--textarea-secondary-border);
+    border-color: var(--textarea-secondary-border-resolved);
     box-shadow: none;
   }
 
 .bk-textarea__container--secondary .bk-textarea__control {
-    border-color: var(--textarea-secondary-border);
+    border-color: var(--textarea-secondary-border-resolved);
   }
 
 .bk-textarea__container--secondary:focus-within {
-    box-shadow: 0 0 0 2px var(--textarea-secondary-ring);
+    box-shadow: 0 0 0 2px var(--textarea-secondary-ring-resolved);
   }
 
 .bk-textarea__control--error,
 .bk-textarea__control[aria-invalid="true"] {
-  border-color: var(--textarea-error-border);
+  border-color: var(--textarea-error-border-resolved);
 }
 
 :is(.bk-textarea__control--error,.bk-textarea__control[aria-invalid="true"]):focus {
-    box-shadow: 0 0 0 4px var(--textarea-error-ring);
+    box-shadow: 0 0 0 4px var(--textarea-error-ring-resolved);
   }
 
 .bk-textarea__container--error .bk-textarea__control {
-    border-color: var(--textarea-error-border);
+    border-color: var(--textarea-error-border-resolved);
   }
 
 .bk-textarea__container--error:focus-within {
-    box-shadow: 0 0 0 2px var(--textarea-error-ring);
+    box-shadow: 0 0 0 2px var(--textarea-error-ring-resolved);
   }
 
 .bk-textarea__container--error .bk-textarea__label--inset,.bk-textarea__container--error .bk-textarea__label--overlap {
-    color: var(--textarea-error-border);
+    color: var(--textarea-error-border-resolved);
   }
 
 .bk-textarea__control--success {
-  border-color: var(--textarea-success-border);
+  border-color: var(--textarea-success-border-resolved);
 }
 
 .bk-textarea__container--success .bk-textarea__control {
-    border-color: var(--textarea-success-border);
+    border-color: var(--textarea-success-border-resolved);
   }
 
 .bk-textarea__container--success:focus-within {
-    box-shadow: 0 0 0 2px var(--textarea-success-ring);
+    box-shadow: 0 0 0 2px var(--textarea-success-ring-resolved);
   }
 
 .bk-textarea__control--warning {
-  border-color: var(--textarea-warning-border);
+  border-color: var(--textarea-warning-border-resolved);
 }
 
 .bk-textarea__container--warning .bk-textarea__control {
-    border-color: var(--textarea-warning-border);
+    border-color: var(--textarea-warning-border-resolved);
   }
 
 .bk-textarea__container--warning:focus-within {
-    box-shadow: 0 0 0 2px var(--textarea-warning-ring);
+    box-shadow: 0 0 0 2px var(--textarea-warning-ring-resolved);
   }
 
 .bk-textarea__control--danger {
-  border-color: var(--textarea-danger-border);
+  border-color: var(--textarea-danger-border-resolved);
 }
 
 .bk-textarea__container--danger .bk-textarea__control {
-    border-color: var(--textarea-danger-border);
+    border-color: var(--textarea-danger-border-resolved);
   }
 
 .bk-textarea__container--danger:focus-within {
-    box-shadow: 0 0 0 2px var(--textarea-danger-ring);
+    box-shadow: 0 0 0 2px var(--textarea-danger-ring-resolved);
   }
 
 .bk-textarea__control--info {
-  border-color: var(--textarea-info-border);
+  border-color: var(--textarea-info-border-resolved);
 }
 
 .bk-textarea__container--info .bk-textarea__control {
-    border-color: var(--textarea-info-border);
+    border-color: var(--textarea-info-border-resolved);
   }
 
 .bk-textarea__container--info:focus-within {
-    box-shadow: 0 0 0 2px var(--textarea-info-ring);
+    box-shadow: 0 0 0 2px var(--textarea-info-ring-resolved);
   }
 
 .bk-textarea__control--ghost {
@@ -2895,7 +2921,7 @@
 }
 
 .bk-textarea__container--ghost:focus-within {
-  box-shadow: 0 0 0 2px var(--textarea-ghost-ring);
+  box-shadow: 0 0 0 2px var(--textarea-ghost-ring-resolved);
 }
 
 /**
@@ -2985,30 +3011,48 @@
   --textarea-placeholder: var(--color-slate-500);
 
   --textarea-focus-border: var(--color-primary-400);
-  --textarea-focus-ring: rgba(99, 102, 241, 0.25);
+  --textarea-focus-ring: var(--ring-primary);
 
-  --textarea-primary-border: var(--color-primary-500);
-  --textarea-primary-ring: rgba(99, 102, 241, 0.25);
+  --textarea-primary-border: var(--color-primary-400);
+  --textarea-primary-ring: var(--ring-primary);
 
   --textarea-secondary-border: var(--color-slate-600);
-  --textarea-secondary-ring: rgba(148, 163, 184, 0.2);
+  --textarea-secondary-ring: var(--ring-secondary);
 
   --textarea-error-border: var(--color-danger-500);
-  --textarea-error-ring: rgba(239, 68, 68, 0.2);
+  --textarea-error-ring: var(--ring-danger);
 
-  --textarea-success-border: var(--color-success-500);
-  --textarea-success-ring: rgba(34, 197, 94, 0.2);
+  --textarea-success-border: var(--color-success-400);
+  --textarea-success-ring: var(--ring-success);
 
-  --textarea-warning-border: var(--color-warning-500);
-  --textarea-warning-ring: rgba(245, 158, 11, 0.2);
+  --textarea-warning-border: var(--color-warning-400);
+  --textarea-warning-ring: var(--ring-warning);
 
   --textarea-danger-border: var(--color-danger-500);
-  --textarea-danger-ring: rgba(239, 68, 68, 0.2);
+  --textarea-danger-ring: var(--ring-danger);
 
-  --textarea-info-border: var(--color-info-500);
-  --textarea-info-ring: rgba(59, 130, 246, 0.2);
+  --textarea-info-border: var(--color-info-400);
+  --textarea-info-ring: var(--ring-info);
 
-  --textarea-ghost-ring: rgba(148, 163, 184, 0.15);
+  --textarea-ghost-ring: var(--ring-ghost);
+
+  /* Resolved variants — applies color-mix() so custom colors set via
+     ComponentColorResolver inline styles are still muted for dark bg. */
+  --textarea-primary-border-resolved: color-mix(in srgb, var(--textarea-primary-border) 70%, transparent);
+  --textarea-primary-ring-resolved: color-mix(in srgb, var(--textarea-primary-ring) 25%, transparent);
+  --textarea-secondary-border-resolved: color-mix(in srgb, var(--textarea-secondary-border) 70%, transparent);
+  --textarea-secondary-ring-resolved: color-mix(in srgb, var(--textarea-secondary-ring) 25%, transparent);
+  --textarea-error-border-resolved: color-mix(in srgb, var(--textarea-error-border) 70%, transparent);
+  --textarea-error-ring-resolved: color-mix(in srgb, var(--textarea-error-ring) 25%, transparent);
+  --textarea-success-border-resolved: color-mix(in srgb, var(--textarea-success-border) 70%, transparent);
+  --textarea-success-ring-resolved: color-mix(in srgb, var(--textarea-success-ring) 25%, transparent);
+  --textarea-warning-border-resolved: color-mix(in srgb, var(--textarea-warning-border) 70%, transparent);
+  --textarea-warning-ring-resolved: color-mix(in srgb, var(--textarea-warning-ring) 25%, transparent);
+  --textarea-danger-border-resolved: color-mix(in srgb, var(--textarea-danger-border) 70%, transparent);
+  --textarea-danger-ring-resolved: color-mix(in srgb, var(--textarea-danger-ring) 25%, transparent);
+  --textarea-info-border-resolved: color-mix(in srgb, var(--textarea-info-border) 70%, transparent);
+  --textarea-info-ring-resolved: color-mix(in srgb, var(--textarea-info-ring) 25%, transparent);
+  --textarea-ghost-ring-resolved: color-mix(in srgb, var(--textarea-ghost-ring) 25%, transparent);
 
   /* Labels & helpers */
   --textarea-label-color: var(--color-slate-300);
@@ -3301,14 +3345,14 @@
 .dark {
   --checkbox-border-color: var(--color-slate-600);
   --checkbox-hover-border-color: var(--color-slate-500);
-  --checkbox-focus-ring-color: rgba(99, 102, 241, 0.25);
+  --checkbox-focus-ring-color: var(--ring-primary);
 
   --checkbox-disabled-bg: var(--color-slate-800);
   --checkbox-disabled-border-color: var(--color-slate-700);
   --checkbox-disabled-color: var(--color-slate-500);
 
   --checkbox-error-border-color: var(--color-danger-500);
-  --checkbox-error-ring-color: rgba(239, 68, 68, 0.2);
+  --checkbox-error-ring-color: var(--ring-danger);
   --checkbox-error-color: var(--color-danger-400);
 
   /* Labels & helpers */
@@ -3321,30 +3365,30 @@
 
   --checkbox-primary-checked-bg: var(--color-primary-500);
   --checkbox-primary-checked-border: var(--color-primary-500);
-  --checkbox-primary-focus-ring: rgba(99, 102, 241, 0.25);
+  --checkbox-primary-focus-ring: var(--ring-primary);
 
   --checkbox-secondary-checked-bg: var(--color-slate-600);
   --checkbox-secondary-checked-border: var(--color-slate-600);
-  --checkbox-secondary-focus-ring: rgba(148, 163, 184, 0.2);
+  --checkbox-secondary-focus-ring: var(--ring-secondary);
 
   --checkbox-success-checked-bg: var(--color-success-500);
   --checkbox-success-checked-border: var(--color-success-500);
-  --checkbox-success-focus-ring: rgba(34, 197, 94, 0.2);
+  --checkbox-success-focus-ring: var(--ring-success);
 
   --checkbox-warning-checked-bg: var(--color-warning-500);
   --checkbox-warning-checked-border: var(--color-warning-500);
-  --checkbox-warning-focus-ring: rgba(245, 158, 11, 0.2);
+  --checkbox-warning-focus-ring: var(--ring-warning);
 
   --checkbox-danger-checked-bg: var(--color-danger-500);
   --checkbox-danger-checked-border: var(--color-danger-500);
-  --checkbox-danger-focus-ring: rgba(239, 68, 68, 0.2);
+  --checkbox-danger-focus-ring: var(--ring-danger);
 
   --checkbox-info-checked-bg: var(--color-info-500);
   --checkbox-info-checked-border: var(--color-info-500);
-  --checkbox-info-focus-ring: rgba(59, 130, 246, 0.2);
+  --checkbox-info-focus-ring: var(--ring-info);
 
   --checkbox-ghost-border: var(--color-slate-600);
-  --checkbox-ghost-focus-ring: rgba(148, 163, 184, 0.2);
+  --checkbox-ghost-focus-ring: var(--ring-ghost);
 }
 /* =============================================================================
   Radio Component
@@ -3655,7 +3699,7 @@
 .dark {
   --radio-border: var(--color-slate-600);
   --radio-bg: var(--color-slate-800);
-  --radio-focus-ring: rgba(99, 102, 241, 0.25);
+  --radio-focus-ring: var(--ring-primary);
 
   /* Labels & helpers */
   --radio-label-color: var(--color-slate-300);
@@ -3667,34 +3711,34 @@
 
   --radio-primary-checked-bg: var(--color-primary-500);
   --radio-primary-checked-border: var(--color-primary-500);
-  --radio-primary-focus-ring: rgba(99, 102, 241, 0.25);
+  --radio-primary-focus-ring: var(--ring-primary);
 
   --radio-secondary-checked-bg: var(--color-slate-500);
   --radio-secondary-checked-border: var(--color-slate-500);
-  --radio-secondary-focus-ring: rgba(148, 163, 184, 0.2);
+  --radio-secondary-focus-ring: var(--ring-secondary);
 
   --radio-success-checked-bg: var(--color-success-500);
   --radio-success-checked-border: var(--color-success-500);
-  --radio-success-focus-ring: rgba(34, 197, 94, 0.2);
+  --radio-success-focus-ring: var(--ring-success);
 
   --radio-warning-checked-bg: var(--color-warning-500);
   --radio-warning-checked-border: var(--color-warning-500);
-  --radio-warning-focus-ring: rgba(245, 158, 11, 0.2);
+  --radio-warning-focus-ring: var(--ring-warning);
 
   --radio-danger-checked-bg: var(--color-danger-500);
   --radio-danger-checked-border: var(--color-danger-500);
-  --radio-danger-focus-ring: rgba(239, 68, 68, 0.2);
+  --radio-danger-focus-ring: var(--ring-danger);
 
   --radio-info-checked-bg: var(--color-info-500);
   --radio-info-checked-border: var(--color-info-500);
-  --radio-info-focus-ring: rgba(59, 130, 246, 0.2);
+  --radio-info-focus-ring: var(--ring-info);
 
   --radio-ghost-bg: transparent;
   --radio-ghost-border: var(--color-slate-600);
-  --radio-ghost-focus-ring: rgba(148, 163, 184, 0.2);
+  --radio-ghost-focus-ring: var(--ring-ghost);
 
   --radio-error-border: var(--color-danger-500);
-  --radio-error-ring: rgba(239, 68, 68, 0.2);
+  --radio-error-ring: var(--ring-danger);
 }
 /* =============================================================================
   Select Component
@@ -3748,6 +3792,25 @@
   --select-ghost-border-color: transparent;
   --select-ghost-ring-color: var(--color-slate-100);
   --select-ghost-bg: transparent;
+
+  /* Resolved variants — pass through the raw variables.
+     .dark overrides these with color-mix() so inline styles set by
+     ComponentColorResolver still get muted for dark backgrounds. */
+  --select-primary-border-resolved: var(--select-primary-border-color);
+  --select-primary-ring-resolved: var(--select-primary-ring-color);
+  --select-secondary-border-resolved: var(--select-secondary-border-color);
+  --select-secondary-ring-resolved: var(--select-secondary-ring-color);
+  --select-error-border-resolved: var(--select-error-border-color);
+  --select-error-ring-resolved: var(--select-error-ring-color);
+  --select-success-border-resolved: var(--select-success-border-color);
+  --select-success-ring-resolved: var(--select-success-ring-color);
+  --select-warning-border-resolved: var(--select-warning-border-color);
+  --select-warning-ring-resolved: var(--select-warning-ring-color);
+  --select-danger-border-resolved: var(--select-danger-border-color);
+  --select-danger-ring-resolved: var(--select-danger-ring-color);
+  --select-info-border-resolved: var(--select-info-border-color);
+  --select-info-ring-resolved: var(--select-info-ring-color);
+  --select-ghost-ring-resolved: var(--select-ghost-ring-color);
 
   /* Sizes */
   --select-py-sm: 0.375rem;
@@ -4228,104 +4291,104 @@
 
 /* Primary variant */
 .bk-select__control--primary {
-  border-color: var(--select-primary-border-color);
+  border-color: var(--select-primary-border-resolved);
 }
 
 .bk-select__container--primary .bk-select__control {
-    border-color: var(--select-primary-border-color);
+    border-color: var(--select-primary-border-resolved);
   }
 
 .bk-select__container--primary .bk-select__chevron,.bk-select__container--primary .bk-select__icon {
-    color: var(--select-primary-border-color);
+    color: var(--select-primary-border-resolved);
   }
 
 .bk-select__container--primary:focus-within {
-    box-shadow: 0 0 0 2px var(--select-primary-ring-color);
+    box-shadow: 0 0 0 2px var(--select-primary-ring-resolved);
   }
 
 /* Secondary variant */
 .bk-select__control--secondary {
-  border-color: var(--select-secondary-border-color);
+  border-color: var(--select-secondary-border-resolved);
 }
 
 .bk-select__container--secondary .bk-select__control {
-    border-color: var(--select-secondary-border-color);
+    border-color: var(--select-secondary-border-resolved);
   }
 
 .bk-select__container--secondary .bk-select__chevron,.bk-select__container--secondary .bk-select__icon {
-    color: var(--select-secondary-border-color);
+    color: var(--select-secondary-border-resolved);
   }
 
 .bk-select__container--secondary:focus-within {
-    box-shadow: 0 0 0 2px var(--select-secondary-ring-color);
+    box-shadow: 0 0 0 2px var(--select-secondary-ring-resolved);
   }
 
 /* Success variant */
 .bk-select__control--success {
-  border-color: var(--select-success-border-color);
+  border-color: var(--select-success-border-resolved);
 }
 
 .bk-select__container--success .bk-select__control {
-    border-color: var(--select-success-border-color);
+    border-color: var(--select-success-border-resolved);
   }
 
 .bk-select__container--success .bk-select__chevron,.bk-select__container--success .bk-select__icon {
-    color: var(--select-success-border-color);
+    color: var(--select-success-border-resolved);
   }
 
 .bk-select__container--success:focus-within {
-    box-shadow: 0 0 0 2px var(--select-success-ring-color);
+    box-shadow: 0 0 0 2px var(--select-success-ring-resolved);
   }
 
 /* Warning variant */
 .bk-select__control--warning {
-  border-color: var(--select-warning-border-color);
+  border-color: var(--select-warning-border-resolved);
 }
 
 .bk-select__container--warning .bk-select__control {
-    border-color: var(--select-warning-border-color);
+    border-color: var(--select-warning-border-resolved);
   }
 
 .bk-select__container--warning .bk-select__chevron,.bk-select__container--warning .bk-select__icon {
-    color: var(--select-warning-border-color);
+    color: var(--select-warning-border-resolved);
   }
 
 .bk-select__container--warning:focus-within {
-    box-shadow: 0 0 0 2px var(--select-warning-ring-color);
+    box-shadow: 0 0 0 2px var(--select-warning-ring-resolved);
   }
 
 /* Danger variant */
 .bk-select__control--danger {
-  border-color: var(--select-danger-border-color);
+  border-color: var(--select-danger-border-resolved);
 }
 
 .bk-select__container--danger .bk-select__control {
-    border-color: var(--select-danger-border-color);
+    border-color: var(--select-danger-border-resolved);
   }
 
 .bk-select__container--danger .bk-select__chevron {
-    color: var(--select-danger-border-color);
+    color: var(--select-danger-border-resolved);
   }
 
 .bk-select__container--danger:focus-within {
-    box-shadow: 0 0 0 2px var(--select-danger-ring-color);
+    box-shadow: 0 0 0 2px var(--select-danger-ring-resolved);
   }
 
 /* Info variant */
 .bk-select__control--info {
-  border-color: var(--select-info-border-color);
+  border-color: var(--select-info-border-resolved);
 }
 
 .bk-select__container--info .bk-select__control {
-    border-color: var(--select-info-border-color);
+    border-color: var(--select-info-border-resolved);
   }
 
 .bk-select__container--info .bk-select__chevron,.bk-select__container--info .bk-select__icon {
-    color: var(--select-info-border-color);
+    color: var(--select-info-border-resolved);
   }
 
 .bk-select__container--info:focus-within {
-    box-shadow: 0 0 0 2px var(--select-info-ring-color);
+    box-shadow: 0 0 0 2px var(--select-info-ring-resolved);
   }
 
 /* Ghost variant */
@@ -4338,7 +4401,7 @@
 }
 
 .bk-select__container--ghost:focus-within {
-  box-shadow: 0 0 0 2px var(--select-ghost-ring-color);
+  box-shadow: 0 0 0 2px var(--select-ghost-ring-resolved);
 }
 
 /**
@@ -4384,7 +4447,7 @@
   --select-bg: var(--color-slate-800);
   --select-hover-border-color: var(--color-slate-500);
   --select-focus-border-color: var(--color-primary-400);
-  --select-focus-ring-color: rgba(99, 102, 241, 0.25);
+  --select-focus-ring-color: var(--ring-primary);
 
   --select-disabled-bg: var(--color-slate-900);
   --select-disabled-color: var(--color-slate-600);
@@ -4400,29 +4463,47 @@
   --select-option-selected-bg: var(--color-slate-700);
   --select-option-selected-text: var(--color-slate-100);
 
-  --select-primary-border-color: var(--color-primary-500);
-  --select-primary-ring-color: rgba(99, 102, 241, 0.25);
+  --select-primary-border-color: var(--color-primary-400);
+  --select-primary-ring-color: var(--ring-primary);
 
   --select-secondary-border-color: var(--color-slate-600);
-  --select-secondary-ring-color: rgba(148, 163, 184, 0.2);
+  --select-secondary-ring-color: var(--ring-secondary);
 
   --select-error-border-color: var(--color-danger-500);
-  --select-error-ring-color: rgba(239, 68, 68, 0.2);
+  --select-error-ring-color: var(--ring-danger);
   --select-error-color: var(--color-danger-400);
 
-  --select-success-border-color: var(--color-success-500);
-  --select-success-ring-color: rgba(34, 197, 94, 0.2);
+  --select-success-border-color: var(--color-success-400);
+  --select-success-ring-color: var(--ring-success);
 
-  --select-warning-border-color: var(--color-warning-500);
-  --select-warning-ring-color: rgba(245, 158, 11, 0.2);
+  --select-warning-border-color: var(--color-warning-400);
+  --select-warning-ring-color: var(--ring-warning);
 
   --select-danger-border-color: var(--color-danger-500);
-  --select-danger-ring-color: rgba(239, 68, 68, 0.2);
+  --select-danger-ring-color: var(--ring-danger);
 
-  --select-info-border-color: var(--color-info-500);
-  --select-info-ring-color: rgba(59, 130, 246, 0.2);
+  --select-info-border-color: var(--color-info-400);
+  --select-info-ring-color: var(--ring-info);
 
-  --select-ghost-ring-color: rgba(148, 163, 184, 0.15);
+  --select-ghost-ring-color: var(--ring-ghost);
+
+  /* Resolved variants — applies color-mix() so custom colors set via
+     ComponentColorResolver inline styles are still muted for dark bg. */
+  --select-primary-border-resolved: color-mix(in srgb, var(--select-primary-border-color) 70%, transparent);
+  --select-primary-ring-resolved: color-mix(in srgb, var(--select-primary-ring-color) 25%, transparent);
+  --select-secondary-border-resolved: color-mix(in srgb, var(--select-secondary-border-color) 70%, transparent);
+  --select-secondary-ring-resolved: color-mix(in srgb, var(--select-secondary-ring-color) 25%, transparent);
+  --select-error-border-resolved: color-mix(in srgb, var(--select-error-border-color) 70%, transparent);
+  --select-error-ring-resolved: color-mix(in srgb, var(--select-error-ring-color) 25%, transparent);
+  --select-success-border-resolved: color-mix(in srgb, var(--select-success-border-color) 70%, transparent);
+  --select-success-ring-resolved: color-mix(in srgb, var(--select-success-ring-color) 25%, transparent);
+  --select-warning-border-resolved: color-mix(in srgb, var(--select-warning-border-color) 70%, transparent);
+  --select-warning-ring-resolved: color-mix(in srgb, var(--select-warning-ring-color) 25%, transparent);
+  --select-danger-border-resolved: color-mix(in srgb, var(--select-danger-border-color) 70%, transparent);
+  --select-danger-ring-resolved: color-mix(in srgb, var(--select-danger-ring-color) 25%, transparent);
+  --select-info-border-resolved: color-mix(in srgb, var(--select-info-border-color) 70%, transparent);
+  --select-info-ring-resolved: color-mix(in srgb, var(--select-info-ring-color) 25%, transparent);
+  --select-ghost-ring-resolved: color-mix(in srgb, var(--select-ghost-ring-color) 25%, transparent);
 
   --select-menu-bg: var(--color-slate-800);
   --select-menu-border: var(--color-slate-700);
@@ -4485,6 +4566,23 @@
   --multiselect-ghost-border-color: transparent;
   --multiselect-ghost-ring-color: var(--color-slate-100);
   --multiselect-ghost-bg: transparent;
+
+  /* Resolved variants — pass through the raw variables.
+     .dark overrides these with color-mix() so inline styles set by
+     ComponentColorResolver still get muted for dark backgrounds. */
+  --multiselect-primary-border-resolved: var(--multiselect-primary-border-color);
+  --multiselect-primary-ring-resolved: var(--multiselect-primary-ring-color);
+  --multiselect-secondary-border-resolved: var(--multiselect-secondary-border-color);
+  --multiselect-secondary-ring-resolved: var(--multiselect-secondary-ring-color);
+  --multiselect-success-border-resolved: var(--multiselect-success-border-color);
+  --multiselect-success-ring-resolved: var(--multiselect-success-ring-color);
+  --multiselect-warning-border-resolved: var(--multiselect-warning-border-color);
+  --multiselect-warning-ring-resolved: var(--multiselect-warning-ring-color);
+  --multiselect-danger-border-resolved: var(--multiselect-danger-border-color);
+  --multiselect-danger-ring-resolved: var(--multiselect-danger-ring-color);
+  --multiselect-info-border-resolved: var(--multiselect-info-border-color);
+  --multiselect-info-ring-resolved: var(--multiselect-info-ring-color);
+  --multiselect-ghost-ring-resolved: var(--multiselect-ghost-ring-color);
 
   /* Multi Select - Sizes */
   --multiselect-py-sm: 0.375rem;
@@ -5010,7 +5108,7 @@
 /* Error variant */
 .bk-multiselect__control--error,
 .bk-multiselect__control[aria-invalid="true"] {
-  border-color: var(--multiselect-error-border-color);
+  border-color: var(--multiselect-error-border-resolved);
   color: var(--multiselect-error-color);
 }
 :is(.bk-multiselect__control--error,.bk-multiselect__control[aria-invalid="true"]) .bk-multiselect__placeholder {
@@ -5021,7 +5119,7 @@
   }
 
 .bk-multiselect__container--error .bk-multiselect__control {
-    border-color: var(--multiselect-error-border-color);
+    border-color: var(--multiselect-error-border-resolved);
   }
 
 .bk-multiselect__container--error .bk-multiselect__label--inset,.bk-multiselect__container--error .bk-multiselect__label--overlap {
@@ -5037,109 +5135,109 @@
   }
 
 .bk-multiselect__container--error:focus-within {
-    box-shadow: 0 0 0 2px var(--multiselect-error-ring-color);
+    box-shadow: 0 0 0 2px var(--multiselect-error-ring-resolved);
   }
 
 /* Primary variant */
 .bk-multiselect__control--primary {
-  border-color: var(--multiselect-primary-border-color);
+  border-color: var(--multiselect-primary-border-resolved);
 }
 
 .bk-multiselect__container--primary .bk-multiselect__control {
-    border-color: var(--multiselect-primary-border-color);
+    border-color: var(--multiselect-primary-border-resolved);
   }
 
 .bk-multiselect__container--primary .bk-multiselect__chevron,.bk-multiselect__container--primary .bk-multiselect__icon {
-    color: var(--multiselect-primary-border-color);
+    color: var(--multiselect-primary-border-resolved);
   }
 
 .bk-multiselect__container--primary:focus-within {
-    box-shadow: 0 0 0 2px var(--multiselect-primary-ring-color);
+    box-shadow: 0 0 0 2px var(--multiselect-primary-ring-resolved);
   }
 
 /* Secondary variant */
 .bk-multiselect__control--secondary {
-  border-color: var(--multiselect-secondary-border-color);
+  border-color: var(--multiselect-secondary-border-resolved);
 }
 
 .bk-multiselect__container--secondary .bk-multiselect__control {
-    border-color: var(--multiselect-secondary-border-color);
+    border-color: var(--multiselect-secondary-border-resolved);
   }
 
 .bk-multiselect__container--secondary .bk-multiselect__chevron,.bk-multiselect__container--secondary .bk-multiselect__icon {
-    color: var(--multiselect-secondary-border-color);
+    color: var(--multiselect-secondary-border-resolved);
   }
 
 .bk-multiselect__container--secondary:focus-within {
-    box-shadow: 0 0 0 2px var(--multiselect-secondary-ring-color);
+    box-shadow: 0 0 0 2px var(--multiselect-secondary-ring-resolved);
   }
 
 /* Success variant */
 .bk-multiselect__control--success {
-  border-color: var(--multiselect-success-border-color);
+  border-color: var(--multiselect-success-border-resolved);
 }
 
 .bk-multiselect__container--success .bk-multiselect__control {
-    border-color: var(--multiselect-success-border-color);
+    border-color: var(--multiselect-success-border-resolved);
   }
 
 .bk-multiselect__container--success .bk-multiselect__chevron,.bk-multiselect__container--success .bk-multiselect__icon {
-    color: var(--multiselect-success-border-color);
+    color: var(--multiselect-success-border-resolved);
   }
 
 .bk-multiselect__container--success:focus-within {
-    box-shadow: 0 0 0 2px var(--multiselect-success-ring-color);
+    box-shadow: 0 0 0 2px var(--multiselect-success-ring-resolved);
   }
 
 /* Warning variant */
 .bk-multiselect__control--warning {
-  border-color: var(--multiselect-warning-border-color);
+  border-color: var(--multiselect-warning-border-resolved);
 }
 
 .bk-multiselect__container--warning .bk-multiselect__control {
-    border-color: var(--multiselect-warning-border-color);
+    border-color: var(--multiselect-warning-border-resolved);
   }
 
 .bk-multiselect__container--warning .bk-multiselect__chevron,.bk-multiselect__container--warning .bk-multiselect__icon {
-    color: var(--multiselect-warning-border-color);
+    color: var(--multiselect-warning-border-resolved);
   }
 
 .bk-multiselect__container--warning:focus-within {
-    box-shadow: 0 0 0 2px var(--multiselect-warning-ring-color);
+    box-shadow: 0 0 0 2px var(--multiselect-warning-ring-resolved);
   }
 
 /* Danger variant */
 .bk-multiselect__control--danger {
-  border-color: var(--multiselect-danger-border-color);
+  border-color: var(--multiselect-danger-border-resolved);
 }
 
 .bk-multiselect__container--danger .bk-multiselect__control {
-    border-color: var(--multiselect-danger-border-color);
+    border-color: var(--multiselect-danger-border-resolved);
   }
 
 .bk-multiselect__container--danger .bk-multiselect__chevron {
-    color: var(--multiselect-danger-border-color);
+    color: var(--multiselect-danger-border-resolved);
   }
 
 .bk-multiselect__container--danger:focus-within {
-    box-shadow: 0 0 0 2px var(--multiselect-danger-ring-color);
+    box-shadow: 0 0 0 2px var(--multiselect-danger-ring-resolved);
   }
 
 /* Info variant */
 .bk-multiselect__control--info {
-  border-color: var(--multiselect-info-border-color);
+  border-color: var(--multiselect-info-border-resolved);
 }
 
 .bk-multiselect__container--info .bk-multiselect__control {
-    border-color: var(--multiselect-info-border-color);
+    border-color: var(--multiselect-info-border-resolved);
   }
 
 .bk-multiselect__container--info .bk-multiselect__chevron,.bk-multiselect__container--info .bk-multiselect__icon {
-    color: var(--multiselect-info-border-color);
+    color: var(--multiselect-info-border-resolved);
   }
 
 .bk-multiselect__container--info:focus-within {
-    box-shadow: 0 0 0 2px var(--multiselect-info-ring-color);
+    box-shadow: 0 0 0 2px var(--multiselect-info-ring-resolved);
   }
 
 /* Ghost variant */
@@ -5152,7 +5250,7 @@
 }
 
 .bk-multiselect__container--ghost:focus-within {
-  box-shadow: 0 0 0 2px var(--multiselect-ghost-ring-color);
+  box-shadow: 0 0 0 2px var(--multiselect-ghost-ring-resolved);
 }
 
 /**
@@ -5198,35 +5296,51 @@
   --multiselect-bg: var(--color-slate-800);
   --multiselect-hover-border-color: var(--color-slate-500);
   --multiselect-focus-border-color: var(--color-primary-400);
-  --multiselect-focus-ring-color: rgba(99, 102, 241, 0.25);
+  --multiselect-focus-ring-color: var(--ring-primary);
 
   --multiselect-disabled-bg: var(--color-slate-900);
   --multiselect-disabled-color: var(--color-slate-600);
   --multiselect-disabled-border-color: var(--color-slate-800);
 
   --multiselect-error-border-color: var(--color-danger-500);
-  --multiselect-error-ring-color: rgba(239, 68, 68, 0.2);
+  --multiselect-error-ring-color: var(--ring-danger);
   --multiselect-error-color: var(--color-danger-400);
 
-  --multiselect-primary-border-color: var(--color-primary-500);
-  --multiselect-primary-ring-color: rgba(99, 102, 241, 0.25);
+  --multiselect-primary-border-color: var(--color-primary-400);
+  --multiselect-primary-ring-color: var(--ring-primary);
 
   --multiselect-secondary-border-color: var(--color-slate-600);
-  --multiselect-secondary-ring-color: rgba(148, 163, 184, 0.2);
+  --multiselect-secondary-ring-color: var(--ring-secondary);
 
-  --multiselect-success-border-color: var(--color-success-500);
-  --multiselect-success-ring-color: rgba(34, 197, 94, 0.2);
+  --multiselect-success-border-color: var(--color-success-400);
+  --multiselect-success-ring-color: var(--ring-success);
 
-  --multiselect-warning-border-color: var(--color-warning-500);
-  --multiselect-warning-ring-color: rgba(245, 158, 11, 0.2);
+  --multiselect-warning-border-color: var(--color-warning-400);
+  --multiselect-warning-ring-color: var(--ring-warning);
 
   --multiselect-danger-border-color: var(--color-danger-500);
-  --multiselect-danger-ring-color: rgba(239, 68, 68, 0.2);
+  --multiselect-danger-ring-color: var(--ring-danger);
 
-  --multiselect-info-border-color: var(--color-info-500);
-  --multiselect-info-ring-color: rgba(59, 130, 246, 0.2);
+  --multiselect-info-border-color: var(--color-info-400);
+  --multiselect-info-ring-color: var(--ring-info);
 
-  --multiselect-ghost-ring-color: rgba(148, 163, 184, 0.15);
+  --multiselect-ghost-ring-color: var(--ring-ghost);
+
+  /* Resolved variants — applies color-mix() so custom colors set via
+     ComponentColorResolver inline styles are still muted for dark bg. */
+  --multiselect-primary-border-resolved: color-mix(in srgb, var(--multiselect-primary-border-color) 70%, transparent);
+  --multiselect-primary-ring-resolved: color-mix(in srgb, var(--multiselect-primary-ring-color) 25%, transparent);
+  --multiselect-secondary-border-resolved: color-mix(in srgb, var(--multiselect-secondary-border-color) 70%, transparent);
+  --multiselect-secondary-ring-resolved: color-mix(in srgb, var(--multiselect-secondary-ring-color) 25%, transparent);
+  --multiselect-success-border-resolved: color-mix(in srgb, var(--multiselect-success-border-color) 70%, transparent);
+  --multiselect-success-ring-resolved: color-mix(in srgb, var(--multiselect-success-ring-color) 25%, transparent);
+  --multiselect-warning-border-resolved: color-mix(in srgb, var(--multiselect-warning-border-color) 70%, transparent);
+  --multiselect-warning-ring-resolved: color-mix(in srgb, var(--multiselect-warning-ring-color) 25%, transparent);
+  --multiselect-danger-border-resolved: color-mix(in srgb, var(--multiselect-danger-border-color) 70%, transparent);
+  --multiselect-danger-ring-resolved: color-mix(in srgb, var(--multiselect-danger-ring-color) 25%, transparent);
+  --multiselect-info-border-resolved: color-mix(in srgb, var(--multiselect-info-border-color) 70%, transparent);
+  --multiselect-info-ring-resolved: color-mix(in srgb, var(--multiselect-info-ring-color) 25%, transparent);
+  --multiselect-ghost-ring-resolved: color-mix(in srgb, var(--multiselect-ghost-ring-color) 25%, transparent);
 
   --multiselect-chip-bg: var(--color-slate-700);
   --multiselect-chip-text: var(--color-slate-200);
@@ -5544,7 +5658,7 @@
   --toggle-thumb-bg: var(--color-slate-300);
   --toggle-thumb-border-off: var(--color-slate-600);
 
-  --toggle-focus-ring: rgba(99, 102, 241, 0.25);
+  --toggle-focus-ring: var(--ring-primary);
 
   /* Labels & helpers */
   --toggle-label-color: var(--color-slate-300);
@@ -5552,27 +5666,27 @@
   --toggle-disabled-label-color: var(--color-slate-600);
 
   --toggle-primary-bg-on: var(--color-primary-500);
-  --toggle-primary-focus-ring: rgba(99, 102, 241, 0.25);
+  --toggle-primary-focus-ring: var(--ring-primary);
 
   --toggle-secondary-bg-on: var(--color-slate-500);
-  --toggle-secondary-focus-ring: rgba(148, 163, 184, 0.2);
+  --toggle-secondary-focus-ring: var(--ring-secondary);
 
   --toggle-success-bg-on: var(--color-success-500);
-  --toggle-success-focus-ring: rgba(34, 197, 94, 0.25);
+  --toggle-success-focus-ring: var(--ring-success);
 
   --toggle-warning-bg-on: var(--color-warning-500);
-  --toggle-warning-focus-ring: rgba(245, 158, 11, 0.25);
+  --toggle-warning-focus-ring: var(--ring-warning);
 
   --toggle-danger-bg-on: var(--color-danger-500);
-  --toggle-danger-focus-ring: rgba(239, 68, 68, 0.25);
+  --toggle-danger-focus-ring: var(--ring-danger);
 
   --toggle-info-bg-on: var(--color-info-500);
-  --toggle-info-focus-ring: rgba(59, 130, 246, 0.25);
+  --toggle-info-focus-ring: var(--ring-info);
 
   --toggle-ghost-bg-on: var(--color-slate-700);
-  --toggle-ghost-focus-ring: rgba(148, 163, 184, 0.2);
+  --toggle-ghost-focus-ring: var(--ring-ghost);
 
-  --toggle-error-focus-ring: rgba(239, 68, 68, 0.25);
+  --toggle-error-focus-ring: var(--ring-danger);
 }
 /* =============================================================================
   Fieldset Component
@@ -5818,11 +5932,11 @@
 
 /* Dark mode overrides */
 .dark {
-  --alert-bg-primary: var(--color-primary-950);
+  --alert-bg-primary: var(--color-primary-900);
   --alert-text-primary: var(--color-primary-200);
   --alert-border-primary: var(--color-primary-800);
 
-  --alert-bg-info: var(--color-info-950);
+  --alert-bg-info: var(--color-info-900);
   --alert-text-info: var(--color-info-200);
   --alert-border-info: var(--color-info-800);
 
@@ -5830,15 +5944,15 @@
   --alert-text-secondary: var(--color-slate-200);
   --alert-border-secondary: var(--color-slate-700);
 
-  --alert-bg-success: var(--color-success-950);
+  --alert-bg-success: var(--color-success-900);
   --alert-text-success: var(--color-success-200);
   --alert-border-success: var(--color-success-800);
 
-  --alert-bg-warning: var(--color-warning-950);
+  --alert-bg-warning: var(--color-warning-900);
   --alert-text-warning: var(--color-warning-200);
   --alert-border-warning: var(--color-warning-800);
 
-  --alert-bg-danger: var(--color-danger-950);
+  --alert-bg-danger: var(--color-danger-900);
   --alert-text-danger: var(--color-danger-200);
   --alert-border-danger: var(--color-danger-800);
 
@@ -6049,11 +6163,11 @@
   --toast-shadow:
     0 4px 12px -2px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
 
-  --toast-bg-primary: var(--color-primary-950);
+  --toast-bg-primary: var(--color-primary-900);
   --toast-text-primary: var(--color-primary-200);
   --toast-border-primary: var(--color-primary-500);
 
-  --toast-bg-info: var(--color-info-950);
+  --toast-bg-info: var(--color-info-900);
   --toast-text-info: var(--color-info-200);
   --toast-border-info: var(--color-info-500);
 
@@ -6061,15 +6175,15 @@
   --toast-text-secondary: var(--color-slate-200);
   --toast-border-secondary: var(--color-slate-400);
 
-  --toast-bg-success: var(--color-success-950);
+  --toast-bg-success: var(--color-success-900);
   --toast-text-success: var(--color-success-200);
   --toast-border-success: var(--color-success-500);
 
-  --toast-bg-warning: var(--color-warning-950);
+  --toast-bg-warning: var(--color-warning-900);
   --toast-text-warning: var(--color-warning-200);
   --toast-border-warning: var(--color-warning-500);
 
-  --toast-bg-danger: var(--color-danger-950);
+  --toast-bg-danger: var(--color-danger-900);
   --toast-text-danger: var(--color-danger-200);
   --toast-border-danger: var(--color-danger-500);
 
@@ -7614,7 +7728,7 @@
   --dropdown-trigger-text: var(--color-slate-200);
   --dropdown-trigger-hover-bg: var(--color-slate-700);
   --dropdown-trigger-hover-border: var(--color-slate-600);
-  --dropdown-trigger-focus-ring: rgba(99, 102, 241, 0.25);
+  --dropdown-trigger-focus-ring: var(--ring-primary);
   --dropdown-border: var(--color-slate-700);
   --dropdown-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
   --dropdown-trigger-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.2);
@@ -7821,6 +7935,7 @@
   --divider-color-light: var(--color-slate-800);
   --divider-color-dark: var(--color-slate-500);
   --divider-label-color: var(--color-slate-400);
+  --divider-label-bg: var(--color-slate-800);
 }
 /* =============================================================================
    Stack Component
@@ -8152,7 +8267,7 @@
 
 .bk-card--transparent {
   background-color: transparent;
-  border: none;
+  border: 1px solid transparent;
   box-shadow: none;
 }
 
@@ -8175,6 +8290,11 @@
   --card-hover-border: var(--color-slate-600);
   --card-header-text: var(--color-slate-100);
 }
+
+.bk-card--transparent.dark {
+  border-color: var(--color-slate-700);
+}
+
 /* =============================================================================
    Avatar Component
    ============================================================================= */
@@ -10221,6 +10341,15 @@
   --shadow-xl:
     0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 
+  /* Focus Ring Colors — light mode uses pastel shades */
+  --ring-primary: var(--color-primary-100);
+  --ring-secondary: var(--color-slate-100);
+  --ring-danger: var(--color-danger-100);
+  --ring-success: var(--color-success-100);
+  --ring-warning: var(--color-warning-100);
+  --ring-info: var(--color-info-100);
+  --ring-ghost: var(--color-slate-100);
+
   /* Transitions */
   --transition-fast: 150ms;
   --transition-normal: 200ms;
@@ -10232,4 +10361,13 @@
 
   /* Semantic Surfaces */
   --surface-base: var(--color-slate-900);
+
+  /* Focus Ring Colors — dark mode uses lighter muted shades */
+  --ring-primary: var(--color-primary-300);
+  --ring-secondary: var(--color-slate-300);
+  --ring-danger: var(--color-danger-300);
+  --ring-success: var(--color-success-300);
+  --ring-warning: var(--color-warning-300);
+  --ring-info: var(--color-info-300);
+  --ring-ghost: var(--color-slate-300);
 }

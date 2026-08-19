@@ -152,11 +152,11 @@
 
 /* Dark mode overrides */
 .dark {
-  --alert-bg-primary: var(--color-primary-950);
+  --alert-bg-primary: var(--color-primary-900);
   --alert-text-primary: var(--color-primary-200);
   --alert-border-primary: var(--color-primary-800);
 
-  --alert-bg-info: var(--color-info-950);
+  --alert-bg-info: var(--color-info-900);
   --alert-text-info: var(--color-info-200);
   --alert-border-info: var(--color-info-800);
 
@@ -164,15 +164,15 @@
   --alert-text-secondary: var(--color-slate-200);
   --alert-border-secondary: var(--color-slate-700);
 
-  --alert-bg-success: var(--color-success-950);
+  --alert-bg-success: var(--color-success-900);
   --alert-text-success: var(--color-success-200);
   --alert-border-success: var(--color-success-800);
 
-  --alert-bg-warning: var(--color-warning-950);
+  --alert-bg-warning: var(--color-warning-900);
   --alert-text-warning: var(--color-warning-200);
   --alert-border-warning: var(--color-warning-800);
 
-  --alert-bg-danger: var(--color-danger-950);
+  --alert-bg-danger: var(--color-danger-900);
   --alert-text-danger: var(--color-danger-200);
   --alert-border-danger: var(--color-danger-800);
 
@@ -377,11 +377,11 @@
   --toast-shadow:
     0 4px 12px -2px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
 
-  --toast-bg-primary: var(--color-primary-950);
+  --toast-bg-primary: var(--color-primary-900);
   --toast-text-primary: var(--color-primary-200);
   --toast-border-primary: var(--color-primary-500);
 
-  --toast-bg-info: var(--color-info-950);
+  --toast-bg-info: var(--color-info-900);
   --toast-text-info: var(--color-info-200);
   --toast-border-info: var(--color-info-500);
 
@@ -389,15 +389,15 @@
   --toast-text-secondary: var(--color-slate-200);
   --toast-border-secondary: var(--color-slate-400);
 
-  --toast-bg-success: var(--color-success-950);
+  --toast-bg-success: var(--color-success-900);
   --toast-text-success: var(--color-success-200);
   --toast-border-success: var(--color-success-500);
 
-  --toast-bg-warning: var(--color-warning-950);
+  --toast-bg-warning: var(--color-warning-900);
   --toast-text-warning: var(--color-warning-200);
   --toast-border-warning: var(--color-warning-500);
 
-  --toast-bg-danger: var(--color-danger-950);
+  --toast-bg-danger: var(--color-danger-900);
   --toast-text-danger: var(--color-danger-200);
   --toast-border-danger: var(--color-danger-500);
 

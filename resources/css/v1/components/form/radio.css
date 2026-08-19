@@ -297,7 +297,7 @@
 .dark {
   --radio-border: var(--color-slate-600);
   --radio-bg: var(--color-slate-800);
-  --radio-focus-ring: rgba(99, 102, 241, 0.25);
+  --radio-focus-ring: var(--ring-primary);
 
   /* Labels & helpers */
   --radio-label-color: var(--color-slate-300);
@@ -309,32 +309,32 @@
 
   --radio-primary-checked-bg: var(--color-primary-500);
   --radio-primary-checked-border: var(--color-primary-500);
-  --radio-primary-focus-ring: rgba(99, 102, 241, 0.25);
+  --radio-primary-focus-ring: var(--ring-primary);
 
   --radio-secondary-checked-bg: var(--color-slate-500);
   --radio-secondary-checked-border: var(--color-slate-500);
-  --radio-secondary-focus-ring: rgba(148, 163, 184, 0.2);
+  --radio-secondary-focus-ring: var(--ring-secondary);
 
   --radio-success-checked-bg: var(--color-success-500);
   --radio-success-checked-border: var(--color-success-500);
-  --radio-success-focus-ring: rgba(34, 197, 94, 0.2);
+  --radio-success-focus-ring: var(--ring-success);
 
   --radio-warning-checked-bg: var(--color-warning-500);
   --radio-warning-checked-border: var(--color-warning-500);
-  --radio-warning-focus-ring: rgba(245, 158, 11, 0.2);
+  --radio-warning-focus-ring: var(--ring-warning);
 
   --radio-danger-checked-bg: var(--color-danger-500);
   --radio-danger-checked-border: var(--color-danger-500);
-  --radio-danger-focus-ring: rgba(239, 68, 68, 0.2);
+  --radio-danger-focus-ring: var(--ring-danger);
 
   --radio-info-checked-bg: var(--color-info-500);
   --radio-info-checked-border: var(--color-info-500);
-  --radio-info-focus-ring: rgba(59, 130, 246, 0.2);
+  --radio-info-focus-ring: var(--ring-info);
 
   --radio-ghost-bg: transparent;
   --radio-ghost-border: var(--color-slate-600);
-  --radio-ghost-focus-ring: rgba(148, 163, 184, 0.2);
+  --radio-ghost-focus-ring: var(--ring-ghost);
 
   --radio-error-border: var(--color-danger-500);
-  --radio-error-ring: rgba(239, 68, 68, 0.2);
+  --radio-error-ring: var(--ring-danger);
 }

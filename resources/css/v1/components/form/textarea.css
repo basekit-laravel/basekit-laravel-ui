@@ -58,6 +58,25 @@
   --textarea-ghost-ring: var(--color-slate-100);
   --textarea-ghost-bg: transparent;
 
+  /* Resolved variants — pass through the raw variables.
+     .dark overrides these with color-mix() so inline styles set by
+     ComponentColorResolver still get muted for dark backgrounds. */
+  --textarea-primary-border-resolved: var(--textarea-primary-border);
+  --textarea-primary-ring-resolved: var(--textarea-primary-ring);
+  --textarea-secondary-border-resolved: var(--textarea-secondary-border);
+  --textarea-secondary-ring-resolved: var(--textarea-secondary-ring);
+  --textarea-error-border-resolved: var(--textarea-error-border);
+  --textarea-error-ring-resolved: var(--textarea-error-ring);
+  --textarea-success-border-resolved: var(--textarea-success-border);
+  --textarea-success-ring-resolved: var(--textarea-success-ring);
+  --textarea-warning-border-resolved: var(--textarea-warning-border);
+  --textarea-warning-ring-resolved: var(--textarea-warning-ring);
+  --textarea-danger-border-resolved: var(--textarea-danger-border);
+  --textarea-danger-ring-resolved: var(--textarea-danger-ring);
+  --textarea-info-border-resolved: var(--textarea-info-border);
+  --textarea-info-ring-resolved: var(--textarea-info-ring);
+  --textarea-ghost-ring-resolved: var(--textarea-ghost-ring);
+
   /* Labels & helpers */
   --textarea-label-color: var(--color-slate-700);
   --textarea-hint-color: var(--color-slate-500);
@@ -287,120 +306,120 @@
  * =============================================================================
  */
 .bk-textarea__control--primary {
-  border-color: var(--textarea-primary-border);
+  border-color: var(--textarea-primary-border-resolved);
 
   &:focus {
-    border-color: var(--textarea-primary-border);
+    border-color: var(--textarea-primary-border-resolved);
     box-shadow: none;
   }
 }
 
 .bk-textarea__container--primary {
   .bk-textarea__control {
-    border-color: var(--textarea-primary-border);
+    border-color: var(--textarea-primary-border-resolved);
   }
 
   &:focus-within {
-    box-shadow: 0 0 0 2px var(--textarea-primary-ring);
+    box-shadow: 0 0 0 2px var(--textarea-primary-ring-resolved);
   }
 }
 
 .bk-textarea__control--secondary {
-  border-color: var(--textarea-secondary-border);
+  border-color: var(--textarea-secondary-border-resolved);
 
   &:focus {
-    border-color: var(--textarea-secondary-border);
+    border-color: var(--textarea-secondary-border-resolved);
     box-shadow: none;
   }
 }
 
 .bk-textarea__container--secondary {
   .bk-textarea__control {
-    border-color: var(--textarea-secondary-border);
+    border-color: var(--textarea-secondary-border-resolved);
   }
 
   &:focus-within {
-    box-shadow: 0 0 0 2px var(--textarea-secondary-ring);
+    box-shadow: 0 0 0 2px var(--textarea-secondary-ring-resolved);
   }
 }
 
 .bk-textarea__control--error,
 .bk-textarea__control[aria-invalid="true"] {
-  border-color: var(--textarea-error-border);
+  border-color: var(--textarea-error-border-resolved);
 
   &:focus {
-    box-shadow: 0 0 0 4px var(--textarea-error-ring);
+    box-shadow: 0 0 0 4px var(--textarea-error-ring-resolved);
   }
 }
 
 .bk-textarea__container--error {
   .bk-textarea__control {
-    border-color: var(--textarea-error-border);
+    border-color: var(--textarea-error-border-resolved);
   }
 
   &:focus-within {
-    box-shadow: 0 0 0 2px var(--textarea-error-ring);
+    box-shadow: 0 0 0 2px var(--textarea-error-ring-resolved);
   }
 
   .bk-textarea__label--inset,
   .bk-textarea__label--overlap {
-    color: var(--textarea-error-border);
+    color: var(--textarea-error-border-resolved);
   }
 }
 
 .bk-textarea__control--success {
-  border-color: var(--textarea-success-border);
+  border-color: var(--textarea-success-border-resolved);
 }
 
 .bk-textarea__container--success {
   .bk-textarea__control {
-    border-color: var(--textarea-success-border);
+    border-color: var(--textarea-success-border-resolved);
   }
 
   &:focus-within {
-    box-shadow: 0 0 0 2px var(--textarea-success-ring);
+    box-shadow: 0 0 0 2px var(--textarea-success-ring-resolved);
   }
 }
 
 .bk-textarea__control--warning {
-  border-color: var(--textarea-warning-border);
+  border-color: var(--textarea-warning-border-resolved);
 }
 
 .bk-textarea__container--warning {
   .bk-textarea__control {
-    border-color: var(--textarea-warning-border);
+    border-color: var(--textarea-warning-border-resolved);
   }
 
   &:focus-within {
-    box-shadow: 0 0 0 2px var(--textarea-warning-ring);
+    box-shadow: 0 0 0 2px var(--textarea-warning-ring-resolved);
   }
 }
 
 .bk-textarea__control--danger {
-  border-color: var(--textarea-danger-border);
+  border-color: var(--textarea-danger-border-resolved);
 }
 
 .bk-textarea__container--danger {
   .bk-textarea__control {
-    border-color: var(--textarea-danger-border);
+    border-color: var(--textarea-danger-border-resolved);
   }
 
   &:focus-within {
-    box-shadow: 0 0 0 2px var(--textarea-danger-ring);
+    box-shadow: 0 0 0 2px var(--textarea-danger-ring-resolved);
   }
 }
 
 .bk-textarea__control--info {
-  border-color: var(--textarea-info-border);
+  border-color: var(--textarea-info-border-resolved);
 }
 
 .bk-textarea__container--info {
   .bk-textarea__control {
-    border-color: var(--textarea-info-border);
+    border-color: var(--textarea-info-border-resolved);
   }
 
   &:focus-within {
-    box-shadow: 0 0 0 2px var(--textarea-info-ring);
+    box-shadow: 0 0 0 2px var(--textarea-info-ring-resolved);
   }
 }
 
@@ -411,7 +430,7 @@
 }
 
 .bk-textarea__container--ghost:focus-within {
-  box-shadow: 0 0 0 2px var(--textarea-ghost-ring);
+  box-shadow: 0 0 0 2px var(--textarea-ghost-ring-resolved);
 }
 
 /**
@@ -496,30 +515,48 @@
   --textarea-placeholder: var(--color-slate-500);
 
   --textarea-focus-border: var(--color-primary-400);
-  --textarea-focus-ring: rgba(99, 102, 241, 0.25);
+  --textarea-focus-ring: var(--ring-primary);
 
-  --textarea-primary-border: var(--color-primary-500);
-  --textarea-primary-ring: rgba(99, 102, 241, 0.25);
+  --textarea-primary-border: var(--color-primary-400);
+  --textarea-primary-ring: var(--ring-primary);
 
   --textarea-secondary-border: var(--color-slate-600);
-  --textarea-secondary-ring: rgba(148, 163, 184, 0.2);
+  --textarea-secondary-ring: var(--ring-secondary);
 
   --textarea-error-border: var(--color-danger-500);
-  --textarea-error-ring: rgba(239, 68, 68, 0.2);
+  --textarea-error-ring: var(--ring-danger);
 
-  --textarea-success-border: var(--color-success-500);
-  --textarea-success-ring: rgba(34, 197, 94, 0.2);
+  --textarea-success-border: var(--color-success-400);
+  --textarea-success-ring: var(--ring-success);
 
-  --textarea-warning-border: var(--color-warning-500);
-  --textarea-warning-ring: rgba(245, 158, 11, 0.2);
+  --textarea-warning-border: var(--color-warning-400);
+  --textarea-warning-ring: var(--ring-warning);
 
   --textarea-danger-border: var(--color-danger-500);
-  --textarea-danger-ring: rgba(239, 68, 68, 0.2);
+  --textarea-danger-ring: var(--ring-danger);
 
-  --textarea-info-border: var(--color-info-500);
-  --textarea-info-ring: rgba(59, 130, 246, 0.2);
+  --textarea-info-border: var(--color-info-400);
+  --textarea-info-ring: var(--ring-info);
 
-  --textarea-ghost-ring: rgba(148, 163, 184, 0.15);
+  --textarea-ghost-ring: var(--ring-ghost);
+
+  /* Resolved variants — applies color-mix() so custom colors set via
+     ComponentColorResolver inline styles are still muted for dark bg. */
+  --textarea-primary-border-resolved: color-mix(in srgb, var(--textarea-primary-border) 70%, transparent);
+  --textarea-primary-ring-resolved: color-mix(in srgb, var(--textarea-primary-ring) 25%, transparent);
+  --textarea-secondary-border-resolved: color-mix(in srgb, var(--textarea-secondary-border) 70%, transparent);
+  --textarea-secondary-ring-resolved: color-mix(in srgb, var(--textarea-secondary-ring) 25%, transparent);
+  --textarea-error-border-resolved: color-mix(in srgb, var(--textarea-error-border) 70%, transparent);
+  --textarea-error-ring-resolved: color-mix(in srgb, var(--textarea-error-ring) 25%, transparent);
+  --textarea-success-border-resolved: color-mix(in srgb, var(--textarea-success-border) 70%, transparent);
+  --textarea-success-ring-resolved: color-mix(in srgb, var(--textarea-success-ring) 25%, transparent);
+  --textarea-warning-border-resolved: color-mix(in srgb, var(--textarea-warning-border) 70%, transparent);
+  --textarea-warning-ring-resolved: color-mix(in srgb, var(--textarea-warning-ring) 25%, transparent);
+  --textarea-danger-border-resolved: color-mix(in srgb, var(--textarea-danger-border) 70%, transparent);
+  --textarea-danger-ring-resolved: color-mix(in srgb, var(--textarea-danger-ring) 25%, transparent);
+  --textarea-info-border-resolved: color-mix(in srgb, var(--textarea-info-border) 70%, transparent);
+  --textarea-info-ring-resolved: color-mix(in srgb, var(--textarea-info-ring) 25%, transparent);
+  --textarea-ghost-ring-resolved: color-mix(in srgb, var(--textarea-ghost-ring) 25%, transparent);
 
   /* Labels & helpers */
   --textarea-label-color: var(--color-slate-300);

@@ -55,6 +55,23 @@
   --multiselect-ghost-ring-color: var(--color-slate-100);
   --multiselect-ghost-bg: transparent;
 
+  /* Resolved variants — pass through the raw variables.
+     .dark overrides these with color-mix() so inline styles set by
+     ComponentColorResolver still get muted for dark backgrounds. */
+  --multiselect-primary-border-resolved: var(--multiselect-primary-border-color);
+  --multiselect-primary-ring-resolved: var(--multiselect-primary-ring-color);
+  --multiselect-secondary-border-resolved: var(--multiselect-secondary-border-color);
+  --multiselect-secondary-ring-resolved: var(--multiselect-secondary-ring-color);
+  --multiselect-success-border-resolved: var(--multiselect-success-border-color);
+  --multiselect-success-ring-resolved: var(--multiselect-success-ring-color);
+  --multiselect-warning-border-resolved: var(--multiselect-warning-border-color);
+  --multiselect-warning-ring-resolved: var(--multiselect-warning-ring-color);
+  --multiselect-danger-border-resolved: var(--multiselect-danger-border-color);
+  --multiselect-danger-ring-resolved: var(--multiselect-danger-ring-color);
+  --multiselect-info-border-resolved: var(--multiselect-info-border-color);
+  --multiselect-info-ring-resolved: var(--multiselect-info-ring-color);
+  --multiselect-ghost-ring-resolved: var(--multiselect-ghost-ring-color);
+
   /* Multi Select - Sizes */
   --multiselect-py-sm: 0.375rem;
   --multiselect-px-sm: 0.75rem;
@@ -562,7 +579,7 @@
 /* Error variant */
 .bk-multiselect__control--error,
 .bk-multiselect__control[aria-invalid="true"] {
-  border-color: var(--multiselect-error-border-color);
+  border-color: var(--multiselect-error-border-resolved);
   color: var(--multiselect-error-color);
 
   .bk-multiselect__placeholder {
@@ -576,7 +593,7 @@
 
 .bk-multiselect__container--error {
   .bk-multiselect__control {
-    border-color: var(--multiselect-error-border-color);
+    border-color: var(--multiselect-error-border-resolved);
   }
 
   .bk-multiselect__label--inset,
@@ -594,126 +611,126 @@
   }
 
   &:focus-within {
-    box-shadow: 0 0 0 2px var(--multiselect-error-ring-color);
+    box-shadow: 0 0 0 2px var(--multiselect-error-ring-resolved);
   }
 }
 
 /* Primary variant */
 .bk-multiselect__control--primary {
-  border-color: var(--multiselect-primary-border-color);
+  border-color: var(--multiselect-primary-border-resolved);
 }
 
 .bk-multiselect__container--primary {
   .bk-multiselect__control {
-    border-color: var(--multiselect-primary-border-color);
+    border-color: var(--multiselect-primary-border-resolved);
   }
 
   .bk-multiselect__chevron,
   .bk-multiselect__icon {
-    color: var(--multiselect-primary-border-color);
+    color: var(--multiselect-primary-border-resolved);
   }
 
   &:focus-within {
-    box-shadow: 0 0 0 2px var(--multiselect-primary-ring-color);
+    box-shadow: 0 0 0 2px var(--multiselect-primary-ring-resolved);
   }
 }
 
 /* Secondary variant */
 .bk-multiselect__control--secondary {
-  border-color: var(--multiselect-secondary-border-color);
+  border-color: var(--multiselect-secondary-border-resolved);
 }
 
 .bk-multiselect__container--secondary {
   .bk-multiselect__control {
-    border-color: var(--multiselect-secondary-border-color);
+    border-color: var(--multiselect-secondary-border-resolved);
   }
 
   .bk-multiselect__chevron,
   .bk-multiselect__icon {
-    color: var(--multiselect-secondary-border-color);
+    color: var(--multiselect-secondary-border-resolved);
   }
 
   &:focus-within {
-    box-shadow: 0 0 0 2px var(--multiselect-secondary-ring-color);
+    box-shadow: 0 0 0 2px var(--multiselect-secondary-ring-resolved);
   }
 }
 
 /* Success variant */
 .bk-multiselect__control--success {
-  border-color: var(--multiselect-success-border-color);
+  border-color: var(--multiselect-success-border-resolved);
 }
 
 .bk-multiselect__container--success {
   .bk-multiselect__control {
-    border-color: var(--multiselect-success-border-color);
+    border-color: var(--multiselect-success-border-resolved);
   }
 
   .bk-multiselect__chevron,
   .bk-multiselect__icon {
-    color: var(--multiselect-success-border-color);
+    color: var(--multiselect-success-border-resolved);
   }
 
   &:focus-within {
-    box-shadow: 0 0 0 2px var(--multiselect-success-ring-color);
+    box-shadow: 0 0 0 2px var(--multiselect-success-ring-resolved);
   }
 }
 
 /* Warning variant */
 .bk-multiselect__control--warning {
-  border-color: var(--multiselect-warning-border-color);
+  border-color: var(--multiselect-warning-border-resolved);
 }
 
 .bk-multiselect__container--warning {
   .bk-multiselect__control {
-    border-color: var(--multiselect-warning-border-color);
+    border-color: var(--multiselect-warning-border-resolved);
   }
 
   .bk-multiselect__chevron,
   .bk-multiselect__icon {
-    color: var(--multiselect-warning-border-color);
+    color: var(--multiselect-warning-border-resolved);
   }
 
   &:focus-within {
-    box-shadow: 0 0 0 2px var(--multiselect-warning-ring-color);
+    box-shadow: 0 0 0 2px var(--multiselect-warning-ring-resolved);
   }
 }
 
 /* Danger variant */
 .bk-multiselect__control--danger {
-  border-color: var(--multiselect-danger-border-color);
+  border-color: var(--multiselect-danger-border-resolved);
 }
 
 .bk-multiselect__container--danger {
   .bk-multiselect__control {
-    border-color: var(--multiselect-danger-border-color);
+    border-color: var(--multiselect-danger-border-resolved);
   }
 
   .bk-multiselect__chevron {
-    color: var(--multiselect-danger-border-color);
+    color: var(--multiselect-danger-border-resolved);
   }
 
   &:focus-within {
-    box-shadow: 0 0 0 2px var(--multiselect-danger-ring-color);
+    box-shadow: 0 0 0 2px var(--multiselect-danger-ring-resolved);
   }
 }
 
 /* Info variant */
 .bk-multiselect__control--info {
-  border-color: var(--multiselect-info-border-color);
+  border-color: var(--multiselect-info-border-resolved);
 }
 
 .bk-multiselect__container--info {
   .bk-multiselect__control {
-    border-color: var(--multiselect-info-border-color);
+    border-color: var(--multiselect-info-border-resolved);
   }
 
   .bk-multiselect__chevron,
   .bk-multiselect__icon {
-    color: var(--multiselect-info-border-color);
+    color: var(--multiselect-info-border-resolved);
   }
 
   &:focus-within {
-    box-shadow: 0 0 0 2px var(--multiselect-info-ring-color);
+    box-shadow: 0 0 0 2px var(--multiselect-info-ring-resolved);
   }
 }
 
@@ -725,7 +742,7 @@
 }
 
 .bk-multiselect__container--ghost:focus-within {
-  box-shadow: 0 0 0 2px var(--multiselect-ghost-ring-color);
+  box-shadow: 0 0 0 2px var(--multiselect-ghost-ring-resolved);
 }
 
 /**
@@ -770,35 +787,51 @@
   --multiselect-bg: var(--color-slate-800);
   --multiselect-hover-border-color: var(--color-slate-500);
   --multiselect-focus-border-color: var(--color-primary-400);
-  --multiselect-focus-ring-color: rgba(99, 102, 241, 0.25);
+  --multiselect-focus-ring-color: var(--ring-primary);
 
   --multiselect-disabled-bg: var(--color-slate-900);
   --multiselect-disabled-color: var(--color-slate-600);
   --multiselect-disabled-border-color: var(--color-slate-800);
 
   --multiselect-error-border-color: var(--color-danger-500);
-  --multiselect-error-ring-color: rgba(239, 68, 68, 0.2);
+  --multiselect-error-ring-color: var(--ring-danger);
   --multiselect-error-color: var(--color-danger-400);
 
-  --multiselect-primary-border-color: var(--color-primary-500);
-  --multiselect-primary-ring-color: rgba(99, 102, 241, 0.25);
+  --multiselect-primary-border-color: var(--color-primary-400);
+  --multiselect-primary-ring-color: var(--ring-primary);
 
   --multiselect-secondary-border-color: var(--color-slate-600);
-  --multiselect-secondary-ring-color: rgba(148, 163, 184, 0.2);
+  --multiselect-secondary-ring-color: var(--ring-secondary);
 
-  --multiselect-success-border-color: var(--color-success-500);
-  --multiselect-success-ring-color: rgba(34, 197, 94, 0.2);
+  --multiselect-success-border-color: var(--color-success-400);
+  --multiselect-success-ring-color: var(--ring-success);
 
-  --multiselect-warning-border-color: var(--color-warning-500);
-  --multiselect-warning-ring-color: rgba(245, 158, 11, 0.2);
+  --multiselect-warning-border-color: var(--color-warning-400);
+  --multiselect-warning-ring-color: var(--ring-warning);
 
   --multiselect-danger-border-color: var(--color-danger-500);
-  --multiselect-danger-ring-color: rgba(239, 68, 68, 0.2);
+  --multiselect-danger-ring-color: var(--ring-danger);
 
-  --multiselect-info-border-color: var(--color-info-500);
-  --multiselect-info-ring-color: rgba(59, 130, 246, 0.2);
+  --multiselect-info-border-color: var(--color-info-400);
+  --multiselect-info-ring-color: var(--ring-info);
 
-  --multiselect-ghost-ring-color: rgba(148, 163, 184, 0.15);
+  --multiselect-ghost-ring-color: var(--ring-ghost);
+
+  /* Resolved variants — applies color-mix() so custom colors set via
+     ComponentColorResolver inline styles are still muted for dark bg. */
+  --multiselect-primary-border-resolved: color-mix(in srgb, var(--multiselect-primary-border-color) 70%, transparent);
+  --multiselect-primary-ring-resolved: color-mix(in srgb, var(--multiselect-primary-ring-color) 25%, transparent);
+  --multiselect-secondary-border-resolved: color-mix(in srgb, var(--multiselect-secondary-border-color) 70%, transparent);
+  --multiselect-secondary-ring-resolved: color-mix(in srgb, var(--multiselect-secondary-ring-color) 25%, transparent);
+  --multiselect-success-border-resolved: color-mix(in srgb, var(--multiselect-success-border-color) 70%, transparent);
+  --multiselect-success-ring-resolved: color-mix(in srgb, var(--multiselect-success-ring-color) 25%, transparent);
+  --multiselect-warning-border-resolved: color-mix(in srgb, var(--multiselect-warning-border-color) 70%, transparent);
+  --multiselect-warning-ring-resolved: color-mix(in srgb, var(--multiselect-warning-ring-color) 25%, transparent);
+  --multiselect-danger-border-resolved: color-mix(in srgb, var(--multiselect-danger-border-color) 70%, transparent);
+  --multiselect-danger-ring-resolved: color-mix(in srgb, var(--multiselect-danger-ring-color) 25%, transparent);
+  --multiselect-info-border-resolved: color-mix(in srgb, var(--multiselect-info-border-color) 70%, transparent);
+  --multiselect-info-ring-resolved: color-mix(in srgb, var(--multiselect-info-ring-color) 25%, transparent);
+  --multiselect-ghost-ring-resolved: color-mix(in srgb, var(--multiselect-ghost-ring-color) 25%, transparent);
 
   --multiselect-chip-bg: var(--color-slate-700);
   --multiselect-chip-text: var(--color-slate-200);

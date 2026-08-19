@@ -117,7 +117,7 @@
 
 .bk-card--transparent {
   background-color: transparent;
-  border: none;
+  border: 1px solid transparent;
   box-shadow: none;
 }
 
@@ -138,6 +138,11 @@
   --card-hover-border: var(--color-slate-600);
   --card-header-text: var(--color-slate-100);
 }
+
+.bk-card--transparent.dark {
+  border-color: var(--color-slate-700);
+}
+
 /* =============================================================================
    Avatar Component
    ============================================================================= */

@@ -100,6 +100,7 @@
   --divider-color-light: var(--color-slate-800);
   --divider-color-dark: var(--color-slate-500);
   --divider-label-color: var(--color-slate-400);
+  --divider-label-bg: var(--color-slate-800);
 }
 /* =============================================================================
    Stack Component

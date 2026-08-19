@@ -226,6 +226,15 @@
   --shadow-xl:
     0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 
+  /* Focus Ring Colors — light mode uses pastel shades */
+  --ring-primary: var(--color-primary-100);
+  --ring-secondary: var(--color-slate-100);
+  --ring-danger: var(--color-danger-100);
+  --ring-success: var(--color-success-100);
+  --ring-warning: var(--color-warning-100);
+  --ring-info: var(--color-info-100);
+  --ring-ghost: var(--color-slate-100);
+
   /* Transitions */
   --transition-fast: 150ms;
   --transition-normal: 200ms;
@@ -237,4 +246,13 @@
 
   /* Semantic Surfaces */
   --surface-base: var(--color-slate-900);
+
+  /* Focus Ring Colors — dark mode uses lighter muted shades */
+  --ring-primary: var(--color-primary-300);
+  --ring-secondary: var(--color-slate-300);
+  --ring-danger: var(--color-danger-300);
+  --ring-success: var(--color-success-300);
+  --ring-warning: var(--color-warning-300);
+  --ring-info: var(--color-info-300);
+  --ring-ghost: var(--color-slate-300);
 }
