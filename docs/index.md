@@ -3,238 +3,316 @@ layout: home
 
 hero:
   name: Basekit Laravel UI
-  text: Modern UI Components for Laravel
-  tagline: Build beautiful interfaces with reusable Blade components, and Tailwind 4 theming
+  text: Build Laravel interfaces faster
+  tagline: 35 production-ready Blade components powered by Tailwind CSS and Alpine.js. Customizable, type-safe, and built for Laravel.
   actions:
     - theme: brand
       text: Get Started
       link: /guide/installation
     - theme: alt
-      text: View Components
-      link: /components/button
+      text: Explore Components
+      link: /styleguide
   image:
     src: /logo.png
     alt: Basekit Laravel UI
 
 features:
+  - icon: 🧩
+    title: 35 Ready-to-Use Components
+    details: Forms, navigation, feedback, overlays, data display and more — ready to use directly from Blade.
+
+  - icon: 🧱
+    title: Blade First
+    details: Build interfaces using familiar Laravel Blade components without adopting another frontend framework.
+
   - icon: 🎨
-    title: Tailwind 4 Theming
-    details: CSS-based theming with runtime customization via CSS variables. No rebuild required for theme changes.
-
-  - icon: 🔧
-    title: Highly Configurable
-    details: Enable/disable components, customize variants and sizes. Build only what you use.
-
-  - icon: 🌲
-    title: Component-Aware CSS Build
-    details: Optimized build system includes CSS only for enabled components, reducing bundle size.
-
-  - icon: 🎯
-    title: Type-Safe Components
-    details: PHP classes with constructor props, IDE autocomplete, and type hints for better DX.
-
-  - icon: 💎
-    title: Heroicons Integration
-    details: Beautiful icons built-in with support for outline, solid, and mini styles.
-
-  - icon: 📦
-    title: Publishable Views
-    details: Fully customize components to your needs by publishing component views.
+    title: Easy to Theme
+    details: Customize colors, spacing, radii and other design tokens at runtime using CSS variables.
 
   - icon: ⚡
-    title: Smart Class Merging
-    details: Tailwind Merge integration for intelligent class conflict resolution.
+    title: Alpine-Powered Interactions
+    details: Modals, dropdowns, tabs, toasts and more without building a JavaScript application.
 
-  - icon: 🚀
-    title: Laravel 12 Ready
-    details: Built for Laravel 12 with modern best practices and conventions.
+  - icon: 🎯
+    title: Developer Friendly
+    details: PHP component classes provide type hints, IDE autocomplete and discoverable component APIs.
+
+  - icon: 📦
+    title: Ship Only What You Use
+    details: Enable the components you need and build an optimized stylesheet for your application.
 ---
 
-## What is Basekit Laravel UI?
+## 🧩 Everything You Need to Build Laravel Interfaces
 
-Reusable Blade UI components for Laravel apps using Tailwind CSS 4.
+Stop rebuilding the same buttons, inputs, modals, dropdowns, tables, and feedback states for every Laravel application.
 
-## Quick Start
+Basekit gives you **35 reusable Blade components** with consistent styling, variants, sizing, theming, and interactive behavior — while keeping you in the Laravel ecosystem.
 
-### 1. Installation
+Use the components as they are, customize them to match your brand, or publish the underlying views when you need complete control.
+
+**[Explore all 35 components →](/styleguide)**
+
+---
+
+## 🚀 Quick Start
+
+### 1. Install Basekit
+
+Install the package with Composer:
 
 ```bash
 composer require basekit-laravel/basekit-laravel-ui
 ```
 
-### 2. Include CSS
+### 2. Include the CSS
+
+Add Basekit to your application's main CSS file:
 
 ```css
-/* resources/css/app.css */
-@import "../../vendor/basekit-laravel/basekit-laravel-ui/resources/css/dist/v1/theme.css";
+@import "./vendor/basekit-laravel/v1/basekit-ui.css";
 ```
 
-### 3. Use Components
+### 3. Include Alpine.js
+
+Interactive components such as modals, dropdowns, tabs, toasts, tooltips, and selects use Alpine.js.
+
+If you're already using Livewire, Alpine.js is available through:
 
 ```blade
-<x-basekit-ui::button variant="primary" icon="check">
-    Save Changes
-</x-basekit-ui::button>
+@livewireScripts
+```
 
-<x-basekit-ui::input
-    label="Email"
-    placeholder="you@example.com"
-    icon="envelope"
-/>
+Otherwise, include Alpine.js in your layout:
 
+```blade
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+```
+
+### 4. Start Building
+
+Use Basekit components directly from your Blade templates:
+
+```blade
 <x-basekit-ui::card>
     <x-slot:header>
-        <h3>Welcome</h3>
+        <h2 class="text-xl font-semibold">Welcome back</h2>
     </x-slot>
 
-    Your content here...
+    <x-basekit-ui::stack spacing="lg">
+        <x-basekit-ui::input
+            name="email"
+            type="email"
+            label="Email"
+            icon="envelope"
+        />
 
-    <x-slot:footer>
-        <x-basekit-ui::button>Action</x-basekit-ui::button>
-    </x-slot>
+        <x-basekit-ui::input
+            name="password"
+            type="password"
+            label="Password"
+        />
+
+        <x-basekit-ui::button
+            type="submit"
+            variant="primary"
+            icon="arrow-right"
+        >
+            Sign in
+        </x-basekit-ui::button>
+    </x-basekit-ui::stack>
 </x-basekit-ui::card>
 ```
 
-## Performance
+That's it. No component scaffolding required.
 
-Component-based builds can significantly reduce bundle size:
+**[Read the installation guide →](/guide/installation)**
 
-- **Full bundle**: 200KB (all components enabled)
-- **Minimal config**: 55KB (3 components enabled)
-- **Reduction**: 73%
+---
 
-To enable:
+## 🎨 Built for Customization
 
-### 1. Publish Configuration
+Basekit comes with sensible defaults, but gives you more control when you need it.
 
-```bash
-php artisan vendor:publish --tag=basekit-laravel-ui-config
-```
+### Theme with CSS Variables
 
-### 2. Disable unused components
-
-In `config/basekit-laravel-ui.php`
-
-### 3. Build CSS:
-
-```bash
-php artisan basekit:ui:build
-```
-
-### 4. Include built file:
+For quick customization, override Basekit's CSS variables in your application:
 
 ```css
-@import "../../public/vendor/basekit-laravel/v1/basekit-ui.css";
-```
-
-### 5. Rebuild assets:
-
-```bash
-npm run build
-```
-
-## Features at a Glance
-
-```php [Configuration]
-// config/basekit-laravel-ui.php
-return [
-    'components' => [
-        'button' => [
-            'enabled' => true,
-            'variants' => ['primary', 'secondary'],
-            'sizes' => ['sm', 'md', 'lg'],
-        ],
-    ],
-];
-```
-
-```css [Theming]
-/* Override CSS variables */
 :root {
-  --color-primary-600: #your-brand;
+  --color-primary-600: #your-brand-color;
   --button-radius: 0.5rem;
   --card-padding: 2rem;
 }
 ```
 
-```bash [Optional Build]
-# Optional: build optimized CSS based on config
-php artisan basekit:ui:build
+Theme changes are applied through CSS variables, making it easy to adapt Basekit to your application's visual identity.
 
-# Optional: watch mode for package customization
+### Configure Your Components
+
+Publish the configuration file to control enabled components, variants, sizes, and defaults:
+
+```bash
+php artisan vendor:publish --tag=basekit-laravel-ui-config
+```
+
+For example:
+
+```php
+// config/basekit-laravel-ui.php
+
+return [
+    'components' => [
+        'button' => [
+            'enabled' => true,
+            'variants' => ['primary', 'secondary', 'danger'],
+            'sizes' => ['sm', 'md', 'lg'],
+            'default_variant' => 'primary',
+            'default_size' => 'md',
+        ],
+    ],
+];
+```
+
+### Customize the Theme Source
+
+Need deeper control over Basekit's styles? Publish the CSS theme:
+
+```bash
+php artisan vendor:publish --tag=basekit-laravel-ui-css-v1
+```
+
+You can then customize the theme source directly for your application.
+
+### Own the Markup
+
+Need complete control over a component?
+
+Publish the component views:
+
+```bash
+php artisan vendor:publish --tag=basekit-views
+```
+
+Published views are copied to `resources/views/vendor/basekit/` and automatically override the package components.
+
+**[Learn more about theming →](/guide/theming)**
+
+---
+
+## ⚡ Ship Only What You Use
+
+Basekit's component-aware build system can generate CSS based on the components enabled in your configuration.
+
+That means applications using only a subset of Basekit don't need to ship styles for every component.
+
+In the included bundle-size comparison:
+
+| Configuration  | Bundle Size |
+| -------------- | ----------: |
+| All components |      ~200KB |
+| 3 components   |       ~55KB |
+| **Reduction**  |    **~73%** |
+
+After configuring the components you need, build your optimized stylesheet:
+
+```bash
+php artisan basekit:ui:build
+```
+
+While developing, use watch mode to automatically rebuild when your configuration or styles change:
+
+```bash
 php artisan basekit:ui:build --watch
 ```
 
-## Component Catalog
+This gives you the convenience of a complete component library without requiring every application to ship the complete stylesheet.
 
-### Form (10)
+---
 
-Build accessible forms with full validation support.
+## 🧩 Component Catalog
 
-- **[Button](/components/button)** - Versatile button with variants, sizes, and icons
-- **[Input](/components/input)** - Text input with error states and icons
-- **[Textarea](/components/textarea)** - Multi-line text input with auto-resize
-- **[Checkbox](/components/checkbox)** - Checkbox with label support
-- **[Radio](/components/radio)** - Radio button for single selections
-- **[Select](/components/select)** - Dropdown select for single-option selection
-- **[Multi-Select](/components/multi-select)** - Select multiple options with chips
-- **[Toggle](/components/toggle)** - Switch toggle powered by Alpine.js
-- **[Fieldset](/components/fieldset)** - Semantic group for form controls
-- **[Copy Button](/components/copy-button)** - Copy to clipboard with transient feedback
+Basekit includes **35 components** organized around the UI patterns you'll use across Laravel applications.
 
-### Feedback (7)
+### 📝 Forms
 
-Provide user feedback and loading states.
+Build accessible forms with consistent validation, states, sizing, and styling.
 
-- **[Alert](/components/alert)** - Alert banners for messages
-- **[Toast](/components/toast)** - Notification toast with auto-dismiss
-- **[Tooltip](/components/tooltip)** - Hover tooltip with positioning
-- **[Progress](/components/progress)** - Progress bar for completion status
-- **[Spinner](/components/spinner)** - Loading spinner indicator
-- **[Skeleton](/components/skeleton)** - Placeholder loading skeleton
-- **[Empty State](/components/empty-state)** - No data or empty results display
+- **[Button](/components/button)** — Buttons with variants, sizes, icons, and states
+- **[Input](/components/input)** — Text inputs with labels, errors, hints, and icons
+- **[Textarea](/components/textarea)** — Multi-line text input with auto-resize
+- **[Checkbox](/components/checkbox)** — Checkbox controls with label support
+- **[Radio](/components/radio)** — Radio controls for single selections
+- **[Select](/components/select)** — Dropdown selection controls
+- **[Multi-Select](/components/multi-select)** — Multiple selections with chips
+- **[Toggle](/components/toggle)** — Interactive switch controls
+- **[Fieldset](/components/fieldset)** — Semantic groups for form controls
+- **[Copy Button](/components/copy-button)** — Copy-to-clipboard with transient feedback
 
-### Navigation (5)
+### 💬 Feedback
 
-Navigate through your application.
+Communicate status, progress, loading states, and application feedback.
 
-- **[Breadcrumb](/components/breadcrumb)** - Page hierarchy navigation
-- **[Pagination](/components/pagination)** - Paginated data navigation
-- **[Tabs](/components/tabs)** - Tabbed interface with Alpine.js
-- **[Dropdown Menu](/components/dropdown-menu)** - Interactive dropdown menu
-- **[Link](/components/link)** - Styled link component
+- **[Alert](/components/alert)** — Contextual alert messages
+- **[Toast](/components/toast)** — Auto-dismissing notifications
+- **[Tooltip](/components/tooltip)** — Contextual hover information
+- **[Progress](/components/progress)** — Progress and completion indicators
+- **[Spinner](/components/spinner)** — Loading indicators
+- **[Skeleton](/components/skeleton)** — Placeholder loading states
+- **[Empty State](/components/empty-state)** — Empty data and no-results states
 
-### Layout (4)
+### 🧭 Navigation
 
-Structure your page layouts.
+Help users move through your application and interact with actions.
 
-- **[Container](/components/container)** - Responsive page container
-- **[Divider](/components/divider)** - Horizontal separator
-- **[Stack](/components/stack)** - Vertical/horizontal layout
-- **[Grid](/components/grid)** - Responsive grid layout
+- **[Breadcrumb](/components/breadcrumb)** — Page hierarchy navigation
+- **[Pagination](/components/pagination)** — Paginated data navigation
+- **[Tabs](/components/tabs)** — Interactive tabbed interfaces
+- **[Dropdown Menu](/components/dropdown-menu)** — Interactive action menus
+- **[Link](/components/link)** — Consistently styled links
 
-### Display (7)
+### 📐 Layout
 
-Present your data.
+Create consistent structure, spacing, and responsive layouts.
 
-- **[Card](/components/card)** - Container for grouping content
-- **[Badge](/components/badge)** - Labels, counts, and status indicators
-- **[Avatar](/components/avatar)** - User profile images
-- **[Table](/components/table)** - Styled data table
-- **[List](/components/list)** - Styled ordered/unordered lists
-- **[Description List](/components/description-list)** - Key-value pairs
-- **[Stat](/components/stat)** - Dashboard statistics display
+- **[Container](/components/container)** — Responsive page containers
+- **[Divider](/components/divider)** — Content separators
+- **[Stack](/components/stack)** — Vertical and horizontal layouts
+- **[Grid](/components/grid)** — Responsive grid layouts
 
-### Overlay (2)
+### 📊 Display
 
-Modal dialogs and overlays.
+Present application content and data consistently.
 
-- **[Modal](/components/modal)** - Modal dialog with Alpine.js
-- **[Accordion](/components/accordion)** - Collapsible content panels
+- **[Card](/components/card)** — Group related content and actions
+- **[Badge](/components/badge)** — Labels, counts, and status indicators
+- **[Avatar](/components/avatar)** — User and profile images
+- **[Table](/components/table)** — Structured data tables
+- **[List](/components/list)** — Styled ordered and unordered lists
+- **[Description List](/components/description-list)** — Structured key-value information
+- **[Stat](/components/stat)** — Dashboard statistics and metrics
 
-### Meta & Theme (2)
+### 🪟 Overlays & Disclosure
 
-SEO meta tags and runtime theme CSS variables.
+Add interactive content without leaving the current page.
 
-- **[SEO](/components/seo)** - Title, meta and social head tags
-- **[Theme Variables](/components/theme-variables)** - Runtime theme palette CSS variables
+- **[Modal](/components/modal)** — Alpine-powered modal dialogs
+- **[Accordion](/components/accordion)** — Collapsible content panels
+
+### 🛠️ Meta & Theme
+
+Utilities for application metadata and runtime theming.
+
+- **[SEO](/components/seo)** — Title, meta, and social head tags
+- **[Theme Variables](/components/theme-variables)** — Runtime theme palette CSS variables
+
+---
+
+## ✨ Ready to Build?
+
+Browse every component, variant, size, and state in the interactive style guide.
+
+**[Explore all 35 components →](/styleguide)**
+
+Or jump straight into your application:
+
+**[Get started with Basekit →](/guide/installation)**
