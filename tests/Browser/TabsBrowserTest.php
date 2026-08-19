@@ -44,13 +44,13 @@ test('tabs with panels shows correct panel content', function () {
     $this->browse(function (Browser $browser) {
         $browser->visit('/dusk/tabs-panels');
 
-        // First panel should be visible
-        $browser->assertVisible('#panel-first')
+        // First panel should be visible (waitFor handles Alpine.js CDN init delay)
+        $browser->waitFor('#panel-first')
             ->assertSeeIn('#panel-first', 'First panel content');
 
         // Second tab click shows second panel
         $browser->click('.bk-tabs__tab:nth-child(2)')
-            ->assertVisible('#panel-second')
+            ->waitFor('#panel-second')
             ->assertSeeIn('#panel-second', 'Second panel content');
     });
 });
