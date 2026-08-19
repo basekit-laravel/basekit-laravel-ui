@@ -5,6 +5,33 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.10.0](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.9.0...v1.10.0) (2026-08-19)
+
+
+### Features
+
+* **styleguide:** redesign with preview/code toggle, search filtering, collapsible sections ([1a481a9](https://github.com/basekit-laravel/basekit-laravel-ui/commit/1a481a9e318ba6cb7ce3f0f8c2fbc4590baf3641))
+* **ui:** remove deprecated APIs and apply breaking changes ([818d46c](https://github.com/basekit-laravel/basekit-laravel-ui/commit/818d46ce9ee03376dc728e0c172ac33f0753772c))
+
+
+### Bug Fixes
+
+* correct CSS dist publish path in BasekitServiceProvider ([ff9e4af](https://github.com/basekit-laravel/basekit-laravel-ui/commit/ff9e4af273db1fd95dea617b03b5566e0552f555))
+* dark theme polish - custom color dark mode, alert/toast, card, divider, ring tokens ([10c0193](https://github.com/basekit-laravel/basekit-laravel-ui/commit/10c019313c85ee297bd97e20afec8a01fd2ab321))
+* ensure testbench.yaml is available to the Dusk server process ([9484097](https://github.com/basekit-laravel/basekit-laravel-ui/commit/94840970da05f9e8a28ad5ed24ab64e4a2429783))
+* fix Dusk server bootstrap and heroicon discovery for CI ([3a22c12](https://github.com/basekit-laravel/basekit-laravel-ui/commit/3a22c12e532304aa38706a3f97ca664a1aa28e3a))
+* replace twMerge with Laravel's class() and remove tailwind-merge-laravel ([dae7549](https://github.com/basekit-laravel/basekit-laravel-ui/commit/dae75497fd665eccae6e20ea9833362a2760ee31))
+* resolve ChromeDriver dynamically instead of using Dusk-bundled binary ([3a483f1](https://github.com/basekit-laravel/basekit-laravel-ui/commit/3a483f1cc03dd49fd8c69aa7350695d7469c691c))
+* scope quality job to Feature tests only ([a3a504f](https://github.com/basekit-laravel/basekit-laravel-ui/commit/a3a504f31e552704809264e92389ea591015a1c3))
+* **styleguide:** dark mode contrast and overlay clipping for examples ([8d86a0a](https://github.com/basekit-laravel/basekit-laravel-ui/commit/8d86a0aedefad457730a5e0af3b840889cb30065))
+* **test:** use waitFor to fix flaky tabs-panels browser test in CI ([363ef15](https://github.com/basekit-laravel/basekit-laravel-ui/commit/363ef15ccad566afe96e758c5e59b2761700f6df))
+
+
+### Miscellaneous Chores
+
+* **master:** release 2.0.0 ([4f8437d](https://github.com/basekit-laravel/basekit-laravel-ui/commit/4f8437d9285da38a69feac4975f9098bfc9d61b3))
+* **master:** release 2.0.0 ([385df88](https://github.com/basekit-laravel/basekit-laravel-ui/commit/385df8837b5b4117483cc7ebc9d158db1b52c230))
+
 ## [2.0.0](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.8.1...v2.0.0) (2026-08-18)
 
 
