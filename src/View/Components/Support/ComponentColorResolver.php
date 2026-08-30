@@ -265,6 +265,10 @@ class ComponentColorResolver
             return 'var(--color-'.$value.')';
         }
 
+        if (preg_match('/^[a-zA-Z]+$/', $value) === 1) {
+            return 'var(--color-'.$value.')';
+        }
+
         return $value;
     }
 
