@@ -5,6 +5,14 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.10.1](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.10.0...v1.10.1) (2026-09-12)
+
+
+### Bug Fixes
+
+* ComponentColorResolver for color name match ([4167705](https://github.com/basekit-laravel/basekit-laravel-ui/commit/4167705db49a0e3adcc79588b27e858c6e4c9bc6))
+* decode attribute-escaped strings in form components ([3d79ae6](https://github.com/basekit-laravel/basekit-laravel-ui/commit/3d79ae63a6e333cd9b0bd87e812725ac296771a7))
+
 ## [1.10.0](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.9.0...v1.10.0) (2026-08-19)
 
 ### Features
