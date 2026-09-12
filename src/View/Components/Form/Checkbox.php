@@ -8,6 +8,7 @@ use BasekitLaravel\BasekitLaravelUi\Enums\Size;
 use BasekitLaravel\BasekitLaravelUi\Enums\Variant;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentColorResolver;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentPropResolver;
+use BasekitLaravel\BasekitLaravelUi\View\Components\Support\NormalizesAttributeStrings;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use Illuminate\Support\Str;
@@ -20,6 +21,8 @@ use Illuminate\Support\Str;
  */
 class Checkbox extends Component
 {
+    use NormalizesAttributeStrings;
+
     /**
      * The resolved input ID for this render.
      */
@@ -94,6 +97,11 @@ class Checkbox extends Component
     ) {
         $this->variant = $this->resolveVariant($variant);
         $this->size = $this->resolveSize($size);
+
+        $this->label = $this->normalizeAttributeString($this->label);
+        $this->error = $this->normalizeAttributeString($this->error);
+        $this->hint = $this->normalizeAttributeString($this->hint);
+        $this->value = $this->normalizeAttributeString($this->value);
     }
 
     /**

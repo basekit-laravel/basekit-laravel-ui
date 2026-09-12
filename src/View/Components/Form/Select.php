@@ -10,6 +10,7 @@ use BasekitLaravel\BasekitLaravelUi\Enums\Size;
 use BasekitLaravel\BasekitLaravelUi\Enums\Variant;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentColorResolver;
 use BasekitLaravel\BasekitLaravelUi\View\Components\Support\ComponentPropResolver;
+use BasekitLaravel\BasekitLaravelUi\View\Components\Support\NormalizesAttributeStrings;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
 use Illuminate\View\Component;
@@ -22,6 +23,8 @@ use Illuminate\View\Component;
  */
 class Select extends Component
 {
+    use NormalizesAttributeStrings;
+
     /**
      * The resolved input ID for this render.
      */
@@ -158,6 +161,13 @@ class Select extends Component
         $this->controlStyle = $this->resolveControlStyle($controlStyle);
         $this->variant = $this->resolveVariant($variant);
         $this->size = $this->resolveSize($size);
+
+        $this->label = $this->normalizeAttributeString($this->label);
+        $this->error = $this->normalizeAttributeString($this->error);
+        $this->hint = $this->normalizeAttributeString($this->hint);
+        $this->placeholder = $this->normalizeAttributeString($this->placeholder);
+        $this->emptyLabel = $this->normalizeAttributeString($this->emptyLabel);
+        $this->cornerHint = $this->normalizeAttributeString($this->cornerHint);
     }
 
     /**

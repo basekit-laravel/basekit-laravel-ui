@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace BasekitLaravel\BasekitLaravelUi\View\Components\Form;
 
+use BasekitLaravel\BasekitLaravelUi\View\Components\Support\NormalizesAttributeStrings;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
@@ -17,6 +18,8 @@ use Illuminate\View\Component;
  */
 class Fieldset extends Component
 {
+    use NormalizesAttributeStrings;
+
     /**
      * Create a new component instance.
      */
@@ -50,7 +53,11 @@ class Fieldset extends Component
          * Additional classes for the items container.
          */
         public ?string $itemsClass = null,
-    ) {}
+    ) {
+        $this->label = $this->normalizeAttributeString($this->label);
+        $this->error = $this->normalizeAttributeString($this->error);
+        $this->hint = $this->normalizeAttributeString($this->hint);
+    }
 
     /**
      * Get the view / contents that represent the component.
