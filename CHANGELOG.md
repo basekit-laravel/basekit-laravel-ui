@@ -5,6 +5,13 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.11.0](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.10.1...v1.11.0) (2026-09-19)
+
+
+### Features
+
+* add OpenCode agents and skills with Claude Code and Copilot support ([4e2bf30](https://github.com/basekit-laravel/basekit-laravel-ui/commit/4e2bf30c4b59580926d44acc79bf1ee16fde2937))
+
 ## [1.10.1](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.10.0...v1.10.1) (2026-09-12)
 
 
