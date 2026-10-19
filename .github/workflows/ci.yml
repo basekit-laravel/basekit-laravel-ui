@@ -55,7 +55,7 @@ jobs:
         run: composer lint:check
 
       - name: Run static analysis
-        run: composer analyze
+        run: composer analyse
 
       - name: Run test suite
         run: ./vendor/bin/pest tests/Feature --ci --no-coverage

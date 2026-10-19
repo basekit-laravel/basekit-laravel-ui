@@ -15,9 +15,9 @@ Run commands with `composer <script>` or `./vendor/bin/...` — there is no `art
 | Single test | `./vendor/bin/pest tests/Feature/SomeTest.php` |
 | Lint (check) | `composer lint:check` (Pint `--test`) |
 | Lint (fix) | `composer lint` |
-| Static analysis | `composer analyze` (PHPStan level 8) |
-| Full quality gate | `composer quality` (runs lint:check → analyze → test sequentially) |
-| Rector (DRY run) | `composer rector:check` |
+| Static analysis | `composer analyse` (or `analyze`) (PHPStan level 8) |
+| Full quality gate | `composer quality` (runs lint:check → analyse → test sequentially) |
+| Rector (DRY run) | `composer refactor:check` (or `rector:check`) |
 | Build CSS | `./vendor/bin/testbench basekit:ui:build` or `npm run build:dist` |
 | Build CSS (watch) | `./vendor/bin/testbench basekit:ui:build --watch` |
 | PostCSS + minify | `npm run css:dist` (generates `resources/css/dist/v1/`) |
@@ -30,7 +30,7 @@ Run commands with `composer <script>` or `./vendor/bin/...` — there is no `art
 - Uses **Pest + Orchestra Testbench** with `Blade::render()` — no HTTP tests.
 - Cache driver **must** be `'array'` for tests (set in `TestCase::setUp()` and `testbench.yaml`).
 - The List component class is `ListComponent` (not `List`) to avoid the PHP reserved word.
-- CI runs: `lint:check → analyze → test [--no-coverage] → build → styleguide → advanced-demo → verify-doc-token-sync`.
+- CI runs: `lint:check → analyse → test [--no-coverage] → build → styleguide → advanced-demo → verify-doc-token-sync`.
 - The `verify-doc-token-sync.sh` script checks that `--surface-base` CSS tokens in theme.css match docs.
 
 ## Architecture notes

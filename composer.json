@@ -62,13 +62,17 @@
     "test:coverage": "pest --coverage",
     "lint": "pint",
     "lint:check": "pint --test",
+    "analyse": "phpstan analyse",
+    "analyse:baseline": "phpstan analyse --generate-baseline",
     "analyze": "phpstan analyse",
     "analyze:baseline": "phpstan analyse --generate-baseline",
+    "refactor": "rector process src",
+    "refactor:check": "rector process src --dry-run",
     "rector": "rector process src",
     "rector:check": "rector process src --dry-run",
     "quality": [
       "@lint:check",
-      "@analyze",
+      "@analyse",
       "@test"
     ]
   },
