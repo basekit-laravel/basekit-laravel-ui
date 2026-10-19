@@ -5,6 +5,18 @@ All notable changes to `basekit-laravel-ui` will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.11.1](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.11.0...v1.11.1) (2026-10-19)
+
+
+### Bug Fixes
+
+* keep styleguide and test views out of consumer view compilation ([fd52d02](https://github.com/basekit-laravel/basekit-laravel-ui/commit/fd52d026fcdf356b75f31dfc19a5c6b46c85deb5))
+
+
+### Miscellaneous Chores
+
+* standardize composer script names (analyse/refactor) ([27eede2](https://github.com/basekit-laravel/basekit-laravel-ui/commit/27eede207f23c7d0821796659c67dc1d83a93934))
+
 ## [1.11.0](https://github.com/basekit-laravel/basekit-laravel-ui/compare/v1.10.1...v1.11.0) (2026-09-19)
 
 
