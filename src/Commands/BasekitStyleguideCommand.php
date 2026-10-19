@@ -27,6 +27,10 @@ class BasekitStyleguideCommand extends Command
         $title = $this->option('title') ?? 'Basekit Laravel UI — Styleguide';
         $outputPath = $this->resolveOutputPath();
 
+        // Dev-only views (styleguide + test pages) live outside resources/views
+        // so consumer view:cache never compiles them — register them on demand.
+        view()->addNamespace('basekit', dirname(__DIR__, 2).'/resources/dev');
+
         $this->info('🎨 Generating snapshot...');
         $this->info("View: {$view}");
         $this->info("Title: {$title}");

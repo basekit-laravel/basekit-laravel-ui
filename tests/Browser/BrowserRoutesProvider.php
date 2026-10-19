@@ -17,6 +17,10 @@ class BrowserRoutesProvider extends ServiceProvider
 {
     public function boot(): void
     {
+        // Test pages live outside resources/views so consumer view:cache never
+        // compiles them — register them on demand for the Dusk routes below.
+        $this->app['view']->addNamespace('basekit', dirname(__DIR__, 2).'/resources/dev');
+
         $this->registerRoutes();
     }
 

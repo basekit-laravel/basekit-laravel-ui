@@ -145,6 +145,7 @@ basekit-laravel-ui/
 │               └── ComponentColorResolver.php
 ├── resources/
 │   ├── views/
+│   │   ├── styleguide-wrapper.blade.php  # Styleguide page shell (registered alias)
 │   │   └── components/
 │   │       ├── form/              # form/ templates
 │   │       ├── feedback/          # feedback/ templates
@@ -153,7 +154,11 @@ basekit-laravel-ui/
 │   │       ├── display/           # display/ templates
 │   │       ├── dialog/            # dialog/ templates
 │   │       ├── meta/              # meta/ templates
+│   │       ├── styleguide/        # styleguide section helpers
 │   │       └── theme/             # theme/ templates
+│   ├── dev/
+│   │   ├── styleguide/            # Styleguide demo views (loaded on demand only)
+│   │   └── test-pages/            # Dusk test pages (loaded on demand only)
 │   └── css/
 │       └── v1/
 │           └── components/        # Generated component CSS
